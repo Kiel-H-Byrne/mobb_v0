@@ -1,0 +1,9 @@
+  html {
+    font-family: GillSans, Calibri, Trebuchet, sans-serif;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  #googleMap {
+  	min-height: 600px;
+  	height: 800px;
+  }

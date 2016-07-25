@@ -13,6 +13,11 @@ if (Meteor.users.find().count() === 0) {
 	  });
 
 	kiel = Meteor.users.findOne(kielId);
-
-	Roles.addUserToRoles( kiel , ["admin"] );
 };
+
+if ( Meteor.users.findOne({username: 'kiel'}) ) {
+	let kiel = Meteor.users.findOne({username: 'kiel'});
+	Roles.addUserToRoles( kiel._id ,  ["admin"] );
+} else {
+	console.log("No Admin Yet");
+}

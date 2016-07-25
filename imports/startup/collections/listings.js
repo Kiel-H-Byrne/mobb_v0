@@ -1,5 +1,5 @@
 
-const Listings = new orion.collection('listings', {
+Listings = new orion.collection('listings', {
   singularName: 'listing', // The name of one of these items
   pluralName: 'listings', // The name of more than one of these items
   link: {
@@ -63,8 +63,10 @@ Listings.allow({
 
 Meteor.methods({
 	insertBiz(data) {
-		// if(!this.userId)
-		// 	throw new Meteor.Error('Unauthorized for Insert');
+    check(this.userId, String);
+
+		if(!this.userId)
+			throw new Meteor.Error('Unauthorized for Insert');
 
 		Listings.insert({
 			name: data.name,

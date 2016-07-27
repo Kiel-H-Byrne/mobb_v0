@@ -1,0 +1,12 @@
+{
+  "public": {
+    "analyticsSettings": {
+      "Google Analytics" : {"trackingId": "UA-73304917-1"}
+    },
+    "keys": {
+      "googleMaps" : {"key" : "AIzaSyBxkVmvipEg4D57orN-46_s6Uvaoi7OKUc"}
+    }
+  }
+}
+
+

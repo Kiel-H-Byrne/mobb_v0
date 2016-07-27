@@ -10,11 +10,11 @@ const Centers = {
 
 Template.map.onCreated( function() {  
 	console.log("map drawn");
+    // const Gkey = Meteor.settings.keys.googleMaps.key;
     // Meteor.subscribe('listings');
   GoogleMaps.load({
       v: '3',
-      key: 'AIzaSyBxkVmvipEg4D57orN-46_s6Uvaoi7OKUc'
-
+      key: Meteor.settings.public.keys.googleMaps.key
   });
     //TODO: change api key to secure 'settings' file.
 

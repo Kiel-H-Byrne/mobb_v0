@@ -1,5 +1,11 @@
 // import { Roles } from  'meteor/orionjs:core';
 
+//check for settings file
+console.log("...checking for settings file...");
+if (!Meteor.settings.public.googleMaps) {
+    console.log(" No Settings File! start server with 'NPM RuN' ");
+}
+
 let kiel = {};
 
 if (Meteor.users.find().count() === 0) {

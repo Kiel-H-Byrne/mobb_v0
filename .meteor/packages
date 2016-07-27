@@ -29,3 +29,4 @@ orionjs:core
 materialize:materialize
 orionjs:materialize
 useraccounts:materialize
+session

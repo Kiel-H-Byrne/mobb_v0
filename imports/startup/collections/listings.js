@@ -2,14 +2,7 @@
 Listings = new orion.collection('listings', {
   singularName: 'listing', // The name of one of these items
   pluralName: 'listings', // The name of more than one of these items
-  link: {
-    // *
-    //  * The text that you want to show in the sidebar.
-    //  * The default value is the name of the collection, so
-    //  * in this case it is not necessary.
-
-    title: 'Listings' 
-  },
+  link: { title: 'Listings' },
   /**
    * Tabular settings for this collection
    */

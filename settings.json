@@ -5,8 +5,12 @@
     },
     "keys": {
       "googleMaps" : {"key" : "AIzaSyBxkVmvipEg4D57orN-46_s6Uvaoi7OKUc"}
-    }
-  }
+	  }
+  },
+	"galaxy.meteor.com": { 
+		 "env": { 
+		   "ROOT_URL": "[ http://mobb.meteorapp.com ]", 
+		   "MONGO_URL": "[ mongodb://mobbAdmin:vivitron@ds139715.mlab.com:39715/tkhb_mongodb ]" 
+		} 
+	}
 }
-
-

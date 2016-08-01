@@ -17,6 +17,9 @@ Listings = new orion.collection('listings', {
         data: "owner", 
         title: "Owner" 
       },{ 
+        data: "loc", 
+        title: "Location" 
+      },{ 
         data: "address1", 
         title: "Address" 
       },{ 
@@ -33,11 +36,20 @@ Listings = new orion.collection('listings', {
         title: "State" 
       },{ 
         data: "zip", 
-        title: "zip" 
+        title: "Zip" 
       },{ 
         data: "country", 
         title: "Country" 
       },{ 
+        data: "url", 
+        title: "URL" 
+      },{ 
+        data: "img", 
+        title: "Image" 
+      },{ 
+        data: "phone", 
+        title: "Phone" 
+      },{
         data: "createdBy", 
         title: "Created By" 
       },{ 
@@ -63,6 +75,7 @@ Meteor.methods({
 
 		Listings.insert({
 			name: data.name,
+      loc: data.loc,
 			address1: data.address1,
 			address2: data.address2,
 			address3: data.address3,
@@ -70,6 +83,9 @@ Meteor.methods({
 			state: data.state,
 			zip: data.zip,
 			country: data.country,
+      url: data.url,
+      image: data.img,
+      phone: data.phone,
 			owner: data.owner,
 			createdBy: this.userId,
 			createdAt: Date.now()
@@ -87,6 +103,7 @@ Meteor.methods({
 		})
 	}
 });
+
 
 
 export default Listings;

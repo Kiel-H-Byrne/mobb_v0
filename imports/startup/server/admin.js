@@ -1,10 +1,10 @@
 // import { Roles } from  'meteor/orionjs:core';
 
 //check for settings file
-console.log("...checking for settings file...");
-if (!Meteor.settings.public.googleMaps) {
-    console.log(" No Settings File! start server with 'NPM RuN' ");
-}
+console.log("-= Settings: Checking... =-");
+if (!Meteor.settings.public.keys.googleMaps) {
+    console.log("-= Settings: FAILED. (Use 'NPM run') =-");
+} else {console.log ("-= Settings: Loaded =-")}
 
 let kiel = {};
 
@@ -21,9 +21,10 @@ if (Meteor.users.find().count() === 0) {
 	kiel = Meteor.users.findOne(kielId);
 };
 
-if ( Meteor.users.findOne({username: 'kiel'}) ) {
-	let kiel = Meteor.users.findOne({username: 'kiel'});
+if ( Meteor.users.findOne({username: 'khb'}) ) {
+	let kiel = Meteor.users.findOne({username: 'khb'});
 	Roles.addUserToRoles( kiel._id ,  ["admin"] );
+	console.log("-= Admin: 'khb' is Admin =-")
 } else {
-	console.log("No Admin Yet");
+	console.log("-= Admin: No Admin =-");
 }

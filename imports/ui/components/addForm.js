@@ -4,7 +4,7 @@ import './addForm.html'
 
 
 Template.addForm.events({
-	'submit form' : function(evt,tpl) {
+	'click button' : function(evt,tpl) {
 		event.preventDefault();
 		let l = {};
 		l.name = tpl.find('input#listingName').value;

@@ -1,42 +1,49 @@
 <template name="addForm">
-	<h3> Add Your Business </h3>
-	<div class="row">
-		<form class="col s10">
-			<input id="listingName" type="text" name="Name" />
-			<label for="listingName">Name</label>
+  <!-- Modal Structure -->
+  <div id="addModal" class="modal modal-fixed-footer">
 
-			<input id="listingOwner" type="text" name="Owner Name" />
-			<label for="listingOwner">Owner Name</label>
+    <div class="modal-content">
+			<h4> Add Your Business </h4>
+			<form class="col s10">
+				<input id="listingName" type="text" name="Name" />
+				<label for="listingName">Name</label>
 
-			<input id="listingStreet" type="text" name="Street" />
-			<label for="listingStreet">Street</label>
+				<input id="listingOwner" type="text" name="Owner Name" />
+				<label for="listingOwner">Owner Name</label>
 
-			<input id="listingStreet2" type="text" name="Address 2" />
-			<label for="listingStreet2">Address 2</label>
+				<input id="listingStreet" type="text" name="Street" />
+				<label for="listingStreet">Street</label>
 
-			<input id="listingStreet3" type="text" name="Address 3" />
-			<label for="listingStreet3">Address 3</label>
+				<input id="listingStreet2" type="text" name="Address 2" />
+				<label for="listingStreet2">Address 2</label>
 
-			<input id="listingCity" type="text" name="City" />
-			<label for="listingCity">City</label>
+				<input id="listingStreet3" type="text" name="Address 3" />
+				<label for="listingStreet3">Address 3</label>
 
-			<input id="listingZip" type="text" name="Zipcode" />
-			<label for="listingZip">Zipcode</label>
+				<input id="listingCity" type="text" name="City" />
+				<label for="listingCity">City</label>
 
-			<input id="listingState" type="text" name="State" />
-			<label for="listingState">State</label>
+				<input id="listingZip" type="text" name="Zipcode" />
+				<label for="listingZip">Zipcode</label>
 
-			<select id="listingCountry" type="select" name="Country">
-				<option value="U.S.A"></option>
-				<option value="U.K."></option>
-			</select>
-			<label for="listingCountry">Country</label>
-			
-		  <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-		    <i class="material-icons right">add_circle</i>
+				<input id="listingState" type="text" name="State" />
+				<label for="listingState">State</label>
+
+				<select id="listingCountry" type="select" name="Country">
+					<option value="U.S.A"></option>
+					<option value="U.K."></option>
+				</select>
+				<label for="listingCountry">Country</label>
+			</form>
+		</div>
+
+    <div class="modal-footer">
+      <!-- a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat "> Submit </a -->
+      <button class="btn modal-action modal-close waves-effect waves-light" type="submit" name="action">  Submit
+			    <i class="material-icons right">add_circle</i>
 		  </button>
-		</form>
-	</div>
-</template>
+    </div>
 
+  </div>
+</template>
 

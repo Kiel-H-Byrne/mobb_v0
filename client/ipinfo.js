@@ -1,15 +1,20 @@
-import Info from '/imports/startup/collections/info';
 
-Meteor.subscribe('info', function() {
-	console.log('subscribing...');
-	console.log(Info.find().fetch());
-	this.stop();
-})
+// ============================= SUBSCRIPTIONS ==================================
+
+
+
+// ============================= SET IP INFO ==================================
 
 $.getJSON("http://ipinfo.io", function(data){
-	console.log("--setting initial ipInfo--");
+	console.log("-=setting initial ipInfo=-");
 	// console.log(data);
 	Session.set('ipInfo', data);
+
+	//			 ---------------- ANALYTICS EVENT ---------------
+	// analytics.track( 'ipInfo data', {
+	//   title: 'Pulled Geo Info',
+	//   data: Session.get('ipInfo)')
+	// });
 
 	if (Meteor.user()) {
 		Meteor.users.update({ 
@@ -18,35 +23,10 @@ $.getJSON("http://ipinfo.io", function(data){
 			$set: { 
 				profile : data 
 			} });
-		//get state abbreviation. set it to state
-		Meteor.users.update({
-			_id : Meteor.user()._id
-		}, { 
-			$set: {
-				"profile.state" : abbr_State(data.region, 'abbrev')
-		} });
 	}
-
-	// Info.insert( {'profile' : data} );
-
-	Info.upsert({
-		//selector
-		'profile.hostname' : data.hostname
-		},{
-		//modifier
-		$set: {
-			'profile' : data
-		}
-
-	});
-	
 });
 
-// analytics.track( 'ipInfo data', {
-//   title: 'Pulled Geo Info',
-//   data: Session.get('ipInfo)')
-// });
-
+// ============================= RETURNED OBJECT ==================================
 			/*
 			city: "Silver Spring"
 			country: "US"
@@ -57,6 +37,8 @@ $.getJSON("http://ipinfo.io", function(data){
 			postal: "20901"
 			region: "Maryland"
 			*/
+
+// =============================  HELPERS  ==================================
 
 // Template.ipInfo.helpers({
 // 	location: function() {
@@ -70,6 +52,8 @@ $.getJSON("http://ipinfo.io", function(data){
 // 		}
 // 	}
 // });
+
+// ============================= EVENTS ==================================
 
 // Template.ipInfo.events({
 // 	//when form is submitted, change the 'found' state to the one entered.
@@ -117,7 +101,8 @@ $.getJSON("http://ipinfo.io", function(data){
 // 		} else {
 // 			throwError("Did not enter a valid zipcode or address!");
 // 		}
-	    
+
+// 				---------------- ANALYTICS EVENT ---------------
 //     analytics.track("Entered Zipcode", {
 //       zip: entered
 //     });

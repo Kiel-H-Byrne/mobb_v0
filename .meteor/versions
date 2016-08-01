@@ -118,6 +118,7 @@ ui@1.0.11
 underscore@1.0.9
 url@1.0.10
 useraccounts:core@1.14.2
+useraccounts:iron-routing@1.14.2
 useraccounts:materialize@1.12.4
 webapp@1.2.11
 webapp-hashing@1.0.9

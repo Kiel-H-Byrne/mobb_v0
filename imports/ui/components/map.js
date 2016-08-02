@@ -157,10 +157,6 @@ $.getJSON("http://ipinfo.io", function(data){
 Template.map.onRendered(function() {
     console.log("map rendered...");
 
-// / ============================= SET MAP CENTER ==================================
-
-
-
 
 
 });
@@ -172,7 +168,8 @@ Template.map.onRendered(function() {
 Template.map.helpers({
   mapOptions: function() {
     if (GoogleMaps.loaded()) {
-    
+
+// / ============================= SET MAP CENTER ==================================    
         let Centers = {
           Na : {"lat":39.90973623453719, "lng":-105.29296875},
         };
@@ -185,19 +182,21 @@ Template.map.helpers({
             console.log("user location: " + userLoc);
             Centers.User = {"lat": parseInt(userLoc[0]), "lng": parseInt(userLoc[1]) } ;
         } else {
-            let ipInfo = Session.get('ipInfo')['loc'];
+            let ipInfo = Session.get('ipInfo');
             let loc = ipInfo.loc;
-            let userLoc = ipInfo.split(",");
+            let userLoc = loc.split(",");
             console.log("browser location: "+ userLoc);
             
             Centers.User = {"lat": parseInt(userLoc[0]), "lng": parseInt(userLoc[1]) } ;
         }
 
+// / ============================= RENDER MAP W/ OPTIONS ==================================    
+
         return {
             center: new google.maps.LatLng(Centers.User),
             zoom: 13,
             //mapTypeId:google.maps.MapTypeId.HYBRID,
-            disableDefaultUI: true,
+            disableDefaultUI: false,
             scrollwheel: true,
             // Map styles; snippets from 'Snazzy Maps'.
            

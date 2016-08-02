@@ -17,11 +17,11 @@ $.getJSON("http://ipinfo.io", function(data){
     // console.log(data);
     Session.set('ipInfo', data);
 
-    //           ---------------- ANALYTICS EVENT ---------------
-    // analytics.track( 'ipInfo data', {
-    //   title: 'Pulled Geo Info',
-    //   data: Session.get('ipInfo)')
-    // });
+//              ---------------- ANALYTICS EVENT ---------------
+    analytics.track( "Browser IP Data", {
+      title: "Pulled Geo Info",
+      data: data
+    });
 
     if (Meteor.user()) {
         Meteor.users.update({ 

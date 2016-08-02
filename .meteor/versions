@@ -83,6 +83,7 @@ nicolaslopezj:tabular-materialize@1.2.1
 npm-bcrypt@0.8.6_3
 npm-mongo@1.4.45
 observe-sequence@1.0.12
+okgrow:analytics@2.0.0
 ordered-dict@1.0.8
 orionjs:accounts@1.8.1
 orionjs:attributes@1.8.0

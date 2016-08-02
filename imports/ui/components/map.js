@@ -6,9 +6,6 @@ import './map.html'
 
 // ============================= SUBSCRIPTIONS ==================================
 
-
-
-
 Template.map.onCreated( function() {  
 	console.log("map drawn");
 
@@ -22,6 +19,7 @@ $.getJSON("http://ipinfo.io", function(data){
       title: "Pulled Geo Info",
       data: data
     });
+    console.log("-= GA : Browser IP Data =-");
 
     if (Meteor.user()) {
         Meteor.users.update({ 

@@ -3,28 +3,28 @@
 
 
 
-// ============================= SET IP INFO ==================================
+// // ============================= SET IP INFO ==================================
 
-$.getJSON("http://ipinfo.io", function(data){
-	console.log("-=setting initial ipInfo=-");
-	// console.log(data);
-	Session.set('ipInfo', data);
+// $.getJSON("http://ipinfo.io", function(data){
+// 	console.log("-=setting initial ipInfo=-");
+// 	// console.log(data);
+// 	Session.set('ipInfo', data);
 
-	//			 ---------------- ANALYTICS EVENT ---------------
-	// analytics.track( 'ipInfo data', {
-	//   title: 'Pulled Geo Info',
-	//   data: Session.get('ipInfo)')
-	// });
+// 	//			 ---------------- ANALYTICS EVENT ---------------
+// 	// analytics.track( 'ipInfo data', {
+// 	//   title: 'Pulled Geo Info',
+// 	//   data: Session.get('ipInfo)')
+// 	// });
 
-	if (Meteor.user()) {
-		Meteor.users.update({ 
-			_id : Meteor.user()._id
-			}, { 
-			$set: { 
-				profile : data 
-			} });
-	}
-});
+// 	if (Meteor.user()) {
+// 		Meteor.users.update({ 
+// 			_id : Meteor.user()._id
+// 			}, { 
+// 			$set: { 
+// 				profile : data 
+// 			} });
+// 	}
+// });
 
 // ============================= RETURNED OBJECT ==================================
 			/*

@@ -1,35 +1,50 @@
 import {Template} from 'meteor/templating';
 import './map.html'
 
-// ============================= SET MAP CENTER ==================================
-let Centers = {
-  Na : {"lat":39.90973623453719, "lng":-105.29296875},
-};
 
-let ipInfo = Session.get('ipInfo');
-if (Meteor.user()) {
-    let loc = Meteor.user().profile.loc;
-    let userLoc = loc.split(",");
-    console.log("user location: " + userLoc);
-    
-    Centers.User = {"lat": parseInt(userLoc[0]), "lng": parseInt(userLoc[1]) } ;
-    console.log(Centers.User);
-} else if (ipInfo) {
-    let loc = ipInfo.loc;
-    let userLoc = loc.split(",");
-    console.log("browser location: "+ userLoc);
-    
-    Centers.User = {"lat": parseInt(userLoc[0]), "lng": parseInt(userLoc[1]) } ;
-    // console.log(Centers.User);
-}
+
 
 // ============================= SUBSCRIPTIONS ==================================
-Template.map.onRendered(function() {
-    console.log("map rendered...");
-});
+
+
+
 
 Template.map.onCreated( function() {  
 	console.log("map drawn");
+
+$.getJSON("http://ipinfo.io", function(data){
+    console.log("-=setting initial ipInfo=-");
+    // console.log(data);
+    Session.set('ipInfo', data);
+
+    //           ---------------- ANALYTICS EVENT ---------------
+    // analytics.track( 'ipInfo data', {
+    //   title: 'Pulled Geo Info',
+    //   data: Session.get('ipInfo)')
+    // });
+
+    if (Meteor.user()) {
+        Meteor.users.update({ 
+            _id : Meteor.user()._id
+            }, { 
+            $set: { 
+                profile : data 
+            } });
+    }
+});
+// ============================= RETURNED OBJECT ==================================
+            /*
+            city: "Silver Spring"
+            country: "US"
+            hostname: "c-69-138-161-94.hsd1.md.comcast.net"
+            ip: "69.138.161.94"
+            loc: "39.0261,-77.0084"
+            org: "AS7922 Comcast Cable Communications, Inc."
+            postal: "20901"
+            region: "Maryland"
+            */
+
+
     
     // Meteor.subscribe('listings');
   GoogleMaps.load({
@@ -141,12 +156,44 @@ Template.map.onCreated( function() {
 
 });
 
+Template.map.onRendered(function() {
+    console.log("map rendered...");
+
+// / ============================= SET MAP CENTER ==================================
+
+
+
+
+
+});
+
+
 // ============================= HELPERS ==================================
 
 
 Template.map.helpers({
   mapOptions: function() {
     if (GoogleMaps.loaded()) {
+    
+        let Centers = {
+          Na : {"lat":39.90973623453719, "lng":-105.29296875},
+        };
+
+
+
+        if (Meteor.user()) {
+            let loc = Meteor.user().profile.loc;
+            let userLoc = loc.split(",");
+            console.log("user location: " + userLoc);
+            Centers.User = {"lat": parseInt(userLoc[0]), "lng": parseInt(userLoc[1]) } ;
+        } else {
+            let ipInfo = Session.get('ipInfo')['loc'];
+            let loc = ipInfo.loc;
+            let userLoc = ipInfo.split(",");
+            console.log("browser location: "+ userLoc);
+            
+            Centers.User = {"lat": parseInt(userLoc[0]), "lng": parseInt(userLoc[1]) } ;
+        }
 
         return {
             center: new google.maps.LatLng(Centers.User),

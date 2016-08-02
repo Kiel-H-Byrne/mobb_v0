@@ -9,8 +9,8 @@
   },
 	"galaxy.meteor.com": { 
 		 "env": { 
-		   "ROOT_URL": "[ http://mobb.meteorapp.com ]", 
-		   "MONGO_URL": "[ mongodb://mobbAdmin:vivitron@ds139715.mlab.com:39715/tkhb_mongodb ]" 
+		   "ROOT_URL": "http://mobb.meteorapp.com", 
+		   "MONGO_URL": "mongodb://mobbAdmin:vivitron@ds139715.mlab.com:39715/tkhb_mongodb" 
 		} 
 	}
 }

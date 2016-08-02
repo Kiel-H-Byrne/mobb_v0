@@ -10,7 +10,7 @@ let ipInfo = Session.get('ipInfo');
 if (Meteor.user()) {
     let loc = Meteor.user().profile.loc;
     let userLoc = loc.split(",");
-    console.log("user location: "+ userLoc);
+    console.log("user location: " + userLoc);
     
     Centers.User = {"lat": parseInt(userLoc[0]), "lng": parseInt(userLoc[1]) } ;
     console.log(Centers.User);
@@ -20,7 +20,7 @@ if (Meteor.user()) {
     console.log("browser location: "+ userLoc);
     
     Centers.User = {"lat": parseInt(userLoc[0]), "lng": parseInt(userLoc[1]) } ;
-    console.log(Centers.User);
+    // console.log(Centers.User);
 }
 
 // ============================= SUBSCRIPTIONS ==================================

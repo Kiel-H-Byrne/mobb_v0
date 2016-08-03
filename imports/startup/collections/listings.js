@@ -115,13 +115,15 @@ Listings.attachSchema(new SimpleSchema({
   },
   country: {
     type: String,
-    max: 3
+    max: 3,
+    optional: true
   },
   url: {
     type: String,
     unique: true,
     label: 'URL',
-    regEx: SimpleSchema.RegEx.Url
+    regEx: SimpleSchema.RegEx.Url,
+    optional: true
     // custom: function () {
     //   if (Meteor.isClient && this.isSet) {
     //     Meteor.call("postWithSameLink", this.value, function (error, result) {

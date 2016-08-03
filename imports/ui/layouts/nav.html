@@ -3,29 +3,13 @@
     <nav class='green darken-4'>
         <div class="nav-wrapper">
             <a class="brand-logo" href="/"> MoBB </a>
-            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">move_vert</i></a>
 
-
-            <ul id="nav-mobile" class="right">
-                <form>
-                    <div class="input-field col s2">
-                        <input  class="col s2" id="search_loc" type="text" size="5" length="5" name="search" />
-                        <label for="search_loc">Input Text</label>
-                    </div>
-                </form>
-                <li>  
-                  <!-- Modal Trigger -->
-                  <a id="addModal_button" class="modal-trigger waves-effect waves-light btn" href="#addModal"> Add Your Business </a>
-                </li>
-                <li>
-                  <!-- a id="loginModal_button" class="modal-trigger waves-effect waves-light btn" href="#loginModal"> Login </a-->
-                  {{> atNavButton}}
-
-                </li>
-                <li><a href="/about/">About</a></li>
+            <ul id="nav-mobile" class="right hide-on-med-and-down ">
+                {{> navMenu}}
             </ul>
             <ul class="side-nav" id="mobile-demo">
-                <li></li>
+                {{> navMenu}}
             </ul>
 
         </div>

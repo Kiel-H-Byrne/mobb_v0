@@ -2,7 +2,6 @@ import { Template } from 'meteor/templating';
 
 import './addForm.html'
 
-
 Template.addForm.events({
 	'click button' : function(evt,tpl) {
 		event.preventDefault();
@@ -11,14 +10,14 @@ Template.addForm.events({
 		
 		Meteor.call('insertBiz', {
 			name: l.name,
-			// address1: l.address1,
-			// address2: l.address2,
-			// address3: l.address3,
-			// city: l.city,
-			// state: l.state,
-			// country: l.country
+			address1: l.address1,
+			address2: l.address2,
+			address3: l.address3,
+			city: l.city,
+			state: l.state,
+			country: l.country
 		});
 		
-		console.log("form submitted");
+		console.log("-= Form: Submitted =-");
 	}
 })

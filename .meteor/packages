@@ -17,7 +17,6 @@ standard-minifier-js    # JS minifier run for production mode
 es5-shim                # ECMAScript 5 compatibility for older browsers.
 ecmascript              # Enable ECMAScript2015+ syntax in app code
 
-insecure                # Allow all DB writes from clients (for prototyping)
 dburles:google-maps
 accounts-ui
 fourseven:scss
@@ -33,3 +32,4 @@ session
 nicolaslopezj:roles
 useraccounts:iron-routing
 okgrow:analytics
+useraccounts:core

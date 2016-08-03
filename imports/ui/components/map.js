@@ -195,7 +195,8 @@ Template.map.helpers({
         return {
             center: new google.maps.LatLng(Centers.User),
             zoom: 13,
-            //mapTypeId:google.maps.MapTypeId.HYBRID,
+            // mapTypeId:google.maps.MapTypeId.HYBRID,
+            mapTypeId:google.maps.MapTypeId.TERRAIN,
             disableDefaultUI: false,
             scrollwheel: true,
             // Map styles; snippets from 'Snazzy Maps'.
@@ -206,10 +207,10 @@ Template.map.helpers({
                     "elementType": "geometry",
                     "stylers": [
                         {
-                            "color": "#000000"
+                            "color": "#FFFFFF"
                         },
                         {
-                            "lightness": 17
+                            "lightness": 70
                         }
                     ]
                 },
@@ -306,10 +307,10 @@ Template.map.helpers({
                             "visibility": "on"
                         },
                         {
-                            "color": "#000000"
+                            "color": "#AA0000"
                         },
                         {
-                            "lightness": 25
+                            "lightness": -25
                         }
                     ]
                 },
@@ -320,7 +321,7 @@ Template.map.helpers({
                             "saturation": 36
                         },
                         {
-                            "color": "#000000"
+                            "color": "#ff0000"
                         },
                         {
                             "lightness": 50

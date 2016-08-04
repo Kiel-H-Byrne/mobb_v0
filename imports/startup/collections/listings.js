@@ -18,7 +18,7 @@ Listings = new orion.collection('listings', {
         data: "owner", 
         title: "Owner" 
       },{ 
-        data: "loc", 
+        data: "location", 
         title: "Location" 
       },{ 
         data: "address1", 
@@ -64,8 +64,11 @@ Listings = new orion.collection('listings', {
 //=================== COLLECTION SECURITY =========================
 
 Listings.allow({
-  // update: function(userId, post) { return ownsDocument(userId, post); },
-  // remove: function(userId, post) { return ownsDocument(userId, post); },
+
+  // only allow insertion if you are logged in
+  insert: function(userId, doc) { return !! userId;},
+  update: function(userId, doc) { return ownsDocument(userId, doc); },
+  remove: function(userId, doc) { return ownsDocument(userId, doc); },
 });
 
 //=================== SCHEMAS =========================
@@ -82,6 +85,14 @@ Listings.attachSchema(new SimpleSchema({
     type: String,
     optional: false,
     unique: true,
+  },
+  owner: {
+    type: String,
+    optional: true,
+  },
+  location: {
+    type: String,
+    optional: true,
   },
   address1: {
     type: String,
@@ -134,6 +145,11 @@ Listings.attachSchema(new SimpleSchema({
     //   }
     // }
   },
+  image: {
+    type: String,
+    regEx: SimpleSchema.RegEx.Url,
+    optional: true
+  },
   phone: {
     type: String,
     max: 15
@@ -150,17 +166,18 @@ Listings.attachSchema(new SimpleSchema({
       }
     }
   },
-  createdBy:{
-    type: String,
-    regEx: SimpleSchema.RegEx.Id,
-    optional: true,
-    index: 1,
-    autoValue: function(){
-      if ( this.userId && this.isInsert ) {
-        return this.userId;
-      }
-    }
-  }
+  createdBy: orion.attribute('createdBy'),
+  // createdBy:{
+  //   type: String,
+  //   optional: true,
+  //   index: 1,
+  //   regEx: SimpleSchema.RegEx.Id,
+  //   autoValue: function(){
+  //     if ( this.userId && this.isInsert ) {
+  //       return this.userId;
+  //     }
+  //   }
+  // }
 }));
 
 

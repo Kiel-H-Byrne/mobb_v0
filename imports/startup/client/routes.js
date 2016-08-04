@@ -31,3 +31,15 @@ AccountsTemplates.configureRoute('signUp', {
     template: 'register',
     redirect: '/',
 });
+
+AccountsTemplates.configureRoute('verifyEmail', {
+  name: 'verifyEmail',
+  path: '/verify-email',
+  redirect: '/'
+});
+
+AccountsTemplates.configureRoute('resetPwd', {
+  name: 'resetPassword',
+  path: '/reset-password',
+  redirect: '/'
+});

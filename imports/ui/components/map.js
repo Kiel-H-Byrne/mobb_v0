@@ -157,8 +157,6 @@ $.getJSON("http://ipinfo.io", function(data){
 Template.map.onRendered(function() {
     console.log("map rendered...");
 
-
-
 });
 
 
@@ -176,7 +174,7 @@ Template.map.helpers({
 
 
 
-        if (Meteor.user()) {
+        if (Meteor.userId()) {
             let loc = Meteor.user().profile.loc;
             let userLoc = loc.split(",");
             console.log("user location: " + userLoc);
@@ -195,8 +193,7 @@ Template.map.helpers({
         return {
             center: new google.maps.LatLng(Centers.User),
             zoom: 13,
-            // mapTypeId:google.maps.MapTypeId.HYBRID,
-            mapTypeId:google.maps.MapTypeId.TERRAIN,
+            // mapTypeId:google.maps.MapTypeId.TERRAIN,
             disableDefaultUI: false,
             scrollwheel: true,
             // Map styles; snippets from 'Snazzy Maps'.
@@ -231,10 +228,10 @@ Template.map.helpers({
                     "elementType": "geometry",
                     "stylers": [
                         {
-                            "color": "#000"
+                            "color": "#000000"
                         },
                         {
-                            "lightness": 10
+                            "lightness": 80
                         }
                     ]
                 },{
@@ -307,10 +304,13 @@ Template.map.helpers({
                             "visibility": "on"
                         },
                         {
-                            "color": "#AA0000"
+                            "color": "#FF0000"
                         },
                         {
-                            "lightness": -25
+                            "weight": 1
+                        },
+                        {
+                            "lightness": 25
                         }
                     ]
                 },
@@ -318,13 +318,13 @@ Template.map.helpers({
                     "elementType": "labels.text.fill",
                     "stylers": [
                         {
-                            "saturation": 36
+                            "saturation": 100
                         },
                         {
-                            "color": "#ff0000"
+                            "color": "#440000"
                         },
                         {
-                            "lightness": 50
+                            "lightness": 0
                         }
                     ]
                 },

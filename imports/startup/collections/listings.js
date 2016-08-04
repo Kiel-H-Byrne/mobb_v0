@@ -93,6 +93,23 @@ Listings.attachSchema(new SimpleSchema({
   location: {
     type: String,
     optional: true,
+    defaultValue: function() {
+      if (this.isInsert) {
+        return "string"
+      }
+    //   //get latLong from address using geocode api: 
+    //   // $.getJSON("https://maps.googleapis.com/maps/api/geocode/json?address="+ADDRESS, function(data){
+    //   //   return data
+    //   // }
+    //     // let params = {};
+    //     // params.address1 = data.address1;
+    //     // params.city = data.city;
+    //     // params.zip = data.zip;
+    //     // let urlParams = jQuery.param(params);  
+    //     // let res = ReactiveMethod.call('geoCode', urlParams);
+    //     let res = "string";
+    //     return res;
+    }
   },
   address1: {
     type: String,

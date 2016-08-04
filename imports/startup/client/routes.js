@@ -43,3 +43,4 @@ AccountsTemplates.configureRoute('resetPwd', {
   path: '/reset-password',
   redirect: '/'
 });
+

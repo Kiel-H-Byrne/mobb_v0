@@ -1,3 +1,4 @@
+
 //=================== NEW COLLECTION =========================
 
 Listings = new orion.collection('listings', {
@@ -66,9 +67,9 @@ Listings = new orion.collection('listings', {
 Listings.allow({
 
   // only allow insertion if you are logged in
-  insert: function(userId, doc) { return !! userId;},
-  update: function(userId, doc) { return ownsDocument(userId, doc); },
-  remove: function(userId, doc) { return ownsDocument(userId, doc); },
+  // insert: function(userId, doc) { return !! userId;},
+  // update: function(userId, doc) { return ownsDocument(userId, doc); },
+  // remove: function(userId, doc) { return ownsDocument(userId, doc); },
 });
 
 //=================== SCHEMAS =========================
@@ -91,24 +92,21 @@ Listings.attachSchema(new SimpleSchema({
     optional: true,
   },
   location: {
-    type: String,
+    type: Object,
     optional: true,
-    defaultValue: function() {
+    autoValue: function() {
       if (this.isInsert) {
-        return "string"
+        let params = {};
+        params.address1 = this.field("address1").value;
+        params.city = this.field("city").value;
+        params.zip = this.field("zip").value;
+        // return geoCode(params);
+        // $.getJSON("https://maps.googleapis.com/maps/api/geocode/json?address="+params.address1 + "" + params.city + "" + params.zip, function(data) {
+        //   let location = data.results[0].geometry.location;
+        //   return location;
+        // });
+        
       }
-    //   //get latLong from address using geocode api: 
-    //   // $.getJSON("https://maps.googleapis.com/maps/api/geocode/json?address="+ADDRESS, function(data){
-    //   //   return data
-    //   // }
-    //     // let params = {};
-    //     // params.address1 = data.address1;
-    //     // params.city = data.city;
-    //     // params.zip = data.zip;
-    //     // let urlParams = jQuery.param(params);  
-    //     // let res = ReactiveMethod.call('geoCode', urlParams);
-    //     let res = "string";
-    //     return res;
     }
   },
   address1: {
@@ -183,7 +181,7 @@ Listings.attachSchema(new SimpleSchema({
       }
     }
   },
-  createdBy: orion.attribute('createdBy'),
+  // createdBy: orion.attribute('createdBy'),
   // createdBy:{
   //   type: String,
   //   optional: true,

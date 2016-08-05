@@ -92,36 +92,37 @@ Listings.attachSchema(new SimpleSchema({
     optional: true,
   },
   location: {
-    type: Object,
+    type: String,
     optional: true,
     autoValue: function() {
       if (this.isInsert) {
         let params = {};
+        // console.log(this.docId);
+        console.log(this.docId);
         params.address1 = this.field("address1").value;
         params.city = this.field("city").value;
         params.zip = this.field("zip").value;
-        // return geoCode(params);
-        // $.getJSON("https://maps.googleapis.com/maps/api/geocode/json?address="+params.address1 + "" + params.city + "" + params.zip, function(data) {
-        //   let location = data.results[0].geometry.location;
-        //   return location;
-        // });
-        
+        let response = Meteor.call('geoCode', params);
+        // console.log(response);
+        let arr =  _.values(response);
+        console.log(arr);
+        return arr.toLocaleString();
       }
     }
   },
   address1: {
     type: String,
-    max: 20,
+    max: 50,
     optional: false
   },
   address2: {
     type: String,
-    max: 20,
+    max: 50,
     optional: true
   },
   address3: {
     type: String,
-    max: 20,
+    max: 50,
     optional: true,
   },    
   city: {
@@ -167,7 +168,8 @@ Listings.attachSchema(new SimpleSchema({
   },
   phone: {
     type: String,
-    max: 15
+    max: 15,
+    optional: true
   },
   createdAt: {
     type: Date,
@@ -175,7 +177,7 @@ Listings.attachSchema(new SimpleSchema({
       if (this.isInsert) {
         return new Date();
       } else if (this.isUpsert) {
-        return {$setOnInsert: new Date()};
+        return {$setOnInsert: new Date(now - 7 * 3600 * 1000)};
       } else {
         this.unset();
       }

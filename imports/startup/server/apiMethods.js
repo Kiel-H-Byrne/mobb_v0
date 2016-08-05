@@ -59,12 +59,14 @@ var apiCall = function (apiUrl, callback) {
 Meteor.methods({
   geoCode: function(address) {
     this.unblock();
-    console.log("***calling geoCode API method with "+address);
-    // var key = Meteor.settings.public.govSettings.zipCodeAPI.key;
-    var apiUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + address;
+    let urlParams = _.values(address);
+
+    console.log("***calling geoCode API method with "+urlParams);
+    var apiUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + urlParams;
     console.log("--URL--"+apiUrl);
     var response = Meteor.wrapAsync(apiCall)(apiUrl);
-    return response.results[0];
+    let loc = response.results[0].geometry.location;
+    return loc;
   }
 });
 

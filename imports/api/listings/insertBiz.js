@@ -1,6 +1,9 @@
 Meteor.methods({
 	insertBiz: function(data) {
-	    check(this.userId, String);
+	    // check(this.userId, String);
+	    if (! Match.test(this.userId, String)) {
+	    	console.log("INSERT FAILED: NO USER");
+	    }
 
 		if(!this.userId)
 			throw new Meteor.Error('Unauthorized for Insert');
@@ -8,7 +11,6 @@ Meteor.methods({
 		if (! _.findWhere(Listings.find().fetch(), { name: data.name }) ) {
 			Listings.insert({
 				name: data.name,
-				loc: data.loc,
 				address1: data.address1,
 				address2: data.address2,
 				address3: data.address3,
@@ -21,8 +23,7 @@ Meteor.methods({
 				phone: data.phone,
 				owner: data.owner,
 				createdBy: this.userId,
-				createdByeatedAt: Date.now()
 			});
-		}
+		} else {console.log("INSERT FAILED: '"+ data.name + "' already exists.");}
 	}
 });

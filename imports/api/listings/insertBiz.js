@@ -1,9 +1,14 @@
+import { Meteor } from 'meteor/meteor';
+
+
+// meteor methods must be created on server, both method and call run on client. 
+
 Meteor.methods({
 	insertBiz: function(data) {
-	    // check(this.userId, String);
-	    if (! Match.test(this.userId, String)) {
-	    	console.log("INSERT FAILED: NO USER");
-	    }
+    // check(this.userId, String);
+    if (! Match.test(this.userId, String)) {
+    	console.log("INSERT FAILED: NO USER");
+    }
 
 		if(!this.userId)
 			throw new Meteor.Error('Unauthorized for Insert');

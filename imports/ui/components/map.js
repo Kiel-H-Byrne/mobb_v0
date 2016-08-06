@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import {Template} from 'meteor/templating';
 import './map.html'
 
@@ -10,7 +11,7 @@ Template.map.onCreated( function() {
 	console.log("map drawn");
 
 $.getJSON("http://ipinfo.io", function(data){
-    console.log("-=setting initial ipInfo=-");
+    console.log("-=IP INFO: SET=-");
     // console.log(data);
     Session.set('ipInfo', data);
 

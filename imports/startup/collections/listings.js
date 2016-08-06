@@ -67,9 +67,9 @@ Listings = new orion.collection('listings', {
 Listings.allow({
 
   // only allow insertion if you are logged in
-  // insert: function(userId, doc) { return !! userId;},
-  // update: function(userId, doc) { return ownsDocument(userId, doc); },
-  // remove: function(userId, doc) { return ownsDocument(userId, doc); },
+  insert: function(userId, doc) { return !! userId;},
+  update: function(userId, doc) { return ownsDocument(userId, doc); },
+  remove: function(userId, doc) { return ownsDocument(userId, doc); },
 });
 
 //=================== SCHEMAS =========================
@@ -104,9 +104,12 @@ Listings.attachSchema(new SimpleSchema({
         params.zip = this.field("zip").value;
         let response = Meteor.call('geoCode', params);
         // console.log(response);
-        let arr =  _.values(response);
-        console.log(arr);
-        return arr.toLocaleString();
+        if (response) {
+          console.log("-= LOCATION: FOUND! =-")
+          let arr =  _.values(response);
+          console.log(arr);
+          return arr.toLocaleString();
+        } else {console.log("-= LOCATION: DNE =-")}
       }
     }
   },

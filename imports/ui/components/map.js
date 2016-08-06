@@ -1,14 +1,20 @@
 import { Meteor } from 'meteor/meteor';
 import {Template} from 'meteor/templating';
-import './map.html'
 
-
-
+import Listings from '/imports/startup/collections/listings';
+import './map.html';
 
 // ============================= SUBSCRIPTIONS ==================================
 
 Template.map.onCreated( function() {  
 	console.log("map drawn");
+
+    Meteor.subscribe('listings_all', function() {
+        console.log('-= MAP SUBSCRIBING: All Listings =-');
+        console.log(Listings.find().count() + " Listings: ", Listings.find().fetch());
+        // this.stop();
+    })
+
 
 $.getJSON("http://ipinfo.io", function(data){
     console.log("-=IP INFO: SET=-");
@@ -55,47 +61,49 @@ $.getJSON("http://ipinfo.io", function(data){
 
     GoogleMaps.ready('map', function(map) {
 
-//SUBSCRIPTION DOES NOT WORK IN HERE!
-
-    // console.log("map.js-subscribed to all ["+ Listings.find().count() + "] offices");
+    console.log("-= MAP SUBSCRIBED:  ["+ Listings.find().count() + "] Listings");
 
     // Add a marker to the map once it's ready
    
-    // var officeArray = Officez.find().fetch();
-    // console.log("-->" + officeArray.length + " offices.");
-    // //--!-----How Many Offices?
+    //should be calling just geos from collection
+    let listingArray = Listings.find().fetch();
+
+    console.log("-->" + listingArray.length + " listings.");
+    // //--!-----How Many listings?
    
     // //Build array of only lat/longs (for each marker)
-    // var markers = [];
+    let markers = [];
     // var statii = [];
-    // var len = officeArray.length;
-	   //  for (var i = 0; i < len; i++) {
-	   //      var officeLoc = officeArray[i].loc;
-	   //      var officeStat = officeArray[i].stats;
-	   //      statii.push(officeStat);
-	   //      markers.push(officeLoc);
-	   //  }
-    // console.log("-->" + markers.length + " markers.");
+	    for (let i = 0; i < listingArray.length; i++) {
+            //listingLoc needs to be google latlng object literal; 
+            //listingLoc = {lat: "33" , lng: "-80"}
+            let nums = listingArray[i].location.split(",");
+            let lat = parseFloat(nums[0]);
+            let lng = parseFloat(nums[1]);
+	        let listingLoc = _.object( ['lat', 'lng'], [lat, lng]);
+	        markers.push(listingLoc);
+	    }
+    console.log("-->" + markers.length + " markers.");
     // //--   list arrays
     // //   console.log( JSON.stringify(statii[0]) );
 
     // //--   Place Markers on map
-    // var image = {
-    //   url: 'img/PW-arrow-xs.png',
-    //   size: new google.maps.Size(9,9),
-    //   origin: new google.maps.Point(0,0),
-    //   anchor: new google.maps.Point(9,0)
-    // };
+    var image = {
+      url: 'img/red_marker_1_sm.png',
+      // size: new google.maps.Size(50,50), 
+      // origin: new google.maps.Point(0,0),
+      // anchor: new google.maps.Point(0,50)
+    };
     
-    // for (i = 0; i < len; i++) {
-    //     var office = officeArray[i];
-    //     var marker = new google.maps.Marker({
-    //       position: office.loc,
-    //       map: map.instance,
-    //       icon: image,
-    //       title: office.label,
-    //     });
-    //     var cirColor = getColor(office);
+    for (i = 0; i < markers.length; i++) {
+        // console.log(markers[i]);
+        var listing = listingArray[i];
+        var marker = new google.maps.Marker({
+          position: markers[i],
+          map: map.instance,
+          icon: image,
+        });
+    //     var cirColor = getColor(listing);
        
     //     var circle = new google.maps.Circle({
     //         strokeColor: cirColor,
@@ -104,7 +112,7 @@ $.getJSON("http://ipinfo.io", function(data){
     //         fillColor: cirColor,
     //         fillOpacity: 0.35,
     //         map: map.instance,
-    //         center: office.loc,
+    //         center: listing.loc,
     //         radius: 100000,
     //     });
     //     var infoContent= Blaze.toHTMLWithData(Template.infowindow);
@@ -118,7 +126,7 @@ $.getJSON("http://ipinfo.io", function(data){
     //     google.maps.event.addListener(marker, "click", function () {
     //       marker.info.setContent(this.info.content);
     //       marker.info.open(map.instance, this);
-    //       Session.set('currentOffice', this.title);
+    //       Session.set('currentlisting', this.title);
           
     //     });
     //     // Click to Zoom into region
@@ -143,7 +151,7 @@ $.getJSON("http://ipinfo.io", function(data){
     //       map.instance.setZoom(2);
     //       map.instance.setCenter(Centers.Eu);
     //     });
-    // }
+    }
     
     // //Echo lat/lng on click
     // google.maps.event.addDomListener(map.instance, 'click', function(e) {
@@ -175,7 +183,7 @@ Template.map.helpers({
 
 
 
-        if (Meteor.userId()) {
+        if (Meteor.user()) {
             let loc = Meteor.user().profile.loc;
             let userLoc = loc.split(",");
             console.log("user location: " + userLoc);

@@ -59,14 +59,21 @@ var apiCall = function (apiUrl, callback) {
 Meteor.methods({
   geoCode: function(address) {
     this.unblock();
-    let urlParams = _.values(address);
+    let urlParams;
+    if (typeof address === "object") {
+      urlParams = _.values(address);
+    } else {
+      urlParams = address;
+    }
 
     console.log("***calling geoCode API method with "+urlParams);
     var apiUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + urlParams;
     console.log("--URL--"+apiUrl);
     var response = Meteor.wrapAsync(apiCall)(apiUrl);
     let loc = response.results[0].geometry.location;
-    return loc;
+    let arr =  _.values(loc);
+    console.log(arr);
+    return arr.toLocaleString();
   }
 });
 

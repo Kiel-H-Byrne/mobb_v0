@@ -1,19 +1,20 @@
 <template name="navMenu">
   <li>
-      <div class="input-field">
-          <input  class="" id="search_loc" type="text" size="15" length="15" name="search" />
-          <label for="search_loc">Elsewhere...</label>
-      </div>
+      <form>
+        <div class="input-field">
+            <input placeholder="Elsewhere..." class="red-text text-lighten-3" id="search_loc" type="text" size="15" length="15" />
+            <label for="search_loc"><i class="material-icons red-text text-lighten-3">search</i></label>
+        </div>
+      </form>
   </li>
   <li>  
     <!-- Modal Trigger -->
-    <a id="addModal_button" class="modal-trigger waves-effect waves-light btn" href="#addModal"> Add Your Business </a>
+    <a id="addModal_button" class="modal-trigger waves-effect waves-light red darken-4 btn" href="#addModal"> Add Your Business </a>
   </li>
   <li>
     <!-- a id="loginModal_button" class="modal-trigger waves-effect waves-light btn" href="#loginModal"> Login </a-->
     {{> atNavButton}}
 
   </li>
-<li><a href="/about/">About</a></li>
 <li><a href="/admin/">Admin</a></li>
 </template>

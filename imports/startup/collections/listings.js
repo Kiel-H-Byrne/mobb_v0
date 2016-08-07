@@ -106,9 +106,7 @@ Listings.attachSchema(new SimpleSchema({
         // console.log(response);
         if (response) {
           console.log("-= LOCATION: FOUND! =-")
-          let arr =  _.values(response);
-          console.log(arr);
-          return arr.toLocaleString();
+          return response;
         } else {console.log("-= LOCATION: DNE =-")}
       }
     }

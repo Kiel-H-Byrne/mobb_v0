@@ -1,19 +1,20 @@
 {
   "name": "blackList",
   "private": true,
-  "description" : "the MoBB: Map of Black Businesses",
-  "main" : "main.js",
-  "scripts" : {
-    "start" : "meteor run --settings settings.json",
-    "deploy" : "meteor deploy mobb.meteorapp.com --settings settings.json",
-    "prod" : "meteor run --production --settings settings.json"
+  "description": "the MoBB: Map of Black Businesses",
+  "main": "main.js",
+  "scripts": {
+    "start": "meteor run --settings settings.json",
+    "deploy": "meteor deploy mobb.meteorapp.com --settings settings.json",
+    "prod": "meteor run --production --settings settings.json"
   },
-  "repository" : {
-  	"type" : "git",
-  	"url" : "khb@bitbucket.com/khb/blacklist.git"
+  "repository": {
+    "type": "git",
+    "url": "khb@bitbucket.com/khb/blacklist.git"
   },
-  "author" : "Kiel Hamilton Byrne",
+  "author": "Kiel Hamilton Byrne",
   "dependencies": {
-    "meteor-node-stubs": "~0.2.0"
+    "meteor-node-stubs": "~0.2.0",
+    "yelp": "^1.0.1"
   }
 }

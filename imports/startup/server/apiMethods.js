@@ -1,3 +1,5 @@
+import { Meteor } from 'meteor/meteor';
+
 //milktam:server-cache package - https://github.com/miktam/server-cache
 //instantiates ApiCache obect which creates ' rest_+name+ ' upon creation, with time to live.
 //ex. var cache = new ApiCache('name',ttl);
@@ -18,7 +20,7 @@ var apiCall = function (apiUrl, callback) {
   try {
 
     var dataFromCache = cache.get(apiUrl);
-    console.log("key: "+apiUrl);
+    // console.log("key: "+apiUrl);
     var response = {};
 
     if(dataFromCache) {
@@ -72,7 +74,6 @@ Meteor.methods({
     var response = Meteor.wrapAsync(apiCall)(apiUrl);
     let loc = response.results[0].geometry.location;
     let arr =  _.values(loc);
-    console.log(arr);
     return arr.toLocaleString();
   }
 });

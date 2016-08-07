@@ -7,10 +7,12 @@
         </div>
       </form>
   </li>
-  <li>  
-    <!-- Modal Trigger -->
-    <a id="addModal_button" class="modal-trigger waves-effect waves-light red darken-4 btn" href="#addModal"> Add Your Business </a>
-  </li>
+  {{#if currentUser}}
+    <li>  
+      <!-- Modal Trigger -->
+        <a id="addModal_button" class="modal-trigger waves-effect waves-light red darken-4 btn" href="#addModal"> Add Your Business </a>
+    </li>
+  {{/if}}
   <li>
     <!-- a id="loginModal_button" class="modal-trigger waves-effect waves-light btn" href="#loginModal"> Login </a-->
     {{> atNavButton}}

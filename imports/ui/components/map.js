@@ -21,7 +21,7 @@ $.getJSON("http://ipinfo.io", function(data){
     // console.log(data);
     Session.set('ipInfo', data);
 
-//              ---------------- ANALYTICS EVENT ---------------
+    //              ---------------- ANALYTICS EVENT ---------------
     analytics.track( "Browser IP Data", {
       title: "Pulled Geo Info",
       data: data
@@ -61,105 +61,100 @@ $.getJSON("http://ipinfo.io", function(data){
 
     GoogleMaps.ready('map', function(map) {
 
-    console.log("-= MAP SUBSCRIBED:  ["+ Listings.find().count() + "] Listings");
+        console.log("-= MAP SUBSCRIBED:  ["+ Listings.find().count() + "] Listings");
 
-    // Add a marker to the map once it's ready
-   
-    //should be calling just geos from collection
-    let listingArray = Listings.find().fetch();
-
-    // console.log("-->" + listingArray.length + " listings.");
-    // //--!-----How Many listings?
-   
-    // //Build array of only lat/longs (for each marker)
-    let markers = [];
-    // var statii = [];
-	    for (let i = 0; i < listingArray.length; i++) {
-            //listingLoc needs to be google latlng object literal; 
-            //listingLoc = {lat: "33" , lng: "-80"}
-            let nums = listingArray[i].location.split(",");
-            let lat = parseFloat(nums[0]);
-            let lng = parseFloat(nums[1]);
-	        let listingLoc = _.object( ['lat', 'lng'], [lat, lng]);
-	        markers.push(listingLoc);
-	    }
-    // console.log("-->" + markers.length + " markers.");
-    // //--   list arrays
-    // //   console.log( JSON.stringify(statii[0]) );
-
-    // //--   Place Markers on map
-    var image = {
-      url: 'img/red_marker_1_md.png',
-      // size: new google.maps.Size(50,50), 
-      // origin: new google.maps.Point(0,0),
-      // anchor: new google.maps.Point(0,50)
-    };
-    
-    for (i = 0; i < markers.length; i++) {
-        // console.log(markers[i]);
-        var listing = listingArray[i];
-        var marker = new google.maps.Marker({
-          position: markers[i],
-          map: map.instance,
-          icon: image,
-        });
-    //     var cirColor = getColor(listing);
+        // Add a marker to the map once it's ready
        
-    //     var circle = new google.maps.Circle({
-    //         strokeColor: cirColor,
-    //         strokeOpacity: 0.8,
-    //         strokeWeight: 1,
-    //         fillColor: cirColor,
-    //         fillOpacity: 0.35,
-    //         map: map.instance,
-    //         center: listing.loc,
-    //         radius: 100000,
-    //     });
-    //     var infoContent= Blaze.toHTMLWithData(Template.infowindow);
-    //     //console.log(infoContent);        
-    //     marker.info = new google.maps.InfoWindow({
-    //       content: infoContent,
-    //       maxWidth: 400
-    //     });
+        //should be calling just geos from collection
+        let listingArray = Listings.find().fetch();
 
-    //     // Click for Status Alert
-    //     google.maps.event.addListener(marker, "click", function () {
-    //       marker.info.setContent(this.info.content);
-    //       marker.info.open(map.instance, this);
-    //       Session.set('currentlisting', this.title);
-          
-    //     });
-    //     // Click to Zoom into region
-    //     google.maps.event.addListener(marker,'click',function() {
-    //       var currentZoom = map.instance.getZoom();
-    //       if(currentZoom <= 4){
-    //         map.instance.setZoom(17);
-    //         map.instance.setCenter(this.getPosition());
-    //       }
-    //       else{
-    //         map.instance.setZoom(2);
-    //         map.instance.setCenter(this.getPosition());
-    //       }
-    //     });
-    //     //Hover for Info-Windows
-    //     google.maps.event.addListener(marker, 'mouseover', function() {     
-    //       marker.info.setContent(this.title);
-    //       marker.info.open(map.instance, this);
-    //     });
-    //     //Click to Zoom Out to default center
-    //     google.maps.event.addDomListener(zoomOut, 'click', function() {
-    //       map.instance.setZoom(2);
-    //       map.instance.setCenter(Centers.Eu);
-    //     });
-    }
+        // console.log("-->" + listingArray.length + " listings.");
+        // //--!-----How Many listings?
+   
+        // //Build array of only lat/longs (for each marker)
+        let markers = [];
+        // var statii = [];
+    	    for (let i = 0; i < listingArray.length; i++) {
+                //listingLoc needs to be google latlng object literal; 
+                //listingLoc = {lat: "33" , lng: "-80"}
+                let nums = listingArray[i].location.split(",");
+                let lat = parseFloat(nums[0]);
+                let lng = parseFloat(nums[1]);
+    	        let listingLoc = _.object( ['lat', 'lng'], [lat, lng]);
+    	        markers.push(listingLoc);
+    	    }
+        // console.log("-->" + markers.length + " markers.");
+
+        // //--   Place Markers on map
+        var image = {
+          url: 'img/red_marker_1_md.png',
+          // size: new google.maps.Size(50,50), 
+          // origin: new google.maps.Point(0,0),
+          // anchor: new google.maps.Point(0,50)
+        };
     
-    // //Echo lat/lng on click
-    // google.maps.event.addDomListener(map.instance, 'click', function(e) {
-    //   var point = [e.latLng.lat(), e.latLng.lng()];
-    //   console.log(point);
-    // });
+        for (i = 0; i < markers.length; i++) {
+            // console.log(markers[i]);
+            var listing = listingArray[i];
+            var marker = new google.maps.Marker({
+              position: markers[i],
+              map: map.instance,
+              icon: image,
+            });
+            //     var cirColor = getColor(listing);
+           
+            //     var circle = new google.maps.Circle({
+            //         strokeColor: cirColor,
+            //         strokeOpacity: 0.8,
+            //         strokeWeight: 1,
+            //         fillColor: cirColor,
+            //         fillOpacity: 0.35,
+            //         map: map.instance,
+            //         center: listing.loc,
+            //         radius: 100000,
+            //     });
+            // var infoContent= Blaze.toHTMLWithData(Template.infowindow);
+            // //console.log(infoContent);        
+            // marker.info = new google.maps.InfoWindow({
+            //   content: infoContent,
+            //   maxWidth: 400
+            // });
 
-  });
+            //     // Click for Status Alert
+            //     google.maps.event.addListener(marker, "click", function () {
+            //       marker.info.setContent(this.info.content);
+            //       marker.info.open(map.instance, this);
+            //       Session.set('currentlisting', this.title);
+                  
+            //     });
+            //     // Click to Zoom into region
+            //     google.maps.event.addListener(marker,'click',function() {
+            //       var currentZoom = map.instance.getZoom();
+            //       if(currentZoom <= 4){
+            //         map.instance.setZoom(17);
+            //         map.instance.setCenter(this.getPosition());
+            //       }
+            //       else{
+            //         map.instance.setZoom(2);
+            //         map.instance.setCenter(this.getPosition());
+            //       }
+            //     });
+            //     //Hover for Info-Windows
+            //     google.maps.event.addListener(marker, 'mouseover', function() {     
+            //       marker.info.setContent(this.title);
+            //       marker.info.open(map.instance, this);
+            //     });
+            //     //Click to Zoom Out to default center
+        }
+    
+        // //Echo lat/lng on click
+        // google.maps.event.addDomListener(map.instance, 'click', function(e) {
+        //   var point = [e.latLng.lat(), e.latLng.lng()];
+        //   console.log(point);
+        // });
+
+
+      });
 
 });
 
@@ -180,17 +175,17 @@ Template.map.helpers({
         let Centers = {
           Na : {"lat":39.90973623453719, "lng":-105.29296875},
         };
-
+        
         if (Meteor.user()) {
             let loc = Meteor.user().profile.loc;
             let userLoc = loc.split(",");
-            console.log("user location: " + userLoc);
+            console.log("User location: " + userLoc);
             Centers.User = {"lat": parseInt(userLoc[0]), "lng": parseInt(userLoc[1]) } ;
         } else {
             let ipInfo = Session.get('ipInfo');
             let loc = ipInfo.loc;
             let userLoc = loc.split(",");
-            console.log("browser location: "+ userLoc);
+            console.log("Browser location: "+ userLoc);
             
             Centers.User = {"lat": parseInt(userLoc[0]), "lng": parseInt(userLoc[1]) } ;
         }

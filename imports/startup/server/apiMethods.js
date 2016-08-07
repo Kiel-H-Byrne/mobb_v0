@@ -68,7 +68,7 @@ Meteor.methods({
       urlParams = address;
     }
 
-    console.log("***calling geoCode API method with "+urlParams);
+    console.log("***calling GEOCODE API method with "+urlParams);
     var apiUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + urlParams;
     console.log("--URL--"+apiUrl);
     var response = Meteor.wrapAsync(apiCall)(apiUrl);

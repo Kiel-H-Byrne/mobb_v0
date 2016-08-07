@@ -6,6 +6,7 @@ import './map.html';
 
 // ============================= SUBSCRIPTIONS ==================================
 
+
 Template.map.onCreated( function() {  
 	console.log("-= MAP: Drawn =-");
 
@@ -153,7 +154,11 @@ Template.map.onCreated( function() {
         //   var point = [e.latLng.lat(), e.latLng.lng()];
         //   console.log(point);
         // });
-
+        google.maps.event.addDomListener(window, 'resize', function() {
+            var center = map.getCenter()
+            google.maps.event.trigger(map, "resize")
+            map.setCenter(center)
+        })
 
       });
 

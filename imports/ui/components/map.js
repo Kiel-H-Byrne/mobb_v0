@@ -16,28 +16,29 @@ Template.map.onCreated( function() {
     })
 
 
-$.getJSON("http://ipinfo.io", function(data){
-    console.log("-=IP INFO: SET=-");
-    // console.log(data);
-    Session.set('ipInfo', data);
+    $.getJSON("http://ipinfo.io", function(data){
+        console.log("-=IP INFO: SET=-");
+        // console.log(data);
+        Session.set('ipInfo', data);
 
-    //              ---------------- ANALYTICS EVENT ---------------
-    analytics.track( "Browser IP Data", {
-      title: "Pulled Geo Info",
-      data: data
+        //              ---------------- ANALYTICS EVENT ---------------
+        analytics.track( "Browser IP Data", {
+          title: "Pulled Geo Info",
+          data: data
+        });
+        console.log("-= GA : Browser IP Data =-");
+
+        if (Meteor.user()) {
+            Meteor.users.update({ 
+                _id : Meteor.user()._id
+                }, { 
+                $set: { 
+                    profile : data 
+                } 
+            });
+        }
     });
-    console.log("-= GA : Browser IP Data =-");
-
-    if (Meteor.user()) {
-        Meteor.users.update({ 
-            _id : Meteor.user()._id
-            }, { 
-            $set: { 
-                profile : data 
-            } });
-    }
-});
-// ============================= RETURNED OBJECT ==================================
+    // ============================= RETURNED OBJECT ==================================
             /*
             city: "Silver Spring"
             country: "US"

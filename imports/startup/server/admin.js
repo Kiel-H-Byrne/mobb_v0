@@ -12,7 +12,8 @@ if (Meteor.users.find().count() === 0) {
 	let kielId = Accounts.createUser({
 	    
 	    profile: {
-	      loc: '39.0046,-77.0369'
+	      loc: '39.0046,-77.0369',
+	      username: "kbyrne"
 	    },
 	    name: 'Kiel',
 	    username: "khb",

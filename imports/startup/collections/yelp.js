@@ -1,6 +1,6 @@
 // Request API access: http://www.yelp.com/developers/getting_started/api_access 
-var Yelp = require('yelp');
-var yelp = new Yelp({
+const Yelp = require('yelp');
+let yelp = new Yelp({
 
   consumer_key: Meteor.settings.public.keys.yelp.key,
   consumer_secret: Meteor.settings.public.keys.yelp.secret,
@@ -25,3 +25,4 @@ var yelp = new Yelp({
 // });
 
 // CONSUMER_KEY="" CONSUMER_SECRET="" TOKEN="" TOKEN_SECRET="" npm test
+ 

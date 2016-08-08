@@ -4,9 +4,6 @@ import {Meteor} from  'meteor/meteor';
 //Import Layouts & Templates
 import '../../ui/layouts/layout.js';
 
-import '../../ui/components/loginForm.html';
-import '../../ui/components/map.js';
-
 
 Router.route('/', function(){
     this.layout('AppLayout');

@@ -1,6 +1,5 @@
 <template name="AppLayout"> 
 	{{> nav}}
-
   {{> yield "content"}}
-
+	{{> yield region='footer'}}
 </template>

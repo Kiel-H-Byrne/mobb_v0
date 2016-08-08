@@ -34,3 +34,7 @@ useraccounts:iron-routing
 okgrow:analytics
 useraccounts:core
 simple:reactive-method
+aldeed:autoform
+accounts-facebook
+accounts-google
+nicolaslopezj:tabular-materialize

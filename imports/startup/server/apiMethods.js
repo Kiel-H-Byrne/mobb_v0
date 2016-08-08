@@ -59,6 +59,16 @@ var apiCall = function (apiUrl, callback) {
 
 
 Meteor.methods({
+  loginWith: function(u,p) {
+    Meteor.loginWithPassword(u, p);
+  },
+  registerMe: function(o) {
+    Accounts.createUser({
+        username: o.username,
+        email: o.email,
+        password: o.password
+      });
+  },
   geoCode: function(address) {
     this.unblock();
     let urlParams;
@@ -75,6 +85,50 @@ Meteor.methods({
     let loc = response.results[0].geometry.location;
     let arr =  _.values(loc);
     return arr.toLocaleString();
+  },
+  yelpQuery: function(search, isCategory, longitude, latitude) {
+    console.log('Yelp search for userId: ' + this.userId + '(search, isCategory, lng, lat) with vals (', search, isCategory, longitude, latitude, ')');
+
+    // Query OAUTH credentials (these are set manually)
+    var auth = Accounts.loginServiceConfiguration.findOne({service: 'yelp'});
+
+    // Add auth signature manually
+    auth['serviceProvider'] = { signatureMethod: "HMAC-SHA1" };
+
+    var accessor = {
+      consumerSecret: auth.consumerSecret,
+      tokenSecret: auth.accessTokenSecret
+    },
+    parameters = {};
+
+    // Search term or categories query
+    if(isCategory)
+      parameters.category_filter = search;
+    else
+      parameters.term = search;
+
+    // Set lat, lon location, if available (SF is default location)
+    if(longitude && latitude)
+      parameters.ll = latitude + ',' + longitude;
+    else
+      parameters.location = 'San+Francisco';
+
+    // Results limited to 5
+    parameters.limit = 5;
+
+    // Configure OAUTH parameters for REST call
+    parameters.oauth_consumer_key = auth.consumerKey;
+    parameters.oauth_consumer_secret = auth.consumerSecret;
+    parameters.oauth_token = auth.accessToken;
+    parameters.oauth_signature_method = auth.serviceProvider.signatureMethod;
+
+    // Create OAUTH1 headers to make request to Yelp API
+    var oauthBinding = new OAuth1Binding(auth.consumerKey, auth.consumerSecret, 'http://api.yelp.com/v2/search');
+    oauthBinding.accessTokenSecret = auth.accessTokenSecret;
+    var headers = oauthBinding._buildHeader();
+
+    // Return data results only
+    return oauthBinding._call('GET', 'http://api.yelp.com/v2/search', headers, parameters).data;
   }
 });
 

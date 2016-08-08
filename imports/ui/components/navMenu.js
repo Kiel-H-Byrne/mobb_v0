@@ -27,4 +27,4 @@ Template.navMenu.onRendered( function() {
 	$(document).ready(function(){
 		$(".button-collapse").sideNav();
 	});
-});.
+});

@@ -95,10 +95,10 @@ Template.map.onCreated( function() {
           // anchor: new google.maps.Point(0,50)
         };
     
-        for (i = 0; i < markers.length; i++) {
+        for (let i = 0; i < markers.length; i++) {
             // console.log(markers[i]);
-            var listing = listingArray[i];
-            var marker = new google.maps.Marker({
+            let listing = listingArray[i];
+            let marker = new google.maps.Marker({
               position: markers[i],
               map: map.instance,
               icon: image,
@@ -115,12 +115,12 @@ Template.map.onCreated( function() {
             //         center: listing.loc,
             //         radius: 100000,
             //     });
-            // var infoContent= Blaze.toHTMLWithData(Template.infowindow);
-            // //console.log(infoContent);        
-            // marker.info = new google.maps.InfoWindow({
-            //   content: infoContent,
-            //   maxWidth: 400
-            // });
+            let infoContent= Blaze.toHTMLWithData(Template.infowindow);
+            //console.log(infoContent);        
+            marker.info = new google.maps.InfoWindow({
+              content: infoContent,
+              maxWidth: 400
+            });
 
             //     // Click for Status Alert
             //     google.maps.event.addListener(marker, "click", function () {
@@ -130,22 +130,23 @@ Template.map.onCreated( function() {
                   
             //     });
             //     // Click to Zoom into region
-            //     google.maps.event.addListener(marker,'click',function() {
-            //       var currentZoom = map.instance.getZoom();
-            //       if(currentZoom <= 4){
-            //         map.instance.setZoom(17);
-            //         map.instance.setCenter(this.getPosition());
-            //       }
-            //       else{
-            //         map.instance.setZoom(2);
-            //         map.instance.setCenter(this.getPosition());
-            //       }
-            //     });
-            //     //Hover for Info-Windows
-            //     google.maps.event.addListener(marker, 'mouseover', function() {     
-            //       marker.info.setContent(this.title);
-            //       marker.info.open(map.instance, this);
-            //     });
+            google.maps.event.addListener(marker,'click',function() {
+              let currentZoom = map.instance.getZoom();
+              if(currentZoom <= 4){
+                map.instance.setZoom(15);
+                map.instance.setCenter(this.getPosition());
+              }
+              else{
+                map.instance.setZoom(2);
+                map.instance.setCenter(this.getPosition());
+              }
+            });
+            
+            // Hover for Info-Windows
+            google.maps.event.addListener(marker, 'mouseover', function() {     
+              marker.info.setContent(this.name);
+              marker.info.open(map.instance, this);
+            });
             //     //Click to Zoom Out to default center
         }
     
@@ -154,10 +155,11 @@ Template.map.onCreated( function() {
         //   var point = [e.latLng.lat(), e.latLng.lng()];
         //   console.log(point);
         // });
+
         google.maps.event.addDomListener(window, 'resize', function() {
-            var center = map.getCenter()
-            google.maps.event.trigger(map, "resize")
-            map.setCenter(center)
+            var center = GoogleMaps.maps.map.instance.getCenter();
+            google.maps.event.trigger(map, "resize");
+            GoogleMaps.maps.map.instance.setCenter(center);
         })
 
       });
@@ -200,7 +202,7 @@ Template.map.helpers({
 
         return {
             center: new google.maps.LatLng(Centers.User),
-            zoom: 14,
+            zoom: 15,
             mapTypeId:google.maps.MapTypeId.TERRAIN,
             disableDefaultUI: false,
             scrollwheel: true,

@@ -1,4 +1,6 @@
 import { Meteor } from 'meteor/meteor';
+import { Accounts } from 'meteor/accounts-base';
+
 
 //milktam:server-cache package - https://github.com/miktam/server-cache
 //instantiates ApiCache obect which creates ' rest_+name+ ' upon creation, with time to live.
@@ -9,19 +11,19 @@ import { Meteor } from 'meteor/meteor';
 // var cache = new ApiCache('rest', 120);
 import './orionCache.js';
 
-var cache = new OrionCache('rest', 120);
+const cache = new OrionCache('rest', 120);
 // console.log(cache);
 
 // ============================= SET IP INFO ==================================
 
-var apiCall = function (apiUrl, callback) {
+let apiCall = function (apiUrl, callback) {
   // try…catch allows you to handle errors 
-  var errorCode, errorMessage;
+  let errorCode, errorMessage;
   try {
 
-    var dataFromCache = cache.get(apiUrl);
+    let dataFromCache = cache.get(apiUrl);
     // console.log("key: "+apiUrl);
-    var response = {};
+    let response = {};
 
     if(dataFromCache) {
       console.log("Data from Cache...");
@@ -63,11 +65,13 @@ Meteor.methods({
     Meteor.loginWithPassword(u, p);
   },
   registerMe: function(o) {
-    Accounts.createUser({
+    let newUserId = Accounts.createUser({
         username: o.username,
         email: o.email,
         password: o.password
       });
+    console.log("Signing Up: " + newUserId);
+    Accounts.setPassword(newUserId, o.password)
   },
   geoCode: function(address) {
     this.unblock();
@@ -81,7 +85,7 @@ Meteor.methods({
     console.log("***calling GEOCODE API method with "+urlParams);
     var apiUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + urlParams;
     console.log("--URL--"+apiUrl);
-    var response = Meteor.wrapAsync(apiCall)(apiUrl);
+    let response = Meteor.wrapAsync(apiCall)(apiUrl);
     let loc = response.results[0].geometry.location;
     let arr =  _.values(loc);
     return arr.toLocaleString();
@@ -90,12 +94,12 @@ Meteor.methods({
     console.log('Yelp search for userId: ' + this.userId + '(search, isCategory, lng, lat) with vals (', search, isCategory, longitude, latitude, ')');
 
     // Query OAUTH credentials (these are set manually)
-    var auth = Accounts.loginServiceConfiguration.findOne({service: 'yelp'});
+    const auth = Accounts.loginServiceConfiguration.findOne({service: 'yelp'});
 
     // Add auth signature manually
     auth['serviceProvider'] = { signatureMethod: "HMAC-SHA1" };
 
-    var accessor = {
+    let accessor = {
       consumerSecret: auth.consumerSecret,
       tokenSecret: auth.accessTokenSecret
     },
@@ -123,9 +127,9 @@ Meteor.methods({
     parameters.oauth_signature_method = auth.serviceProvider.signatureMethod;
 
     // Create OAUTH1 headers to make request to Yelp API
-    var oauthBinding = new OAuth1Binding(auth.consumerKey, auth.consumerSecret, 'http://api.yelp.com/v2/search');
+    let oauthBinding = new OAuth1Binding(auth.consumerKey, auth.consumerSecret, 'http://api.yelp.com/v2/search');
     oauthBinding.accessTokenSecret = auth.accessTokenSecret;
-    var headers = oauthBinding._buildHeader();
+    let headers = oauthBinding._buildHeader();
 
     // Return data results only
     return oauthBinding._call('GET', 'http://api.yelp.com/v2/search', headers, parameters).data;

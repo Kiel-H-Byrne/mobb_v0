@@ -18,7 +18,6 @@ es5-shim                # ECMAScript 5 compatibility for older browsers.
 ecmascript              # Enable ECMAScript2015+ syntax in app code
 
 dburles:google-maps
-accounts-ui
 fourseven:scss
 accounts-password
 accounts-base
@@ -37,3 +36,4 @@ aldeed:autoform
 accounts-facebook
 accounts-google
 nicolaslopezj:tabular-materialize
+useraccounts:materialize

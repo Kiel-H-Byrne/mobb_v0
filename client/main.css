@@ -9,6 +9,9 @@
 */
 
 .btn { 
-  background-color: #B71C1C !important; 
-  color: #ffffff; 
+  background-color: #B71C1C ; 
+  background-color: #FBB03B; 
+  background-color: rgba(251,176,59,1) !important;
+  color: #ffffff;
+  color: #444444; 
 }

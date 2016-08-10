@@ -1,4 +1,17 @@
+html, body{
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+}
+
+.map_canvas {
+    position: relative;
+}
+
 #googleMap {
-	min-height: 600px;
-	height: 1000px;
+    position: absolute;
+    top: 58px;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }

@@ -70,8 +70,16 @@ Meteor.methods({
         email: o.email,
         password: o.password
       });
-    console.log("Signing Up: " + newUserId);
+    // console.log("Signing Up: " + newUserId);
     Accounts.setPassword(newUserId, o.password)
+    // Set ROLE
+    // userReg = Roles.Role('user');
+    // const userOwns = Roles.Role('owner');
+    
+    // SEND Enrollment Email
+    Accounts.sendEnrollmentEmail(newUserId)
+
+
   },
   geoCode: function(address) {
     this.unblock();

@@ -2,7 +2,7 @@
 Meteor.startup(function () {
   smtp = {
     username: 'thehilmar@gmail.com',
-    password: 'p4$$w0rd',
+    password: 'Vivitr0n',
     server:   'smtp.gmail.com',  // eg: mail.gandi.net
     port: 465
   }

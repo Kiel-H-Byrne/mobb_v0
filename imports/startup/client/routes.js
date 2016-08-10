@@ -10,9 +10,14 @@ Router.route('/', function(){
     this.render('map', {to: 'content'});
 });
 
-Router.route('/add/', function(){
+Router.route('/add', function(){
     this.layout('AppLayout');
     this.render('addForm', {to: 'content'});
+});
+
+Router.route('/test', function(){
+    this.layout('AppLayout');
+    this.render('test', {to: 'content'});
 });
 
 // ==================== "atNavButton" routes Button ====================
@@ -22,6 +27,7 @@ AccountsTemplates.configureRoute('signIn', {
     path: '/login',
     template: 'login',
 });
+
 AccountsTemplates.configureRoute('signUp', {
     name: 'register',
     path: '/register',
@@ -41,3 +47,13 @@ AccountsTemplates.configureRoute('resetPwd', {
   redirect: '/'
 });
 
+AccountsTemplates.configureRoute('enrollAccount', {
+  name: 'enrollAccount',
+  path: '/enroll',
+  redirect: '/admin'
+});
+
+AccountsTemplates.configureRoute('ensureSignedIn', {
+    template: 'myLogin',
+    layoutTemplate: 'myLayout',
+});

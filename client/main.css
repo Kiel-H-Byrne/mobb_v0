@@ -9,11 +9,11 @@
 */
 
 .btn { 
-  background-color: #B71C1C ; 
-  background-color: #FBB03B; 
-  background-color: rgba(251,176,59,1) !important;
+  background-color: #B71C1C ; /* deepRed */
+  background-color: #FBB03B; /* orange */
+  background-color: rgba(251,176,59,1) !important; /* orange */
   color: #ffffff;
-  color: #444444; 
+  color: #000; 
 }
 
 .brand-logo {

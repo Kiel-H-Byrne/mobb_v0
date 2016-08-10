@@ -1,4 +1,4 @@
-// import { Roles } from  'meteor/orionjs:core';
+import { Roles } from  'meteor/orionjs:core';
 
 //check for settings file
 console.log("-= Settings: Checking... =-");
@@ -22,12 +22,14 @@ if (Meteor.users.find().count() === 0) {
 	  });
 
 	kiel = Meteor.users.findOne(kielId);
-};
-
-if ( Meteor.users.findOne({username: 'khb'}) ) {
-	let kiel = Meteor.users.findOne({username: 'khb'});
 	Roles.addUserToRoles( kiel._id ,  ["admin"] );
 	console.log("-= Admin: 'khb' is Admin =-")
-} else {
-	console.log("-= Admin: No Admin =-");
-}
+};
+
+// if ( Meteor.users.findOne({username: 'khb'}) ) {
+// 	let kiel = Meteor.users.findOne({username: 'khb'});
+	// Roles.addUserToRoles( kiel._id ,  ["admin"] );
+	// console.log("-= Admin: 'khb' is Admin =-")
+// } else {
+// 	console.log("-= Admin: No Admin =-");
+// }

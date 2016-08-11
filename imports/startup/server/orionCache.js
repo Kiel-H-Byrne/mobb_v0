@@ -33,8 +33,8 @@ OrionCache.prototype.set = function (key, value) {
       createdAt: new Date()                                                      
     }                                                                            
   );                                                                             
-}                                                                                
-                                                                                 
+};
+
 /**                                                                              
  * Get value from the cache                                                      
  * @param key to search for                                                      
@@ -47,6 +47,6 @@ OrionCache.prototype.get = function (key) {
     return value.value;                                                          
   }                                                                              
   return value;
-}      
+};
 
 export default OrionCache;

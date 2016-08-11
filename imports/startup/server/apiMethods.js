@@ -71,7 +71,7 @@ Meteor.methods({
         password: o.password
       });
     // console.log("Signing Up: " + newUserId);
-    Accounts.setPassword(newUserId, o.password)
+    Accounts.setPassword(newUserId, o.password);
     // Set ROLE
     // userReg = Roles.Role('user');
     // const userOwns = Roles.Role('owner');
@@ -105,7 +105,7 @@ Meteor.methods({
     const auth = Accounts.loginServiceConfiguration.findOne({service: 'yelp'});
 
     // Add auth signature manually
-    auth['serviceProvider'] = { signatureMethod: "HMAC-SHA1" };
+    auth.serviceProvider = { signatureMethod: "HMAC-SHA1" };
 
     let accessor = {
       consumerSecret: auth.consumerSecret,

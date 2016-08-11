@@ -1,6 +1,6 @@
 import {Template} from 'meteor/templating';
 
-import './register.html'
+import './register.html';
 
 Template.register.events({
 	'submit form': function(event){

@@ -8,7 +8,8 @@
       "yelp" : {"key" : "pEKQxvZ1KhQDKUrYfujByw",
     						"secret" : "tiXXe6h7KtoF4jUTjRQR0drZZSg",
     						"token" : "Vrd6DSJgb-iixUvTXtOSIvMnIy3W1jMy",
-    						"t_secret" : "0j2ILMtCWukqq45X05D_Mnq2tKM"}
+    						"t_secret" : "0j2ILMtCWukqq45X05D_Mnq2tKM"},
+      "GMail" : {"password" : "Vivitr0n"}
 	  }
   },
 	"galaxy.meteor.com": { 

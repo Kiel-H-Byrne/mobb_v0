@@ -105,9 +105,9 @@ Listings.attachSchema(new SimpleSchema({
         let response = Meteor.call('geoCode', params);
         // console.log(response);
         if (response) {
-          console.log("-= LOCATION: FOUND! =-")
+          console.log("-= LOCATION: FOUND! =-");
           return response;
-        } else {console.log("-= LOCATION: DNE =-")}
+        } else {console.log("-= LOCATION: DNE =-");}
       }
     }
   },

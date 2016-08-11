@@ -1,6 +1,6 @@
 import { Template } from 'meteor/templating';
 
-import './addForm.html'
+import './addForm.html';
 
 Template.addForm.events({
 	'click button' : function(evt,tpl) {
@@ -20,4 +20,4 @@ Template.addForm.events({
 		
 		console.log("-= Form: Submitted =-");
 	}
-})
+});

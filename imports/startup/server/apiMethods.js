@@ -77,8 +77,8 @@ Meteor.methods({
     // const userOwns = Roles.Role('owner');
     
     // SEND Enrollment Email
-    Accounts.sendEnrollmentEmail(newUserId)
-
+    // Accounts.sendEnrollmentEmail(newUserId)
+    Meteor.loginWithPassword(o.username, o.password);
 
   },
   geoCode: function(address) {

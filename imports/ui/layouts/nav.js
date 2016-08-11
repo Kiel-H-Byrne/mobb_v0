@@ -2,7 +2,6 @@ import {Template} from 'meteor/templating';
 
 import './nav.html'
 
-import '../pages/login.js';
 import '../pages/register.js';
 import '../components/navMenu.js';
 import '../components/addForm.js';

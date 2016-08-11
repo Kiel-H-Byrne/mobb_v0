@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import {Template} from 'meteor/templating';
 
 import './navMenu.html';
+import './map.js';
 
 Template.navMenu.events({
 	//when form is submitted, set new center. 
@@ -13,10 +14,15 @@ Template.navMenu.events({
 	
 	  Meteor.call('geoCode', entered, function(err,res) {
 			let userLoc = res.split(",");
-			GoogleMaps.maps.map.instance.setZoom(15);
-			GoogleMaps.maps.map.instance.setCenter({"lat": parseInt(userLoc[0]), "lng": parseInt(userLoc[1]) });
+			GoogleMaps.maps.map.instance.setCenter({"lat": Number(userLoc[0]), "lng": Number(userLoc[1]) });
+			// google.maps.event.trigger(GoogleMaps.maps.map, 'resize');
+			GoogleMaps.maps.map.instance.setZoom(13);
+			// console.log(res); 
+			// Session.set('newLoc', res);
 	  });
+
 		
+
 	  analytics.track("Searched for New Location.", {
 	    zip: entered
 	  });

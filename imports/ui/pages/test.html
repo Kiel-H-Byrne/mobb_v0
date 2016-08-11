@@ -1,5 +1,12 @@
 <template name="test">
-	{{> quickForm collection="Listings" doc=this id="insertListingsForm" type="normal"}}
+	
+	{{!-- {{> quickForm collection="Listings" doc=this id="insertListingsForm" type="normal"}} --}}
 	<!-- {{> quickForm collection="Accounts" doc=this id="insertUserForm" type="insert"}} -->
-	<!-- {{> atForm}} -->
+	
+	 {{> atForm state="resendVerificationEmail"}} 
+	
+ 	 {{> atForm state="signUp"}} 
+	
+ 	 {{> atForm state="enrollAccount"}}
+	
 </template>

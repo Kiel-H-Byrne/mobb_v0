@@ -81,9 +81,10 @@ Template.map.onCreated( function() {
                 //listingLoc needs to be google latlng object literal; 
                 //listingLoc = {lat: "33" , lng: "-80"}
                 let nums = listingArray[i].location.split(",");
-                let lat = parseFloat(nums[0]);
-                let lng = parseFloat(nums[1]);
+                let lat = Number(nums[0]);
+                let lng = Number(nums[1]);
     	        let listingLoc = _.object( ['lat', 'lng'], [lat, lng]);
+                // console.log(listingLoc);
     	        markers.push(listingLoc);
     	    }
         // console.log("-->" + markers.length + " markers.");
@@ -156,11 +157,11 @@ Template.map.onCreated( function() {
         // });
 
 // ========================= DOM Events relating to Map =========================
-        google.maps.event.addDomListener(window, 'resize', function() {
-            var center = GoogleMaps.maps.map.instance.getCenter();
-            google.maps.event.trigger(map, "resize");
-            GoogleMaps.maps.map.instance.setCenter(center);
-        })
+        // google.maps.event.addDomListener(window, 'resize', function() {
+        //     var center = GoogleMaps.maps.map.instance.getCenter();
+        //     google.maps.event.trigger(map, "resize");
+        //     GoogleMaps.maps.map.instance.setCenter(center);
+        // })
 
       });
 
@@ -188,24 +189,34 @@ Template.map.helpers({
             let loc = Meteor.user().profile.loc;
             let userLoc = loc.split(",");
             console.log("User location: " + userLoc);
-            Centers.User = {"lat": parseInt(userLoc[0]), "lng": parseInt(userLoc[1]) } ;
+            Centers.User = {"lat": Number(userLoc[0]), "lng": Number(userLoc[1]) } ;
         } else {
             let ipInfo = Session.get('ipInfo');
             let loc = ipInfo.loc;
             let userLoc = loc.split(",");
             console.log("Browser location: "+ userLoc);
             
-            Centers.User = {"lat": parseInt(userLoc[0]), "lng": parseInt(userLoc[1]) } ;
+            Centers.User = {"lat": Number(userLoc[0]), "lng": Number(userLoc[1]) } ;
+            // Centers.User = [Number(userLoc[0]), Number(userLoc[1]) ];
+            console.log(Centers.User);
         }
 
 // / ============================= RENDER MAP W/ OPTIONS ==================================    
 
         return {
             center: new google.maps.LatLng(Centers.User),
-            zoom: 15,
+            // center: new google.maps.LatLng(Centers.User[0], Centers.User[1]),
+            zoom: 14,
             mapTypeId:google.maps.MapTypeId.TERRAIN,
-            disableDefaultUI: false,
-            scrollwheel: true,
+            backgroundColor: "#555555",
+            disableDefaultUI: true,
+            // fullscreenControl: true,
+            minZoom: 5,
+            streetViewControl: true,
+            streetViewControlOptions: {
+                position: google.maps.ControlPosition.RIGHT_CENTER
+            },
+
             // Map styles; snippets from 'Snazzy Maps'.
            
             styles: 

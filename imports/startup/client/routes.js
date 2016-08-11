@@ -36,7 +36,8 @@ AccountsTemplates.configureRoute('signUp', {
 
 AccountsTemplates.configureRoute('verifyEmail', {
   name: 'verifyEmail',
-  path: '/verify-email',
+  path: '/verify-email/:token',
+  action: 'verifyEmail',
   redirect: '/'
 });
 

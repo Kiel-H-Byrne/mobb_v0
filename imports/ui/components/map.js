@@ -188,18 +188,18 @@ Template.map.helpers({
         
         if (Meteor.user()) {
             let loc = Meteor.user().profile.loc;
-            let userLoc = loc.split(",");
-            console.log("User location: " + userLoc);
-            Centers.User = {"lat": Number(userLoc[0]), "lng": Number(userLoc[1]) } ;
+            if (loc) {let userLoc = loc.split(",");
+                Centers.User = {"lat": Number(userLoc[0]), "lng": Number(userLoc[1]) };
+                console.log("User location: " + userLoc);
+            }
         } else {
             let ipInfo = Session.get('ipInfo');
             let loc = ipInfo.loc;
-            let userLoc = loc.split(",");
-            console.log("Browser location: "+ userLoc);
-            
-            Centers.User = {"lat": Number(userLoc[0]), "lng": Number(userLoc[1]) } ;
-            // Centers.User = [Number(userLoc[0]), Number(userLoc[1]) ];
-            console.log(Centers.User);
+            if (loc) {
+                let userLoc = loc.split(",");
+                Centers.User = {"lat": Number(userLoc[0]), "lng": Number(userLoc[1]) } ;
+                console.log("Browser location: "+ userLoc);
+            }
         }
 
 // / ============================= RENDER MAP W/ OPTIONS ==================================    

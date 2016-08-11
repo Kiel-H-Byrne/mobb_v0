@@ -33,3 +33,17 @@ if (Meteor.users.find().count() === 0) {
 // } else {
 // 	console.log("-= Admin: No Admin =-");
 // }
+
+(function () {
+    "use strict";
+    Accounts.urls.resetPassword = function (token) {
+        return Meteor.absoluteUrl('reset-password/' + token);
+    };
+    Accounts.urls.verifyEmail = function (token) {
+        return Meteor.absoluteUrl('verify-email/' + token);
+    };
+    Accounts.urls.enrollAccount = function (token) {
+        return Meteor.absoluteUrl('enroll-account/' + token);
+    };
+
+})();

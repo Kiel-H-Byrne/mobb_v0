@@ -9,7 +9,11 @@
     						"secret" : "tiXXe6h7KtoF4jUTjRQR0drZZSg",
     						"token" : "Vrd6DSJgb-iixUvTXtOSIvMnIy3W1jMy",
     						"t_secret" : "0j2ILMtCWukqq45X05D_Mnq2tKM"},
-      "GMail" : {"password" : "Vivitr0n"}
+      "GMail" : {"password" : "Vivitr0n"},
+      "mailgun" : {"pubKey" : "pubkey-67863056eeb5b73ef0e430fb745ee491",
+                    "key" : "key-7dd23326d5aa872424d23f8a8038dc72",
+                    "password" : "6a6434f27808f9da3218257bcdd2548a"
+                    }
 	  }
   },
 	"galaxy.meteor.com": { 

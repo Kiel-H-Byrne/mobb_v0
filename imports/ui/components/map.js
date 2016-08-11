@@ -105,6 +105,23 @@ Template.map.onCreated( function() {
               map: map.instance,
               icon: image,
             });
+            
+            // Click for Status Alert
+            // Click to Zoom into region
+            google.maps.event.addListener(marker,'click',function() {
+            //   marker.info.setContent(this.info.content);
+            //   marker.info.open(map.instance, this);    
+              let currentZoom = map.instance.getZoom();
+              if(currentZoom < 14){
+                map.instance.setZoom(17);
+                map.instance.setCenter(this.getPosition());
+              }
+              else{
+                map.instance.setZoom(14);
+                map.instance.setCenter(this.getPosition());
+              }
+            });
+
             //     var cirColor = getColor(listing);
            
             //     var circle = new google.maps.Circle({
@@ -139,21 +156,7 @@ Template.map.onCreated( function() {
         //   console.log(point);
         // });
 
-        //     // Click for Status Alert
-        //     // Click to Zoom into region
-        google.maps.event.addListener(marker,'click',function() {
-        //   marker.info.setContent(this.info.content);
-        //   marker.info.open(map.instance, this);    
-          let currentZoom = map.instance.getZoom();
-          if(currentZoom < 14){
-            map.instance.setZoom(17);
-            map.instance.setCenter(this.getPosition());
-          }
-          else{
-            map.instance.setZoom(14);
-            map.instance.setCenter(this.getPosition());
-          }
-        });
+
 // ========================= DOM Events relating to Map =========================
         // google.maps.event.addDomListener(window, 'resize', function() {
         //     var center = GoogleMaps.maps.map.instance.getCenter();

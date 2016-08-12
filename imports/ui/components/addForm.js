@@ -7,7 +7,7 @@ Template.addForm.events({
 		event.preventDefault();
 		let l = {};
 		l.name = tpl.find('input#listingName').value;
-		
+		console.log(tpl);
 		Meteor.call('insertBiz', {
 			name: l.name,
 			address1: l.address1,

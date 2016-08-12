@@ -4,7 +4,7 @@ import { Roles } from  'meteor/orionjs:core';
 console.log("-= Settings: Checking... =-");
 if (!Meteor.settings.public.keys.googleMaps) {
     console.log("-= Settings: FAILED. (Use 'NPM run') =-");
-} else {console.log ("-= Settings: Loaded =-")}
+} else {console.log ("-= Settings: Loaded =-");}
 
 let kiel = {};
 
@@ -23,8 +23,8 @@ if (Meteor.users.find().count() === 0) {
 
 	kiel = Meteor.users.findOne(kielId);
 	Roles.addUserToRoles( kiel._id ,  ["admin"] );
-	console.log("-= Admin: 'khb' is Admin =-")
-};
+	console.log("-= Admin: 'khb' is Admin =-");
+}
 
 // if ( Meteor.users.findOne({username: 'khb'}) ) {
 // 	let kiel = Meteor.users.findOne({username: 'khb'});
@@ -34,6 +34,7 @@ if (Meteor.users.find().count() === 0) {
 // 	console.log("-= Admin: No Admin =-");
 // }
 
+// this is for handling # in verifyEmail url
 (function () {
     "use strict";
     Accounts.urls.resetPassword = function (token) {

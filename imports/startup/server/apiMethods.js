@@ -45,8 +45,8 @@ let apiCall = function (apiUrl, callback) {
     if (error.response) {
 
       // console.log(error.response);
-      errorCode = error.response.data.error.code || error.response.data.error_code;
-      errorMessage = error.response.data.error.message || error.response.data.error_msg;
+      errorCode = error.response.statusCode;
+      errorMessage = error.response.data.error_message;
       console.log({errorCode, errorMessage});
     // Otherwise use a generic error message
     } else {

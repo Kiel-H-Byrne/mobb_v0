@@ -1,9 +1,8 @@
 <template name="navMenu">
-
   <li>
       <form>
         <div class="input-field">
-            <input placeholder="Elsewhere..." class="amber-text text-darken-2" id="search_loc" type="text" size="15" length="15" />
+            <input placeholder="Elsewhere..." class="amber-text text-darken-2" id="search_loc" type="text" size="8" length="8" />
             <label for="search_loc"><i class="material-icons yellow-text text-darken-2">search</i></label>
         </div>
       </form>
@@ -12,17 +11,6 @@
     {{> atNavButton}}
   </li>
   {{#if currentUser}}
-    <li>  
-        <!-- Modal Trigger -->
-        <a id="addModal_button" class="modal-trigger waves-effect waves-light btn" href="#addModal"> Add Your Business </a>
-        <!-- Modal -->
-        {{> addForm}} 
-    </li>
-    <li>
-      <a href="/admin/"> ADMIN </a>
-    </li>
-
+    {{> loggedInNav}}
   {{/if}}
-
-
 </template>

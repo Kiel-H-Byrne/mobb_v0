@@ -15,7 +15,7 @@ Template.map.onCreated( function() {
         console.log('-= MAP SUBSCRIBING: All Listings =-');
         console.log(Listings.find().count() + " Listings: ", Listings.find().fetch());
         // this.stop();
-    })
+    });
 
 
     $.getJSON("http://ipinfo.io", function(data){
@@ -170,6 +170,27 @@ Template.map.onCreated( function() {
 
 Template.map.onRendered(function() {
     console.log("map rendered...");
+    $(document).ready(function(){
+        console.log("bing!");
+        $('.modal-trigger').leanModal({
+            dismissible: true,
+            opacity: 0.5,
+            in_duration: 300,
+            out_duration: 200,
+            ready: function() {
+                if($(".lean-overlay").length > 1) {
+                    $(".lean-overlay:not(:first)").each(function() {
+                        $(this).remove();
+                    });
+                }
+            },
+            complete: function() {
+                $(".lean-overlay").each(function() {
+                    $(this).remove();
+                });
+            }
+        });
+    });
 
 });
 

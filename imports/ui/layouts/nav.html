@@ -3,16 +3,17 @@
     <nav class='grey darken-4'>
         <div class="nav-wrapper">
             <a class="brand-logo" href="/"><img class="responsive-img" src="img/logo-lg.png" alt="the blacklist" /></a>
-            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons yellow-text text-darken-3">menu</i></a>
+            <a href="#" data-activates="mobileNav" class="button-collapse"><i class="material-icons yellow-text text-darken-3">menu</i></a>
 
             <ul id="nav-mobile" class="right hide-on-med-and-down ">
                 {{> navMenu}}
             </ul>
-            <ul class="side-nav" id="mobile-demo">
+            <ul class="side-nav" id="mobileNav">
                 {{> navMenu}}
             </ul>
-
         </div>
     </nav>
 </div>
+<!-- Modal stays here or else shows behind gray overlay-->
+{{> addForm}} 
 </template>

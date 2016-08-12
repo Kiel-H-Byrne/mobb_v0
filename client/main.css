@@ -1,4 +1,8 @@
-
+html, body{
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+}
 /*
 @font-face {
 	font-family: 'Material Icons';
@@ -18,4 +22,8 @@
 
 .brand-logo {
 	margin: 0.4rem;
+}
+
+body.modal-open {
+    overflow: visible;
 }

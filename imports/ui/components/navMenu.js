@@ -30,7 +30,32 @@ Template.navMenu.events({
 });
 
 Template.navMenu.onRendered( function() {
-	$(document).ready(function(){
+	// $(document).ready(function(){
 		$(".button-collapse").sideNav();
-	});
+		$('.modal-trigger').leanModal({
+			dismissible: true,
+			complete: function() {
+				$('.lean-overlay').remove();
+			}
+		});
+	// })
 });
+
+// $('.modal-trigger').leanModal({
+//     dismissible: true,
+//     opacity: 0.5,
+//     in_duration: 300,
+//     out_duration: 200,
+//     ready: function() {
+//         if($(".lean-overlay").length > 1) {
+//             $(".lean-overlay:not(:first)").each(function() {
+//                 $(this).remove();
+//             });
+//         }
+//     },
+//     complete: function() {
+//         $(".lean-overlay").each(function() {
+//             $(this).remove();
+//         });
+//     }
+// });

@@ -1,5 +1,8 @@
-// import './ipinfo.js';
+//Import Routes
 import './routes.js';
-import '../collections/yelp.js';
+
+//Import Layouts & Templates
+import '../../ui/layouts/layout.js';
+
 console.log("-= imports/startup/client/index.js loaded");
 

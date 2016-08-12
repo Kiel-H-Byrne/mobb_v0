@@ -1,8 +1,6 @@
-//Routes
-// import router from 'meteor/iron:router';
+
 import {Meteor} from  'meteor/meteor';
-//Import Layouts & Templates
-import '../../ui/layouts/layout.js';
+
 
 
 Router.route('/', function(){

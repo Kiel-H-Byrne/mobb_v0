@@ -98,50 +98,34 @@ Meteor.methods({
     let arr =  _.values(loc);
     return arr.toLocaleString();
   },
-  yelpQuery: function(search, isCategory, longitude, latitude) {
-    console.log('Yelp search for userId: ' + this.userId + '(search, isCategory, lng, lat) with vals (', search, isCategory, longitude, latitude, ')');
+  yelpSearch: function() {
+    // FROM 'NODE YELP' : https://github.com/olalonde/node-yelp
+// Request API access: http://www.yelp.com/developers/getting_started/api_access 
+    const Yelp = require('yelp');
+    let yelp = new Yelp({
+      consumer_key: Meteor.settings.public.keys.yelp.key,
+      consumer_secret: Meteor.settings.public.keys.yelp.secret,
+      token: Meteor.settings.public.keys.yelp.token,
+      token_secret: Meteor.settings.public.keys.yelp.t_secret,
+    });
+     
+    // See http://www.yelp.com/developers/documentation/v2/search_api 
+    yelp.search({ term: 'food', location: 'Silver Spring, Maryland' })
+    .then(function (data) {
+      console.log(data);
+    })
+    .catch(function (err) {
+      console.error(err);
+    });
 
-    // Query OAUTH credentials (these are set manually)
-    const auth = Accounts.loginServiceConfiguration.findOne({service: 'yelp'});
+    // A callback based API is also available:
+    // yelp.business('yelp-san-francisco', function(err, data) {
+    //   if (err) return console.log(error);
+    //   console.log(data);
+    // });
 
-    // Add auth signature manually
-    auth.serviceProvider = { signatureMethod: "HMAC-SHA1" };
-
-    let accessor = {
-      consumerSecret: auth.consumerSecret,
-      tokenSecret: auth.accessTokenSecret
-    },
-    parameters = {};
-
-    // Search term or categories query
-    if(isCategory)
-      parameters.category_filter = search;
-    else
-      parameters.term = search;
-
-    // Set lat, lon location, if available (SF is default location)
-    if(longitude && latitude)
-      parameters.ll = latitude + ',' + longitude;
-    else
-      parameters.location = 'San+Francisco';
-
-    // Results limited to 5
-    parameters.limit = 5;
-
-    // Configure OAUTH parameters for REST call
-    parameters.oauth_consumer_key = auth.consumerKey;
-    parameters.oauth_consumer_secret = auth.consumerSecret;
-    parameters.oauth_token = auth.accessToken;
-    parameters.oauth_signature_method = auth.serviceProvider.signatureMethod;
-
-    // Create OAUTH1 headers to make request to Yelp API
-    let oauthBinding = new OAuth1Binding(auth.consumerKey, auth.consumerSecret, 'http://api.yelp.com/v2/search');
-    oauthBinding.accessTokenSecret = auth.accessTokenSecret;
-    let headers = oauthBinding._buildHeader();
-
-    // Return data results only
-    return oauthBinding._call('GET', 'http://api.yelp.com/v2/search', headers, parameters).data;
   }
+
 });
 
 

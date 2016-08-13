@@ -98,7 +98,7 @@ Listings.attachSchema(new SimpleSchema({
       if (this.isInsert) {
         let params = {};
         // console.log(this.docId);
-        console.log(this.docId);
+        console.log(this);
         params.address1 = this.field("address1").value;
         params.city = this.field("city").value;
         params.zip = this.field("zip").value;

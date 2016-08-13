@@ -14,7 +14,7 @@ Meteor.methods({
 			throw new Meteor.Error('Unauthorized for Insert');
 
 		if (! _.findWhere(Listings.find().fetch(), { name: data.name || data.NAME }) ) {
-			console.log(data.ADDRESS);
+			// console.log(data.ADDRESS);
 			
 			Listings.insert({
 				name: data.name || data.NAME,

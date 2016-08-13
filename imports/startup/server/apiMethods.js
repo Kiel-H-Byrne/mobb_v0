@@ -94,6 +94,7 @@ Meteor.methods({
     var apiUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + urlParams;
     console.log("--URL--"+apiUrl);
     let response = Meteor.wrapAsync(apiCall)(apiUrl);
+    // console.log(response);
     let loc = response.results[0].geometry.location;
     let arr =  _.values(loc);
     return arr.toLocaleString();
@@ -123,36 +124,27 @@ Meteor.methods({
     //   if (err) return console.log(error);
     //   console.log(data);
     // });
+  },
+  bizSearch: function() {
+    // https://api.business.usa.gov/{ReturnType}?keyword={KeyWordSearch}&page={PageNumber}&api_key={YourAPIKey}
+    this.unblock();
+    let urlParams;
+    if (typeof address === "object") {
+      urlParams = _.values(address);
+    } else {
+      urlParams = address;
+    }
 
+    console.log("***calling GEOCODE API method with "+urlParams);
+    var apiUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + urlParams;
+    console.log("--URL--"+apiUrl);
+    let response = Meteor.wrapAsync(apiCall)(apiUrl);
   }
 
 });
 
 
+// http://api-business.usa.gov/XML?keyword=healthcare&size=50&offset=1&api_key=RC6NXt4BfjScFhF5s3LFldxNyrgiQkog0Be9xI8q
 
 
-//https://www.googleapis.com/civicinfo/v2/
-//http://politicalpartytime.org/api/v1/event/?beneficiaries__state=md&start_date__gt=2015-12-25&format=json&apikey="+Meteor.settings.public.govSettings.sunlight.apikey
-//http://politicalpartytime.org/api/v1/event/?beneficiaries__state=md&start_date__gt=2015-01-01&format=json&apikey=345a8f0b36114bde89222326b8b1e1af
-//console.log("http://api.nytimes.com/svc/politics/v3/us/legislative/congress/114/senate/members/current.json?api-key="+ Meteor.settings.public.govSettings.nytimes.key);
-
-//"http://api.nytimes.com/svc/politics/v3/us/legislative/congress/114/nominees/state/md.json?api-key=557b2bfde68793e7d49ca5a2daf77602:14:28561524"
-//"http://api.nytimes.com/svc/politics/v3/us/legislative/congress/states/members/party.json?api-key=557b2bfde68793e7d49ca5a2daf77602:14:28561524"
-
-/* Methods 
-/legislators
-/legislators/locate 
-/districts/locate 
-/committees 
-/bills  
-/bills/search
-/amendments 
-/nominations
-/votes  
-/floor_updates
-/hearings 
-/upcoming_bills
-/congressional_documents/search
-/documents/search
-
-*/
+//   http://api-business.usa.gov/data/JSON?api_key=RC6NXt4BfjScFhF5s3LFldxNyrgiQkog0Be9xI8q&size=50&offset=1&ownership=minority

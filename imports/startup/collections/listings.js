@@ -138,7 +138,7 @@ Listings.attachSchema(new SimpleSchema({
   },
   zip: {
     type: String,
-    regEx: /^[0-9]{5}$/,
+    regEx: SimpleSchema.RegEx.ZipCode,
     optional: false
   },
   country: {
@@ -184,7 +184,7 @@ Listings.attachSchema(new SimpleSchema({
       }
     }
   },
-  // createdBy: orion.attribute('createdBy'),
+  createdBy: orion.attribute('createdBy'),
   // createdBy:{
   //   type: String,
   //   optional: true,

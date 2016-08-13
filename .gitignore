@@ -5,5 +5,7 @@ npm-debug.log*
 
 # Dependency directories
 node_modules
-npm-debug.log
 _ETC
+
+# Keys 
+settings-prod.json

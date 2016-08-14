@@ -13,8 +13,7 @@ Template.map.onCreated( function() {
 
     Meteor.subscribe('listings_all', function() {
         console.log('-= MAP SUBSCRIBING: All Listings =-');
-        console.log(Listings.find().count() + " Listings: ", Listings.find().fetch());
-        // this.stop();
+        // console.log(Listings.find().count() + " Listings: ", Listings.find().fetch());
     });
 
 
@@ -66,64 +65,72 @@ Template.map.onCreated( function() {
 
         console.log("-= MAP SUBSCRIBED:  ["+ Listings.find().count() + "] Listings");
 
-        // Add a marker to the map once it's ready
-       
-        //should be calling just geos from collection
-        let listingArray = Listings.find().fetch();
-
-        // console.log("-->" + listingArray.length + " listings.");
-        // //--!-----How Many listings?
-   
-        // //Build array of only lat/longs (for each marker)
-        let markers = [];
-        // var statii = [];
-    	    for (let i = 0; i < listingArray.length; i++) {
-                //listingLoc needs to be google latlng object literal; 
-                //listingLoc = {lat: "33" , lng: "-80"}
-                let nums = listingArray[i].location.split(",");
-                let lat = Number(nums[0]);
-                let lng = Number(nums[1]);
-    	        let listingLoc = _.object( ['lat', 'lng'], [lat, lng]);
-                // console.log(listingLoc);
-    	        markers.push(listingLoc);
-    	    }
-        // console.log("-->" + markers.length + " markers.");
-
-        // //--   Place Markers on map
-        var image = {
+        //For Each Listing, add a marker; every marker an infowindow and events.
+        let markerImage = {
           url: 'img/orange_marker_sm.png',
           // size: new google.maps.Size(50,50), 
           // origin: new google.maps.Point(0,0),
           // anchor: new google.maps.Point(0,50)
         };
-    
-        for (let i = 0; i < markers.length; i++) {
-            // console.log(markers[i]);
-            let listing = listingArray[i];
-            let marker = new google.maps.Marker({
-              position: markers[i],
-              map: map.instance,
-              icon: image,
-            });
-            
-            // Click for Status Alert
-            // Click to Zoom into region
-            google.maps.event.addListener(marker,'click',function() {
-            //   marker.info.setContent(this.info.content);
-            //   marker.info.open(map.instance, this);    
-              let currentZoom = map.instance.getZoom();
-              if(currentZoom <= 14){
-                map.instance.setZoom(17);
-                map.instance.setCenter(this.getPosition());
-              }
-              else{
-                map.instance.setZoom(14);
-                map.instance.setCenter(this.getPosition());
-              }
+        //trying to set one global infowindow and each click sets its content; a blaze template.
+        let markerInfo = new google.maps.InfoWindow({
+              content: "N/A",
+              maxWidth: 400
             });
 
+        Listings.find().forEach(function(doc){
+            //Build array of only lat/longs (for each marker)
+
+            //listingLoc needs to be google latlng object literal; 
+            //listingLoc = {lat: "33" , lng: "-80"}
+            let nums = doc.location.split(",");
+            let lat = Number(nums[0]);
+            let lng = Number(nums[1]);
+            let listingLoc = _.object( ['lat', 'lng'], [lat, lng]);
+            // console.log(listingLoc);
+
+            //--   Place Markers on map
+            let marker = new google.maps.Marker({
+              position: listingLoc,
+              map: map.instance,
+              icon: markerImage,
+            });
+            marker.set('title', doc.name);
+            marker.info = markerInfo;
+
+            // Click for Info Panel
+            // let infoContent = Blaze.toHTMLWithData(Template.infowindow, doc);
+            // //console.log(infoContent);        
+            // marker.info = new google.maps.InfoWindow({
+            //   content: infoContent,
+            //   maxWidth: 300
+            // });
+
+            marker.addListener('click', function() {
+                let infoContent = Blaze.toHTMLWithData(Template.infowindow, doc);
+                this.info.setContent(infoContent);
+                this.info.open(map.instance, this);
+                $(".phone").text(function(i, text) {
+                  text = text.replace(/(\d{3})(\d{3})(\d{4})/, "$1.$2.$3");
+                  return text;
+                });
+            });
+
+        // google.maps.event.addListener(marker,'click',function() {
+        // //   marker.info.setContent(this.info.content);
+        // //   marker.info.open(map.instance, this);    
+        //   let currentZoom = map.instance.getZoom();
+        //   if(currentZoom <= 14){
+        //     map.instance.setZoom(17);
+        //     map.instance.setCenter(this.getPosition());
+        //   }
+        //   else{
+        //     // map.instance.setZoom(14);
+        //     map.instance.setCenter(this.getPosition());
+        //   }
+        // });
+
             //     var cirColor = getColor(listing);
-           
             //     var circle = new google.maps.Circle({
             //         strokeColor: cirColor,
             //         strokeOpacity: 0.8,
@@ -134,37 +141,38 @@ Template.map.onCreated( function() {
             //         center: listing.loc,
             //         radius: 100000,
             //     });
-            let infoContent= Blaze.toHTMLWithData(Template.infowindow);
-            //console.log(infoContent);        
-            marker.info = new google.maps.InfoWindow({
-              content: infoContent,
-              maxWidth: 400
-            });
-
+                
             // Hover for Info-Windows
             // google.maps.event.addListener(marker, 'mouseover', function() {     
             //     console.log(this);
             //   marker.info.setContent(this.name);
             //   marker.info.open(map.instance, this);
             // });
-            //     //Click to Zoom Out to default center
-        }
+
+        });
+
     
-        // //Echo lat/lng on click
-        // google.maps.event.addDomListener(map.instance, 'click', function(e) {
-        //   var point = [e.latLng.lat(), e.latLng.lng()];
-        //   console.log(point);
+// ========================= Client Info =========================
+
+        // Show User Location
+        // var marker = new google.maps.Marker({
+        //   position: new google.maps.LatLng(Session.get('lat'), Session.get('lng')),
+        //   icon: 'http://maps.gstatic.com/mapfiles/markers2/icon_green.png',
+        //   map: map.instance,
+        //   title: "Your Location"
         // });
 
 
 // ========================= DOM Events relating to Map =========================
+
+
+
         // google.maps.event.addDomListener(window, 'resize', function() {
         //     var center = GoogleMaps.maps.map.instance.getCenter();
         //     google.maps.event.trigger(map, "resize");
         //     GoogleMaps.maps.map.instance.setCenter(center);
         // })
-
-      });
+    });
 
 });
 

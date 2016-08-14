@@ -1,11 +1,26 @@
-
 <template name="infowindow">
-  <div class="">
-    <h3>
-
-        {{label }}
-
-      </h3>
-    <p> Status: </p>
-  </div>
+    <div class="card grey small horizontal">
+      <div class="card-image">
+      {{#if image}}
+      	<img class="responsive-img" src="{{image}}">
+    	{{else}}
+        <img class="responsive-img" src="http://lorempixel.com/100/190/nature/10">
+    	{{/if}}
+      </div>
+      <div class="card-stacked">
+        <h5 class="center-align">{{name}}</h5>
+        <div class="card-content ">
+	        <p class="">
+          {{this.address1}} <br>
+			    {{city}} {{state}} {{zip}} <br>
+			    <span class="phone center-align">{{phone}}</span>
+          </p>
+        </div>
+        {{#if url}}
+        <div class="card-action">
+          <a class="btn-floating waves-effect waves-light amber darken-3 right" target="_blank" title="Website" href="{{url}}"><i class="material-icons">link</i></a>
+        </div>
+        {{/if}}
+      </div>
+    </div>
 </template>

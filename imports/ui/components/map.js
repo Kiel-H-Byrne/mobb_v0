@@ -165,6 +165,12 @@ Template.map.onCreated( function() {
 
 // ========================= DOM Events relating to Map =========================
 
+        /*
+         * The google.maps.event.addListener() event waits for
+         * the creation of the infowindow HTML structure 'domready'
+         * and before the opening of the infowindow defined styles
+         * are applied.
+         */
 
 
         // google.maps.event.addDomListener(window, 'resize', function() {

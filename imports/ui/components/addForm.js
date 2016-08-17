@@ -21,3 +21,10 @@ Template.addForm.events({
 		console.log("-= Form: Submitted =-");
 	}
 });
+
+Template.addForm.onRendered(function() {
+//show the input form for optional fields, only if the associated checkbox is checked
+	$('#supplied').click(function() {
+	  $('.date')[this.checked ? "show" : "hide"]();
+	});
+})

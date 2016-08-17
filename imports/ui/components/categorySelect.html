@@ -1,0 +1,8 @@
+<template name="categoryselect">
+  <select id="category" name="category" class="category">
+    <option value="">--Select--</option>
+    {{#each get_categories}}
+      <option value="{{_id}}">{{name}}</option>
+    {{/each}}
+  </select>
+</template>

@@ -112,12 +112,11 @@ Listings.attachSchema(new SimpleSchema({
   // 'type' is where you can set the expected data type for the 'title' key's value
   name: {
     type: String,
-    optional: false,
-    unique: true,
+    unique: true
   },
   owner: {
     type: String,
-    optional: true,
+    optional: true
   },
   location: {
     type: String,
@@ -141,8 +140,7 @@ Listings.attachSchema(new SimpleSchema({
   },
   address1: {
     type: String,
-    max: 50,
-    optional: false
+    max: 50
   },
   address2: {
     type: String,
@@ -152,22 +150,19 @@ Listings.attachSchema(new SimpleSchema({
   address3: {
     type: String,
     max: 50,
-    optional: true,
+    optional: true
   },    
   city: {
     type: String,
-    max: 50,
-    optional: false
+    max: 50
   },
   state: {
     type: String,
-    regEx: /^A[LKSZRAEP]|C[AOT]|D[EC]|F[LM]|G[AU]|HI|I[ADLN]|K[SY]|LA|M[ADEHINOPST]|N[CDEHJMVY]|O[HKR]|P[ARW]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY]$/,
-    optional: false
+    regEx: /^A[LKSZRAEP]|C[AOT]|D[EC]|F[LM]|G[AU]|HI|I[ADLN]|K[SY]|LA|M[ADEHINOPST]|N[CDEHJMVY]|O[HKR]|P[ARW]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY]$/
   },
   zip: {
     type: String,
-    regEx: SimpleSchema.RegEx.ZipCode,
-    optional: false
+    regEx: SimpleSchema.RegEx.ZipCode
   },
   country: {
     type: String,
@@ -210,7 +205,9 @@ Listings.attachSchema(new SimpleSchema({
       } else {
         this.unset();
       }
-    }
+    },
+    type: "hidden"
+
   },
   createdBy: orion.attribute('createdBy'),
   // createdBy:{

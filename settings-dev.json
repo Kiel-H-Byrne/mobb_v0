@@ -4,8 +4,8 @@
       "Google Analytics" : {"trackingId": "UA-XXXXXXXX-8"}
     },
     "keys": {
-      "googleMaps" : {"key" : "AIzaSyABDARHWhOBqcre3wS-A7NL59qZzvuWQtM"},
-      "googleGeo" : {"key" : "AIzaSyDQ3ws3vaEiPsRNbEoSZz5-TiabIlcRxRA"},
+      "googleClient" : {"key" : "AIzaSyABDARHWhOBqcre3wS-A7NL59qZzvuWQtM"},
+      "googleServer" : {"key" : "AIzaSyDQ3ws3vaEiPsRNbEoSZz5-TiabIlcRxRA"},
       "yelp" : {
         "key" : "1234567896325874123698745",
   			"secret" : "1234567896325874123698745",

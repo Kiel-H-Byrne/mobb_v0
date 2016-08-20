@@ -56,7 +56,7 @@ Template.map.onCreated( function() {
     // Meteor.subscribe('listings');
   GoogleMaps.load({
       v: '3',
-      key: Meteor.settings.public.keys.googleMaps.key
+      key: Meteor.settings.public.keys.googleClient.key
   });
 
 //COLLECTION DOES NOT EXIST OUT HERE YET ... FOR SOME REASON..

@@ -13,7 +13,7 @@
 	        <p class="info">
           {{this.address1}} <br>
 			    {{city}} {{state}} {{zip}} <br>
-			    <span class="phone center-align">{{phone}}</span>
+			    <span class="phone center-align"><a href="tel:+01-{{phone}}">{{phone}}</a></span>
           </p>
         </div>
         {{#if url}}
@@ -24,3 +24,4 @@
       </div>
     </div>
 </template>
+

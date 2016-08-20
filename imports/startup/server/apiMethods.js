@@ -91,7 +91,7 @@ Meteor.methods({
     }
 
     console.log("***calling GEOCODE API method with "+urlParams);
-    var apiUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + urlParams + '&key=' + Meteor.settings.public.keys.googleGeo.key;
+    var apiUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + urlParams + '&key=' + Meteor.settings.public.keys.googleServer.key;
     console.log("--URL--"+apiUrl);
     let response = Meteor.wrapAsync(apiCall)(apiUrl);
     // console.log(response);
@@ -99,6 +99,20 @@ Meteor.methods({
     let arr =  _.values(loc);
     return arr.toLocaleString();
   },
+  getDistance: function(orig, dest) {
+    this.unblock();
+    let urlParams;
+    console.log("***calling DISTANCE API method with "+urlParams);
+    var apiUrl = 'http://maps.googleapis.com/maps/api/distancematrix/?' + urlParams + '&key=' + Meteor.settings.public.keys.googleServer.key;
+    
+    console.log("--URL--"+apiUrl);
+    let response = Meteor.wrapAsync(apiCall)(apiUrl);
+    // console.log(response);
+    let loc = response.results[0].geometry.location;
+    let arr =  _.values(loc);
+    return arr.toLocaleString();
+  },
+
   yelpSearch: function() {
     // FROM 'NODE YELP' : https://github.com/olalonde/node-yelp
 // Request API access: http://www.yelp.com/developers/getting_started/api_access 

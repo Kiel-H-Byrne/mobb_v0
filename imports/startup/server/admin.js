@@ -2,7 +2,7 @@ import { Roles } from  'meteor/orionjs:core';
 
 //check for settings file
 console.log("-= Settings: Checking... =-");
-if (!Meteor.settings.public.keys.googleMaps) {
+if (!Meteor.settings.public.keys) {
     console.log("-= Settings: FAILED. (Use 'NPM run') =-");
 } else {console.log ("-= Settings: Loaded =-");}
 
@@ -24,6 +24,22 @@ if (Meteor.users.find().count() === 0) {
 	kiel = Meteor.users.findOne(kielId);
 	Roles.addUserToRoles( kiel._id ,  ["admin"] );
 	console.log("-= Admin: 'khb' is Admin =-");
+
+	let randoId = Accounts.createUser({
+	    
+	    profile: {
+	      loc: '38.0046,-76.0369',
+	      username: "rando"
+	    },
+	    name: 'Rando Rohnson',
+	    username: "RnR",
+	    email: "rando@iam.com",
+	    password: "password",
+	  });
+
+	rando = Meteor.users.findOne(randoId);
+	Roles.addUserToRoles( rando._id ,  ["user"] );
+	console.log("-= Admin: 'RnR' is User =-");	
 }
 
 // if ( Meteor.users.findOne({username: 'khb'}) ) {

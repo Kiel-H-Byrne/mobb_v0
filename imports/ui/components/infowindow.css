@@ -1,6 +1,7 @@
 .gm-style-iw .card {
-  background: url("img/texture_striped_black.jpg");
+  /*background: url("img/texture_striped_black.jpg");*/
   color: #FBB03B;
+  color: #444;
 }
 
 .card p {

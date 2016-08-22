@@ -16,18 +16,11 @@ Template.map.onCreated( function() {
         // console.log(Listings.find().count() + " Listings: ", Listings.find().fetch());
     });
 
-
+//Get Client's Location using IP INFO
     $.getJSON("http://ipinfo.io", function(data){
         console.log("-=IP INFO: SET=-");
         // console.log(data);
         Session.set('ipInfo', data);
-
-        //              ---------------- ANALYTICS EVENT ---------------
-        analytics.track( "Browser IP Data", {
-          title: "Pulled Geo Info",
-          data: data
-        });
-        console.log("-= GA : Browser IP Data =-");
 
         if (Meteor.user()) {
             Meteor.users.update({ 
@@ -38,22 +31,48 @@ Template.map.onCreated( function() {
                 } 
             });
         }
+
+//      ---------------- ANALYTICS EVENT ---------------
+        analytics.track( "Browser IP Data", {
+          title: "Pulled Geo Info",
+          data: data
+        });
+        console.log("-= GA : Browser IP Data =-");
+
     });
-    // ============================= RETURNED OBJECT ==================================
-            /*
-            city: "Silver Spring"
-            country: "US"
-            hostname: "c-69-138-161-94.hsd1.md.comcast.net"
-            ip: "69.138.161.94"
-            loc: "39.0261,-77.0084"
-            org: "AS7922 Comcast Cable Communications, Inc."
-            postal: "20901"
-            region: "Maryland"
-            */
+//Get Client's Location using W3C HTML5 GeoLocation Standard and set Marker/InfoWindow
+      // Requires that you consent to location sharing when
+      // prompted by your browser. If you see the error "The Geolocation service
+      // failed.", it means you probably did not give permission for the browser to
+      // locate you.
 
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            Session.set('clientLoc', pos);
+          }, function() {
+            // handleLocationError(true, markerInfo, map.getCenter());
+            console.log("Could Not Get Location.");
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          console.log("Browser Does Not Support GeoLocation.");
+          //get info from IP
+          // handleLocationError(false, markerInfo, map.getCenter());
+        }
+      
 
-    
-    // Meteor.subscribe('listings');
+      // function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+      //   infoWindow.setPosition(pos);
+      //   infoWindow.setContent(browserHasGeolocation ?
+      //                         'Error: The Geolocation service failed.' :
+      //                         'Error: Your browser doesn\'t support geolocation.');
+      // }
+
+   
   GoogleMaps.load({
       v: '3',
       key: Meteor.settings.public.keys.googleClient.key
@@ -65,7 +84,7 @@ Template.map.onCreated( function() {
 
         console.log("-= MAP SUBSCRIBED:  ["+ Listings.find().count() + "] Listings");
 
-        //For Each Listing, add a marker; every marker an infowindow and events.
+
         let markerImage = {
           url: 'img/orange_marker_sm.png',
           // size: new google.maps.Size(50,50), 
@@ -74,15 +93,13 @@ Template.map.onCreated( function() {
         };
         //trying to set one global infowindow and each click sets its content; a blaze template.
         let markerInfo = new google.maps.InfoWindow({
-              content: "N/A",
+              content: "",
               maxWidth: 400
             });
-
+//For Each Listing, add a marker; every marker opens a global infoWindow and owns events.
         Listings.find().forEach(function(doc){
-            //Build array of only lat/longs (for each marker)
 
-            //listingLoc needs to be google latlng object literal; 
-            //listingLoc = {lat: "33" , lng: "-80"}
+            //listingLoc needs to be google latLng object literal; 
             let nums = doc.location.split(",");
             let lat = Number(nums[0]);
             let lng = Number(nums[1]);
@@ -97,6 +114,16 @@ Template.map.onCreated( function() {
             });
             marker.set('title', doc.name);
             marker.info = markerInfo;
+
+            let clientMarker = new google.maps.Marker({
+                position: Centers.User,
+                map: map.instance,
+                icon: {
+                    url: 'img/orange_marker_4_sm.png'
+                },
+                animation: google.maps.Animation.BOUNCE,
+                title: "Your Location"
+            });
 
             // Click for Info Panel
             // let infoContent = Blaze.toHTMLWithData(Template.infowindow, doc);
@@ -131,16 +158,16 @@ Template.map.onCreated( function() {
         // });
 
             //     var cirColor = getColor(listing);
-            //     var circle = new google.maps.Circle({
-            //         strokeColor: cirColor,
-            //         strokeOpacity: 0.8,
-            //         strokeWeight: 1,
-            //         fillColor: cirColor,
-            //         fillOpacity: 0.35,
-            //         map: map.instance,
-            //         center: listing.loc,
-            //         radius: 100000,
-            //     });
+                // var circle = new google.maps.Circle({
+                //     strokeColor: "#FFeeDD",
+                //     strokeOpacity: 0.8,
+                //     strokeWeight: 1,
+                //     fillColor: "#EEEEEE",
+                //     fillOpacity: 0.05,
+                //     map: map.instance,
+                //     center: Centers.User,
+                //     radius: 100,
+                // });
                 
             // Hover for Info-Windows
             // google.maps.event.addListener(marker, 'mouseover', function() {     
@@ -217,25 +244,29 @@ Template.map.helpers({
     if (GoogleMaps.loaded()) {
 
 // / ============================= SET MAP CENTER ==================================    
-        let Centers = {
+        Centers = {
           Na : {"lat":39.90973623453719, "lng":-105.29296875},
         };
         
-        if (Meteor.user()) {
-            let loc = Meteor.user().profile.loc;
-            if (loc) {let userLoc = loc.split(",");
-                Centers.User = {"lat": Number(userLoc[0]), "lng": Number(userLoc[1]) };
-                console.log("User location: " + userLoc);
-            }
-        } else {
-            let ipInfo = Session.get('ipInfo');
-            let loc = ipInfo.loc;
-            if (loc) {
-                let userLoc = loc.split(",");
-                Centers.User = {"lat": Number(userLoc[0]), "lng": Number(userLoc[1]) } ;
-                console.log("Browser location: "+ userLoc);
-            }
-        }
+        if (Session.get('clientLoc')) {
+            Centers.User = Session.get('clientLoc');
+            console.log('Setting Client Location: ', Centers.User );
+        }        
+        // if (Meteor.user()) {
+        //     let loc = Meteor.user().profile.loc;
+        //     if (loc) {let userLoc = loc.split(",");
+        //         Centers.User = {"lat": Number(userLoc[0]), "lng": Number(userLoc[1]) };
+        //         console.log("User location: " + userLoc);
+        //     }
+        // } else {
+        //     let ipInfo = Session.get('ipInfo');
+        //     let loc = ipInfo.loc;
+        //     if (loc) {
+        //         let userLoc = loc.split(",");
+        //         Centers.User = {"lat": Number(userLoc[0]), "lng": Number(userLoc[1]) } ;
+        //         console.log("Browser location: "+ userLoc);
+        //     }
+        // }
 
 // / ============================= RENDER MAP W/ OPTIONS ==================================    
 
@@ -267,12 +298,4 @@ Template.map.helpers({
     }
   }
 });
-
-// setCurrentPosition(position) {
-// this.setState({
-//   latitude: position.coords.latitude,
-//   longitude: position.coords.longitude
-// });
-// }
-
   

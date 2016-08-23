@@ -1,22 +1,28 @@
-import { Meteor } from 'meteor/meteor';
+// import { Meteor } from 'meteor/meteor';
+// import { Roles } from  'meteor/orionjs:core';
+
 
 // meteor methods should be created on both server and client, so 'optimistic UI' 
 // can take place, call runs from both, but should be called from client. 
 
 Meteor.methods({
 	insertBiz: function(data) {
-		// console.log(Roles.userHasRole(Meteor.userId(), "admin"));
+		
 	    // check(this.userId, String);
-	    if (! Match.test(this.userId, String)) {
-	    	console.log("INSERT FAILED: NO USER");
-	    } 
+	    
+	    // IF UserID does NOT exist. (Not a String)
+	    // if (! Match.test(this.userId, String)) {
+	    // 	console.log("INSERT FAILED: NO USER");
+	    // } 
 
-	    if(Roles.userHasRole(Meteor.userId(), "admin")) {
+
+	    // IF user role is NOT ADMIN
+	    if(!Roles.userHasRole(Meteor.userId(), "admin")) {
+  			console.log(Roles.userHasRole(Meteor.userId(), "admin"));
   		// if(!this.userId) {
   	
-
+  			// If listing does NOT exist, 
 		    if (! _.findWhere(Listings.find().fetch(), { name: data.name || data.NAME }) ) {
-				console.log(data.WEBSITE);
 				let name = data.name || data.NAME;
 				let address = data.address1 || data.ADDRESS;
 				let city = data.city || data.CITY;
@@ -43,9 +49,10 @@ Meteor.methods({
 					description: description,
 					createdBy: this.userId,
 				});
+				console.log("Inserted: "+ name);
 			} else {
 				let name = data.name || data.NAME;
-				console.log("INSERT FAILED: '"+ name + "' already exists.");
+				console.log("INSERT FAILED: '"+ name + "' exists.");
 			}
 		} else {
 			throw new Meteor.Error('Unauthorized for Insert');

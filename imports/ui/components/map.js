@@ -17,29 +17,29 @@ Template.map.onCreated( function() {
     });
 
 //Get Client's Location using IP INFO
-    $.getJSON("http://ipinfo.io", function(data){
-        console.log("-=IP INFO: SET=-");
-        // console.log(data);
-        Session.set('ipInfo', data);
+//     $.getJSON("http://ipinfo.io", function(data){
+//         console.log("-=IP INFO: SET=-");
+//         // console.log(data);
+//         Session.set('ipInfo', data);
 
-        if (Meteor.user()) {
-            Meteor.users.update({ 
-                _id : Meteor.user()._id
-                }, { 
-                $set: { 
-                    profile : data 
-                } 
-            });
-        }
+//         if (Meteor.user()) {
+//             Meteor.users.update({ 
+//                 _id : Meteor.user()._id
+//                 }, { 
+//                 $set: { 
+//                     profile : data 
+//                 } 
+//             });
+//         }
 
-//      ---------------- ANALYTICS EVENT ---------------
-        analytics.track( "Browser IP Data", {
-          title: "Pulled Geo Info",
-          data: data
-        });
-        console.log("-= GA : Browser IP Data =-");
+// //      ---------------- ANALYTICS EVENT ---------------
+//         analytics.track( "Browser IP Data", {
+//           title: "Pulled Geo Info",
+//           data: data
+//         });
+//         console.log("-= GA : Browser IP Data =-");
 
-    });
+//     });
 //Get Client's Location using W3C HTML5 GeoLocation Standard and set Marker/InfoWindow
       // Requires that you consent to location sharing when
       // prompted by your browser. If you see the error "The Geolocation service
@@ -53,13 +53,29 @@ Template.map.onCreated( function() {
               lng: position.coords.longitude
             };
             Session.set('clientLoc', pos);
+//      ---------------- ANALYTICS EVENT ---------------
+            analytics.track( "Geolocation Success", {
+              title: "Successfully Geolocated"
+            });
+            console.log("-= GA : Geo Success =-");
           }, function() {
             // handleLocationError(true, markerInfo, map.getCenter());
+//      ---------------- ANALYTICS EVENT ---------------
+            analytics.track( "Geolocation Fail", {
+              title: "Failed Geolocate"
+            });
+            console.log("-= GA : Geo Fail =-");
+
             console.log("Could Not Get Location.");
           });
         } else {
           // Browser doesn't support Geolocation
-          console.log("Browser Does Not Support GeoLocation.");
+//      ---------------- ANALYTICS EVENT ---------------
+            analytics.track( "Geolocation Fail", {
+              title: "Unsupported Browser Failed Geo",
+            });
+            console.log("-= GA : Bad Browser =-");
+            console.log("Browser Does Not Support GeoLocation.");
           //get info from IP
           // handleLocationError(false, markerInfo, map.getCenter());
         }
@@ -210,9 +226,9 @@ Template.map.onCreated( function() {
 });
 
 Template.map.onRendered(function() {
-    console.log("map rendered...");
+    // console.log("map rendered...");
+//Materialize JQuery Effects
     $(document).ready(function(){
-        console.log("bing!");
         $('.modal-trigger').leanModal({
             dismissible: true,
             opacity: 0.5,

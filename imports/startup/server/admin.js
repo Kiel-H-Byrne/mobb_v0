@@ -1,4 +1,3 @@
-import { Roles } from  'meteor/orionjs:core';
 
 //check for settings file
 console.log("-= Settings: Checking... =-");
@@ -13,7 +12,7 @@ if (Meteor.users.find().count() === 0) {
 	    
 	    profile: {
 	      loc: '39.0046,-77.0369',
-	      username: "kbyrne"
+	      name: "Kiel H. Byrne"
 	    },
 	    name: 'Kiel',
 	    username: "khb",
@@ -29,18 +28,23 @@ if (Meteor.users.find().count() === 0) {
 	    
 	    profile: {
 	      loc: '38.0046,-76.0369',
-	      username: "rando"
+	      name: "Rando Ralph Rohnson"
 	    },
 	    name: 'Rando Rohnson',
-	    username: "RnR",
+	    username: "rnr",
 	    email: "rando@iam.com",
 	    password: "password",
 	  });
 
 	rando = Meteor.users.findOne(randoId);
-	Roles.addUserToRoles( rando._id ,  ["user"] );
+	Roles.addUserToRoles( rando._id ,  ["fan"] );
 	console.log("-= Admin: 'RnR' is User =-");	
 }
+
+Meteor.publish('roles', function (){
+    console.log(Roles.find({}));
+    return Roles.find({});
+});
 
 // if ( Meteor.users.findOne({username: 'khb'}) ) {
 // 	let kiel = Meteor.users.findOne({username: 'khb'});
@@ -50,17 +54,17 @@ if (Meteor.users.find().count() === 0) {
 // 	console.log("-= Admin: No Admin =-");
 // }
 
-// this is for handling # in verifyEmail url
-(function () {
-    "use strict";
-    Accounts.urls.resetPassword = function (token) {
-        return Meteor.absoluteUrl('reset-password/' + token);
-    };
-    Accounts.urls.verifyEmail = function (token) {
-        return Meteor.absoluteUrl('verify-email/' + token);
-    };
-    Accounts.urls.enrollAccount = function (token) {
-        return Meteor.absoluteUrl('enroll-account/' + token);
-    };
+// // this is for handling # in verifyEmail url
+// (function () {
+//     "use strict";
+//     Accounts.urls.resetPassword = function (token) {
+//         return Meteor.absoluteUrl('reset-password/' + token);
+//     };
+//     Accounts.urls.verifyEmail = function (token) {
+//         return Meteor.absoluteUrl('verify-email/' + token);
+//     };
+//     Accounts.urls.enrollAccount = function (token) {
+//         return Meteor.absoluteUrl('enroll-account/' + token);
+//     };
 
-})();
+// })();

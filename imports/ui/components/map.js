@@ -16,30 +16,7 @@ Template.map.onCreated( function() {
         // console.log(Listings.find().count() + " Listings: ", Listings.find().fetch());
     });
 
-//Get Client's Location using IP INFO
-//     $.getJSON("http://ipinfo.io", function(data){
-//         console.log("-=IP INFO: SET=-");
-//         // console.log(data);
-//         Session.set('ipInfo', data);
 
-//         if (Meteor.user()) {
-//             Meteor.users.update({ 
-//                 _id : Meteor.user()._id
-//                 }, { 
-//                 $set: { 
-//                     profile : data 
-//                 } 
-//             });
-//         }
-
-// //      ---------------- ANALYTICS EVENT ---------------
-//         analytics.track( "Browser IP Data", {
-//           title: "Pulled Geo Info",
-//           data: data
-//         });
-//         console.log("-= GA : Browser IP Data =-");
-
-//     });
 //Get Client's Location using W3C HTML5 GeoLocation Standard and set Marker/InfoWindow
       // Requires that you consent to location sharing when
       // prompted by your browser. If you see the error "The Geolocation service
@@ -69,7 +46,34 @@ Template.map.onCreated( function() {
             console.log("Could Not Get Location.");
           });
         } else {
-          // Browser doesn't support Geolocation
+        // Browser doesn't support Geolocation
+        
+        //Get Client's Location using IP INFO
+            $.getJSON("http://ipinfo.io", function(data){
+                console.log("-=IP INFO: SET=-");
+                // console.log(data);
+                Session.set('ipInfo', data);
+
+                // if (Meteor.user()) {
+                //     Meteor.users.update({ 
+                //         _id : Meteor.user()._id
+                //         }, { 
+                //         $set: { 
+                //             profile : data 
+                //         } 
+                //     });
+                // }
+                Session.set('browserLoc', data.loc);
+
+        // //      ---------------- ANALYTICS EVENT ---------------
+                analytics.track( "Browser IP Data", {
+                  title: "Pulled Geo Info",
+                  data: data
+                });
+                console.log("-= GA : Browser IP Data =-");
+
+            });
+
 //      ---------------- ANALYTICS EVENT ---------------
             analytics.track( "Geolocation Fail", {
               title: "Unsupported Browser Failed Geo",

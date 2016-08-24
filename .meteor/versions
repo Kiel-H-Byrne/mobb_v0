@@ -63,6 +63,7 @@ localstorage@1.0.11
 logging@1.0.14
 matb33:collection-hooks@0.7.15
 materialize:materialize@0.97.7
+mdg:geolocation@1.3.0
 meteor@1.1.16
 meteor-base@1.0.4
 meteor-platform@1.2.6

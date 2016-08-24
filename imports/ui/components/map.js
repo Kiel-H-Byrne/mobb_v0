@@ -5,104 +5,50 @@ import Listings from '/imports/startup/collections/listings';
 import './infowindow.js';
 import './map.html';
 
+GoogleMaps.load({
+  v: '3',
+  key: Meteor.settings.public.keys.googleClient.key
+});
+
 // ============================= SUBSCRIPTIONS ==================================
-
-
 Template.map.onCreated( function() {  
-	console.log("-= MAP: Drawn =-");
+	console.log("-= MAP: Created =-");
+    let self = this;
 
     Meteor.subscribe('listings_all', function() {
         console.log('-= MAP SUBSCRIBING: All Listings =-');
         // console.log(Listings.find().count() + " Listings: ", Listings.find().fetch());
     });
 
-
-//Get Client's Location using W3C HTML5 GeoLocation Standard and set Marker/InfoWindow
-      // Requires that you consent to location sharing when
-      // prompted by your browser. If you see the error "The Geolocation service
-      // failed.", it means you probably did not give permission for the browser to
-      // locate you.
-
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-            Session.set('clientLoc', pos);
-//      ---------------- ANALYTICS EVENT ---------------
-            analytics.track( "Geolocation Success", {
-              title: "Successfully Geolocated"
-            });
-            console.log("-= GA : Geo Success =-");
-          }, function() {
-            // handleLocationError(true, markerInfo, map.getCenter());
-//      ---------------- ANALYTICS EVENT ---------------
-            analytics.track( "Geolocation Fail", {
-              title: "Failed Geolocate"
-            });
-            console.log("-= GA : Geo Fail =-");
-
-            console.log("Could Not Get Location.");
-          });
-        } else {
-        // Browser doesn't support Geolocation
-        
-        //Get Client's Location using IP INFO
-            $.getJSON("http://ipinfo.io", function(data){
-                console.log("-=IP INFO: SET=-");
-                // console.log(data);
-                Session.set('ipInfo', data);
-
-                // if (Meteor.user()) {
-                //     Meteor.users.update({ 
-                //         _id : Meteor.user()._id
-                //         }, { 
-                //         $set: { 
-                //             profile : data 
-                //         } 
-                //     });
-                // }
-                Session.set('browserLoc', data.loc);
-
-        // //      ---------------- ANALYTICS EVENT ---------------
-                analytics.track( "Browser IP Data", {
-                  title: "Pulled Geo Info",
-                  data: data
-                });
-                console.log("-= GA : Browser IP Data =-");
-
-            });
-
-//      ---------------- ANALYTICS EVENT ---------------
-            analytics.track( "Geolocation Fail", {
-              title: "Unsupported Browser Failed Geo",
-            });
-            console.log("-= GA : Bad Browser =-");
-            console.log("Browser Does Not Support GeoLocation.");
-          //get info from IP
-          // handleLocationError(false, markerInfo, map.getCenter());
-        }
-      
-
-      // function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-      //   infoWindow.setPosition(pos);
-      //   infoWindow.setContent(browserHasGeolocation ?
-      //                         'Error: The Geolocation service failed.' :
-      //                         'Error: Your browser doesn\'t support geolocation.');
-      // }
-
-   
-  GoogleMaps.load({
-      v: '3',
-      key: Meteor.settings.public.keys.googleClient.key
-  });
-
-//COLLECTION DOES NOT EXIST OUT HERE YET ... FOR SOME REASON..
-
     GoogleMaps.ready('map', function(map) {
-
+        console.log("-= MAP: Drawn =-");        
         console.log("-= MAP SUBSCRIBED:  ["+ Listings.find().count() + "] Listings");
+
+        let clientMarker;
+
+        self.autorun(function(){
+            let latLng = Geolocation.latLng();
+            console.log(latLng);
+            if (!latLng)
+                return;
+            if (! clientMarker) {
+                clientMarker = new google.maps.Marker({
+                    position: new google.maps.LatLng(latLng.lat, latLng.lng),
+                    map: map.instance,
+                    icon: {
+                        url: 'img/orange_marker_4_sm.png'
+                    },
+                    animation: google.maps.Animation.BOUNCE,
+                    title: "Your Location"
+                }); 
+            } else {
+                clientMarker.setPosition(latLng);
+            }
+
+            map.instance.setCenter(clientMarker.getPosition());
+            map.instance.setZoom(MAP_ZOOM);
+        });
+
 
 
         let markerImage = {
@@ -134,16 +80,6 @@ Template.map.onCreated( function() {
             });
             marker.set('title', doc.name);
             marker.info = markerInfo;
-
-            let clientMarker = new google.maps.Marker({
-                position: Centers.User,
-                map: map.instance,
-                icon: {
-                    url: 'img/orange_marker_4_sm.png'
-                },
-                animation: google.maps.Animation.BOUNCE,
-                title: "Your Location"
-            });
 
             // Click for Info Panel
             // let infoContent = Blaze.toHTMLWithData(Template.infowindow, doc);
@@ -197,18 +133,7 @@ Template.map.onCreated( function() {
             // });
 
         });
-
-    
-// ========================= Client Info =========================
-
-        // Show User Location
-        // var marker = new google.maps.Marker({
-        //   position: new google.maps.LatLng(Session.get('lat'), Session.get('lng')),
-        //   icon: 'http://maps.gstatic.com/mapfiles/markers2/icon_green.png',
-        //   map: map.instance,
-        //   title: "Your Location"
-        // });
-
+   
 
 // ========================= DOM Events relating to Map =========================
 
@@ -258,13 +183,21 @@ Template.map.onRendered(function() {
 
 // ============================= HELPERS ==================================
 
-
+var MAP_ZOOM = 14;
 Template.map.helpers({
+  geolocationError: function() {
+    //      ---------------- ANALYTICS EVENT ---------------
+    analytics.track( "Geolocation Fail", {
+      title: "Failed Geolocate"
+    });
+    console.log("-= GA : Geo Fail =-");
+    let error = Geolocation.error();
+    return error && error.message;
+  },
   mapOptions: function() {
-    if (GoogleMaps.loaded()) {
 
-// / ============================= SET MAP CENTER ==================================    
-        Centers = {
+    // / ============================= SET MAP CENTER ==================================    
+    Centers = {
           Na : {"lat":39.90973623453719, "lng":-105.29296875},
         };
         
@@ -288,12 +221,20 @@ Template.map.helpers({
         //     }
         // }
 
-// / ============================= RENDER MAP W/ OPTIONS ==================================    
+    //Get Client's Location using W3C HTML5 GeoLocation Standard and set Marker/InfoWindow
+    // Requires that you consent to location sharing when
+    // prompted by your browser. If you see the error "The Geolocation service
+    // failed.", it means you probably did not give permission for the browser to
+    // locate you.
 
+    let latLng = Geolocation.latLng();
+
+    if (GoogleMaps.loaded() && latLng) {
+// / ============================= RETURN MAP OPTIONS ==================================    
         return {
-            center: new google.maps.LatLng(Centers.User),
+            center: new google.maps.LatLng(latLng.lat, latLng.lng),
             // center: new google.maps.LatLng(Centers.User[0], Centers.User[1]),
-            zoom: 14,
+            zoom: MAP_ZOOM,
             // mapTypeId:google.maps.MapTypeId.TERRAIN,
             backgroundColor: "#555555",
             clickableIcons: false,

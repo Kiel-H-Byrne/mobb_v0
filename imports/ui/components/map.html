@@ -2,8 +2,11 @@
 <template name="map">
 
   <div id="googleMap">
-	{{!-- {{#if Template.subscriptionsReady}} --}}
-		{{> googleMap name="map" options = mapOptions }}
-	{{!-- {{/if}} --}}
+	  {{#unless geolocationError}}
+			{{> googleMap name="map" options = mapOptions }}
+		{{else}}
+			Geolocation failed: {{geolocationError}}
+		{{/unless}}
 	</div>
+
 </template>

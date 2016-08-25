@@ -79,7 +79,6 @@ Meteor.methods({
     // SEND Enrollment Email
     // Accounts.sendEnrollmentEmail(newUserId)
     Meteor.loginWithPassword(o.username, o.password);
-
   },
   geoCode: function(address) {
     this.unblock();
@@ -112,10 +111,23 @@ Meteor.methods({
     let arr =  _.values(loc);
     return arr.toLocaleString();
   },
-
+  getDirections: function(orig, dest) {
+    this.unblock();
+    let urlParams;
+    console.log("***calling DIRECTIONS API method with "+urlParams);
+    var apiUrl = 'https://maps.googleapis.com/maps/api/directions/json?' + urlParams + '&key=' + Meteor.settings.public.keys.googleServer.key;
+    // origin=Disneyland&destination=Universal+Studios+Hollywood4' &key=YOUR_API_KEY' + urlParams + 
+    
+    console.log("--URL--"+apiUrl);
+    let response = Meteor.wrapAsync(apiCall)(apiUrl);
+    // console.log(response);
+    let loc = response.results[0].geometry.location;
+    let arr =  _.values(loc);
+    return arr.toLocaleString();
+  },
   yelpSearch: function() {
     // FROM 'NODE YELP' : https://github.com/olalonde/node-yelp
-// Request API access: http://www.yelp.com/developers/getting_started/api_access 
+    // Request API access: http://www.yelp.com/developers/getting_started/api_access 
     const Yelp = require('yelp');
     let yelp = new Yelp({
       consumer_key: Meteor.settings.public.keys.yelp.key,
@@ -154,7 +166,6 @@ Meteor.methods({
     console.log("--URL--"+apiUrl);
     let response = Meteor.wrapAsync(apiCall)(apiUrl);
   }
-
 });
 
 

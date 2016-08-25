@@ -18,7 +18,7 @@ Meteor.methods({
 
 	    // IF user role is NOT ADMIN
 	    if(!Roles.userHasRole(Meteor.userId(), "admin")) {
-  			console.log(Roles.userHasRole(Meteor.userId(), "admin"));
+  			// console.log(Roles.userHasRole(Meteor.userId(), "admin"));
   		// if(!this.userId) {
   	
   			// If listing does NOT exist, 
@@ -52,7 +52,7 @@ Meteor.methods({
 				console.log("Inserted: "+ name);
 			} else {
 				let name = data.name || data.NAME;
-				console.log("INSERT FAILED: '"+ name + "' exists.");
+				// console.log("INSERT FAILED: '"+ name + "' exists.");
 			}
 		} else {
 			throw new Meteor.Error('Unauthorized for Insert');

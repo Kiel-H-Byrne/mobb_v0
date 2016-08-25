@@ -1,12 +1,14 @@
 
 <template name="map">
 
-  <div id="googleMap">
+	<div id="googleMap">
 	  {{#unless geolocationError}}
 			{{> googleMap name="map" options = mapOptions }}
 		{{else}}
 			Geolocation failed: {{geolocationError}}
 		{{/unless}}
 	</div>
-
+	<div>
+		{{> closestCard}}
+	</div>
 </template>

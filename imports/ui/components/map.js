@@ -3,6 +3,7 @@ import {Template} from 'meteor/templating';
 
 import Listings from '/imports/startup/collections/listings';
 import './infowindow.js';
+import './closestCard.js';
 import './map.html';
 
 GoogleMaps.load({
@@ -28,6 +29,7 @@ Template.map.onCreated( function() {
 
         self.autorun(function(){
             let latLng = Geolocation.latLng();
+            session.set()
             // console.log(latLng);
             if (!latLng)
                 return;

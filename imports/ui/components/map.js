@@ -28,10 +28,10 @@ Template.map.onCreated( function() {
 
         self.autorun(function(){
             let latLng = Geolocation.latLng();
-            console.log(latLng);
+            // console.log(latLng);
             if (!latLng)
                 return;
-            if (! clientMarker) {
+            if (!clientMarker) {
                 clientMarker = new google.maps.Marker({
                     position: new google.maps.LatLng(latLng.lat, latLng.lng),
                     map: map.instance,
@@ -46,48 +46,35 @@ Template.map.onCreated( function() {
             }
 
             map.instance.setCenter(clientMarker.getPosition());
-            map.instance.setZoom(MAP_ZOOM);
+            // map.instance.setZoom(MAP_ZOOM);
         });
 
-
-
         let markerImage = {
-          url: 'img/orange_marker_sm.png',
-          // size: new google.maps.Size(50,50), 
-          // origin: new google.maps.Point(0,0),
-          // anchor: new google.maps.Point(0,50)
+          url: 'img/orange_marker_sm.png'
         };
         //trying to set one global infowindow and each click sets its content; a blaze template.
         let markerInfo = new google.maps.InfoWindow({
               content: "",
-              maxWidth: 400
+              maxWidth: 360
             });
 //For Each Listing, add a marker; every marker opens a global infoWindow and owns events.
         Listings.find().forEach(function(doc){
 
-            //listingLoc needs to be google latLng object literal; 
-            let nums = doc.location.split(",");
-            let lat = Number(nums[0]);
-            let lng = Number(nums[1]);
-            let listingLoc = _.object( ['lat', 'lng'], [lat, lng]);
-            // console.log(listingLoc);
+            //latLngObj needs to be google latLng object literal; 
+            let latLng = doc.location.split(",");
+            let lat = Number(latLng[0]);
+            let lng = Number(latLng[1]);
+            let latLngObj = _.object( ['lat', 'lng'], [lat, lng]);
+            // console.log(latLngObj);
 
             //--   Place Markers on map
             let marker = new google.maps.Marker({
-              position: listingLoc,
+              position: latLngObj,
               map: map.instance,
               icon: markerImage,
             });
             marker.set('title', doc.name);
             marker.info = markerInfo;
-
-            // Click for Info Panel
-            // let infoContent = Blaze.toHTMLWithData(Template.infowindow, doc);
-            // //console.log(infoContent);        
-            // marker.info = new google.maps.InfoWindow({
-            //   content: infoContent,
-            //   maxWidth: 300
-            // });
 
             marker.addListener('click', function() {
                 let infoContent = Blaze.toHTMLWithData(Template.infowindow, doc);
@@ -112,29 +99,27 @@ Template.map.onCreated( function() {
         //     map.instance.setCenter(this.getPosition());
         //   }
         // });
-
-            //     var cirColor = getColor(listing);
-                // var circle = new google.maps.Circle({
-                //     strokeColor: "#FFeeDD",
-                //     strokeOpacity: 0.8,
-                //     strokeWeight: 1,
-                //     fillColor: "#EEEEEE",
-                //     fillOpacity: 0.05,
-                //     map: map.instance,
-                //     center: Centers.User,
-                //     radius: 100,
-                // });
-                
-            // Hover for Info-Windows
-            // google.maps.event.addListener(marker, 'mouseover', function() {     
-            //     console.log(this);
-            //   marker.info.setContent(this.name);
-            //   marker.info.open(map.instance, this);
-            // });
+            
+        // Hover for Info-Windows
+        // google.maps.event.addListener(marker, 'mouseover', function() {     
+        //     console.log(this);
+        //   marker.info.setContent(this.name);
+        //   marker.info.open(map.instance, this);
+        // });
 
         });
    
-
+            // var cirColor = getColor(listing);
+            // var circle = new google.maps.Circle({
+            //     strokeColor: "#FBB03B",
+            //     strokeOpacity: 0.8,
+            //     strokeWeight: 1,
+            //     fillColor: "#EEEEEE",
+            //     fillOpacity: 0.05,
+            //     map: map.instance,
+            //     center: Centers.User,
+            //     radius: 100,
+            // });
 // ========================= DOM Events relating to Map =========================
 
         /*

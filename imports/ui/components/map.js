@@ -29,7 +29,7 @@ Template.map.onCreated( function() {
 
         self.autorun(function(){
             let latLng = Geolocation.latLng();
-            session.set()
+            
             // console.log(latLng);
             if (!latLng)
                 return;

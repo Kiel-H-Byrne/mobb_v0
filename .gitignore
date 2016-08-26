@@ -3,9 +3,11 @@ logs
 *.log
 npm-debug.log*
 
+
 # Dependency directories
 node_modules
 .ETC
+
 
 # Keys 
 settings-prod.json

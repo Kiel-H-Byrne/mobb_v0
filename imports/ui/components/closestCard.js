@@ -6,37 +6,90 @@ import './closestCard.css';
 
 //find user location, compare with all listings, return closest
 //when user location changes, compare again.
-Meteor.subscribe('listings_all');
-let checkDistance = function() {
-	//origins = user geolocation
-	if (Geolocation.latLng()) {
-		let latLng = Geolocation.latLng();
-			let origins = latLng.lat + "," + latLng.lng;
-			//destinations = array of listing latlngs or addresses
-			let destinations = [];
-			Listings.find().forEach(function(doc){
-				destinations.push(doc.location);
-			});
-			console.log(origins, destinations);	
 
-			let service = new google.maps.DistanceMatrixService();
-			service.getDistanceMatrix({
-			    origins: [origins], //array of origins
-		        destinations: destinations, //array of destinations
-		        travelMode: google.maps.TravelMode.DRIVING,
-		        unitSystem: google.maps.UnitSystem.METRIC,
-		        avoidHighways: false,
-		        avoidTolls: false
-		    });
-
-		// Meteor.call('getDistance', orig, dest, function(err, res) {
-		// 
-		// });
-	}
-};
+	//Calculate the route of the shortest distance we found.
+	// function calculateRoute(start, end) {
+	//     let request = {
+	//         origin: start,
+	//         destination: end,
+	//         travelMode: google.maps.TravelMode.DRIVING
+	//     };
+	//     directionsService.route(request, function (result, status) {
+	//         if (status == google.maps.DirectionsStatus.OK) {
+	//             directionsDisplay.setDirections(result);
+	//         }
+	//     });
+	// }
 
 Template.closestCard.onRendered(function() {
-	checkDistance();
+	Meteor.subscribe('listings_locs', function() {
+	    console.log('-= MAP SUBSCRIBING: All Listing Locations =-');
+	    // console.log(Listings.find().count() + " Listings: ", Listings.find().fetch());
+	});
+});
+
+Template.closestCard.helpers({
+
+	resultText: function(){
+		// let latLng = Session.get('clientLoc');
+		// console.log(latLng);
+		
+		GoogleMaps.ready('map', function(map){
+				let latLng = Session.get('clientLoc');
+				let origins = latLng.lat + "," + latLng.lng;
+			  let destinations = ["catonsville, md", "takoma park, md", "bowie, md", "washington, dc", "wheaton, md"];
+			  //destinations = array of listing latlngs or addresses
+			  // let destinations = Listings.find({location: 1}).fetch();
+			  
+			  // let destinations = [];
+			  // Listings.find().forEach(function(doc){
+			  //     destinations.push(doc.location);
+			  // });
+			  // console.log(destinations);
+			  let service = new google.maps.DistanceMatrixService();
+			  service.getDistanceMatrix({
+			      origins: [origins], //array of origins
+			      destinations: destinations, //array of destinations
+			      travelMode: google.maps.TravelMode.DRIVING,
+			      unitSystem: google.maps.UnitSystem.IMPERIAL,
+			      avoidHighways: false,
+			      avoidTolls: false
+			  }, function(res, status) {
+			      if (status != google.maps.DistanceMatrixStatus.OK) {
+		          console.log('Google DistanceMatrixStatus was: ' + status);
+			      } else {
+	  	        //we only have one origin so there should only be one row
+			        let routes = res.rows[0];
+			        // console.log(routes);
+			        //need to find the shortest 
+			        let lowest = Number.POSITIVE_INFINITY;
+			        let tmp;
+			        let shortestRouteIdx;
+			        let resultText = "Possible Routes: <br/>";
+			        for (let i = routes.elements.length - 1; i >= 0; i--) {
+			            tmp = routes.elements[i].duration.value;
+			            resultText += "Route " + destinations[i] + ": " + tmp + "<br/>";
+			            if (tmp < lowest) {
+			                lowest = tmp;
+			                shortestRouteIdx = i;
+			            }
+			        }
+			        //log the routes and duration.
+			        // $('#results').html(resultText);
+			        //get the shortest route
+			        let shortestRoute = destinations[shortestRouteIdx];
+			        Session.set('closestListing', shortestRoute);
+
+			        //now we need to map the route.
+			        // calculateRoute(origins, shortestRoute)
+
+			        returnString = shortestRoute;
+			      }
+			  });
+		});
+		let returnString = Session.get('closestListing');
+		return returnString;
+	}
 });
 
 

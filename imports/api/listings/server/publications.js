@@ -6,3 +6,10 @@ Meteor.publish('listings_all', function() {
 	return Listings.find();
 });
 
+
+Meteor.publish('listings_locs', function() {
+	console.log("-= PUBLISHING: All =-");
+	return Listings.find({}, {location: 1});
+});
+
+

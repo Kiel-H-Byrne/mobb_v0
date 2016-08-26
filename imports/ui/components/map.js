@@ -25,11 +25,14 @@ Template.map.onCreated( function() {
         console.log("-= MAP: Drawn =-");        
         console.log("-= MAP SUBSCRIBED:  ["+ Listings.find().count() + "] Listings");
 
-        let clientMarker;
 
+//if location changes, show new marker and recalculate closest business. 
+
+//need array of distances from current location
+        let clientMarker;
         self.autorun(function(){
             let latLng = Geolocation.latLng();
-            
+            Session.set('clientLoc', latLng);
             // console.log(latLng);
             if (!latLng)
                 return;
@@ -40,7 +43,7 @@ Template.map.onCreated( function() {
                     icon: {
                         url: 'img/orange_marker_3_sm.png'
                     },
-                    animation: google.maps.Animation.BOUNCE,
+                    // animation: google.maps.Animation.BOUNCE,
                     title: "Your Location"
                 }); 
             } else {
@@ -173,11 +176,6 @@ Template.map.onRendered(function() {
 var MAP_ZOOM = 14;
 Template.map.helpers({
   geolocationError: function() {
-    //      ---------------- ANALYTICS EVENT ---------------
-    analytics.track( "Geolocation Fail", {
-      title: "Failed Geolocate"
-    });
-    console.log("-= GA : Geo Fail =-");
     let error = Geolocation.error();
     return error && error.message;
   },
@@ -190,7 +188,7 @@ Template.map.helpers({
         
         if (Session.get('clientLoc')) {
             Centers.User = Session.get('clientLoc');
-            console.log('Setting Client Location: ', Centers.User );
+            // console.log('Setting Client Location: ', Centers.User );
         }        
         // if (Meteor.user()) {
         //     let loc = Meteor.user().profile.loc;

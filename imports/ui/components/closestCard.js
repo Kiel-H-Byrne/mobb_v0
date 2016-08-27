@@ -30,22 +30,23 @@ Template.closestCard.onRendered(function() {
 
 Template.closestCard.helpers({
 
-	resultText: function(){
+	getClosest: function(){
 		// let latLng = Session.get('clientLoc');
 		// console.log(latLng);
 		
 		GoogleMaps.ready('map', function(map){
 				let latLng = Session.get('clientLoc');
 				let origins = latLng.lat + "," + latLng.lng;
-			  let destinations = ["catonsville, md", "takoma park, md", "bowie, md", "washington, dc", "wheaton, md"];
+			  // let destinations = ["catonsville, md", "takoma park, md", "bowie, md", "washington, dc", "wheaton, md"];
 			  //destinations = array of listing latlngs or addresses
-			  // let destinations = Listings.find({location: 1}).fetch();
+
 			  
-			  // let destinations = [];
-			  // Listings.find().forEach(function(doc){
-			  //     destinations.push(doc.location);
-			  // });
-			  // console.log(destinations);
+			  let destinations = [];
+			  //find only those listings where first two digits of lat/long match the clients first two digits of lat/long
+			  Listings.find({}, {limit:25}).forEach(function(doc){
+		      destinations.push(doc.location);
+			  });
+			  console.log(destinations);
 			  let service = new google.maps.DistanceMatrixService();
 			  service.getDistanceMatrix({
 			      origins: [origins], //array of origins
@@ -65,10 +66,8 @@ Template.closestCard.helpers({
 			        let lowest = Number.POSITIVE_INFINITY;
 			        let tmp;
 			        let shortestRouteIdx;
-			        let resultText = "Possible Routes: <br/>";
 			        for (let i = routes.elements.length - 1; i >= 0; i--) {
 			            tmp = routes.elements[i].duration.value;
-			            resultText += "Route " + destinations[i] + ": " + tmp + "<br/>";
 			            if (tmp < lowest) {
 			                lowest = tmp;
 			                shortestRouteIdx = i;
@@ -76,20 +75,28 @@ Template.closestCard.helpers({
 			        }
 			        //log the routes and duration.
 			        // $('#results').html(resultText);
+			        
+			        // console.log(res.destinationAddresses, routes.elements);
+			        let resArray = _.object(res.destinationAddresses, routes.elements);
+			        console.log(resArray);
 			        //get the shortest route
-			        let shortestRoute = destinations[shortestRouteIdx];
+			        let shortestRoute = resArray[shortestRouteIdx];
 			        Session.set('closestListing', shortestRoute);
 
 			        //now we need to map the route.
 			        // calculateRoute(origins, shortestRoute)
 
-			        returnString = shortestRoute;
 			      }
 			  });
 		});
-		let returnString = Session.get('closestListing');
-		return returnString;
-	}
+		return true;
+	},
+	closestName: function() {
+		return Session.get('closestListing')[0];
+	},
+	closestStats: function() {
+		return Session.get('closestListing')[1];
+	},
 });
 
 

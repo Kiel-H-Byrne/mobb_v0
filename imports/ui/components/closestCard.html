@@ -1,8 +1,10 @@
 <template name="closestCard">
-    <div id="closestCard" class="card horizontal small">
-      <div id="results">
-      	{{resultText}}
-    	</div>
+	<div class="row">
+    <div id="closestCard" class="card horizontal small col s6 push-s3">
+    	{{#if getClosest}}
+				{{closestName}}
+    	{{/if}}
     </div>
+  </div>
 </template>
 

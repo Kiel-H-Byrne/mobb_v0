@@ -7,7 +7,7 @@ Meteor.publish('listings_all', function() {
 });
 
 
-Meteor.publish('listings_locs', function() {
+Meteor.publish('listings_region', function() {
 	console.log("-= PUBLISHING: All =-");
 	return Listings.find({}, {location: 1});
 });

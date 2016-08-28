@@ -135,9 +135,12 @@ Listings.attachSchema(new SimpleSchema({
         let response = Meteor.call('geoCode', params);
         // console.log(response);
         if (response) {
-          console.log("-= LOCATION: FOUND! =-");
+          // console.log("-= LOCATION: FOUND! =-");
           return response;
-        } else {console.log("-= LOCATION: DNE =-");}
+        } else {
+          return;
+          // console.log("-= LOCATION: DNE =-");
+        }
       }
     }
   },
@@ -170,8 +173,8 @@ Listings.attachSchema(new SimpleSchema({
   country: {
     type: String,
     max: 3,
-    optional: false,
-    autovalue: function() {
+    optional: true,
+    autoValue: function() {
       return "USA";
     }
   },

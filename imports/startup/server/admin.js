@@ -42,8 +42,7 @@ if (Meteor.users.find().count() === 0) {
 }
 
 Meteor.publish('roles', function (){
-    console.log(Roles.find({}));
-    return Roles.find({});
+    return Roles._collection.find();
 });
 
 // if ( Meteor.users.findOne({username: 'khb'}) ) {

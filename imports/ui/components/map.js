@@ -16,7 +16,7 @@ Template.map.onCreated( function() {
 	console.log("-= MAP: Created =-");
     let self = this;
 
-    Meteor.subscribe('listings_all', function() {
+    Meteor.subscribe('listings_region', function() {
         console.log('-= MAP SUBSCRIBING: All Listings =-');
         // console.log(Listings.find().count() + " Listings: ", Listings.find().fetch());
     });

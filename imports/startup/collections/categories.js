@@ -1,4 +1,4 @@
-
+import '/imports/startup/collections/listings.js';
 //=================== NEW COLLECTION =========================
 
 Categories = new orion.collection('Categories', {
@@ -75,16 +75,18 @@ Categories.attachSchema(new SimpleSchema({
     unique: true
   },
   count: {
-    type: String,
+    type: Number,
     autoValue: function() {
       // count equals the sum of all collections which contain a match in it's category array, a match to this record's sibling field; title
       //find the amount of listings the associated category matches
-      let count = Math.round(Math.random() * (50 - 2) + 2);
-      return count.toString();
+      // let count = Math.round(Math.random() * (50 - 2) + 2);
+      // return count.toString();
 
-      // let cat = this.field("title").value;
-      // let count = Listings.find({ categories: { $in: cat } }).count()
-
+      let cat = this.field("title").value;
+      let count = Listings.find({categories: {$elemMatch: {$in: [ cat ]}}}).count();
+      // let count = Listings.find().count();
+      console.log(count);
+      return count;
     }
   }
 }));

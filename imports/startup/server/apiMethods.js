@@ -16,7 +16,7 @@ const cache = new OrionCache('rest', 120);
 
 // ============================= SET IP INFO ==================================
 
-let apiCall = function (apiUrl, callback) {
+const apiCall = function (apiUrl, callback) {
   // try…catch allows you to handle errors 
   let errorCode, errorMessage;
   try {

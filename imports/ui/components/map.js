@@ -21,23 +21,27 @@ Template.map.onCreated( function() {
         // console.log(Listings.find().count() + " Listings: ", Listings.find().fetch());
     });
 
-    $.getJSON("http://ipinfo.io", function(data){
+    // $.getJSON("http://ipinfo.io", {
+    //     format: "jsonp"
+    // }).done(function(data){
 
-        let arr = data.loc.split(",");
-        let lat = Number(arr[0]);
-        let lng = Number(arr[1]);
-        let browserLocation = _.object( ['lat', 'lng'], [lat, lng]);
-        console.log("clientLoc is Browser: ", browserLocation);
-        Session.set('clientLoc', browserLocation);
+    //     let arr = data.loc.split(",");
+    //     let lat = Number(arr[0]);
+    //     let lng = Number(arr[1]);
+    //     let browserLocation = _.object( ['lat', 'lng'], [lat, lng]);
+    //     console.log("clientLoc is Browser: ", browserLocation);
+    //     Session.set('clientLoc', browserLocation);
 
-        //              ---------------- ANALYTICS EVENT ---------------
-        analytics.track( "Browser IP Data", {
-          title: "Pulled Geo Info",
-          data: data
-        });
-        console.log("-= GA : Browser IP Data =-");
-    });
+    //     //              ---------------- ANALYTICS EVENT ---------------
+    //     analytics.track( "Browser IP Data", {
+    //       title: "Pulled Geo Info",
+    //       data: data
+    //     });
+    //     console.log("-= GA : Browser IP Data =-");
+    // });
 
+
+    Session.set('clientLoc', {"lat":38.9072, "lng":-77.0369});
     GoogleMaps.ready('map', function(map) {
         console.log("-= MAP: Drawn =-");        
         console.log("-= MAP SUBSCRIBED:  ["+ Listings.find().count() + "] Listings");
@@ -192,7 +196,8 @@ Template.map.onRendered(function() {
 
 // ============================= HELPERS ==================================
 
-var MAP_ZOOM = 14;
+let MAP_ZOOM = 14;
+
 Template.map.helpers({
   geolocationError: function() {
     let error = Geolocation.error();
@@ -201,43 +206,18 @@ Template.map.helpers({
   mapOptions: function() {
 
     // / ============================= SET MAP CENTER ==================================    
-    Centers = {
-          Na : {"lat":39.90973623453719, "lng":-105.29296875},
-        };
-        
-        if (Session.get('clientLoc')) {
-            Centers.User = Session.get('clientLoc');
-            // console.log('Setting Client Location: ', Centers.User );
-        }        
-        // if (Meteor.user()) {
-        //     let loc = Meteor.user().profile.loc;
-        //     if (loc) {let userLoc = loc.split(",");
-        //         Centers.User = {"lat": Number(userLoc[0]), "lng": Number(userLoc[1]) };
-        //         console.log("User location: " + userLoc);
-        //     }
-        // } else {
-        //     let ipInfo = Session.get('ipInfo');
-        //     let loc = ipInfo.loc;
-        //     if (loc) {
-        //         let userLoc = loc.split(",");
-        //         Centers.User = {"lat": Number(userLoc[0]), "lng": Number(userLoc[1]) } ;
-        //         console.log("Browser location: "+ userLoc);
-        //     }
-        // }
-
     //Get Client's Location using W3C HTML5 GeoLocation Standard and set Marker/InfoWindow
     // Requires that you consent to location sharing when
     // prompted by your browser. If you see the error "The Geolocation service
     // failed.", it means you probably did not give permission for the browser to
     // locate you.
 
-    let latLng = Geolocation.latLng();
 
     if (GoogleMaps.loaded() && Session.get('clientLoc')) {
-        let center = Session.get('clientLoc');
+
 // / ============================= RETURN MAP OPTIONS ==================================    
         return {
-            center: new google.maps.LatLng(center),
+            center: new google.maps.LatLng(Session.get('clientLoc')),
             // center: new google.maps.LatLng(Centers.User[0], Centers.User[1]),
             zoom: MAP_ZOOM,
             // mapTypeId:google.maps.MapTypeId.TERRAIN,

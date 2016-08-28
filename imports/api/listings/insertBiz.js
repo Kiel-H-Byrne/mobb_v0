@@ -41,7 +41,7 @@ Meteor.methods({
 					city: city,
 					state: state,
 					zip: zip,
-					country: data.country,
+					// country: data.country,
 					url: url,
 					image: data.img,
 					phone: phone,

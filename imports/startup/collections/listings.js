@@ -170,7 +170,10 @@ Listings.attachSchema(new SimpleSchema({
   country: {
     type: String,
     max: 3,
-    optional: true
+    optional: false,
+    autovalue: function() {
+      return "USA";
+    }
   },
   url: {
     type: String,
@@ -200,7 +203,11 @@ Listings.attachSchema(new SimpleSchema({
   }, 
   categories: {
     type: [String],
-    optional: true
+    optional: true,
+    autoform: {
+      disabled: true,
+      label: false
+    },
   },
   createdAt: {
     type: Date,

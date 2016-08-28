@@ -22,16 +22,16 @@ Meteor.methods({
   		// if(!this.userId) {
   	
   			// If listing does NOT exist, 
-		    if (! _.findWhere(Listings.find().fetch(), { name: data.name || data.NAME }) ) {
-				let name = data.name || data.NAME;
-				let address = data.address1 || data.ADDRESS;
-				let city = data.city || data.CITY;
-				let state = data.state || data.STATE;
-				let zip = data.zip || data.ZIP;
-				let url = data.url || data.WEBSITE;
-				let phone = data.phone || data.PHONE;
-				let owner = data.owner || data.CONTACT;
-				let description = data.description || data.PRODUCTS_SERVICES;
+		    if (! _.findWhere(Listings.find().fetch(), { name: data.name }) ) {
+				let name = data.name;
+				let address = data.address1;
+				let city = data.city;
+				let state = data.state;
+				let zip = data.zip ;
+				let url = data.url ;
+				let phone = data.phone;
+				let owner = data.owner || data.contact;
+				let description = data.description;
 
 				Listings.insert({
 					name: name,
@@ -51,8 +51,9 @@ Meteor.methods({
 				});
 				console.log("Inserted: "+ name);
 			} else {
-				let name = data.name || data.NAME;
+				// let name = data.name;
 				// console.log("INSERT FAILED: '"+ name + "' exists.");
+				return
 			}
 		} else {
 			throw new Meteor.Error('Unauthorized for Insert');

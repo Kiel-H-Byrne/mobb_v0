@@ -27,4 +27,4 @@ Template.addForm.onRendered(function() {
 	$('#supplied').click(function() {
 	  $('.date')[this.checked ? "show" : "hide"]();
 	});
-})
+});

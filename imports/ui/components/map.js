@@ -21,6 +21,19 @@ Template.map.onCreated( function() {
         // console.log(Listings.find().count() + " Listings: ", Listings.find().fetch());
     });
 
+    $.getJSON("http://ipinfo.io", function(data){
+        console.log("-=IP INFO: SET=-");
+        // console.log(data);
+        Session.set('clientLoc', data.loc);
+
+        //              ---------------- ANALYTICS EVENT ---------------
+        analytics.track( "Browser IP Data", {
+          title: "Pulled Geo Info",
+          data: data
+        });
+        console.log("-= GA : Browser IP Data =-");
+    });
+
     GoogleMaps.ready('map', function(map) {
         console.log("-= MAP: Drawn =-");        
         console.log("-= MAP SUBSCRIBED:  ["+ Listings.find().count() + "] Listings");

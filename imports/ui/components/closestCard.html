@@ -2,7 +2,9 @@
 	<div class="row">
     <div id="closestCard" class="card horizontal small col s6 push-s3">
     	{{#if getClosest}}
-				{{closestName}}
+				{{#if closestName}}
+					{{closestName}}
+				{{/if}}
     	{{/if}}
     </div>
   </div>

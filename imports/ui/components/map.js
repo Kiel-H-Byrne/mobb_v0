@@ -22,9 +22,13 @@ Template.map.onCreated( function() {
     });
 
     $.getJSON("http://ipinfo.io", function(data){
-        console.log("-=IP INFO: SET=-");
-        // console.log(data);
-        Session.set('clientLoc', data.loc);
+
+        let arr = data.loc.split(",");
+        let lat = Number(arr[0]);
+        let lng = Number(arr[1]);
+        let browserLocation = _.object( ['lat', 'lng'], [lat, lng]);
+        console.log("clientLoc is Browser: ", browserLocation);
+        Session.set('clientLoc', browserLocation);
 
         //              ---------------- ANALYTICS EVENT ---------------
         analytics.track( "Browser IP Data", {
@@ -45,10 +49,12 @@ Template.map.onCreated( function() {
         let clientMarker;
         self.autorun(function(){
             let latLng = Geolocation.latLng();
+            console.log("clientLoc is Geo: ", latLng);
             Session.set('clientLoc', latLng);
             // console.log(latLng);
             if (!latLng)
                 return;
+
             if (!clientMarker) {
                 clientMarker = new google.maps.Marker({
                     position: new google.maps.LatLng(latLng.lat, latLng.lng),
@@ -227,10 +233,11 @@ Template.map.helpers({
 
     let latLng = Geolocation.latLng();
 
-    if (GoogleMaps.loaded() && latLng) {
+    if (GoogleMaps.loaded() && Session.get('clientLoc')) {
+        let center = Session.get('clientLoc');
 // / ============================= RETURN MAP OPTIONS ==================================    
         return {
-            center: new google.maps.LatLng(latLng.lat, latLng.lng),
+            center: new google.maps.LatLng(center),
             // center: new google.maps.LatLng(Centers.User[0], Centers.User[1]),
             zoom: MAP_ZOOM,
             // mapTypeId:google.maps.MapTypeId.TERRAIN,

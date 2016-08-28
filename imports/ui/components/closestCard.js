@@ -35,67 +35,73 @@ Template.closestCard.helpers({
 		// console.log(latLng);
 		
 		GoogleMaps.ready('map', function(map){
-				let latLng = Session.get('clientLoc');
-				let origins = latLng.lat + "," + latLng.lng;
+				if (Session.get('clientLoc')) {
+					let latLng = Session.get('clientLoc');
+					let origins = latLng.lat + "," + latLng.lng;
 			  // let destinations = ["catonsville, md", "takoma park, md", "bowie, md", "washington, dc", "wheaton, md"];
 			  //destinations = array of listing latlngs or addresses
 
 			  
-			  let destinations = [];
+				  let destinations = [];
 			  //find only those listings where first two digits of lat/long match the clients first two digits of lat/long
-			  Listings.find({}, {limit:25}).forEach(function(doc){
-		      destinations.push(doc.location);
-			  });
-			  console.log(destinations);
-			  let service = new google.maps.DistanceMatrixService();
-			  service.getDistanceMatrix({
-			      origins: [origins], //array of origins
-			      destinations: destinations, //array of destinations
-			      travelMode: google.maps.TravelMode.DRIVING,
-			      unitSystem: google.maps.UnitSystem.IMPERIAL,
-			      avoidHighways: false,
-			      avoidTolls: false
-			  }, function(res, status) {
-			      if (status != google.maps.DistanceMatrixStatus.OK) {
-		          console.log('Google DistanceMatrixStatus was: ' + status);
-			      } else {
-	  	        //we only have one origin so there should only be one row
-			        let routes = res.rows[0];
-			        // console.log(routes);
-			        //need to find the shortest 
-			        let lowest = Number.POSITIVE_INFINITY;
-			        let tmp;
-			        let shortestRouteIdx;
-			        for (let i = routes.elements.length - 1; i >= 0; i--) {
-			            tmp = routes.elements[i].duration.value;
-			            if (tmp < lowest) {
-			                lowest = tmp;
-			                shortestRouteIdx = i;
-			            }
-			        }
-			        //log the routes and duration.
-			        // $('#results').html(resultText);
-			        
-			        // console.log(res.destinationAddresses, routes.elements);
-			        let resArray = _.object(res.destinationAddresses, routes.elements);
-			        console.log(resArray);
-			        //get the shortest route
-			        let shortestRoute = resArray[shortestRouteIdx];
-			        Session.set('closestListing', shortestRoute);
+				  Listings.find({}, {limit:25}).forEach(function(doc){
+			      destinations.push(doc.location);
+				  });
+				  console.log(destinations);
+				  let service = new google.maps.DistanceMatrixService();
+				  service.getDistanceMatrix({
+				      origins: [origins], //array of origins
+				      destinations: destinations, //array of destinations
+				      travelMode: google.maps.TravelMode.DRIVING,
+				      unitSystem: google.maps.UnitSystem.IMPERIAL,
+				      avoidHighways: false,
+				      avoidTolls: false
+				  }, function(res, status) {
+				      if (status != google.maps.DistanceMatrixStatus.OK) {
+			          console.log('Google DistanceMatrixStatus was: ' + status);
+				      } else {
+		  	        //we only have one origin so there should only be one row
+				        let routes = res.rows[0];
+				        // console.log(routes);
+				        //need to find the shortest 
+				        let lowest = Number.POSITIVE_INFINITY;
+				        let tmp;
+				        let shortestRouteIdx;
+				        for (let i = routes.elements.length - 1; i >= 0; i--) {
+				            tmp = routes.elements[i].duration.value;
+				            if (tmp < lowest) {
+				                lowest = tmp;
+				                shortestRouteIdx = i;
+				            }
+				        }
+				        //log the routes and duration.
+				        // $('#results').html(resultText);
+				        
+				        // console.log(res.destinationAddresses, routes.elements);
+				        let resArray = _.object(res.destinationAddresses, routes.elements);
+				        console.log(resArray);
+				        //get the shortest route
+				        let shortestRoute = resArray[shortestRouteIdx];
+				        Session.set('closestListing', shortestRoute);
 
-			        //now we need to map the route.
-			        // calculateRoute(origins, shortestRoute)
+				        //now we need to map the route.
+				        // calculateRoute(origins, shortestRoute)
 
-			      }
-			  });
+				      }
+				  });
+			}
 		});
 		return true;
 	},
 	closestName: function() {
-		return Session.get('closestListing')[0];
+		if (Session.get('closestListing')) {
+			return Session.get('closestListing')[0];
+		}
 	},
 	closestStats: function() {
-		return Session.get('closestListing')[1];
+		if (Session.get('closestListing')) {
+			return Session.get('closestListing')[1];
+		}
 	},
 });
 

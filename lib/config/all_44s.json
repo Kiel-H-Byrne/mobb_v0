@@ -2,7 +2,7 @@
   "Listings": [
       {
         "name": "ALL AFRICAN FOOD STORES, LLC",
-        "address": "23341 FREDERICK ROAD",
+        "address1": "23341 FREDERICK ROAD",
         "city": "CLARKSBURG",
         "state": "MD",
         "zip": 20871,
@@ -20,7 +20,7 @@
       },
       {
         "name": "ANDERSON PAINT STORE, LLC",
-        "address": "18429 W. EIGHT MILE ROAD",
+        "address1": "18429 W. EIGHT MILE ROAD",
         "city": "DETROIT",
         "state": "MI",
         "zip": 48219,
@@ -38,7 +38,7 @@
       },
       {
         "name": "APEX PETROLEUM CORPORATION",
-        "address": "9500 ARENA DRIVE, SUITE 360",
+        "address1": "9500 ARENA DRIVE, SUITE 360",
         "city": "LARGO",
         "state": "MD",
         "zip": 20774,
@@ -56,7 +56,7 @@
       },
       {
         "name": "BELTWAY CLEANING SYSTEMS, LLC",
-        "address": "4505 DECLAIRMONTS FIELD DRIVE",
+        "address1": "4505 DECLAIRMONTS FIELD DRIVE",
         "city": "BOWIE",
         "state": "MD",
         "zip": 20720,
@@ -74,7 +74,7 @@
       },
       {
         "name": "BERTLAND FINE ARTS & PAINTINGS, LLC",
-        "address": "7807 BETHANY DRIVE",
+        "address1": "7807 BETHANY DRIVE",
         "city": "FORESTVILLE",
         "state": "MD",
         "zip": 20747,
@@ -92,7 +92,7 @@
       },
       {
         "name": "BIJOUX BELLAGIO, INC.",
-        "address": "3361 SAM W AVENUE",
+        "address1": "3361 SAM W AVENUE",
         "city": "CONWAY",
         "state": "NC",
         "zip": 29527,
@@ -110,7 +110,7 @@
       },
       {
         "name": "BOLDENE SYSTEMS CORPORATION",
-        "address": "7422 LEAHY ROAD",
+        "address1": "7422 LEAHY ROAD",
         "city": "NEW CARROLLTON",
         "state": "MD",
         "zip": 20784,
@@ -128,7 +128,7 @@
       },
       {
         "name": "BREATHE4SURE PHARMACY SOLUTIONS, LLC",
-        "address": "8522 SIDE SADDLE COURT",
+        "address1": "8522 SIDE SADDLE COURT",
         "city": "RANDALLSTOWN",
         "state": "MD",
         "zip": 21133,
@@ -145,7 +145,7 @@
       },
       {
         "name": "CARPET FOR PENNIES, LLC",
-        "address": "2514 MARYLAND AVENUE",
+        "address1": "2514 MARYLAND AVENUE",
         "city": "BALTIMORE",
         "state": "MD",
         "zip": 21218,
@@ -162,7 +162,7 @@
       },
       {
         "name": "COUSER SUPPLY, INC.",
-        "address": "3327 HOLLINS FERRY ROAD",
+        "address1": "3327 HOLLINS FERRY ROAD",
         "city": "LANSDOWNE",
         "state": "MD",
         "zip": 21217,
@@ -180,7 +180,7 @@
       },
       {
         "name": "CURTIS EQUIPMENT, INC.",
-        "address": "5516 COLORADO AVENUE, NW",
+        "address1": "5516 COLORADO AVENUE, NW",
         "city": "WASHINGTON",
         "state": "DC",
         "zip": 20011,
@@ -198,7 +198,7 @@
       },
       {
         "name": "DIVERSE CONCEPTS, INC.",
-        "address": "1131 BENFIELD BOULEVARD SUITE K",
+        "address1": "1131 BENFIELD BOULEVARD SUITE K",
         "city": "MILLERSVILLE",
         "state": "MD",
         "zip": 21108,
@@ -216,7 +216,7 @@
       },
       {
         "name": "DOC'S QUALITY HOMEDICAL SUPPLIES & EQUIPMENT, LLC",
-        "address": "14501 DEW DRIVE",
+        "address1": "14501 DEW DRIVE",
         "city": "BOWIE",
         "state": "MD",
         "zip": 20721,
@@ -232,7 +232,7 @@
       },
       {
         "name": "EAGLE CONSTRUCTION SOLUTIONS, LLC",
-        "address": "7600 GEORGIA AVE. NW, SUITE 204",
+        "address1": "7600 GEORGIA AVE. NW, SUITE 204",
         "city": "WASHINGTON",
         "state": "DC",
         "zip": 20012,
@@ -249,7 +249,7 @@
       },
       {
         "name": "EARLY MORNING SOFTWARE, INC.",
-        "address": "227-229 NORTH HOLLIDAY STREET",
+        "address1": "227-229 NORTH HOLLIDAY STREET",
         "city": "BALTIMORE",
         "state": "MD",
         "zip": 21202,
@@ -266,7 +266,7 @@
       },
       {
         "name": "EMERGENCY SECURITY, INC.",
-        "address": "4700 MINNESOTA AVENUE, NE",
+        "address1": "4700 MINNESOTA AVENUE, NE",
         "city": "WASHINGTON",
         "state": "DC",
         "zip": 20019,
@@ -283,7 +283,7 @@
       },
       {
         "name": "FREDDIE BELL JONES, INC.",
-        "address": "8133 ELLIOTT ROAD, SUITE 236",
+        "address1": "8133 ELLIOTT ROAD, SUITE 236",
         "city": "EASTON",
         "state": "MD",
         "zip": 21601,
@@ -300,7 +300,7 @@
       },
       {
         "name": "FURSYTH PETROLEUM FOUNDATION, INC.",
-        "address": "15619 ELSMERE COURT",
+        "address1": "15619 ELSMERE COURT",
         "city": "BOWIE",
         "state": "MD",
         "zip": 20716,
@@ -316,7 +316,7 @@
       },
       {
         "name": "G-11 ENTERPRISES, INC.",
-        "address": "7185 OLD ALEXANDER FERRY ROAD",
+        "address1": "7185 OLD ALEXANDER FERRY ROAD",
         "city": "CLINTON",
         "state": "MD",
         "zip": 20735,
@@ -333,7 +333,7 @@
       },
       {
         "name": "GALINNO TECHNOLOGY SOLUTIONS, LLC",
-        "address": "3036 NEW OAK LANE",
+        "address1": "3036 NEW OAK LANE",
         "city": "BOWIE",
         "state": "MD",
         "zip": 20716,
@@ -350,7 +350,7 @@
       },
       {
         "name": "GRANDIFF MEDICAL SUPPLIES, INC.",
-        "address": "20 VITAL WAY",
+        "address1": "20 VITAL WAY",
         "city": "SILVER SPRING",
         "state": "MD",
         "zip": 20904,
@@ -367,7 +367,7 @@
       },
       {
         "name": "K & C TECHNOLOGIES, LLC",
-        "address": "8377R PINEY ORCHARD PARKWAY",
+        "address1": "8377R PINEY ORCHARD PARKWAY",
         "city": "ODENTON",
         "state": "MD",
         "zip": 21113,
@@ -384,7 +384,7 @@
       },
       {
         "name": "LADDERS & THINGS, LLC",
-        "address": "4626 ANNAPOLIS ROAD",
+        "address1": "4626 ANNAPOLIS ROAD",
         "city": "BLADENSBURG",
         "state": "MD",
         "zip": 20710,
@@ -401,7 +401,7 @@
       },
       {
         "name": "LKA COMPUTER CONSULTANTS, INC.",
-        "address": "9658 BALTIMORE AVENUE, SUITE 100",
+        "address1": "9658 BALTIMORE AVENUE, SUITE 100",
         "city": "COLLEGE PARK",
         "state": "MD",
         "zip": 20740,
@@ -418,7 +418,7 @@
       },
       {
         "name": "LOGISTICAL TRANSPORTATION CO., INC.",
-        "address": "P.O. BOX 40001",
+        "address1": "P.O. BOX 40001",
         "city": "JACKSONVILLE",
         "state": "FL",
         "zip": "32203-0001",
@@ -435,7 +435,7 @@
       },
       {
         "name": "MAGOTHY TECHNOLOGY, LLC",
-        "address": "370 DUTCHSHIP ROAD",
+        "address1": "370 DUTCHSHIP ROAD",
         "city": "PASADENA",
         "state": "MD",
         "zip": 21122,
@@ -452,7 +452,7 @@
       },
       {
         "name": "MAINSTREET TECHNOLOGIES, INC.",
-        "address": "7125 THOMAS EDISON DRIVE, SUITE 225",
+        "address1": "7125 THOMAS EDISON DRIVE, SUITE 225",
         "city": "COLUMBIA",
         "state": "MD",
         "zip": 21046,
@@ -469,7 +469,7 @@
       },
       {
         "name": "MOLECULAR SYSTEMS, INC.",
-        "address": "1610 SUNDEW COURT",
+        "address1": "1610 SUNDEW COURT",
         "city": "MITCHELLVILLE",
         "state": "MD",
         "zip": 20721,
@@ -485,7 +485,7 @@
       },
       {
         "name": "MONTGOMERY ELECTRONICS & COMMUNICATIONS SERVICES, LLC",
-        "address": "236 MOUNTAIN RIDGE ROAD",
+        "address1": "236 MOUNTAIN RIDGE ROAD",
         "city": "MILLBROOK",
         "state": "AL",
         "zip": 36054,
@@ -502,7 +502,7 @@
       },
       {
         "name": "ODYSSEY SST BUS AND TRUCK REPAIR, INC.",
-        "address": "5200 46TH AVENUE",
+        "address1": "5200 46TH AVENUE",
         "city": "HYATTSVILLE",
         "state": "MD",
         "zip": 20781,
@@ -519,7 +519,7 @@
       },
       {
         "name": "OMNI SYSTEMS, INC.",
-        "address": "8201 GREENSBORO DRIVE, SUITE 600",
+        "address1": "8201 GREENSBORO DRIVE, SUITE 600",
         "city": "MCLEAN",
         "state": "VA",
         "zip": 22102,
@@ -536,7 +536,7 @@
       },
       {
         "name": "REHYA HEALTH SPECIFICS, LLC",
-        "address": "4 WEST ROLLING CROSSROADS",
+        "address1": "4 WEST ROLLING CROSSROADS",
         "city": "CATONSVILLE",
         "state": "MD",
         "zip": 21228,
@@ -552,7 +552,7 @@
       },
       {
         "name": "REM SERVICES, INC.",
-        "address": "3730 KIRBY DRIVE, #1200",
+        "address1": "3730 KIRBY DRIVE, #1200",
         "city": "HOUSTON",
         "state": "TX",
         "zip": 77098,
@@ -569,7 +569,7 @@
       },
       {
         "name": "SCOTT-WELLINGTON LTD., INC.",
-        "address": "3811 BARRINGTON ROAD # 1",
+        "address1": "3811 BARRINGTON ROAD # 1",
         "city": "BALTIMORE",
         "state": "MD",
         "zip": 21215,
@@ -585,7 +585,7 @@
       },
       {
         "name": "SD HOSIERY, LLC",
-        "address": "P. O. BOX 492",
+        "address1": "P. O. BOX 492",
         "city": "FREDERICK",
         "state": "MD",
         "zip": 21705,
@@ -602,7 +602,7 @@
       },
       {
         "name": "SMOOTHIE 4 LIFE, LLC",
-        "address": "10821 RED RUN BLVD SUITE 1392",
+        "address1": "10821 RED RUN BLVD SUITE 1392",
         "city": "OWINGS MILLS",
         "state": "MD",
         "zip": 21117,
@@ -619,7 +619,7 @@
       },
       {
         "name": "STOKIT SUPPLY COMPANY, INC.",
-        "address": "9714 MARRIOTTSVILLE ROAD",
+        "address1": "9714 MARRIOTTSVILLE ROAD",
         "city": "RANDALLSTOWN",
         "state": "MD",
         "zip": 21133,
@@ -635,7 +635,7 @@
       },
       {
         "name": "TAILORED BY DESIGN, LLC",
-        "address": "8 MARKET PLACE, UNIT 808",
+        "address1": "8 MARKET PLACE, UNIT 808",
         "city": "BALTIMORE",
         "state": "MD",
         "zip": 21202,
@@ -652,7 +652,7 @@
       },
       {
         "name": "TECH SNOBS, LLC",
-        "address": "10000 TOWN CENTER AVE,",
+        "address1": "10000 TOWN CENTER AVE,",
         "city": "COLUMBIA",
         "state": "MD",
         "zip": 21044,
@@ -669,7 +669,7 @@
       },
       {
         "name": "TOMAR TRUCKING, INC.",
-        "address": "8420 WARREN DRIVE",
+        "address1": "8420 WARREN DRIVE",
         "city": "POMFRET",
         "state": "MD",
         "zip": 20675,
@@ -685,7 +685,7 @@
       },
       {
         "name": "TOWNHOUSE CARPETS & INTERIORS, INC.",
-        "address": "P.O. BOX 441335",
+        "address1": "P.O. BOX 441335",
         "city": "FT. WASHINGTON",
         "state": "MD",
         "zip": 20749,
@@ -702,7 +702,7 @@
       },
       {
         "name": "ULTIMATE PONTIAC BUICK GMC, INC.",
-        "address": "5150 JEFFERSON DAVIS HIGHWAY",
+        "address1": "5150 JEFFERSON DAVIS HIGHWAY",
         "city": "FREDERICKSBURG",
         "state": "VA",
         "zip": 22408,
@@ -719,7 +719,7 @@
       },
       {
         "name": "UNIQUE TILE & MARBLE CENTER, LLC",
-        "address": "12215 T PARKLAWN DRIVE",
+        "address1": "12215 T PARKLAWN DRIVE",
         "city": "ROCKVILLE",
         "state": "MD",
         "zip": 20852,
@@ -736,7 +736,7 @@
       },
       {
         "name": "WALBROOK FLOORING, LLC",
-        "address": "2103 GARRISON BOULEVARD",
+        "address1": "2103 GARRISON BOULEVARD",
         "city": "BALTIMORE",
         "state": "MD",
         "zip": 21216,

@@ -51,6 +51,9 @@ Listings = new orion.collection('listings', {
       },{ 
         data: "phone", 
         title: "Phone" 
+      },{ 
+        data: "categories", 
+        title: "Categories" 
       },{
         data: "createdBy", 
         title: "Created By" 
@@ -194,6 +197,10 @@ Listings.attachSchema(new SimpleSchema({
     type: String,
     max: 15,
     optional: true
+  }, 
+  categories: {
+    type: [String],
+    optional: true
   },
   createdAt: {
     type: Date,
@@ -205,9 +212,7 @@ Listings.attachSchema(new SimpleSchema({
       } else {
         this.unset();
       }
-    },
-    type: "hidden"
-
+    }
   },
   createdBy: orion.attribute('createdBy'),
   // createdBy:{

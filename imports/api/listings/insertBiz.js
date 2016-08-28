@@ -53,7 +53,7 @@ Meteor.methods({
 			} else {
 				// let name = data.name;
 				// console.log("INSERT FAILED: '"+ name + "' exists.");
-				return
+				return;
 			}
 		} else {
 			throw new Meteor.Error('Unauthorized for Insert');

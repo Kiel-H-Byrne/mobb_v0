@@ -16,20 +16,11 @@ Listings = new orion.collection('listings', {
         data: "name", 
         title: "Name" 
       },{ 
-        data: "owner", 
-        title: "Owner" 
-      },{ 
-        data: "location", 
-        title: "Location" 
-      },{ 
-        data: "address1", 
-        title: "Address" 
+        data: "street", 
+        title: "Street" 
       },{ 
         data: "address2", 
         title: "Address2" 
-      },{ 
-        data: "address3", 
-        title: "Address3" 
       },{ 
         data: "city", 
         title: "City" 
@@ -43,23 +34,31 @@ Listings = new orion.collection('listings', {
         data: "country", 
         title: "Country" 
       },{ 
+        data: "phone", 
+        title: "Phone" 
+      },{ 
         data: "url", 
         title: "URL" 
       },{ 
+        data: "owner", 
+        title: "Owner" 
+      },{ 
+        data: "location", 
+        title: "Location" 
+      },{ 
         data: "img", 
         title: "Image" 
-      },{ 
-        data: "phone", 
-        title: "Phone" 
       },{ 
         data: "categories", 
         title: "Categories" 
       },{
         data: "createdBy", 
-        title: "Created By" 
+        title: "Created By",
+        orion.attributeColumn(createdBy, createdBy, 'Created By')
       },{ 
         data: "createdAt", 
-        title: "Created @" 
+        title: "Created @",
+        orion.attributeColumn(createdAt, createdAt, 'Created @') 
       },
     ]
   }
@@ -125,11 +124,11 @@ Listings.attachSchema(new SimpleSchema({
     type: String,
     optional: true,
     autoValue: function() {
-      if (this.isInsert) {
+      if (this.isInsert && !this.isSet) {
         let params = {};
         // console.log(this.docId);
         // console.log(this);
-        params.address1 = this.field("address1").value;
+        params.street = this.field("street").value;
         params.city = this.field("city").value;
         params.zip = this.field("zip").value;
         let response = Meteor.call('geoCode', params);
@@ -144,7 +143,7 @@ Listings.attachSchema(new SimpleSchema({
       }
     }
   },
-  address1: {
+  street: {
     type: String,
     max: 50
   },
@@ -152,12 +151,7 @@ Listings.attachSchema(new SimpleSchema({
     type: String,
     max: 50,
     optional: true
-  },
-  address3: {
-    type: String,
-    max: 50,
-    optional: true
-  },    
+  },  
   city: {
     type: String,
     max: 50
@@ -172,6 +166,7 @@ Listings.attachSchema(new SimpleSchema({
   },
   country: {
     type: String,
+    min: 2,
     max: 3,
     optional: true,
     autoValue: function() {
@@ -184,15 +179,6 @@ Listings.attachSchema(new SimpleSchema({
     label: 'URL',
     regEx: SimpleSchema.RegEx.Url,
     optional: true
-    // custom: function () {
-    //   if (Meteor.isClient && this.isSet) {
-    //     Meteor.call("postWithSameLink", this.value, function (error, result) {
-    //       if (!result) {
-    //         Listings.simpleSchema().namedContext("postSubmitForm").addInvalidKeys([{name: "url", type: "notUnique"}]);
-    //       }
-    //     });
-    //   }
-    // }
   },
   image: {
     type: String,
@@ -212,18 +198,7 @@ Listings.attachSchema(new SimpleSchema({
       label: false
     },
   },
-  createdAt: {
-    type: Date,
-    autoValue: function() {
-      if (this.isInsert) {
-        return new Date();
-      } else if (this.isUpsert) {
-        return {$setOnInsert: new Date(now - 7 * 3600 * 1000)};
-      } else {
-        this.unset();
-      }
-    }
-  },
+  createdAt: orion.attribute('createdAt'),
   createdBy: orion.attribute('createdBy'),
   // createdBy:{
   //   type: String,

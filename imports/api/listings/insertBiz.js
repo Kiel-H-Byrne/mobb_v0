@@ -58,7 +58,10 @@ Meteor.methods({
 		} else {
 			throw new Meteor.Error('Unauthorized for Insert');
 		}
-	}
+	},
+	newListing: function(data) {
+		Listings.insert(data);
+	},
 });
 
 

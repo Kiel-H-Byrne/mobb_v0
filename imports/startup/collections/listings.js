@@ -51,55 +51,12 @@ Listings = new orion.collection('listings', {
       },{ 
         data: "categories", 
         title: "Categories" 
-      },{
-        data: "createdBy", 
-        title: "Created By",
-        orion.attributeColumn(createdBy, createdBy, 'Created By')
-      },{ 
-        data: "createdAt", 
-        title: "Created @",
-        orion.attributeColumn(createdAt, createdAt, 'Created @') 
       },
+      orion.attributeColumn('createdBy', 'creator', 'Created By'),
+      orion.attributeColumn('createdAt', 'submitted', 'Created @'), 
     ]
   }
 });
-
-//=================== COLLECTION SECURITY =========================
-
-Listings.allow({
-
-  // only allow insertion if you are logged in
-  insert: function(userId, doc) { return !! userId;},
-  update: function(userId, doc) { return ownsDocument(userId, doc); },
-  remove: function(userId, doc) { return ownsDocument(userId, doc); },
-});
-
-// Listings.allow({
-//   insert: function (userId, doc) {
-//     // the user must be logged in, and the document must be owned by the user
-//     return (userId && doc.owner === userId);
-//   },
-//   update: function (userId, doc, fields, modifier) {
-//     // can only change your own documents
-//     return doc.owner === userId;
-//   },
-//   remove: function (userId, doc) {
-//     // can only remove your own documents
-//     return doc.owner === userId;
-//   },
-//   // fetch: ['owner']
-// });
-// Listings.deny({
-//   update: function (userId, doc, fields, modifier) {
-//     // can't change owners
-//     return _.contains(fields, 'owner');
-//   },
-//   remove: function (userId, doc) {
-//     // can't remove locked documents
-//     return doc.locked;
-//   },
-//   // fetch: ['locked'] // no need to fetch 'owner'
-// });
 
 
 //=================== SCHEMAS =========================
@@ -198,21 +155,46 @@ Listings.attachSchema(new SimpleSchema({
       label: false
     },
   },
-  createdAt: orion.attribute('createdAt'),
-  createdBy: orion.attribute('createdBy'),
-  // createdBy:{
-  //   type: String,
-  //   optional: true,
-  //   index: 1,
-  //   regEx: SimpleSchema.RegEx.Id,
-  //   autoValue: function(){
-  //     if ( this.userId && this.isInsert ) {
-  //       return this.userId;
-  //     }
-  //   }
-  // }
+  creator: orion.attribute('createdBy'),
+  submitted: orion.attribute('createdAt'),
 }));
 
+//=================== COLLECTION SECURITY =========================
+
+Listings.allow({
+
+  // only allow insertion if you are logged in
+  insert: function(userId, doc) { return !! userId;},
+  update: function(userId, doc) { return ownsDocument(userId, doc); },
+  remove: function(userId, doc) { return false; },
+});
+
+// Listings.allow({
+//   insert: function (userId, doc) {
+//     // the user must be logged in, and the document must be owned by the user
+//     return (userId && doc.owner === userId);
+//   },
+//   update: function (userId, doc, fields, modifier) {
+//     // can only change your own documents
+//     return doc.owner === userId;
+//   },
+//   remove: function (userId, doc) {
+//     // can only remove your own documents
+//     return doc.owner === userId;
+//   },
+//   // fetch: ['owner']
+// });
+// Listings.deny({
+//   update: function (userId, doc, fields, modifier) {
+//     // can't change owners
+//     return _.contains(fields, 'owner');
+//   },
+//   remove: function (userId, doc) {
+//     // can't remove locked documents
+//     return doc.locked;
+//   },
+//   // fetch: ['locked'] // no need to fetch 'owner'
+// });
 
 
 

@@ -135,7 +135,7 @@ Listings.attachSchema(new SimpleSchema({
     regEx: SimpleSchema.RegEx.Url,
     optional: true
   },
-  image: {
+  img: {
     type: String,
     regEx: SimpleSchema.RegEx.Url,
     optional: true

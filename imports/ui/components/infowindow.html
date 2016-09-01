@@ -1,28 +1,40 @@
 <template name="infowindow">
     <div class="card horizontal small">
       <div class="card-image">
-      {{#if image}}
-      	<img class="responsive-img" src="{{image}}">
-    	{{else}}
-        <!-- img class="responsive-img" src="http://lorempixel.com/100/190/nature/10" -->
-    	{{/if}}
+        {{#if img}}
+        	<img class="responsive-img" src="{{img}}">
+      	{{else}}
+          <!-- img class="responsive-img" src="http://lorempixel.com/100/190/nature/10" -->
+      	{{/if}}
       </div>
       <div class="card-stacked">
+
         <h5 class="center-align">{{name}}</h5>
+
         <div class="card-content ">
 	        <p class="info">
-          {{this.address1}} <br>
-			    {{city}} {{state}} {{zip}} <br>
-			    <a href="tel:+1{{phone}}">{{phone}}</a>
+            {{this.street}} <br>
+  			    {{city}} {{state}} {{zip}} <br>
+  			    <a href="tel:+1{{phone}}">{{phone}}</a>
           </p>
         </div>
-        {{#if url}}
-        <div class="card-action">
-          <a class="btn-floating waves-effect waves-light amber darken-3 right" target="_blank" title="Website" href="{{url}}"><i class="material-icons">link</i></a>
-          <a class="btn-floating waves-effect waves-light amber darken-3 right" target="_blank" title="Directions" href="{{url}}"><i class="material-icons">map</i></a>
+
+        <div class="fixed-action-btn horizontal click-to-toggle" style="position: absolute; right: 24px;">
+          <a class="btn-floating btn-small amber darken-3">
+            <i class="material-icons">loupe</i>
+          </a>
+          <ul>
+            {{#if url}}    
+              <li><a class="btn-floating amber-lighten-2" target="_blank" title="Website" href="{{url}}"><i class="material-icons">link</i></a></li>
+            {{/if}}
+            {{#if phone}}    
+              <li><a class="btn-floating amber" target="_blank" title="Call" href="{{url}}"><i class="material-icons">phone</i></a></li>
+            {{/if}}
+            <li><a class="btn-floating amber darken-2" title="Verify"><i class="material-icons">thumbs_up_down</i></a></li>
+            <li><a class="btn-floating amber darken-4" target="_blank"  title="Directions" href="{{url}}"><i class="material-icons">directions</i></a></li>
+          </ul>
         </div>
-        {{/if}}
+
       </div>
     </div>
 </template>
-

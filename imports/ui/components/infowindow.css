@@ -16,6 +16,10 @@ div:has(.gm-style-iw) {
 .card.small {
 	height: 200px !important;
 }
+.card.fixed-action-btn {
+  bottom: 1em;
+  right: 2em;
+}
 .card h5 {
 	margin: 2px 7px;
 }
@@ -29,3 +33,4 @@ a[href^="tel:"]:before {
   content: "\260e";
   margin-right: 0.5em;
 }
+

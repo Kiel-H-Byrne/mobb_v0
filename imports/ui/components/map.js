@@ -73,7 +73,7 @@ Template.map.onCreated( function() {
                 clientMarker.setPosition(latLng);
             }
 
-            map.instance.setCenter(clientMarker.getPosition());
+            // map.instance.setCenter(clientMarker.getPosition());
             // map.instance.setZoom(MAP_ZOOM);
         });
 

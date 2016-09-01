@@ -6,61 +6,40 @@
 // can take place, call runs from both, but should be called from client. 
 
 Meteor.methods({
-	insertBiz: function(data) {
-		
-	    // check(this.userId, String);
-	    
-	    // IF UserID does NOT exist. (Not a String)
-	    // if (! Match.test(this.userId, String)) {
-	    // 	console.log("INSERT FAILED: NO USER");
-	    // } 
+	insertBiz: function(doc) {
 
+		let obj = {};  	
+		obj.name = doc.name;
+		obj.street = doc.street;
+		obj.street2 = doc.street2;
+		obj.city = doc.city;
+		obj.state = doc.state;
+		obj.zip = doc.zip;
+		obj.url = doc.url;
+		obj.phone = doc.phone;
+		obj.img = doc.img;
+		obj.owner = doc.owner || doc.contact;
+		obj.description = doc.description;
 
-	    // IF user role is NOT ADMIN
-	    if(!Roles.userHasRole(Meteor.userId(), "admin")) {
-  			// console.log(Roles.userHasRole(Meteor.userId(), "admin"));
-  		// if(!this.userId) {
-  	
-  			// If listing does NOT exist, 
-		    if (! _.findWhere(Listings.find().fetch(), { name: data.name }) ) {
-				let name = data.name;
-				let address = data.address1;
-				let city = data.city;
-				let state = data.state;
-				let zip = data.zip ;
-				let url = data.url ;
-				let phone = data.phone;
-				let owner = data.owner || data.contact;
-				let description = data.description;
-
-				Listings.insert({
-					name: name,
-					address1: address,
-					address2: data.address2,
-					address3: data.address3,
-					city: city,
-					state: state,
-					zip: zip,
-					// country: data.country,
-					url: url,
-					image: data.img,
-					phone: phone,
-					owner: owner,
-					description: description,
-					createdBy: this.userId,
-				});
-				console.log("Inserted: "+ name);
-			} else {
-				// let name = data.name;
-				// console.log("INSERT FAILED: '"+ name + "' exists.");
-				return;
-			}
-		} else {
-			throw new Meteor.Error('Unauthorized for Insert');
-		}
+		Listings.insert({
+			name: obj.name,
+			street: obj.street,
+			address2: obj.street2,
+			city: obj.city,
+			state: obj.state,
+			zip: obj.zip,
+			url: obj.url,
+			image: obj.img,
+			phone: obj.phone,
+			owner: obj.owner,
+			description: obj.description,
+			createdBy: this.userId,
+		});
+		console.log("Inserted: "+ name);
+		return;
 	},
-	newListing: function(data) {
-		Listings.insert(data);
+	newListing: function(doc) {
+		Listings.insert(doc);
 	},
 });
 

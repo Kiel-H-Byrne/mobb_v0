@@ -81,7 +81,7 @@ Listings.attachSchema(new SimpleSchema({
     type: String,
     optional: true,
     autoValue: function() {
-      if (this.isInsert && !this.isSet) {
+      if (Meteor.isClient && this.isInsert && !this.isSet) {
         let params = {};
         // console.log(this.docId);
         // console.log(this);
@@ -91,11 +91,9 @@ Listings.attachSchema(new SimpleSchema({
         let response = Meteor.call('geoCode', params);
         // console.log(response);
         if (response) {
-          // console.log("-= LOCATION: FOUND! =-");
           return response;
         } else {
-          return;
-          // console.log("-= LOCATION: DNE =-");
+          this.unset();
         }
       }
     }

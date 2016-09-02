@@ -10,11 +10,11 @@ Template.addForm.events({
 		console.log(tpl);
 		Meteor.call('insertBiz', {
 			name: l.name,
-			address1: l.address1,
+			street: l.address1,
 			address2: l.address2,
-			address3: l.address3,
 			city: l.city,
 			state: l.state,
+			zip: l.zip
 			country: l.country
 		});
 		

@@ -73,31 +73,6 @@ Listings.attachSchema(new SimpleSchema({
     type: String,
     unique: true
   },
-  owner: {
-    type: String,
-    optional: true
-  },
-  location: {
-    type: String,
-    optional: true,
-    autoValue: function() {
-      if (Meteor.isClient && this.isInsert && !this.isSet) {
-        let params = {};
-        // console.log(this.docId);
-        // console.log(this);
-        params.street = this.field("street").value;
-        params.city = this.field("city").value;
-        params.zip = this.field("zip").value;
-        let response = Meteor.call('geoCode', params);
-        // console.log(response);
-        if (response) {
-          return response;
-        } else {
-          this.unset();
-        }
-      }
-    }
-  },
   street: {
     type: String,
     max: 50
@@ -128,6 +103,11 @@ Listings.attachSchema(new SimpleSchema({
       return "USA";
     }
   },
+  phone: {
+    type: String,
+    max: 15,
+    optional: true
+  },
   url: {
     type: String,
     unique: true,
@@ -135,15 +115,35 @@ Listings.attachSchema(new SimpleSchema({
     regEx: SimpleSchema.RegEx.Url,
     optional: true
   },
+  owner: {
+    type: String,
+    optional: true
+  },
   img: {
     type: String,
     regEx: SimpleSchema.RegEx.Url,
     optional: true
   },
-  phone: {
+  location: {
     type: String,
-    max: 15,
-    optional: true
+    optional: true,
+    autoValue: function() {
+      if (Meteor.isClient && this.isInsert && !this.isSet) {
+        let params = {};
+        // console.log(this.docId);
+        // console.log(this);
+        params.street = this.field("street").value;
+        params.city = this.field("city").value;
+        params.zip = this.field("zip").value;
+        let response = Meteor.call('geoCode', params);
+        // console.log(response);
+        if (response) {
+          return response;
+        } else {
+          this.unset();
+        }
+      }
+    }
   }, 
   categories: {
     type: [String],
@@ -153,9 +153,43 @@ Listings.attachSchema(new SimpleSchema({
       label: false
     },
   },
+  //subschema of up/downvotes and userId, timestamp, 
+  votes: {
+    type: [Object],
+  },
+  votes.$: {
+    type: VoteSchema,
+  },
+  upVotes: {
+    type: Number,
+    autoValue: function() {
+      let votes = this.field('votes');
+      if (votes.isSet && this.operator === '$set') {
+        // return votes.type['UP'].count();
+      }
+    }
+  },
+  dnVotes: {
+    type: Number,
+    autoValue: function() {
+      let votes = this.field('votes');
+      if (votes.isSet && this.operator === '$set') {
+        // return votes.type['DN'].count();
+      }
+    }
+  },  
   creator: orion.attribute('createdBy'),
   submitted: orion.attribute('createdAt'),
 }));
+
+const VoteSchema = new SimpleSchema({
+  type: {
+    type: String,
+    regEx: /^UP|DOWN|DN$/
+  },
+  voter: orion.attribute('createdBy'),
+  date: orion.attribute('createdAt'),
+});
 
 //=================== COLLECTION SECURITY =========================
 
@@ -193,6 +227,7 @@ Listings.allow({
 //   },
 //   // fetch: ['locked'] // no need to fetch 'owner'
 // });
+
 
 
 

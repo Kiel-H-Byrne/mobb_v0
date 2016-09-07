@@ -155,10 +155,10 @@ Listings.attachSchema(new SimpleSchema({
   },
   //subschema of up/downvotes and userId, timestamp, 
   votes: {
-    type: [Object],
+    type: [Object]
   },
-  votes.$: {
-    type: VoteSchema,
+  'votes.$': {
+    type: VoteSchema
   },
   upVotes: {
     type: Number,

@@ -14,7 +14,7 @@ Template.addForm.events({
 			address2: l.address2,
 			city: l.city,
 			state: l.state,
-			zip: l.zip
+			zip: l.zip,
 			country: l.country
 		});
 		

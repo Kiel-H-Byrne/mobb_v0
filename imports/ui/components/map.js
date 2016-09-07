@@ -11,15 +11,17 @@ GoogleMaps.load({
   key: Meteor.settings.public.keys.googleClient.key
 });
 
+Meteor.subscribe('listings_region', function() {
+    console.log('-= MAP SUBSCRIBING: All Listings =-');
+    console.log(Listings.find().count() + " Listings: ", Listings.find().fetch());
+});
+//Set initial center while we wait for geolocation....
+Session.set('clientLoc', {"lat":38.9072, "lng":-77.0369});
+
 // ============================= SUBSCRIPTIONS ==================================
 Template.map.onCreated( function() {  
 	console.log("-= MAP: Created =-");
     let self = this;
-
-    Meteor.subscribe('listings_region', function() {
-        console.log('-= MAP SUBSCRIBING: All Listings =-');
-        // console.log(Listings.find().count() + " Listings: ", Listings.find().fetch());
-    });
 
     // $.getJSON("http://ipinfo.io", {
     //     format: "jsonp"
@@ -41,7 +43,7 @@ Template.map.onCreated( function() {
     // });
 
 
-    Session.set('clientLoc', {"lat":38.9072, "lng":-77.0369});
+    
     GoogleMaps.ready('map', function(map) {
         console.log("-= MAP: Drawn =-");        
         console.log("-= MAP SUBSCRIBED:  ["+ Listings.find().count() + "] Listings");
@@ -52,29 +54,41 @@ Template.map.onCreated( function() {
 //need array of distances from current location
         let clientMarker;
         self.autorun(function(){
-            let latLng = Geolocation.latLng();
-            console.log("clientLoc is Geo: ", latLng);
-            Session.set('clientLoc', latLng);
-            // console.log(latLng);
-            if (!latLng)
-                return;
-
-            if (!clientMarker) {
-                clientMarker = new google.maps.Marker({
-                    position: new google.maps.LatLng(latLng.lat, latLng.lng),
-                    map: map.instance,
-                    icon: {
-                        url: 'img/orange_marker_3_sm.png'
-                    },
-                    // animation: google.maps.Animation.BOUNCE,
-                    title: "Your Location"
-                }); 
+            if (Geolocation.error(e)) {
+                console.log(e);
             } else {
-                clientMarker.setPosition(latLng);
-            }
+                let latLng = Geolocation.latLng();
+                console.log("clientLoc is Geo: ", latLng);
+                Session.set('clientLoc', latLng);
+                // console.log(latLng);
+                if (!latLng)
+                    return;
 
-            // map.instance.setCenter(clientMarker.getPosition());
-            // map.instance.setZoom(MAP_ZOOM);
+                if (!clientMarker) {
+                    clientMarker = new google.maps.Marker({
+                        position: new google.maps.LatLng(latLng.lat, latLng.lng),
+                        map: map.instance,
+                        icon: {
+                            url: 'img/orange_marker_3_sm.png'
+                        },
+                        // animation: google.maps.Animation.BOUNCE,
+                        title: "Your Location"
+                    }); 
+                } else {
+                    clientMarker.setPosition(latLng);
+                }
+
+                //if an infowindow is not open, recenter.  
+                //gmaps .getPosiotion or getContent for infoWindow maybe?
+                if (!Session.get('infoWindowOpen')) {
+                    
+                    console.log(GoogleMaps.InfoWindow);
+                    console.log(google.maps.InfoWindow.getContent());
+                    console.log(google.maps.InfoWindow);
+                    map.instance.setCenter(clientMarker.getPosition());
+                } else {console.log('info closed');}
+                // map.instance.setZoom(MAP_ZOOM);
+            }
         });
 
         let markerImage = {

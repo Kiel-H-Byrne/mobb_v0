@@ -51,6 +51,12 @@ Listings = new orion.collection('listings', {
       },{ 
         data: "categories", 
         title: "Categories" 
+      },{ 
+        data: "upVotes", 
+        title: "Up Votes" 
+      },{ 
+        data: "dnVotes", 
+        title: "Down Votes" 
       },
       orion.attributeColumn('createdBy', 'creator', 'Created By'),
       orion.attributeColumn('createdAt', 'submitted', 'Created @'), 
@@ -58,9 +64,25 @@ Listings = new orion.collection('listings', {
   }
 });
 
+// name: "bingo parlor",
+// address: "street name",
+// upVotes: [],
+// downVotes: [],
+
 
 //=================== SCHEMAS =========================
 // https://github.com/aldeed/meteor-simple-schema
+
+const VoteSchema = new SimpleSchema({
+  voter: orion.attribute('createdBy'),
+  date: orion.attribute('createdAt'),
+  comment: {
+    type: String,
+    min: 50,
+    max: 140,
+    optional: true
+  }
+});
 
 Listings.attachSchema(new SimpleSchema({
 
@@ -154,42 +176,24 @@ Listings.attachSchema(new SimpleSchema({
     },
   },
   //subschema of up/downvotes and userId, timestamp, 
-  votes: {
-    type: [Object]
+  upVotes: {
+    type: [Object],
+    optional: true
   },
-  'votes.$': {
+  'upVotes.$': {
     type: VoteSchema
   },
-  upVotes: {
-    type: Number,
-    autoValue: function() {
-      let votes = this.field('votes');
-      if (votes.isSet && this.operator === '$set') {
-        // return votes.type['UP'].count();
-      }
-    }
-  },
   dnVotes: {
-    type: Number,
-    autoValue: function() {
-      let votes = this.field('votes');
-      if (votes.isSet && this.operator === '$set') {
-        // return votes.type['DN'].count();
-      }
-    }
+    type: [Object],
+    optional: true
+  },
+  'dnVotes.$': {
+    type: VoteSchema
   },  
   creator: orion.attribute('createdBy'),
   submitted: orion.attribute('createdAt'),
 }));
 
-const VoteSchema = new SimpleSchema({
-  type: {
-    type: String,
-    regEx: /^UP|DOWN|DN$/
-  },
-  voter: orion.attribute('createdBy'),
-  date: orion.attribute('createdAt'),
-});
 
 //=================== COLLECTION SECURITY =========================
 

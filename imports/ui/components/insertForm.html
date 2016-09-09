@@ -1,0 +1,29 @@
+<template name="insertForm">
+	{{#autoForm id="afInsertDemo" type="insert" collection=Listings}}
+	  <div class="form-group {{#if afFieldIsInvalid name='name'}}has-error{{/if}}">
+	    <label class="control-label">{{afFieldLabelText name='name'}}</label>
+	    {{> afFieldInput name='name'}}
+	    {{#if afFieldIsInvalid name='firstName'}}
+	    <span class="help-block">{{{afFieldMessage name='name'}}}</span>
+	    {{/if}}
+	  </div>
+	  <div class="form-group {{#if afFieldIsInvalid name='street'}}has-error{{/if}}">
+	    <label class="control-label">{{afFieldLabelText name='street'}}</label>
+	    {{> afFieldInput name='street'}}
+	    {{#if afFieldIsInvalid name='street'}}
+	    <span class="help-block">{{{afFieldMessage name='street'}}}</span>
+	    {{/if}}
+	  </div>
+	  <div class="form-group {{#if afFieldIsInvalid name='zip'}}has-error{{/if}}">
+	    <label class="control-label">{{afFieldLabelText name='cip'}}</label>
+	    {{> afFieldInput name='zip'}}
+	    {{#if afFieldIsInvalid name='zip'}}
+	    <span class="help-block">{{{afFieldMessage name='zip'}}}</span>
+	    {{/if}}
+	  </div>
+	  <div class="form-group">
+	    <button type="submit" class="btn btn-primary">Add Listing</button>
+	    <button type="reset" class="btn btn-default">Reset Form</button>
+	  </div>
+{{/autoForm}}
+</template>

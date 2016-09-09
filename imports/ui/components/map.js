@@ -11,17 +11,17 @@ GoogleMaps.load({
   key: Meteor.settings.public.keys.googleClient.key
 });
 
-Meteor.subscribe('listings_region', function() {
-    console.log('-= MAP SUBSCRIBING: All Listings =-');
-    console.log(Listings.find().count() + " Listings: ", Listings.find().fetch());
-});
+
 //Set initial center while we wait for geolocation....
+//ideally need https method of getting IP location
 Session.set('clientLoc', {"lat":38.9072, "lng":-77.0369});
 
 // ============================= SUBSCRIPTIONS ==================================
 Template.map.onCreated( function() {  
 	console.log("-= MAP: Created =-");
     let self = this;
+
+
 
     // $.getJSON("http://ipinfo.io", {
     //     format: "jsonp"
@@ -42,7 +42,6 @@ Template.map.onCreated( function() {
     //     console.log("-= GA : Browser IP Data =-");
     // });
 
-
     
     GoogleMaps.ready('map', function(map) {
         console.log("-= MAP: Drawn =-");        
@@ -54,8 +53,12 @@ Template.map.onCreated( function() {
 //need array of distances from current location
         let clientMarker;
         self.autorun(function(){
-            if (Geolocation.error(e)) {
-                console.log(e);
+            Meteor.subscribe('listings_region', function() {
+                console.log("-= MAP SUBSCRIBED:  [" + Listings.find().count() + "] Listings");
+                console.log(Listings.find().count() + " Listings: ", Listings.find().fetch());
+            });
+            if (Geolocation.error() || Geolocation.latLng == null || Geolocation.latLng == "null") {
+                console.log(Geolocation.error().message);
             } else {
                 let latLng = Geolocation.latLng();
                 console.log("clientLoc is Geo: ", latLng);
@@ -82,11 +85,10 @@ Template.map.onCreated( function() {
                 //gmaps .getPosiotion or getContent for infoWindow maybe?
                 if (!Session.get('infoWindowOpen')) {
                     
-                    console.log(GoogleMaps.InfoWindow);
-                    console.log(google.maps.InfoWindow.getContent());
-                    console.log(google.maps.InfoWindow);
+                    console.log("InfoWindow Closed!!");
+
                     map.instance.setCenter(clientMarker.getPosition());
-                } else {console.log('info closed');}
+                } else {console.log('InfoWindow OpeN!');}
                 // map.instance.setZoom(MAP_ZOOM);
             }
         });
@@ -126,6 +128,7 @@ Template.map.onCreated( function() {
                   text = text.replace(/(\d{3})(\d{3})(\d{4})/, "$1.$2.$3");
                   return text;
                 });
+                console.log(this);
             });
 
         // google.maps.event.addListener(marker,'click',function() {
@@ -215,7 +218,8 @@ let MAP_ZOOM = 14;
 Template.map.helpers({
   geolocationError: function() {
     let error = Geolocation.error();
-    return error && error.message;
+    // return error && error.message;
+    return ;
   },
   mapOptions: function() {
 

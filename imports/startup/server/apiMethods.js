@@ -11,7 +11,7 @@ import { Accounts } from 'meteor/accounts-base';
 // var cache = new ApiCache('rest', 120);
 import './orionCache.js';
 
-const cache = new OrionCache('rest', 120);
+const cache = new OrionCache('rest', 1200);
 // console.log(cache);
 
 // ============================= SET IP INFO ==================================
@@ -82,14 +82,16 @@ Meteor.methods({
   },
   geoCode: function(address) {
     this.unblock();
+    
     let urlParams;
-    if (typeof address === "object") {
+    if (_.isEmpty(address)) {
+      return ;
+    } else if (typeof address === "object")  {
       urlParams = _.values(address);
     } else {
+      console.log(address);
       urlParams = address;
     }
-
-    console.log("***calling GEOCODE API method with "+urlParams);
     var apiUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + urlParams + '&key=' + Meteor.settings.public.keys.googleServer.key;
     console.log("--URL--"+apiUrl);
     let response = Meteor.wrapAsync(apiCall)(apiUrl);

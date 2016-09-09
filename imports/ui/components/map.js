@@ -57,7 +57,7 @@ Template.map.onCreated( function() {
                 console.log("-= MAP SUBSCRIBED:  [" + Listings.find().count() + "] Listings");
                 console.log(Listings.find().count() + " Listings: ", Listings.find().fetch());
             });
-            if (Geolocation.error() || Geolocation.latLng == null || Geolocation.latLng == "null") {
+            if (Geolocation.error() || Geolocation.latLng === null || Geolocation.latLng === "null") {
                 console.log(Geolocation.error().message);
             } else {
                 let latLng = Geolocation.latLng();

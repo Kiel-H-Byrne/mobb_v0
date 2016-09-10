@@ -84,11 +84,8 @@ Template.map.onCreated( function() {
                 //if an infowindow is not open, recenter.  
                 //gmaps .getPosiotion or getContent for infoWindow maybe?
                 if (!Session.get('infoWindowOpen')) {
-                    
-                    console.log("InfoWindow Closed!!");
-
                     map.instance.setCenter(clientMarker.getPosition());
-                } else {console.log('InfoWindow OpeN!');}
+                } else {console.log('InfoWindow OpeN, not shifting position!');}
                 // map.instance.setZoom(MAP_ZOOM);
             }
         });
@@ -128,7 +125,8 @@ Template.map.onCreated( function() {
                   text = text.replace(/(\d{3})(\d{3})(\d{4})/, "$1.$2.$3");
                   return text;
                 });
-                console.log(this);
+                // Session.set('infoWindowOpen', true);
+                
             });
 
         // google.maps.event.addListener(marker,'click',function() {

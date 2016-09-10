@@ -34,3 +34,6 @@ a[href^="tel:"]:before {
   margin-right: 0.5em;
 }
 
+#infowindow {
+  min-width: 300px;
+}

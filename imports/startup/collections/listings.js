@@ -160,8 +160,10 @@ Listings.attachSchema(new SimpleSchema({
         let response = Meteor.call('geoCode', params);
         // console.log(response);
         if (response) {
+          console.log("got values");
           return response;
         } else {
+          console.log("took too long...");
           this.unset();
         }
       }

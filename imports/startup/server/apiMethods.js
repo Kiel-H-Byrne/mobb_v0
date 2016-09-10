@@ -84,9 +84,7 @@ Meteor.methods({
     this.unblock();
     
     let urlParams;
-    if (_.isEmpty(address)) {
-      return ;
-    } else if (typeof address === "object")  {
+    if (typeof address === "object" && ! _.isEmpty(address))  {
       urlParams = _.values(address);
     } else {
       console.log(address);
@@ -98,6 +96,7 @@ Meteor.methods({
     // console.log(response);
     let loc = response.results[0].geometry.location;
     let arr =  _.values(loc);
+    // console.log(arr.toLocaleString());
     return arr.toLocaleString();
   },
   getDistance: function(orig, dest) {

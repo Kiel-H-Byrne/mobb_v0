@@ -150,7 +150,7 @@ Listings.attachSchema(new SimpleSchema({
     type: String,
     optional: true,
     autoValue: function() {
-      if (Meteor.isClient && this.isInsert && !this.isSet) {
+      if (this.isInsert && !this.isSet) {
         let params = {};
         // console.log(this.docId);
         // console.log(this);
@@ -163,7 +163,6 @@ Listings.attachSchema(new SimpleSchema({
           console.log("got values");
           return response;
         } else {
-          console.log("took too long...");
           this.unset();
         }
       }

@@ -2,7 +2,7 @@
 	<div id="modalAdd" class="modal modal-fixed-footer">
 	    <div class="modal-content">
 			<h4> Add Your Business </h4>
-			{{> quickForm collection="Listings" doc=this id="addListingForm" type="insert"}}
+			{{> quickForm collection="Listings" doc=this id="addListingForm" type="insert" omitFields="address2, location, upVotes, dnVotes"}}
 		</div>
 
 	    <div class="modal-footer">

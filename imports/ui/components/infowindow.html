@@ -29,11 +29,17 @@
             {{#if phone}}    
             <div class="col s3"><a class="btn-floating amber" target="_blank" title="Call" href="tel:+1{{phone}}"><i class="material-icons">phone</i></a></div>
             {{/if}}
-            <div class="col s3"><a class="btn-floating amber darken-2" id="verify_button" title="Verify"><i class="material-icons">thumb_up</i></a></div>
+            {{#if currentUser}}
+            <div class="col s3">
+              <a class="btn-floating amber darken-2 modal-trigger" id="verify_button" title="Verify" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
+
+            </div>
+            {{/if}}
             <div class="col s3"><a class="btn-floating amber darken-4" target="_blank"  title="Directions"><i class="material-icons">navigation</i></a></div>
+
           </div>
         </div>
       {{!-- </div> --}}
-
+              
     </div>
 </template>

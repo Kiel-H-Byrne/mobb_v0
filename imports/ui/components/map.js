@@ -94,7 +94,9 @@ Template.map.onCreated( function() {
                 //if an infowindow is not open, recenter.  
                 if (!Session.get('infoWindowOpen')) {
                     map.instance.setCenter(clientMarker.getPosition());
-                } else {console.log('InfoWindow OpeN, not shifting position!');}
+                } else {
+                    // console.log('InfoWindow OpeN, not shifting position!');
+                }
                 // map.instance.setZoom(MAP_ZOOM);
             }
         });
@@ -132,24 +134,30 @@ Template.map.onCreated( function() {
             marker.info = markerInfo;
 
             marker.addListener('click', function() {
-                console.log(doc);
                 let infoContent = Blaze.toHTMLWithData(Template.infowindow, doc);
                 this.info.setContent(infoContent);
                 this.info.open(map.instance, this);
+                
                 $(".phone").text(function(i, text) {
                   text = text.replace(/(\d{3})(\d{3})(\d{4})/, "$1.$2.$3");
                   return text;
                 });
+                $("#verify_button").click(function() {
+                    console.log("Clicked Verify button!");
+                    //open modal verify form.
+                    $('#modalVerify').openModal();
+
+                    // Listings.update({
+                    //     _id: doc._id 
+                    // },{
+                    //     $addToSet: {
+                    //         upVotes: {comment: 'This comment'}
+                    //         }
+                    // });
+                });
                 Session.set('infoWindowOpen', true);
                 
             });
-
-        // Hover for Info-Windows
-        // google.maps.event.addListener(marker, 'mouseover', function() {     
-        //     console.log(this);
-        //   marker.info.setContent(this.name);
-        //   marker.info.open(map.instance, this);
-        // });
 
         });
    
@@ -184,7 +192,7 @@ Template.map.onCreated( function() {
 });
 
 Template.map.onRendered(function() {
-    // console.log("map rendered...");
+    
 //Materialize JQuery Effects
     $(document).ready(function(){
         $('.modal-trigger').leanModal({

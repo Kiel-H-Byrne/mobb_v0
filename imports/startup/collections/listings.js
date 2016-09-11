@@ -52,10 +52,10 @@ Listings = new orion.collection('listings', {
         data: "categories", 
         title: "Categories" 
       },{ 
-        data: "upVotes", 
+        data: "upVoteCount", 
         title: "Up Votes" 
       },{ 
-        data: "dnVotes", 
+        data: "dnVoteCount", 
         title: "Down Votes" 
       },
       orion.attributeColumn('createdBy', 'creator', 'Created By'),
@@ -78,7 +78,7 @@ const VoteSchema = new SimpleSchema({
   date: orion.attribute('createdAt'),
   comment: {
     type: String,
-    min: 50,
+    min: 10,
     max: 140,
     optional: true
   }
@@ -150,7 +150,7 @@ Listings.attachSchema(new SimpleSchema({
     type: String,
     optional: true,
     autoValue: function() {
-      if (this.isInsert && !this.isSet) {
+      if (Meteor.isServer && this.isInsert && !this.isSet) {
         let params = {};
         // console.log(this.docId);
         // console.log(this);
@@ -184,12 +184,28 @@ Listings.attachSchema(new SimpleSchema({
   'upVotes.$': {
     type: VoteSchema
   },
+  upVoteCount: {
+    type: Number,
+    optional: true,
+    autoValue: function() {
+      let count = this.field("upVotes").value.length;
+      return count;
+    }
+  },
   dnVotes: {
     type: [Object],
     optional: true
   },
   'dnVotes.$': {
     type: VoteSchema
+  },
+  dnVoteCount: {
+    type: Number,
+    optional: true,
+    autoValue: function() {
+      let count = this.field("dnVotes").value.length;
+      return count;
+    }
   },  
   creator: orion.attribute('createdBy'),
   submitted: orion.attribute('createdAt'),
@@ -202,7 +218,7 @@ Listings.allow({
 
   // only allow insertion if you are logged in
   insert: function(userId, doc) { return !! userId;},
-  update: function(userId, doc) { return ownsDocument(userId, doc); },
+  update: function(userId, doc) { return true; },
   remove: function(userId, doc) { return false; },
 });
 

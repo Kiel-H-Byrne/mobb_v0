@@ -5,10 +5,21 @@ import './infowindow.html';
 import './infowindow.css';
 
 Template.infowindow.onCreated( function() {
-	
-	Session.set('infoWindowOpen', true);
+	// console.log("Template Created...");
+	// Session.set('infoWindowOpen', true);
 });
 
-Template.infowindow.events({ 
-
+Template.infowindow.events({
+	'click'(event){
+		console.log("hey!");
+	},
+	'click a'(event) {
+		event.preventDefault();
+		// console.log(this);
+		console.log(event);
+	}
 });
+
+Template.infowindow.onDestroyed(function() {
+	// console.log("Template Destroyed...");
+})

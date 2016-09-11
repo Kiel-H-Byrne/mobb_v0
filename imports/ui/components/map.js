@@ -68,12 +68,22 @@ Template.map.onCreated( function() {
                     return;
 
                 if (!clientMarker) {
+                    let icon_img = {
+                        url: 'img/orange_marker_3_sm.png'
+                    };
+                    let icon_symbol = {
+                        path: "M21 3L3 10.53v.98l6.84 2.65L12.48 21h.98L21 3z",
+                        fillColor: '#FF0000',
+                        fillOpacity: .8,
+                        anchor: new google.maps.Point(0,-3),
+                        strokeWeight: 1,
+                        scale: 1.3
+                    };
+
                     clientMarker = new google.maps.Marker({
                         position: new google.maps.LatLng(latLng.lat, latLng.lng),
                         map: map.instance,
-                        icon: {
-                            url: 'img/orange_marker_3_sm.png'
-                        },
+                        icon: icon_img,
                         // animation: google.maps.Animation.BOUNCE,
                         title: "Your Location"
                     }); 
@@ -82,7 +92,6 @@ Template.map.onCreated( function() {
                 }
 
                 //if an infowindow is not open, recenter.  
-                //gmaps .getPosiotion or getContent for infoWindow maybe?
                 if (!Session.get('infoWindowOpen')) {
                     map.instance.setCenter(clientMarker.getPosition());
                 } else {console.log('InfoWindow OpeN, not shifting position!');}
@@ -98,6 +107,11 @@ Template.map.onCreated( function() {
               content: "",
               maxWidth: 360
             });
+                // Click Button in Infowindow for upvote. 
+
+        markerInfo.addListener('closeclick', function() {
+            Session.set('infoWindowOpen', false);
+        });
 //For Each Listing, add a marker; every marker opens a global infoWindow and owns events.
         Listings.find().forEach(function(doc){
 
@@ -118,6 +132,7 @@ Template.map.onCreated( function() {
             marker.info = markerInfo;
 
             marker.addListener('click', function() {
+                console.log(doc);
                 let infoContent = Blaze.toHTMLWithData(Template.infowindow, doc);
                 this.info.setContent(infoContent);
                 this.info.open(map.instance, this);
@@ -125,24 +140,10 @@ Template.map.onCreated( function() {
                   text = text.replace(/(\d{3})(\d{3})(\d{4})/, "$1.$2.$3");
                   return text;
                 });
-                // Session.set('infoWindowOpen', true);
+                Session.set('infoWindowOpen', true);
                 
             });
 
-        // google.maps.event.addListener(marker,'click',function() {
-        // //   marker.info.setContent(this.info.content);
-        // //   marker.info.open(map.instance, this);    
-        //   let currentZoom = map.instance.getZoom();
-        //   if(currentZoom <= 14){
-        //     map.instance.setZoom(17);
-        //     map.instance.setCenter(this.getPosition());
-        //   }
-        //   else{
-        //     // map.instance.setZoom(14);
-        //     map.instance.setCenter(this.getPosition());
-        //   }
-        // });
-            
         // Hover for Info-Windows
         // google.maps.event.addListener(marker, 'mouseover', function() {     
         //     console.log(this);

@@ -1,40 +1,39 @@
 <template name="infowindow">
-    <div id="infowindow" class="card horizontal small">
-      <div class="card-image">
-        {{#if img}}
-        	<img class="responsive-img" src="{{img}}">
+    <div id="infowindow" class="card small">
+      
+{{!--       {{#if img}}
+        <div class="card-image">
+        	<img src="{{img}}">
+        </div>
       	{{else}}
-          <!-- img class="responsive-img" src="http://lorempixel.com/100/190/nature/10" -->
-      	{{/if}}
-      </div>
-      <div class="card-stacked">
+        <div class="card-image">
+          <img class="responsive-img" src="img/globe_silver.png">
+        </div>
+    	{{/if}} --}}
 
-        <h5 class="center-align">{{name}}</h5>
-
-        <div class="card-content ">
-	        <p class="info">
+      {{!-- <div class="card-stacked"> --}}
+        <div class="card-content">
+          <h5 class="center-align">{{name}}</h5>
+          <p class="info">
             {{this.street}} <br>
   			    {{city}} {{state}} {{zip}} <br>
-  			    <a href="tel:+1{{phone}}">{{phone}}</a>
+  			    <a class="phone" href="tel:+1{{phone}}">{{phone}}</a>
           </p>
         </div>
 
-        <div class="fixed-action-btn horizontal click-to-toggle" style="position: absolute; right: 24px;">
-          <a class="btn-floating btn-small amber darken-3">
-            <i class="material-icons">loupe</i>
-          </a>
-          <ul>
+        <div class="card-action hoverable">
+          <div class="row">
             {{#if url}}    
-              <li><a class="btn-floating amber-lighten-2" target="_blank" title="Website" href="{{url}}"><i class="material-icons">link</i></a></li>
+            <div class="col s3"><a class="btn-floating amber-lighten-2" target="_blank" title="Website" href="{{url}}"><i class="material-icons">link</i></a></div>
             {{/if}}
             {{#if phone}}    
-              <li><a class="btn-floating amber" target="_blank" title="Call" href="tel:1-{{phone}}"><i class="material-icons">phone</i></a></li>
+            <div class="col s3"><a class="btn-floating amber" target="_blank" title="Call" href="tel:+1{{phone}}"><i class="material-icons">phone</i></a></div>
             {{/if}}
-            <li><a class="btn-floating amber darken-2" title="Verify"><i class="material-icons">thumbs_up_down</i></a></li>
-            <li><a class="btn-floating amber darken-4" target="_blank"  title="Directions"><i class="material-icons">directions</i></a></li>
-          </ul>
+            <div class="col s3"><a class="btn-floating amber darken-2" id="verify_button" title="Verify"><i class="material-icons">thumb_up</i></a></div>
+            <div class="col s3"><a class="btn-floating amber darken-4" target="_blank"  title="Directions"><i class="material-icons">navigation</i></a></div>
+          </div>
         </div>
+      {{!-- </div> --}}
 
-      </div>
     </div>
 </template>

@@ -14,24 +14,15 @@ div:has(.gm-style-iw) {
 }
 
 .card.small {
-	height: 200px !important;
+	// height: 200px !important;
 }
-.card.fixed-action-btn {
-  bottom: 1em;
-  right: 2em;
-}
+
 .card h5 {
-	margin: 2px 7px;
+	margin: 2px auto;
 }
 
 a[href^="tel:"] {
-  color: teal;
   text-decoration: none;
-}
-
-a[href^="tel:"]:before {
-  content: "\260e";
-  margin-right: 0.5em;
 }
 
 #infowindow {

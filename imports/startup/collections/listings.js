@@ -45,10 +45,9 @@ Listings = new orion.collection('listings', {
       },{ 
         data: "location", 
         title: "Location" 
-      },{ 
-        data: "img", 
-        title: "Image" 
-      },{ 
+      },
+      orion.attributeColumn('file', 'image', 'Image'),
+      { 
         data: "categories", 
         title: "Categories" 
       },{ 
@@ -141,11 +140,10 @@ Listings.attachSchema(new SimpleSchema({
     type: String,
     optional: true
   },
-  img: {
-    type: String,
-    regEx: SimpleSchema.RegEx.Url,
+  image: orion.attribute('file', {
+    label: 'Image',
     optional: true
-  },
+  }),
   location: {
     type: String,
     optional: true,
@@ -158,16 +156,33 @@ Listings.attachSchema(new SimpleSchema({
         params.city = this.field("city").value;
         params.zip = this.field("zip").value;
         let response = Meteor.call('geoCode', params);
-        // console.log(response);
+        console.log(response);
         if (response) {
-          console.log("got values");
           return response;
         } else {
           this.unset();
         }
       }
     }
-  }, 
+  },
+  // "location.lat": {
+  //   type: Number,
+  //   autoValue: function() {
+  //     if (Meteor.isServer && this.isInsert) {
+  //       let val = this.value;
+  //       return Number(val);
+  //     }
+  //   }
+  // },
+  // "location.lng": {
+  //   type: Number,
+  //   autoValue: function() {
+  //     if (Meteor.isServer && this.isInsert) {
+  //       let val = this.value;
+  //       return Number(val);
+  //     }
+  //   }
+  // }, 
   categories: {
     type: [String],
     optional: true,
@@ -188,7 +203,9 @@ Listings.attachSchema(new SimpleSchema({
     type: Number,
     optional: true,
     autoValue: function() {
-      let count = this.field("upVotes").value.length;
+      let count = 0;
+      let exists = this.field("upVotes").value;
+      if (exists) {count = exists.length;}
       return count;
     }
   },
@@ -203,7 +220,9 @@ Listings.attachSchema(new SimpleSchema({
     type: Number,
     optional: true,
     autoValue: function() {
-      let count = this.field("dnVotes").value.length;
+      let count = 0;
+      let exists = this.field("dnVotes").value;
+      if (exists) {count = exists.length;}
       return count;
     }
   },  

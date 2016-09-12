@@ -95,9 +95,13 @@ Meteor.methods({
     let response = Meteor.wrapAsync(apiCall)(apiUrl);
     // console.log(response);
     let loc = response.results[0].geometry.location;
+    //====== RETURN LAT/LONG OBJECT LITERAL ======
+    // return loc;
+    //====== RETURN STRINGIFIED LAT/LONG NUMBERS ======
     let arr =  _.values(loc);
-    // console.log(arr.toLocaleString());
+    console.log(arr.toLocaleString());
     return arr.toLocaleString();
+
   },
   getDistance: function(orig, dest) {
     this.unblock();

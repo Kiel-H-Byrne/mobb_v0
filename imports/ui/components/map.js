@@ -14,7 +14,7 @@ GoogleMaps.load({
 
 //Set initial center while we wait for geolocation....
 //ideally need https method of getting IP location
-Session.set('clientLoc', {"lat":38.9072, "lng":-77.0369});
+// Session.set('clientLoc', {"lat":38.9072, "lng":-77.0369});
 
 // ============================= SUBSCRIPTIONS ==================================
 Template.map.onCreated( function() {  
@@ -23,39 +23,43 @@ Template.map.onCreated( function() {
 
 
 
-    // $.getJSON("http://ipinfo.io", {
-    //     format: "jsonp"
-    // }).done(function(data){
+    $.getJSON("https://freegeoip.net/json/", {
+        format: "jsonp"
+    }).done(function(data){
 
-    //     let arr = data.loc.split(",");
-    //     let lat = Number(arr[0]);
-    //     let lng = Number(arr[1]);
-    //     let browserLocation = _.object( ['lat', 'lng'], [lat, lng]);
-    //     console.log("clientLoc is Browser: ", browserLocation);
-    //     Session.set('clientLoc', browserLocation);
+//  {"ip":"69.138.161.94","country_code":"US","country_name":"United States","region_code":"MD",
+//  "region_name":"Maryland","city":"Silver Spring","zip_code":"20902","time_zone":"America/New_York",
+//  "latitude":39.0409,"longitude":-77.0445,"metro_code":511}
+        let lat = data.latitude;
+        let lng = data.longitude;
+        let browserLocation = _.object( ['lat', 'lng'], [lat, lng]);
+        console.log("clientLoc is Browser: ", browserLocation);
+        Session.set('clientLoc', browserLocation);
+        Session.set('clientState', data.region_code);
 
-    //     //              ---------------- ANALYTICS EVENT ---------------
-    //     analytics.track( "Browser IP Data", {
-    //       title: "Pulled Geo Info",
-    //       data: data
-    //     });
-    //     console.log("-= GA : Browser IP Data =-");
-    // });
+        //              ---------------- ANALYTICS EVENT ---------------
+        analytics.track( "Browser IP Data", {
+          title: "Pulled Geo Info",
+          data: data
+        });
+        console.log("-= GA : Browser IP Data =-");
+    });
 
     
     GoogleMaps.ready('map', function(map) {
         console.log("-= MAP: Drawn =-");        
-        console.log("-= MAP SUBSCRIBED:  ["+ Listings.find().count() + "] Listings");
-
-
 //if location changes, show new marker and recalculate closest business. 
 
 //need array of distances from current location
         let clientMarker;
         self.autorun(function(){
+            //automatically re-subscribe to the database when my lat/long changes, resubscribe to listings in my area
             Meteor.subscribe('listings_region', function() {
                 console.log("-= MAP SUBSCRIBED:  [" + Listings.find().count() + "] Listings");
                 console.log(Listings.find().count() + " Listings: ", Listings.find().fetch());
+                return Listings.find();
+                //find listings in my state, or that match the same lat/long digits as me (first two digits)
+                // return Listings.find({state: state});
             });
             if (Geolocation.error() || Geolocation.latLng === null || Geolocation.latLng === "null") {
                 console.log(Geolocation.error().message);
@@ -114,15 +118,18 @@ Template.map.onCreated( function() {
         markerInfo.addListener('closeclick', function() {
             Session.set('infoWindowOpen', false);
         });
-//For Each Listing, add a marker; every marker opens a global infoWindow and owns events.
+        
         Listings.find().forEach(function(doc){
-
-            //latLngObj needs to be google latLng object literal; 
+            //For Each Listing, add a marker; every marker opens a global infoWindow and owns events.
+            
+            //===== CONVERT DOC LOCATION FIELD FROM STRINGIFIED ARRAY TO OBJECT LITERAL =====
             let latLng = doc.location.split(",");
             let lat = Number(latLng[0]);
             let lng = Number(latLng[1]);
             let latLngObj = _.object( ['lat', 'lng'], [lat, lng]);
-            // console.log(latLngObj);
+
+            //===== LEAVE DOC LOCATION FIELD AS OBJECT LITERAL =====
+            // let latLngObj = doc.location;
 
             //--   Place Markers on map
             let marker = new google.maps.Marker({
@@ -156,6 +163,7 @@ Template.map.onCreated( function() {
                     // });
                 });
                 Session.set('infoWindowOpen', true);
+                Session.set('openListing', doc._id);
                 
             });
 

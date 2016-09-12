@@ -8,8 +8,8 @@
 			</form> --}}
 
 			{{!-- {{> quickForm collection="Listings.upVotes" doc=this id="verifyForm" type="insert"}} --}}
-			{{> quickForm id="verifyForm" type="update-pushArray" collection="Listings" doc=thi scope="upVotes"}}
-			{{> quickForm id="verifyForm" type="update-pushArray" collection="Listings" doc=thi scope="dnVotes"}}
+			{{> quickForm id="upVoteForm" type="update-pushArray" collection="Listings" doc=this scope="upVotes"}}
+			{{> quickForm id="dnVoteForm" type="update-pushArray" collection="Listings" doc=this scope="dnVotes"}}
 		</div>
 
     <div class="modal-footer">

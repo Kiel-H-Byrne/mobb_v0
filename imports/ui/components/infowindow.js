@@ -15,4 +15,4 @@ Template.infowindow.events({
 
 Template.infowindow.onDestroyed(function() {
 	
-})
+});

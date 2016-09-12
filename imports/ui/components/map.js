@@ -78,7 +78,7 @@ Template.map.onCreated( function() {
                     let icon_symbol = {
                         path: "M21 3L3 10.53v.98l6.84 2.65L12.48 21h.98L21 3z",
                         fillColor: '#FF0000',
-                        fillOpacity: .8,
+                        fillOpacity: 0.8,
                         anchor: new google.maps.Point(0,-3),
                         strokeWeight: 1,
                         scale: 1.3

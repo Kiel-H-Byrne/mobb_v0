@@ -2,12 +2,13 @@
   <div id="modalVerify" class="modal modal-fixed-footer">
     <div class="modal-content">
 			<h4> Add Comment </h4>
-{{!-- 			<form class="col s12 m8 l8">
+ 			<!-- form class="col s12 m8 l8">
 				<input id="Comment" type="textarea" name="Comment" />
 				<label for="Comment">Comment</label>
-			</form> --}}
+			</form --> 
 
 			{{!-- {{> quickForm collection="Listings.upVotes" doc=this id="verifyForm" type="insert"}} --}}
+			
 			{{> quickForm id="upVoteForm" type="update-pushArray" collection="Listings" doc=this scope="upVotes"}}
 			{{> quickForm id="dnVoteForm" type="update-pushArray" collection="Listings" doc=this scope="dnVotes"}}
 		</div>

@@ -33,7 +33,7 @@ Template.map.onCreated( function() {
         let lat = data.latitude;
         let lng = data.longitude;
         let browserLocation = _.object( ['lat', 'lng'], [lat, lng]);
-        console.log("clientLoc is Browser: ", browserLocation);
+        // console.log("clientLoc is Browser: ", browserLocation);
         Session.set('clientLoc', browserLocation);
         Session.set('clientState', data.region_code);
 
@@ -83,10 +83,59 @@ Template.map.onCreated( function() {
             //====== AUTO-RESUBSCRIBE TO NEW LISTINGS WHEN MY LOCATION CHANGES ====== //
             Meteor.subscribe('listings_region', function() {
                 console.log("-= MAP SUBSCRIBED:  [" + Listings.find().count() + "] Listings");
-                console.log(Listings.find().count() + " Listings: ", Listings.find().fetch());
-                return Listings.find();
+                // console.log(Listings.find().count() + " Listings: ", Listings.find().fetch());
                 //find listings in my state, or that match the same lat/long digits as me (first two digits)
                 // return Listings.find({state: state});
+
+                // Listings.find().forEach(function(doc){
+                //     //For Each Listing, add a marker; every marker opens a global infoWindow and owns events.
+                    
+                //     //===== CONVERT DOC LOCATION FIELD FROM STRINGIFIED ARRAY TO OBJECT LITERAL =====
+                //     let latLng = doc.location.split(",");
+                //     let lat = Number(latLng[0]);
+                //     let lng = Number(latLng[1]);
+                //     let latLngObj = _.object( ['lat', 'lng'], [lat, lng]);
+
+                //     //===== LEAVE DOC LOCATION FIELD AS OBJECT LITERAL =====
+                //     // let latLngObj = doc.location;
+
+                //     //--   Place Markers on map
+                //     let marker = new google.maps.Marker({
+                //       position: latLngObj,
+                //       map: map.instance,
+                //       icon: markerImage,
+                //     });
+                //     marker.set('title', doc.name);
+                //     marker.info = markerInfo;
+
+                //     marker.addListener('click', function() {
+                //         let infoContent = Blaze.toHTMLWithData(Template.infowindow, doc);
+                //         this.info.setContent(infoContent);
+                //         this.info.open(map.instance, this);
+                        
+                //         $(".phone").text(function(i, text) {
+                //           text = text.replace(/(\d{3})(\d{3})(\d{4})/, "$1.$2.$3");
+                //           return text;
+                //         });
+                //         $("#verify_button").click(function() {
+                //             console.log("Clicked Verify button!");
+                //             //open modal verify form.
+                //             $('#modalVerify').openModal();
+
+                //             // Listings.update({
+                //             //     _id: doc._id 
+                //             // },{
+                //             //     $addToSet: {
+                //             //         upVotes: {comment: 'This comment'}
+                //             //         }
+                //             // });
+                //         });
+                //         Session.set('infoWindowOpen', true);
+                //         Session.set('openListing', doc._id);
+                       
+                //     });
+                // });
+
             });
             //====== AUTO CALCULATE MY LOCATION AND DRAW NEW MARKER WHEN IT CHANGES ======
             //====== AUTO CALCULATE NEW CLOSEST BUSINESS WHEN MY LOCATION CHANGES ======
@@ -95,7 +144,7 @@ Template.map.onCreated( function() {
                 return;
             } else {
                 let latLng = Geolocation.latLng();
-                console.log("clientLoc is Geo: ", latLng);
+                // console.log("clientLoc is Geo: ", latLng);
                 Session.set('clientLoc', latLng);
 
                 if (!latLng)
@@ -181,6 +230,8 @@ Template.map.onCreated( function() {
                    
                 });
             });
+
+
         });   
 
         // ========================= DOM Events relating to Map =========================

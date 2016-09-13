@@ -87,7 +87,7 @@ Meteor.methods({
     if (typeof address === "object" && ! _.isEmpty(address))  {
       urlParams = _.values(address);
     } else {
-      console.log(address);
+      // console.log(address);
       urlParams = address;
     }
     var apiUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + urlParams + '&key=' + Meteor.settings.public.keys.googleServer.key;
@@ -99,7 +99,7 @@ Meteor.methods({
     // return loc;
     //====== RETURN STRINGIFIED LAT/LONG NUMBERS ======
     let arr =  _.values(loc);
-    console.log(arr.toLocaleString());
+    // console.log(arr.toLocaleString());
     return arr.toLocaleString();
 
   },

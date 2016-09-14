@@ -4,7 +4,20 @@ OrionCache = function(cacheName, ttl) {
     pluaralName : 'caches',
     link : {title: 'Caches'}, 
     tabular : {
-      columns : []
+      columns : [
+        { 
+          data: "key", 
+          title: "API Call" 
+        },{ 
+          data: "value", 
+          title: "API Response" 
+        },
+          // orion.attributeColumn('createdAt', 'createdAt', 'Retrieved @')
+          {
+            data: "createdAt",
+            title: "Retrieved @"
+          }
+      ]
     }
   });                                                                           
   // apply index for key                                                         
@@ -30,7 +43,8 @@ OrionCache.prototype.set = function (key, value) {
     {                                                                            
       key: key,                                                                  
       value: value,                                                              
-      createdAt: new Date()                                                      
+      // createdAt: orion.attribute('createdAt'),
+      createdAt: new Date()
     }                                                                            
   );                                                                             
 };
@@ -48,5 +62,7 @@ OrionCache.prototype.get = function (key) {
   }                                                                              
   return value;
 };
+
+
 
 export default OrionCache;

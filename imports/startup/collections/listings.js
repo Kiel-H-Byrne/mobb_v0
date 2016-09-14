@@ -93,13 +93,13 @@ const VoteSchema = new SimpleSchema({
   // date: orion.attribute('createdAt'),
   comment: {
     type: String,
-    min: 10,
+    min: 5,
     max: 140,
     optional: true
   }
 });
 
-Votes.AttachSchema(VoteSchema);
+Votes.attachSchema(VoteSchema);
 
 Listings.attachSchema(new SimpleSchema({
 

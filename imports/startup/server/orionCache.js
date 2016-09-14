@@ -12,7 +12,11 @@ OrionCache = function(cacheName, ttl) {
           data: "value", 
           title: "API Response" 
         },
-        orion.attributeColumn('createdAt', 'submitted', 'Created @')
+          // orion.attributeColumn('createdAt', 'createdAt', 'Retrieved @')
+          {
+            data: "createdAt",
+            title: "Retrieved @"
+          }
       ]
     }
   });                                                                           
@@ -39,7 +43,8 @@ OrionCache.prototype.set = function (key, value) {
     {                                                                            
       key: key,                                                                  
       value: value,                                                              
-      createdAt: orion.attribute('createdAt'),                                                     
+      // createdAt: orion.attribute('createdAt'),
+      createdAt: new Date()
     }                                                                            
   );                                                                             
 };

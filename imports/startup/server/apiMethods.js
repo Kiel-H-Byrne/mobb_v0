@@ -11,7 +11,7 @@ import { Accounts } from 'meteor/accounts-base';
 // var cache = new ApiCache('rest', 120);
 import './orionCache.js';
 
-const cache = new OrionCache('rest', 1200);
+const cache = new OrionCache('rest', 6000);
 // console.log(cache);
 
 // ============================= SET IP INFO ==================================

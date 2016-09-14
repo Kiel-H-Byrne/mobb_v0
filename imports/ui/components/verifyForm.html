@@ -1,4 +1,4 @@
-<template name="verifyForm">
+<template name="verifyForm2">
   <div id="modalVerify" class="modal modal-fixed-footer">
     <div class="modal-content">
 			<h4> Add Comment </h4>
@@ -9,8 +9,8 @@
 
 			{{!-- {{> quickForm collection="Listings.upVotes" doc=this id="verifyForm" type="insert"}} --}}
 			
-			{{> quickForm id="upVoteForm" type="update-pushArray" collection="Listings" doc=this scope="upVotes"}}
-			{{> quickForm id="dnVoteForm" type="update-pushArray" collection="Listings" doc=this scope="dnVotes"}}
+			{{> quickForm id="upVoteForm" type="update-pushArray" collection="Listings" doc=this scope="upVotes" schema=VoteSchema}}
+			{{!-- {{> quickForm id="dnVoteForm" type="update-pushArray" collection="Listings" doc=this scope="dnVotes"}} --}}
 		</div>
 
     <div class="modal-footer">
@@ -20,5 +20,14 @@
 		</div>
   </div>
 
+</template>
+
+<template name="verifyForm">
+  <div id="modalVerify" class="modal modal-fixed-footer">
+    <div class="modal-content">
+			<h4> Add Comment </h4>
+			{{> quickForm id="upVoteForm" type="update-pushArray" collection="Listings" doc=this scope="upVotes" schema=VoteSchema}}
+		</div>
+  </div>
 </template>
 

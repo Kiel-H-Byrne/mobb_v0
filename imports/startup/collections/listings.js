@@ -63,18 +63,34 @@ Listings = new orion.collection('listings', {
   }
 });
 
-// name: "bingo parlor",
-// address: "street name",
-// upVotes: [],
-// downVotes: [],
-
+Votes = new orion.collection('votes', {
+  singularName: 'Vote', // The name of one of these items
+  pluralName: 'Votes', // The name of more than one of these items
+  link: { title: 'Votes' },
+  /**
+   * Tabular settings for this collection
+   */
+  tabular: {
+    columns: [
+          orion.attributeColumn('createdBy', 'creator', 'Voted By'),
+          orion.attributeColumn('createdAt', 'voted', 'Voted @'),
+          {
+            data: "comment",
+            title: "Comment"
+          }
+        ]
+      }
+});
 
 //=================== SCHEMAS =========================
 // https://github.com/aldeed/meteor-simple-schema
+// const catArray = ["Agriculture, Fishing, Forestry","Apparel & Accessories","Automotive Services","Business Services","Family & Community","Building & Construction","Education","Entertainment & Media","Finance & Legal","Food & Dining","Health & Medicine","Home & Garden","Industrial Supplies & Services","Information Technology","Personal Care & Beauty","Real Estate & Insurance","Retail","Online Only","Sole Proprietor","Female Owned","Owner Under 21","Operating Over 10","Operating over 20","Operating over 50","Travel & Transportation","Lodging","Sports & Recreation","Boutique","Haberdashery","Wholesale"];
+
+const catObjs = [{"label":"Agriculture, Fishing, Forestry","value":"Agriculture, Fishing, Forestry"},{"label":"Apparel & Accessories","value":"Apparel & Accessories"},{"label":"Automotive Services","value":"Automotive Services"},{"label":"Business Services","value":"Business Services"},{"label":"Family & Community","value":"Family & Community"},{"label":"Building & Construction","value":"Building & Construction"},{"label":"Education","value":"Education"},{"label":"Entertainment & Media","value":"Entertainment & Media"},{"label":"Finance & Legal","value":"Finance & Legal"},{"label":"Food & Dining","value":"Food & Dining"},{"label":"Health & Medicine","value":"Health & Medicine"},{"label":"Home & Garden","value":"Home & Garden"},{"label":"Industrial Supplies & Services","value":"Industrial Supplies & Services"},{"label":"Information Technology","value":"Information Technology"},{"label":"Personal Care & Beauty","value":"Personal Care & Beauty"},{"label":"Real Estate & Insurance","value":"Real Estate & Insurance"},{"label":"Retail","value":"Retail"},{"label":"Online Only","value":"Online Only"},{"label":"Sole Proprietor","value":"Sole Proprietor"},{"label":"Female Owned","value":"Female Owned"},{"label":"Owner Under 21","value":"wner Under 21"},{"label":"Operating Over 10","value":"Operating Over 10"},{"label":"Operating over 20","value":"Operating over 20"},{"label":"Operating over 50","value":"Operating over 50"},{"label":"Travel & Transportation","value":"Travel & Transportation"},{"label":"Lodging","value":"Lodging"},{"label":"Sports & Recreation","value":"Sports & Recreation"},{"label":"Boutique","value":"Boutique"},{"label":"Haberdashery","value":"Haberdashery"},{"label":"Wholesale","value":"Wholesale"}];
 
 const VoteSchema = new SimpleSchema({
   voter: orion.attribute('createdBy'),
-  date: orion.attribute('createdAt'),
+  // date: orion.attribute('createdAt'),
   comment: {
     type: String,
     min: 10,
@@ -82,6 +98,8 @@ const VoteSchema = new SimpleSchema({
     optional: true
   }
 });
+
+Votes.AttachSchema(VoteSchema);
 
 Listings.attachSchema(new SimpleSchema({
 
@@ -109,7 +127,13 @@ Listings.attachSchema(new SimpleSchema({
   },
   state: {
     type: String,
-    regEx: /^A[LKSZRAEP]|C[AOT]|D[EC]|F[LM]|G[AU]|HI|I[ADLN]|K[SY]|LA|M[ADEHINOPST]|N[CDEHJMVY]|O[HKR]|P[ARW]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY]$/
+    // regEx: /^A[LKSZRAEP]|C[AOT]|D[EC]|F[LM]|G[AU]|HI|I[ADLN]|K[SY]|LA|M[ADEHINOPST]|N[CDEHJMVY]|O[HKR]|P[ARW]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY]$/
+    allowedValues: ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"],
+    autoform: {
+      afFieldInput: {
+        firstOption: "(Select a State)"
+      }
+    }
   },
   zip: {
     type: String,
@@ -156,7 +180,7 @@ Listings.attachSchema(new SimpleSchema({
         params.city = this.field("city").value;
         params.zip = this.field("zip").value;
         let response = Meteor.call('geoCode', params);
-        console.log(response);
+        // console.log(response);
         if (response) {
           return response;
         } else {
@@ -186,10 +210,13 @@ Listings.attachSchema(new SimpleSchema({
   categories: {
     type: [String],
     optional: true,
+    // allowedValues: catArray,
     autoform: {
-      disabled: true,
-      label: false
-    },
+      type: "select-checkbox-inline",
+      options: function () {
+        return catObjs;
+      }
+    }
   },
   //subschema of up/downvotes and userId, timestamp, 
   upVotes: {

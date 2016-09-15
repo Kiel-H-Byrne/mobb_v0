@@ -234,7 +234,7 @@ Template.map.onCreated( function() {
                 //if an infowindow is not open, recenter.  
                 if (!Session.get('infoWindowOpen')) {
                     map.instance.setCenter(clientMarker.getPosition());
-                    map.instance.setZoom(15);
+                    // map.instance.setZoom(15);
                 } else {
                     // console.log('InfoWindow OpeN, not shifting position!');
                 }

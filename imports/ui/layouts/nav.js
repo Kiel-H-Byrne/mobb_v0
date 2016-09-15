@@ -8,8 +8,9 @@ import './nav.html';
 
 
 Template.nav.onRendered( function() {
-	$(document).ready(function(){
-		$(".button-collapse").sideNav();
-	});
+// ====== WHAT IS THIS FOR? 
+	// $(document).ready(function(){
+	// 	$(".button-collapse").sideNav();
+	// });
 });
 

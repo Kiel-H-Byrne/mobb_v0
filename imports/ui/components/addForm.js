@@ -28,3 +28,23 @@ import './addForm.html';
 // 	  $('.date')[this.checked ? "show" : "hide"]();
 // 	});
 // });
+
+
+AutoForm.addHooks('addListingForm', {
+	  // Called when form does not have a `type` attribute or is 'normal'
+    onSubmit: function (insertDoc, updateDoc, currentDoc) {
+        this.event.preventDefault();
+        console.log('Just submitted form, from addform.js');
+        //close modal on submit
+        $('#modalAdd').closeModal();
+
+		    this.done(); // submitted successfully, call onSuccess
+		    return false
+    },
+
+  // Called when any submit operation succeeds
+  onSuccess: function(formType, result) {
+  	console.log("Thanks for Submitting!");
+  	$('#modalAdd').closeModal();
+  },
+});

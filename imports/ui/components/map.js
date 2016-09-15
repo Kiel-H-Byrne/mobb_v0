@@ -186,51 +186,52 @@ Template.map.onCreated( function() {
                 //For Each Listing, add a marker; every marker opens a global infoWindow and owns events.
                 
                 //===== CONVERT DOC LOCATION FIELD FROM STRINGIFIED ARRAY TO OBJECT LITERAL =====
-                let latLng = doc.location.split(",");
-                let lat = Number(latLng[0]);
-                let lng = Number(latLng[1]);
-                let latLngObj = _.object( ['lat', 'lng'], [lat, lng]);
+                if (doc.location) {
+                    let latLng = doc.location.split(",");
+                    let lat = Number(latLng[0]);
+                    let lng = Number(latLng[1]);
+                    let latLngObj = _.object( ['lat', 'lng'], [lat, lng]);
 
-                //===== LEAVE DOC LOCATION FIELD AS OBJECT LITERAL =====
-                // let latLngObj = doc.location;
+                    //===== LEAVE DOC LOCATION FIELD AS OBJECT LITERAL =====
+                    // let latLngObj = doc.location;
 
-                //--   Place Markers on map
-                let marker = new google.maps.Marker({
-                  position: latLngObj,
-                  map: map.instance,
-                  icon: markerImage,
-                });
-                marker.set('title', doc.name);
-                marker.info = markerInfo;
-
-                marker.addListener('click', function() {
-                    let infoContent = Blaze.toHTMLWithData(Template.infowindow, doc);
-                    this.info.setContent(infoContent);
-                    this.info.open(map.instance, this);
-                    
-                    $(".phone").text(function(i, text) {
-                      text = text.replace(/(\d{3})(\d{3})(\d{4})/, "$1.$2.$3");
-                      return text;
+                    //--   Place Markers on map
+                    let marker = new google.maps.Marker({
+                      position: latLngObj,
+                      map: map.instance,
+                      icon: markerImage,
                     });
-                    $("#verify_button").click(function() {
-                        console.log("Clicked Verify button!");
-                        //open modal verify form.
-                        $('#modalVerify').openModal();
+                    marker.set('title', doc.name);
+                    marker.info = markerInfo;
 
-                        // Listings.update({
-                        //     _id: doc._id 
-                        // },{
-                        //     $addToSet: {
-                        //         upVotes: {comment: 'This comment'}
-                        //         }
-                        // });
+                    marker.addListener('click', function() {
+                        let infoContent = Blaze.toHTMLWithData(Template.infowindow, doc);
+                        this.info.setContent(infoContent);
+                        this.info.open(map.instance, this);
+                        
+                        $(".phone").text(function(i, text) {
+                          text = text.replace(/(\d{3})(\d{3})(\d{4})/, "$1.$2.$3");
+                          return text;
+                        });
+                        $("#verify_button").click(function() {
+                            console.log("Clicked Verify button!");
+                            //open modal verify form.
+                            $('#modalVerify').openModal();
+
+                            // Listings.update({
+                            //     _id: doc._id 
+                            // },{
+                            //     $addToSet: {
+                            //         upVotes: {comment: 'This comment'}
+                            //         }
+                            // });
+                        });
+                        Session.set('infoWindowOpen', true);
+                        Session.set('openListing', doc._id);
+                       
                     });
-                    Session.set('infoWindowOpen', true);
-                    Session.set('openListing', doc._id);
-                   
-                });
+                } // else cannot place marker on map, it does not have lat/lng yet
             });
-
 
         });   
 

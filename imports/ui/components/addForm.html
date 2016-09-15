@@ -1,4 +1,4 @@
-<template name="addForm_qf">
+<template name="addForm">
 	<div id="modalAdd" class="modal modal-fixed-footer">
     <div class="modal-content">
 			<h4> Add Your Business </h4>
@@ -17,7 +17,7 @@
 <template name="addForm_af">
   <!-- Modal Structure -->
   <div id="modalAdd" class="modal modal-fixed-footer">
-			{{#autoForm id="addListingForm2" type="normal" collection="Listings" doc=this}}
+			{{#autoForm id="addListingForm_af" type="normal" collection="Listings" doc=this}}
 		    <div class="modal-content">
 					<h4> Add Your Business </h4>
 			  {{> afQuickField name="name"}}
@@ -37,33 +37,4 @@
 
 			{{/autoForm}}
 	</div>
-</template>
-
-<template name="addForm_">
-	<form class="col s12 m8 l8">
-		<input id="Name" type="text" name="Name" />
-		<label for="Name">Name</label>
-
-		<input id="Street" type="text" name="Street" />
-		<label for="Street">Street</label>
-
-		<input id="Street2" type="text" name="Address 2" />
-		<label for="Street2">Address 2</label>
-
-		<input id="City" type="text" name="City" />
-		<label for="City">City</label>
-
-		<input id="Zip" type="text" name="Zipcode" />
-		<label for="Zip">Zipcode</label>
-
-		<input id="State" type="text" name="State" />
-		<label for="State">State</label>
-
-		<input id="Phone" type="text" name="Phone" />
-		<label for="Phone">Phone:</label>
-
-		<input id="Owner" type="text" name="Owner Name" />
-		<label for="Owner">Owner Name</label>
-
-	</form>
 </template>

@@ -15,8 +15,7 @@ import './map.html';
 
 //====== GLOBALS ======
 
-let MAP_ZOOM = 14;
-// Session.set('clientLoc', {"lat":38.9072, "lng":-77.0369});
+let MAP_ZOOM = 3;
 
 // ============================= SUBSCRIPTIONS ==================================
 Template.map.onCreated( function() {  
@@ -26,7 +25,7 @@ Template.map.onCreated( function() {
     $.getJSON("https://freegeoip.net/json/", {
         format: "jsonp"
     }).done(function(data){
-
+        console.log(data);
         //  {"ip":"69.138.161.94","country_code":"US","country_name":"United States","region_code":"MD",
         //  "region_name":"Maryland","city":"Silver Spring","zip_code":"20902","time_zone":"America/New_York",
         //  "latitude":39.0409,"longitude":-77.0445,"metro_code":511}
@@ -34,7 +33,8 @@ Template.map.onCreated( function() {
         let lng = data.longitude;
         let browserLocation = _.object( ['lat', 'lng'], [lat, lng]);
         // console.log("clientLoc is Browser: ", browserLocation);
-        Session.set('clientLoc', browserLocation);
+        Session.set('browserLoc', browserLocation);
+
         Session.set('clientState', data.region_code);
 
         //              ---------------- ANALYTICS EVENT ---------------
@@ -64,6 +64,7 @@ Template.map.onCreated( function() {
         //====== WHEN INFOWINDOW CLOSES, SET A SESSION VARIABLE ======
         markerInfo.addListener('closeclick', function() {
             Session.set('infoWindowOpen', false);
+
         });
 
         // var cirColor = getColor(listing);
@@ -137,6 +138,9 @@ Template.map.onCreated( function() {
                 // });
 
             });
+        });            
+        
+        self.autorun(function(){    
             //====== AUTO CALCULATE MY LOCATION AND DRAW NEW MARKER WHEN IT CHANGES ======
             //====== AUTO CALCULATE NEW CLOSEST BUSINESS WHEN MY LOCATION CHANGES ======
             if (Geolocation.error() || Geolocation.latLng === null || Geolocation.latLng === "null") {
@@ -176,79 +180,71 @@ Template.map.onCreated( function() {
                 //if an infowindow is not open, recenter.  
                 if (!Session.get('infoWindowOpen')) {
                     map.instance.setCenter(clientMarker.getPosition());
+                    map.instance.setZoom(15);
                 } else {
                     // console.log('InfoWindow OpeN, not shifting position!');
                 }
                 // map.instance.setZoom(MAP_ZOOM);
             }
-              
-            Listings.find().forEach(function(doc){
-                //For Each Listing, add a marker; every marker opens a global infoWindow and owns events.
-                
-                //===== CONVERT DOC LOCATION FIELD FROM STRINGIFIED ARRAY TO OBJECT LITERAL =====
-                if (doc.location) {
-                    let latLng = doc.location.split(",");
-                    let lat = Number(latLng[0]);
-                    let lng = Number(latLng[1]);
-                    let latLngObj = _.object( ['lat', 'lng'], [lat, lng]);
-
-                    //===== LEAVE DOC LOCATION FIELD AS OBJECT LITERAL =====
-                    // let latLngObj = doc.location;
-
-                    //--   Place Markers on map
-                    let marker = new google.maps.Marker({
-                      position: latLngObj,
-                      map: map.instance,
-                      icon: markerImage,
-                    });
-                    marker.set('title', doc.name);
-                    marker.info = markerInfo;
-
-                    marker.addListener('click', function() {
-                        let infoContent = Blaze.toHTMLWithData(Template.infowindow, doc);
-                        this.info.setContent(infoContent);
-                        this.info.open(map.instance, this);
-                        
-                        $(".phone").text(function(i, text) {
-                          text = text.replace(/(\d{3})(\d{3})(\d{4})/, "$1.$2.$3");
-                          return text;
-                        });
-                        $("#verify_button").click(function() {
-                            console.log("Clicked Verify button!");
-                            //open modal verify form.
-                            $('#modalVerify').openModal();
-
-                            // Listings.update({
-                            //     _id: doc._id 
-                            // },{
-                            //     $addToSet: {
-                            //         upVotes: {comment: 'This comment'}
-                            //         }
-                            // });
-                        });
-                        Session.set('infoWindowOpen', true);
-                        Session.set('openListing', doc._id);
-                       
-                    });
-                } // else cannot place marker on map, it does not have lat/lng yet
-            });
 
         });   
 
+        Listings.find().forEach(function(doc){
+            //For Each Listing, add a marker; every marker opens a global infoWindow and owns events.
+            
+            //===== CONVERT DOC LOCATION FIELD FROM STRINGIFIED ARRAY TO OBJECT LITERAL =====
+            if (doc.location) {
+                let latLng = doc.location.split(",");
+                let lat = Number(latLng[0]);
+                let lng = Number(latLng[1]);
+                let latLngObj = _.object( ['lat', 'lng'], [lat, lng]);
+
+                //===== LEAVE DOC LOCATION FIELD AS OBJECT LITERAL =====
+                // let latLngObj = doc.location;
+
+                //--   Place Markers on map
+                let marker = new google.maps.Marker({
+                  position: latLngObj,
+                  map: map.instance,
+                  icon: markerImage,
+                });
+                marker.set('title', doc.name);
+                marker.info = markerInfo;
+
+                marker.addListener('click', function() {
+                    let infoContent = Blaze.toHTMLWithData(Template.infowindow, doc);
+                    this.info.setContent(infoContent);
+                    this.info.open(map.instance, this);
+                    
+                    $(".phone").text(function(i, text) {
+                      text = text.replace(/(\d{3})(\d{3})(\d{4})/, "$1.$2.$3");
+                      return text;
+                    });
+                    $("#verify_button").click(function() {
+                        console.log("Clicked Verify button!");
+                        //open modal verify form.
+                        $('#modalVerify').openModal();
+
+                        // Listings.update({
+                        //     _id: doc._id 
+                        // },{
+                        //     $addToSet: {
+                        //         upVotes: {comment: 'This comment'}
+                        //         }
+                        // });
+                    });
+                    Session.set('infoWindowOpen', true);
+                    Session.set('openListing', doc._id);
+                   
+                });
+            } // else cannot place marker on map, it does not have lat/lng yet
+        });
+
         // ========================= DOM Events relating to Map =========================
 
-        /*
-         * The google.maps.event.addListener() event waits for
-         * the creation of the infowindow HTML structure 'domready'
-         * and before the opening of the infowindow defined styles
-         * are applied.
-         */
-
-
-        // google.maps.event.addDomListener(window, 'resize', function() {
-        //     var center = GoogleMaps.maps.map.instance.getCenter();
+        // google.maps.event.addDomListener(map, 'center_changed', function() {
         //     google.maps.event.trigger(map, "resize");
-        //     GoogleMaps.maps.map.instance.setCenter(center);
+        //     console.log("new center");
         // })
     });
 
@@ -296,12 +292,21 @@ Template.map.helpers({
     // prompted by your browser. If you see the error "The Geolocation service
     // failed.", it means you probably did not give permission for the browser to
     // locate you.
+    let mapCenter;
+        if (!Session.get('browserLoc')) {
+            mapCenter = {'lat':39.833, 'lng':-98.583};
+            console.log("set mapCenter, no sesh:", mapCenter);
+        } else {
+            mapCenter = Session.get('browserLoc');
+            MAP_ZOOM = 14;
+            
+            console.log("got mapCenter sesh", mapCenter);
+        }
 
-
-        if (GoogleMaps.loaded() && Session.get('clientLoc')) {
+        if (GoogleMaps.loaded() && mapCenter) {
             return {
                 // ============================= RETURN MAP OPTIONS ==================================    
-                center: new google.maps.LatLng(Session.get('clientLoc')),
+                center: new google.maps.LatLng(mapCenter),
                 // center: new google.maps.LatLng(Centers.User[0], Centers.User[1]),
                 zoom: MAP_ZOOM,
                 // mapTypeId:google.maps.MapTypeId.TERRAIN,

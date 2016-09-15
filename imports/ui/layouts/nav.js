@@ -8,9 +8,9 @@ import './nav.html';
 
 
 Template.nav.onRendered( function() {
-// ====== WHAT IS THIS FOR? 
-	// $(document).ready(function(){
-	// 	$(".button-collapse").sideNav();
-	// });
+// ====== MOBILE VIEW NAV MENU BUTTON, CLICKING SHOWS THE SIDE NAV. ====== 
+	$(document).ready(function(){
+		$(".button-collapse").sideNav();
+	});
 });
 

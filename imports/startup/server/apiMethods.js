@@ -103,6 +103,23 @@ Meteor.methods({
     return arr.toLocaleString();
 
   },
+  browserGeo: function(address) {
+    this.unblock();
+    
+    var apiUrl = 'https://freegeoip.net/json/';
+    console.log("--URL--"+apiUrl);
+    let response = Meteor.wrapAsync(apiCall)(apiUrl);
+    console.log(response);
+    let lat = response.latitude;
+    let lng = response.longitude;
+    //====== RETURN LAT/LONG OBJECT LITERAL ======
+    let browserLoc = _.object( ['lat', 'lng'], [lat, lng]);
+    return browserLoc;   
+    //====== RETURN STRINGIFIED LAT/LONG NUMBERS ======
+    // let arr =  _.values(loc);
+    // console.log(arr.toLocaleString());
+    // return arr.toLocaleString();    
+  },
   getDistance: function(orig, dest) {
     this.unblock();
     let urlParams;

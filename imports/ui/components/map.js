@@ -203,7 +203,14 @@ Template.map.onCreated( function() {
             } else {
                 let latLng = Geolocation.latLng();
                 // console.log("clientLoc is Geo: ", latLng);
+           
                 Session.set('clientLoc', latLng);
+                //              ---------------- ANALYTICS EVENT ---------------
+                analytics.track( "Browser IP Data", {
+                  title: "Pulled Geo Info",
+                  data: data
+                });
+                console.log("-= GA : Geolocation Obtained =-");
 
                 if (!latLng)
                     return;
@@ -231,9 +238,10 @@ Template.map.onCreated( function() {
                     clientMarker.setPosition(latLng);
                 }
 
-                //if an infowindow is not open, recenter.  
+                //if an infowindow is not open, do something
+                //like recenter, but this got annoying, adding UI button instead
                 if (!Session.get('infoWindowOpen')) {
-                    map.instance.setCenter(clientMarker.getPosition());
+                    // map.instance.setCenter(clientMarker.getPosition());
                     // map.instance.setZoom(15);
                 } else {
                     // console.log('InfoWindow OpeN, not shifting position!');

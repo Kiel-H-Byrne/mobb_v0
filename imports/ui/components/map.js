@@ -3,6 +3,7 @@ import {Template} from 'meteor/templating';
 
 import Listings from '/imports/startup/collections/listings';
 import './infowindow.js';
+import './centerButton.js';
 import './closestCard.js';
 import './map.html';
 
@@ -40,7 +41,7 @@ Template.map.onCreated( function() {
         //              ---------------- ANALYTICS EVENT ---------------
         analytics.track( "Browser IP Data", {
           title: "Pulled Geo Info",
-          data: data
+          data: browserLocation
         });
         console.log("-= GA : Browser IP Data =-");
     });
@@ -208,7 +209,7 @@ Template.map.onCreated( function() {
                 //              ---------------- ANALYTICS EVENT ---------------
                 analytics.track( "Browser IP Data", {
                   title: "Pulled Geo Info",
-                  data: data
+                  data: Session.get('clientLoc')
                 });
                 console.log("-= GA : Geolocation Obtained =-");
 
@@ -237,18 +238,7 @@ Template.map.onCreated( function() {
                 } else {
                     clientMarker.setPosition(latLng);
                 }
-
-                //if an infowindow is not open, do something
-                //like recenter, but this got annoying, adding UI button instead
-                if (!Session.get('infoWindowOpen')) {
-                    // map.instance.setCenter(clientMarker.getPosition());
-                    // map.instance.setZoom(15);
-                } else {
-                    // console.log('InfoWindow OpeN, not shifting position!');
-                }
-                // map.instance.setZoom(MAP_ZOOM);
             }
-
         });   
 
         // ========================= DOM Events relating to Map =========================

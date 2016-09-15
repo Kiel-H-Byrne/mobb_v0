@@ -39,7 +39,7 @@ AutoForm.addHooks('addListingForm', {
         $('#modalAdd').closeModal();
 
 		    this.done(); // submitted successfully, call onSuccess
-		    return false
+		    return false;
     },
 
   // Called when any submit operation succeeds
@@ -59,7 +59,7 @@ AutoForm.addHooks('addListingForm_af', {
         $('#modalAdd').closeModal();
 
 		    this.done(); // submitted successfully, call onSuccess
-		    return false
+		    return false;
     },
 
   // Called when any submit operation succeeds

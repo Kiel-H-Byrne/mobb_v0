@@ -44,7 +44,7 @@ AutoForm.addHooks('addListingForm', {
 
   // Called when any submit operation succeeds
   onSuccess: function(formType, result) {
-  	console.log("Thanks for Submitting!");
+  	console.log("Thanks for Submitting!", result);
   	$('#modalAdd').closeModal();
   },
 });

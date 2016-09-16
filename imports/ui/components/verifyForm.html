@@ -23,10 +23,10 @@
 </template>
 
 <template name="verifyForm">
-  <div id="modalVerify" class="modal modal-fixed-footer">
+  <div id="modalVerify" class="modal">
     <div class="modal-content">
-			<h4> Add Comment </h4>
-			{{> quickForm id="upVoteForm" type="update-pushArray" collection="Listings" doc=this scope="upVotes" schema=VoteSchema}}
+			<h4> Comments... </h4>
+			{{> quickForm id="upVoteForm" collection="Listings" type="update-pushArray"  doc=this scope="upVotes"}}
 		</div>
   </div>
 </template>

@@ -16,7 +16,7 @@ import './map.html';
 
 //====== GLOBALS ======
 
-let MAP_ZOOM = 3;
+let MAP_ZOOM = 4;
 
 // ============================= SUBSCRIPTIONS ==================================
 Template.map.onCreated( function() {  
@@ -26,7 +26,7 @@ Template.map.onCreated( function() {
     $.getJSON("https://freegeoip.net/json/", {
         format: "jsonp"
     }).done(function(data){
-        console.log(data);
+        
         //  {"ip":"69.138.161.94","country_code":"US","country_name":"United States","region_code":"MD",
         //  "region_name":"Maryland","city":"Silver Spring","zip_code":"20902","time_zone":"America/New_York",
         //  "latitude":39.0409,"longitude":-77.0445,"metro_code":511}
@@ -80,119 +80,145 @@ Template.map.onCreated( function() {
         //     radius: 100,
         // });
 
-        // Listings.find().forEach(function(doc){
-        //     //For Each Listing, add a marker; every marker opens a global infoWindow and owns events.
+        Listings.find().forEach(function(doc){
+            //For Each Listing, add a marker; every marker opens a global infoWindow and owns events.
             
-        //     //===== CONVERT DOC LOCATION FIELD FROM STRINGIFIED ARRAY TO OBJECT LITERAL =====
-        //     if (doc.location) {
-        //         let latLng = doc.location.split(",");
-        //         let lat = Number(latLng[0]);
-        //         let lng = Number(latLng[1]);
-        //         let latLngObj = _.object( ['lat', 'lng'], [lat, lng]);
+            //===== CONVERT DOC LOCATION FIELD FROM STRINGIFIED ARRAY TO OBJECT LITERAL =====
+            if (doc.location) {
+                let latLng = doc.location.split(",");
+                let lat = Number(latLng[0]);
+                let lng = Number(latLng[1]);
+                let latLngObj = _.object( ['lat', 'lng'], [lat, lng]);
 
-        //         //===== LEAVE DOC LOCATION FIELD AS OBJECT LITERAL =====
-        //         // let latLngObj = doc.location;
+                //===== LEAVE DOC LOCATION FIELD AS OBJECT LITERAL =====
+                // let latLngObj = doc.location;
 
-        //         //--   Place Markers on map
-        //         let marker = new google.maps.Marker({
-        //           position: latLngObj,
-        //           map: map.instance,
-        //           icon: markerImage,
-        //         });
-        //         marker.set('title', doc.name);
-        //         marker.info = markerInfo;
+                //--   Place Markers on map
+                let marker = new google.maps.Marker({
+                  position: latLngObj,
+                  map: map.instance,
+                  icon: markerImage,
+                });
+                marker.set('title', doc.name);
+                marker.info = markerInfo;
 
-        //         marker.addListener('click', function() {
-        //             let infoContent = Blaze.toHTMLWithData(Template.infowindow, doc);
-        //             this.info.setContent(infoContent);
-        //             this.info.open(map.instance, this);
+                marker.addListener('click', function() {
+                    let infoContent = Blaze.toHTMLWithData(Template.infowindow, doc);
+                    this.info.setContent(infoContent);
+                    this.info.open(map.instance, this);
                     
-        //             $(".phone").text(function(i, text) {
-        //               text = text.replace(/(\d{3})(\d{3})(\d{4})/, "$1.$2.$3");
-        //               return text;
-        //             });
-        //             $("#verify_button").click(function() {
-        //                 console.log("Clicked Verify button!");
-        //                 //open modal verify form.
-        //                 $('#modalVerify').openModal();
+                    $(".phone").text(function(i, text) {
+                      text = text.replace(/(\d{3})(\d{3})(\d{4})/, "$1.$2.$3");
+                      return text;
+                    });
+                    $("#verify_button").click(function() {
+                        console.log("Clicked Verify button!");
+                        //open modal verify form.
+                        $('#modalVerify').openModal();
 
-        //                 // Listings.update({
-        //                 //     _id: doc._id 
-        //                 // },{
-        //                 //     $addToSet: {
-        //                 //         upVotes: {comment: 'This comment'}
-        //                 //         }
-        //                 // });
-        //             });
-        //             Session.set('infoWindowOpen', true);
-        //             Session.set('openListing', doc._id);
+                        // Listings.update({
+                        //     _id: doc._id 
+                        // },{
+                        //     $addToSet: {
+                        //         upVotes: {comment: 'This comment'}
+                        //         }
+                        // });
+                    });
+                    Session.set('infoWindowOpen', true);
+                    Session.set('openListing', doc._id);
                    
-        //         });
-        //     } // else cannot place marker on map, it does not have lat/lng yet
-        // });
+                });
+            } // else cannot place marker on map, it does not have lat/lng yet
+        });
 
         self.autorun(function(){
             //automatically re-subscribe to the database when my lat/long changes, resubscribe to listings in my area
             //====== AUTO-RESUBSCRIBE TO NEW LISTINGS WHEN MY LOCATION CHANGES ====== //
-            Meteor.subscribe('listings_region', function() {
-                console.log("-= MAP SUBSCRIBED:  [" + Listings.find().count() + "] Listings");
-                // console.log(Listings.find().count() + " Listings: ", Listings.find().fetch());
-                //find listings in my state, or that match the same lat/long digits as me (first two digits)
-                // return Listings.find({state: state});
+            // ====== GET THE FIRST TWO DIGITS OF EACH LAT/LONG AND COMPARE IT WITH A REGEX SEARCH AGAINST LISTINGS COLLECTION //
+            // replace string with 2 digits of each
+            // (\-?\d{2}(\.\d+)?),\s*(\-?\d{2}\.(\d+)?) REGEX search FOR ANY LAT/LONG STRING (use for mongodb search)
+            // Listings.find({"location" : {$regex : /PATTERN/ }});
 
-                Listings.find().forEach(function(doc){
-            //For Each Listing, add a marker; every marker opens a global infoWindow and owns events.
-            
-            //===== CONVERT DOC LOCATION FIELD FROM STRINGIFIED ARRAY TO OBJECT LITERAL =====
-                    if (doc.location) {
-                        let latLng = doc.location.split(",");
-                        let lat = Number(latLng[0]);
-                        let lng = Number(latLng[1]);
-                        let latLngObj = _.object( ['lat', 'lng'], [lat, lng]);
+            if (Session.get('clientLoc')) {
+                let loc = Session.get('clientLoc');
+                //if it were lat/long string
+                // let trimmed = (loc.replace(/(\.\d+)/,''));
+                //lat/long object
+                let arr = [];
+                _.each(loc, function(v) {
+                    let n = Math.trunc(v);
+                    arr.push(n);
+                });
+                
+                let str = "(\\-?" + arr[0] + "(\\.\\d+)?),\\s*(\\-?" + arr[1] + '\\.(\\d+)?)';
+                let regex = new RegExp(str);
 
-                        //===== LEAVE DOC LOCATION FIELD AS OBJECT LITERAL =====
-                        // let latLngObj = doc.location;
+                let subscription = self.subscribe('listings_region', function() {
+                    console.log("-= MAP SUBSCRIBED:  [" + Listings.find({"location" : {$regex : regex}}).count() + "] Local Listings");
+                    //find listings that match the same lat/long digits as me (first two digits)
+                    // return Listings.find({state: state});
+                    Listings.find(
+                    {
+                        "location" : {
+                            $regex : regex 
+                        }
+                    }
+                    ).forEach(function(doc){
+                        //For Each Listing, add a marker; every marker opens a global infoWindow and owns events.
+                        
+                        //===== CONVERT DOC LOCATION FIELD FROM STRINGIFIED ARRAY TO OBJECT LITERAL =====
+                        if (doc.location) {
+                            let latLng = doc.location.split(",");
+                            let lat = Number(latLng[0]);
+                            let lng = Number(latLng[1]);
+                            let latLngObj = _.object( ['lat', 'lng'], [lat, lng]);
 
-                        //--   Place Markers on map
-                        let marker = new google.maps.Marker({
-                          position: latLngObj,
-                          map: map.instance,
-                          icon: markerImage,
-                        });
-                        marker.set('title', doc.name);
-                        marker.info = markerInfo;
+                            //===== LEAVE DOC LOCATION FIELD AS OBJECT LITERAL =====
+                            // let latLngObj = doc.location;
 
-                        marker.addListener('click', function() {
-                            let infoContent = Blaze.toHTMLWithData(Template.infowindow, doc);
-                            this.info.setContent(infoContent);
-                            this.info.open(map.instance, this);
-                            
-                            $(".phone").text(function(i, text) {
-                              text = text.replace(/(\d{3})(\d{3})(\d{4})/, "$1.$2.$3");
-                              return text;
+                            //--   Place Markers on map
+                            let marker = new google.maps.Marker({
+                              position: latLngObj,
+                              map: map.instance,
+                              icon: markerImage,
                             });
-                            $("#verify_button").click(function() {
-                                console.log("Clicked Verify button!");
-                                //open modal verify form.
-                                $('#modalVerify').openModal();
+                            marker.set('title', doc.name);
+                            marker.info = markerInfo;
 
-                                // Listings.update({
-                                //     _id: doc._id 
-                                // },{
-                                //     $addToSet: {
-                                //         upVotes: {comment: 'This comment'}
-                                //         }
-                                // });
+                            marker.addListener('click', function() {
+                                let infoContent = Blaze.toHTMLWithData(Template.infowindow, doc);
+                                this.info.setContent(infoContent);
+                                this.info.open(map.instance, this);
+                                
+                                $(".phone").text(function(i, text) {
+                                  text = text.replace(/(\d{3})(\d{3})(\d{4})/, "$1.$2.$3");
+                                  return text;
+                                });
+                                $("#verify_button").click(function() {
+                                    console.log("Clicked Verify button!");
+                                    //open modal verify form.
+                                    $('#modalVerify').openModal();
+
+                                    // Listings.update({
+                                    //     _id: doc._id 
+                                    // },{
+                                    //     $addToSet: {
+                                    //         upVotes: {comment: 'This comment'}
+                                    //         }
+                                    // });
+                                });
+                                Session.set('infoWindowOpen', true);
+                                Session.set('openListing', doc._id);
+                               
                             });
-                            Session.set('infoWindowOpen', true);
-                            Session.set('openListing', doc._id);
-                           
-                        });
-                    } // else cannot place marker on map, it does not have lat/lng yet
+                        } // else cannot place marker on map, it does not have lat/lng yet
+                    });
                 });
 
-
-            });
+                if (subscription.ready()) {
+                    return 
+                } 
+            }
         });            
         
         self.autorun(function(){    

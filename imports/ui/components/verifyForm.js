@@ -30,3 +30,22 @@ Template.verifyForm.onRendered(function() {
 
       
 });
+
+AutoForm.addHooks('upVoteForm', {
+	  // Called when form does not have a `type` attribute or is 'normal'
+    onSubmit: function (insertDoc, updateDoc, currentDoc) {
+        this.event.preventDefault();
+        console.log('Just submitted form, from verifyForm.js');
+        //close modal on submit
+        $('#modalVerify').closeModal();
+
+		    this.done(); // submitted successfully, call onSuccess
+		    return false;
+    },
+
+  // Called when any submit (type=insert or update) operation succeeds
+  onSuccess: function(formType, result) {
+  	console.log("Thanks for Submitting!", result);
+  	$('#modalVerify').closeModal();
+  },
+});

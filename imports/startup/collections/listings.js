@@ -51,7 +51,13 @@ Listings = new orion.collection('listings', {
         data: "categories", 
         title: "Categories" 
       },{ 
+        data: "upVotes", 
+        title: "Up Votes" 
+      },{ 
         data: "upVoteCount", 
+        title: "Down Votes" 
+      },{ 
+        data: "dnVotes", 
         title: "Up Votes" 
       },{ 
         data: "dnVoteCount", 
@@ -63,24 +69,24 @@ Listings = new orion.collection('listings', {
   }
 });
 
-Votes = new orion.collection('votes', {
-  singularName: 'Vote', // The name of one of these items
-  pluralName: 'Votes', // The name of more than one of these items
-  link: { title: 'Votes' },
-  /**
-   * Tabular settings for this collection
-   */
-  tabular: {
-    columns: [
-          orion.attributeColumn('createdBy', 'creator', 'Voted By'),
-          orion.attributeColumn('createdAt', 'voted', 'Voted @'),
-          {
-            data: "comment",
-            title: "Comment"
-          }
-        ]
-      }
-});
+// Votes = new orion.collection('votes', {
+//   singularName: 'Vote', // The name of one of these items
+//   pluralName: 'Votes', // The name of more than one of these items
+//   link: { title: 'Votes' },
+//   /**
+//    * Tabular settings for this collection
+//    */
+//   tabular: {
+//     columns: [
+//           // orion.attributeColumn('createdBy', 'creator', 'Voted By'),
+//           // orion.attributeColumn('createdAt', 'voted', 'Voted @'),
+//           {
+//             data: "comment",
+//             title: "Comment"
+//           }
+//         ]
+//       }
+// });
 
 //=================== SCHEMAS =========================
 // https://github.com/aldeed/meteor-simple-schema
@@ -89,17 +95,22 @@ Votes = new orion.collection('votes', {
 const catObjs = [{"label":"Agriculture, Fishing, Forestry","value":"Agriculture, Fishing, Forestry"},{"label":"Apparel & Accessories","value":"Apparel & Accessories"},{"label":"Automotive Services","value":"Automotive Services"},{"label":"Business Services","value":"Business Services"},{"label":"Family & Community","value":"Family & Community"},{"label":"Building & Construction","value":"Building & Construction"},{"label":"Education","value":"Education"},{"label":"Entertainment & Media","value":"Entertainment & Media"},{"label":"Finance & Legal","value":"Finance & Legal"},{"label":"Food & Dining","value":"Food & Dining"},{"label":"Health & Medicine","value":"Health & Medicine"},{"label":"Home & Garden","value":"Home & Garden"},{"label":"Industrial Supplies & Services","value":"Industrial Supplies & Services"},{"label":"Information Technology","value":"Information Technology"},{"label":"Personal Care & Beauty","value":"Personal Care & Beauty"},{"label":"Real Estate & Insurance","value":"Real Estate & Insurance"},{"label":"Retail","value":"Retail"},{"label":"Online Only","value":"Online Only"},{"label":"Sole Proprietor","value":"Sole Proprietor"},{"label":"Female Owned","value":"Female Owned"},{"label":"Owner Under 21","value":"wner Under 21"},{"label":"Operating Over 10","value":"Operating Over 10"},{"label":"Operating over 20","value":"Operating over 20"},{"label":"Operating over 50","value":"Operating over 50"},{"label":"Travel & Transportation","value":"Travel & Transportation"},{"label":"Lodging","value":"Lodging"},{"label":"Sports & Recreation","value":"Sports & Recreation"},{"label":"Boutique","value":"Boutique"},{"label":"Haberdashery","value":"Haberdashery"},{"label":"Wholesale","value":"Wholesale"}];
 
 const VoteSchema = new SimpleSchema({
-  voter: orion.attribute('createdBy'),
+  // voter: orion.attribute('createdBy'),
   // date: orion.attribute('createdAt'),
   comment: {
     type: String,
     min: 5,
     max: 140,
-    optional: true
+    optional: true, 
+    autoform: {
+      afFieldInput: {
+        type: "textarea"
+      }
+    }
   }
 });
 
-Votes.attachSchema(VoteSchema);
+// Votes.attachSchema(VoteSchema);
 
 Listings.attachSchema(new SimpleSchema({
 

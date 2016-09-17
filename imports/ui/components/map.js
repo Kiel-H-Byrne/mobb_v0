@@ -56,6 +56,9 @@ Template.map.onCreated( function() {
         let markerImage = {
           url: 'img/orange_marker_sm.png'
         };
+        let closeMarkerImage = {
+          url: 'img/red_marker_sm.png'
+        };
         //trying to set one global infowindow and each click sets its content; a blaze template.
         let markerInfo = new google.maps.InfoWindow({
           content: "",
@@ -65,7 +68,6 @@ Template.map.onCreated( function() {
         //====== WHEN INFOWINDOW CLOSES, SET A SESSION VARIABLE ======
         markerInfo.addListener('closeclick', function() {
             Session.set('infoWindowOpen', false);
-
         });
 
         // var cirColor = getColor(listing);
@@ -148,13 +150,26 @@ Template.map.onCreated( function() {
                 _.each(loc, function(v) {
                     // let n = Math.trunc(v);
                     // let n = Math.floor(v);
-                    let n = n.toString().toFixed()
-                    n = n.parseInt();
-                    arr.push(n);
+                    let n = v.toFixed();
+                    // let n = v.toPrecision(4);
+                    // n = parseInt(n);
+                    m = n-1;
+                    o = n++;
+                    arr.push(m,o,n);
+                    console.log(arr);
+                    //orig coord is arr[1], arr[4]                    
                 });
-                console.log(arr);
-                let str = "(\\-?" + arr[0] + "(\\.\\d+)?),\\s*(\\-?" + arr[1] + '\\.(\\d+)?)';
+                // console.log(arr);
+                // = CLIENT LOCATION
+                let str = "((" +arr[1]+ ")(\\.\\d+)?),\\s*((" +arr[4]+ ")(\\.\\d+)?)";                
+                // = CLIENT LOCATION & LOCATION -1
+                // let str = "((" +arr[0]+ "|" +arr[1]+ ")(\\.\\d+)?),\\s*((" +arr[3]+ "|" +arr[4]+")(\\.\\d+)?)";
+                // = CLIENT LOCATION & LOCATION +1
+                // let str = "((" +arr[2]+ "|" +arr[1]+ ")(\\.\\d+)?),\\s*((" +arr[3]+ "|" +arr[4]+")(\\.\\d+)?)";
+                // = CLIENT LOCATION & LOCATION +1 AND -1
+                // let str = "((" +arr[0]+ "|" +arr[1]+ "|" +arr[2]+ ")(\\.\\d+)?),\\s*((" +arr[3]+ "|" +arr[4]+ "|" +arr[5]+")(\\.\\d+)?)";
                 let regex = new RegExp(str);
+                console.log(regex);
 
                 let subscription = self.subscribe('listings_region', function() {
                     console.log("-= MAP SUBSCRIBED:  [" + Listings.find({"location" : {$regex : regex}}).count() + "] Local Listings");
@@ -183,7 +198,7 @@ Template.map.onCreated( function() {
                             let marker = new google.maps.Marker({
                               position: latLngObj,
                               map: map.instance,
-                              icon: markerImage,
+                              icon: closeMarkerImage,
                             });
                             marker.set('title', doc.name);
                             marker.info = markerInfo;
@@ -219,7 +234,7 @@ Template.map.onCreated( function() {
                 });
 
                 if (subscription.ready()) {
-                    return 
+                    return;
                 } 
             }
         });            
@@ -232,7 +247,7 @@ Template.map.onCreated( function() {
                 return;
             } else {
                 let latLng = Geolocation.latLng();
-                // console.log("clientLoc is Geo: ", latLng);
+                console.log("clientLoc is Geo: ", latLng);
            
                 Session.set('clientLoc', latLng);
                 //              ---------------- ANALYTICS EVENT ---------------

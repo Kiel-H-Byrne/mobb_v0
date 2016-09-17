@@ -146,10 +146,13 @@ Template.map.onCreated( function() {
                 //lat/long object
                 let arr = [];
                 _.each(loc, function(v) {
-                    let n = Math.trunc(v);
+                    // let n = Math.trunc(v);
+                    // let n = Math.floor(v);
+                    let n = n.toString().toFixed()
+                    n = n.parseInt();
                     arr.push(n);
                 });
-                
+                console.log(arr);
                 let str = "(\\-?" + arr[0] + "(\\.\\d+)?),\\s*(\\-?" + arr[1] + '\\.(\\d+)?)';
                 let regex = new RegExp(str);
 

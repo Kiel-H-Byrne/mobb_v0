@@ -82,55 +82,62 @@ Template.map.onCreated( function() {
         //     radius: 100,
         // });
 
-        Listings.find().forEach(function(doc){
-            //For Each Listing, add a marker; every marker opens a global infoWindow and owns events.
-            
-            //===== CONVERT DOC LOCATION FIELD FROM STRINGIFIED ARRAY TO OBJECT LITERAL =====
-            if (doc.location) {
-                let latLng = doc.location.split(",");
-                let lat = Number(latLng[0]);
-                let lng = Number(latLng[1]);
-                let latLngObj = _.object( ['lat', 'lng'], [lat, lng]);
+        
+        //====== watch the database for changes, draw new marker on change. ====== //
 
-                //===== LEAVE DOC LOCATION FIELD AS OBJECT LITERAL =====
-                // let latLngObj = doc.location;
+        let subscription = self.subscribe('listings_all', function() {
+            console.log("-= MAP SUBSCRIBED:  [" + Listings.find().count() + "] Total Listings");
+            //find listings that match the same lat/long digits as me (first two digits)
+            // return Listings.find({state: state});
+            let cursor = Listings.find();
+            cursor.observeChanges({
+                added: function(id,doc) {
+                    //add markers.
+                    //For Each Listing, add a marker; every marker opens a global infoWindow and owns events.
+                    //===== CONVERT DOC LOCATION FIELD FROM STRINGIFIED ARRAY TO OBJECT LITERAL =====
+                    if (doc.location) {
+                        let latLng = doc.location.split(",");
+                        let lat = Number(latLng[0]);
+                        let lng = Number(latLng[1]);
+                        let latLngObj = _.object( ['lat', 'lng'], [lat, lng]);
 
-                //--   Place Markers on map
-                let marker = new google.maps.Marker({
-                  position: latLngObj,
-                  map: map.instance,
-                  icon: markerImage,
-                });
-                marker.set('title', doc.name);
-                marker.info = markerInfo;
+                        //===== LEAVE DOC LOCATION FIELD AS OBJECT LITERAL =====
+                        // let latLngObj = doc.location;
 
-                marker.addListener('click', function() {
-                    let infoContent = Blaze.toHTMLWithData(Template.infowindow, doc);
-                    this.info.setContent(infoContent);
-                    this.info.open(map.instance, this);
-                    
-                    $(".phone").text(function(i, text) {
-                      text = text.replace(/(\d{3})(\d{3})(\d{4})/, "$1.$2.$3");
-                      return text;
-                    });
-                    $("#verify_button").click(function() {
-                        console.log("Clicked Verify button!");
-                        //open modal verify form.
-                        $('#modalVerify').openModal();
+                        //--   Place Markers on map
+                        let marker = new google.maps.Marker({
+                          position: latLngObj,
+                          map: map.instance,
+                          icon: markerImage,
+                        });
+                        marker.set('title', doc.name);
+                        marker.info = markerInfo;
 
-                        // Listings.update({
-                        //     _id: doc._id 
-                        // },{
-                        //     $addToSet: {
-                        //         upVotes: {comment: 'This comment'}
-                        //         }
-                        // });
-                    });
-                    Session.set('infoWindowOpen', true);
-                    Session.set('openListing', doc._id);
-                   
-                });
-            } // else cannot place marker on map, it does not have lat/lng yet
+                        marker.addListener('click', function() {
+                            let infoContent = Blaze.toHTMLWithData(Template.infowindow, doc);
+                            this.info.setContent(infoContent);
+                            this.info.open(map.instance, this);
+                            
+                            $(".phone").text(function(i, text) {
+                              text = text.replace(/(\d{3})(\d{3})(\d{4})/, "$1.$2.$3");
+                              return text;
+                            });
+                            
+                            $("#verify_button").click(function() {
+                                console.log("Clicked Verify button!");
+                                //open modal verify form.
+                                $('#modalVerify').openModal();
+
+                            });
+                            Session.set('infoWindowOpen', true);
+                            Session.set('openListing', doc._id);
+                           
+                        });
+                    } // else cannot place marker on map, it does not have lat/lng yet
+
+
+                }
+            });
         });
 
         self.autorun(function(){
@@ -156,20 +163,20 @@ Template.map.onCreated( function() {
                     m = n-1;
                     o = n++;
                     arr.push(m,o,n);
-                    console.log(arr);
+                    // console.log(arr);
                     //orig coord is arr[1], arr[4]                    
                 });
                 // console.log(arr);
                 // = CLIENT LOCATION
                 let str = "((" +arr[1]+ ")(\\.\\d+)?),\\s*((" +arr[4]+ ")(\\.\\d+)?)";                
                 // = CLIENT LOCATION & LOCATION -1
-                // let str = "((" +arr[0]+ "|" +arr[1]+ ")(\\.\\d+)?),\\s*((" +arr[3]+ "|" +arr[4]+")(\\.\\d+)?)";
+                // let str = "((" +arr[0]+ "," +arr[1]+ ")(\\.?\\d+)?),\\s*((" +arr[5]+ "," +arr[4]+")(\\.?\\d+)?)";
                 // = CLIENT LOCATION & LOCATION +1
                 // let str = "((" +arr[2]+ "|" +arr[1]+ ")(\\.\\d+)?),\\s*((" +arr[3]+ "|" +arr[4]+")(\\.\\d+)?)";
                 // = CLIENT LOCATION & LOCATION +1 AND -1
                 // let str = "((" +arr[0]+ "|" +arr[1]+ "|" +arr[2]+ ")(\\.\\d+)?),\\s*((" +arr[3]+ "|" +arr[4]+ "|" +arr[5]+")(\\.\\d+)?)";
                 let regex = new RegExp(str);
-                console.log(regex);
+                // console.log(regex);
 
                 let subscription = self.subscribe('listings_region', function() {
                     console.log("-= MAP SUBSCRIBED:  [" + Listings.find({"location" : {$regex : regex}}).count() + "] Local Listings");
@@ -247,7 +254,7 @@ Template.map.onCreated( function() {
                 return;
             } else {
                 let latLng = Geolocation.latLng();
-                console.log("clientLoc is Geo: ", latLng);
+                // console.log("clientLoc is Geo: ", latLng);
            
                 Session.set('clientLoc', latLng);
                 //              ---------------- ANALYTICS EVENT ---------------

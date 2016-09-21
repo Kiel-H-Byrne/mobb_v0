@@ -211,14 +211,21 @@ Template.map.onCreated( function() {
                             marker.info = markerInfo;
 
                             marker.addListener('click', function() {
-                                let infoContent = Blaze.toHTMLWithData(Template.infowindow, doc);
-                                this.info.setContent(infoContent);
-                                this.info.open(map.instance, this);
-                                
+                                // //Info Window
+                                // let infoContent = Blaze.toHTMLWithData(Template.infowindow, doc);
+                                // this.info.setContent(infoContent);
+                                // this.info.open(map.instance, this);
+
+                                //Info Bottom-Modal
+                                // let infoContent = Blaze.toHTMLWithData(Template.infomodal, doc);
+                                $('#modalInfo').openModal();
+
+                                //Scan and reformat phone numbers
                                 $(".phone").text(function(i, text) {
                                   text = text.replace(/(\d{3})(\d{3})(\d{4})/, "$1.$2.$3");
                                   return text;
                                 });
+                                //Click to open Verify Modal
                                 $("#verify_button").click(function() {
                                     console.log("Clicked Verify button!");
                                     //open modal verify form.

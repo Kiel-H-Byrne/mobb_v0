@@ -1,26 +1,19 @@
-<template name="infowindow">
-    <div id="infowindow" class="card small">
-      
-{{!--       {{#if img}}
-        <div class="card-image">
-        	<img src="{{img}}">
-        </div>
-      	{{else}}
-        <div class="card-image">
-          <img class="responsive-img" src="img/globe_silver.png">
-        </div>
-    	{{/if}} --}}
 
-      {{!-- <div class="card-stacked"> --}}
-        <div class="card-content">
+<template name="infoModal">
+{{#with currentDoc}}
+  <!-- Modal Structure -->
+  <div id="modalInfo" class="modal bottom-sheet">
+    <div class="modal-content">
           <h5 class="center-align">{{name}}</h5>
           <p class="info">
             {{this.street}} <br>
-  			    {{city}} {{state}} {{zip}} <br>
-  			    <a class="phone" href="tel:+1{{phone}}">{{phone}}</a>
+            {{city}} {{state}} {{zip}} <br>
+            <a class="phone" href="tel:+1{{phone}}">{{phone}}</a>
           </p>
-        </div>
 
+    </div>
+
+    <div class="modal-footer">
         <div class="card-action hoverable">
           <div class="row">
             {{#if url}}    
@@ -32,14 +25,13 @@
             {{#if currentUser}}
             <div class="col s3">
               <a class="btn-floating amber darken-2 modal-trigger" id="verify_button" title="Is This Information Correct?" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
-
             </div>
             {{/if}}
             <div class="col s3"><a class="btn-floating amber darken-4" target="_blank"  title="Directions"><i class="material-icons">navigation</i></a></div>
 
           </div>
         </div>
-      {{!-- </div> --}}
-              
     </div>
+  </div>
+{{/with}}
 </template>

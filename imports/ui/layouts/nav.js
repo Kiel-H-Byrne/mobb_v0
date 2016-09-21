@@ -4,6 +4,7 @@ import {Template} from 'meteor/templating';
 import '../components/navMenu.js';
 import '../components/loggedInNav.js';
 import '../components/addForm.js';
+import '../components/infoModal.js';
 import './nav.html';
 
 

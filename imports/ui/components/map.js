@@ -67,7 +67,7 @@ Template.map.onCreated( function() {
 
         //====== WHEN INFOWINDOW CLOSES, SET A SESSION VARIABLE ======
         markerInfo.addListener('closeclick', function() {
-            Session.set('infoWindowOpen', false);
+            // Session.set('infoWindowOpen', false);
         });
 
         // var cirColor = getColor(listing);
@@ -129,7 +129,7 @@ Template.map.onCreated( function() {
                                 $('#modalVerify').openModal();
 
                             });
-                            Session.set('infoWindowOpen', true);
+                            // Session.set('infoWindowOpen', true);
                             Session.set('openListing', doc._id);
                            
                         });
@@ -239,7 +239,7 @@ Template.map.onCreated( function() {
                                     //         }
                                     // });
                                 });
-                                Session.set('infoWindowOpen', true);
+                                // Session.set('infoWindowOpen', true);
                                 Session.set('openListing', doc._id);
                                
                             });
@@ -309,30 +309,30 @@ Template.map.onCreated( function() {
 
 });
 
-Template.map.onRendered(function() {
+// Template.map.onRendered(function() {
     
-    //Materialize JQuery Effects
-    $(document).ready(function(){
-        $('.modal-trigger').leanModal({
-            dismissible: true,
-            opacity: 0.5,
-            in_duration: 300,
-            out_duration: 200,
-            ready: function() {
-                if($(".lean-overlay").length > 1) {
-                    $(".lean-overlay:not(:first)").each(function() {
-                        $(this).remove();
-                    });
-                }
-            },
-            complete: function() {
-                $(".lean-overlay").each(function() {
-                    $(this).remove();
-                });
-            }
-        });
-    });
-});
+//     //Materialize JQuery Effects
+//     $(document).ready(function(){
+//         $('.modal-trigger').leanModal({
+//             dismissible: true,
+//             opacity: 0.5,
+//             in_duration: 300,
+//             out_duration: 200,
+//             ready: function() {
+//                 if($(".lean-overlay").length > 1) {
+//                     $(".lean-overlay:not(:first)").each(function() {
+//                         $(this).remove();
+//                     });
+//                 }
+//             },
+//             complete: function() {
+//                 $(".lean-overlay").each(function() {
+//                     $(this).remove();
+//                 });
+//             }
+//         });
+//     });
+// });
 
 
 // ============================= HELPERS ==================================

@@ -2,17 +2,9 @@ import { Meteor } from 'meteor/meteor';
 import {Template} from 'meteor/templating';
 
 import Listings from '/imports/startup/collections/listings';
-import './infowindow.js';
 import './centerButton.js';
 import './closestCard.js';
 import './map.html';
-
-// GoogleMaps.load({
-//   v: '3',
-//   key: Meteor.settings.public.keys.googleClient.key
-// });
-
-
 
 //====== GLOBALS ======
 
@@ -59,30 +51,21 @@ Template.map.onCreated( function() {
         let closeMarkerImage = {
           url: 'img/red_marker_sm.png'
         };
-        //trying to set one global infowindow and each click sets its content; a blaze template.
-        let markerInfo = new google.maps.InfoWindow({
-          content: "",
-          maxWidth: 360
-        });
 
-        //====== WHEN INFOWINDOW CLOSES, SET A SESSION VARIABLE ======
-        markerInfo.addListener('closeclick', function() {
-            // Session.set('infoWindowOpen', false);
-        });
+        let self_icon = {
+            // url: 'img/orange_marker_3_sm.png'
+            url: 'img/orange_dot_sm_2.png'
+        };
+        let self_symbol = {
+            path: "M21 3L3 10.53v.98l6.84 2.65L12.48 21h.98L21 3z",
+            fillColor: '#FF0000',
+            fillOpacity: 0.8,
+            anchor: new google.maps.Point(0,-3),
+            strokeWeight: 1,
+            scale: 1.3
+        };
 
-        // var cirColor = getColor(listing);
-        // var circle = new google.maps.Circle({
-        //     strokeColor: "#FBB03B",
-        //     strokeOpacity: 0.8,
-        //     strokeWeight: 1,
-        //     fillColor: "#EEEEEE",
-        //     fillOpacity: 0.05,
-        //     map: map.instance,
-        //     center: Centers.User,
-        //     radius: 100,
-        // });
-
-        
+       
         //====== watch the database for changes, draw new marker on change. ====== //
 
         let subscription = self.subscribe('listings_all', function() {
@@ -111,12 +94,10 @@ Template.map.onCreated( function() {
                           icon: markerImage,
                         });
                         marker.set('title', doc.name);
-                        marker.info = markerInfo;
 
                         marker.addListener('click', function() {
-                            let infoContent = Blaze.toHTMLWithData(Template.infowindow, doc);
-                            this.info.setContent(infoContent);
-                            this.info.open(map.instance, this);
+                            Session.set('openListing', doc._id);
+                            $('#modalInfo').openModal();
                             
                             $(".phone").text(function(i, text) {
                               text = text.replace(/(\d{3})(\d{3})(\d{4})/, "$1.$2.$3");
@@ -130,8 +111,6 @@ Template.map.onCreated( function() {
 
                             });
                             // Session.set('infoWindowOpen', true);
-                            Session.set('openListing', doc._id);
-                           
                         });
                     } // else cannot place marker on map, it does not have lat/lng yet
 
@@ -141,7 +120,6 @@ Template.map.onCreated( function() {
         });
 
         self.autorun(function(){
-            //automatically re-subscribe to the database when my lat/long changes, resubscribe to listings in my area
             //====== AUTO-RESUBSCRIBE TO NEW LISTINGS WHEN MY LOCATION CHANGES ====== //
             // ====== GET THE FIRST TWO DIGITS OF EACH LAT/LONG AND COMPARE IT WITH A REGEX SEARCH AGAINST LISTINGS COLLECTION //
             // replace string with 2 digits of each
@@ -208,16 +186,12 @@ Template.map.onCreated( function() {
                               icon: closeMarkerImage,
                             });
                             marker.set('title', doc.name);
-                            marker.info = markerInfo;
 
                             marker.addListener('click', function() {
-                                // //Info Window
-                                // let infoContent = Blaze.toHTMLWithData(Template.infowindow, doc);
-                                // this.info.setContent(infoContent);
-                                // this.info.open(map.instance, this);
 
                                 //Info Bottom-Modal
                                 // let infoContent = Blaze.toHTMLWithData(Template.infomodal, doc);
+                                Session.set('openListing', doc._id);
                                 $('#modalInfo').openModal();
 
                                 //Scan and reformat phone numbers
@@ -240,8 +214,6 @@ Template.map.onCreated( function() {
                                     // });
                                 });
                                 // Session.set('infoWindowOpen', true);
-                                Session.set('openListing', doc._id);
-                               
                             });
                         } // else cannot place marker on map, it does not have lat/lng yet
                     });
@@ -257,7 +229,7 @@ Template.map.onCreated( function() {
             //====== AUTO CALCULATE MY LOCATION AND DRAW NEW MARKER WHEN IT CHANGES ======
             //====== AUTO CALCULATE NEW CLOSEST BUSINESS WHEN MY LOCATION CHANGES ======
             if (Geolocation.error() || Geolocation.latLng === null || Geolocation.latLng === "null") {
-                console.log(Geolocation.error().message);
+                console.log("Geo Error:", Geolocation.error().message);
                 return;
             } else {
                 let latLng = Geolocation.latLng();
@@ -274,25 +246,15 @@ Template.map.onCreated( function() {
                 if (!latLng)
                     return;
                 if (!clientMarker) {
-                    let icon_img = {
-                        url: 'img/orange_marker_3_sm.png'
-                    };
-                    let icon_symbol = {
-                        path: "M21 3L3 10.53v.98l6.84 2.65L12.48 21h.98L21 3z",
-                        fillColor: '#FF0000',
-                        fillOpacity: 0.8,
-                        anchor: new google.maps.Point(0,-3),
-                        strokeWeight: 1,
-                        scale: 1.3
-                    };
 
                     clientMarker = new google.maps.Marker({
                         position: new google.maps.LatLng(latLng.lat, latLng.lng),
                         map: map.instance,
-                        icon: icon_img,
+                        icon: self_icon,
+                        title: "Your Location",
                         // animation: google.maps.Animation.BOUNCE,
-                        title: "Your Location"
                     }); 
+                
                 } else {
                     clientMarker.setPosition(latLng);
                 }
@@ -309,30 +271,30 @@ Template.map.onCreated( function() {
 
 });
 
-// Template.map.onRendered(function() {
+Template.map.onRendered(function() {
     
-//     //Materialize JQuery Effects
-//     $(document).ready(function(){
-//         $('.modal-trigger').leanModal({
-//             dismissible: true,
-//             opacity: 0.5,
-//             in_duration: 300,
-//             out_duration: 200,
-//             ready: function() {
-//                 if($(".lean-overlay").length > 1) {
-//                     $(".lean-overlay:not(:first)").each(function() {
-//                         $(this).remove();
-//                     });
-//                 }
-//             },
-//             complete: function() {
-//                 $(".lean-overlay").each(function() {
-//                     $(this).remove();
-//                 });
-//             }
-//         });
-//     });
-// });
+    //Materialize JQuery Effects
+    $(document).ready(function(){
+        $('.modal-trigger').leanModal({
+            dismissible: true,
+            opacity: 0.5,
+            in_duration: 300,
+            out_duration: 200,
+            ready: function() {
+                if($(".lean-overlay").length > 1) {
+                    $(".lean-overlay:not(:first)").each(function() {
+                        $(this).remove();
+                    });
+                }
+            },
+            complete: function() {
+                $(".lean-overlay").each(function() {
+                    $(this).remove();
+                });
+            }
+        });
+    });
+});
 
 
 // ============================= HELPERS ==================================

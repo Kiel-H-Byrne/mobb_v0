@@ -2,7 +2,6 @@ import { Meteor } from 'meteor/meteor';
 import {Template} from 'meteor/templating';
 
 import './infoModal.html';
-import './infoModal.css';
 import './verifyForm.js';
 
 

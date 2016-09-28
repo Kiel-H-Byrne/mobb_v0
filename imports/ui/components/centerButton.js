@@ -3,7 +3,6 @@ import {Template} from 'meteor/templating';
 
 
 import './centerButton.html';
-import './centerButton.css';
 
 Template.centerButton.helpers( function() {
 

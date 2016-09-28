@@ -1,8 +1,9 @@
 
 <template name="infoModal">
-{{#with currentDoc}}
+
   <!-- Modal Structure -->
   <div id="modalInfo" class="modal bottom-sheet">
+{{#with currentDoc}}
     <div class="modal-content">
           <h5 class="center-align">{{name}}</h5>
           <p class="info">
@@ -32,6 +33,7 @@
           </div>
         </div>
     </div>
-  </div>
 {{/with}}
+  </div>
+
 </template>

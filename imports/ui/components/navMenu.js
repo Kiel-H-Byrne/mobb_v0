@@ -25,8 +25,5 @@ Template.navMenu.events({
 		analytics.track("Searched for New Location.", {
 		clientSearch: entered
 		});
-	}, 
-	'click .modal-trigger': function() {
-		$('.button-collapse').sideNav('hide');
 	}
 });

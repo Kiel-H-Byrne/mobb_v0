@@ -2,7 +2,6 @@ import { Template } from 'meteor/templating';
 
 import Listings from '/imports/startup/collections/listings';
 import './closestCard.html';
-import './closestCard.css';
 
 //find user location, compare with all listings, return closest
 //when user location changes, compare again.

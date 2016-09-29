@@ -11,4 +11,6 @@ Meteor.startup(function() {
 	  v: '3',
 	  key: Meteor.settings.public.keys.googleClient.key
 	});
+
 });
+

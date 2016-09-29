@@ -96,13 +96,14 @@ Template.map.onCreated( function() {
                         marker.set('title', doc.name);
 
                         marker.addListener('click', function() {
-                            Session.set('openListing', doc._id);
+                            Session.set('openListing', id);
                             $('#modalInfo').openModal();
-                            
-                            $(".phone").text(function(i, text) {
-                              text = text.replace(/(\d{3})(\d{3})(\d{4})/, "$1.$2.$3");
-                              return text;
-                            });
+                            // $(".phone").text(function(i, text) {
+                            //   // text = text.replace(/(\d{3})(\d{3})(\d{4})/, "$1.$2.$3");
+                            //   console.log(text);
+                            //   text = text.replace(/(\+?\d?)\-?\(?(\d{3})\)?\s?\-?\.?(\d{3})\-?\.?(\d{4})/gi, "$2.$3.$4");
+                            //   return text;
+                            // });
                             
                             $("#verify_button").click(function() {
                                 console.log("Clicked Verify button!");
@@ -195,23 +196,17 @@ Template.map.onCreated( function() {
                                 $('#modalInfo').openModal();
 
                                 //Scan and reformat phone numbers
-                                $(".phone").text(function(i, text) {
-                                  text = text.replace(/(\d{3})(\d{3})(\d{4})/, "$1.$2.$3");
-                                  return text;
-                                });
+                                // $(".phone").text(function(i, text) {
+                                //   // text = text.replace(/(\d{3})(\d{3})(\d{4})/, "$1.$2.$3");
+                                //   console.log(text);
+                                //   text = text.replace(/(\+?\d?)\-?\(?(\d{3})\)?\s?\-?\.?(\d{3})\-?\.?(\d{4})/gi, "$2.$3.$4");
+                                //   return text;
+                                // });
                                 //Click to open Verify Modal
                                 $("#verify_button").click(function() {
                                     console.log("Clicked Verify button!");
                                     //open modal verify form.
                                     $('#modalVerify').openModal();
-
-                                    // Listings.update({
-                                    //     _id: doc._id 
-                                    // },{
-                                    //     $addToSet: {
-                                    //         upVotes: {comment: 'This comment'}
-                                    //         }
-                                    // });
                                 });
                                 // Session.set('infoWindowOpen', true);
                             });

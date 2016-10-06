@@ -252,6 +252,9 @@ Template.map.onCreated( function() {
                 
                 } else {
                     clientMarker.setPosition(latLng);
+                    map.instance.setCenter(latLng);
+                    map.instance.setZoom(MAP_ZOOM);
+
                 }
             }
         });   

@@ -252,8 +252,9 @@ Template.map.onCreated( function() {
                 
                 } else {
                     clientMarker.setPosition(latLng);
-                    map.instance.setCenter(latLng);
-                    map.instance.setZoom(MAP_ZOOM);
+                    //Google Maps does not recenter or rezoom
+                    // map.instance.setCenter(clientMarker.getPosition());
+                    // map.instance.setZoom(MAP_ZOOM);
 
                 }
             }

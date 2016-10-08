@@ -59,3 +59,12 @@ body.modal-open {
 :focus:-moz-placeholder {
   opacity: 0.5;
 }
+
+
+.media-insert .modal {
+  max-height: 100%;
+  overflow: visible;
+}
+.media-insert .modal .modal-content {
+  text-align: center;
+}

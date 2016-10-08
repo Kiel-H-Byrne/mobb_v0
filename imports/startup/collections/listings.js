@@ -160,18 +160,20 @@ Listings.attachSchema(new SimpleSchema({
   },
   phone: {
     type: String,
+    label: 'Phone Number',
     max: 15,
     optional: true
   },
   url: {
     type: String,
     unique: true,
-    label: 'URL',
+    label: 'Website',
     regEx: SimpleSchema.RegEx.Url,
     optional: true
   },
   owner: {
     type: String,
+    label: 'Owner Name',
     optional: true
   },
   image: orion.attribute('file', {
@@ -219,6 +221,7 @@ Listings.attachSchema(new SimpleSchema({
   // }, 
   categories: {
     type: [String],
+    label: 'Categories',
     optional: true,
     // allowedValues: catArray,
     autoform: {

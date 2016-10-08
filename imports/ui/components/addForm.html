@@ -16,10 +16,10 @@
 
 <template name="addForm_af">
   <!-- Modal Structure -->
-  <div id="modalAdd" class="modal">
+  <div id="modalAdd" class="modal modal-fixed-footer">
 			{{#autoForm id="addListingForm_af" type="normal" collection="Listings" doc=this}}
 		    <div class="modal-content">
-					<h4 class="center-align"> Add Your Business </h4>
+					<h4 class="center-align"> Add A Business </h4>
 				  <ul class="collapsible" data-collapsible="accordion">
 			    	<li>
 							<div class="collapsible-header active"><i class="material-icons">explore</i>Location Information</div>
@@ -28,17 +28,13 @@
 							  {{> afQuickField name="street"}}
 							  <div class="row">
 								  <div class="col s5"> {{> afQuickField name="city"}} </div>
-								  <div class="col s4">
-									  <div class="row">
-										  <div class="input-field col s12"> {{> afFieldInput name="state" type="select" firstOption=getState options="allowed"}} </div>
-									  </div>
-								  </div>
+								  <div class="col s4"> {{> afFormGroup name="state" type="select" firstOption=getState value=getState options="allowed"}} </div>
 								  <div class="col s3"> {{> afQuickField name="zip"}} </div>
 							  </div>
 			    		</div>
 		    		</li>
 		    		<li>
-							<div class="collapsible-header"><i class="material-icons">work</i>Contact Information <span class="grey-text">(Optional)</span></div>
+							<div class="collapsible-header"><i class="material-icons">work</i>Contact Information <span class="grey-text right-align">(Optional)</span></div>
 							<div class="collapsible-body">
 							  {{> afQuickField name="owner"}}
 							  {{> afQuickField name="phone"}}
@@ -46,16 +42,21 @@
 							</div>
 			    	</li>
 		    		<li>
-							<div class="collapsible-header"><i class="material-icons">file_upload</i>Add Information <span class="grey-text">(Optional)</span></div>
+							<div class="collapsible-header"><i class="material-icons">file_upload</i>Add Information <span class="grey-text right-align">(Optional)</span></div>
 							<div class="collapsible-body">
 							  {{> afQuickField name="image"}}
-							  {{> afQuickField name="categories"}}
+							  <div class="row">
+								  <div class="col s12">
+								  <h5 class="center-align"> Categories: </h5>
+									  {{> afFormGroup name="categories" type="select-checkbox-inline"}}
+								  </div>
+							  </div>
 							</div>
 			    	</li>			    	
 			    </ul>
 				</div>		    
 		    <div class="modal-footer">
-					<button class="btn modal-action waves-effect waves-light" type="submit" name="action">Submit
+					<button class="btn modal-actionz waves-effect waves-light" type="submit" name="action">Submit
 						<i class="material-icons right">add_circle</i>
 					</button>
 				</div>

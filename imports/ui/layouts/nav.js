@@ -11,7 +11,11 @@ import './nav.html';
 Template.nav.onRendered( function() {
 // ====== MOBILE VIEW NAV MENU BUTTON, CLICKING SHOWS THE SIDE NAV. ====== 
 	$(document).ready(function(){
-		$(".button-collapse").sideNav();
+		$(".button-collapse").sideNav({
+			closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+    
+		});
+
 	});
 });
 

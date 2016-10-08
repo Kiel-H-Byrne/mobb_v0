@@ -14,8 +14,8 @@ import './addForm.html';
 Template.addForm_af.onRendered(function() {
     $('.collapsible').collapsible();
 
-    let state = Session.get('clientState');
-    $("li:contains("+ state +")").addClass("active selected");
+    // let state = Session.get('clientState');
+    // $("li:contains("+ state +")").addClass("active selected");
   
 });
 

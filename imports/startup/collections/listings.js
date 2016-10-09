@@ -16,6 +16,9 @@ Listings = new orion.collection('listings', {
         data: "name", 
         title: "Name" 
       },{ 
+        data: "location", 
+        title: "Location" 
+      },{ 
         data: "street", 
         title: "Street" 
       },{ 
@@ -39,12 +42,26 @@ Listings = new orion.collection('listings', {
       },{ 
         data: "url", 
         title: "URL" 
-      },{ 
+      },
+      {
+        data: "social",
+        title: "Social Media"
+      },
+      { 
         data: "owner", 
         title: "Owner" 
       },{ 
-        data: "location", 
-        title: "Location" 
+        data: "ownphone", 
+        title: "Owner Phone" 
+      },{ 
+        data: "cbenum", 
+        title: "CBE#" 
+      },{ 
+        data: "certs", 
+        title: "Certs" 
+      },{ 
+        data: "expdate", 
+        title: "CBE Expiration" 
       },
       orion.attributeColumn('file', 'image', 'Image'),
       { 
@@ -124,7 +141,8 @@ Listings.attachSchema(new SimpleSchema({
   },
   street: {
     type: String,
-    max: 50
+    optional: true,
+    max: 80
   },
   address2: {
     type: String,
@@ -133,10 +151,12 @@ Listings.attachSchema(new SimpleSchema({
   },  
   city: {
     type: String,
+    optional: true,
     max: 50
   },
   state: {
     type: String,
+    optional: true,
     // regEx: /^A[LKSZRAEP]|C[AOT]|D[EC]|F[LM]|G[AU]|HI|I[ADLN]|K[SY]|LA|M[ADEHINOPST]|N[CDEHJMVY]|O[HKR]|P[ARW]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY]$/
     allowedValues: ["AL","AK","AZ","AR","CA","CO","CT","DC","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"],
     autoform: {
@@ -147,7 +167,8 @@ Listings.attachSchema(new SimpleSchema({
   },
   zip: {
     type: String,
-    regEx: SimpleSchema.RegEx.ZipCode
+    regEx: SimpleSchema.RegEx.ZipCode,
+    optional: true
   },
   country: {
     type: String,
@@ -171,6 +192,12 @@ Listings.attachSchema(new SimpleSchema({
     regEx: SimpleSchema.RegEx.Url,
     optional: true
   },
+  social: {
+    type: String,
+    optional: true,
+    unique: true,
+    label: 'Social Media'
+  },
   owner: {
     type: String,
     label: 'Owner Name',
@@ -180,6 +207,31 @@ Listings.attachSchema(new SimpleSchema({
     label: 'Upload an Image',
     optional: true
   }),
+  cbenum: {
+    type: String,
+    label: 'CBE #',
+    optional: true
+  },
+  certs: {
+    type: String,
+    label: 'CBE Certifications',
+    optional: true
+  },
+  email: {
+    type: String,
+    label: 'E-Mail',
+    optional: true
+  },
+  expdate: {
+    type: String,
+    label: 'Expiration Date',
+    optional: true
+  },
+  ownphone: {
+    type: Number,
+    label: 'Owner Phone',
+    optional: true
+  },
   location: {
     type: String,
     optional: true,

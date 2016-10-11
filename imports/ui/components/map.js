@@ -11,6 +11,8 @@ import './map.html';
 let MAP_ZOOM = 4;
 
 // ============================= SUBSCRIPTIONS ==================================
+
+
 Template.map.onCreated( function() {  
 	console.log("-= MAP: Created =-");
     let self = this;
@@ -68,11 +70,14 @@ Template.map.onCreated( function() {
        
         //====== watch the database for changes, draw new marker on change. ====== //
 
-        let subscription = self.subscribe('listings_all', function() {
-            console.log("-= MAP SUBSCRIBED:  [" + Listings.find().count() + "] Total Listings");
+        let subscription = self.subscribe('listings_locs', function() {
+            let cursor = Listings.find({
+                location: { $exists : 1}, 
+                certs: {$exists: 0}
+            });
+            console.log("-= MAP.JS SUBSCRIBING: ALL ["+ cursor.count() +"] LISTINGS WITH LOCATIONS =-");
             //find listings that match the same lat/long digits as me (first two digits)
-            // return Listings.find({state: state});
-            let cursor = Listings.find();
+
             cursor.observeChanges({
                 added: function(id,doc) {
                     //add markers.
@@ -156,18 +161,12 @@ Template.map.onCreated( function() {
                 // let str = "((" +arr[0]+ "|" +arr[1]+ "|" +arr[2]+ ")(\\.\\d+)?),\\s*((" +arr[3]+ "|" +arr[4]+ "|" +arr[5]+")(\\.\\d+)?)";
                 let regex = new RegExp(str);
                 // console.log(regex);
-
-                let subscription = self.subscribe('listings_region', function() {
-                    console.log("-= MAP SUBSCRIBED:  [" + Listings.find({"location" : {$regex : regex}}).count() + "] Local Listings");
+                let subscription = self.subscribe('listings_loc', function() {
+                    let cursor = Listings.find({location : {$regex : regex}});
+                    console.log("-= MAP SUBSCRIBED:  [" + cursor.count() + "] Local Listings");
                     //find listings that match the same lat/long digits as me (first two digits)
                     // return Listings.find({state: state});
-                    Listings.find(
-                    {
-                        "location" : {
-                            $regex : regex 
-                        }
-                    }
-                    ).forEach(function(doc){
+                    cursor.forEach(function(doc){
                         //For Each Listing, add a marker; every marker opens a global infoWindow and owns events.
                         
                         //===== CONVERT DOC LOCATION FIELD FROM STRINGIFIED ARRAY TO OBJECT LITERAL =====
@@ -335,7 +334,7 @@ Template.map.helpers({
                 disableDefaultUI: true,
                 // fullscreenControl: true,
                 minZoom: 5,
-                streetViewControl: true,
+                streetViewControl: false,
                 streetViewControlOptions: {
                     position: google.maps.ControlPosition.RIGHT_CENTER
                 },

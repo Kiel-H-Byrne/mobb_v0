@@ -21,7 +21,7 @@ Meteor.publish('listings_urls', function() {
 });
 
 Meteor.publish('listings_social', function() {
-	let cursor = Listings.find({social: { $exists : 1}}).count()
+	let cursor = Listings.find({social: { $exists : 1}});
 	console.log("-= PUBLISHING: ["+ cursor.count() +"] SOCIAL LISTINGS =-");
 	return cursor;
 });

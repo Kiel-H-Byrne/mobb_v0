@@ -18,17 +18,25 @@
       </div>
 
       <div class="modal-footer">
-          <div class="card-action hoverable">
+          <div class="card-action ">
             <div class="row">
               {{#if url}}    
               <div class="col s3"><a class="btn-floating amber-lighten-2" target="_blank" title="Website" href="{{url}}"><i class="material-icons">link</i></a></div>
+              {{else}}
+              <div class="col s3"><a class="disabled btn-floating amber-lighten-2" target="_blank" title="Website" href="#"><i class="material-icons">link</i></a></div>
               {{/if}}
               {{#if phone}}    
               <div class="col s3"><a class="btn-floating amber" target="_blank" title="Call" href="tel:+1{{phone}}"><i class="material-icons">phone</i></a></div>
+              {{else}}
+              <div class="col s3"><a class="disabled btn-floating amber" target="_blank" title="Call" href="#"><i class="material-icons">phone</i></a></div>
               {{/if}}
               {{#if currentUser}}
               <div class="col s3">
                 <a class="btn-floating amber darken-2 modal-trigger" id="verify_button" title="Is This Information Correct?" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
+              </div>
+              {{else}}
+              <div class="col s3">
+                <a class="disabled btn-floating amber darken-2 modal-trigger" id="verify_button" title="Is This Information Correct?" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
               </div>
               {{/if}}
               <div class="col s3"><a class="btn-floating amber darken-4" target="_blank"  title="Directions"><i class="material-icons">navigation</i></a></div>

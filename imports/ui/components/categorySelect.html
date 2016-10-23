@@ -1,8 +1,10 @@
-<template name="categoryselect">
-  <select id="category" name="category" class="category">
-    <option value="">--Select--</option>
-    {{#each get_categories}}
-      <option value="{{_id}}">{{name}}</option>
-    {{/each}}
-  </select>
+<template name="categorySelect">
+	<div class="input-field">
+	  <select class="ui fluid dropdown" id="category-select">
+	    <option value="" disabled>--Select--</option>
+	    {{#each get_categories}}
+	      <option value="{{_id}}">{{name}}</option>
+	    {{/each}}
+	  </select>
+	</div>
 </template>

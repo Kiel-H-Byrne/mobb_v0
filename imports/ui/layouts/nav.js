@@ -1,10 +1,14 @@
 import { Meteor } from 'meteor/meteor';
 import {Template} from 'meteor/templating';
 
+import Categories from '/imports/startup/collections/categories.js'
+
 import '../components/navMenu.js';
 import '../components/loggedInNav.js';
 import '../components/addForm.js';
 import '../components/infoModal.js';
+import '../components/categorySelect.js';
+
 import './nav.html';
 
 

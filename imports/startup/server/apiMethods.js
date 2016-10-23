@@ -12,6 +12,8 @@ import { Accounts } from 'meteor/accounts-base';
 import './orionCache.js';
 
 const cache = new OrionCache('rest', 6000);
+const distance = require('google-distance');
+const Yelp = require('yelp');
 // console.log(cache);
 
 // ============================= SET IP INFO ==================================
@@ -150,7 +152,6 @@ Meteor.methods({
   yelpSearch: function() {
     // FROM 'NODE YELP' : https://github.com/olalonde/node-yelp
     // Request API access: http://www.yelp.com/developers/getting_started/api_access 
-    const Yelp = require('yelp');
     let yelp = new Yelp({
       consumer_key: Meteor.settings.public.keys.yelp.key,
       consumer_secret: Meteor.settings.public.keys.yelp.secret,
@@ -187,6 +188,23 @@ Meteor.methods({
     var apiUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + urlParams;
     console.log("--URL--"+apiUrl);
     let response = Meteor.wrapAsync(apiCall)(apiUrl);
+  }, 
+  getRoute: function(orig,dest) {
+
+  },
+  getDistance: function(orig,dest) {
+    let o = orig;
+    let d = dest;
+    distance.get(
+      {
+        origin: orig,
+        destination: dest
+      },
+      function(err, data) {
+        if (err) return console.log(err);
+        console.log(data);
+        return data;
+    });
   }
 });
 

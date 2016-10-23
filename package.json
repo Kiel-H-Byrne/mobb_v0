@@ -15,6 +15,7 @@
   "author": "Kiel Hamilton Byrne",
   "dependencies": {
     "crypto": "0.0.3",
+    "google-distance": "^1.0.1",
     "http": "0.0.0",
     "https": "^1.0.0",
     "meteor-node-stubs": "~0.2.0",

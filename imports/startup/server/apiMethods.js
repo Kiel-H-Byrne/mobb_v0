@@ -122,7 +122,7 @@ Meteor.methods({
     // console.log(arr.toLocaleString());
     // return arr.toLocaleString();    
   },
-  getDistance: function(orig, dest) {
+  getDistance2: function(orig, dest) {
     this.unblock();
     let urlParams;
     console.log("***calling DISTANCE API method with "+urlParams);
@@ -190,20 +190,22 @@ Meteor.methods({
     let response = Meteor.wrapAsync(apiCall)(apiUrl);
   }, 
   getRoute: function(orig,dest) {
+    this.unblock();
 
   },
-  getDistance: function(orig,dest) {
-    let o = orig;
-    let d = dest;
+  getDistances: function(orig,dests) {
     distance.get(
       {
         origin: orig,
-        destination: dest
+        destinations: dests,
+        units: 'imperial'
       },
       function(err, data) {
         if (err) return console.log(err);
-        console.log(data);
-        return data;
+        console.log(data[1]);
+        // let meters = data.distanceValue;
+        // let miles = meters / 1609.344s;
+        // return miles;
     });
   }
 });

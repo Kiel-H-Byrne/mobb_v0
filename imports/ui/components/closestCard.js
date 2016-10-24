@@ -21,7 +21,7 @@ import './closestCard.html';
 	// }
 
 Template.closestCard.onRendered(function() {
-	Meteor.subscribe('listings_locs', function() {
+	let subscription = this.subscribe('listings_locs', function() {
 	    console.log('-= MAP SUBSCRIBING: All Listing Locations =-');
 	    // console.log(Listings.find().count() + " Listings: ", Listings.find().fetch());
 	});
@@ -38,15 +38,15 @@ Template.closestCard.helpers({
 					let latLng = Session.get('clientLoc');
 					let origins = latLng.lat + "," + latLng.lng;
 			  // let destinations = ["catonsville, md", "takoma park, md", "bowie, md", "washington, dc", "wheaton, md"];
-			  //destinations = array of listing latlngs or addresses
+			  //destinations = array of listing latlngs or addresses, and _id
 
 			  
 				  let destinations = [];
 			  //find only those listings where first two digits of lat/long match the clients first two digits of lat/long
 				  Listings.find({}, {limit:25}).forEach(function(doc){
-			      destinations.push(doc.location);
+			      destinations.push({location: doc.location, _id: doc._id});
 				  });
-				  console.log(destinations);
+				  // console.log(destinations);
 				  let service = new google.maps.DistanceMatrixService();
 				  service.getDistanceMatrix({
 				      origins: [origins], //array of origins
@@ -73,16 +73,14 @@ Template.closestCard.helpers({
 				                shortestRouteIdx = i;
 				            }
 				        }
-				        //log the routes and duration.
-				        // $('#results').html(resultText);
-				        
-				        // console.log(res.destinationAddresses, routes.elements);
-				        let resArray = _.object(res.destinationAddresses, routes.elements);
-				        console.log(resArray);
-				        //get the shortest route
-				        let shortestRoute = resArray[shortestRouteIdx];
-				        Session.set('closestListing', shortestRoute);
+				        console.log(shortestRouteIdx);
+				        // console.log(res);
 
+				        let shortestObj = routes.elements[shortestRouteIdx]
+				        shortestObj.address = res.destinationAddresses[shortestRouteIdx];
+						console.log(shortestObj);
+				        Session.set('closestListing', shortestObj);
+				        // return shortestObj;
 				        //now we need to map the route.
 				        // calculateRoute(origins, shortestRoute)
 
@@ -93,14 +91,16 @@ Template.closestCard.helpers({
 		return true;
 	},
 	closestName: function() {
-		if (Session.get('closestListing')) {
-			return Session.get('closestListing')[0];
-		}
+		// if (Session.get('closestListing')) {
+			// let obj = Session.get('closestListing');
+			// return obj.address;
+		// }
 	},
 	closestStats: function() {
-		if (Session.get('closestListing')) {
-			return Session.get('closestListing')[1];
-		}
+		// if (Session.get('closestListing')) {
+			// let obj = Session.get('closestListing');
+			// return obj.
+		// }
 	},
 });
 

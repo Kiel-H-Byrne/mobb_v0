@@ -1,12 +1,13 @@
 <template name="closestCard">
+{{#if getClosest}}	
 	<div class="row">
     <div id="closestCard" class="card horizontal small col s6 push-s3">
-    	{{#if getClosest}}
-				{{#if closestName}}
-					{{closestName}}
-				{{/if}}
-    	{{/if}}
+    	
+		{{closestName}}
+		{{closestStats}}
+    
     </div>
   </div>
+{{/if}}
 </template>
 

@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import Listings from '/imports/startup/collections/listings';
 
 Meteor.publish('listings_locs', function() {
-	let cursor = Listings.find({location: { $exists : 1}});
+	let cursor = Listings.find({location: { $exists : 1}, certs: {$exists: 0}});
 	console.log("-= PUBLISHING: ALL ["+ cursor.count() +"] LISTINGS WITH LOCATIONS =-");
 	return cursor;
 });

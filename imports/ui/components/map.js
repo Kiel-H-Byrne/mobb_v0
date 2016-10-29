@@ -72,8 +72,8 @@ Template.map.onCreated( function() {
 
         let subscription = self.subscribe('listings_locs', function() {
             let cursor = Listings.find({
-                location: { $exists : 1}, 
-                certs: {$exists: 0}
+                location: { $exists : 1 }, 
+                certs: { $exists: 0 }
             });
             console.log("-= MAP.JS SUBSCRIBING: ALL ["+ cursor.count() +"] LISTINGS WITH LOCATIONS =-");
             //find listings that match the same lat/long digits as me (first two digits)

@@ -36,5 +36,5 @@ Template.categorySelect.helpers({
 
     // results should be an array of objects like {_id: String, name: String}
     return results;
-  };
+  }
 });

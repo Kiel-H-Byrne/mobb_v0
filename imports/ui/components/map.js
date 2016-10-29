@@ -4,6 +4,7 @@ import {Template} from 'meteor/templating';
 import Listings from '/imports/startup/collections/listings';
 import './centerButton.js';
 import './closestCards.js';
+import './closestCard.js';
 import './map.html';
 
 //====== GLOBALS ======
@@ -29,7 +30,7 @@ Template.map.onCreated( function() {
         let browserLocation = _.object( ['lat', 'lng'], [lat, lng]);
         // console.log("clientLoc is Browser: ", browserLocation);
         Session.set('browserLoc', browserLocation);
-
+        Session.set('clientLoc', Geolocation.latLng());
         Session.set('clientState', data.region_code);
 
         //              ---------------- ANALYTICS EVENT ---------------
@@ -43,8 +44,10 @@ Template.map.onCreated( function() {
     
     GoogleMaps.ready('map', function(map) {
         console.log("-= MAP: Drawn =-");        
-
         //====== SET MAP VARIABLES / CONSTANTS ======
+ 
+        map.instance.setCenter(Session.get('clientLoc') || Session.get('browserLoc'));
+
         let clientMarker;
 
         let markerImage = {
@@ -160,7 +163,7 @@ Template.map.onCreated( function() {
                 // = CLIENT LOCATION & LOCATION +1 AND -1
                 // let str = "((" +arr[0]+ "|" +arr[1]+ "|" +arr[2]+ ")(\\.\\d+)?),\\s*((" +arr[3]+ "|" +arr[4]+ "|" +arr[5]+")(\\.\\d+)?)";
                 let regex = new RegExp(str);
-                console.log(regex);
+                // console.log(regex);
                 let subscription = self.subscribe('listings_loc', function() {
                     let cursor = Listings.find({location : {$regex : regex}});
                     console.log("-= MAP SUBSCRIBED:  [" + cursor.count() + "] Local Listings");

@@ -13,6 +13,8 @@ import './orionCache.js';
 
 const cache = new OrionCache('rest', 6000);
 const distance = require('google-distance');
+distance.apiKey = Meteor.settings.public.keys.googleServer.key;
+
 const Yelp = require('yelp');
 // console.log(cache);
 
@@ -122,20 +124,23 @@ Meteor.methods({
     // console.log(arr.toLocaleString());
     // return arr.toLocaleString();    
   },
-  getDistance2: function(orig, dest) {
+  getDistance2: function(orig, dests) {
     this.unblock();
-    let urlParams;
-    console.log("***calling DISTANCE API method with "+urlParams);
-    var apiUrl = 'http://maps.googleapis.com/maps/api/distancematrix/?' + urlParams + '&key=' + Meteor.settings.public.keys.googleServer.key;
-    
+    let params = {};
+    //needs sring like '34,-55'
+    //and destinations need '34,-55 | 24,-85 ' etc...
+    let joined = dests.join("|");
+    params.units = "imperial";
+    params.orig = orig;
+    params.dests = joined;
+    console.log("***calling DISTANCE API method");
+    var apiUrl = 'https://maps.googleapis.com/maps/api/distancematrix/json?units=' + params.units + '&origins=' + params.orig + '&destinations=' + params.dests + '&key=' + Meteor.settings.public.keys.googleServer.key;
     console.log("--URL--"+apiUrl);
     let response = Meteor.wrapAsync(apiCall)(apiUrl);
     // console.log(response);
-    let loc = response.results[0].geometry.location;
-    let arr =  _.values(loc);
-    return arr.toLocaleString();
+    return response;
   },
-  getDirections: function(orig, dest) {
+  getDirections: function(orig, dests) {
     this.unblock();
     let urlParams;
     console.log("***calling DIRECTIONS API method with "+urlParams);
@@ -201,12 +206,22 @@ Meteor.methods({
         units: 'imperial'
       },
       function(err, data) {
-        if (err) return console.log(err);
-        console.log(data[1]);
+        if (err) return console.log(err)
+        else {
+          let info = data[1];
+          let obj = {};
+          console.log(info);
+          obj.distance = info.distance,
+          obj.disValue = info.distanceValue,
+          obj.duration = info.duration,
+          obj.durValue = obj.durationValue
+          return obj;
+        }
         // let meters = data.distanceValue;
         // let miles = meters / 1609.344s;
         // return miles;
     });
+    
   }
 });
 

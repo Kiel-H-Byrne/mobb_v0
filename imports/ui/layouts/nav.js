@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import {Template} from 'meteor/templating';
 
-import Categories from '/imports/startup/collections/categories.js'
+import Categories from '/imports/startup/collections/categories.js';
 
 import '../components/navMenu.js';
 import '../components/loggedInNav.js';

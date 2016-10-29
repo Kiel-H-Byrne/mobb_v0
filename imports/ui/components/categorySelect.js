@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import {Template} from 'meteor/templating';
 
-import Categories from '/imports/startup/collections/categories.js'
+import Categories from '/imports/startup/collections/categories.js';
 import './categorySelect.html';
 
 Template.categorySelect.onRendered(function() {
@@ -36,5 +36,5 @@ Template.categorySelect.helpers({
 
     // results should be an array of objects like {_id: String, name: String}
     return results;
-  }
+  };
 });

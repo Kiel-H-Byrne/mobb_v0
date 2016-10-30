@@ -28,6 +28,7 @@ Template.closestCards.onCreated(function() {
 
 Template.closestCards.helpers({
 	getClosest: function(){
+		console.log("getClosest triggered");
 		//return top 3 closest listings.
 		//get locations, compare each to origin, return only those that pass a test.
 		let latLng = Session.get('clientLoc') || Session.get('browserLoc') ;
@@ -37,12 +38,12 @@ Template.closestCards.helpers({
 			//this is array of all object
 			let dests = _.map(locArr, function(v) {
 				return v.location;
-			})
+			});
 			// console.log(dests.slice(0,4));
 			// let res = Meteor.call('getDistances', orig, dests);
 			let res = Meteor.call('getDistance2', orig, dests);
 
-			console.log(res);
+			// console.log(res);
 			return res;
 		}
 	}

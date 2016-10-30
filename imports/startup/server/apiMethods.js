@@ -4,11 +4,11 @@ import { Accounts } from 'meteor/accounts-base';
 
 //milktam:server-cache package - https://github.com/miktam/server-cache
 //instantiates ApiCache obect which creates ' rest_+name+ ' upon creation, with time to live.
-//ex. var cache = new ApiCache('name',ttl);
+//ex. let cache = new ApiCache('name',ttl);
 
 // ============================= API DATA CACHEING ==================================
 
-// var cache = new ApiCache('rest', 120);
+// let cache = new ApiCache('rest', 120);
 import './orionCache.js';
 
 const cache = new OrionCache('rest', 6000);
@@ -58,7 +58,7 @@ const apiCall = function (apiUrl, callback) {
       errorMessage = 'No idea what happened!';
     }
     // Create an Error object and return it via callback
-    // var myError = new Meteor.Error(errorCode, errorMessage);
+    // let myError = new Meteor.Error(errorCode, errorMessage);
     // callback(myError, null);
   }
 };
@@ -94,7 +94,7 @@ Meteor.methods({
       // console.log(address);
       urlParams = address;
     }
-    var apiUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + urlParams + '&key=' + Meteor.settings.public.keys.googleServer.key;
+    let apiUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + urlParams + '&key=' + Meteor.settings.public.keys.googleServer.key;
     console.log("--URL--"+apiUrl);
     let response = Meteor.wrapAsync(apiCall)(apiUrl);
     // console.log(response);
@@ -110,7 +110,7 @@ Meteor.methods({
   browserGeo: function(address) {
     this.unblock();
     
-    var apiUrl = 'https://freegeoip.net/json/';
+    let apiUrl = 'https://freegeoip.net/json/';
     console.log("--URL--"+apiUrl);
     let response = Meteor.wrapAsync(apiCall)(apiUrl);
     console.log(response);
@@ -134,17 +134,18 @@ Meteor.methods({
     params.orig = orig;
     params.dests = joined;
     console.log("***calling DISTANCE API method");
-    var apiUrl = 'https://maps.googleapis.com/maps/api/distancematrix/json?units=' + params.units + '&origins=' + params.orig + '&destinations=' + params.dests + '&key=' + Meteor.settings.public.keys.googleServer.key;
-    console.log("--URL--"+apiUrl);
+    // let apiUrl = 'https://maps.googleapis.com/maps/api/distancematrix/json?units=' + params.units + '&origins=' + params.orig + '&destinations=' + params.dests + '&key=' + Meteor.settings.public.keys.googleServer.key;
+    let apiUrl = 'https://maps.googleapis.com/maps/api/distancematrix/json?units=' + params.units + '&origins=' + params.orig + '&destinations=' + params.dests;
+    // console.log("--URL--"+apiUrl);
     let response = Meteor.wrapAsync(apiCall)(apiUrl);
-    // console.log(response);
+    console.log(response.rows[0].elements);
     return response;
   },
   getDirections: function(orig, dests) {
     this.unblock();
     let urlParams;
     console.log("***calling DIRECTIONS API method with "+urlParams);
-    var apiUrl = 'https://maps.googleapis.com/maps/api/directions/json?' + urlParams + '&key=' + Meteor.settings.public.keys.googleServer.key;
+    let apiUrl = 'https://maps.googleapis.com/maps/api/directions/json?' + urlParams + '&key=' + Meteor.settings.public.keys.googleServer.key;
     // origin=Disneyland&destination=Universal+Studios+Hollywood4' &key=YOUR_API_KEY' + urlParams + 
     
     console.log("--URL--"+apiUrl);
@@ -190,7 +191,7 @@ Meteor.methods({
     }
 
     console.log("***calling GEOCODE API method with "+urlParams);
-    var apiUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + urlParams;
+    let apiUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + urlParams;
     console.log("--URL--"+apiUrl);
     let response = Meteor.wrapAsync(apiCall)(apiUrl);
   }, 
@@ -206,17 +207,17 @@ Meteor.methods({
         units: 'imperial'
       },
       function(err, data) {
-        if (err) return console.log(err)
+        if (err) return console.log(err);
         else {
           let info = data[1];
           let obj = {};
           console.log(info);
-          obj.distance = info.distance,
-          obj.disValue = info.distanceValue,
-          obj.duration = info.duration,
-          obj.durValue = obj.durationValue
+          obj.distance = info.distance;
+          obj.disValue = info.distanceValue;
+          obj.duration = info.duration;
+          obj.durValue = obj.durationValue;
           return obj;
-        }
+        };
         // let meters = data.distanceValue;
         // let miles = meters / 1609.344s;
         // return miles;

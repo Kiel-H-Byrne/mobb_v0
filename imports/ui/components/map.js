@@ -30,7 +30,6 @@ Template.map.onCreated( function() {
         let browserLocation = _.object( ['lat', 'lng'], [lat, lng]);
         // console.log("clientLoc is Browser: ", browserLocation);
         Session.set('browserLoc', browserLocation);
-        Session.set('clientLoc', Geolocation.latLng());
         Session.set('clientState', data.region_code);
 
         //              ---------------- ANALYTICS EVENT ---------------
@@ -46,7 +45,7 @@ Template.map.onCreated( function() {
         console.log("-= MAP: Drawn =-");        
         //====== SET MAP VARIABLES / CONSTANTS ======
  
-        map.instance.setCenter(Session.get('clientLoc') || Session.get('browserLoc'));
+        map.instance.setCenter(Geolocation.latLng() || Session.get('browserLoc'));
 
         let clientMarker;
 

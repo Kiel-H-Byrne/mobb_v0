@@ -76,7 +76,7 @@ Template.closestCard.helpers({
 				        console.log(shortestRouteIdx);
 				        // console.log(res);
 
-				        let shortestObj = routes.elements[shortestRouteIdx]
+				        let shortestObj = routes.elements[shortestRouteIdx];
 				        shortestObj.address = res.destinationAddresses[shortestRouteIdx];
 						console.log(shortestObj);
 				        Session.set('closestListing', shortestObj);

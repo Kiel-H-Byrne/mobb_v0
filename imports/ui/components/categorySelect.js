@@ -9,7 +9,7 @@ Template.categorySelect.onRendered(function() {
   let subscription = this.subscribe('categories_all', function() {
     console.log(Categories.find().fetch());
   });
-})
+});
 
 Template.categorySelect.helpers({
   get_categories: function() {

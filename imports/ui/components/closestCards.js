@@ -10,7 +10,6 @@ Template.closestCards.onCreated(function() {
 	//when page loads, subscribe to the listings and filter out only the locations and ids of each listing, 
 	// store them as an array of objects
 
-
 	let subscription = this.subscribe('listings_locs', function() {
 	    console.log('-= MAP SUBSCRIBING: All Listing Locations =-');
 	    destArray = [];
@@ -20,8 +19,10 @@ Template.closestCards.onCreated(function() {
 	    	obj.location = l.location;
 	    	destArray.push(obj);
     	});
-	  	Session.set('destArray', destArray);
+	  	// Session.set('destArray', destArray);
 	    // console.log(Listings.find().count() + " Listings: ", Listings.find().fetch());
+
+
 	});
 });
 

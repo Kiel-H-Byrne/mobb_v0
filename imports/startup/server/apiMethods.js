@@ -11,9 +11,9 @@ import { Accounts } from 'meteor/accounts-base';
 // let cache = new ApiCache('rest', 120);
 import './orionCache.js';
 
-const cache = new OrionCache('rest', 6000);
-const distance = require('google-distance');
-distance.apiKey = Meteor.settings.public.keys.googleServer.key;
+const OCache = new OrionCache('rest', 6000);
+const GDistance = require('google-distance');
+GDistance.apiKey = Meteor.settings.public.keys.googleServer.key;
 
 const Yelp = require('yelp');
 // console.log(cache);
@@ -25,7 +25,7 @@ const apiCall = function (apiUrl, callback) {
   let errorCode, errorMessage;
   try {
 
-    let dataFromCache = cache.get(apiUrl);
+    let dataFromCache = OCache.get(apiUrl);
     // console.log("key: "+apiUrl);
     let response = {};
 
@@ -35,7 +35,7 @@ const apiCall = function (apiUrl, callback) {
     } else {
       console.log("Data from API...");
       response = HTTP.get(apiUrl).data;
-      cache.set(apiUrl, response);
+      OCache.set(apiUrl, response);
     }
 
     // A successful API call returns no error
@@ -133,12 +133,13 @@ Meteor.methods({
     params.units = "imperial";
     params.orig = orig;
     params.dests = joined;
-    console.log("***calling DISTANCE API method");
+    console.log("***Calling DISTANCE API method ***");
     // let apiUrl = 'https://maps.googleapis.com/maps/api/distancematrix/json?units=' + params.units + '&origins=' + params.orig + '&destinations=' + params.dests + '&key=' + Meteor.settings.public.keys.googleServer.key;
     let apiUrl = 'https://maps.googleapis.com/maps/api/distancematrix/json?units=' + params.units + '&origins=' + params.orig + '&destinations=' + params.dests;
-    // console.log("--URL--"+apiUrl);
+    console.log("--URL--"+ apiUrl);
     let response = Meteor.wrapAsync(apiCall)(apiUrl);
-    console.log(response.rows[0].elements);
+    console.log(response);
+    // console.log(response.rows[0].elements);
     return response;
   },
   getDirections: function(orig, dests) {
@@ -200,14 +201,14 @@ Meteor.methods({
 
   },
   getDistances: function(orig,dests) {
-    distance.get(
+    Gdistance.get(
       {
         origin: orig,
         destinations: dests,
         units: 'imperial'
       },
       function(err, data) {
-        if (err) return console.log(err);
+        if (err) {return console.log(err);}
         else {
           let info = data[1];
           let obj = {};
@@ -217,7 +218,7 @@ Meteor.methods({
           obj.duration = info.duration;
           obj.durValue = obj.durationValue;
           return obj;
-        };
+        }
         // let meters = data.distanceValue;
         // let miles = meters / 1609.344s;
         // return miles;

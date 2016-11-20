@@ -316,12 +316,12 @@ Template.map.helpers({
     let mapCenter;
         if (!Session.get('browserLoc')) {
             mapCenter = {'lat':39.833, 'lng':-98.583};
-            console.log("set mapCenter, no sesh:", mapCenter);
+            console.log("Set Default mapCenter:", mapCenter);
         } else {
             mapCenter = Session.get('browserLoc');
             MAP_ZOOM = 14;
             
-            console.log("got mapCenter sesh", mapCenter);
+            console.log("Got mapCenter from Browser:", mapCenter);
         }
 
         if (GoogleMaps.loaded() && mapCenter) {

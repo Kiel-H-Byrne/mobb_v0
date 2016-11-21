@@ -23,7 +23,7 @@ Router.route('/test', function(){
 AccountsTemplates.configureRoute('signIn', {
     name: 'login',
     path: '/login',
-    redirect: '/#',
+    redirect: '/',
 });
 
 AccountsTemplates.configureRoute('signUp', {

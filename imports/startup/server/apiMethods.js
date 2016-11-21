@@ -91,7 +91,7 @@ Meteor.methods({
       urlParams = address;
     }
     var apiUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + urlParams + '&key=' + Meteor.settings.public.keys.googleServer.key;
-    console.log("--URL--"+apiUrl);
+    // console.log("--URL--"+apiUrl);
     let response = Meteor.wrapAsync(apiCall)(apiUrl);
     // console.log(response);
     let loc = response.results[0].geometry.location;

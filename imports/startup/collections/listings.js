@@ -19,6 +19,9 @@ Listings = new orion.collection('listings', {
         data: "location", 
         title: "Location" 
       },{ 
+        data: "onlineonly", 
+        title: "Online Only?" 
+      },{ 
         data: "street", 
         title: "Street" 
       },{ 
@@ -42,12 +45,10 @@ Listings = new orion.collection('listings', {
       },{ 
         data: "url", 
         title: "URL" 
-      },
-      {
+      },{
         data: "social",
         title: "Social Media"
-      },
-      { 
+      },{ 
         data: "owner", 
         title: "Owner" 
       },{ 
@@ -207,6 +208,18 @@ Listings.attachSchema(new SimpleSchema({
     label: 'Upload an Image',
     optional: true
   }),
+  onlineonly: {
+    label: 'Online Only?',
+    type: Boolean,
+    optional: true,
+    autoValue: function() {
+      if ( this.field("street").value ) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  },
   cbenum: {
     type: String,
     label: 'CBE #',
@@ -236,7 +249,9 @@ Listings.attachSchema(new SimpleSchema({
     type: String,
     optional: true,
     autoValue: function() {
-      if (Meteor.isServer && this.isInsert && !this.isSet) {
+      let tester = this.field("street").value;
+      // console.log(tester);
+      if ( tester && Meteor.isServer && this.isInsert && !this.isSet) {
         let params = {};
         // console.log(this.docId);
         // console.log(this);
@@ -248,6 +263,10 @@ Listings.attachSchema(new SimpleSchema({
         if (response) {
           return response;
         } else {
+          //no street name, so must be online. 
+          //set category to "Online"
+          console.log(typeof tester);
+          console.log(_id);
           this.unset();
         }
       }

@@ -14,7 +14,7 @@ let MAP_ZOOM = 4;
 
 
 Template.map.onCreated( function() {  
-	console.log("-= MAP: Created =-");
+	// console.log("-= MAP: Created =-");
     let self = this;
 
     $.getJSON("https://freegeoip.net/json/", {
@@ -231,11 +231,11 @@ Template.map.onCreated( function() {
            
                 Session.set('clientLoc', latLng);
                 //              ---------------- ANALYTICS EVENT ---------------
-                analytics.track( "Browser IP Data", {
-                  title: "Pulled Geo Info",
-                  data: Session.get('clientLoc')
-                });
-                console.log("-= GA : Geolocation Obtained =-");
+                // analytics.track( "Browser IP Data", {
+                //   title: "Pulled Geo Info",
+                //   data: Session.get('clientLoc')
+                // });
+                // console.log("-= GA : Geolocation Obtained =-");
 
                 if (!latLng)
                     return;
@@ -314,12 +314,12 @@ Template.map.helpers({
     let mapCenter;
         if (!Session.get('browserLoc')) {
             mapCenter = {'lat':39.833, 'lng':-98.583};
-            console.log("set mapCenter, no sesh:", mapCenter);
+            console.log("set mapCenter, 'US Center':", mapCenter);
         } else {
             mapCenter = Session.get('browserLoc');
             MAP_ZOOM = 14;
             
-            console.log("got mapCenter sesh", mapCenter);
+            console.log("got mapCenter from Browser", mapCenter);
         }
 
         if (GoogleMaps.loaded() && mapCenter) {

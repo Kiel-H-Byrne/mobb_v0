@@ -28,7 +28,7 @@ Categories = new orion.collection('Categories', {
 
 Categories.allow({
   // only allow insertion if you are logged in
-  insert: function(userId, doc) { return false; },
+  insert: function(userId, doc) { return !! userId;; },
   update: function(userId, doc) { return !! userId; },
   remove: function(userId, doc) { return false; },
 });
@@ -59,7 +59,8 @@ Categories.attachSchema(new SimpleSchema({
       let count = Listings.find({categories: {$elemMatch: {$in: [ cat ]}}}).count();
       // console.log(count);
       return count;
-    }
+    },
+    optional: true
   }
 }));
 

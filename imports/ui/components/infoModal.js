@@ -27,7 +27,7 @@ Template.infoModal.events({
 			if (e) {
 				console.log("Error on getDirections Call"); 
 			} else {
-				console.log(d);
+				// console.log(d);
 				Session.set('myRoute', d.routes[0]); 
 			}
 		});

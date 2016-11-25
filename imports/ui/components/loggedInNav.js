@@ -12,7 +12,7 @@ Template.loggedInNav.onRendered( function() {
 		    in_duration: 300,
 		    out_duration: 200,
 		    ready: function() {
-		    	console.log("Modal Triggered, from loggedInNav.js");
+		    	// console.log("Modal Triggered, from loggedInNav.js");
 		        if($(".lean-overlay").length > 1) {
 		            $(".lean-overlay:not(:first)").each(function() {
 		                $(this).remove();
@@ -20,7 +20,7 @@ Template.loggedInNav.onRendered( function() {
 		        }
 		    },
 		    complete: function() {
-		    	console.log("Modal Complete, from loggedInNav.js");
+		    	// console.log("Modal Complete, from loggedInNav.js");
 		        $(".lean-overlay").each(function() {
 		            $(this).remove();
 		        });

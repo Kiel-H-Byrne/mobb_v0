@@ -18,4 +18,4 @@ Template.directionsModal.helpers({
 			return leg;
 		}
 	}
-})
+});

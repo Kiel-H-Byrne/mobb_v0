@@ -1,43 +1,45 @@
-[
-  {
-    "title": "Apparel & Accessories"
-  },{
-    "title": "Automotive Services"
-  },{
-    "title": "Family & Community"
-  },{
-    "title": "Building & Construction"
-  },{
-    "title": "Child Care"
-  },{
-    "title": "Entertainment & Media"
-  },{
-    "title": "Food & Dining"
-  },{
-    "title": "Health & Medicine"
-  },{
-    "title": "Home & Garden"
-  },{
-    "title": "Information Technology"
-  },{
-    "title": "Personal Care & Beauty"
-  },{
-    "title": "Online Only"
-  },{
-    "title": "Sole Proprietor"
-  },{
-    "title": "Minority Owned (Woman)"
-  },{
-    "title": "Owner Under 21"
-  },{
-    "title": "Operating Over 10y"
-  },{
-    "title": "Operating over 20y"
-  },{
-    "title": "Operating over 50y"
-  },{
-    "title": "Travel & Transportation"
-  },{
-    "title": "Wholesale"
-  }
-]
+{
+  "Categories": [
+    {
+      "title": "Apparel & Accessories"
+    },{
+      "title": "Automotive Services"
+    },{
+      "title": "Family & Community"
+    },{
+      "title": "Building & Construction"
+    },{
+      "title": "Child Care"
+    },{
+      "title": "Entertainment & Media"
+    },{
+      "title": "Food & Dining"
+    },{
+      "title": "Health & Medicine"
+    },{
+      "title": "Home & Garden"
+    },{
+      "title": "Information Technology"
+    },{
+      "title": "Personal Care & Beauty"
+    },{
+      "title": "Online Only"
+    },{
+      "title": "Sole Proprietor"
+    },{
+      "title": "Minority Owned (Woman)"
+    },{
+      "title": "Owner Under 21"
+    },{
+      "title": "Operating Over 10y"
+    },{
+      "title": "Operating over 20y"
+    },{
+      "title": "Operating over 50y"
+    },{
+      "title": "Travel & Transportation"
+    },{
+      "title": "Wholesale"
+    }
+  ]
+}

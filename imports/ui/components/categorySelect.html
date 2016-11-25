@@ -1,10 +1,23 @@
+<template name="catSelect">
+	<li>
+		<a class="dropdown-button btn" href="#" data-activates="category-dropdown">Categories</a>
+		<ul id="category-dropdown" class="dropdown-content">
+		{{#each categories}}
+			<li>{{title}}</li>
+		{{/each}}
+		</ul>
+	</li>
+</template>
+
 <template name="categorySelect">
-	<div class="input-field">
-	  <select class="ui fluid dropdown" id="category-select">
-	    <option value="" disabled>--Select--</option>
-	    {{#each get_categories}}
-	      <option value="{{_id}}">{{name}}</option>
-	    {{/each}}
-	  </select>
-	</div>
+<li>
+			<div class="input-field col s12 l4">
+			  <select multiple class="amber-text" id="category-select">
+			    <option value="" disabled >--Select--</option>
+			    {{#each categories}}
+			      <option value="{{_id}}" >{{title}}</option>
+			    {{/each}}
+			  </select>
+			</div>
+	</li>
 </template>

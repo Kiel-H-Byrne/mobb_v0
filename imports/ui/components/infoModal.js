@@ -29,7 +29,7 @@ Template.infoModal.events({
 			} else {
 				console.log(d);
 				Session.set('myRoute', d.routes[0]); 
-			};
+			}
 		});
 		// $('#modalInfo').closeModal();
 		$('#modalDirections').openModal();

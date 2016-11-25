@@ -163,7 +163,7 @@ Template.map.onCreated( function() {
                 // let str = "((" +arr[0]+ "|" +arr[1]+ "|" +arr[2]+ ")(\\.\\d+)?),\\s*((" +arr[3]+ "|" +arr[4]+ "|" +arr[5]+")(\\.\\d+)?)";
                 let regex = new RegExp(str);
                 // console.log(regex);
-                let subscription = self.subscribe('listings_loc', function() {
+                let subscription = self.subscribe('listings_locs', function() {
                     let cursor = Listings.find({location : {$regex : regex}});
                     console.log("-= MAP SUBSCRIBED:  [" + cursor.count() + "] Local Listings");
                     //find listings that match the same lat/long digits as me (first two digits)

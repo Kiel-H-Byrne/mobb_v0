@@ -7,11 +7,13 @@
   {{#with currentDoc}}
     <div class="col s12 m6 offset-m3">
 
-      <div class="modal-content">
+      <div class="modal-content" style="padding:3px">
             <h5 class="center-align">{{name}}</h5>
             <p class="center-align address">
-              {{street}} <br>
-              {{city}} {{state}} {{zip}} <br>
+              <span id="address-content">
+              {{street}} <br />
+              {{city}} {{state}} {{zip}} <br />
+              </span>
               <a class="center-align phone" href="tel:+1{{phone}}">{{phone}}</a>
             </p>
 
@@ -26,9 +28,9 @@
               <div class="col s3"><a class="disabled btn-floating amber-lighten-2" target="_blank" title="Website" href="#"><i class="material-icons">link</i></a></div>
               {{/if}}
               {{#if phone}}    
-              <div class="col s3"><a class="btn-floating amber" target="_blank" title="Call" href="tel:+1{{phone}}"><i class="material-icons">phone</i></a></div>
+              <div class="col s3"><a class="btn-floating amber" title="Call" href="tel:+1{{phone}}"><i class="material-icons">phone</i></a></div>
               {{else}}
-              <div class="col s3"><a class="disabled btn-floating amber" target="_blank" title="Call" href="#"><i class="material-icons">phone</i></a></div>
+              <div class="col s3"><a class="disabled btn-floating amber" title="Call" href="#"><i class="material-icons">phone</i></a></div>
               {{/if}}
               {{#if currentUser}}
               <div class="col s3">
@@ -39,7 +41,9 @@
                 <a class="disabled btn-floating amber darken-2 modal-trigger" id="verify_button" title="Is This Information Correct?" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
               </div>
               {{/if}}
-              <div class="col s3"><a class="btn-floating amber darken-4" target="_blank"  title="Directions"><i class="material-icons">navigation</i></a></div>
+              <div class="col s3">
+                <a class="btn-floating amber darken-4 modal-trigger" id="directions_button" title="Directions" href="#modalDirections"><i class="material-icons">navigation</i></a>
+              </div>
 
             </div>
           </div>

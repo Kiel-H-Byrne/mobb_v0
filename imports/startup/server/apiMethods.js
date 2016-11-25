@@ -134,7 +134,7 @@ Meteor.methods({
     params.units = "imperial";
     params.orig = orig;
     params.dests = joined;
-    console.log("***Calling DISTANCE API method ***");
+    console.log("*** Calling DISTANCE API method ***");
     // let apiUrl = 'https://maps.googleapis.com/maps/api/distancematrix/json?units=' + params.units + '&origins=' + params.orig + '&destinations=' + params.dests + '&key=' + Meteor.settings.public.keys.googleServer.key;
     let apiUrl = 'https://maps.googleapis.com/maps/api/distancematrix/json?units=' + params.units + '&origins=' + params.orig + '&destinations=' + params.dests;
     console.log("--URL--"+ apiUrl);
@@ -143,19 +143,18 @@ Meteor.methods({
     // console.log(response.rows[0].elements);
     return response;
   },
-  getDirections: function(orig, dests) {
+  getDirections: function(orig,dest) {
     this.unblock();
-    let urlParams;
-    console.log("***calling DIRECTIONS API method with "+urlParams);
-    let apiUrl = 'https://maps.googleapis.com/maps/api/directions/json?' + urlParams + '&key=' + Meteor.settings.public.keys.googleServer.key;
     // origin=Disneyland&destination=Universal+Studios+Hollywood4' &key=YOUR_API_KEY' + urlParams + 
-    
-    console.log("--URL--"+apiUrl);
+    let params = {};
+    params.origin = orig;
+    params.destination = dest;
+    console.log("***calling DIRECTIONS API method with "+params);
+    let apiUrl = 'https://maps.googleapis.com/maps/api/directions/json?origin=' + params.origin + '&destination=' + params.destination + '&key=' + Meteor.settings.public.keys.googleServer.key;
+    // console.log("--URL--"+apiUrl);
     let response = Meteor.wrapAsync(apiCall)(apiUrl);
     // console.log(response);
-    let loc = response.results[0].geometry.location;
-    let arr =  _.values(loc);
-    return arr.toLocaleString();
+    return response;
   },
   yelpSearch: function() {
     // FROM 'NODE YELP' : https://github.com/olalonde/node-yelp

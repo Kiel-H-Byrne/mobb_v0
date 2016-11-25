@@ -8,7 +8,7 @@ import '../components/loggedInNav.js';
 import '../components/addForm.js';
 import '../components/infoModal.js';
 import '../components/categorySelect.js';
-
+import '../components/directionsModal.js';
 import './nav.html';
 
 

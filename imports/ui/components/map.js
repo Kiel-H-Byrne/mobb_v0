@@ -3,6 +3,7 @@ import {Template} from 'meteor/templating';
 
 import Listings from '/imports/startup/collections/listings';
 import './centerButton.js';
+import './closestCards.js';
 import './closestCard.js';
 import './map.html';
 
@@ -29,7 +30,6 @@ Template.map.onCreated( function() {
         let browserLocation = _.object( ['lat', 'lng'], [lat, lng]);
         // console.log("clientLoc is Browser: ", browserLocation);
         Session.set('browserLoc', browserLocation);
-
         Session.set('clientState', data.region_code);
 
         //              ---------------- ANALYTICS EVENT ---------------
@@ -43,8 +43,10 @@ Template.map.onCreated( function() {
     
     GoogleMaps.ready('map', function(map) {
         console.log("-= MAP: Drawn =-");        
-
         //====== SET MAP VARIABLES / CONSTANTS ======
+ 
+        map.instance.setCenter(Geolocation.latLng() || Session.get('browserLoc'));
+
         let clientMarker;
 
         let markerImage = {
@@ -314,12 +316,12 @@ Template.map.helpers({
     let mapCenter;
         if (!Session.get('browserLoc')) {
             mapCenter = {'lat':39.833, 'lng':-98.583};
-            console.log("set mapCenter, 'US Center':", mapCenter);
+            console.log("Set mapCenter to 'US Center':", mapCenter);
+
         } else {
             mapCenter = Session.get('browserLoc');
             MAP_ZOOM = 14;
-            
-            console.log("got mapCenter from Browser", mapCenter);
+            console.log("Got mapCenter from Browser:", mapCenter);
         }
 
         if (GoogleMaps.loaded() && mapCenter) {

@@ -4,14 +4,18 @@ import { Accounts } from 'meteor/accounts-base';
 
 //milktam:server-cache package - https://github.com/miktam/server-cache
 //instantiates ApiCache obect which creates ' rest_+name+ ' upon creation, with time to live.
-//ex. var cache = new ApiCache('name',ttl);
+//ex. let cache = new ApiCache('name',ttl);
 
 // ============================= API DATA CACHEING ==================================
 
-// var cache = new ApiCache('rest', 120);
+// let cache = new ApiCache('rest', 120);
 import './orionCache.js';
 
-const cache = new OrionCache('rest', 6000);
+const OCache = new OrionCache('rest', 6000);
+const GDistance = require('google-distance');
+GDistance.apiKey = Meteor.settings.public.keys.googleServer.key;
+
+const Yelp = require('yelp');
 // console.log(cache);
 
 // ============================= SET IP INFO ==================================
@@ -21,7 +25,7 @@ const apiCall = function (apiUrl, callback) {
   let errorCode, errorMessage;
   try {
 
-    let dataFromCache = cache.get(apiUrl);
+    let dataFromCache = OCache.get(apiUrl);
     // console.log("key: "+apiUrl);
     let response = {};
 
@@ -31,7 +35,7 @@ const apiCall = function (apiUrl, callback) {
     } else {
       console.log("Data from API...");
       response = HTTP.get(apiUrl).data;
-      cache.set(apiUrl, response);
+      OCache.set(apiUrl, response);
     }
 
     // A successful API call returns no error
@@ -54,7 +58,7 @@ const apiCall = function (apiUrl, callback) {
       errorMessage = 'No idea what happened!';
     }
     // Create an Error object and return it via callback
-    // var myError = new Meteor.Error(errorCode, errorMessage);
+    // let myError = new Meteor.Error(errorCode, errorMessage);
     // callback(myError, null);
   }
 };
@@ -90,7 +94,8 @@ Meteor.methods({
       // console.log(address);
       urlParams = address;
     }
-    var apiUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + urlParams + '&key=' + Meteor.settings.public.keys.googleServer.key;
+
+    let apiUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + urlParams + '&key=' + Meteor.settings.public.keys.googleServer.key;
     // console.log("--URL--"+apiUrl);
     let response = Meteor.wrapAsync(apiCall)(apiUrl);
     // console.log(response);
@@ -106,7 +111,7 @@ Meteor.methods({
   browserGeo: function(address) {
     this.unblock();
     
-    var apiUrl = 'https://freegeoip.net/json/';
+    let apiUrl = 'https://freegeoip.net/json/';
     console.log("--URL--"+apiUrl);
     let response = Meteor.wrapAsync(apiCall)(apiUrl);
     console.log(response);
@@ -120,24 +125,29 @@ Meteor.methods({
     // console.log(arr.toLocaleString());
     // return arr.toLocaleString();    
   },
-  getDistance: function(orig, dest) {
+  getDistance2: function(orig, dests) {
     this.unblock();
-    let urlParams;
-    console.log("***calling DISTANCE API method with "+urlParams);
-    var apiUrl = 'http://maps.googleapis.com/maps/api/distancematrix/?' + urlParams + '&key=' + Meteor.settings.public.keys.googleServer.key;
-    
-    console.log("--URL--"+apiUrl);
+    let params = {};
+    //needs sring like '34,-55'
+    //and destinations need '34,-55 | 24,-85 ' etc...
+    let joined = dests.join("|");
+    params.units = "imperial";
+    params.orig = orig;
+    params.dests = joined;
+    console.log("***Calling DISTANCE API method ***");
+    // let apiUrl = 'https://maps.googleapis.com/maps/api/distancematrix/json?units=' + params.units + '&origins=' + params.orig + '&destinations=' + params.dests + '&key=' + Meteor.settings.public.keys.googleServer.key;
+    let apiUrl = 'https://maps.googleapis.com/maps/api/distancematrix/json?units=' + params.units + '&origins=' + params.orig + '&destinations=' + params.dests;
+    console.log("--URL--"+ apiUrl);
     let response = Meteor.wrapAsync(apiCall)(apiUrl);
-    // console.log(response);
-    let loc = response.results[0].geometry.location;
-    let arr =  _.values(loc);
-    return arr.toLocaleString();
+    console.log(response);
+    // console.log(response.rows[0].elements);
+    return response;
   },
-  getDirections: function(orig, dest) {
+  getDirections: function(orig, dests) {
     this.unblock();
     let urlParams;
     console.log("***calling DIRECTIONS API method with "+urlParams);
-    var apiUrl = 'https://maps.googleapis.com/maps/api/directions/json?' + urlParams + '&key=' + Meteor.settings.public.keys.googleServer.key;
+    let apiUrl = 'https://maps.googleapis.com/maps/api/directions/json?' + urlParams + '&key=' + Meteor.settings.public.keys.googleServer.key;
     // origin=Disneyland&destination=Universal+Studios+Hollywood4' &key=YOUR_API_KEY' + urlParams + 
     
     console.log("--URL--"+apiUrl);
@@ -150,7 +160,6 @@ Meteor.methods({
   yelpSearch: function() {
     // FROM 'NODE YELP' : https://github.com/olalonde/node-yelp
     // Request API access: http://www.yelp.com/developers/getting_started/api_access 
-    const Yelp = require('yelp');
     let yelp = new Yelp({
       consumer_key: Meteor.settings.public.keys.yelp.key,
       consumer_secret: Meteor.settings.public.keys.yelp.secret,
@@ -184,9 +193,38 @@ Meteor.methods({
     }
 
     console.log("***calling GEOCODE API method with "+urlParams);
-    var apiUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + urlParams;
+    let apiUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + urlParams;
     console.log("--URL--"+apiUrl);
     let response = Meteor.wrapAsync(apiCall)(apiUrl);
+  }, 
+  getRoute: function(orig,dest) {
+    this.unblock();
+
+  },
+  getDistances: function(orig,dests) {
+    Gdistance.get(
+      {
+        origin: orig,
+        destinations: dests,
+        units: 'imperial'
+      },
+      function(err, data) {
+        if (err) {return console.log(err);}
+        else {
+          let info = data[1];
+          let obj = {};
+          console.log(info);
+          obj.distance = info.distance;
+          obj.disValue = info.distanceValue;
+          obj.duration = info.duration;
+          obj.durValue = obj.durationValue;
+          return obj;
+        }
+        // let meters = data.distanceValue;
+        // let miles = meters / 1609.344s;
+        // return miles;
+    });
+    
   }
 });
 

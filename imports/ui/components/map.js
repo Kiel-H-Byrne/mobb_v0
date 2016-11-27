@@ -50,7 +50,7 @@ Template.map.onCreated( function() {
 
         let clientMarker;
 
-        const markerImage = {
+        let markerImage = {
           url: 'img/orange_marker_sm.png'
         };
         const closeMarkerImage = {
@@ -198,12 +198,7 @@ Template.map.onCreated( function() {
                                 //   return text;
                                 // });
                                 //Click to open Verify Modal
-                                $("#verify_button").click(function() {
-                                    console.log("Clicked Verify button!");
-                                    //open modal verify form.
-                                    $('#modalVerify').openModal();
-                                });
-                                // Session.set('infoWindowOpen', true);
+   
                             });
                         } // else cannot place marker on map, it does not have lat/lng yet
                     });

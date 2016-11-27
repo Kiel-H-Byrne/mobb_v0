@@ -11,7 +11,7 @@ import './addForm.html';
 // 	});
 // });
 
-Template.addForm_af.onRendered(function() {
+Template.addForm.onRendered(function() {
     $('.collapsible').collapsible();
 
     // let state = Session.get('clientState');
@@ -19,7 +19,7 @@ Template.addForm_af.onRendered(function() {
   
 });
 
-Template.addForm_af.helpers({
+Template.addForm.helpers({
   getState : function() {
     let state = Session.get('clientState');
     return state;
@@ -27,12 +27,13 @@ Template.addForm_af.helpers({
 });
 
 
-AutoForm.addHooks('addListingForm_af', {
+AutoForm.addHooks('addListingForm', {
 	  // Called when form does not have a `type` attribute or is 'normal'
     onSubmit: function (insertDoc, updateDoc, currentDoc) {
         this.event.preventDefault(); //prevents page reload
         console.log('Just submitted form, from addform.js');
         //close modal on submit
+        // $('#modalAdd').closeModal();
         Listings.insert(insertDoc);
 		    this.done(); // must be called; submitted successfully, call onSuccess, 
 		    // return false; //prevents page reload
@@ -44,7 +45,8 @@ AutoForm.addHooks('addListingForm_af', {
     //draw marker?
     //change content(inner html) of addForm template.
     $('#modalAdd').html(
-      '<h3> Thank You! </h3>'
-      ).delay(800).closeModal();
+      '<div id="submitMsg"> <h3> Thank You! </h3> </div>'
+      );
+    $('#modalAdd').delay(900).closeModal();
   },
 });

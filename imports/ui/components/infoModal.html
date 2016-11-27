@@ -2,14 +2,14 @@
 <template name="infoModal">
 
   <!-- Modal Structure -->
-  <div id="modalInfo" class="row modal bottom-sheet">
-  {{> closeButton}}
   {{#with currentDoc}}
-    <div class="col s12 m6 offset-m3">
+  <div id="modalInfo" class="row modal bottom-sheet transparent" style="background-image: url('{{image.url}}'), linear-gradient(rgba(255, 100, 0, 0.3), rgba(0, 0, 0, 0.5)); background-size:contain; background-repeat:no-repeat;">
+  {{> closeButton}}
+    <div class="col s12 m6 offset-m3" >
 
-      <div class="modal-content" style="padding:3px">
-            <h5 class="center-align">{{name}}</h5>
-            <p class="center-align address">
+      <div class="modal-content {{#if image.url}} amber-text text-darken-2 {{else}} white-text {{/if}}" style="padding:3px; ">
+            <h5 class="center-align ">{{name}}</h5>
+            <p class="center-align address ">
               <span id="address-content">
               {{street}} <br />
               {{city}} {{state}} {{zip}} <br />
@@ -19,8 +19,8 @@
 
       </div>
 
-      <div class="modal-footer">
-          <div class="card-action ">
+      <div class="modal-footer transparent">
+          <div class="">
             <div class="row">
               {{#if url}}    
               <div class="col s3"><a class="btn-floating amber-lighten-2" target="_blank" title="Website" href="{{url}}"><i class="material-icons">link</i></a></div>
@@ -49,7 +49,6 @@
           </div>
       </div>
     </div>
-  {{/with}}
   </div>
-
+{{/with}}
 </template>

@@ -33,5 +33,10 @@ Template.infoModal.events({
 		});
 		// $('#modalInfo').closeModal();
 		$('#modalDirections').openModal();
-	}
+	}, 
+	'click #verify_button': function(evt,tpl) {
+		console.log("Clicked Verify button!");
+		//open modal verify form.
+		$('#modalVerify').openModal();
+		}
 }); 

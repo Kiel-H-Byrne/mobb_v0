@@ -111,13 +111,7 @@ Template.map.onCreated( function() {
                             //   text = text.replace(/(\+?\d?)\-?\(?(\d{3})\)?\s?\-?\.?(\d{3})\-?\.?(\d{4})/gi, "$2.$3.$4");
                             //   return text;
                             // });
-                            
-                            $("#verify_button").click(function() {
-                                console.log("Clicked Verify button!");
-                                //open modal verify form.
-                                $('#modalVerify').openModal();
 
-                            });
                             // Session.set('infoWindowOpen', true);
                         });
                     } // else cannot place marker on map, it does not have lat/lng yet

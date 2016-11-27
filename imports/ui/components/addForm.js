@@ -26,41 +26,25 @@ Template.addForm_af.helpers({
   },
 });
 
-AutoForm.addHooks('addListingForm', {
-	  // Called when form does not have a `type` attribute or is 'normal'
-    onSubmit: function (insertDoc, updateDoc, currentDoc) {
-        this.event.preventDefault();
-        console.log('Just submitted form, from addform.js');
-        //close modal on submit
-        $('#modalAdd').closeModal();
-
-		    this.done(); // submitted successfully, call onSuccess
-		    return false;
-    },
-
-  // Called when any submit operation succeeds
-  onSuccess: function(formType, result) {
-  	console.log("Thanks for Submitting!", result);
-  	$('#modalAdd').closeModal();
-  },
-});
-
 
 AutoForm.addHooks('addListingForm_af', {
 	  // Called when form does not have a `type` attribute or is 'normal'
     onSubmit: function (insertDoc, updateDoc, currentDoc) {
-        this.event.preventDefault();
+        this.event.preventDefault(); //prevents page reload
         console.log('Just submitted form, from addform.js');
         //close modal on submit
-        $('#modalAdd').closeModal();
-
-		    this.done(); // submitted successfully, call onSuccess
-		    return false;
+        Listings.insert(insertDoc);
+		    this.done(); // must be called; submitted successfully, call onSuccess, 
+		    // return false; //prevents page reload
     },
 
   // Called when any submit operation succeeds
   onSuccess: function(formType, result) {
   	console.log("Thanks for Submitting!");
-  	$('#modalAdd').closeModal();
+    //draw marker?
+    //change content(inner html) of addForm template.
+    $('#modalAdd').html(
+      '<h3> Thank You! </h3>'
+      ).delay(800).closeModal();
   },
 });

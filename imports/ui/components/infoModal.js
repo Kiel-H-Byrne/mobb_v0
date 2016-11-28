@@ -36,7 +36,10 @@ Template.infoModal.events({
 		let address = $('#address-content').text();
 		
 		let browserLoc = _.values(Session.get('browserLoc')).toLocaleString();
-		let clientLoc = _.values(Session.get('clientLoc')).toLocaleString();
+		let clientLoc;
+		if (Session.get('clientLoc')) {
+			clientLoc = _.values(Session.get('clientLoc')).toLocaleString();
+			}
 		let myLocation = clientLoc || browserLoc;
 		Meteor.call('getDirections', myLocation, address, function(e,d) {
 			if (e) {

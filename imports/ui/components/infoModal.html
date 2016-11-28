@@ -2,12 +2,13 @@
 <template name="infoModal">
 
   <!-- Modal Structure -->
+  
+  <div id="modalInfo" class="row modal bottom-sheet transparent" style="">
   {{#with currentDoc}}
-  <div id="modalInfo" class="row modal bottom-sheet transparent" style="background-image: url('{{image.url}}'), linear-gradient(rgba(255, 100, 0, 0.1), rgba(255, 255, 255, 0.3)); background-size:contain; background-repeat:no-repeat; display:block">
   {{> closeButton}}
-    <div class="col s12 m6 offset-m3" >
+    <div id="infoWrap" class="col s12 m6 offset-m3" style="background-image: url('{{image.url}}')">
 
-      <div class="modal-content {{#if image.url}} black-text {{else}} white-text {{/if}}" style="padding:3px; ">
+      <div class="modal-content {{#if image.url}} black-text text-darken-4 {{else}} white-text {{/if}}" style="padding:3px; ">
             <h5 class="center-align "><a href="{{url}}" target="_blank" >{{name}}</a></h5>
             <p class="center-align address ">
               <span id="address-content">
@@ -49,6 +50,7 @@
           </div>
       </div>
     </div>
-  </div>
 {{/with}}
+  </div>
+
 </template>

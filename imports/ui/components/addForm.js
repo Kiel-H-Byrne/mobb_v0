@@ -36,7 +36,7 @@ AutoForm.addHooks('addListingForm', {
         // $('#modalAdd').closeModal();
         Listings.insert(insertDoc);
 		    this.done(); // must be called; submitted successfully, call onSuccess, 
-		    // return false; //prevents page reload
+		    return false; //prevents page reload
     },
 
   // Called when any submit operation succeeds

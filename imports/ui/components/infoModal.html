@@ -6,9 +6,9 @@
   <div id="modalInfo" class="row modal bottom-sheet transparent" style="">
   {{#with currentDoc}}
   {{> closeButton}}
-    <div id="infoWrap" class="col s12 m6 offset-m3" style="background-image: url('{{image.url}}')">
+    <div id="infoWrap" class="col s12 m6 offset-m3" >
 
-      <div class="modal-content {{#if image.url}} black-text text-darken-4 {{else}} white-text {{/if}}" style="padding:3px; ">
+      <div class="modal-content white-text" style="padding:3px; ">
             <h5 class="center-align "><a href="{{url}}" target="_blank" >{{name}}</a></h5>
             <p class="center-align address ">
               <span id="address-content">

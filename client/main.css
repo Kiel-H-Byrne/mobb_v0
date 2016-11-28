@@ -13,7 +13,6 @@ html, body{
 */
 
 .btn { 
-  background-color: #B71C1C ; /* deepRed */
   background-color: #FBB03B; /* orange */
   background-color: rgba(251,176,59,1) !important; /* orange */
   color: #ffffff;
@@ -26,6 +25,10 @@ html, body{
 
 body.modal-open {
     overflow: visible;
+}
+
+a {
+  color:inherit;
 }
 
 /**

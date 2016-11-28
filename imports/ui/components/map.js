@@ -11,38 +11,39 @@ import './map.html';
 
 let MAP_ZOOM = 4;
 
+$.getJSON("https://freegeoip.net/json/", {
+    format: "jsonp"
+}).done(function(data){
+    
+    //  {"ip":"69.138.161.94","country_code":"US","country_name":"United States","region_code":"MD",
+    //  "region_name":"Maryland","city":"Silver Spring","zip_code":"20902","time_zone":"America/New_York",
+    //  "latitude":39.0409,"longitude":-77.0445,"metro_code":511}
+    let lat = data.latitude;
+    let lng = data.longitude;
+    let browserLocation = _.object( ['lat', 'lng'], [lat, lng]);
+    // console.log("clientLoc is Browser: ", browserLocation);
+    Session.set('browserLoc', browserLocation);
+    Session.set('clientState', data.region_code);
+
+    //              ---------------- ANALYTICS EVENT ---------------
+    // analytics.track( "Browser IP Data", {
+    //   title: "Pulled Geo Info",
+    //   data: browserLocation
+    // });
+    // console.log("-= GA : Browser IP Data =-");
+});
+
+
+
 // ============================= SUBSCRIPTIONS ==================================
 
 
 Template.map.onCreated( function() {  
 	// console.log("-= MAP: Created =-");
     let self = this;
-
-    $.getJSON("https://freegeoip.net/json/", {
-        format: "jsonp"
-    }).done(function(data){
-        
-        //  {"ip":"69.138.161.94","country_code":"US","country_name":"United States","region_code":"MD",
-        //  "region_name":"Maryland","city":"Silver Spring","zip_code":"20902","time_zone":"America/New_York",
-        //  "latitude":39.0409,"longitude":-77.0445,"metro_code":511}
-        let lat = data.latitude;
-        let lng = data.longitude;
-        let browserLocation = _.object( ['lat', 'lng'], [lat, lng]);
-        // console.log("clientLoc is Browser: ", browserLocation);
-        Session.set('browserLoc', browserLocation);
-        Session.set('clientState', data.region_code);
-
-        //              ---------------- ANALYTICS EVENT ---------------
-        analytics.track( "Browser IP Data", {
-          title: "Pulled Geo Info",
-          data: browserLocation
-        });
-        console.log("-= GA : Browser IP Data =-");
-    });
-
-    
+  
     GoogleMaps.ready('map', function(map) {
-        console.log("-= MAP: Drawn =-");        
+        // console.log("-= MAP: Drawn =-");        
         //====== SET MAP VARIABLES / CONSTANTS ======
  
         map.instance.setCenter(Geolocation.latLng() || Session.get('browserLoc'));
@@ -52,15 +53,15 @@ Template.map.onCreated( function() {
         let markerImage = {
           url: 'img/orange_marker_sm.png'
         };
-        let closeMarkerImage = {
+        const closeMarkerImage = {
           url: 'img/red_marker_sm.png'
         };
 
-        let self_icon = {
+        const self_icon = {
             // url: 'img/orange_marker_3_sm.png'
             url: 'img/orange_dot_sm_2.png'
         };
-        let self_symbol = {
+        const self_symbol = {
             path: "M21 3L3 10.53v.98l6.84 2.65L12.48 21h.98L21 3z",
             fillColor: '#FF0000',
             fillOpacity: 0.8,
@@ -69,7 +70,6 @@ Template.map.onCreated( function() {
             scale: 1.3
         };
 
-       
         //====== watch the database for changes, draw new marker on change. ====== //
 
         let subscription = self.subscribe('listings_locs', function() {
@@ -111,13 +111,7 @@ Template.map.onCreated( function() {
                             //   text = text.replace(/(\+?\d?)\-?\(?(\d{3})\)?\s?\-?\.?(\d{3})\-?\.?(\d{4})/gi, "$2.$3.$4");
                             //   return text;
                             // });
-                            
-                            $("#verify_button").click(function() {
-                                console.log("Clicked Verify button!");
-                                //open modal verify form.
-                                $('#modalVerify').openModal();
 
-                            });
                             // Session.set('infoWindowOpen', true);
                         });
                     } // else cannot place marker on map, it does not have lat/lng yet
@@ -204,12 +198,7 @@ Template.map.onCreated( function() {
                                 //   return text;
                                 // });
                                 //Click to open Verify Modal
-                                $("#verify_button").click(function() {
-                                    console.log("Clicked Verify button!");
-                                    //open modal verify form.
-                                    $('#modalVerify').openModal();
-                                });
-                                // Session.set('infoWindowOpen', true);
+   
                             });
                         } // else cannot place marker on map, it does not have lat/lng yet
                     });

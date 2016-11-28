@@ -11,7 +11,7 @@ import './addForm.html';
 // 	});
 // });
 
-Template.addForm_af.onRendered(function() {
+Template.addForm.onRendered(function() {
     $('.collapsible').collapsible();
 
     // let state = Session.get('clientState');
@@ -19,48 +19,36 @@ Template.addForm_af.onRendered(function() {
   
 });
 
-Template.addForm_af.helpers({
+Template.addForm.helpers({
   getState : function() {
     let state = Session.get('clientState');
     return state;
   },
 });
 
+
 AutoForm.addHooks('addListingForm', {
 	  // Called when form does not have a `type` attribute or is 'normal'
     onSubmit: function (insertDoc, updateDoc, currentDoc) {
-        this.event.preventDefault();
+        this.event.preventDefault(); //prevents page reload
         console.log('Just submitted form, from addform.js');
         //close modal on submit
-        $('#modalAdd').closeModal();
-
-		    this.done(); // submitted successfully, call onSuccess
-		    return false;
-    },
-
-  // Called when any submit operation succeeds
-  onSuccess: function(formType, result) {
-  	console.log("Thanks for Submitting!", result);
-  	$('#modalAdd').closeModal();
-  },
-});
-
-
-AutoForm.addHooks('addListingForm_af', {
-	  // Called when form does not have a `type` attribute or is 'normal'
-    onSubmit: function (insertDoc, updateDoc, currentDoc) {
-        this.event.preventDefault();
-        console.log('Just submitted form, from addform.js');
-        //close modal on submit
-        $('#modalAdd').closeModal();
-
-		    this.done(); // submitted successfully, call onSuccess
-		    return false;
+        // $('#modalAdd').closeModal();
+        Listings.insert(insertDoc);
+		    this.done(); // must be called; submitted successfully, call onSuccess, 
+		    return false; //prevents page reload
     },
 
   // Called when any submit operation succeeds
   onSuccess: function(formType, result) {
   	console.log("Thanks for Submitting!");
-  	$('#modalAdd').closeModal();
+    //draw marker?
+    //change content(inner html) of addForm template.
+    $('#modalAdd').html(
+      ' <div id="submitMsg" class="modal-content"> ' +
+      ' <h3> Thank You! </h3> ' +
+      ' </div> '
+      );
+    $('#modalAdd').delay(1100).closeModal();
   },
 });

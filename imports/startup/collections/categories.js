@@ -28,7 +28,7 @@ Categories = new orion.collection('Categories', {
 
 Categories.allow({
   // only allow insertion if you are logged in
-  insert: function(userId, doc) { return !! userId;; },
+  insert: function(userId, doc) { return !! userId; },
   update: function(userId, doc) { return !! userId; },
   remove: function(userId, doc) { return false; },
 });

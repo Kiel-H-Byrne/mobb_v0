@@ -46,7 +46,7 @@ AutoForm.addHooks('addListingForm', {
     //change content(inner html) of addForm template.
     $('#modalAdd').html(
       ' <div id="submitMsg" class="modal-content"> ' +
-      ' <h3> Thank You! </h3> ' +
+      ' <h3 class="centered"> Thank You! </h3> ' +
       ' </div> '
       );
     $('#modalAdd').delay(1100).closeModal();

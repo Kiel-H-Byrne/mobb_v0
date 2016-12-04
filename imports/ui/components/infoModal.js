@@ -15,13 +15,31 @@ Template.infoModal.helpers({
 	}	
 });
 
+Template.infoModal.onRendered(function() {
+  // $('.modal-trigger').leanModal({
+  //   dismissible: true, // Modal can be dismissed by clicking outside of the modal
+  //   opacity: 0.5, // Opacity of modal background
+  //   in_duration: 300, // Transition in duration
+  //   out_duration: 200, // Transition out duration
+  //   starting_top: '4%', // Starting top style attribute
+  //   ending_top: '10%', // Ending top style attribute
+  //   ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+  //     alert("Ready");
+  //     console.log(modal, trigger);
+  //   },
+  //   complete: function() { alert('Closed'); } // Callback for Modal close
+  //   });
+});
 
 Template.infoModal.events({
 	'click #directions_button': function(evt,tpl) {
 		let address = $('#address-content').text();
 		
 		let browserLoc = _.values(Session.get('browserLoc')).toLocaleString();
-		let clientLoc = _.values(Session.get('clientLoc')).toLocaleString();
+		let clientLoc;
+		if (Session.get('clientLoc')) {
+			clientLoc = _.values(Session.get('clientLoc')).toLocaleString();
+			}
 		let myLocation = clientLoc || browserLoc;
 		Meteor.call('getDirections', myLocation, address, function(e,d) {
 			if (e) {
@@ -33,5 +51,10 @@ Template.infoModal.events({
 		});
 		// $('#modalInfo').closeModal();
 		$('#modalDirections').openModal();
-	}
+	}, 
+	'click #verify_button': function(evt,tpl) {
+		console.log("Clicked Verify button!");
+		//open modal verify form.
+		$('#modalVerify').openModal();
+		}
 }); 

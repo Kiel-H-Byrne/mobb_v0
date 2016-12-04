@@ -27,11 +27,10 @@ body.modal-open {
     overflow: visible;
 }
 
-a {
+#infoWrap a {
   color:inherit;
 }
 
-/**
 
 ::-webkit-input-placeholder { 
   color: #FBB03B;
@@ -68,7 +67,6 @@ a {
   opacity: 0.5;
 }
 
-*/
 
 
 #nav-input {
@@ -99,4 +97,22 @@ a {
   z-index: 10000;
   visibility: visible;
   border: 1px solid red;
+}
+
+
+//infoModal css for opaque image and gradient, etc.
+
+#infoWrap:after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    -ms-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
 }

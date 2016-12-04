@@ -27,11 +27,11 @@ body.modal-open {
     overflow: visible;
 }
 
-a {
+#infoWrap a {
   color:inherit;
 }
 
-/**
+
 
 ::-webkit-input-placeholder { 
   color: #FBB03B;
@@ -68,7 +68,6 @@ a {
   opacity: 0.5;
 }
 
-*/
 
 
 #nav-input {

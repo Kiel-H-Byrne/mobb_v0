@@ -11,11 +11,14 @@ Template.loggedInNav.onRendered( function() {
 		    opacity: 0.5,
 		    in_duration: 300,
 		    out_duration: 200,
+        starting_top: '0', // Starting top style attribute
+		    ending_top: '3%', // Ending top style attribute
 		    ready: function() {
 		    	// console.log("Modal Triggered, from loggedInNav.js");
 		        if($(".lean-overlay").length > 1) {
 		            $(".lean-overlay:not(:first)").each(function() {
 		                $(this).remove();
+		                console.log("removed a layer");
 		            });
 		        }
 		    },

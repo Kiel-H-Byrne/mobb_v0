@@ -12,10 +12,11 @@ import './addForm.html';
 // });
 
 Template.addForm.onRendered(function() {
-    $('.collapsible').collapsible();
+  $('.collapsible').collapsible();
 
-    // let state = Session.get('clientState');
-    // $("li:contains("+ state +")").addClass("active selected");
+  // let state = Session.get('clientState');
+  // $("li:contains("+ state +")").addClass("active selected");
+
   
 });
 

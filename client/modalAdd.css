@@ -1,0 +1,21 @@
+
+#modalAdd .row .col {
+  padding: 0 0.2rem;
+}
+
+#modalAdd .row{
+  margin: 0px;
+}
+
+#modalAdd .fileUpload {
+  margin: 0px
+}
+
+#modalAdd .af-checkbox-group p {
+  padding: 0px;
+}
+
+#row_categories {
+	position: relative;
+	top: -1.5rem;
+}

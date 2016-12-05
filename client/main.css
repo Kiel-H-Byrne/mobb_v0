@@ -31,6 +31,9 @@ body.modal-open {
   color:inherit;
 }
 
+#at-signIn {
+  font-size: 1.3rem; 
+}
 
 ::-webkit-input-placeholder { 
   color: #FBB03B;

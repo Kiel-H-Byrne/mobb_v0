@@ -1,6 +1,9 @@
 #centerButton_button {
 	position: absolute !important;
 	right: 0;
-	top: 33%;
+	/* top: 33%; */
+	bottom: 2rem;
 	margin: 0.5em;
 }
+
+

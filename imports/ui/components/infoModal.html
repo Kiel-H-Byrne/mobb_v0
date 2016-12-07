@@ -4,56 +4,57 @@
   <!-- Modal Structure -->
   
   <div id="modalInfo" class="row modal bottom-sheet transparent" style="">
-  {{#with currentDoc}}
+    {{#with currentDoc}}
+      {{> closeButton}}
+      {{! #if image.url}}
+        <!-- div class="heroImg" style="background-image: url('{{image.url}}')"></div-->
+      {{! /if}}
 
-    {{> closeButton}}
-    <div class="imgWrapper" style="background-image: url('{{image.url}}'), linear-gradient(rgba(255, 100, 0, 0.3), rgba(0, 0, 0, 0.5)); background-size:contain; background-repeat:no-repeat;" >
-      <div id="infoWrap" class="col s12 m6 offset-m3">
+          <!--div id="infoWrap" class="col s12 m6 offset-m3" style="background-image: url('{{image.url}}'), linear-gradient(rgba(055, 10, 0, 1), rgba(0, 0, 0, .4)) "-->
+            <div id="infoWrap" class="col s12 m6 offset-m3" >
+            <div class="modal-content {{#if image.url}} amber-text text-darken-2 {{else}} amber-text {{/if}} " style="padding:3px">
+                  <h5 class="center-align"><a href="{{url}}" target="_blank" >{{name}}</a></h5>
+                  <p class="center-align address">
 
-        <div class="modal-content {{#if image.url}} amber-text text-darken-2 {{else}} black-text {{/if}} " style="padding:3px">
-              <h5 class="center-align"><a href="{{url}}" target="_blank" >{{name}}</a></h5>
-              <p class="center-align address">
-
-                <span id="address-content">
-                {{street}} <br />
-                {{city}} {{state}} {{zip}} <br />
-                </span>
-                <a class="center-align phone" href="tel:+1{{phone}}">{{phone}}</a>
-              </p>
-        </div>
-
-        <div class="modal-footer transparent">
-            <div class="">
-              <div class="row">
-                {{#if url}}    
-                <div class="col s3"><a class="btn-floating amber" target="_blank" title="Website" href="{{url}}"><i class="material-icons">link</i></a></div>
-                {{else}}
-                <div class="col s3"><a class="disabled btn-floating " target="_blank" title="Website" href="#"><i class="material-icons">link</i></a></div>
-                {{/if}}
-                {{#if phone}}    
-                <div class="col s3"><a class="btn-floating amber darken-2" title="Call" href="tel:+1{{phone}}"><i class="material-icons">phone</i></a></div>
-                {{else}}
-                <div class="col s3"><a class="disabled btn-floating " title="Call" href="#"><i class="material-icons">phone</i></a></div>
-                {{/if}}
-                {{#if currentUser}}
-                <div class="col s3">
-                  <a class="btn-floating amber darken-3 modal-trigger" id="verify_button" title="Is This Information Correct?" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
-                </div>
-                {{else}}
-                <div class="col s3">
-                  <a class="disabled btn-floating modal-trigger" id="verify_button" title="Is This Information Correct?" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
-                </div>
-                {{/if}}
-                <div class="col s3">
-                  <a class="btn-floating amber darken-4 modal-trigger" id="directions_button" title="Directions" href="#modalDirections"><i class="material-icons">navigation</i></a>
-                </div>
-
-              </div>
+                    <span id="address-content">
+                    {{street}} <br />
+                    {{city}} {{state}} {{zip}} <br />
+                    </span>
+                    <a class="center-align phone" href="tel:+1{{phone}}">{{phone}}</a>
+                  </p>
             </div>
-        </div>
-      </div>  
-    </div>
-  {{/with}}
+
+            <div class="modal-footer transparent">
+                <div class="">
+                  <div class="row">
+                    {{#if url}}    
+                    <div class="col s3"><a class="btn-floating amber" target="_blank" title="Website" href="{{url}}"><i class="material-icons">link</i></a></div>
+                    {{else}}
+                    <div class="col s3"><a class="disabled btn-floating " target="_blank" title="Website" href="#"><i class="material-icons">link</i></a></div>
+                    {{/if}}
+                    {{#if phone}}    
+                    <div class="col s3"><a class="btn-floating amber darken-2" title="Call" href="tel:+1{{phone}}"><i class="material-icons">phone</i></a></div>
+                    {{else}}
+                    <div class="col s3"><a class="disabled btn-floating " title="Call" href="#"><i class="material-icons">phone</i></a></div>
+                    {{/if}}
+                    {{#if currentUser}}
+                    <div class="col s3">
+                      <a class="btn-floating amber darken-3 modal-trigger" id="verify_button" title="Is This Information Correct?" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
+                    </div>
+                    {{else}}
+                    <div class="col s3">
+                      <a class="disabled btn-floating modal-trigger" id="verify_button" title="Is This Information Correct?" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
+                    </div>
+                    {{/if}}
+                    <div class="col s3">
+                      <a class="btn-floating amber darken-4 modal-trigger" id="directions_button" title="Directions" href="#modalDirections"><i class="material-icons">navigation</i></a>
+                    </div>
+
+                  </div>
+                </div>
+            </div>
+          </div>  
+    {{/with}}
   </div>
 
 </template>

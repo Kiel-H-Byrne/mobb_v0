@@ -1,9 +1,14 @@
 
 .c9 {
     width: 33%;
-    height: 1px
+    height: 1px;
+    page-break-before:always;
 }
 .bold {
     font-weight: 700
 }
 
+.anchor {
+	text-decoration: none;
+	color: inherit;
+}

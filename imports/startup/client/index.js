@@ -12,6 +12,7 @@ Meteor.startup(function() {
 	  key: Meteor.settings.public.keys.googleClient.key
 	});
 
+//===============================  HTML Attributes for Facebook opengraph api ===============================  
 	$('html').attr({
 		'xmlns': 'http://www.w3.org/1999/xhtml',
 		'xmlns:fb': 'http://ogp.me/ns/fb#'

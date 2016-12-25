@@ -18,6 +18,11 @@ Router.route('/test', function(){
     this.render('test', {to: 'content'});
 });
 
+Router.route('/terms', function(){
+    this.layout('AppLayout');
+    this.render('terms', {to: 'content'});
+});
+
 // ==================== "atNavButton" routes Button ====================
 
 AccountsTemplates.configureRoute('signIn', {

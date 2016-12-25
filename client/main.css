@@ -42,3 +42,7 @@ body.modal-open {
   border: 1px solid red;
 }
 */
+
+.btn image {
+  height: 3rem;
+}

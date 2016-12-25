@@ -9,6 +9,7 @@ import '../components/addForm.js';
 import '../components/infoModal.js';
 import '../components/categorySelect.js';
 import '../components/directionsModal.js';
+import '../components/shareModal.js';
 import './nav.html';
 
 

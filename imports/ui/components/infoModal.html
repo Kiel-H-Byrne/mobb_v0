@@ -1,4 +1,5 @@
 
+
 <template name="infoModal">
 
   <!-- Modal Structure -->
@@ -43,11 +44,12 @@
                     </div>
                     {{else}}
                     <div class="col s3">
-                      <a class="disabled btn-floating modal-trigger" id="verify_button" title="Is This Information Correct?" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
+                      <a class="disabled btn-floating modal-trigger" id="verify_button" title="Verify This" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
                     </div>
                     {{/if}}
                     <div class="col s3">
-                      <a class="btn-floating amber darken-4 modal-trigger" id="directions_button" title="Directions" href="#modalDirections"><i class="material-icons">navigation</i></a>
+                      <!-- a class="btn-floating amber darken-4 modal-trigger" id="directions_button" title="Directions" href="#modalDirections"><i class="material-icons">navigation</i></a-->
+                      <a class="btn-floating amber darken-4 modal-trigger" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank"><i class="material-icons">navigation</i></a>
                     </div>
 
                   </div>

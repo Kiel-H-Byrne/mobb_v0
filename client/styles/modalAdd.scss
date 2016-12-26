@@ -1,0 +1,31 @@
+[id='modalAdd'] {
+  .row {
+    .col {
+      padding: 0 .2rem;
+    }
+
+    margin: 0;
+  }
+
+  .fileUpload {
+    margin: 0;
+  }
+
+  .af-checkbox-group {
+    p {
+      padding: 0;
+    }
+  }
+}
+
+[id='row_categories'] {
+  position: relative;
+  top: -1.5rem;
+}
+
+[id='modalShare'] {
+  img {
+    height: 5rem;
+    margin: 3rem;
+  }
+}

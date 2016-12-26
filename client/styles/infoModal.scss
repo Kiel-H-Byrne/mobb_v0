@@ -1,13 +1,12 @@
-#infoWrap {
-	background-size: contain; 
-	background-repeat: no-repeat;
-}
+[id='infoWrap'] {
+  background-repeat: no-repeat;
+  background-size: contain;
 
-#infoWrap a {
-  color:inherit;
-}
+  a {
+    color: inherit;
+  }
 
-#infoWrap:after{
+  &:after {
     position: absolute;
     left: 0;
     top: 0;
@@ -20,4 +19,6 @@
     -moz-background-size: cover;
     -webkit-background-size: cover;
     background-size: cover;
+
+  }
 }

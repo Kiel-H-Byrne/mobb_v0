@@ -1,8 +1,11 @@
 footer {
   bottom: 0;
-  height: 1.5rem;
+  right: 0;
+  font-size: 9px;
+  //height to hide Google Maps logo = 1.5rem, 
+  height: 1rem;
   position: absolute;
-  width: 100%;
+  min-width: 300px;
 
   a {
     color: inherit;

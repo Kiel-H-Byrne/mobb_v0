@@ -2,9 +2,9 @@
   <li>
     <form>
       <div class="input-field">
-          <div id="nav-input" class="amber darken-1 z-depth-1">
+          <div class="z-depth-1 nav-input">
             <i class="material-icons grey-text text-darken-2 prefix">search</i>
-            <input placeholder="Search..."  class="black-text" id="search_loc" type="text"/>
+            <input placeholder="City, State, or ZIP"  class="black-text" id="search_loc" type="text"/>
             
           </div>
       </div>
@@ -15,10 +15,35 @@
     {{loginButtons}}
   {{else}}
   <li>
-    <a class="waves-effect waves-light btn" href="/register">Add A Business!</a>
+    <a class="btn" href="/register">Add A Business</a>
   </li>
   {{/if}}
   <li>
-    <a class="waves-effect waves-light grey amber-text darken-2 modal-trigger" href="#modalShare"><i class="material-icons">share</i></a>
+    <a class="btn waves-effect waves-light amber-text grey darken-2 modal-trigger" href="#modalShare"><i class=" material-icons">share</i></a>
+  </li>
+</template>
+
+<template name="navMenu_mobile">
+  <li>
+    <form>
+      <div class="input-field">
+          <div id="nav-input" class="z-depth-1">
+            <i class="material-icons grey-text text-darken-2 prefix">search</i>
+            <input placeholder="City, State, or ZIP"  class="black-text" id="search_loc" type="text"/>
+            
+          </div>
+      </div>
+    </form>
+  </li>
+  {{#if currentUser}}
+    {{> loggedInNav}}
+    {{loginButtons}}
+  {{else}}
+  <li>
+    <a class="waves-effect waves-light btn" href="/register">Add A Business</a>
+  </li>
+  {{/if}}
+  <li>
+    <a class="btn waves-effect waves-light amber-text grey darken-2 modal-trigger" href="#modalShare"><i class="amber-text left material-icons">share</i>Share</a>
   </li>
 </template>

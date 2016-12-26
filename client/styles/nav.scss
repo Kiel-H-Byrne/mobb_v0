@@ -1,50 +1,61 @@
 @import 'colors';
 
-::-webkit-input-placeholder {
-  color: $clr-grey;
-  transition: opacity 250ms ease-in-out;
-}
+nav {
+  .btn {
+    i {
+      position: relative;
+      top: -0.45em;
+    }
+  }
+  ::-webkit-input-placeholder {
+    color: $clr-grey;
+    text-transform: uppercase;
+    transition: opacity 250ms ease-in-out;
+  }
 
-:focus::-webkit-input-placeholder {
-  opacity: 0.5;
-}
+  :focus::-webkit-input-placeholder {
+    opacity: 0.5;
+  }
 
-:-ms-input-placeholder {
-  color: $clr-grey;
-  transition: opacity 250ms ease-in-out;
-}
+  :-ms-input-placeholder {
+    color: $clr-grey;
+    text-transform: uppercase;
+    transition: opacity 250ms ease-in-out;
+  }
 
-:focus:-ms-input-placeholder {
-  opacity: 0.5;
-}
+  :focus:-ms-input-placeholder {
+    opacity: 0.5;
+  }
 
-::-moz-placeholder {
-  color: $clr-grey;
-  opacity: 1;
-  transition: opacity 250ms ease-in-out;
-}
+  ::-moz-placeholder {
+    color: $clr-grey;
+    opacity: 1;
+    text-transform: uppercase;
+    transition: opacity 250ms ease-in-out;
+  }
 
-:focus::-moz-placeholder {
-  opacity: 0.5;
-}
+  :focus::-moz-placeholder {
+    opacity: 0.5;
+  }
 
-:-moz-placeholder {
-  color: $clr-grey;
-  opacity: 1;
-  transition: opacity 250ms ease-in-out;
-}
+  :-moz-placeholder {
+    color: $clr-grey;
+    opacity: 1;
+    text-transform: uppercase;
+    transition: opacity 250ms ease-in-out;
+  }
 
-:focus:-moz-placeholder {
-  opacity: 0.5;
-}
+  :focus:-moz-placeholder {
+    opacity: 0.5;
+  }
 
-[id='nav-input'] {
-  background-color: rgba(251, 176, 59, 0.5);
-  border-radius: 10em;
-  height: 2.5em;
-  margin: 0.95em;
+  .nav-input {
+    background-color: $clr-orange;
+    border-radius: 10em;
+    height: 2.5em;
+    margin: 0.95em;
+    text-transform: uppercase;
 
-  > {
     i {
       position: absolute;
       left: 0.8em;
@@ -55,6 +66,20 @@
       position: relative;
       top: -0.66em;
       left: 0em;
+      }
+  }
+  
+  .side-nav {
+    input {
+      position: relative;
+      top: 0;
+    }
+
+    .btn {
+      i {
+        position: relative;
+        top: 0;
+      }
     }
   }
 }

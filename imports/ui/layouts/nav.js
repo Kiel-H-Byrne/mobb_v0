@@ -10,6 +10,7 @@ import '../components/infoModal.js';
 import '../components/categorySelect.js';
 import '../components/directionsModal.js';
 import '../components/shareModal.js';
+import '../components/corner-ribbon.js';
 import './nav.html';
 
 

@@ -1,6 +1,10 @@
 @import 'colors';
 
 nav {
+  .brand-logo {
+    margin: 0.4rem;
+    left: 1.5rem;
+  }
   .btn {
     i {
       position: relative;
@@ -9,49 +13,49 @@ nav {
   }
   ::-webkit-input-placeholder {
     color: $clr-grey;
-    text-transform: uppercase;
+    text-transform: capitalize;
     transition: opacity 250ms ease-in-out;
   }
 
   :focus::-webkit-input-placeholder {
-    opacity: 0.5;
+    opacity: 0.3;
   }
 
   :-ms-input-placeholder {
     color: $clr-grey;
-    text-transform: uppercase;
+    text-transform: capitalize;
     transition: opacity 250ms ease-in-out;
   }
 
   :focus:-ms-input-placeholder {
-    opacity: 0.5;
+    opacity: 0.3;
   }
 
   ::-moz-placeholder {
     color: $clr-grey;
-    opacity: 1;
-    text-transform: uppercase;
+    opacity: .5;
+    text-transform: capitalize;
     transition: opacity 250ms ease-in-out;
   }
 
   :focus::-moz-placeholder {
-    opacity: 0.5;
+    opacity: 0.3;
   }
 
   :-moz-placeholder {
     color: $clr-grey;
-    opacity: 1;
-    text-transform: uppercase;
+    opacity: .5;
+    text-transform: capitalize;
     transition: opacity 250ms ease-in-out;
   }
 
   :focus:-moz-placeholder {
-    opacity: 0.5;
+    opacity: 0.3;
   }
 
   .nav-input {
     background-color: $clr-orange;
-    border-radius: 10em;
+    border-radius: .5em;
     height: 2.5em;
     margin: 0.95em;
     text-transform: uppercase;

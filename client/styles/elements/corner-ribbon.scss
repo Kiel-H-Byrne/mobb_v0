@@ -1,0 +1,72 @@
+@import '../colors';
+
+
+.ribbon-wrapper-green {
+  position: absolute;
+
+  //right-corner
+  // right: -3px;
+  //left-corner
+  left: -3px;
+  top: -3px;
+  overflow: hidden;
+  height: 88px;
+  width: 85px;
+  z-index: 100;
+}
+
+.ribbon-green {
+  font: bold 12px Sans-Serif;
+
+  //right-corner
+  // left: -5px;
+  //left-corner
+  left: -30px;
+  position: relative;
+  top: 15px;
+  width: 120px;
+  padding: 2px 0;
+
+  //right-corner
+
+  -webkit-transform: rotate(45deg);
+
+  //left-corner
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(45deg);
+  -o-transform: rotate(-45deg);
+  text-align: center;
+  color: $clr-grey;
+  color: $clr-brown;
+  background-color: $clr-grey;
+  background-image: -webkit-gradient(linear, left top, left bottom, from($clr-orange), to($clr-orange-dark));
+  background-image: -webkit-linear-gradient(top, $clr-orange, $clr-orange-dark);
+  background-image: -moz-linear-gradient(top, $clr-orange, $clr-orange-dark);
+  background-image: -ms-linear-gradient(top, $clr-orange, $clr-orange-dark);
+  background-image: -o-linear-gradient(top, $clr-orange, $clr-orange-dark);
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  text-shadow: rgba(255, 255, 255, 0.5) 0 1px 0;
+
+  &:before, &:after {
+    bottom: -3px;
+    position: absolute;
+    content: '';
+    border-top: 3px solid $clr-orange-dark;
+    border-right: 3px solid transparent;
+    border-left: 3px solid transparent;
+  }
+
+  &:before {
+    left: 0;
+  }
+
+  &:after {
+    right: 0;
+  }
+}

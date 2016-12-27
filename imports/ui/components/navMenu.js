@@ -3,6 +3,7 @@ import {Template} from 'meteor/templating';
 
 import './navMenu.html';
 import './map.js';
+import './shareDropdown.js';
 
 Template.navMenu.events({
 	//====== SEARCH FORM ON NAVBAR =======

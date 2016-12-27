@@ -6,6 +6,19 @@ import {Meteor} from  'meteor/meteor';
 Router.route('/', function(){
     this.layout('AppLayout');
     this.render('map', {to: 'content'});
+    this.render('footer', {to: 'footer'});
+});
+
+Router.route('/map', function(){
+    this.layout('AppLayout');
+    this.render('map', {to: 'content'});
+    this.render('footer', {to: 'footer'});
+});
+
+Router.route('/list', function(){
+    this.layout('AppLayout');
+    this.render('list', {to: 'content'});
+    this.render('footer', {to: 'footer'});
 });
 
 Router.route('/add', function(){

@@ -34,6 +34,7 @@ Router.route('/test', function(){
 Router.route('/terms', function(){
     this.layout('AppLayout');
     this.render('terms', {to: 'content'});
+    this.render('', {to: 'footer'});
 });
 
 // ==================== "atNavButton" routes Button ====================

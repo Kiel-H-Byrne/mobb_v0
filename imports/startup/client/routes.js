@@ -17,7 +17,7 @@ Router.route('/map', function(){
 
 Router.route('/list', function(){
     this.layout('AppLayout');
-    this.render('list', {to: 'content'});
+    this.render('listPage', {to: 'content'});
     this.render('footer', {to: 'footer'});
 });
 

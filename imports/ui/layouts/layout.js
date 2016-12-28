@@ -7,3 +7,4 @@ import '../components/map.js';
 import '../pages/terms.js';
 import '../pages/test.js';
 import '../pages/terms.css';
+import '../pages/listPage.js';

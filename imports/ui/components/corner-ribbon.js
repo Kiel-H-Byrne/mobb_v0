@@ -9,4 +9,4 @@ Template.corner_ribbon.helpers ({
 		let string = "BETA";
 		return string;
 	}
-})
+});

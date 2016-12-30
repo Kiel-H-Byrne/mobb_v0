@@ -8,31 +8,31 @@
       "type": "image/png"
     },{
       "src":"img/icons/set_plain/Icon-24.png",
-      "sizes": "16x16",
+      "sizes": "24x24",
       "type": "image/png"
     },{
       "src":"img/icons/set_plain/Icon-32.png",
-      "sizes": "16x16",
+      "sizes": "32x32",
       "type": "image/png"
     },{
       "src":"img/icons/set_plain/Icon-40.png",
-      "sizes": "16x16",
+      "sizes": "40x40",
       "type": "image/png"
     },{
       "src":"img/icons/set_plain/Icon-60.png",
-      "sizes": "16x16",
+      "sizes": "60x60",
       "type": "image/png"
     },{
       "src":"img/icons/set_plain/Icon-72.png",
-      "sizes": "16x16",
+      "sizes": "72x72",
       "type": "image/png"
     },{
       "src":"img/icons/set_plain/Icon-120.png",
-      "sizes": "16x16",
+      "sizes": "120x120",
       "type": "image/png"
     },{
       "src":"img/icons/set_plain/Icon-152.png",
-      "sizes": "16x16",
+      "sizes": "152x152",
       "type": "image/png"
     },{
       "src":"img/icons/set_plain/Icon-ldpi.png",

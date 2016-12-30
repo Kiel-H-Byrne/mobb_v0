@@ -5,7 +5,7 @@ import './listPage.html';
 import '../components/infoCard.js';
 
 Template.listPage.onCreated(function() {
-	Meteor.subscribe('listings_urls', function() {
+	Meteor.subscribe('listings_online_only', function() {
 		let cursor = Listings.find({
 	      url: { $exists : 1 }
 	  });
@@ -17,8 +17,9 @@ Template.listPage.onCreated(function() {
 Template.listPage.helpers({
   list: function() {
 		let urlList = Listings.find({
-	      url: { $exists : 1 }
-	  });
+			url: { $exists : 1},
+			location: {$exists: 0}
+		});
 		return urlList;
 	}
 });

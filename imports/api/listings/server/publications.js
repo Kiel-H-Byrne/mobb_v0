@@ -20,6 +20,12 @@ Meteor.publish('listings_urls', function() {
 	return cursor;
 });
 
+Meteor.publish('listings_online_only', function() {
+	let cursor = Listings.find({url: { $exists : 1}, location: {$exists: 0}});
+	console.log("-= PUBLISHING: ["+ cursor.count() +"] ONLINE ONLY LISTINGS =-");
+	return cursor;
+});
+
 Meteor.publish('listings_social', function() {
 	let cursor = Listings.find({social: { $exists : 1}});
 	console.log("-= PUBLISHING: ["+ cursor.count() +"] SOCIAL LISTINGS =-");

@@ -4,8 +4,8 @@
       <div class="input-field">
           <div class="z-depth-1 nav-input">
             <i class="material-icons grey-text text-darken-2 prefix">search</i>
-            <input placeholder="Search nearby..."  class="black-text" id="search_loc" type="text"/>
-            
+            <label for="search_loc"></label>
+            <input placeholder="Search Your Community"  class="black-text" id="search_loc" type="text"/>
           </div>
       </div>
     </form>
@@ -15,7 +15,7 @@
     {{loginButtons}}
   {{else}}
   <li>
-    <a class="btn" href="/register">Add A Business</a>
+    <a class="waves-effect waves-light btn grey-text" href="/register">Add A Business</a>
   </li>
   {{/if}}
   <li>
@@ -29,9 +29,8 @@
       <div class="input-field">
           <div class=" nav-input z-depth-1">
             <i class="material-icons grey-text text-darken-2 prefix">search</i>
-            <label for="search_loc">Search</label>
-            <input placeholder="Search your City, State, zip..."  class="black-text" id="search_loc" type="text"/>
-            
+            <label for="search_loc"></label>
+            <input placeholder="Search Your Community"  class="black-text" id="search_loc" type="text"/>
           </div>
       </div>
     </form>
@@ -41,10 +40,10 @@
     {{loginButtons}}
   {{else}}
   <li>
-    <a class="waves-effect waves-light btn" href="/register">Add A Business</a>
+    <a class="btn waves-effect waves-light amber-text grey darken-2" href="/register">Add A Business</a>
   </li>
   {{/if}}
   <li>
-    <a class="btn grey darken-2 waves-effect waves-light amber-text modal-trigger" href="#modalShare"><i class="amber-text material-icons">share</i>Share</a>
+    <a class="left btn grey darken-2 waves-effect waves-light amber-text modal-trigger" href="#modalShare"><i class="left amber-text material-icons">share</i>Share</a>
   </li>
 </template>

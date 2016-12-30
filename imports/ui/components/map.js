@@ -43,6 +43,9 @@ Template.map.onCreated( function() {
     let self = this;
   
     GoogleMaps.ready('map', function(map) {
+        
+        $('#googleMap > .map-canvas > div > .gm-style > div:nth-of-type(2) > a > div > img').attr( "alt", "Google Maps" );
+        
         // console.log("-= MAP: Drawn =-");        
         //====== SET MAP VARIABLES / CONSTANTS ======
  

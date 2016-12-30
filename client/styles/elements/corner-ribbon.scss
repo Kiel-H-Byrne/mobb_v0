@@ -1,13 +1,13 @@
 @import '../colors';
 
 
-.ribbon-wrapper-green {
-  position: absolute;
+.ribbon-wrapper {
+  position: fixed;
 
   //right-corner
-  // right: -3px;
+  right: -3px;
   //left-corner
-  left: -3px;
+  // left: -3px;
   top: -3px;
   overflow: hidden;
   height: 88px;
@@ -15,13 +15,13 @@
   z-index: 100;
 }
 
-.ribbon-green {
+.ribbon {
   font: bold 12px Sans-Serif;
 
   //right-corner
-  // left: -5px;
+  left: -5px;
   //left-corner
-  left: -30px;
+  // left: -30px;
   position: relative;
   top: 15px;
   width: 120px;
@@ -30,15 +30,15 @@
   //right-corner
 
   -webkit-transform: rotate(45deg);
-
-  //left-corner
-  -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(45deg);
-  -moz-transform: rotate(-45deg);
   -ms-transform: rotate(45deg);
-  -ms-transform: rotate(-45deg);
   -o-transform: rotate(45deg);
-  -o-transform: rotate(-45deg);
+  //left-corner
+  // -webkit-transform: rotate(-45deg);
+  // -moz-transform: rotate(-45deg);
+  // -ms-transform: rotate(-45deg);
+  // -o-transform: rotate(-45deg);
+
   text-align: center;
   color: $clr-grey;
   color: $clr-brown;

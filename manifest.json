@@ -1,6 +1,7 @@
 {
-    "short_name": "BlackList",
     "name": "The Map of Black Businesses",
+    "short_name": "theBlackList",
+    
     "description": "A Map of Black Owned Businesses",
     "icons": [
         {
@@ -29,7 +30,7 @@
             "type": "image/png"
         }
     ],
-    "start_url": "./?utm_source=web_app_manifest",
+    "start_url": "/?utm_source=homescreen",
     "display": "standalone",
     "orientation": "portrait",
     "theme_color": "#29BDBB",

@@ -12,10 +12,25 @@ Meteor.startup(function() {
 	  key: Meteor.settings.public.keys.googleClient.key
 	});
 
-//===============================  HTML Attributes for Facebook opengraph api ===============================  
+	//=====  HTML Attributes for Facebook opengraph api =====
 	$('html').attr({
 		'xmlns': 'http://www.w3.org/1999/xhtml',
 		'xmlns:fb': 'http://ogp.me/ns/fb#'
 	});
+
+	//=====  ServiceWorker installation =====
+	if ('serviceWorker' in navigator) {
+	  window.addEventListener('load', function() {
+	    navigator.serviceWorker.register('/sw.js').then(function(registration) {
+	      // Registration was successful
+	      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+	    }).catch(function(err) {
+	      // registration failed :(
+	      console.log('ServiceWorker registration failed: ', err);
+	    });
+	  });
+	}
+
 });
+
 

@@ -82,6 +82,6 @@
   ],
   "start_url": "/?utm_source=homescreen",
   "background_color": "#444",
-  "Theme_color": "#ed7e0e",
+  "theme_color": "#ed7e0e",
   "display": "standalone"
 }

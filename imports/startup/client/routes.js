@@ -2,11 +2,7 @@
 import {Meteor} from  'meteor/meteor';
 
 
-Router.configure({
-    layoutTemplate: "AppLayout",
-    loadingTemplate: "loading",
-    notFoundTemplate: "404"
-});
+Router.plugin('dataNotFound', {notFoundTemplate: '404'});
 
 Router.route('/', function(){
     this.layout('AppLayout');
@@ -58,7 +54,7 @@ AccountsTemplates.configureRoute('signIn', {
 AccountsTemplates.configureRoute('signUp', {
     name: 'register',
     path: '/register',
-    redirect: '/',
+    redirect: '/add',
 });
 
 AccountsTemplates.configureRoute('verifyEmail', {
@@ -77,10 +73,10 @@ AccountsTemplates.configureRoute('resetPwd', {
 AccountsTemplates.configureRoute('enrollAccount', {
   name: 'enrollAccount',
   path: '/enroll',
-  redirect: '/admin'
+  redirect: '/add'
 });
 
-AccountsTemplates.configureRoute('ensureSignedIn', {
-    template: 'myLogin',
-    layoutTemplate: 'myLayout',
-});
+// AccountsTemplates.configureRoute('ensureSignedIn', {
+//     template: 'myLogin',
+//     layoutTemplate: 'appLayout',
+// });

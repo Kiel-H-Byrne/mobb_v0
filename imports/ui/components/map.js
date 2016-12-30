@@ -239,9 +239,10 @@ Template.map.onCreated( function() {
                         position: new google.maps.LatLng(latLng.lat, latLng.lng),
                         map: map.instance,
                         icon: self_icon,
-                        title: "Your Location",
+                        title: "My Location",
                         // animation: google.maps.Animation.BOUNCE,
                     }); 
+
                 
                 } else {
                     clientMarker.setPosition(latLng);
@@ -250,6 +251,15 @@ Template.map.onCreated( function() {
                     // map.instance.setZoom(MAP_ZOOM);
 
                 }
+
+                // let infoWindow = new google.maps.InfoWindow({
+                //     content: "Here I Am!"
+                // });
+
+                // clientMarker.addListener('click', function() {
+                //     infoWindow.setContent("Here I Am!");
+                //     infoWindow.open(map, clientMarker);
+                // });
             }
         });   
 

@@ -2,6 +2,11 @@
 import {Meteor} from  'meteor/meteor';
 
 
+Router.configure({
+    layoutTemplate: "AppLayout",
+    loadingTemplate: "loading",
+    notFoundTemplate: "404"
+});
 
 Router.route('/', function(){
     this.layout('AppLayout');
@@ -35,6 +40,11 @@ Router.route('/terms', function(){
     this.layout('AppLayout');
     this.render('terms', {to: 'content'});
     this.render('', {to: 'footer'});
+});
+
+Router.route('/error', function() {
+    this.layout('AppLayout');
+    this.render('404', {to: 'content'});
 });
 
 // ==================== "atNavButton" routes Button ====================

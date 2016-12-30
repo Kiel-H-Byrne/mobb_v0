@@ -2,29 +2,29 @@
 
 html,
 body {
-  background-color: $clr-grey;
-  color: $clr-gold;
   height: 100%;
-  margin: 0 px;
   width: 100%;
+  margin: 0;
+  color: $clr-gold;
+  background-color: $clr-grey;
+}
 
+// @font-face {
+//  font-family: 'Material Icons';
+//  font-style: normal;
+//  font-weight: 400;
+//  src: local('Material Icons'), local('MaterialIcons-Regular'), url(http://fonts.gstatic.com/s/materialicons/v7/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2) format('woff2');
+// }
+
+.address {
   a {
     color: $clr-green;
   }
 }
 
-
-// @font-face {
-// 	font-family: 'Material Icons';
-// 	font-style: normal;
-// 	font-weight: 400;
-// 	src: local('Material Icons'), local('MaterialIcons-Regular'), url(http://fonts.gstatic.com/s/materialicons/v7/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2) format('woff2');
-// }
-
-
 .btn {
-  background-color: $clr-orange;
   color: $clr-grey;
+  background-color: $clr-orange;
 }
 
 .modal-open {

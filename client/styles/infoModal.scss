@@ -1,24 +1,15 @@
-[id='infoWrap'] {
-  background-repeat: no-repeat;
-  background-size: contain;
+@import 'colors';
 
+[id='infoWrap'] {
   a {
     color: inherit;
   }
+}
 
-  &:after {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-repeat: no-repeat;
-    background-position: 50% 0;
-    -ms-background-size: cover;
-    -o-background-size: cover;
-    -moz-background-size: cover;
-    -webkit-background-size: cover;
-    background-size: cover;
+.row.modal.bottom-sheet {
+  background-color: rgba(68, 68, 68, .8);
+}
 
-  }
+.modal-footer > .row {
+  margin-bottom: 0;
 }

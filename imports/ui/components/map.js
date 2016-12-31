@@ -43,9 +43,10 @@ Template.map.onCreated( function() {
     let self = this;
   
     GoogleMaps.ready('map', function(map) {
-        
+        //Adding ALT tags to Google Images.       
         $('#googleMap > .map-canvas > div > .gm-style > div:nth-of-type(2) > a > div > img').attr( "alt", "Google Maps" );
-        
+        //Adding REL="noopener" to _blank targets
+        $('[target="_blank"]').attr("rel", "noopener");
         // console.log("-= MAP: Drawn =-");        
         //====== SET MAP VARIABLES / CONSTANTS ======
  

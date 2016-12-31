@@ -7,9 +7,10 @@ import '../components/infoCard.js';
 Template.listPage.onCreated(function() {
 	Meteor.subscribe('listings_online_only', function() {
 		let cursor = Listings.find({
-	      url: { $exists : 1 }
+	      url: { $exists : 1 },
+	      location: {$exists: 0}
 	  });
-	  console.log("-= MAP.JS SUBSCRIBING: ALL ["+ cursor.count() +"] LISTINGS WITH URLS =-");
+	  console.log("-= MAP.JS SUBSCRIBING: ALL ["+ cursor.count() +"] ONLINE ONLY =-");
 	});
 });
 

@@ -7,10 +7,8 @@
       "googleClient" : {"key" : "AIzaSyABDARHWhOBqcre3wS-A7NL59qZzvuWQtM"},
       "googleServer" : {"key" : "AIzaSyB7SQmFyKOkbwG3C0osrAyGbllKb8Jdx-8"},
       "yelp" : {
-        "key" : "1234567896325874123698745",
-  			"secret" : "1234567896325874123698745",
-  			"token" : "1234567896325874123698745",
-  			"t_secret" : "1234567896325874123698745"
+        "app_id" : "qY7ReHuqqRcd46uO35EdDw",
+  			"app_secret" : "sraEpUUq73L9aPc6S4OTzRZh8qETaaFJFDiU5hJJTqlwya8ppphEdIX5nS1TwNdL"
       },
       "mailgun" : {
         "pubKey" : "pubkey-67863056eeb5b73ef0e430fb745ee491",

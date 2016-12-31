@@ -54,7 +54,7 @@ AccountsTemplates.configureRoute('signIn', {
 AccountsTemplates.configureRoute('signUp', {
     name: 'register',
     path: '/register',
-    redirect: '/add',
+    redirect: '/',
 });
 
 AccountsTemplates.configureRoute('verifyEmail', {

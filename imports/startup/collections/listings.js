@@ -1,4 +1,8 @@
 
+// ======================== YELP v3 API =============================
+const Yelp = require('yelp-fusion');
+const yelp_client_id = Meteor.settings.public.keys.yelp.app_id;
+const yelp_client_secret = Meteor.settings.public.keys.yelp.app_secret;
 //=================== NEW COLLECTION =========================
 
 Listings = new orion.collection('listings', {
@@ -54,6 +58,9 @@ Listings = new orion.collection('listings', {
       },{ 
         data: "ownphone", 
         title: "Owner Phone" 
+      },{ 
+        data: "yelp_id", 
+        title: "Yelp ID" 
       },{ 
         data: "cbenum", 
         title: "CBE#" 
@@ -176,9 +183,7 @@ Listings.attachSchema(new SimpleSchema({
     min: 2,
     max: 3,
     optional: true,
-    autoValue: function() {
-      return "USA";
-    }
+    defaultValue: 'USA'
   },
   phone: {
     type: String,
@@ -213,10 +218,76 @@ Listings.attachSchema(new SimpleSchema({
     type: Boolean,
     optional: true,
     autoValue: function() {
-      if ( this.field("street").value ) {
-        return false;
-      } else {
+      if ( !this.field("street").value && this.field("url") ) {
         return true;
+      } else {
+        return false;
+      }
+    }
+  },
+  yelp_id: {
+    label: 'Yelp ID',
+    type: String,
+    optional: true,
+    custom: function() {
+      //do a yelp phone search using phone number, return value of call.
+      if ( this.field("phone").isSet && Meteor.isClient && this.isInsert && !this.isSet) {
+        console.log("running?");
+        let phone = this.field("phone").value;
+        /////////////////// YELP PACKAGE
+        // Yelp.accessToken(yelp_client_id, yelp_client_secret).then(response => {
+        //   const token = response.jsonBody.access_token;
+        //   const client = Yelp.client(token);
+        //   //then do search 
+        //   client.phoneSearch({
+        //     phone: phone
+        //   }).then(response => {
+        //     let biz = response.jsonBody.businesses[0];
+        //     // console.log(biz);
+        //     if (biz.id) {
+        //       console.log('biz id: '+ biz.id);
+        //       //set the yelp-id value for this _id document
+        //       return biz.id;
+
+        //       // return 'yelp-idz';
+        //     } else {
+        //       //no yelp id for this business.
+        //       console.log("no yelp ID");
+        //       console.log(typeof phone);
+        //       console.log(_id);
+        //       // this.unset();
+        //     }
+        //   });
+
+
+        //   // let userId = getId;
+
+        //   // getId.then(function(res) {
+        //   //   console.log(res);
+        //   //   return res;
+        //   // })
+        //   //response = Yelp.client;
+        //   // console.log(rez);
+        //   // return rez;
+
+        // }).catch(e => {
+
+        //   console.log(e);
+        // });
+        /////////////////// YELP API
+        Meteor.call('getYelpID', phone, function(err,res) {
+          if (res) {
+            console.log(res);
+          }
+        });
+        // console.log(resp);
+        // return resp;
+        // return 'yelp-id';
+
+        // console.log(response);
+        // return response;
+      } else {
+        console.log("No Yelp-Id Assigned");
       }
     }
   },
@@ -249,9 +320,9 @@ Listings.attachSchema(new SimpleSchema({
     type: String,
     optional: true,
     autoValue: function() {
-      let tester = this.field("street").value;
+      let street = this.field("street").value;
       // console.log(tester);
-      if ( tester && Meteor.isServer && this.isInsert && !this.isSet) {
+      if ( street && this.isInsert && !this.isSet) {
         let params = {};
         // console.log(this.docId);
         // console.log(this);
@@ -263,10 +334,10 @@ Listings.attachSchema(new SimpleSchema({
         if (response) {
           return response;
         } else {
-          //no street name, so must be online. 
+          //no street name, so must be online Only. 
           //set category to "Online"
-          console.log(typeof tester);
-          console.log(_id);
+          console.log(typeof street);
+          console.log(this.docId);
           this.unset();
         }
       }
@@ -297,9 +368,16 @@ Listings.attachSchema(new SimpleSchema({
     // allowedValues: catArray,
     autoform: {
       type: "select-checkbox-inline",
-      options: function () {
+      options: function() {
+//need to subscrib somehwere else, performane suffers here        
+        // Meteor.subscribe('categories_all', function() {
+        //   let cursor = Categories.find({});
+        //   let arr = cursor.fetch();
+        //   console.log(arr);
         return _.map(catArray, function (v) {
-          return {label: v, value: v};
+          // console.log(v);
+          let title = v;
+          return {label: title, value: title};
         });
       }
     }
@@ -350,7 +428,7 @@ Listings.allow({
 
   // only allow insertion if you are logged in
   insert: function(userId, doc) { return !! userId;},
-  update: function(userId, doc) { return true; },
+  update: function(userId, doc) { return !! userId;},
   remove: function(userId, doc) { return false; },
 });
 
@@ -381,7 +459,11 @@ Listings.allow({
 //   // fetch: ['locked'] // no need to fetch 'owner'
 // });
 
-
-
+// Listings.insert(
+//   {
+//     name: 'test biz',
+//     phone: '14157492060'
+//   }
+// );
 
 export default Listings;

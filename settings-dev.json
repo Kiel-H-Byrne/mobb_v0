@@ -6,6 +6,7 @@
     "keys": {
       "googleClient" : {"key" : "AIzaSyABDARHWhOBqcre3wS-A7NL59qZzvuWQtM"},
       "googleServer" : {"key" : "AIzaSyB7SQmFyKOkbwG3C0osrAyGbllKb8Jdx-8"},
+      "googleAPI" : {"key" : " AIzaSyAuvQtaNuOF1phJQcTv3ytk9VyNCrlrOO4"},
       "yelp" : {
         "app_id" : "qY7ReHuqqRcd46uO35EdDw",
   			"app_secret" : "sraEpUUq73L9aPc6S4OTzRZh8qETaaFJFDiU5hJJTqlwya8ppphEdIX5nS1TwNdL"

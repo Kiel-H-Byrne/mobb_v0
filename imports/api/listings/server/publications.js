@@ -1,12 +1,17 @@
 import { Meteor } from 'meteor/meteor';
 import Listings from '/imports/startup/collections/listings';
 
+Meteor.publish('listings', function() {
+	let cursor = Listings.find({});
+	console.log("-= PUBLISHING: ALL ["+ cursor.count() +"] =-");
+	return cursor;
+});
+
 Meteor.publish('listings_locs', function() {
 	let cursor = Listings.find({location: { $exists : 1}, certs: {$exists: 0}});
 	console.log("-= PUBLISHING: ALL ["+ cursor.count() +"] LISTINGS WITH LOCATIONS =-");
 	return cursor;
 });
-
 
 Meteor.publish('listings_cbes', function() {
 	let cursor = Listings.find({certs: { $exists : 1}});

@@ -49,7 +49,7 @@ Template.nav2.onRendered(function() {
 
 });
 
-Template.nav3.events({
+Template.nav2.events({
 	//====== SEARCH FORM ON NAVBAR =======
 	//when form is submitted, set new center. 
 	
@@ -77,7 +77,7 @@ Template.nav3.events({
   },
   'mouseup form': function() {
     // console.log("mouse fired.");
-    Materialize.updateTextFields();
+    // Materialize.updateTextFields();
   }
 });
 

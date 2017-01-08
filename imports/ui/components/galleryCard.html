@@ -1,57 +1,59 @@
 
 
 <template name="galleryCard">
-  <a href="{{url}}" target="_blank">
-    <div class="card-info card grey darken-2 hoverable">
+  {{!-- <a href="{{url}}" target="_blank"> --}}
+    <div class="info-card card sticky-action grey darken-2 hoverable">
       
       {{#if image.url}}
       <div class="card-image waves-effect waves-block waves-light"> 
-        <img class="responsive-image" src="{{image.url}}" />
-        <span class="green-text card-title"></span>
+        <img class="responsive-image activator" src="{{image.url}}" />
       </div>
       {{/if}}
       <div class="card-content white-text">
-          <h5 class="amber-text text-darken-1 center-align">{{name}}</h5>
+          <span class="card-title"> <h5 class="amber-text text-darken-1 center-align">{{name}}</h5></span>
           <h6 class="center-align"><a href="#" target="_blank" rel="noopener" > {{social}}</a></h6>
           <p class="center-align address">
             <span id="address-content">
               {{street}} <br />
               {{city}} {{state}} {{zip}} <br />
             </span>
-          <a class="center-align phone" href="tel:+1{{phone}}">{{phone}}</a>
-        </p>
+            <a class="center-align phone" href="tel:+1{{phone}}">{{phone}}</a>
+          </p>
+          <p></p>
       </div>
 
       <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">{{name}}<i class="material-icons right">close</i></span>
+        <span class="card-title amber-text text-darken-4">Reviews<i class="material-icons right">close</i></span>
+        {{#with google_review}}
         
-        <div class="row">
+        {{/with}}
+      </div>
+
+      <div class="card-action">
+        <div class="row center-align">
           {{#if url}}    
-          <div class="col s3"><a class="btn-floating amber" target="_blank" rel="noopener" title="Website" href="{{url}}"><i class="material-icons">link</i></a></div>
-          {{else}}
-          <div class="col s3"><a class="disabled btn-floating " target="_blank" rel="noopener" title="Website" href="#"><i class="material-icons">link</i></a></div>
+          <div class="col "><a class="btn-floating amber" target="_blank" rel="noopener" title="Website" href="{{url}}"><i class="material-icons">link</i></a></div>
           {{/if}}
           {{#if phone}}    
-          <div class="col s3"><a class="btn-floating amber darken-2" title="Call" href="tel:+1{{phone}}"><i class="material-icons">phone</i></a></div>
-          {{else}}
-          <div class="col s3"><a class="disabled btn-floating " title="Call" href="#"><i class="material-icons">phone</i></a></div>
+          <div class="col "><a class="btn-floating amber darken-2" title="Call" href="tel:+1{{phone}}"><i class="material-icons">phone</i></a></div>
           {{/if}}
           {{#if currentUser}}
-          <div class="col s3">
+          <div class="col ">
             <a class="btn-floating amber darken-3 modal-trigger" id="verify_button" title="Is This Information Correct?" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
           </div>
           {{else}}
-          <div class="col s3">
+          <div class="col ">
             <a class="disabled btn-floating modal-trigger" id="verify_button" title="Verify This" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
           </div>
           {{/if}}
-          <div class="col s3">
+          {{#if street}}    
+          <div class="col ">
             <!-- a class="btn-floating amber darken-4 modal-trigger" id="directions_button" title="Directions" href="#modalDirections"><i class="material-icons">navigation</i></a-->
             <a class="btn-floating amber darken-4" title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" ><i class="material-icons">navigation</i></a>
           </div>
-
+          {{/if}}
         </div>
       </div>
     </div>  
-  </a>
+  {{!-- </a> --}}
 </template>

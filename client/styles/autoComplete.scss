@@ -1,0 +1,34 @@
+@import 'palettes/colors';
+
+.pac-container {
+  background-color: $clr-grey;
+
+  ::after {
+    display: none;
+  }
+}
+
+.pac-item-query {
+  color: $clr-orange;
+}
+
+.pac-item-selected {
+  background-color: #ffe;
+}
+
+.pac-matched {
+  color: $clr-green;
+}
+
+.pac-icon-marker {
+  color: $clr-orange;
+}
+
+.twitter-typeahead {
+  display: block !important;
+}
+
+.tt-menu {
+  background-color: $clr-grey;
+  color: $clr-orange;
+}

@@ -28,31 +28,28 @@
 {{> infoModal}}
 {{> directionsModal}}
 {{> shareModal}}
-</template
+</template>
 
 <template name="nav2">
-<div class="navbar-fixed ">
+<div class="navbar-fixed">
 {{> corner_ribbon}}
-    <nav class="transparent z-depth-0">
-        <div class="nav-wrapper">
-            <a class="brand-logo" href="/">
-                <img class="responsive-img" src="img/logo-lg-sdw.png" alt="the blacklist" />
-            </a>
-            <a href="#" data-activates="mobileNav" class="button-collapse">
-                <i class="material-icons yellow-text text-darken-3">menu</i>
-            </a>
+    <div class="row grey darken-2 z-depth-0">
 
-            <ul class="right hide-on-med-and-down main-nav">
-                {{! > categorySelect}}
-                {{> navMenu}}
-            </ul>
-            <ul class="side-nav hide-on-large-only" id="mobileNav">
-                {{! > categorySelect}}
-                {{> navMenu_mobile}}
-            </ul>
+        <a class="brand-logo left" href="/">
+            <img class="responsive-img" src="img/logo-lg-sdw.png" alt="the blacklist" />
+        </a>
+        <div class="col s12 m5 l4 right hoverable">
+            <form id="search_form">
+              <div class="input-field">
+                <input placeholder=" "  class="amber-text form-control typeahead" name="results" id="search_loc" type="text" autocomplete="off" spellcheck="off" data-sources="dataset" style="margin-bottom:10px"/>
+                <label for="search_loc">Search Nearby...</label>
+              </div>
+            </form>
         </div>
-    </nav>
+
+    </div>
 </div>
+
 <!-- Modals stays here or else show behind gray overlay-->
 
 {{> addForm}}
@@ -60,4 +57,11 @@
 {{> infoModal}}
 {{> directionsModal}}
 {{> shareModal}}
+</template>
+
+
+<template name="results">
+    <ul class="">
+        <li>{{name}}</li>
+    </ul>
 </template>

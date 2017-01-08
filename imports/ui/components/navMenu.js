@@ -28,3 +28,11 @@ Template.navMenu.events({
 		});
 	}
 });
+
+// Template.navMenu.onRendered(function() {
+//   this.autorun(function () {
+//     if (GoogleMaps.loaded()) {
+//       $("input#search_loc").geocomplete();
+//     }
+//   });
+// });

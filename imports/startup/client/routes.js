@@ -22,6 +22,12 @@ Router.route('/list', function(){
     this.render('footer', {to: 'footer'});
 });
 
+Router.route('/gallery', function(){
+    this.layout('AppLayout');
+    this.render('galleryPage', {to: 'content'});
+    this.render('footer', {to: 'footer'});
+});
+
 Router.route('/add', function(){
     this.layout('AppLayout');
     this.render('addForm', {to: 'content'});

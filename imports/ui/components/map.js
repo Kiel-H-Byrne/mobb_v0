@@ -125,94 +125,94 @@ Template.map.onCreated( function() {
             });
         });
 
-        self.autorun(function(){
-            //====== AUTO-RESUBSCRIBE TO NEW LISTINGS WHEN MY LOCATION CHANGES ====== //
-            // ====== GET THE FIRST TWO DIGITS OF EACH LAT/LONG AND COMPARE IT WITH A REGEX SEARCH AGAINST LISTINGS COLLECTION //
-            // replace string with 2 digits of each
-            // (\-?\d{2}(\.\d+)?),\s*(\-?\d{2}\.(\d+)?) REGEX search FOR ANY LAT/LONG STRING (use for mongodb search)
-            // Listings.find({"location" : {$regex : /PATTERN/ }});
+        // self.autorun(function(){
+        //     //====== AUTO-RESUBSCRIBE TO NEW LISTINGS WHEN MY LOCATION CHANGES ====== //
+        //     // ====== GET THE FIRST TWO DIGITS OF EACH LAT/LONG AND COMPARE IT WITH A REGEX SEARCH AGAINST LISTINGS COLLECTION //
+        //     // replace string with 2 digits of each
+        //     // (\-?\d{2}(\.\d+)?),\s*(\-?\d{2}\.(\d+)?) REGEX search FOR ANY LAT/LONG STRING (use for mongodb search)
+        //     // Listings.find({"location" : {$regex : /PATTERN/ }});
 
-            if (Session.get('clientLoc')) {
-                let loc = Session.get('clientLoc');
-                //if it were lat/long string
-                // let trimmed = (loc.replace(/(\.\d+)/,''));
-                //lat/long object
-                let arr = [];
-                _.each(loc, function(v) {
-                    // let n = Math.trunc(v);
-                    // let n = Math.floor(v);
-                    let n = v.toFixed();
-                    // let n = v.toPrecision(4);
-                    // n = parseInt(n);
-                    m = n-1;
-                    o = n++;
-                    arr.push(m,o,n);
-                    // console.log(arr);
-                    //orig coord is arr[1], arr[4]                    
-                });
-                // console.log(arr);
-                // = CLIENT LOCATION
-                let str = "((" +arr[1]+ ")(\\.\\d+)?),\\s*((" +arr[4]+ ")(\\.\\d+)?)";                
-                // = CLIENT LOCATION & LOCATION -1
-                // let str = "((" +arr[0]+ "," +arr[1]+ ")(\\.?\\d+)?),\\s*((" +arr[5]+ "," +arr[4]+")(\\.?\\d+)?)";
-                // = CLIENT LOCATION & LOCATION +1
-                // let str = "((" +arr[2]+ "|" +arr[1]+ ")(\\.\\d+)?),\\s*((" +arr[3]+ "|" +arr[4]+")(\\.\\d+)?)";
-                // = CLIENT LOCATION & LOCATION +1 AND -1
-                // let str = "((" +arr[0]+ "|" +arr[1]+ "|" +arr[2]+ ")(\\.\\d+)?),\\s*((" +arr[3]+ "|" +arr[4]+ "|" +arr[5]+")(\\.\\d+)?)";
-                let regex = new RegExp(str);
-                // console.log(regex);
-                let subscription = self.subscribe('listings_locs', function() {
-                    let cursor = Listings.find({location : {$regex : regex}});
-                    console.log("-= MAP SUBSCRIBED:  [" + cursor.count() + "] Local Listings");
-                    //find listings that match the same lat/long digits as me (first two digits)
-                    // return Listings.find({state: state});
-                    cursor.forEach(function(doc){
-                        //For Each Listing, add a marker; every marker opens a global infoWindow and owns events.
+        //     if (Session.get('clientLoc')) {
+        //         let loc = Session.get('clientLoc');
+        //         //if it were lat/long string
+        //         // let trimmed = (loc.replace(/(\.\d+)/,''));
+        //         //lat/long object
+        //         let arr = [];
+        //         _.each(loc, function(v) {
+        //             // let n = Math.trunc(v);
+        //             // let n = Math.floor(v);
+        //             let n = v.toFixed();
+        //             // let n = v.toPrecision(4);
+        //             // n = parseInt(n);
+        //             m = n-1;
+        //             o = n++;
+        //             arr.push(m,o,n);
+        //             // console.log(arr);
+        //             //orig coord is arr[1], arr[4]                    
+        //         });
+        //         // console.log(arr);
+        //         // = CLIENT LOCATION
+        //         let str = "((" +arr[1]+ ")(\\.\\d+)?),\\s*((" +arr[4]+ ")(\\.\\d+)?)";                
+        //         // = CLIENT LOCATION & LOCATION -1
+        //         // let str = "((" +arr[0]+ "," +arr[1]+ ")(\\.?\\d+)?),\\s*((" +arr[5]+ "," +arr[4]+")(\\.?\\d+)?)";
+        //         // = CLIENT LOCATION & LOCATION +1
+        //         // let str = "((" +arr[2]+ "|" +arr[1]+ ")(\\.\\d+)?),\\s*((" +arr[3]+ "|" +arr[4]+")(\\.\\d+)?)";
+        //         // = CLIENT LOCATION & LOCATION +1 AND -1
+        //         // let str = "((" +arr[0]+ "|" +arr[1]+ "|" +arr[2]+ ")(\\.\\d+)?),\\s*((" +arr[3]+ "|" +arr[4]+ "|" +arr[5]+")(\\.\\d+)?)";
+        //         let regex = new RegExp(str);
+        //         // console.log(regex);
+        //         let subscription = self.subscribe('listings_locs', function() {
+        //             let cursor = Listings.find({location : {$regex : regex}});
+        //             console.log("-= MAP SUBSCRIBED:  [" + cursor.count() + "] Local Listings");
+        //             //find listings that match the same lat/long digits as me (first two digits)
+        //             // return Listings.find({state: state});
+        //             cursor.forEach(function(doc){
+        //                 //For Each Listing, add a marker; every marker opens a global infoWindow and owns events.
                         
-                        //===== CONVERT DOC LOCATION FIELD FROM STRINGIFIED ARRAY TO OBJECT LITERAL =====
-                        if (doc.location) {
-                            let latLng = doc.location.split(",");
-                            let lat = Number(latLng[0]);
-                            let lng = Number(latLng[1]);
-                            let latLngObj = _.object( ['lat', 'lng'], [lat, lng]);
+        //                 //===== CONVERT DOC LOCATION FIELD FROM STRINGIFIED ARRAY TO OBJECT LITERAL =====
+        //                 if (doc.location) {
+        //                     let latLng = doc.location.split(",");
+        //                     let lat = Number(latLng[0]);
+        //                     let lng = Number(latLng[1]);
+        //                     let latLngObj = _.object( ['lat', 'lng'], [lat, lng]);
 
-                            //===== LEAVE DOC LOCATION FIELD AS OBJECT LITERAL =====
-                            // let latLngObj = doc.location;
+        //                     //===== LEAVE DOC LOCATION FIELD AS OBJECT LITERAL =====
+        //                     // let latLngObj = doc.location;
 
-                            //--   Place Markers on map
-                            let marker = new google.maps.Marker({
-                              position: latLngObj,
-                              map: map.instance,
-                              icon: closeMarkerImage,
-                            });
-                            marker.set('title', doc.name);
+        //                     //--   Place Markers on map
+        //                     let marker = new google.maps.Marker({
+        //                       position: latLngObj,
+        //                       map: map.instance,
+        //                       icon: closeMarkerImage,
+        //                     });
+        //                     marker.set('title', doc.name);
 
-                            marker.addListener('click', function() {
+        //                     marker.addListener('click', function() {
 
-                                //Info Bottom-Modal
-                                // let infoContent = Blaze.toHTMLWithData(Template.infomodal, doc);
-                                Session.set('openListing', doc._id);
-                                $('#modalInfo').openModal();
+        //                         //Info Bottom-Modal
+        //                         // let infoContent = Blaze.toHTMLWithData(Template.infomodal, doc);
+        //                         Session.set('openListing', doc._id);
+        //                         $('#modalInfo').openModal();
 
-                                //Scan and reformat phone numbers
-                                // $(".phone").text(function(i, text) {
-                                //   // text = text.replace(/(\d{3})(\d{3})(\d{4})/, "$1.$2.$3");
-                                //   console.log(text);
-                                //   text = text.replace(/(\+?\d?)\-?\(?(\d{3})\)?\s?\-?\.?(\d{3})\-?\.?(\d{4})/gi, "$2.$3.$4");
-                                //   return text;
-                                // });
-                                //Click to open Verify Modal
+        //                         //Scan and reformat phone numbers
+        //                         // $(".phone").text(function(i, text) {
+        //                         //   // text = text.replace(/(\d{3})(\d{3})(\d{4})/, "$1.$2.$3");
+        //                         //   console.log(text);
+        //                         //   text = text.replace(/(\+?\d?)\-?\(?(\d{3})\)?\s?\-?\.?(\d{3})\-?\.?(\d{4})/gi, "$2.$3.$4");
+        //                         //   return text;
+        //                         // });
+        //                         //Click to open Verify Modal
    
-                            });
-                        } // else cannot place marker on map, it does not have lat/lng yet
-                    });
-                });
+        //                     });
+        //                 } // else cannot place marker on map, it does not have lat/lng yet
+        //             });
+        //         });
 
-                if (subscription.ready()) {
-                    return;
-                } 
-            }
-        });            
+        //         if (subscription.ready()) {
+        //             return;
+        //         } 
+        //     }
+        // });            
         
         self.autorun(function(){    
             //====== AUTO CALCULATE MY LOCATION AND DRAW NEW MARKER WHEN IT CHANGES ======

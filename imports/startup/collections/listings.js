@@ -324,8 +324,9 @@ Listings.attachSchema(new SimpleSchema({
       // console.log(tester);
       if ( street && this.isInsert && !this.isSet) {
         let params = {};
-        // console.log(this.docId);
+        console.log(this.docId);
         // console.log(this);
+        params.name = this.field("name").value;
         params.street = this.field("street").value;
         params.city = this.field("city").value;
         params.zip = this.field("zip").value;

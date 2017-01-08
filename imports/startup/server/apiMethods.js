@@ -142,7 +142,7 @@ Meteor.methods({
       if (err) {
         console.log(err.details);
       } else {
-        console.log(res);
+        // console.log(res);
       }
     });
   },
@@ -181,7 +181,8 @@ Meteor.methods({
     let response = Meteor.wrapAsync(apiCall)(apiUrl);
     // console.log(response);
     if (response) {
-      console.log(response);
+      // console.log("GEOCODE RESPONSE:");
+      // console.log(response);
       let loc = response.results[0].geometry.location;
       //====== RETURN LAT/LONG OBJECT LITERAL ======
       // return loc;
@@ -237,6 +238,7 @@ Meteor.methods({
     let apiUrl = 'https://maps.googleapis.com/maps/api/directions/json?origin=' + params.origin + '&destination=' + params.destination + '&key=' + Meteor.settings.public.keys.googleServer.key;
     console.log("--URL--"+apiUrl);
     let response = Meteor.wrapAsync(apiCall)(apiUrl);
+    console.log("GDIRECTIONS RESPONSE:");
     // console.log(response);
     return response;
   },
@@ -250,6 +252,7 @@ Meteor.methods({
     };
     console.log("--URL--"+apiUrl);
     let response = Meteor.wrapAsync(apiCall2)(apiUrl, headers);
+    console.log("YELP RESPONSE:");
     console.log(response);
     return response;
 //node js request    

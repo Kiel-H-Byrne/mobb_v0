@@ -1,5 +1,27 @@
 @import 'palettes/colors';
 
+.nav-search {
+  display: block;
+  overflow: hidden;
+}
+
+.search-wrapper {
+  float: left;
+  margin: 0 280px 0 360px;
+  width: 100%
+
+}
+
+.nav-list {
+  position: absolute;
+  top: 0;
+  right: 0;
+  float: right;
+  a {
+    color: $clr-orange;
+  }
+}
+
 nav {
 
   .brand-logo {
@@ -11,54 +33,14 @@ nav {
       top: -0.45em;
     }
   }
-  ::-webkit-input-placeholder {
-    color: $clr-grey;
-    text-transform: capitalize;
-    transition: opacity 250ms ease-in-out;
-  }
-
-  :focus::-webkit-input-placeholder {
-    opacity: 0.3;
-  }
-
-  :-ms-input-placeholder {
-    color: $clr-grey;
-    text-transform: capitalize;
-    transition: opacity 250ms ease-in-out;
-  }
-
-  :focus:-ms-input-placeholder {
-    opacity: 0.3;
-  }
-
-  ::-moz-placeholder {
-    color: $clr-grey;
-    opacity: .5;
-    text-transform: capitalize;
-    transition: opacity 250ms ease-in-out;
-  }
-
-  :focus::-moz-placeholder {
-    opacity: 0.3;
-  }
-
-  :-moz-placeholder {
-    color: $clr-grey;
-    opacity: .5;
-    text-transform: capitalize;
-    transition: opacity 250ms ease-in-out;
-  }
-
-  :focus:-moz-placeholder {
-    opacity: 0.3;
-  }
-
+  
   .nav-input {
     background-color: $clr-orange;
-    border-radius: .5em;
+    border-radius: 3px;
     height: 2.5em;
     margin: 0.95em;
     text-transform: uppercase;
+    width: 100%;
 
     i {
       position: absolute;
@@ -69,7 +51,9 @@ nav {
     input {
       position: relative;
       top: -0.66em;
-      left: 0em;
+      left: 0;
+      right: 0;
+
       }
   }
 
@@ -89,6 +73,48 @@ nav {
       }
     }
   }
+  // ::-webkit-input-placeholder {
+  //   color: $clr-orange;
+  //   text-transform: capitalize;
+  //   transition: opacity 250ms ease-in-out;
+  // }
+
+  // :focus::-webkit-input-placeholder {
+  //   opacity: 0.3;
+  // }
+
+  // :-ms-input-placeholder {
+  //   color: $clr-orange;
+  //   text-transform: capitalize;
+  //   transition: opacity 250ms ease-in-out;
+  // }
+
+  // :focus:-ms-input-placeholder {
+  //   opacity: 0.3;
+  // }
+
+  // ::-moz-placeholder {
+  //   color: $clr-orange;
+  //   opacity: .5;
+  //   text-transform: capitalize;
+  //   transition: opacity 250ms ease-in-out;
+  // }
+
+  // :focus::-moz-placeholder {
+  //   opacity: 0.3;
+  // }
+
+  // :-moz-placeholder {
+  //   color: $clr-orange;
+  //   opacity: .5;
+  //   text-transform: capitalize;
+  //   transition: opacity 250ms ease-in-out;
+  // }
+
+  // :focus:-moz-placeholder {
+  //   opacity: 0.3;
+  // }
+
 }
 
 .navbar-fixed {
@@ -104,6 +130,7 @@ nav {
   li {
     flex: 1;
     border-radius: 3px;
+    // float: left;
 
     a {
       margin: auto;
@@ -114,7 +141,7 @@ nav {
   }
 
   i {
-    font-size: 3rem;
+    font-size: 2rem;
 
   }
   .row {
@@ -122,9 +149,15 @@ nav {
   }
 
   .input-field {
-    margin: 0 auto;
+    margin: auto;
+    width: 100%;
+    padding: auto 2rem;
   }
 
+  input {
+    margin-bottom: 5px;
+    height: 2rem;
+  }
   form {
     flex: 1;
   }

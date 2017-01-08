@@ -30,7 +30,7 @@ Template.nav.onRendered( function() {
 
 Template.nav2.onRendered(function() {
 	
-  $('.twitter-typeahead').css("display:block");
+  // $('.twitter-typeahead').css("display:block");
 	
   // TypeAhead autocomplete in Schema
   // Meteor.typeahead.inject();
@@ -49,7 +49,7 @@ Template.nav2.onRendered(function() {
 
 });
 
-Template.nav2.events({
+Template.nav3.events({
 	//====== SEARCH FORM ON NAVBAR =======
 	//when form is submitted, set new center. 
 	
@@ -76,7 +76,7 @@ Template.nav2.events({
     document.getElementById("search_form").reset();
   },
   'mouseup form': function() {
-    console.log("mouse fired.");
+    // console.log("mouse fired.");
     Materialize.updateTextFields();
   }
 });

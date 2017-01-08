@@ -31,20 +31,20 @@
 </template>
 
 <template name="nav2">
-    <div class="navbar-fixed">
+    <div class="navbar-fixed ">
         {{> corner_ribbon}}
         <div class="grey darken-2 z-depth-0">
             <div class="row valign-wrapper">
-                <div class="col s8 m4">
+                <div class="col s7 m4">
                     <a class="brand-logo left" href="/">
                         <img class="responsive-img" src="img/logo-lg-sdw.png" alt="the blacklist" />
                     </a>
                 </div>
-                <div class="col s4 m2 valign">
+                <div class="col s5 m2 valign">
                     <ul >
-                        <li class=""><a href="/list" class="" alt="View Online Only" ><i class="material-icons " title="Filter by List">filter_list</i></a></li>
-                        <li class=""><a class="modal-trigger " href="#modalAdd" alt="Add A Business" ><i class="material-icons" title="Add a Business">add_circle</i></a></li>
-                        <li class=""><a class="modal-trigger " href="#modalShare"><i class="material-icons" title="Share"> share</i></a></li>
+                        <li class=""><a href="/gallery" class="" alt="View Online Only" ><i class="material-icons " title="Filter by List">view_module</i></a></li>
+                        <li class=""><a class="modal-trigger " href="#modalAdd" alt="Add A Business" ><i class="material-icons" title="Add a Business">library_add</i></a></li>
+                        <li class=""><a class="modal-trigger " href="#modalShare"><i class="material-icons " title="Share"> share</i></a></li>
                     </ul>
                 </div>
                 <div class="col m6 hide-on-small-only">
@@ -77,6 +77,93 @@
     {{> directionsModal}}
     {{> shareModal}}
     {{> betaModal}}
+</template>
+
+<template name="nav3">
+    <div class="navbar-fixed hide-on-large-only">
+        {{> corner_ribbon}}
+        <div class="grey darken-2 z-depth-0">
+            <div class="row valign-wrapper">
+                <div class="col s7 m4">
+                    <a class="brand-logo left" href="/">
+                        <img class="responsive-img" src="img/logo-lg-sdw.png" alt="the blacklist" />
+                    </a>
+                </div>
+                <div class="col s5 m2 valign">
+                    <ul >
+                        <li class=""><a href="/list" class="" alt="View Online Only" ><i class="material-icons " title="Filter by List">view_module</i></a></li>
+                        <li class=""><a class="modal-trigger " href="#modalAdd" alt="Add A Business" ><i class="material-icons" title="Add a Business">library_add</i></a></li>
+                        <li class=""><a class="modal-trigger " href="#modalShare"><i class="material-icons " title="Share"> share</i></a></li>
+                    </ul>
+                </div>
+                <div class="col m6 hide-on-small-only">
+                    <form id="search_form">
+                      <div class="input-field">
+                        <input placeholder=" "  class="amber-text form-control typeahead" name="results" id="search_loc" type="text" autocomplete="off" spellcheck="off" data-sources="dataset" style="margin-bottom:10px"/>
+                        <label for="search_loc">Search Nearby...</label>
+                      </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row grey darken-2 hide-on-med-and-up">
+                <div class="col s12 m5 l4 right hoverable">
+                    <form id="search_form">
+                      <div class="input-field">
+                        <input placeholder=" "  class="amber-text form-control typeahead" name="results" id="search_loc" type="text" autocomplete="off" spellcheck="off" data-sources="dataset" style="margin-bottom:10px"/>
+                        <label for="search_loc">Search Nearby...</label>
+                      </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav role="navigation hide-on-med-and-down z-depth-0 ">
+        {{> corner_ribbon}}
+        <span class="menu">
+        <a href="#" data-activates="mobileNav" class="button-collapse ">
+            <i class="material-icons yellow-text text-darken-3">more_vert</i>
+        </a>
+          <div class="navbar-fixed grey darken-3 z-depth-0 hide-on-med-and-down ">
+              <div >
+                  <div class="nav-logo">
+
+                      <a class="brand-logo" href="/">
+                          <img class="responsive-img" src="img/logo-lg-sdw.png" alt="the blacklist" />
+                      </a>
+                  </div>
+                  <div class="nav-search ">
+                    <div class="search-wrapper">
+                      <form>
+                        <div class="input-field ">
+                            <div class="">
+                              <i class="material-icons prefix">search</i>
+                              <label for="search_loc"></label>
+                              <input placeholder="Search Nearby..."  class="" id="search_loc" type="text"/>
+                            </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>   
+                  <div class="nav-list">
+                      <ul>
+                          <li ><a href="/gallery" class="" alt="View Online Only" ><i class="material-icons " title="Filter by List">view_module</i></a></li>
+                          <li ><a class="modal-trigger " href="#modalAdd" alt="Add A Business" ><i class="material-icons" title="Add a Business">library_add</i></a></li>
+                          <li ><a class=" modal-trigger " href="#modalShare"><i class="material-icons" title="Share"> share</i></a></li>
+                      </ul>
+                      
+                  </div>
+              </div>
+          </div>
+        </span>
+    </nav>
+    <!-- Modals stays here or else show behind gray overlay-->
+
+    {{> addForm}}
+    {{> verifyForm}} 
+    {{> infoModal}}
+    {{> directionsModal}}
+    {{> shareModal}}
 </template>
 
 

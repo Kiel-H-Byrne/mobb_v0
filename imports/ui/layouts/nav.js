@@ -10,6 +10,7 @@ import '../components/infoModal.js';
 import '../components/categorySelect.js';
 import '../components/directionsModal.js';
 import '../components/shareModal.js';
+import '../components/betaModal.js';
 import '../components/corner-ribbon.js';
 import './nav.html';
 
@@ -28,10 +29,9 @@ Template.nav.onRendered( function() {
 });
 
 Template.nav2.onRendered(function() {
-	$(document).ready(function(){
-		
-    $('.twitter-typeahead').css("display:block");
-	});
+	
+  $('.twitter-typeahead').css("display:block");
+	
   // TypeAhead autocomplete in Schema
   // Meteor.typeahead.inject();
   // GeoComplete 
@@ -65,35 +65,39 @@ Template.nav2.events({
 			// console.log(res); 
 			// Session.set('newLoc', res);
 		});
-    document.getElementById("search_form").reset();
+    document.getElementByClassName("search_form").reset();
 
 		analytics.track("Searched for New Location.", {
-		clientSearch: entered
+  		clientSearch: entered
 		});
 	},
   'click input': function() {
-    $('.dropdown-button').dropdown('open');
+    // $('.dropdown-button').dropdown('open');
     document.getElementById("search_form").reset();
+  },
+  'mouseup form': function() {
+    console.log("mouse fired.");
+    Materialize.updateTextFields();
   }
 });
 
 Template.nav2.helpers({
-  dataset: function() {
-    return [
-      {
-        name: 'categories',
-        valueKey: 'name',
-        local: function() { return Categories.find().fetch(); },
-        header: '<h4 class="class-name">Categories</h4>',
-        template: 'results'
-      },
-      {
-        name: 'listings',
-        valueKey: 'name',
-        local: function() { return Listings.find().fetch(); },
-        header: '<h4 class="name">Listings</h4>',
-        template: 'results'
-      }
-    ];
-  }
+  // dataset: function() {
+  //   return [
+  //     {
+  //       name: 'categories',
+  //       valueKey: 'name',
+  //       local: function() { return Categories.find().fetch(); },
+  //       header: '<h4 class="class-name">Categories</h4>',
+  //       template: 'results'
+  //     },
+  //     {
+  //       name: 'listings',
+  //       valueKey: 'name',
+  //       local: function() { return Listings.find().fetch(); },
+  //       header: '<h4 class="name">Listings</h4>',
+  //       template: 'results'
+  //     }
+  //   ];
+  // }
 });

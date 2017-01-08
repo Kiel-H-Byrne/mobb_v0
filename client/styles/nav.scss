@@ -1,6 +1,7 @@
 @import 'palettes/colors';
 
 nav {
+
   .brand-logo {
     margin: 0 0.4rem;
   }
@@ -80,12 +81,51 @@ nav {
     }
 
     .btn {
-      color: $clr-grey ;
+      color: $clr-grey;
 
       i {
         position: relative;
         top: 0;
       }
     }
+  }
+}
+
+.navbar-fixed {
+  ul {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    justify-content: center;
+    height: 100%; 
+  }
+
+  li {
+    flex: 1;
+    border-radius: 3px;
+
+    a {
+      margin: auto;
+      text-decoration: none;
+      color: $clr-orange;
+
+    }
+  }
+
+  i {
+    font-size: 3rem;
+
+  }
+  .row {
+    margin: 0 auto;
+  }
+
+  .input-field {
+    margin: 0 auto;
+  }
+
+  form {
+    flex: 1;
   }
 }

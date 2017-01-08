@@ -7,7 +7,6 @@ import '../../ui/layouts/layout.js';
 console.log("-= imports/startup/client/index.js loaded");
 
 Meteor.startup(function() {
-	// Meteor.typeahead.inject();
 	
 	GoogleMaps.load({
 	  v: '3',

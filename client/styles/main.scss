@@ -1,3 +1,5 @@
+@import 'materialize/components/color';
+@import 'materialize/components/variables';
 @import 'palettes/colors';
 
 html,
@@ -35,7 +37,11 @@ body {
   font-size: 1.3rem;
 }
 
-
+.modal {
+  @media #{$medium-and-down} {
+   width: 90%;
+  }
+}
 // .category-select {
 //   position: absolute;
 //   top: 80px;

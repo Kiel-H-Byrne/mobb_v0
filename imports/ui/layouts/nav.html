@@ -1,7 +1,7 @@
 <template name="nav">
 <div class="navbar-fixed ">
 {{> corner_ribbon}}
-    <nav class="transparent z-depth-0">
+    <nav class="transparent z-depth-0 hide-on-med-and-down">
         <div class="nav-wrapper">
             <a class="brand-logo" href="/">
                 <img class="responsive-img" src="img/logo-lg-sdw.png" alt="the blacklist" />
@@ -31,32 +31,52 @@
 </template>
 
 <template name="nav2">
-<div class="navbar-fixed">
-{{> corner_ribbon}}
-    <div class="row grey darken-2 z-depth-0">
+    <div class="navbar-fixed">
+        {{> corner_ribbon}}
+        <div class="grey darken-2 z-depth-0">
+            <div class="row valign-wrapper">
+                <div class="col s8 m4">
+                    <a class="brand-logo left" href="/">
+                        <img class="responsive-img" src="img/logo-lg-sdw.png" alt="the blacklist" />
+                    </a>
+                </div>
+                <div class="col s4 m2 valign">
+                    <ul >
+                        <li class=""><a href="/list" class="" alt="View Online Only" ><i class="material-icons " title="Filter by List">filter_list</i></a></li>
+                        <li class=""><a class="modal-trigger " href="#modalAdd" alt="Add A Business" ><i class="material-icons" title="Add a Business">add_circle</i></a></li>
+                        <li class=""><a class="modal-trigger " href="#modalShare"><i class="material-icons" title="Share"> share</i></a></li>
+                    </ul>
+                </div>
+                <div class="col m6 hide-on-small-only">
+                    <form id="search_form">
+                      <div class="input-field">
+                        <input placeholder=" "  class="amber-text form-control typeahead" name="results" id="search_loc" type="text" autocomplete="off" spellcheck="off" data-sources="dataset" style="margin-bottom:10px"/>
+                        <label for="search_loc">Search Nearby...</label>
+                      </div>
+                    </form>
+                </div>
+            </div>
 
-        <a class="brand-logo left" href="/">
-            <img class="responsive-img" src="img/logo-lg-sdw.png" alt="the blacklist" />
-        </a>
-        <div class="col s12 m5 l4 right hoverable">
-            <form id="search_form">
-              <div class="input-field">
-                <input placeholder=" "  class="amber-text form-control typeahead" name="results" id="search_loc" type="text" autocomplete="off" spellcheck="off" data-sources="dataset" style="margin-bottom:10px"/>
-                <label for="search_loc">Search Nearby...</label>
-              </div>
-            </form>
+            <div class="row grey darken-2 hide-on-med-and-up">
+                <div class="col s12 m5 l4 right hoverable">
+                    <form id="search_form">
+                      <div class="input-field">
+                        <input placeholder=" "  class="amber-text form-control typeahead" name="results" id="search_loc" type="text" autocomplete="off" spellcheck="off" data-sources="dataset" style="margin-bottom:10px"/>
+                        <label for="search_loc">Search Nearby...</label>
+                      </div>
+                    </form>
+                </div>
+            </div>
         </div>
-
     </div>
-</div>
 
-<!-- Modals stays here or else show behind gray overlay-->
-
-{{> addForm}}
-{{> verifyForm}} 
-{{> infoModal}}
-{{> directionsModal}}
-{{> shareModal}}
+    <!-- Modals stays here or else show behind gray overlay-->
+    {{> addForm}}
+    {{> verifyForm}} 
+    {{> infoModal}}
+    {{> directionsModal}}
+    {{> shareModal}}
+    {{> betaModal}}
 </template>
 
 

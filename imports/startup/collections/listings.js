@@ -59,6 +59,9 @@ Listings = new orion.collection('listings', {
         data: "ownphone", 
         title: "Owner Phone" 
       },{ 
+        data: "google_id", 
+        title: "Google ID" 
+      },{ 
         data: "yelp_id", 
         title: "Yelp ID" 
       },{ 
@@ -225,70 +228,76 @@ Listings.attachSchema(new SimpleSchema({
       }
     }
   },
+  google_id: {
+    label: 'Google ID',
+    type: String,
+    optional: true
+  },
   yelp_id: {
     label: 'Yelp ID',
     type: String,
     optional: true,
-    custom: function() {
+    autoValue: function() {
       //do a yelp phone search using phone number, return value of call.
-      if ( this.field("phone").isSet && Meteor.isClient && this.isInsert && !this.isSet) {
-        console.log("running?");
-        let phone = this.field("phone").value;
-        /////////////////// YELP PACKAGE
-        // Yelp.accessToken(yelp_client_id, yelp_client_secret).then(response => {
-        //   const token = response.jsonBody.access_token;
-        //   const client = Yelp.client(token);
-        //   //then do search 
-        //   client.phoneSearch({
-        //     phone: phone
-        //   }).then(response => {
-        //     let biz = response.jsonBody.businesses[0];
-        //     // console.log(biz);
-        //     if (biz.id) {
-        //       console.log('biz id: '+ biz.id);
-        //       //set the yelp-id value for this _id document
-        //       return biz.id;
+//       if ( this.field("phone").isSet && this.isInsert && !this.isSet) {
+        
+//         let phone = this.field("phone").value;
+//         /////////////////// YELP PACKAGE
+//         Yelp.accessToken(yelp_client_id, yelp_client_secret).then(response => {
+//           const token = response.jsonBody.access_token;
+//           const client = Yelp.client(token);
+//           //then do search 
+//           client.phoneSearch({
+//             phone: phone
+//           }).then(response => {
+//             let biz = response.jsonBody.businesses[0];
+//             // console.log(biz);
+//             if (biz.id) {
+//               console.log('biz id: '+ biz.id);
+//               //set the yelp-id value for this _id document
+//               return biz.id;
 
-        //       // return 'yelp-idz';
-        //     } else {
-        //       //no yelp id for this business.
-        //       console.log("no yelp ID");
-        //       console.log(typeof phone);
-        //       console.log(_id);
-        //       // this.unset();
-        //     }
-        //   });
+//               // return 'yelp-idz';
+//             } else {
+//               //no yelp id for this business.
+//               console.log("no yelp ID Available");
+//               // this.unset();
+//             }
+//           });
 
 
-        //   // let userId = getId;
+//           // let userId = getId;
 
-        //   // getId.then(function(res) {
-        //   //   console.log(res);
-        //   //   return res;
-        //   // })
-        //   //response = Yelp.client;
-        //   // console.log(rez);
-        //   // return rez;
+//           // getId.then(function(res) {
+//           //   console.log(res);
+//           //   return res;
+//           // })
+//           //response = Yelp.client;
+//           // console.log(rez);
+//           // return rez;
 
-        // }).catch(e => {
+//         }).catch(e => {
 
-        //   console.log(e);
-        // });
-        /////////////////// YELP API
-        Meteor.call('getYelpID', phone, function(err,res) {
-          if (res) {
-            console.log(res);
-          }
-        });
-        // console.log(resp);
-        // return resp;
-        // return 'yelp-id';
+//           console.log(e);
+//         });
+//         /////////////////// YELP API
+//         // Meteor.call('getYelpID', phone, function(err,res) {
+//         //   if (res) {
+//         //     console.log(res);
+//         //   } else {
+//         //     console.log(err);
+//         //   }
+//         // });
+// ///////////////////////////////////////////////////////////////////////////////
+//         // console.log(resp);
+//         // return resp;
+//         // return 'yelp-id';
 
-        // console.log(response);
-        // return response;
-      } else {
-        console.log("No Yelp-Id Assigned");
-      }
+//         // console.log(response);
+//         // return response;
+//       } else {
+//         console.log("No Yelp-Id Assigned");
+//       }
     }
   },
   cbenum: {
@@ -324,22 +333,32 @@ Listings.attachSchema(new SimpleSchema({
       // console.log(tester);
       if ( street && this.isInsert && !this.isSet) {
         let params = {};
-        console.log(this.docId);
+        // console.log(this.docId);
         // console.log(this);
-        params.name = this.field("name").value;
+        // params.place_id = this.field("google_id").value;
         params.street = this.field("street").value;
         params.city = this.field("city").value;
         params.zip = this.field("zip").value;
         let response = Meteor.call('geoCode', params);
-        // console.log(response);
-        if (response) {
-          return response;
+
+        if (response && response.results.length) {
+          let loc = response.results[0].geometry.location;
+          // console.log("GOOGLE TYPES:") ;
+          // console.log(response.results[0].types);
+          // this.field("google_id").value = place_id;
+          //====== RETURN LAT/LONG OBJECT LITERAL ======
+          // return loc;
+          //====== RETURN STRINGIFIED LAT/LONG NUMBERS ======
+          let arr =  _.values(loc);
+          // console.log(arr.toLocaleString());
+          return arr.toLocaleString();
         } else {
+          console.log(response);
           //no street name, so must be online Only. 
           //set category to "Online"
-          console.log(typeof street);
-          console.log(this.docId);
-          this.unset();
+          // console.log(typeof street);
+          // console.log(this.docId);
+          // this.unset();
         }
       }
     }

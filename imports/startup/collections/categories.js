@@ -1,7 +1,7 @@
 import '/imports/startup/collections/listings.js';
 //=================== NEW COLLECTION =========================
 
-Categories = new orion.collection('Categories', {
+Categories = new orion.collection('categories', {
   singularName: 'category', // The name of one of these items
   pluralName: 'Categories', // The name of more than one of these items
   link: { title: 'Categories' },

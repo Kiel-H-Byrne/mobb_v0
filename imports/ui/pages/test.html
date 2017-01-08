@@ -3,20 +3,39 @@
 	{{!-- {{> quickForm collection="Listings" doc=this id="insertListingsForm" type="normal"}} --}}
 	<style>
 	.test-wrapper {
-  position: relative;
-  z-index: 90;
-  height: 370px;
-  width: 280px;
-  margin: 50px auto;
-  border-radius: 10px;
-  background: #6a6340;
-  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-}
+    position: relative;
+    z-index: 90;
+    height: 370px;
+    width: 280px;
+    margin: 50px auto;
+    border-radius: 10px;
+    background: #6a6340;
+    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  }
+
+  [id='miniMap'] {
+    bottom: 50%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+
+
+
 </style>
 	<div class="test-wrapper">
-		{{> corner_ribbon}}
+  <h5>Review</h5>
+		{{#with greview}}
+      
+    {{/with}}
 	</div>
+  <div id="miniMap">
+      {{> googleMap name="minimap" options = mapOptions }}
+  </div>
 	{{!-- {{> quickForm collection="Categories" doc=this id="insertCategoriesForm" type="normal"}}		 --}}
 </template>
+

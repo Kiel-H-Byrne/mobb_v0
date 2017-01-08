@@ -1,9 +1,9 @@
-
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
+import Listings from '/imports/startup/collections/listings';
 
-import './orionCache.js';
-import './yelp.js';
+import '../../api/orionCache.js';
+// import './yelp.js';
 //milktam:server-cache package - https://github.com/miktam/server-cache
 //instantiates ApiCache obect which creates ' rest_+name+ ' upon creation, with time to live.
 //ex. let cache = new ApiCache('name',ttl);
@@ -64,55 +64,35 @@ const apiCall = function (apiUrl, callback) {
 
 const apiCall2 = function (apiUrl, headers, callback) {
   // try...catch allows you to handle errors 
-  let errorCode, errorMessage;
-  try {
 
-    let dataFromCache = OCache.get(apiUrl);
-    // console.log("key: "+apiUrl);
-    let response = {};
+  let dataFromCache = OCache.get(apiUrl);
+  // console.log("key: "+apiUrl);
+  let response = {};
 
-    if(dataFromCache) {
-      console.log("Data from Cache2...");
-      response = dataFromCache;
-    } else {
-      console.log("Data from API2...");
-        if (headers) {
-          response = HTTP.get(apiUrl, {headers: headers}).data;
-          console.log(response);
-        }
-        else {
-          response = HTTP.get(apiUrl).data;
-          console.log(response);
-        }
-      OCache.set(apiUrl, response);
-    }
-
-    // A successful API call returns no error
-    // but the contents from the JSON response
-    if(callback) {
-      callback(null, response);
-    }
-    return response;
-  } catch (error) {
-    // If the API responded with an error message and a payload 
-    if (error.response) {
-      errorCode = error.response.data.error ? error.response.data.error.code : 1911;
-      errorMessage = error.response.data.error ? error.response.data.error.message : error.response.data.message;
-    // Otherwise use a generic error message
-    } else {
-      console.log(error);
-      // errorCode = 500;
-      // errorMessage = 'No idea what happened!';
-    }
-    // Create an Error object and return it via callback
-    // let myError = new Meteor.Error(errorCode, errorMessage);
-    // let msg = 'Error: [' + errorCode + '] ' + errorMessage ;
-    // // console.log(error);
-    // if(callback) {
-    //   callback(myError, null);
-    // }
-    // return myError;
+  if(dataFromCache) {
+    console.log("Data from Cache2...");
+    response = dataFromCache;
+  } else {
+    console.log("Data from API2...");
+      if (headers) {
+        response = HTTP.get(apiUrl, {headers: headers}).data;
+        console.log(response);
+      }
+      else {
+        response = HTTP.get(apiUrl).data;
+        console.log(response);
+      }
+    OCache.set(apiUrl, response);
   }
+
+  // A successful API call returns no error
+  // but the contents from the JSON response
+  if(callback) {
+    callback(null, response);
+  }
+
+  return response;
+  
 };
 
 
@@ -121,7 +101,8 @@ Meteor.methods({
   addListing: function(doc) {
     Listings.insert(doc , function(err, res){
       if (err) {
-        console.log(err.details);
+        console.log("INSERT FAILED:");
+        console.log(err.sanitizedError.message);
       } else {
         // res = _id
         // console.log(res);
@@ -140,7 +121,7 @@ Meteor.methods({
   addCategory: function(doc) {
     Categories.insert(doc , function(err, res){
       if (err) {
-        console.log(err.details);
+        console.log(err.sanitizedError.message);
       } else {
         // console.log(res);
       }
@@ -181,15 +162,9 @@ Meteor.methods({
     let response = Meteor.wrapAsync(apiCall)(apiUrl);
     // console.log(response);
     if (response) {
-      // console.log("GEOCODE RESPONSE:");
+      // console.log("Geo RESPONSE:");
       // console.log(response);
-      let loc = response.results[0].geometry.location;
-      //====== RETURN LAT/LONG OBJECT LITERAL ======
-      // return loc;
-      //====== RETURN STRINGIFIED LAT/LONG NUMBERS ======
-      let arr =  _.values(loc);
-      // console.log(arr.toLocaleString());
-      return arr.toLocaleString();
+      return response;
     }
 
   },
@@ -199,6 +174,7 @@ Meteor.methods({
     let apiUrl = 'https://freegeoip.net/json/';
     console.log("--URL--"+apiUrl);
     let response = Meteor.wrapAsync(apiCall)(apiUrl);
+    console.log("browserGEO RESPONSE:");
     console.log(response);
     let lat = response.latitude;
     let lng = response.longitude;
@@ -224,6 +200,7 @@ Meteor.methods({
     let apiUrl = 'https://maps.googleapis.com/maps/api/distancematrix/json?units=' + params.units + '&origins=' + params.orig + '&destinations=' + params.dests;
     console.log("--URL--"+ apiUrl);
     let response = Meteor.wrapAsync(apiCall)(apiUrl);
+  console.log("GDistance2 RESPONSE:");
     console.log(response);
     // console.log(response.rows[0].elements);
     return response;
@@ -238,42 +215,9 @@ Meteor.methods({
     let apiUrl = 'https://maps.googleapis.com/maps/api/directions/json?origin=' + params.origin + '&destination=' + params.destination + '&key=' + Meteor.settings.public.keys.googleServer.key;
     console.log("--URL--"+apiUrl);
     let response = Meteor.wrapAsync(apiCall)(apiUrl);
-    console.log("GDIRECTIONS RESPONSE:");
     // console.log(response);
     return response;
   },
-  getYelpID: function(phone) {
-    this.unblock();
-    let apiUrl = "https://api.yelp.com/v3/businesses/search/phone?phone=%2B1" + phone;
-
-    const access_token = 'BAYaQkXitLcxtW-pKp3w6p8pEMVZYv7FF5FTEUJVrtJWbtVt5YQ9k80EgQ3bVv2eJr-Hh4xXh_uG0xWmf4hYKKM4Wy-cFrz8b803Xfi--USK3Em78pgQTr9hYT1nWHYx';
-    let headers = {
-      Authorization: 'Bearer '+ access_token
-    };
-    console.log("--URL--"+apiUrl);
-    let response = Meteor.wrapAsync(apiCall2)(apiUrl, headers);
-    console.log("YELP RESPONSE:");
-    console.log(response);
-    return response;
-//node js request    
-    // let request = require("request");
-
-    // let options = { method: 'GET',
-    //   url: 'https://api.yelp.com/v3/businesses/search/phone',
-    //   qs: { phone: phone },
-    //   headers: {
-    //     authorization: 'Bearer BAYaQkXitLcxtW-pKp3w6p8pEMVZYv7FF5FTEUJVrtJWbtVt5YQ9k80EgQ3bVv2eJr-Hh4xXh_uG0xWmf4hYKKM4Wy-cFrz8b803Xfi--USK3Em78pgQTr9hYT1nWHYx' } };
-
-    // request(options, function (error, response, body) {
-    //   if (error) {
-    //     console.log(error);
-    //   } else {
-    //     console.log(body);
-    //     return body;
-    //   };
-    // });
-
-  }, 
   yelp_search: function(term, loc) {
     this.unblock();
     // FROM 'NODE YELP' : https://github.com/olalonde/node-yelp
@@ -291,6 +235,7 @@ Meteor.methods({
           term:'coffee',
           location: '20902'
         }).then(response => {
+          console.log("YELP SEARCH EXAMPLE RESPONSE:");
           console.log(response.jsonBody.businesses[0].name);
         });
       }).catch(e => {
@@ -336,7 +281,8 @@ Meteor.methods({
           phone: phone
         }).then(response => {
           let res = response.jsonBody.businesses[0];
-          // console.log(res);
+          console.log("YELP RESPONSE:");
+          console.log(res);
           return res;
         });
       }).catch(e => {
@@ -360,6 +306,7 @@ Meteor.methods({
         phone: phone
       }).then(response => {
         let res = response.jsonBody.businesses[0];
+        console.log("YELP RESPONSE:");
         console.log(res.id);
         return res.id;
       });
@@ -461,6 +408,7 @@ Meteor.methods({
         else {
           let info = data[1];
           let obj = {};
+          console.log("GDistance RESPONSE:");
           console.log(info);
           obj.distance = info.distance;
           obj.disValue = info.distanceValue;

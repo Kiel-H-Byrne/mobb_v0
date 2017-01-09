@@ -1,7 +1,7 @@
 {
-  "name": "blackList",
+  "name": "KIBU",
   "private": true,
-  "description": "the MoBB: Map of Black Businesses",
+  "description": "KIBU: The Map of Black Businesses",
   "main": "main.js",
   "scripts": {
     "start": "meteor run --settings settings-dev.json",

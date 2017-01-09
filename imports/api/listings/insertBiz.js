@@ -148,7 +148,7 @@ Meteor.methods({
 
         let callback = function(results,status) {
             if (status === google.maps.places.PlacesServiceStatus.OK) {
-                console.log(results)
+                console.log(results);
                 // ID_Cache.findOne({key: key}, {$set: {value: place_id}});
                 return results;
             } else {

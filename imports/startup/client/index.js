@@ -11,7 +11,7 @@ Meteor.startup(function() {
 	GoogleMaps.load({
 	  v: '3',
 	  key: Meteor.settings.public.keys.googleClient.key,
-	  libraries: 'geometry, places'
+	  libraries: ['places', 'geometry']
 	});
 
 	//=====  HTML Attributes for Facebook opengraph api =====

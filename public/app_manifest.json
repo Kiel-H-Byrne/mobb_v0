@@ -1,6 +1,6 @@
 {
-  "name": "The BlackList: Flex Your Purchasing Power!",
-  "short_name": "theBlacklist",
+  "name": "KIBU: The Map",
+  "short_name": "KIBU",
   "icons": [
     {
       "src": "img/icons/set_plain/Icon-16.png",
@@ -94,7 +94,7 @@
     }
   ],
   "start_url": "/?utm_source=homescreen",
-  "background_color": "#444",
+  "background_color": "#ed7e0e",
   "theme_color": "#ed7e0e",
   "display": "standalone"
 }

@@ -33,17 +33,21 @@
 <template name="nav2">
     <div class="navbar-fixed ">
         {{> corner_ribbon}}
-        <div class="grey darken-2 z-depth-0">
+        <div class="grey darken-1 z-depth-0">
             <div class="row valign-wrapper">
                 <div class="col s7 m4">
-                    <a class="brand-logo left" href="/">
+                    <a class="brand-logo left" href="/map">
                         <img class="responsive-img" src="img/logo-lg-sdw.png" alt="the blacklist" />
                     </a>
                 </div>
                 <div class="col s5 m2 valign">
                     <ul >
-                        <li class=""><a href="/gallery" class="" alt="View Online Only" ><i class="material-icons " title="Filter by List">view_module</i></a></li>
-                        <li class=""><a class="modal-trigger " href="#modalAdd" alt="Add A Business" ><i class="material-icons" title="Add a Business">library_add</i></a></li>
+                        <!--li class=""><a href="/gallery" class="" alt="View Online Only" ><i class="material-icons " title="View Online Gallery">view_module</i></a></li-->
+                        {{#if currentUser}}
+                          <li class=""><a class="modal-trigger " href="#modalAdd" alt="Add A Business" ><i class="material-icons" title="Add a Business">library_add</i></a></li>
+                        {{else}}
+                          <li class=""><a class="modal-trigger " href="/register" alt="Add A Business" ><i class="material-icons" title="Add a Business">library_add</i></a></li>
+                        {{/if}}
                         <li class=""><a class="modal-trigger " href="#modalShare"><i class="material-icons " title="Share"> share</i></a></li>
                     </ul>
                 </div>

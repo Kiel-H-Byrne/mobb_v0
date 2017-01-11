@@ -1,12 +1,12 @@
 // This section sets up some basic app metadata,
 // the entire section is optional.
 App.info({
-  id: 'com.blackList',
-  name: 'blackList',
-  description: 'MoBB',
+  id: 'com.KIBUmap',
+  name: 'KIBU: The Map',
+  description: 'KIBU',
   author: 'Kiel H. Byrne',
-  email: 'kiel.byrne@gmail.com',
-  website: 'http://mobb.meteorapp.com'
+  email: 'thehilmar@gmail.com',
+  website: 'https://www.kibumap.com'
 });
 // Set up resources such as icons and launch screens.
 // App.icons({

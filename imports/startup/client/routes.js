@@ -52,19 +52,22 @@ Router.route('/error', function() {
 // ==================== "atNavButton" routes Button ====================
 
 AccountsTemplates.configureRoute('signIn', {
-    name: 'login',
-    path: '/login',
-    redirect: '/',
+  name: 'login',
+  layoutTemplate: 'AppLayout',
+  path: '/login',
+  redirect: '/'
 });
 
 AccountsTemplates.configureRoute('signUp', {
-    name: 'register',
-    path: '/register',
-    redirect: '/',
+  name: 'register',
+  layoutTemplate: 'AppLayout',
+  path: '/register',
+  redirect: '/'
 });
 
 AccountsTemplates.configureRoute('verifyEmail', {
   name: 'verifyEmail',
+  layoutTemplate: 'AppLayout',
   path: '/verify-email/:token',
   action: 'verifyEmail',
   redirect: '/'
@@ -72,6 +75,7 @@ AccountsTemplates.configureRoute('verifyEmail', {
 
 AccountsTemplates.configureRoute('resetPwd', {
   name: 'resetPassword',
+  layoutTemplate: 'AppLayout',
   path: '/reset-password',
   redirect: '/'
 });

@@ -7,6 +7,13 @@ import '../../ui/layouts/layout.js';
 console.log("-= imports/startup/client/index.js loaded");
 
 Meteor.startup(function() {
+
+	// AccountsTemplates.configure({
+	//   defaultLayout: 'AppLayout',
+	// });
+
+
+	Meteor.typeahead.inject();
 	
 	GoogleMaps.load({
 	  v: '3',

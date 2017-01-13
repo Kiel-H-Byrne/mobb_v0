@@ -54,23 +54,22 @@ Template.nav2.onRendered( function() {
 });
 
 Template.nav2.onRendered(function() {
-	
-  // $('.twitter-typeahead').css("display:block");
-	
+	  
   // TypeAhead autocomplete in Schema
-  // Meteor.typeahead.inject();
+  $('.twitter-typeahead').css("display:block");
+  Meteor.typeahead.inject();
   // GeoComplete 
-  this.autorun(function () {
-    if (GoogleMaps.loaded()) {
-      $("input#search_loc").geocomplete({
-      	map: GoogleMaps.maps.map.instance,
-      	mapOptions: GoogleMaps.maps.map.options,
-        markerOptions: {
-          disabled: true
-        }
-      });
-    }
-  });
+  // this.autorun(function () {
+  //   if (GoogleMaps.loaded()) {
+  //     $("input#search_loc").geocomplete({
+  //     	map: GoogleMaps.maps.map.instance,
+  //     	mapOptions: GoogleMaps.maps.map.options,
+  //       markerOptions: {
+  //         disabled: true
+  //       }
+  //     });
+  //   }
+  // });
 
 });
 
@@ -83,22 +82,22 @@ Template.nav2.events({
 		let entered = tpl.find('input#search_loc').value;
 		console.log("Search Fired! with " + entered);
 
-		Meteor.call('geoCode', entered, function(err,res) {
-			let userLoc = res.split(",");
-			GoogleMaps.maps.map.instance.setCenter({"lat": Number(userLoc[0]), "lng": Number(userLoc[1]) });
-			GoogleMaps.maps.map.instance.setZoom(13);
-			// console.log(res); 
-			// Session.set('newLoc', res);
-		});
-    document.getElementByClassName("search_form").reset();
+		// Meteor.call('geoCode', entered, function(err,res) {
+		// 	let userLoc = res.split(",");
+		// 	GoogleMaps.maps.map.instance.setCenter({"lat": Number(userLoc[0]), "lng": Number(userLoc[1]) });
+		// 	GoogleMaps.maps.map.instance.setZoom(13);
+		// 	// console.log(res); 
+		// 	// Session.set('newLoc', res);
+		// });
+  //   document.getElementByClassName("search_form").reset();
 
-		analytics.track("Searched for New Location.", {
-  		clientSearch: entered
-		});
+		// analytics.track("Searched for New Location.", {
+  // 		clientSearch: entered
+		// });
 	},
   'click input': function() {
     // $('.dropdown-button').dropdown('open');
-    document.getElementById("search_form").reset();
+    // document.getElementById("search_form").reset();
   },
   'mouseup form': function() {
     // console.log("mouse fired.");
@@ -107,22 +106,24 @@ Template.nav2.events({
 });
 
 Template.nav2.helpers({
-  // dataset: function() {
-  //   return [
-  //     {
-  //       name: 'categories',
-  //       valueKey: 'name',
-  //       local: function() { return Categories.find().fetch(); },
-  //       header: '<h4 class="class-name">Categories</h4>',
-  //       template: 'results'
-  //     },
-  //     {
-  //       name: 'listings',
-  //       valueKey: 'name',
-  //       local: function() { return Listings.find().fetch(); },
-  //       header: '<h4 class="name">Listings</h4>',
-  //       template: 'results'
-  //     }
-  //   ];
-  // }
+  dataset: function() {
+    return [
+      {
+        name: 'categories',
+        valueKey: 'title',
+        displayKey: 'title',
+        local: function() { return Categories.find().fetch(); },
+        header: '<h4 class="class-name">Categories</h4>',
+        template: 'results'
+      },
+      {
+        name: 'listings',
+        valueKey: 'name',
+        displayKey: 'name',
+        local: function() { return Listings.find().fetch(); },
+        header: '<h4 class="name">Listings</h4>',
+        template: 'results'
+      }
+    ];
+  }
 });

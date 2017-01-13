@@ -1,11 +1,11 @@
 // This section sets up some basic app metadata,
 // the entire section is optional.
 App.info({
-  id: 'com.KIBUmap',
-  name: 'KIBU: The Map',
-  description: 'KIBU',
+  id: 'com.kibumap',
+  name: 'KIBU',
+  description: 'KIBU Map',
   author: 'Kiel H. Byrne',
-  email: 'thehilmar@gmail.com',
+  email: 'theHilmar@gmail.com',
   website: 'https://www.kibumap.com'
 });
 // Set up resources such as icons and launch screens.

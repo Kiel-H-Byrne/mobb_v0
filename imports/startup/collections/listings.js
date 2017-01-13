@@ -58,6 +58,9 @@ Listings = new orion.collection('listings', {
       },{ 
         data: "ownphone", 
         title: "Owner Phone" 
+      },{
+        data: "description",
+        title: "Description"
       },{ 
         data: "google_id", 
         title: "Google ID" 
@@ -210,6 +213,11 @@ Listings.attachSchema(new SimpleSchema({
   owner: {
     type: String,
     label: 'Owner Name',
+    optional: true
+  },
+  description: {
+    type: String,
+    label: 'Description',
     optional: true
   },
   image: orion.attribute('file', {

@@ -8,6 +8,36 @@ console.log("-= imports/startup/client/index.js loaded");
 
 Meteor.startup(function() {
 
+
+    //-- ANALYTICS EVENT (User dismiss/Accept Home Screen banner) --
+
+window.addEventListener('beforeinstallprompt', function(e) {
+  // beforeinstallprompt Event fired
+
+  // e.userChoice will return a Promise.
+  // For more details read: https://developers.google.com/web/fundamentals/getting-started/primers/promises
+  e.userChoice.then(function(choiceResult) {
+
+    console.log(choiceResult.outcome);
+
+    if(choiceResult.outcome == 'dismissed') {
+	    analytics.track( "ProgressiveWebApp", {
+	      title: "Added to HomeScreen",
+	      data: 'false'
+	    });
+    console.log("-= GA : Browser IP Data =-");
+      console.log('User cancelled home screen install');
+    }
+    else {
+	    analytics.track( "ProgressiveWebApp", {
+	      title: "Added to HomeScreen",
+	      data: 'true'
+	    });
+    }
+  });
+});
+
+
 	// AccountsTemplates.configure({
 	//   defaultLayout: 'AppLayout',
 	// });
@@ -39,6 +69,9 @@ Meteor.startup(function() {
 	    });
 	  });
 	}
+
+
+
 
 });
 

@@ -218,7 +218,13 @@ Listings.attachSchema(new SimpleSchema({
   description: {
     type: String,
     label: 'Description',
-    optional: true
+    optional: true,
+    max: 500,
+    autoform: {
+      afFieldInput: {
+        type: "textarea"
+      }
+    }
   },
   image: orion.attribute('file', {
     label: 'Upload an Image',

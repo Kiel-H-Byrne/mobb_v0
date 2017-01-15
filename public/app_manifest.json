@@ -95,7 +95,7 @@
     }
   ],
   "start_url": "/?utm_source=homescreen",
-  "background_color": "#ed7e0e",
-  "theme_color": "#ed7e0e",
+  "background_color": "#ED7E0E",
+  "theme_color": "#ED7E0E",
   "display": "standalone"
 }

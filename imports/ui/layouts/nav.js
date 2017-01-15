@@ -18,7 +18,7 @@ import './nav.html';
 
 Template.nav2.onRendered( function() {
 // ====== MOBILE VIEW NAV MENU BUTTON, CLICKING SHOWS THE SIDE NAV. ====== 
-	$(document).ready(function(){
+	
 
     $('.modal-trigger').leanModal({
         dismissible: true,
@@ -44,12 +44,12 @@ Template.nav2.onRendered( function() {
         }
     });
 
-		$(".button-collapse").sideNav({
-			edge: 'left',
-			closeOnClick: true
-		});
+		// $(".button-collapse").sideNav({
+		// 	edge: 'left',
+		// 	closeOnClick: true
+		// });
 
-	});
+
 
 });
 
@@ -102,6 +102,9 @@ Template.nav2.events({
   'mouseup form': function() {
     // console.log("mouse fired.");
     // Materialize.updateTextFields();
+  },
+  'click .addmodal': function() {
+    $('#modalAdd').leanModal('open');
   }
 });
 

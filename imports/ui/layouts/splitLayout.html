@@ -1,0 +1,12 @@
+<template name="SplitLayout"> 
+  {{> nav2}}
+  {{> yield "left"}}
+  <div class="row">
+   
+    <div class="rightSide col l6 offset-l6">
+      {{> yield "right"}}
+    </div>
+  </div>
+  {{> yield "footer"}}
+</template>
+

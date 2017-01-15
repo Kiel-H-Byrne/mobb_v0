@@ -1,0 +1,28 @@
+@import 'materialize/components/color';
+@import 'materialize/components/variables';
+@import 'palettes/colors';
+
+.card-wrapper {
+  @media #{$medium-and-up} {
+		position: absolute;
+		right: 50%;
+  }
+	display: -webkit-flex;
+	display: flex;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+	flex-flow: row wrap;
+	padding: 0.5rem;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;	
+	background-color: $clr-grey-clear;
+
+	h4 {
+		display: block;
+		clear: both;
+		width: 100%;
+	}
+}

@@ -10,7 +10,7 @@ import '../../api/orionCache.js';
 
 // ============================= API DATA CACHEING ==================================
 // let cache = new ApiCache('rest', 120);
-const OCache = new OrionCache('rest', 6000);
+const OCache = new OrionCache('rest', 60000);
 // ======================== GOOGLE DISTANCE API MODULE=============================
 const GDistance = require('google-distance');
 GDistance.apiKey = Meteor.settings.public.keys.googleServer.key;

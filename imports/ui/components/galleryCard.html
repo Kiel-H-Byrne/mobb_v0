@@ -3,14 +3,14 @@
 <template name="galleryCard">
   {{!-- <a href="{{url}}" target="_blank"> --}}
     <div class="info-card card sticky-action grey darken-2 hoverable">
-      
-      {{#if image.url}}
+
+      {{#if hasImage}}
       <div class="card-image waves-effect waves-block waves-light"> 
         <img class="responsive-image activator" src="img/gallery/{{name}}.png" />
       </div>
       {{/if}}
       <div class="card-content white-text">
-          <span class="card-title"> <h5 class="amber-text text-darken-1 center-align">{{name}}</h5></span>
+          <span class="card-title "> <h5 class="amber-text text-darken-1 center-align activator">{{name}}</h5></span>
           <h6 class="center-align"><a href="#" target="_blank" rel="noopener" > {{social}}</a></h6>
           <p class="center-align address">
             <span id="address-content">
@@ -24,7 +24,9 @@
 
       <div class="card-reveal">
         <span class="card-title amber-text text-darken-4">Reviews<i class="material-icons right">close</i></span>
+        
         <p class="flow-text">We are still working on this feature...</p>
+        <p class="flow-text">{{description}}</p>
         {{#with google_review}}
         
         {{/with}}

@@ -1,3 +1,5 @@
+@import 'materialize/components/color';
+@import 'materialize/components/variables';
 @import 'palettes/colors';
 
 .nav-search {
@@ -122,6 +124,7 @@ nav {
   top: 0;
   left: 0;
   right: 0;
+  height: $navbar-height !important;
   ul {
     margin: 0;
     display: flex;

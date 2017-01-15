@@ -1,7 +1,14 @@
+@import 'materialize/components/color';
+@import 'materialize/components/variables';
+
+
 [id='centerButton_button'] {
+  @media #{$small-and-down} {
+   bottom: 50% + 2%;
+  }
   // top: 33%;
   bottom: 2rem;
-  position: absolute;
+  position: fixed;
   right: 0;
   margin: 0.5em;
 }

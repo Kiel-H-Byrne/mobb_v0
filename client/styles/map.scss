@@ -1,11 +1,22 @@
+@import 'materialize/components/color';
+@import 'materialize/components/variables';
+
+
 .map_canvas {
   position: relative;
 }
 
 [id='googleMap'] {
+  @media #{$large-and-up} {
+   left: 50%;
+  }
+  @media #{$small-and-down} {
+   bottom: 50%;
+  }
   bottom: 0;
   left: 0;
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 0;
 }
+

@@ -1,18 +1,18 @@
 
 <template name="map">
 
-	
-	  {{#unless geolocationError}}
-	<div id="googleMap">
-			{{> googleMap name="map" options = mapOptions }}
-	</div>
-		{{else}}
-	<div id="geoError" class="card large">
-				Geolocation failed: {{geolocationError}}
-	</div>
-		{{/unless}}
-	
-	{{! > closestCards}}
-	{{! > closestCard}}
-	{{> centerButton}}
+		  {{#unless geolocationError}}
+			<div id="googleMap">
+					{{> googleMap name="map" options = mapOptions }}
+			</div>
+				{{else}}
+			<div id="geoError" class="card large">
+						Could Not Obtain Location: {{geolocationError}}
+			</div>
+			{{/unless}}
+		
+			{{! > closestCards}}
+			{{! > closestCard}}
+			{{> centerButton}}
+
 </template>

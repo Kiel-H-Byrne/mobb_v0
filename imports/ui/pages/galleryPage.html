@@ -1,5 +1,7 @@
 <template name="galleryPage">
-		<div class="card-wrapper">
+    <div class="card-wrapper hide-on-small-only">
+      <h4 class="grey darken-2 center-align"> Online Listings </h4>
+
 			{{#each list}}
 				{{> galleryCard}}
 			{{/each}}

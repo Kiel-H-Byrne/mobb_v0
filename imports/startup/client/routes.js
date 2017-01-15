@@ -1,45 +1,72 @@
 
 import {Meteor} from  'meteor/meteor';
 
+Router.configure({
+    layoutTemplate: 'appLayout',
+    yieldTemplates: {
+        nav2: {to: 'nav'},
+        footer: {to: 'footer'},
+    }
+});
 
 Router.plugin('dataNotFound', {notFoundTemplate: '404'});
 
 Router.route('/', function(){
     this.layout('AppLayout');
+    this.render('nav2', {to: 'nav'});
     this.render('map', {to: 'content'});
+    this.render('galleryPage', {to: 'left'});
+    this.render('listPage', {to: 'bottom'});
     this.render('footer', {to: 'footer'});
 });
 
 Router.route('/map', function(){
     this.layout('AppLayout');
+    this.render('nav2', {to: 'nav'});
     this.render('map', {to: 'content'});
+    this.render('galleryPage', {to: 'left'});
+    this.render('listPage', {to: 'bottom'});
+    this.render('footer', {to: 'footer'});
+});
+
+Router.route('/split', function(){
+    this.layout('SplitLayout');
+    this.render('nav2', {to: 'nav'});
+    this.render('map', {to: 'left'});
+    this.render('galleryPage', {to: 'right'});
+    
     this.render('footer', {to: 'footer'});
 });
 
 Router.route('/list', function(){
     this.layout('AppLayout');
+    this.render('nav2', {to: 'nav'});
     this.render('listPage', {to: 'content'});
     this.render('footer', {to: 'footer'});
 });
 
 Router.route('/gallery', function(){
     this.layout('AppLayout');
+    this.render('nav2', {to: 'nav'});
     this.render('galleryPage', {to: 'content'});
     this.render('footer', {to: 'footer'});
 });
 
 Router.route('/add', function(){
     this.layout('AppLayout');
+    this.render('nav2', {to: 'nav'});
     this.render('addForm', {to: 'content'});
 });
 
 Router.route('/test', function(){
     this.layout('AppLayout');
+    this.render('nav2', {to: 'nav'});
     this.render('test', {to: 'content'});
 });
 
 Router.route('/terms', function(){
     this.layout('AppLayout');
+    this.render('nav2', {to: 'nav'});
     this.render('terms', {to: 'content'});
     this.render('', {to: 'footer'});
 });
@@ -53,21 +80,21 @@ Router.route('/error', function() {
 
 AccountsTemplates.configureRoute('signIn', {
   name: 'login',
-  layoutTemplate: 'AppLayout',
   path: '/login',
+  layoutTemplate: 'AppLayout',
   redirect: '/'
 });
 
 AccountsTemplates.configureRoute('signUp', {
   name: 'register',
-  layoutTemplate: 'AppLayout',
   path: '/register',
+  // template: 'myJoinPage',
+  layoutTemplate: 'AppLayout',
   redirect: '/'
 });
 
 AccountsTemplates.configureRoute('verifyEmail', {
   name: 'verifyEmail',
-  layoutTemplate: 'AppLayout',
   path: '/verify-email/:token',
   action: 'verifyEmail',
   redirect: '/'
@@ -75,7 +102,6 @@ AccountsTemplates.configureRoute('verifyEmail', {
 
 AccountsTemplates.configureRoute('resetPwd', {
   name: 'resetPassword',
-  layoutTemplate: 'AppLayout',
   path: '/reset-password',
   redirect: '/'
 });

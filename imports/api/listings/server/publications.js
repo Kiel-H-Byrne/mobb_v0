@@ -29,6 +29,8 @@ Meteor.publish('listings_online_only', function() {
 	let cursor = Listings.find({
 		url: { $exists : 1}, 
 		street: {$exists: 0}
+	}, {
+		sort: { name: 1}
 	});
 	console.log("-= PUBLISHING: ["+ cursor.count() +"] ONLINE ONLY LISTINGS =-");
 	return cursor;

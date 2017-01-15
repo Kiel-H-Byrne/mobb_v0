@@ -219,7 +219,7 @@ Listings.attachSchema(new SimpleSchema({
     type: String,
     label: 'Description',
     optional: true,
-    max: 500,
+    max: 1000,
     autoform: {
       afFieldInput: {
         type: "textarea"

@@ -2,12 +2,12 @@
   "bbb_onlines": [
     {
       "name": "A DOG NAMED Paul",
-      "url": "http://Www.adognamedpaul.com",
+      "url": "https://www.adognamedpaul.com",
       "phone": "2489528364"
     },
     {
       "name": "Accurate Tax Solutions",
-      "url": "http://Accurate Tax Solutions of Los Angeles",
+      "url": "http://www.atsolutionsla.com/",
       "phone": "3109100646"
     },
     {
@@ -37,7 +37,7 @@
     },
     {
       "name": "Ask A Black Person",
-      "url": "mailto:https://medium.com/@c52153bfdae/a18a1ffcec7e",
+      "url": "https://medium.com/@c52153bfdae/a18a1ffcec7e",
       "phone": ""
     },
     {
@@ -123,12 +123,12 @@
     {
       "name": "Chisom Custom Designs",
       "url": "http://www.etsy.com/shop/ChisomDesigns",
-      "phone": "chisomcustomdesigns@gmail.com"
+      "email": "chisomcustomdesigns@gmail.com"
     },
     {
       "name": "Colorstock",
       "url": "http://www.getcolorstock.com",
-      "phone": "747 2 COLOR 1"
+      "phone": "7472COLOR1"
     },
     {
       "name": "Cozy Mous",
@@ -143,7 +143,7 @@
     {
       "name": "Cruel Valentine",
       "url": "http://CruelValentine.com",
-      "phone": "8723027835 (or 872- 30CRUEL)"
+      "phone": "8723027835"
     },
     {
       "name": "CultureCorner.com",
@@ -323,7 +323,7 @@
     {
       "name": "Lunch",
       "url": "http://yepitslunch.com",
-      "phone": "Online"
+      "phone": ""
     },
     {
       "name": "MS By Maple Syrup &amp; Co LLC",

@@ -8,6 +8,7 @@ import '../../ui/layouts/splitLayout.js';
 console.log("-= imports/startup/client/index.js loaded");
 
 Meteor.startup(function() {
+      Session.set('geoAccepted', false);
 
     //-- ANALYTICS EVENT (User dismiss/Accept Home Screen banner) --
 
@@ -65,9 +66,21 @@ Meteor.startup(function() {
 	  });
 	}
 
-
+Template.registerHelper('hasImage', function() {
+    //'this' should be Listings Document
+    // console.log(typeof this.image.url);
+    let test = this.image.url;
+    if (test !== "false") {
+      return true; 
+    } else {
+      return false;
+    }
+});
 
 
 });
+
+
+
 
 

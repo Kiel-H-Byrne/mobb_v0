@@ -8,14 +8,14 @@
 
 [id='googleMap'] {
   @media #{$large-and-up} {
-   left: 50%;
+   // left: 50%;
   }
   @media #{$small-and-down} {
-   bottom: 50%;
+   // bottom: 50%;
   }
+  position: fixed;
   bottom: 0;
   left: 0;
-  position: fixed;
   right: 0;
   top: 0;
 }

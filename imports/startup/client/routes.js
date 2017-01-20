@@ -52,6 +52,16 @@ Router.route('/gallery', function(){
     this.render('footer', {to: 'footer'});
 });
 
+Router.route('/:_id', function () {
+  var item = Listings.findOne({_id: this.params._id});
+  // this.render('ShowItem', {data: item});
+});
+
+Router.route('/categories/:_id', function () {
+  var item = Categories.findOne({_id: this.params._id});
+  this.render('ShowItem', {data: item});
+});
+
 Router.route('/add', function(){
     this.layout('AppLayout');
     this.render('nav2', {to: 'nav'});

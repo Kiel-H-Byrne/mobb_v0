@@ -9,6 +9,7 @@ import '../components/addForm.js';
 import '../components/infoModal.js';
 import '../components/categorySelect.js';
 import '../components/directionsModal.js';
+import '../components/geoModal.js';
 import '../components/shareModal.js';
 import '../components/betaModal.js';
 import '../components/corner-ribbon.js';
@@ -58,18 +59,18 @@ Template.nav2.onRendered(function() {
   // TypeAhead autocomplete in Schema
   $('.twitter-typeahead').css("display:block");
   Meteor.typeahead.inject();
-  // GeoComplete 
-  // this.autorun(function () {
-  //   if (GoogleMaps.loaded()) {
-  //     $("input#search_loc").geocomplete({
-  //     	map: GoogleMaps.maps.map.instance,
-  //     	mapOptions: GoogleMaps.maps.map.options,
-  //       markerOptions: {
-  //         disabled: true
-  //       }
-  //     });
-  //   }
-  // });
+  // Google GeoComplete 
+  this.autorun(function () {
+    if (GoogleMaps.loaded()) {
+      $("input#search_mo").geocomplete({
+      	map: GoogleMaps.maps.map.instance,
+      	mapOptions: GoogleMaps.maps.map.options,
+        markerOptions: {
+          disabled: true
+        }
+      });
+    }
+  });
 
 });
 
@@ -78,9 +79,9 @@ Template.nav2.events({
 	//when form is submitted, set new center. 
 	
 	'submit form': function (event, tpl) {
-		event.preventDefault();
-		let entered = tpl.find('input#search_loc').value;
-		console.log("Search Fired! with " + entered);
+		// event.preventDefault();
+		// let entered = tpl.find('input#search_mo').value;
+		// console.log("Search Fired! with " + entered);
 
 		// Meteor.call('geoCode', entered, function(err,res) {
 		// 	let userLoc = res.split(",");

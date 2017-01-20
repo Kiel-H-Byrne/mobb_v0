@@ -54,8 +54,9 @@
                 <div class="col m6 hide-on-small-only">
                     <form id="search_form">
                       <div class="input-field">
-                        <input placeholder=" "  class="amber-text form-control typeahead" name="results" id="search_loc" type="text" autocomplete="off" spellcheck="off" data-sources="dataset" style="margin-bottom:10px"/>
-                        <label for="search_loc"> </label>
+                        <i class="material-icons prefix">search</i>
+                        <input id="search_nav" placeholder=" "  class="amber-text form-control typeahead" name="results" type="text" autocomplete="off" spellcheck="off" data-sources="dataset" style="margin-bottom:10px; left: 2rem;"/>
+                        <label for="search_nav"> </label>
                       </div>
                     </form>
                 </div>
@@ -65,8 +66,9 @@
                 <div class="col s12 m5 l4 right hoverable">
                     <form id="search_form">
                       <div class="input-field">
-                        <input placeholder=" "  class="amber-text form-control typeahead" name="results" id="search_loc" type="text" autocomplete="off" spellcheck="off" data-sources="dataset" style="margin-bottom:10px"/>
-                        <label for="search_loc">Search Nearby...</label>
+                        <i class="material-icons prefix">search</i>
+                        <input id="search_mo" placeholder=" "  class="amber-text form-control" type="text" autocomplete="off" spellcheck="off" style="margin-bottom:10px; left: 2rem; "/>
+                        <label for="search_mo"> </label>
                       </div>
                     </form>
                 </div>
@@ -81,6 +83,7 @@
     {{> directionsModal}}
     {{> shareModal}}
     {{> betaModal}}
+    {{> geoModal}}
 </template>
 
 <template name="nav3">

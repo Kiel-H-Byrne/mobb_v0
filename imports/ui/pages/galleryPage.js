@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import {Template} from 'meteor/templating';
+import { Template } from 'meteor/templating';
 
 import './galleryPage.html';
 import '../components/galleryCard.js';
@@ -16,7 +16,20 @@ Template.galleryPage.onCreated(function() {
 	});
 });
 
+Template.galleryPage.onRendered(function() {
+	$(document).ready(function(){
+		// const msnry = new Masonry('.card-wrapper', {
+		// 	// columnWidth: 200,
+		// 	itemSelector: '.info-card'
+		// });
 
+		// $('.card-wrapper').masonry({
+		//   itemSelector: '.info-card',
+		//   // columnWidth: 160
+		// });
+
+	});
+});
 Template.galleryPage.helpers({
   list: function() {
 		let urlList = Listings.find({
@@ -28,5 +41,4 @@ Template.galleryPage.helpers({
 		return urlList;
 	}
 });
-
 

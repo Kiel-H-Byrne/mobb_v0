@@ -1,18 +1,20 @@
 <template name="listPage">
-  <div class="list-wrapper hide-on-med-and-up">
+  <div class="container list-wrapper hide">
     <ul class="collection with-header">
     <li class="collection-header grey darken-2 hoverable  center-align"><h4>Online Businesses</h4></li>
     {{#each list}}
 
       <li class="collection-item avatar grey darken-2 hoverable ">
-        <img src="{{image.url}}" alt="" class="circle">
-        <p class="amber-text text-darken-1">{{name}}</p>
-        <p > {{social}}</p>
+      {{#if hasImage}}
+        <img src="img/gallery/{{name}}.png" alt="" class="circle">
+      {{/if}}
+        <h4 class="amber-text text-darken-1">{{name}}</h4>
+        <h6 > {{social}}</h6>
         
         <p class="address">
               {{street}} <br />
               {{city}} {{state}} {{zip}} <br />
-              <a class=" phone" href="tel:+1{{phone}}">{{phone}}</a>
+              <a class="phone" href="tel:+1{{phone}}">{{phone}}</a>
         </p>
         
         <a href="#!" class="secondary-content">

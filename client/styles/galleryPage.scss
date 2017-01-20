@@ -5,8 +5,10 @@
 .card-wrapper {
   @media #{$medium-and-up} {
 		position: absolute;
+		left: 0;
 		right: 50%;
   }
+	background-color: $clr-grey-clear;
 	display: -webkit-flex;
 	display: flex;
 	-webkit-justify-content: center;
@@ -18,9 +20,9 @@
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;	
-	background-color: $clr-grey-clear;
 
-	h4 {
+
+	h3 {
 		display: block;
 		clear: both;
 		width: 100%;

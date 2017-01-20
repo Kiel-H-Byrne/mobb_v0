@@ -45,6 +45,30 @@ Template.map.onCreated( function() {
   
     GoogleMaps.ready('map', function(map) {
         
+        const offsetCenter = function(latlng, offsetx, offsety) {
+
+        // latlng is the apparent centre-point
+        // offsetx is the distance you want that point to move to the right, in pixels
+        // offsety is the distance you want that point to move upwards, in pixels
+        // offset can be negative
+        // offsetx and offsety are both optional
+
+            const scale = Math.pow(2, map.instance.getZoom());
+
+            let worldCoordinateCenter = map.instance.getProjection().fromLatLngToPoint(latlng);
+            let pixelOffset = new google.maps.Point((offsetx/scale) || 0,(offsety/scale) ||0);
+
+            let worldCoordinateNewCenter = new google.maps.Point(
+                worldCoordinateCenter.x - pixelOffset.x,
+                worldCoordinateCenter.y + pixelOffset.y
+            );
+
+            let newCenter = map.instance.getProjection().fromPointToLatLng(worldCoordinateNewCenter);
+
+            map.instance.setCenter(newCenter);
+            // google.maps.event.trigger(map, "resize");
+        }
+
         //Adding ALT tags to Google Images.       
         $('#googleMap > .map-canvas > div > .gm-style > div:nth-of-type(2) > a > div > img').attr( "alt", "Google Maps" );
         //Adding REL="noopener" to _blank targets
@@ -52,14 +76,18 @@ Template.map.onCreated( function() {
         // console.log("-= MAP: Drawn =-");        
         //====== SET MAP VARIABLES / CONSTANTS ======
  
-        map.instance.setCenter(Geolocation.latLng() || Session.get('browserLoc'));
+        // map.instance.setCenter(Session.get('clientLoc') || Session.get('browserLoc'));
+
+
+        // offsetCenter(Geolocation.latLng(), 50, 0);
+        // console.log(Session.get('browserLoc'));
 
         let clientMarker;
 
         let markerImage = {
           url: 'img/orange_marker_sm.png'
         };
-        const closeMarkerImage = {
+        let closeMarkerImage = {
           url: 'img/red_marker_sm.png'
         };
 
@@ -111,14 +139,9 @@ Template.map.onCreated( function() {
                         marker.addListener('click', function() {
                             Session.set('openListing', id);
                             $('#modalInfo').openModal();
-                            // $(".phone").text(function(i, text) {
-                            //   // text = text.replace(/(\d{3})(\d{3})(\d{4})/, "$1.$2.$3");
-                            //   console.log(text);
-                            //   text = text.replace(/(\+?\d?)\-?\(?(\d{3})\)?\s?\-?\.?(\d{3})\-?\.?(\d{4})/gi, "$2.$3.$4");
-                            //   return text;
-                            // });
 
-                            // Session.set('infoWindowOpen', true);
+                            // Router.go('/', {_id: id});
+
                         });
                     } // else cannot place marker on map, it does not have lat/lng yet
 
@@ -127,57 +150,67 @@ Template.map.onCreated( function() {
             });
         });
    
-        
-        self.autorun(function(){    
-            //====== AUTO CALCULATE MY LOCATION AND DRAW NEW MARKER WHEN IT CHANGES ======
-            //====== AUTO CALCULATE NEW CLOSEST BUSINESS WHEN MY LOCATION CHANGES ======
-            if (Geolocation.error() || Geolocation.latLng === null || Geolocation.latLng === "null") {
-                console.log("Geo Error:", Geolocation.error().message);
-                return;
-            } else {
-                let latLng = Geolocation.latLng();
-                // console.log("clientLoc is Geo: ", latLng);
-           
-                Session.set('clientLoc', latLng);
-                //              ---------------- ANALYTICS EVENT ---------------
-                // analytics.track( "Browser IP Data", {
-                //   title: "Pulled Geo Info",
-                //   data: Session.get('clientLoc')
-                // });
-                // console.log("-= GA : Geolocation Obtained =-");
-
-                if (!latLng)
+        if (Session.get('geoAccepted') == true ) {
+            self.autorun(function(){    
+                //====== AUTO CALCULATE MY LOCATION AND DRAW NEW MARKER WHEN IT CHANGES ======
+                //====== AUTO CALCULATE NEW CLOSEST BUSINESS WHEN MY LOCATION CHANGES ======
+                if (Geolocation.error() || Geolocation.latLng === null || Geolocation.latLng === "null") {
+                    console.warn("Geo Error:", Geolocation.error().message);
                     return;
-                if (!clientMarker) {
-
-                    clientMarker = new google.maps.Marker({
-                        position: new google.maps.LatLng(latLng.lat, latLng.lng),
-                        map: map.instance,
-                        icon: self_icon,
-                        title: "My Location",
-                        // animation: google.maps.Animation.BOUNCE,
-                    }); 
-
-                
                 } else {
-                    clientMarker.setPosition(latLng);
-                    //Google Maps does not recenter or rezoom
-                    // map.instance.setCenter(clientMarker.getPosition());
-                    // map.instance.setZoom(MAP_ZOOM);
+                    let latLng = Geolocation.latLng();
+                    //ofset by a few in x direction, due to split screen. 
+                    //want 'center' to be at 3/4th point of screen.
+                    // let offsetX = -0.02;
+                    // let offsetY = 0.00;
+                    // let lat = (latLng.lat + offsetX);
+                    // let lng = (latLng.lng + offsetY);
+                    // let latLng_offset = {lat: lat , lng: lng};
+                    
+                    console.log("clientLoc is Geo: ", latLng);
+                    Session.set('clientLoc', latLng);
+                    //              ---------------- ANALYTICS EVENT ---------------
+                    // analytics.track( "Browser IP Data", {
+                    //   title: "Pulled Geo Info",
+                    //   data: Session.get('clientLoc')
+                    // });
+                    // console.log("-= GA : Geolocation Obtained =-");
 
+                    if (!latLng)
+                        return;
+                    if (!clientMarker) {
+
+                        clientMarker = new google.maps.Marker({
+                            position: new google.maps.LatLng(latLng.lat, latLng.lng),
+                            map: map.instance,
+                            icon: self_icon,
+                            title: "My Location",
+                            // animation: google.maps.Animation.BOUNCE,
+                        }); 
+
+                    
+                    } else {
+                        clientMarker.setPosition(latLng);
+                        //Google Maps does not recenter or rezoom
+                        // map.instance.setCenter(clientMarker.getPosition());
+                        // map.instance.setZoom(MAP_ZOOM);
+
+                    }
+
+                    // let infoWindow = new google.maps.InfoWindow({
+                    //     content: "Here I Am!"
+                    // });
+
+                    // clientMarker.addListener('click', function() {
+                    //     infoWindow.setContent("Here I Am!");
+                    //     infoWindow.open(map, clientMarker);
+                    // });
                 }
+            });   
 
-                // let infoWindow = new google.maps.InfoWindow({
-                //     content: "Here I Am!"
-                // });
-
-                // clientMarker.addListener('click', function() {
-                //     infoWindow.setContent("Here I Am!");
-                //     infoWindow.open(map, clientMarker);
-                // });
-            }
-        });   
-
+        } else {
+            console.warn('GeoLocation Request not accepted.');
+        }
         // ========================= DOM Events relating to Map =========================
 
         // google.maps.event.addDomListener(map, 'center_changed', function() {
@@ -231,15 +264,15 @@ Template.map.helpers({
     // failed.", it means you probably did not give permission for the browser to
     // locate you.
     let mapCenter;
-        if (!Session.get('browserLoc')) {
-            mapCenter = {'lat':39.833, 'lng':-98.583};
-            console.log("Set mapCenter to 'US Center':", mapCenter);
+        // if (!Session.get('browserLoc')) {
+            mapCenter = {'lat':39.8333, 'lng':-129.023};
+            console.log("Set mapCenter to 'Off-West Coast':", mapCenter);
 
-        } else {
-            mapCenter = Session.get('browserLoc');
-            MAP_ZOOM = 14;
-            console.log("Got mapCenter from Browser:", mapCenter);
-        }
+        // } else {
+        //     mapCenter = Session.get('browserLoc');
+        //     // MAP_ZOOM = 12;
+        //     console.log("Got mapCenter from Browser:", mapCenter);
+        // }
 
         if (GoogleMaps.loaded() && mapCenter) {
             return {

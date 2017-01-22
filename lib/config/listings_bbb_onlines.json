@@ -4,6 +4,7 @@
       "name": "A DOG NAMED Paul",
       "url": "https://www.adognamedpaul.com",
       "phone": "2489528364",
+      "social": "@adnpapproach",
       "image": {
         "url": false
       }
@@ -41,11 +42,12 @@
       }
     },
     {
-      "name": "Airfordable - Payment Plans for Flights",
+      "name": "Airfordable",
       "url": "http://www.airfordable.com",
       "email": "team@airfordable.com",
+      "description": "Payment Plans for Flights",
       "image": {
-        "url": false
+        "url": true
       }
     },
     {

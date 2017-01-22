@@ -2,7 +2,7 @@
 import {Meteor} from  'meteor/meteor';
 
 Router.configure({
-    layoutTemplate: 'appLayout',
+    layoutTemplate: 'AppLayout',
     yieldTemplates: {
         nav2: {to: 'nav'},
         footer: {to: 'footer'},
@@ -12,7 +12,6 @@ Router.configure({
 Router.plugin('dataNotFound', {notFoundTemplate: '404'});
 
 Router.route('/', function(){
-    this.layout('AppLayout');
     this.render('nav2', {to: 'nav'});
     this.render('map', {to: 'content'});
     this.render('galleryPage', {to: 'left'});
@@ -21,7 +20,6 @@ Router.route('/', function(){
 });
 
 Router.route('/map', function(){
-    this.layout('AppLayout');
     this.render('nav2', {to: 'nav'});
     this.render('map', {to: 'content'});
     this.render('galleryPage', {to: 'left'});
@@ -34,55 +32,48 @@ Router.route('/split', function(){
     this.render('nav2', {to: 'nav'});
     this.render('map', {to: 'left'});
     this.render('galleryPage', {to: 'right'});
-    
     this.render('footer', {to: 'footer'});
 });
 
 Router.route('/list', function(){
-    this.layout('AppLayout');
     this.render('nav2', {to: 'nav'});
     this.render('listPage', {to: 'content'});
     this.render('footer', {to: 'footer'});
 });
 
 Router.route('/gallery', function(){
-    this.layout('AppLayout');
     this.render('nav2', {to: 'nav'});
     this.render('galleryPage', {to: 'content'});
     this.render('footer', {to: 'footer'});
 });
 
 Router.route('/:_id', function () {
-  var item = Listings.findOne({_id: this.params._id});
-  // this.render('ShowItem', {data: item});
+  let params = this.params;
+  let item = Listings.findOne({_id: params._id});
 });
 
 Router.route('/categories/:_id', function () {
-  var item = Categories.findOne({_id: this.params._id});
-  this.render('ShowItem', {data: item});
+  let item = Categories.findOne({_id: this.params._id});
+  // this.render('ShowItem', {data: item});
 });
 
 Router.route('/add', function(){
-    this.layout('AppLayout');
     this.render('nav2', {to: 'nav'});
     this.render('addForm', {to: 'content'});
 });
 
 Router.route('/test', function(){
-    this.layout('AppLayout');
     this.render('nav2', {to: 'nav'});
     this.render('test', {to: 'content'});
 });
 
 Router.route('/terms', function(){
-    this.layout('AppLayout');
     this.render('nav2', {to: 'nav'});
     this.render('terms', {to: 'content'});
     this.render('', {to: 'footer'});
 });
 
 Router.route('/error', function() {
-    this.layout('AppLayout');
     this.render('404', {to: 'content'});
 });
 
@@ -91,15 +82,12 @@ Router.route('/error', function() {
 AccountsTemplates.configureRoute('signIn', {
   name: 'login',
   path: '/login',
-  layoutTemplate: 'AppLayout',
   redirect: '/'
 });
 
 AccountsTemplates.configureRoute('signUp', {
   name: 'register',
   path: '/register',
-  // template: 'myJoinPage',
-  layoutTemplate: 'AppLayout',
   redirect: '/'
 });
 

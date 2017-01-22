@@ -30,6 +30,20 @@ Template.infoModal.onRendered(function() {
   //   },
   //   complete: function() { alert('Closed'); } // Callback for Modal close
   //   });
+  
+  this.autorun(function() {
+    let controller = Iron.controller();
+    let action = controller.getParams();
+    console.log(controller);
+    if (action=="modal"){
+      let alertsModal = $('#infoModal');
+      alertsModal.modal("open");
+      controller.setParams({
+        action: null
+      });
+    }
+  });
+
 });
 
 Template.infoModal.events({

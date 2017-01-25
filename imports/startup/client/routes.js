@@ -57,6 +57,7 @@ Router.route('/categories/:_id', function () {
   // this.render('ShowItem', {data: item});
 });
 
+
 Router.route('/add', function(){
     this.render('nav2', {to: 'nav'});
     this.render('addForm', {to: 'content'});
@@ -82,12 +83,14 @@ Router.route('/error', function() {
 AccountsTemplates.configureRoute('signIn', {
   name: 'login',
   path: '/login',
+  layoutTemplate: 'AppLayout',
   redirect: '/'
 });
 
 AccountsTemplates.configureRoute('signUp', {
   name: 'register',
   path: '/register',
+  layoutTemplate: 'AppLayout',
   redirect: '/'
 });
 

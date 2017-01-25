@@ -17,30 +17,30 @@ Template.infoModal.helpers({
 });
 
 Template.infoModal.onRendered(function() {
-  // $('.modal-trigger').leanModal({
-  //   dismissible: true, // Modal can be dismissed by clicking outside of the modal
-  //   opacity: 0.5, // Opacity of modal background
-  //   in_duration: 300, // Transition in duration
-  //   out_duration: 200, // Transition out duration
-  //   starting_top: '4%', // Starting top style attribute
-  //   ending_top: '10%', // Ending top style attribute
-  //   ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
-  //     alert("Ready");
-  //     console.log(modal, trigger);
-  //   },
-  //   complete: function() { alert('Closed'); } // Callback for Modal close
-  //   });
   
   this.autorun(function() {
     let controller = Iron.controller();
-    let action = controller.getParams();
-    console.log(controller);
-    if (action=="modal"){
-      let alertsModal = $('#infoModal');
-      alertsModal.modal("open");
-      controller.setParams({
-        action: null
+    let params = controller.getParams();
+    console.log(params);
+    if (params.query.results) {
+      let result = params.query.results;
+      let listing = Listings.findOne({
+        name: result
       });
+      if (listing) {
+        console.log(listing._id);
+        Session.set('openListing', listing._id);  
+        $('html, body').animate({
+          scrollTop: $('#' + listing._id).offset().top
+        }, 1000);
+      } else {
+        console.log(result);
+        let category = Categories.findOne({
+          title: result
+        });
+        console.log(category);
+        // Router.go('/categories/' + category._id);
+      }      
     }
   });
 

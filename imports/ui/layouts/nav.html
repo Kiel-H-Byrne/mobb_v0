@@ -14,19 +14,21 @@
                     <ul>
                         <!--li class=""><a href="/gallery" class="" alt="View Online Only" ><i class="material-icons " title="View Online Gallery">view_module</i></a></li-->
                         {{#if currentUser}}
-                          <li class=""><a class="modal-trigger addmodal " href="#modalAdd"><i class="material-icons" title="Add a Business">library_add</i></a></li>
+                          <li class=""><a class="modal-trigger" href="#modalAdd"><i class="material-icons" title="Add a Business">library_add</i></a></li>
                         {{else}}
-                          <li class=""><a class="modal-trigger " href="/register" alt="Add A Business" ><i class="material-icons" title="Add a Business">library_add</i></a></li>
+                          <li class=""><a class="modal-trigger" href="/register" alt="Add A Business" ><i class="material-icons" title="Add a Business">library_add</i></a></li>
                         {{/if}}
-                        <li class=""><a class="modal-trigger " href="#modalShare"><i class="material-icons " title="Share"> share</i></a></li>
+                        <li class="hide-on-med-and-up"><a class="" href="/gallery" alt="View Online Listings"><i class="material-icons">view_compact</i></a></li>
+                        <li class="hide-on-med-and-up"><a class="" alt="View Online Listings"><i class="material-icons">filter_list</i></a></li>
                     </ul>
                 </div>
                 <div class="col m6 hide-on-small-only">
 
-                    <form id="search_form">
+                    <form id="desktop_search-form">
                       <div class="input-field">
                         <input id="search_nav" placeholder=" "  class="amber-text form-control typeahead" name="results" type="text" autocomplete="off" spellcheck="off" data-sources="dataset" />
-                        <label for="search_nav"> </label>
+                        <label for="search_nav"></label>
+                        <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;" tabindex="-1" />
                       </div>
                     </form>
                 </div>
@@ -34,10 +36,11 @@
 
             <div class="row grey darken-2 hide-on-med-and-up">
                 <div class="col s12 m5 l4 right hoverable">
-                    <form id="search_form">
+                    <form id="mobile_search-form">
                       <div class="input-field">
                         <input id="search_mo" placeholder=" "  class="amber-text form-control" type="text" autocomplete="off" spellcheck="off" />
                         <label for="search_mo"> </label>
+                        <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;" tabindex="-1" />
                       </div>
                     </form>
                 </div>

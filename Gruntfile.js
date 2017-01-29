@@ -55,7 +55,7 @@ module.exports = function(grunt) {
                                 description: "The Map of Black Owned Businesses",
                                 display: 'standalone',
                                 orientation: 'portrait',
-                                start_url: '/?utm_source=homescreen'
+                                start_url: '/?utm_source=homescreen',
                                 onConflict: 'override',
                                 declared: true
                             },

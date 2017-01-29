@@ -26,7 +26,6 @@ Meteor.startup(function() {
   	      title: "Added to HomeScreen",
   	      data: 'false'
   	    });
-      console.log("-= GA : Browser IP Data =-");
         console.log('User cancelled home screen install');
       }
       else {
@@ -38,9 +37,10 @@ Meteor.startup(function() {
     });
   });
 
-
+//=====  meteor-typeAhead =====
 	Meteor.typeahead.inject();
-	
+
+//=====  GoogleMaps load =====	
 	GoogleMaps.load({
 	  v: '3',
 	  key: Meteor.settings.public.keys.googleClient.key,
@@ -65,6 +65,7 @@ Meteor.startup(function() {
 	    });
 	  });
 	}
+//=====  Global Template Helpers =====
 
 Template.registerHelper('hasImage', function() {
     //'this' should be Listings Document

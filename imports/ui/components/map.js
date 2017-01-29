@@ -67,7 +67,7 @@ Template.map.onCreated( function() {
 
             map.instance.setCenter(newCenter);
             // google.maps.event.trigger(map, "resize");
-        }
+        };
 
         //Adding ALT tags to Google Images.       
         $('#googleMap > .map-canvas > div > .gm-style > div:nth-of-type(2) > a > div > img').attr( "alt", "Google Maps" );
@@ -272,7 +272,7 @@ Template.map.helpers({
     let mapCenter;
         // if (!Session.get('browserLoc')) {
             mapCenter = {'lat':39.8333, 'lng':-129.023};
-            console.log("Set mapCenter to 'Off-West Coast':", mapCenter);
+            // console.log("Set mapCenter to 'Off-West Coast':", mapCenter);
 
         // } else {
         //     mapCenter = Session.get('browserLoc');

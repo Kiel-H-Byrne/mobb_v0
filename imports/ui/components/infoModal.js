@@ -21,7 +21,7 @@ Template.infoModal.onRendered(function() {
   this.autorun(function() {
     let controller = Iron.controller();
     let params = controller.getParams();
-    console.log(params);
+    // console.log(params);
     if (params.query.results) {
       let result = params.query.results;
       let listing = Listings.findOne({

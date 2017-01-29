@@ -28,6 +28,7 @@ nav {
 
   .brand-logo {
     margin: 0 0.4rem;
+    height: $navbar-height;
   }
   .btn {
     i {
@@ -125,6 +126,11 @@ nav {
   left: 0;
   right: 0;
   height: $navbar-height !important;
+
+  img {
+    height: $navbar-height;
+  }
+
   ul {
     margin: 0;
     display: flex;

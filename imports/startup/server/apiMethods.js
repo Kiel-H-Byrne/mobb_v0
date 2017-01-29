@@ -146,6 +146,9 @@ Meteor.methods({
     // Accounts.sendEnrollmentEmail(newUserId, o.email)
     Meteor.loginWithPassword(o.email, o.password);
   },
+  getGeoLocation: function() {
+
+  },
   geoCode: function(address) {
     this.unblock();
     

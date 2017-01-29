@@ -6,6 +6,7 @@ Router.configure({
     yieldTemplates: {
         nav2: {to: 'nav'},
         footer: {to: 'footer'},
+        listPage: {to: 'content'}
     }
 });
 

@@ -3,6 +3,7 @@ import {Template} from 'meteor/templating';
 
 import Categories from '/imports/startup/collections/categories.js';
 
+import '../components/loadingScreen.html';
 import '../components/loggedInNav.js';
 import '../components/addForm.js';
 import '../components/infoModal.js';
@@ -13,6 +14,7 @@ import '../components/shareModal.js';
 import '../components/betaModal.js';
 import '../components/corner-ribbon.js';
 import './nav.html';
+
 
 
 Template.nav2.onRendered( function() {
@@ -61,7 +63,9 @@ Template.nav2.onRendered(function() {
 
   // Google GeoComplete 
   this.autorun(function () {
+
     if (GoogleMaps.loaded()) {
+
       $("input#search_mo").geocomplete({
       	map: GoogleMaps.maps.map.instance,
       	mapOptions: GoogleMaps.maps.map.options,
@@ -92,7 +96,7 @@ Template.nav2.events({
 	// },
   'click input': function() {
     // $('.dropdown-button').dropdown('open');
-    document.getElementById("search_form").reset();
+    document.getElementById("mobile_search-form").reset();
   },
   'mouseup form': function() {
     // console.log("mouse fired.");

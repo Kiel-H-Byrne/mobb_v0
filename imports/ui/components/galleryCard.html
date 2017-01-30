@@ -2,15 +2,15 @@
 
 <template name="galleryCard">
   {{!-- <a href="{{url}}" target="_blank"> --}}
-    <div id="{{_id}}" class="info-card card sticky-action grey darken-2 hoverable grid-item">
+    <div id="{{_id}}" class="info-card masonry_item card sticky-action grey darken-2 hoverable grid-item">
 
       {{#if hasImage}}
       <div class="card-image waves-effect waves-block waves-light"> 
-        <img class="responsive-image activator" src="img/gallery/{{name}}.png" />
+        <img class="responsive-image" src="img/gallery/{{name}}.png" />
       </div>
       {{/if}}
       <div class="card-content white-text">
-          <span class="card-title "> <h5 class="amber-text text-darken-1 center-align activator">{{name}}</h5></span>
+          <span class="card-title "> <h5 class="amber-text text-darken-1 center-align">{{name}}</h5></span>
           <h6 class="center-align"><a href="#" target="_blank" rel="noopener" > {{social}}</a></h6>
           <p class="center-align address">
             <span id="address-content">
@@ -34,7 +34,7 @@
 
       <div class="card-action">
         <div class="row center-align">
-          {{#if url}}    
+          {{#if url}}     
           <div class="col "><a class="btn-floating amber" target="_blank" rel="noopener" title="Website" href="{{url}}"><i class="material-icons">link</i></a></div>
           {{/if}}
           {{#if phone}}    

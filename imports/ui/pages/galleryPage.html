@@ -1,8 +1,12 @@
 <template name="galleryPage">
-    <div class="card-wrapper hide-on-small-only">
-        <h3 class="col s12 amber-text text-darken-2 center-align"> Online Listings </h3>
-			{{#each list}}
-				{{> galleryCard}}
-			{{/each}}
-		</div>
+<div class="gallery-wrapper hide-on-small-only">
+  <div class="row title"> 
+    <h3 class="col s12 amber-text text-darken-2 center-align"> Online Listings </h3>
+  </div>
+  <div class="row masonry">
+		{{#each list}}
+			{{> galleryCard}}
+		{{/each}}
+	</div>
+</div>
 </template>

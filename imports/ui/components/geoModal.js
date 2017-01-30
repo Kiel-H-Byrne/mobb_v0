@@ -4,7 +4,7 @@ import {Template} from 'meteor/templating';
 import './geoModal.html';
 
 Template.geoModal.events({
-  'click .geo-accept': async function(evt,tpl) {
+  'click .geo-accept': function(evt,tpl) {
     evt.preventDefault();
 
 // --------------- ANALYTICS EVENT ---------------

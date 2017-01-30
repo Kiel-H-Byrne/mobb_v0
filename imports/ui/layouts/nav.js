@@ -82,18 +82,18 @@ Template.nav2.events({
 	//====== SEARCH FORM ON NAVBAR =======
 	//when form is submitted, set new center. 
 	
-	// 'submit #desktop_search-form': function (event, tpl) {
-	// 	event.preventDefault();
+	'submit #desktop_search-form': function (event, tpl) {
+		event.preventDefault();
     
- //    let entered = tpl.find('input#search_nav').value;
-   
- //    console.log(entered);
+    let entered = tpl.find('input#search_nav').value;
+    let doc = Listings.findOne({name: entered});
+    console.log(doc._id);
+    Router.go("/", {hash: doc._id});
 
-
-	// 	analytics.track("Searched:", {
- //  		clientSearch: entered
-	// 	});
-	// },
+		analytics.track("Searched:", {
+  		clientSearch: entered
+		});
+	},
   'click input': function() {
     // $('.dropdown-button').dropdown('open');
     document.getElementById("mobile_search-form").reset();

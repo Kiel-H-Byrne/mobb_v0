@@ -6,9 +6,9 @@ Router.configure({
     notFoundTemplate: '404'
 });
 
-// Router.plugin('dataNotFound', {
-//   notFoundTemplate: '404'
-// });
+Router.plugin('dataNotFound', {
+  notFoundTemplate: '404'
+});
 
 Router.route('/', {
     // template: 'map',

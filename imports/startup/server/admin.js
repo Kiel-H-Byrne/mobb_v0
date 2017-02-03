@@ -12,9 +12,10 @@ if (Meteor.users.find().count() === 0) {
 	    
 	    profile: {
 	      loc: '39.0046,-77.0369',
-	      name: "Kiel H. Byrne"
+	      name: "Kiel H. Byrne",
+	      favorites: []
 	    },
-	    name: 'Kiel',
+	    name: 'Kiel Hamilton Byrne',
 	    username: "khb",
 	    email: "khb@iam.com",
 	    password: "password",
@@ -28,7 +29,8 @@ if (Meteor.users.find().count() === 0) {
 	    
 	    profile: {
 	      loc: '38.0046,-76.0369',
-	      name: "Rando Ralph Rohnson"
+	      name: "Rando Ralph Rohnson",
+	      favorites: []
 	    },
 	    name: 'Rando Rohnson',
 	    username: "rnr",
@@ -45,6 +47,10 @@ Meteor.publish('roles', function (){
     return Roles._collection.find();
 });
 
+Meteor.users.allow({
+	update: (uid, doc) => {return uid === userId},
+	remove: () => true,
+})
 // if ( Meteor.users.findOne({username: 'khb'}) ) {
 // 	let kiel = Meteor.users.findOne({username: 'khb'});
 	// Roles.addUserToRoles( kiel._id ,  ["admin"] );

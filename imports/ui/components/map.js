@@ -152,7 +152,7 @@ Template.map.onCreated( function() {
         // as soon as session = true, let autorun proceed for  geolocate;  
         // then stop outer autorun   
 
-                self.autorun(async function(){    
+                self.autorun(async () =>{    
                     //====== AUTO CALCULATE MY LOCATION AND DRAW NEW MARKER WHEN IT CHANGES ======
                     //====== AUTO CALCULATE NEW CLOSEST BUSINESS WHEN MY LOCATION CHANGES ======
                     if (Session.equals("geoAccepted", true)) {

@@ -23,14 +23,18 @@ Categories = new orion.collection('categories', {
   }
 });
 
+if ( Meteor.isServer ) {
+  Categories._ensureIndex( { title: 1, count: 1 } );
+}
+
 //=================== COLLECTION SECURITY =========================
 //TODO: Consider using Orion.js roles security
 
 Categories.allow({
   // only allow insertion if you are logged in
-  insert: function(userId, doc) { return !! userId; },
-  update: function(userId, doc) { return !! userId; },
-  remove: function(userId, doc) { return false; },
+  insert: (userId, doc) => !! userId,
+  update: (userId, doc) => !! userId,
+  remove: (userId, doc) => false,
 });
 
 //=================== SCHEMAS =========================

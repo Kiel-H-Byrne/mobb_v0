@@ -2,18 +2,31 @@
 	
 	{{!-- {{> quickForm collection="Listings" doc=this id="insertListingsForm" type="normal"}} --}}
 	<style>
+  @import url('https://fonts.googleapis.com/css?family=Kumar+One|Raleway');
+
 	.test-wrapper {
+
     position: relative;
     z-index: 90;
-    height: 370px;
-    width: 280px;
+    height: 570px;
+    width: 480px;
     margin: 50px auto;
     border-radius: 10px;
     background: #6a6340;
     -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    
   }
+
+    .test-wrapper h3 {
+      font-family: 'Kumar One', cursive;
+
+    }
+
+    .test-wrapper p {
+      font-family: 'Raleway', sans-serif;
+    }
 
   [id='miniMap'] {
     bottom: 50%;
@@ -24,17 +37,22 @@
   }
 
 
+  </style>
 
-
-</style>
-	<div class="test-wrapper">
+  <div class="test-wrapper">
   <h5>Review</h5>
-		{{#with greview}}
+  	{{#with greview}}
       
     {{/with}}
-	</div>
+    <div>
+  <h3> Heading </h3>
+  <p class="flow-text">
+  Some test to test the font pairing of header and paragraph. Sometimes we just need a litle bit of text to make the copy sound good. and this is just som highfalutent copy in order to make a point about font pairings. This doesn't make any real logical sensical nonsensicalness, but it's worthy of a few lines or two or three or 4 or 50 of text in a dummy paragraph placeholder. right? RIGHT? Copy? Copy!  </p>
+  </div>
+  </div>
+  
   <div id="miniMap">
-      {{> googleMap name="minimap" options = mapOptions }}
+      {{!-- {{> googleMap name="minimap" options = mapOptions }} --}}
   </div>
 	{{!-- {{> quickForm collection="Categories" doc=this id="insertCategoriesForm" type="normal"}}		 --}}
 </template>

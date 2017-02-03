@@ -3,52 +3,82 @@ import {Meteor} from  'meteor/meteor';
 
 Router.configure({
     layoutTemplate: 'AppLayout',
-    yieldTemplates: {
-        nav2: {to: 'nav'},
-        footer: {to: 'footer'},
-        listPage: {to: 'content'}
+    notFoundTemplate: '404'
+});
+
+// Router.plugin('dataNotFound', {
+//   notFoundTemplate: '404'
+// });
+
+Router.route('/', {
+    // template: 'map',
+    layoutTemplate: 'AppLayout',
+    yieldRegions: {
+      'map': {to: 'content'},
+      'galleryPage': {to: 'left'},
+      'nav2': {to: 'nav'},
+      'footer': {to: 'footer'}
     }
 });
 
-Router.plugin('dataNotFound', {notFoundTemplate: '404'});
-
-Router.route('/', function(){
-    this.render('nav2', {to: 'nav'});
-    this.render('map', {to: 'content'});
-    this.render('galleryPage', {to: 'left'});
-    this.render('listPage', {to: 'bottom'});
-    this.render('footer', {to: 'footer'});
+Router.route('/gallery', {
+    layoutTemplate: 'AppLayout',
+    yieldRegions: {
+      'galleryPage': {to: 'content'},
+      'nav2': {to: 'nav'},
+      'footer': {to: 'footer'}
+    }
 });
 
-Router.route('/map', function(){
-    this.render('nav2', {to: 'nav'});
-    this.render('map', {to: 'content'});
-    this.render('galleryPage', {to: 'left'});
-    this.render('listPage', {to: 'bottom'});
-    this.render('footer', {to: 'footer'});
+Router.route('/test', {
+    yieldRegions: {
+      'test': {to: 'content'},
+      'galleryPage': {to: 'left'},
+      'listPage': {to: 'bottom'},
+      'nav2': {to: 'nav'},
+      'footer': {to: 'footer'}
+    }
 });
 
-Router.route('/split', function(){
-    this.layout('SplitLayout');
-    this.render('nav2', {to: 'nav'});
-    this.render('map', {to: 'left'});
-    this.render('galleryPage', {to: 'right'});
-    this.render('footer', {to: 'footer'});
+Router.route('/terms', {
+    layoutTemplate: 'AppLayout',
+    yieldRegions: {
+      'terms': {to: 'content'},
+      'nav2': {to: 'nav'},
+      'footer': {to: 'footer'}
+    }
 });
 
-Router.route('/list', function(){
-    this.render('nav2', {to: 'nav'});
-    this.render('listPage', {to: 'content'});
-    this.render('footer', {to: 'footer'});
+Router.route('/list', {
+    layoutTemplate: 'AppLayout',
+    yieldRegions: {
+      'listPage': {to: 'content'},
+      'nav2': {to: 'nav'},
+      'footer': {to: 'footer'}
+    }
 });
 
-Router.route('/gallery', function(){
-    this.render('nav2', {to: 'nav'});
-    this.render('galleryPage', {to: 'content'});
-    this.render('footer', {to: 'footer'});
-});
+// Router.route('/map', function(){
+//     this.render('nav2', {to: 'nav'});
+//     this.render('map', {to: 'content'});
+//     this.render('galleryPage', {to: 'left'});
+//     this.render('listPage', {to: 'bottom'});
+//     this.render('footer', {to: 'footer'});
+// });
 
-Router.route('/:_id', function () {
+// Router.route('/split', function(){
+//     this.layout('SplitLayout');
+//     this.render('nav2', {to: 'nav'});
+//     this.render('map', {to: 'left'});
+//     this.render('galleryPage', {to: 'right'});
+//     this.render('footer', {to: 'footer'});
+// });
+
+
+
+
+
+Router.route('/listings/:_id', function () {
   let params = this.params;
   let item = Listings.findOne({_id: params._id});
 });
@@ -59,25 +89,15 @@ Router.route('/categories/:_id', function () {
 });
 
 
-Router.route('/add', function(){
-    this.render('nav2', {to: 'nav'});
-    this.render('addForm', {to: 'content'});
-});
+// Router.route('/add', function(){
+//     this.render('nav2', {to: 'nav'});
+//     this.render('addForm', {to: 'content'});
+// });
 
-Router.route('/test', function(){
-    this.render('nav2', {to: 'nav'});
-    this.render('test', {to: 'content'});
-});
 
-Router.route('/terms', function(){
-    this.render('nav2', {to: 'nav'});
-    this.render('terms', {to: 'content'});
-    this.render('', {to: 'footer'});
-});
-
-Router.route('/error', function() {
-    this.render('404', {to: 'content'});
-});
+// Router.route('/error', function() {
+//     this.render('404', {to: 'content'});
+// });
 
 // ==================== "atNavButton" routes Button ====================
 
@@ -92,6 +112,11 @@ AccountsTemplates.configureRoute('signUp', {
   name: 'register',
   path: '/register',
   layoutTemplate: 'AppLayout',
+  yieldRegions: {
+    'fullPageAtForm': {to: 'content'},
+    'nav2': {to: 'nav'},
+    'footer': {to: 'footer'},    
+  },
   redirect: '/'
 });
 

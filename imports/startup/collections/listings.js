@@ -100,6 +100,10 @@ Listings = new orion.collection('listings', {
   }
 });
 
+if ( Meteor.isServer ) {
+  Listings._ensureIndex( { name: 1, onlineonly: 1, city: 1 } );
+}
+
 // Votes = new orion.collection('votes', {
 //   singularName: 'Vote', // The name of one of these items
 //   pluralName: 'Votes', // The name of more than one of these items
@@ -461,9 +465,9 @@ Listings.attachSchema(new SimpleSchema({
 Listings.allow({
 
   // only allow insertion if you are logged in
-  insert: function(userId, doc) { return !! userId;},
-  update: function(userId, doc) { return !! userId;},
-  remove: function(userId, doc) { return false; },
+  insert: (userId, doc) => !! userId,
+  update: (userId, doc) => !! userId,
+  remove: (userId, doc) => false
 });
 
 // Listings.allow({

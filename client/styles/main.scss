@@ -16,6 +16,13 @@ body {
   
 }
 
+.brand {
+  color: $clr-main;
+}
+.smalltext {
+  font-size: .65em;
+}
+
 .address {
   a {
     color: $clr-green;

@@ -1,10 +1,19 @@
+@import 'materialize/components/color';
+@import 'materialize/components/variables';
 @import 'palettes/colors';
+@import url('https://fonts.googleapis.com/css?family=Kumar+One');
 
 .list-wrapper {
   background-color: $clr-grey;
-  position: fixed;
-  top: 50%;
-}
+  margin-top: $navbar-height;
+  
+  .collection-header {
+    text-align: center;
+    font-family: 'Kumar One', cursive;
+  }
 
-.collection {
+  .collection {
+
+  }
+
 }

@@ -40,6 +40,13 @@ Router.route('/test', {
     }
 });
 
+Router.route('/loading', {
+  layoutTemplate: 'AppLayout',
+    yieldRegions: {
+      'loadingHourglass': {to: 'content'}
+    }
+});
+
 Router.route('/terms', {
     layoutTemplate: 'AppLayout',
     yieldRegions: {

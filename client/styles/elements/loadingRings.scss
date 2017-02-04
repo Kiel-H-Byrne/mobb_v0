@@ -1,0 +1,27 @@
+$n: 9;
+$d: 3em;
+$b: 0.275em;
+
+html { overflow: hidden; }
+
+.spinner-ring {
+  position: absolute;
+  top: 50%; left: 50%;
+  border: solid 0;
+  border-color: white orange;
+  border-width: $b $b 0 0;
+  border-radius: 50%;
+  animation: r 0s linear infinite;
+
+  @for $i from 0 to $n {
+    $d: $d + 3em;
+    
+    &:nth-child(#{$i + 1}) {
+      margin: -.5*$d;
+      width: $d; height: $d;
+      animation-duration: 6.3s/($n - $i);
+    }
+  }
+}
+
+@keyframes r { to { transform: rotate(1turn); } }

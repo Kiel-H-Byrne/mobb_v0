@@ -9,4 +9,6 @@ import '../pages/test.js';
 import '../pages/listPage.js';
 import '../pages/galleryPage.js';
 import '../pages/404.js';
+import '../pages/loadingRings.html'
+import '../pages/loadingHourglass.html'
 import '../pages/myJoin.html';

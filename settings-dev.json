@@ -17,5 +17,11 @@
         "password" : "9240c2374bc6536064cc3a42f2a342f8"
       }
 	  }
+  },
+  "galaxy.meteor.com": { 
+     "env": { 
+       "ROOT_URL": "http://kibu_test.meteorapp.com", 
+       "MONGO_URL": "mongodb://mobbAdmin:vivitron@ds139715.mlab.com:39715/tkhb_mongodb" 
+    } 
   }
 }

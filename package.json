@@ -5,8 +5,9 @@
   "main": "main.js",
   "scripts": {
     "start": "meteor run --settings settings-dev.json",
-    "stage": "meteor run --production --settings settings-prod.json",
-    "deploy": "meteor deploy mobb.meteorapp.com --settings settings-prod.json"
+    "prod": "meteor run --production --settings settings-prod.json",
+    "stage": "meteor deploy kibu_test.meteorapp.com --settings settings-prod.json",
+    "deploy": "meteor deploy kibu.meteorapp.com --settings settings-prod.json"
   },
   "repository": {
     "type": "git",

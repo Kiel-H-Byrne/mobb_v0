@@ -1,0 +1,50 @@
+<template name="fullCard">
+  <div class="row" style="margin-top: 7em;">
+    <div class="col s12 m6 push-m3">
+      <div class="card">
+      {{#if hasImage}}
+      <div class="card-image waves-effect waves-block waves-light"> 
+        <img class="responsive-image" src="img/gallery/{{name}}.png" />
+      </div>
+      {{/if}}
+        <div class="card-content">
+          <span class="card-title "> <h5 class="amber-text truncate text-darken-1 center-align">{{name}}</h5></span>
+          <h6 class="center-align"><a href="#" target="_blank" rel="noopener" > {{social}}</a></h6>
+          <p class="center-align address">
+            <span id="address-content">
+              {{street}} <br />
+              {{city}} {{state}} {{zip}} <br />
+            </span>
+            <a class="center-align phone" href="tel:+1{{phone}}">{{phone}}</a>
+          </p>
+          <p></p>
+      </div>
+        <div class="card-action">
+        <div class="row center-align">
+          {{#if url}}     
+          <div class="col s3"><a class="btn-floating amber" target="_blank" rel="noopener" title="Website" href="{{url}}"><i class="material-icons">link</i></a></div>
+          {{/if}}
+          {{#if phone}}    
+          <div class="col s3"><a class="btn-floating amber darken-2" title="Call" href="tel:+1{{phone}}"><i class="material-icons">phone</i></a></div>
+          {{/if}}
+          {{#if currentUser}}
+          <div class="col s3">
+            <a class="btn-floating amber darken-3 modal-trigger" id="verify_button" title="Is This Information Correct?" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
+          </div>
+          {{else}}
+          <div class="col s3">
+            <a class="disabled btn-floating modal-trigger" id="verify_button" title="Verify This" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
+          </div>
+          {{/if}}
+          {{#if street}}    
+          <div class="col s3">
+            <!-- a class="btn-floating amber darken-4 modal-trigger" id="directions_button" title="Directions" href="#modalDirections"><i class="material-icons">navigation</i></a-->
+            <a class="btn-floating amber darken-4" title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" ><i class="material-icons">navigation</i></a>
+          </div>
+          {{/if}}
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</template>

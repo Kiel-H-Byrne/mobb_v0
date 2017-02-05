@@ -18,31 +18,28 @@ Template.infoModal.helpers({
 
 Template.infoModal.onRendered(function() {
   
-  this.autorun(function() {
-    let controller = Iron.controller();
-    let params = controller.getParams();
-    // console.log(params);
-    if (params.query.results) {
-      let result = params.query.results;
-      let listing = Listings.findOne({
-        name: result
-      });
-      if (listing) {
-        console.log(listing._id);
-        Session.set('openListing', listing._id);  
-        $('html, body').animate({
-          scrollTop: $('#' + listing._id).offset().top
-        }, 1000);
-      } else {
-        console.log(result);
-        let category = Categories.findOne({
-          title: result
-        });
-        console.log(category);
-        // Router.go('/categories/' + category._id);
-      }      
-    }
-  });
+//   this.autorun(function() {
+//     //When url changes to '/listings/:name' or '/categories/:name', open modal with listing data, or filter list to show only those cards in category..
+//     let controller = Iron.controller();
+//     let params = controller.getParams();
+    
+//     // console.log(params);
+//     if (params.name) {
+//       // let doc = Listings.findOne({
+//       //   name: params.name
+//       // });
+//       // console.log(doc);
+//       // $('#modalFull').openModal();
+
+//     // } else if (params.title) {
+//     //   // console.log(result);
+//     //   let category = Categories.findOne({
+//     //     title: result
+//     //   });
+//     //   console.log(category);
+//     //   Router.go('/categories/' + category._id);
+//     }
+//   });
 
 });
 

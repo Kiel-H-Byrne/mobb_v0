@@ -24,6 +24,7 @@
     "imagemin-mozjpeg": "^6.0.0",
     "jslint": "^0.10.3",
     "meteor-node-stubs": "~0.2.0",
+    "spawn-sync": "^1.0.15",
     "yelp-fusion": "^1.0.3"
   }
 }

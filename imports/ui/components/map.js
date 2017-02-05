@@ -168,9 +168,9 @@ Template.map.onCreated( function() {
                           // let lat = (latLng.lat + offsetX);
                           // let lng = (latLng.lng + offsetY);
                           // let latLng_offset = {lat: lat , lng: lng};
-                          
-                          console.log("clientLoc is Geo: ", latLng);
                           Session.set('clientLoc', latLng);
+                          console.log("-= New Geo Coord: ", latLng);
+
                           //              ---------------- ANALYTICS EVENT ---------------
                           // analytics.track( "Browser IP Data", {
                           //   title: "Pulled Geo Info",
@@ -180,6 +180,7 @@ Template.map.onCreated( function() {
 
                           if (!latLng)
                               // show spinner?
+
                               return;
 
                           if (!clientMarker) {

@@ -4,6 +4,8 @@ import './layout.html';
 import './nav.js';
 import './footer.js';
 import '../components/map.js';
+import '../components/fullListing.html';
+import '../components/fullCard.html';
 import '../pages/terms.js';
 import '../pages/test.js';
 import '../pages/listPage.js';

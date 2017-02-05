@@ -64,7 +64,7 @@ Template.nav2.onRendered(function() {
   // Google GeoComplete 
   this.autorun(function () {
 
-    if (GoogleMaps.loaded()) {
+    if (GoogleMaps.loaded() && GoogleMaps.maps.map) {
 
       $("input#search_mo").geocomplete({
       	map: GoogleMaps.maps.map.instance,
@@ -87,8 +87,10 @@ Template.nav2.events({
     
     let entered = tpl.find('input#search_nav').value;
     let doc = Listings.findOne({name: entered});
-    console.log(doc._id);
-    Router.go("/", {hash: doc._id});
+    // console.log(doc._id);
+    
+    // Router.go("/#" + doc._id);
+    Router.go("/listings/" + doc.name);
 
 		analytics.track("Searched:", {
   		clientSearch: entered
@@ -100,7 +102,7 @@ Template.nav2.events({
   },
   'mouseup form': function() {
     // console.log("mouse fired.");
-    // Materialize.updateTextFields();
+    Materialize.updateTextFields();
   },
   'click .addmodal': function() {
     $('#modalAdd').openModal();

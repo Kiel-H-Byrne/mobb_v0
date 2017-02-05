@@ -3,7 +3,8 @@ import {Meteor} from  'meteor/meteor';
 
 Router.configure({
     layoutTemplate: 'AppLayout',
-    notFoundTemplate: '404'
+    notFoundTemplate: '404',
+    template: 'map'
 });
 
 Router.plugin('dataNotFound', {
@@ -82,12 +83,31 @@ Router.route('/list', {
 // });
 
 
-
-
-
-Router.route('/listings/:_id', function () {
-  let params = this.params;
-  let item = Listings.findOne({_id: params._id});
+Router.route('/listings/:name', {
+  name: 'listing.show',
+  layoutTemplate: 'AppLayout',
+  yieldRegions: {
+    'fullCard': {to: 'content'},
+    'nav2': {to: 'nav'},
+    '': {to: 'bottom'},
+    '': {to: 'left'},
+  },
+  subscriptions: function() {
+    this.subscribe('listings');
+    this.subscribe('listings', this.params.name).wait();
+  },
+  data: function() {
+    return Listings.findOne({name: this.params.name});
+  },
+  action: function() {
+    if (this.ready()) {
+      this.render();
+    } else {
+      this.render('loadingHourglass', {to: 'content'});
+      // this.render('nav2': {to: 'nav'});
+      this.render('', {to: 'left'});
+    }
+  }
 });
 
 Router.route('/categories/:_id', function () {

@@ -3,12 +3,14 @@
 
 
 [id='centerButton_button'] {
-  @media #{$small-and-down} {
-   bottom: 50% + 2%;
-  }
-  // top: 33%;
-  bottom: 2rem;
+  // @media #{$small-and-down} {
+  // }
+  bottom: 2.66rem;
   position: fixed;
   right: 0;
   margin: 0.5em;
+
+  i {
+    font-size: 2.33rem;
+  }
 }

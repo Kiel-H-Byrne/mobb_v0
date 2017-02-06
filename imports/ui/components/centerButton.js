@@ -30,6 +30,10 @@ Template.centerButton.helpers( function() {
 });
 
 Template.centerButton.onRendered(function() {
+  $(document).ready(function(){
+    $('.tooltipped').tooltip({delay: 50});
+  });
+
   //as soon as geoaccepted is true, ask for geolocation and set to session variable
 
   if (Session.equals("geoAccepted", true)) {

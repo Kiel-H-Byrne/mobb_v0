@@ -52,8 +52,7 @@ Router.route('/terms', {
     layoutTemplate: 'AppLayout',
     yieldRegions: {
       'terms': {to: 'content'},
-      'nav2': {to: 'nav'},
-      'footer': {to: 'footer'}
+      'nav2': {to: 'nav'}
     }
 });
 
@@ -141,8 +140,7 @@ AccountsTemplates.configureRoute('signUp', {
   layoutTemplate: 'AppLayout',
   yieldRegions: {
     'fullPageAtForm': {to: 'content'},
-    'nav2': {to: 'nav'},
-    'footer': {to: 'footer'},    
+    'nav2': {to: 'nav'}
   },
   redirect: '/'
 });

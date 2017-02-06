@@ -12,7 +12,7 @@ Router.configure({
 });
 
 Router.plugin('dataNotFound', {
-  notFoundTemplate: '404'
+  notFoundTemplate: 'page_404'
 });
 
 Router.route('/', {

@@ -1,10 +1,14 @@
 
-import {Meteor} from  'meteor/meteor';
+import { Meteor } from  'meteor/meteor';
 
 Router.configure({
     layoutTemplate: 'AppLayout',
-    notFoundTemplate: '404',
-    template: 'map'
+    notFoundTemplate: 'page_404',
+    yieldRegions: {
+        nav2: {to: 'nav'},
+        footer: {to: 'footer'},
+        listPage: {to: 'bottom'}
+    }
 });
 
 Router.plugin('dataNotFound', {
@@ -12,15 +16,18 @@ Router.plugin('dataNotFound', {
 });
 
 Router.route('/', {
-    // template: 'map',
-    layoutTemplate: 'AppLayout',
-    yieldRegions: {
-      'map': {to: 'content'},
-      'galleryPage': {to: 'left'},
-      'nav2': {to: 'nav'},
-      'footer': {to: 'footer'}
-    }
+  // template: 'map',
+  layoutTemplate: 'AppLayout',
+  yieldRegions: {
+    'map': {to: 'content'},
+    'galleryPage': {to: 'left'},
+    'nav2': {to: 'nav'},
+    'footer': {to: 'footer'}
+  }
 });
+
+Router.plugin('dataNotFound', {notFoundTemplate: 'page_404'});
+
 
 Router.route('/gallery', {
     layoutTemplate: 'AppLayout',
@@ -109,11 +116,11 @@ Router.route('/listings/:name', {
   }
 });
 
-Router.route('/categories/:_id', function () {
-  let item = Categories.findOne({_id: this.params._id});
+Router.route('/categories/:title', function () {
+  this.layout('AppLayout');
+  let item = Categories.findOne({title: this.params.title});
   // this.render('ShowItem', {data: item});
 });
-
 
 // Router.route('/add', function(){
 //     this.render('nav2', {to: 'nav'});
@@ -122,8 +129,9 @@ Router.route('/categories/:_id', function () {
 
 
 // Router.route('/error', function() {
-//     this.render('404', {to: 'content'});
+//     this.render('page_404', {to: 'content'});
 // });
+
 
 // ==================== "atNavButton" routes Button ====================
 
@@ -142,7 +150,6 @@ AccountsTemplates.configureRoute('signUp', {
     'fullPageAtForm': {to: 'content'},
     'nav2': {to: 'nav'}
   },
-  redirect: '/'
 });
 
 AccountsTemplates.configureRoute('verifyEmail', {

@@ -1,18 +1,19 @@
 
-import {Meteor} from  'meteor/meteor';
+import { Meteor } from  'meteor/meteor';
 
 Router.configure({
     layoutTemplate: 'AppLayout',
-    yieldTemplates: {
+    yieldRegions: {
         nav2: {to: 'nav'},
         footer: {to: 'footer'},
-        listPage: {to: 'content'}
+        listPage: {to: 'bottom'}
     }
 });
 
-Router.plugin('dataNotFound', {notFoundTemplate: '404'});
+Router.plugin('dataNotFound', {notFoundTemplate: 'page_404'});
 
-Router.route('/', function(){
+Router.route('/', function() {
+    this.layout('AppLayout');
     this.render('nav2', {to: 'nav'});
     this.render('map', {to: 'content'});
     this.render('galleryPage', {to: 'left'});
@@ -37,23 +38,27 @@ Router.route('/split', function(){
 });
 
 Router.route('/list', function(){
+    this.layout('AppLayout');
     this.render('nav2', {to: 'nav'});
-    this.render('listPage', {to: 'content'});
+    this.render('listPage', {to: 'bottom'});
     this.render('footer', {to: 'footer'});
 });
 
 Router.route('/gallery', function(){
+    this.layout('AppLayout');
     this.render('nav2', {to: 'nav'});
-    this.render('galleryPage', {to: 'content'});
+    this.render('galleryPage', {to: 'left'});
     this.render('footer', {to: 'footer'});
 });
 
 Router.route('/:_id', function () {
+  this.layout('AppLayout');
   let params = this.params;
   let item = Listings.findOne({_id: params._id});
 });
 
 Router.route('/categories/:_id', function () {
+  this.layout('AppLayout');
   let item = Categories.findOne({_id: this.params._id});
   // this.render('ShowItem', {data: item});
 });
@@ -65,18 +70,21 @@ Router.route('/add', function(){
 });
 
 Router.route('/test', function(){
+    this.layout('AppLayout');
     this.render('nav2', {to: 'nav'});
     this.render('test', {to: 'content'});
 });
 
 Router.route('/terms', function(){
+    this.layout('AppLayout');
     this.render('nav2', {to: 'nav'});
     this.render('terms', {to: 'content'});
-    this.render('', {to: 'footer'});
+
 });
 
 Router.route('/error', function() {
-    this.render('404', {to: 'content'});
+    this.layout('AppLayout');
+    this.render('page_404', {to: 'content'});
 });
 
 // ==================== "atNavButton" routes Button ====================
@@ -91,7 +99,6 @@ AccountsTemplates.configureRoute('signIn', {
 AccountsTemplates.configureRoute('signUp', {
   name: 'register',
   path: '/register',
-  layoutTemplate: 'AppLayout',
   redirect: '/'
 });
 

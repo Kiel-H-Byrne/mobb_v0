@@ -1,8 +1,7 @@
 <template name="AppLayout"> 
-  {{> yield region="nav"}}
-  {{> yield }}
+	{{> yield "nav"}}
 	{{> yield "content"}}
-  {{> yield "left"}}
-  {{> yield "bottom"}}
+	{{> yield "left"}}
+	{{> yield "bottom"}}
 	{{> yield "footer"}}
 </template>

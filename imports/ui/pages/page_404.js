@@ -1,4 +1,4 @@
 import { Meteor } from 'meteor/meteor';
 import {Template} from 'meteor/templating';
 
-import './404.html';
+import './page_404.html';

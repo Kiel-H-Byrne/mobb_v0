@@ -9,4 +9,4 @@ import '../pages/test.js';
 import '../pages/terms.css';
 import '../pages/listPage.js';
 import '../pages/galleryPage.js';
-import '../pages/404.js';
+import '../pages/page_404.js';

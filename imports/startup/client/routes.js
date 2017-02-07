@@ -95,8 +95,8 @@ Router.route('/listings/:name', {
   yieldRegions: {
     'fullCard': {to: 'content'},
     'nav2': {to: 'nav'},
-    '': {to: 'bottom'},
-    '': {to: 'left'},
+    null: {to: 'bottom'},
+    null: {to: 'left'},
   },
   subscriptions: function() {
     this.subscribe('listings');

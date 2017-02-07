@@ -14,9 +14,10 @@ const successful = function(position) {
 const getLocation = function(callback) {
     navigator.geolocation.getCurrentPosition(function(pos){
         successful(pos);
+        console.log("getLocation() successful...", pos);
         typeof callback === 'function' && callback(geoloc);
     }, function(){
-        console.warn("your function failed....");
+        console.warn("getLocation() failed....");
     });
 };
 

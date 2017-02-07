@@ -48,9 +48,9 @@ Meteor.publish('roles', function (){
 });
 
 Meteor.users.allow({
-	update: (uid, doc) => {return uid === userId},
+	update: (uid, doc) => {return uid === userId;},
 	remove: () => true,
-})
+});
 // if ( Meteor.users.findOne({username: 'khb'}) ) {
 // 	let kiel = Meteor.users.findOne({username: 'khb'});
 	// Roles.addUserToRoles( kiel._id ,  ["admin"] );

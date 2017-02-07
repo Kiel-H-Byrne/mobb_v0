@@ -24,5 +24,5 @@ Template.fullListing.onRendered(function() {
   $('#modalFull').openModal();
 
 
-})
+});
 

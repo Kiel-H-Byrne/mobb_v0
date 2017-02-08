@@ -94,9 +94,7 @@ Router.route('/listings/:name', {
   layoutTemplate: 'AppLayout',
   yieldRegions: {
     'fullCard': {to: 'content'},
-    'nav2': {to: 'nav'},
-    null: {to: 'bottom'},
-    null: {to: 'left'},
+    'nav2': {to: 'nav'}
   },
   subscriptions: function() {
     this.subscribe('listings');
@@ -139,6 +137,10 @@ AccountsTemplates.configureRoute('signIn', {
   name: 'login',
   path: '/login',
   layoutTemplate: 'AppLayout',
+  yieldRegions: {
+    'fullPageAtForm': {to: 'content'},
+    'nav2': {to: 'nav'}
+  },  
   redirect: '/'
 });
 
@@ -149,7 +151,7 @@ AccountsTemplates.configureRoute('signUp', {
   yieldRegions: {
     'fullPageAtForm': {to: 'content'},
     'nav2': {to: 'nav'}
-  },
+  }
 });
 
 AccountsTemplates.configureRoute('verifyEmail', {

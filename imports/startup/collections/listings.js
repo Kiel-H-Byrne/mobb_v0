@@ -229,10 +229,11 @@ Listings.attachSchema(new SimpleSchema({
     type: String,
     label: 'Description',
     optional: true,
-    max: 1300,
+    max: 2000,
     autoform: {
       afFieldInput: {
-        type: "textarea"
+        type: "textarea",
+        rows: 7
       }
     }
   },
@@ -409,25 +410,12 @@ Listings.attachSchema(new SimpleSchema({
     type: [String],
     label: 'Categories',
     optional: true,
-    // allowedValues: catArray,
-//     autoform: {
-//       type: "select-checkbox-inline",
-// //       options: function() {
-// // //need to subscrib somehwere else, performane suffers here        
-// //         Meteor.subscribe('categories', function() {
-// //           let cursor = Categories.find({});
-// //           let arr = cursor.fetch();
-// //           // console.log(arr);
-// //           // console.log(catArray);
-// //           return _.map(arr, function (v) {
-// //             // console.log(v);
-// //             let name = v.name;
-// //             console.log(name);
-// //             return {label: name, value: name};
-// //           });
-// //         });
-// //       }
-//     }
+    // autoform: {
+    //   afFieldInput: {
+    //     type: "select-checkbox",
+    //     class: "category-option"
+    //   }
+    // }
   },
   //subschema of up/downvotes and userId, timestamp, 
   upVotes: {
@@ -475,7 +463,7 @@ Listings.allow({
 
   // only allow insertion if you are logged in
   insert: (userId, doc) => !! userId,
-  update: (userId, doc) => !! userId,
+  update: (userId, doc) => doc.owner === userId,
   remove: (userId, doc) => false
 });
 
@@ -494,17 +482,17 @@ Listings.allow({
 //   },
 //   // fetch: ['owner']
 // });
-// Listings.deny({
-//   update: function (userId, doc, fields, modifier) {
-//     // can't change owners
-//     return _.contains(fields, 'owner');
-//   },
-//   remove: function (userId, doc) {
-//     // can't remove locked documents
-//     return doc.locked;
-//   },
-//   // fetch: ['locked'] // no need to fetch 'owner'
-// });
+Listings.deny({
+  update: function (userId, doc, fields, modifier) {
+    // can't change owners
+    return _.contains(fields, 'owner');
+  },
+  remove: function (userId, doc) {
+    // can't remove locked documents
+    return doc.locked;
+  },
+  // fetch: ['locked'] // no need to fetch 'owner'
+});
 
 // Listings.insert(
 //   {

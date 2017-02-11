@@ -5,7 +5,7 @@ import './nav.js';
 import './footer.js';
 import '../components/map.js';
 import '../components/fullListing.html';
-import '../components/fullCard.html';
+import '../components/fullCard.js';
 import '../pages/terms.js';
 import '../pages/test.js';
 import '../pages/listPage.js';

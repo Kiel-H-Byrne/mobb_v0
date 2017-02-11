@@ -4,7 +4,7 @@
       <div class="card">
       {{#if hasImage}}
       <div class="card-image waves-effect waves-block waves-light"> 
-        <img class="responsive-image" src="img/gallery/{{name}}.png" />
+        <img class="responsive-image" src="/img/gallery/{{name}}.png" />
       </div>
       {{/if}}
         <div class="card-content">
@@ -27,7 +27,11 @@
           {{#if phone}}    
           <div class="col s3"><a class="btn-floating amber darken-2" title="Call" href="tel:+1{{phone}}"><i class="material-icons">phone</i></a></div>
           {{/if}}
-          {{#if currentUser}}
+          {{#if isOwner}}
+          <div class="col s3">
+            <a class="btn-floating amber darken-3 modal-trigger" id="edit_button" title="Edit This Listing" href="#modalEdit"><i class="material-icons">edit</i></a>
+          </div>
+          {{else if currentUser}}
           <div class="col s3">
             <a class="btn-floating amber darken-3 modal-trigger" id="verify_button" title="Is This Information Correct?" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
           </div>

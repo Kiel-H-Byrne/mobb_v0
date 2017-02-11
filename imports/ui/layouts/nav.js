@@ -4,7 +4,7 @@ import {Template} from 'meteor/templating';
 import Categories from '/imports/startup/collections/categories.js';
 
 import '../components/loadingScreen.html';
-import '../components/loggedInNav.js';
+// import '../components/loggedInNav.js';
 import '../components/addForm.js';
 import '../components/infoModal.js';
 import '../components/categorySelect.js';
@@ -18,45 +18,33 @@ import './nav.html';
 
 
 Template.nav2.onRendered( function() {
-// ====== MOBILE VIEW NAV MENU BUTTON, CLICKING SHOWS THE SIDE NAV. ====== 
-	
+  $(document).ready(function() {
+    $('.addModal-trigger').leanModal({
+        dismissible: true,
+        opacity: 0.5,
+        in_duration: 300,
+        out_duration: 200,
+        starting_top: '0', // Starting top style attribute
+        ending_top: '3%', // Ending top style attribute
+        ready: function() {
+          // console.log("Modal Triggered, from loggedInNav.js");
+            if($(".lean-overlay").length > 1) {
+                $(".lean-overlay:not(:first)").each(function() {
+                    $(this).remove();
+                    console.log("removed a layer");
+                });
+            }
+        },
+        complete: function() {
+          // console.log("Modal Complete, from loggedInNav.js");
+            $(".lean-overlay").each(function() {
+                $(this).remove();
+            });
+        }
+    });
 
-    // $('.modal-trigger').leanModal({
-    //     dismissible: true,
-    //     opacity: 0.5,
-    //     in_duration: 300,
-    //     out_duration: 200,
-    //     starting_top: '0', // Starting top style attribute
-    //     ending_top: '3%', // Ending top style attribute
-    //     ready: function() {
-    //       // console.log("Modal Triggered, from loggedInNav.js");
-    //         if($(".lean-overlay").length > 1) {
-    //             $(".lean-overlay:not(:first)").each(function() {
-    //                 $(this).remove();
-    //                 console.log("removed a layer");
-    //             });
-    //         }
-    //     },
-    //     complete: function() {
-    //       // console.log("Modal Complete, from loggedInNav.js");
-    //         $(".lean-overlay").each(function() {
-    //             $(this).remove();
-    //         });
-    //     }
-    // });
-
-		// $(".button-collapse").sideNav({
-		// 	edge: 'left',
-		// 	closeOnClick: true
-		// });
-
-
-
-});
-
-Template.nav2.onRendered(function() {
-	  
-  // TypeAhead autocomplete in Schema
+  });
+ // TypeAhead autocomplete in Schema
   Meteor.typeahead.inject();
   $('.twitter-typeahead').css("display:block");
 
@@ -67,8 +55,8 @@ Template.nav2.onRendered(function() {
     if (GoogleMaps.loaded() && GoogleMaps.maps.map) {
 
       $("input#search_mo").geocomplete({
-      	map: GoogleMaps.maps.map.instance,
-      	mapOptions: GoogleMaps.maps.map.options,
+        map: GoogleMaps.maps.map.instance,
+        mapOptions: GoogleMaps.maps.map.options,
         markerOptions: {
           disabled: true
         }
@@ -104,10 +92,10 @@ Template.nav2.events({
     // console.log("mouse fired.");
     Materialize.updateTextFields();
   },
-  'click .addmodal': function() {
-    $('#modalAdd').openModal();
-    // console.log("open!");
-  }
+  // 'click .addmodal': function() {
+  //   $('#modalAdd').openModal();
+  //   // console.log("open!");
+  // }
 });
 
 Template.nav2.helpers({
@@ -115,10 +103,10 @@ Template.nav2.helpers({
     return [
       {
         name: 'categories',
-        valueKey: 'title',
-        displayKey: 'title',
+        valueKey: 'name',
+        displayKey: 'name',
         local: function() { return Categories.find().fetch(); },
-        header: '<h4 class="class-name">Categories</h4>',
+        header: '<h4 class="tt-header">Categories</h4>',
         template: 'results'
       },
       {
@@ -126,7 +114,7 @@ Template.nav2.helpers({
         valueKey: 'name',
         displayKey: 'name',
         local: function() { return Listings.find().fetch(); },
-        header: '<h4 class="name">Listings</h4>',
+        header: '<h4 class="tt-header">Listings</h4>',
         template: 'results'
       }
     ];

@@ -13,8 +13,8 @@ Categories = new orion.collection('categories', {
     // in the CMS panel
     columns: [
       { 
-        data: "title", 
-        title: "Title" 
+        data: "name", 
+        title: "Name" 
       },{ 
         data: "count", 
         title: "Count"        
@@ -47,7 +47,7 @@ Categories.attachSchema(new SimpleSchema({
   // 'optional: false' means that this field is required
   // If it's blank, the form won't submit and you'll get a red error message
   // 'type' is where you can set the expected data type for the 'title' key's value
-  title: {
+  name: {
     type: String,
     unique: true
   },
@@ -59,7 +59,7 @@ Categories.attachSchema(new SimpleSchema({
       // let count = Math.round(Math.random() * (50 - 2) + 2);
       // return count.toString();
 
-      let cat = this.field("title").value;
+      let cat = this.field("name").value;
       let count = Listings.find({categories: {$elemMatch: {$in: [ cat ]}}}).count();
       // console.log(count);
       return count;

@@ -12,6 +12,10 @@ import './addForm.html';
 // 	});
 // });
 
+Template.addForm.onCreated(function() {
+  this.subscribe('categories');
+});
+
 Template.addForm.onRendered(function() {
   $('.collapsible').collapsible();
 
@@ -26,6 +30,28 @@ Template.addForm.helpers({
     let state = Session.get('clientState');
     return state;
   },
+  formOptions: function() {
+    return Categories.find().map(function(c) {
+      return {label: c.name, value: c.name}
+    })
+    // let cursor = Categories.find({});
+    // let arr = cursor.fetch();
+    // // console.log(arr);
+    // let opts = [];
+    // _.map(arr, function (v) {
+    //   // console.log(v);
+    //   let name = v.name;
+    //   // console.log(name);
+    //   opts.push( {label: name, value: name} );
+    // });
+    // console.log(opts);
+    // return [
+    //   {
+    //     optgroup: "Categories",
+    //     options: [{label:"test2", value: "test1"}]
+    //   }
+    // ]
+  }
 });
 
 

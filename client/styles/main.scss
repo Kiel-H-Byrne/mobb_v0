@@ -10,6 +10,7 @@ body {
   color: $clr-gold;
   padding-top: $navbar-height/2;
   background-color: $clr-grey;
+  overflow-x: hidden;
 }
 
 @media all and (display-mode: standalone) {

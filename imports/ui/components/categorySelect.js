@@ -6,8 +6,7 @@ import './categorySelect.html';
 
 
 Template.categorySelect.onCreated(function() {
-  Meteor.subscribe('categories_all');
-
+  Meteor.subscribe('categories');
 });
 
 Template.categorySelect.onRendered(function() {

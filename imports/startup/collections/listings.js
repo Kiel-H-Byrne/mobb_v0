@@ -1,4 +1,5 @@
-
+import { Meteor } from 'meteor/meteor';
+import { Template } from 'meteor/templating';
 // ======================== YELP v3 API =============================
 const Yelp = require('yelp-fusion');
 const yelp_client_id = Meteor.settings.public.keys.yelp.app_id;
@@ -102,6 +103,10 @@ Listings = new orion.collection('listings', {
 
 if ( Meteor.isServer ) {
   Listings._ensureIndex( { name: 1, onlineonly: 1, city: 1 } );
+  // Meteor.subscribe('categories', function() {
+  //   const catArray = Categories.find().fetch();
+  //   console.log(catArray);
+  // }); 
 }
 
 // Votes = new orion.collection('votes', {
@@ -126,7 +131,8 @@ if ( Meteor.isServer ) {
 //=================== SCHEMAS =========================
 // https://github.com/aldeed/meteor-simple-schema
 // const catArray = ["Agriculture, Fishing, Forestry","Apparel & Accessories","Automotive Services","Business Services","Family & Community","Building & Construction","Education","Entertainment & Media","Finance & Legal","Food & Dining","Health & Medicine","Home & Garden","Industrial Supplies & Services","Information Technology","Personal Care & Beauty","Real Estate & Insurance","Retail","Online Only","Sole Proprietor","Female Owned","Owner Under 21","Operating Over 10","Operating over 20","Operating over 50","Travel & Transportation","Lodging","Sports & Recreation","Boutique","Haberdashery","Wholesale"];
-const catArray = ["Food & Beverage", "Nightlife", "Beautification", "Retail", "Entertainment", "Business Services", "Online Retail"];
+// const catArray = ["Food & Beverage", "Nightlife", "Beautification", "Retail", "Entertainment", "Business Services", "Online Retail"];
+
 
 const VoteSchema = new SimpleSchema({
   // voter: orion.attribute('createdBy'),
@@ -404,21 +410,24 @@ Listings.attachSchema(new SimpleSchema({
     label: 'Categories',
     optional: true,
     // allowedValues: catArray,
-    autoform: {
-      type: "select-checkbox-inline",
-      options: function() {
-//need to subscrib somehwere else, performane suffers here        
-        // Meteor.subscribe('categories_all', function() {
-        //   let cursor = Categories.find({});
-        //   let arr = cursor.fetch();
-        //   console.log(arr);
-        return _.map(catArray, function (v) {
-          // console.log(v);
-          let title = v;
-          return {label: title, value: title};
-        });
-      }
-    }
+//     autoform: {
+//       type: "select-checkbox-inline",
+// //       options: function() {
+// // //need to subscrib somehwere else, performane suffers here        
+// //         Meteor.subscribe('categories', function() {
+// //           let cursor = Categories.find({});
+// //           let arr = cursor.fetch();
+// //           // console.log(arr);
+// //           // console.log(catArray);
+// //           return _.map(arr, function (v) {
+// //             // console.log(v);
+// //             let name = v.name;
+// //             console.log(name);
+// //             return {label: name, value: name};
+// //           });
+// //         });
+// //       }
+//     }
   },
   //subschema of up/downvotes and userId, timestamp, 
   upVotes: {

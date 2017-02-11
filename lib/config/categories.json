@@ -1,47 +1,47 @@
 [
     {
-      "title": "Apparel & Accessories"
+      "name": "Apparel & Accessories"
     },{
-      "title": "Automotive Services"
+      "name": "Automotive Services"
     },{
-      "title": "Family & Community"
+      "name": "Family & Community"
     },{
-      "title": "Building & Construction"
+      "name": "Building & Construction"
     },{
-      "title": "Child Care"
+      "name": "Child Care"
     },{
-      "title": "Entertainment & Media"
+      "name": "Entertainment & Media"
     },{
-      "title": "Food & Dining"
+      "name": "Food & Dining"
     },{
-      "title": "Health & Medicine"
+      "name": "Health & Medicine"
     },{
-      "title": "Home & Garden"
+      "name": "Home & Garden"
     },{
-      "title": "Information Technology"
+      "name": "Information Technology"
     },{
-      "title": "Personal Care & Beauty"
+      "name": "Personal Care & Beauty"
     },{
-      "title": "Real Estate & Insurance"
+      "name": "Real Estate & Insurance"
     },{
-      "title": "Retail"
+      "name": "Retail"
     },{
-      "title": "Online Only"
+      "name": "Online Only"
     },{
-      "title": "Sole Proprietor"
+      "name": "Sole Proprietor"
     },{
-      "title": "Minority Owned (Woman)"
+      "name": "Minority Owned (Woman)"
     },{
-      "title": "Owner Under 21"
+      "name": "Owner Under 21"
     },{
-      "title": "Operating Over 10y"
+      "name": "Operating Over 10y"
     },{
-      "title": "Operating over 20y"
+      "name": "Operating over 20y"
     },{
-      "title": "Operating over 50y"
+      "name": "Operating over 50y"
     },{
-      "title": "Travel & Transportation"
+      "name": "Travel & Transportation"
     },{
-      "title": "Wholesale"
+      "name": "Wholesale"
     }
   ]

@@ -74,11 +74,14 @@ Template.nav2.events({
 		event.preventDefault();
     
     let entered = tpl.find('input#search_nav').value;
-    let doc = Listings.findOne({name: entered});
-    // console.log(doc._id);
-    
-    // Router.go("/#" + doc._id);
-    Router.go("/listings/" + doc.name);
+    if (Listings.findOne({name: entered})) {
+      // console.log(doc._id);
+      Router.go("/listings/" + Listings.findOne({name: entered}).name);
+    } else if (Categories.findOne({name: entered})) {
+      Router.go("/categories/" + Categories.findOne({name: entered}).name);
+    } else {
+      console.warn("No Match");
+    }
 
 		analytics.track("Searched:", {
   		clientSearch: entered

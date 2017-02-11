@@ -26,7 +26,7 @@ Router.route('/', {
   }
 });
 
-Router.plugin('dataNotFound', {notFoundTemplate: 'page_404'});
+// Router.plugin('dataNotFound', {notFoundTemplate: 'page_404'});
 
 
 Router.route('/gallery', {
@@ -48,12 +48,12 @@ Router.route('/test', {
     }
 });
 
-Router.route('/loading', {
-  layoutTemplate: 'AppLayout',
-    yieldRegions: {
-      'loadingHourglass': {to: 'content'}
-    }
-});
+// Router.route('/loading', {
+//   layoutTemplate: 'AppLayout',
+//     yieldRegions: {
+//       'loadingHourglass': {to: 'content'}
+//     }
+// });
 
 Router.route('/terms', {
     layoutTemplate: 'AppLayout',

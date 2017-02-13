@@ -49,8 +49,8 @@ Meteor.startup(function() {
 
 	//=====  HTML Attributes for Facebook opengraph api =====
 	$('html').attr({
-		'xmlns': 'http://www.w3.org/1999/xhtml',
-		'xmlns:fb': 'http://ogp.me/ns/fb#'
+		'xmlns': 'https://www.w3.org/1999/xhtml',
+		'xmlns:fb': 'https://ogp.me/ns/fb#'
 	});
 
 	//=====  ServiceWorker installation =====

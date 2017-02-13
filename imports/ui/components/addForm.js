@@ -34,23 +34,6 @@ Template.addForm.helpers({
     return Categories.find().map(function(c) {
       return {label: c.name, value: c.name}
     })
-    // let cursor = Categories.find({});
-    // let arr = cursor.fetch();
-    // // console.log(arr);
-    // let opts = [];
-    // _.map(arr, function (v) {
-    //   // console.log(v);
-    //   let name = v.name;
-    //   // console.log(name);
-    //   opts.push( {label: name, value: name} );
-    // });
-    // console.log(opts);
-    // return [
-    //   {
-    //     optgroup: "Categories",
-    //     options: [{label:"test2", value: "test1"}]
-    //   }
-    // ]
   }
 });
 

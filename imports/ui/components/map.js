@@ -12,28 +12,28 @@ import './map.html';
 
 let MAP_ZOOM = 4;
 
-$.getJSON("https://freegeoip.net/json/", {
-    format: "jsonp"
-}).done(function(data){
+// $.getJSON("https://freegeoip.net/json/", {
+//     format: "jsonp"
+// }).done(function(data){
 
  
-    //  {"ip":"69.138.161.94","country_code":"US","country_name":"United States","region_code":"MD",
-    //  "region_name":"Maryland","city":"Silver Spring","zip_code":"20902","time_zone":"America/New_York",
-    //  "latitude":39.0409,"longitude":-77.0445,"metro_code":511}
-    let lat = data.latitude;
-    let lng = data.longitude;
-    let browserLocation = _.object( ['lat', 'lng'], [lat, lng]);
-    // console.log("clientLoc is Browser: ", browserLocation);
-    Session.set('browserLoc', browserLocation);
-    Session.set('clientState', data.region_code);
+//     //  {"ip":"69.138.161.94","country_code":"US","country_name":"United States","region_code":"MD",
+//     //  "region_name":"Maryland","city":"Silver Spring","zip_code":"20902","time_zone":"America/New_York",
+//     //  "latitude":39.0409,"longitude":-77.0445,"metro_code":511}
+//     let lat = data.latitude;
+//     let lng = data.longitude;
+//     let browserLocation = _.object( ['lat', 'lng'], [lat, lng]);
+//     // console.log("clientLoc is Browser: ", browserLocation);
+//     Session.set('browserLoc', browserLocation);
+//     Session.set('clientState', data.region_code);
 
-    //              ---------------- ANALYTICS EVENT ---------------
-    // analytics.track( "Browser IP Data", {
-    //   title: "Pulled Geo Info",
-    //   data: browserLocation
-    // });
-    // console.log("-= GA : Browser IP Data =-");
-});
+//     //              ---------------- ANALYTICS EVENT ---------------
+//     // analytics.track( "Browser IP Data", {
+//     //   title: "Pulled Geo Info",
+//     //   data: browserLocation
+//     // });
+//     // console.log("-= GA : Browser IP Data =-");
+// });
 
 
 

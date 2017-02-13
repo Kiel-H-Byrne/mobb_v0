@@ -1,4 +1,5 @@
-[id='modalAdd'] {
+[id='modalAdd'],
+[id='modalEdit']  {
   .row {
     .col {
       padding: 0 .2rem;
@@ -18,8 +19,8 @@
   }
 }
 
-[id='row_categories'] {
-  position: relative;
-  top: -1.5rem;
-}
+// [id='row_categories'] {
+//   position: relative;
+//   top: -1.5rem;
+// }
 

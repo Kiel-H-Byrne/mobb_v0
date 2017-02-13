@@ -10,7 +10,8 @@
       "social": "@thebalmco",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc.jpg"
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "CiCiCouture Lip Lustre",
@@ -22,7 +23,8 @@
       "social": "@cicicouture",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc.png"
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "CocoaButterMothers",
@@ -34,7 +36,8 @@
       "social": "@cocoabuttermothers",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc1.jpg"
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Garners Garden",
@@ -46,7 +49,8 @@
       "social": "@garnersgarden",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc2.jpg"
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Oyin Homemade",
@@ -58,7 +62,8 @@
       "social": "@oyinhandmade",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc1.png"
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Marie's Beauty Supply",
@@ -70,7 +75,8 @@
       "social": "",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/Leaflet.jpg"
-      }
+      },
+      "categories": [ "Retail" ]
     },
     {
       "name": "Mercy Beauty",
@@ -82,7 +88,8 @@
       "social": "@mercybeautyllc",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc2.png"
-      }
+      },
+      "categories": [ "Retail" ]
     },
     {
       "name": "Naturally Chic Hair Salon",
@@ -94,7 +101,8 @@
       "social": "@naturallychichairsalon",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-baltimore.jpg"
-      }
+      },
+      "categories": [ "Retail" ]
     },
     {
       "name": "Shea Yeleen Health and Beauty",
@@ -106,7 +114,8 @@
       "social": "@SheaYeleen",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-beauty-products.jpg"
-      }
+      },
+      "categories": [ "Retail" ]
     },
     {
       "name": "Because of Them We Can",
@@ -119,7 +128,8 @@
       "social": "@becauseofthem",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc3.jpg"
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Coliseum Apparel",
@@ -131,7 +141,8 @@
       "social": "@coliseumapparel",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc3.png"
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Dowdy's Epiphany Boutique",
@@ -143,7 +154,8 @@
       "social": "@DowdysEpiphanyBoutque",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-boutique-dc.png"
-      }
+      },
+      "categories": [ "Retail" ]
     },
     {
       "name": "Nomad Yard Collectiv",
@@ -155,7 +167,8 @@
       "social": "@nomadyard",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc4.png"
-      }
+      },
+      "categories": [ "Retail" ]
     },
     {
       "name": "Nubian Hueman Ethnic Boutique",
@@ -167,7 +180,8 @@
       "social": "@nubianhueman",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc4.jpg"
-      }
+      },
+      "categories": [ "Retail" ]
     },
     {
       "name": "PJ Payne Designs",
@@ -179,7 +193,8 @@
       "social": "",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-dc.jpg"
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "ProsperiteezClothing",
@@ -191,7 +206,8 @@
       "social": "@prosperiteezclothing",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc6.jpg"
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "The Shoe Asylum",
@@ -203,7 +219,8 @@
       "social": "@theshoeasylum",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-shoe-store.jpg"
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Cocktail Row Spirits",
@@ -215,7 +232,8 @@
       "social": "@cocktailrow",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc7.png"
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Dellicious Gourmet Popcorn",
@@ -227,7 +245,8 @@
       "social": "@delliciouspopcorn",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc7.jpg"
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Edelheiss Wine",
@@ -239,7 +258,8 @@
       "social": "@edelheisswine",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc8.jpg"
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Gradys Seafood Dip",
@@ -251,7 +271,8 @@
       "social": "@gradysseafooddip",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc5.png"
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "KitchenCray",
@@ -263,7 +284,8 @@
       "social": "@kitchencray",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc9.jpg"
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "The SpiceSuite",
@@ -275,7 +297,8 @@
       "social": "@thespicesuite",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc10.jpg"
-      }
+      },
+      "categories": [ "Retail" ]
     },
     {
       "name": "Ruby Scoops Ice Cream & Sweets",
@@ -287,7 +310,8 @@
       "social": "@rubyscoopsic",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc6.png"
-      }
+      },
+      "categories": [ "Retail" ]
     },
     {
       "name": "BN Fit",
@@ -299,7 +323,8 @@
       "social": "@bnfit",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc11.jpg"
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "ChampTime Fitness",
@@ -311,7 +336,8 @@
       "social": "@Dommo_ChampTime",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black_owned.jpg"
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Embrace Yoga DC",
@@ -323,7 +349,8 @@
       "social": "@embraceyogadc",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc12.jpg"
-      }
+      },
+      "categories": [ "Retail" ]
     },
     {
       "name": "All Things B. Alexis",
@@ -335,7 +362,8 @@
       "social": "@allthingsbalexis",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc13.jpg"
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "The O Factory",
@@ -347,7 +375,8 @@
       "social": "@theofactory",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc8.png"
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Zawadi African Art Gallery",
@@ -359,7 +388,8 @@
       "social": "@zawadiarts",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc9.png"
-      }
+      },
+      "categories": [ "Retail" ]
     },
     {
       "name": "A4dable Events",
@@ -371,7 +401,8 @@
       "social": "@a4dableevents",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc14.jpg"
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "B. Carter Solutions",
@@ -383,7 +414,8 @@
       "social": "@carterlove",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc15.jpg"
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Black Male Entrepreneurs",
@@ -395,7 +427,8 @@
       "social": "@bmeinstitute",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc16.jpg"
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Black Swan Academy",
@@ -407,7 +440,8 @@
       "social": "@blackswanacademy",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc17.jpg"
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "The Black upStart",
@@ -419,7 +453,8 @@
       "social": "@theblackupstart",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc18.jpg"
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Home Buyers Marketing II Inc. Real Estate Company",
@@ -431,7 +466,8 @@
       "social": "",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/hbm-logodiverse.jpg"
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "LaVan Anderson Photography",
@@ -443,7 +479,8 @@
       "social": "@everydaylavan",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc20.jpg"
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Mother Maid I",
@@ -455,7 +492,8 @@
       "social": "@mothermaidi",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc19.jpg"
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Pee Wee Piano",
@@ -467,7 +505,8 @@
       "social": "@peeweepiano",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc21.jpg"
-      }
+      },
+      "categories": [ "Retail" ]
     },
     {
       "name": "Roach Media",
@@ -479,7 +518,8 @@
       "social": "@roachmediallc",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc22.jpg"
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Savoire Faire Academy",
@@ -491,7 +531,8 @@
       "social": "@savoirefa",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc10.png"
-      }
+      },
+      "categories": [ "Retail" ]
     },
     {
       "name": "The Sitter Circle",
@@ -503,7 +544,8 @@
       "social": "@thesittercircle",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc11.png"
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "TAA PR",
@@ -515,7 +557,8 @@
       "social": "@taa_pr",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc23.jpg"
-      }
+      },
+      "categories": [ "Retail" ]
     },
     {
       "name": "Tint Spot 301",
@@ -527,7 +570,8 @@
       "social": "@tint_spot_301",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc24.jpg"
-      }
+      },
+      "categories": [ "Retail" ]
     },
     {
       "name": "Top Notch Property Solutions",
@@ -539,7 +583,8 @@
       "social": "@tnpropertysolutions",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc25.jpg"
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Ujamaa Box",
@@ -551,7 +596,8 @@
       "social": "@ujamaabox",
       "image": {
         "url": "http://www.idontdoclubs.com/wp-content/uploads/2016/02/black-owned-businesses-in-dc12.png"
-      }
+      },
+      "categories": [ "Online Only" ]
     }
   ]
 }

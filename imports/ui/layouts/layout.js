@@ -6,6 +6,7 @@ import './footer.js';
 import '../components/map.js';
 import '../components/fullListing.html';
 import '../components/fullCard.js';
+import '../pages/showCategories.js';
 import '../pages/terms.js';
 import '../pages/test.js';
 import '../pages/listPage.js';

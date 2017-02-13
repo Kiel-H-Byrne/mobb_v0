@@ -10,7 +10,8 @@ import '../../api/orionCache.js';
 
 // ============================= API DATA CACHEING ==================================
 // let cache = new ApiCache('rest', 120);
-const OCache = new OrionCache('rest', 60000);
+// 100000s = 1.16 days....
+const OCache = new OrionCache('rest', 100000);
 // ======================== GOOGLE DISTANCE API MODULE=============================
 const GDistance = require('google-distance');
 GDistance.apiKey = Meteor.settings.public.keys.googleServer.key;
@@ -109,6 +110,17 @@ Meteor.methods({
       }
     });
   },
+  addCategory: function(name,str){
+    this.unblock();
+// Listings.update({_id: "4JSojEdYpF3W4MFv6" },{$addToSet: { categories: "Barber" }});
+    Listings.update({
+      name: name
+    },{
+      $addToSet: {
+         categories: str
+      }
+    });
+  },
   remListing: function(doc) {
     Listings.remove(doc , function(err, res){
       if (err) {
@@ -117,15 +129,6 @@ Meteor.methods({
         console.log(res.name+" REMOVED.");
       }
     });    
-  },
-  addCategory: function(doc) {
-    Categories.insert(doc , function(err, res){
-      if (err) {
-        console.log(err.sanitizedError.message);
-      } else {
-        // console.log(res);
-      }
-    });
   },
   loginWith: function(u,p) {
     Meteor.loginWithPassword(u, p);

@@ -11,9 +11,9 @@ Router.configure({
     }
 });
 
-Router.plugin('dataNotFound', {
-  notFoundTemplate: 'page_404'
-});
+// Router.plugin('dataNotFound', {
+//   notFoundTemplate: 'page_404'
+// });
 
 Router.route('/', {
   // template: 'map',
@@ -25,8 +25,6 @@ Router.route('/', {
     'footer': {to: 'footer'}
   }
 });
-
-// Router.plugin('dataNotFound', {notFoundTemplate: 'page_404'});
 
 
 Router.route('/gallery', {
@@ -93,7 +91,6 @@ Router.route('/listings/:name', {
   name: 'listing.show',
   layoutTemplate: 'AppLayout',
   yieldRegions: {
-    'fullCard': {to: 'content'},
     'nav2': {to: 'nav'}
   },
   subscriptions: function() {
@@ -114,12 +111,36 @@ Router.route('/listings/:name', {
   }
 });
 
-Router.route('/categories/:title', function () {
-  this.layout('AppLayout');
-  let item = Categories.findOne({title: this.params.title});
-  // this.render('ShowItem', {data: item});
+Router.route('/categories/:name', {
+  // name: 'categories.show',
+  layoutTemplate: 'AppLayout',
+  yieldRegions: {
+    'showCategories': {to: 'content'},
+    'nav2': {to: 'nav'}
+  },
+  subscriptions: function() {
+    this.subscribe('categories');
+    this.subscribe('listings', {$in: [this.params.name]}).wait();
+  },
+  data: function() {
+    let cursor = Listings.find({categories: {$in: [this.params.name]}});
+    if (cursor.fetch().length !== 0) {
+      return {list: cursor.fetch()};
+    } else {
+      return false;  
+    }
+  },
+  action: function() {
+    if (this.ready()) {
+      this.render();
+    } else {
+      this.render('loadingHourglass', {to: 'content'});
+      // this.render('nav2': {to: 'nav'});
+      this.render('', {to: 'left'});
+    }
+  },
+  notFoundTemplate: 'page_404',
 });
-
 // Router.route('/add', function(){
 //     this.render('nav2', {to: 'nav'});
 //     this.render('addForm', {to: 'content'});

@@ -25,7 +25,7 @@ Listings = new orion.collection('listings', {
         title: "Location" 
       },{ 
         data: "onlineonly", 
-        title: "Online Only?" 
+        title: "Online Only" 
       },{ 
         data: "street", 
         title: "Street" 
@@ -185,7 +185,7 @@ Listings.attachSchema(new SimpleSchema({
     allowedValues: ["AL","AK","AZ","AR","CA","CO","CT","DC","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"],
     autoform: {
       afFieldInput: {
-        firstOption: "(Select a State)"
+        firstOption: "--"
       }
     }
   },
@@ -247,7 +247,7 @@ Listings.attachSchema(new SimpleSchema({
     optional: true,
     autoValue: function() {
       if ( !this.field("street").value && this.field("url") ) {
-        return true;
+        return true
       } else {
         return false;
       }
@@ -378,7 +378,7 @@ Listings.attachSchema(new SimpleSchema({
           // console.log(arr.toLocaleString());
           return arr.toLocaleString();
         } else {
-          console.log(response);
+          // console.log(response);
           //no street name, so must be online Only. 
           //set category to "Online"
           // console.log(typeof street);
@@ -410,6 +410,21 @@ Listings.attachSchema(new SimpleSchema({
     type: [String],
     label: 'Categories',
     optional: true,
+    autoValue: function() {
+      let isOnline = this.field('onlineonly').value;
+      let name = this.field('name').value;
+      // if (isOnline) {
+      //   if (this.isInsert) {
+      //     return Listings.update({
+      //       name: name
+      //     },{
+      //       $addToSet: {
+      //          categories: "Online Only"
+      //       }
+      //     });
+      //   }
+      // }
+    }
     // autoform: {
     //   afFieldInput: {
     //     type: "select-checkbox",
@@ -463,7 +478,7 @@ Listings.allow({
 
   // only allow insertion if you are logged in
   insert: (userId, doc) => !! userId,
-  update: (userId, doc) => doc.owner === userId,
+  update: (userId, doc) => doc.creator === userId,
   remove: (userId, doc) => false
 });
 
@@ -485,7 +500,7 @@ Listings.allow({
 Listings.deny({
   update: function (userId, doc, fields, modifier) {
     // can't change owners
-    return _.contains(fields, 'owner');
+    return _.contains(fields, 'creator');
   },
   remove: function (userId, doc) {
     // can't remove locked documents

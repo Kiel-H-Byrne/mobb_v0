@@ -6,6 +6,7 @@ import Categories from '/imports/startup/collections/categories.js';
 import '../components/loadingScreen.html';
 // import '../components/loggedInNav.js';
 import '../components/addForm.js';
+import '../components/editForm.js';
 import '../components/infoModal.js';
 import '../components/categorySelect.js';
 import '../components/directionsModal.js';

@@ -7,7 +7,8 @@
       "social": "@adnpapproach",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Accurate Tax Solutions",
@@ -15,7 +16,8 @@
       "phone": "3109100646",
       "image": {
         "url": true
-      }
+      },
+      "categories": [ "Online Only", "Business Services" ]
     },
     {
       "name": "Adrienne La Faye's Paintings",
@@ -23,7 +25,8 @@
       "phone": "2068583981",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "African Globe",
@@ -31,7 +34,8 @@
       "phone": " ",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Ainsley-August.com",
@@ -39,7 +43,8 @@
       "phone": "7047652219",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only", "Other Services" ]
     },
     {
       "name": "Airfordable",
@@ -48,7 +53,8 @@
       "description": "Payment Plans for Flights",
       "image": {
         "url": true
-      }
+      },
+      "categories": [ "Online Only", "Travel & Transportation" ]
     },
     {
       "name": "Artist Candy Carver",
@@ -56,7 +62,8 @@
       "phone": "5746123466",
       "image": {
         "url": true
-      }
+      },
+      "categories": [ "Online Only", "Other Services" ]
     },
     {
       "name": "Ask A Black Person",
@@ -64,7 +71,8 @@
       "phone": "",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only", "Other Services" ]
     },
     {
       "name": "Atelier Synthia SAINT JAMES",
@@ -72,7 +80,8 @@
       "phone": "3239935722",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "BeGreat Bow ties",
@@ -80,7 +89,8 @@
       "phone": "7062885756",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only", "Apparel & Accessories" ]
     },
     {
       "name": "Beautiful Ideas - Graphic Design",
@@ -88,7 +98,8 @@
       "phone": "9196171006",
       "image": {
         "url": true
-      }
+      },
+      "categories": [ "Online Only", "Other Services" ]
     },
     {
       "name": "Black Agenda Report",
@@ -96,7 +107,8 @@
       "phone": " ",
       "image": {
         "url": true
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Black Hollywood Live",
@@ -104,7 +116,8 @@
       "phone": " ",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Black News 102",
@@ -112,7 +125,8 @@
       "phone": " ",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Black Talk Radio Network",
@@ -120,7 +134,8 @@
       "phone": " ",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Brand Bright Design",
@@ -128,7 +143,8 @@
       "phone": "4807445510",
       "image": {
         "url": true
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Brick Light Media",
@@ -136,7 +152,8 @@
       "phone": "4153554821",
       "image": {
         "url": true
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Business Women Solutions",
@@ -144,7 +161,8 @@
       "phone": "4049818326",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Buyer's Point",
@@ -152,7 +170,8 @@
       "phone": "8135632169",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "CCTV Africa",
@@ -160,7 +179,8 @@
       "phone": " ",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Callaloo Jewelry",
@@ -168,7 +188,8 @@
       "phone": "3476748437",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only", "Apparel & Accessories" ]
     },
     {
       "name": "Centiment.io",
@@ -176,7 +197,8 @@
       "phone": "3472574063",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Chew Street",
@@ -184,7 +206,8 @@
       "phone": "6475007198",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only", "Apparel & Accessories" ]
     },
     {
       "name": "Chisom Custom Designs",
@@ -192,7 +215,8 @@
       "email": "chisomcustomdesigns@gmail.com",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only", "Apparel & Accessories" ]
     },
     {
       "name": "Colorstock",
@@ -200,7 +224,8 @@
       "phone": "7472COLOR1",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Cozy Mous",
@@ -208,7 +233,8 @@
       "phone": "4432396390",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Crochet From My Heart",
@@ -216,7 +242,8 @@
       "phone": "4044090092",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only", "Apparel & Accessories" ]
     },
     {
       "name": "Cruel Valentine",
@@ -224,7 +251,8 @@
       "phone": "8723027835",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only", "Other Services" ]
     },
     {
       "name": "CultureCorner.com",
@@ -232,7 +260,8 @@
       "phone": "3104006692",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only", "Apparel & Accessories" ]
     },
     {
       "name": "DBA Necessities by Nichelle",
@@ -240,7 +269,8 @@
       "phone": "3015837812",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only", "Apparel & Accessories" ]
     },
     {
       "name": "DFWBlackArts",
@@ -248,7 +278,8 @@
       "phone": "2144176095",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "DTM Strategies",
@@ -256,7 +287,8 @@
       "phone": "4157355340",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Date While You Wait",
@@ -264,7 +296,8 @@
       "phone": "7062885756",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Drank Tanks",
@@ -272,7 +305,8 @@
       "phone": "7737041088",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "E-graphX Omnimedia",
@@ -280,7 +314,8 @@
       "phone": "8434766168",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "ELEV8ED Urban Supply Company",
@@ -288,7 +323,8 @@
       "phone": "4049692542",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only", "Apparel & Accessories"  ]
     },
     {
       "name": "EUR-Electronic Urban Report",
@@ -296,7 +332,8 @@
       "phone": "3232549599",
       "image": {
         "url": true
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Employment Marketplace LLC",
@@ -304,7 +341,8 @@
       "phone": "8003545210",
       "image": {
         "url": true
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Entre-SLAM",
@@ -312,7 +350,8 @@
       "phone": "7342762736",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Epiphany365.com",
@@ -320,7 +359,8 @@
       "phone": "5155956914",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Eve4Eve Online",
@@ -328,7 +368,8 @@
       "phone": "3233918812",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Ever After Me",
@@ -336,7 +377,8 @@
       "phone": "9073289384",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Forever Loving Memories Printing",
@@ -344,7 +386,8 @@
       "phone": "2055434180",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Free Negro University",
@@ -352,7 +395,8 @@
       "phone": "9175320727",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Good Mayweather Consulting",
@@ -360,7 +404,8 @@
       "phone": "7347071230",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "GraphicDezine.com",
@@ -368,7 +413,8 @@
       "phone": "4437189658",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Gray Eye Graphics, LLC",
@@ -376,7 +422,8 @@
       "phone": "2676390352",
       "image": {
         "url": true
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Grow Your Own Zone",
@@ -384,7 +431,8 @@
       "phone": "510 3347070",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Happy Hair LLC",
@@ -392,7 +440,8 @@
       "phone": "4046922792",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Intuitive Hypnotherapy",
@@ -400,7 +449,8 @@
       "phone": "9164674448",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Island Printed Leggings, LLC",
@@ -408,7 +458,8 @@
       "phone": "7139796745",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "JennyLights Designs",
@@ -416,7 +467,8 @@
       "phone": "8434766168",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Jewels by CocoaRoxy",
@@ -424,7 +476,8 @@
       "phone": "8482529574 or (732)4217937",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Juju Seeds Media",
@@ -432,7 +485,8 @@
       "phone": "4438299292",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "KLA Web Designs",
@@ -440,7 +494,8 @@
       "phone": "9104757805",
       "image": {
         "url": true
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "KMF Strategies",
@@ -448,7 +503,8 @@
       "phone": "7196607730",
       "image": {
         "url": true
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "KelJo Solutions LLC",
@@ -456,7 +512,8 @@
       "phone": "9313924979",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Kings Rule Together",
@@ -464,7 +521,8 @@
       "phone": " ",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "LA Progressive",
@@ -472,7 +530,8 @@
       "phone": "3232260622",
       "image": {
         "url": true
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Liquid Courage Cosmetics",
@@ -480,7 +539,8 @@
       "phone": "3476961246",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Littlebug Web Management",
@@ -488,7 +548,8 @@
       "phone": "8027776019",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Loving Anvil",
@@ -496,7 +557,8 @@
       "phone": "9716459710",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Lunch",
@@ -504,7 +566,8 @@
       "phone": "",
       "image": {
         "url": true
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "MS By Maple Syrup &amp; Co LLC",
@@ -512,7 +575,8 @@
       "phone": "3474686939",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Malaika Apparel Co.",
@@ -520,7 +584,8 @@
       "phone": "6078820143",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Masterwork Digital",
@@ -528,7 +593,8 @@
       "phone": "4405390567",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Mindful",
@@ -536,7 +602,8 @@
       "phone": "2165864575",
       "image": {
         "url": true
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "MoHill Accounting Services",
@@ -544,7 +611,8 @@
       "phone": "8442449377",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Modere",
@@ -552,7 +620,8 @@
       "phone": "3012377786",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Morgan Young Books",
@@ -560,7 +629,8 @@
       "phone": "",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "NTB Consulting",
@@ -568,7 +638,8 @@
       "phone": "8007883446",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "New Garden City, LLC",
@@ -576,7 +647,8 @@
       "phone": "5206610406",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "OBA Quilts",
@@ -584,7 +656,8 @@
       "phone": "4044185413",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Oh Tiffany Writes",
@@ -592,7 +665,8 @@
       "phone": "7324859640",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "One Epiphany LLC",
@@ -600,7 +674,8 @@
       "phone": "6469266584",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Online Business Consulting LLC",
@@ -608,7 +683,8 @@
       "phone": "8885146748",
       "image": {
         "url": true
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Oyin Handmade",
@@ -616,7 +692,8 @@
       "phone": "8882436922",
       "image": {
         "url": true
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Passion is Purity",
@@ -624,7 +701,8 @@
       "phone": " ",
       "image": {
         "url": true
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Philadelphia Printworks",
@@ -632,7 +710,8 @@
       "phone": " ",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Phoenix/Milcham, LLC",
@@ -640,7 +719,8 @@
       "phone": "601878127",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Postmodern Woman",
@@ -648,7 +728,8 @@
       "phone": "",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Princess Zoey's Socks",
@@ -656,7 +737,8 @@
       "phone": "5713778381",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Product of Society LLC",
@@ -664,7 +746,8 @@
       "phone": "2814672571",
       "image": {
         "url": true
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Properis Group",
@@ -672,7 +755,8 @@
       "phone": "6692010185",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Prysmatic Dreams",
@@ -680,7 +764,8 @@
       "phone": "8034662778",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Pursue Your Purpose LLC",
@@ -688,7 +773,8 @@
       "phone": "18775759940",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Reactor Core LLC",
@@ -696,7 +782,8 @@
       "phone": "8175004256",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Rebel Earwear",
@@ -704,7 +791,8 @@
       "phone": "2819055002",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "SBP Marketing &amp; Branding",
@@ -712,7 +800,8 @@
       "phone": "3478353371",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "SK Business Solutions",
@@ -720,7 +809,8 @@
       "phone": "2624047527",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Safety Pouches and Jewels",
@@ -728,7 +818,8 @@
       "phone": "8572078469",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Sell It Now",
@@ -736,7 +827,8 @@
       "phone": "2064125204",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Sensitivity Editor",
@@ -744,7 +836,8 @@
       "phone": "",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Shades of Melanin Inc.",
@@ -752,7 +845,8 @@
       "phone": "9545996938",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "Sisters of Flow",
@@ -760,7 +854,8 @@
       "phone": "7273006722",
       "image": {
         "url": true
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "SydelleCosmetics.com",
@@ -768,15 +863,17 @@
       "phone": "2024700891",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
-      "name": "TAMCO Capital Accounting &amp; Finance",
+      "name": "TAMCO Capital Accounting &amp; inance",
       "url": "http://www.tamcocapital.solutions",
       "phone": "4074035749",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     },
     {
       "name": "TLRay Marketing",
@@ -784,7 +881,8 @@
       "phone": "5626187056",
       "image": {
         "url": false
-      }
+      },
+      "categories": [ "Online Only" ]
     }
   ]
 }

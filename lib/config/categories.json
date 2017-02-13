@@ -4,11 +4,13 @@
     },{
       "name": "Automotive Services"
     },{
+      "name": "Business Services"
+    },{
+      "name": "Other Services"
+    },{
       "name": "Family & Community"
     },{
-      "name": "Building & Construction"
-    },{
-      "name": "Child Care"
+      "name": "Education & Child Care"
     },{
       "name": "Entertainment & Media"
     },{
@@ -20,9 +22,9 @@
     },{
       "name": "Information Technology"
     },{
-      "name": "Personal Care & Beauty"
+      "name": "Personal Care, Beauty & Hair"
     },{
-      "name": "Real Estate & Insurance"
+      "name": "Real Estate, Insurance, & Financial Services"
     },{
       "name": "Retail"
     },{
@@ -30,9 +32,7 @@
     },{
       "name": "Sole Proprietor"
     },{
-      "name": "Minority Owned (Woman)"
-    },{
-      "name": "Owner Under 21"
+      "name": "Owner Under 30"
     },{
       "name": "Operating Over 10y"
     },{
@@ -43,5 +43,8 @@
       "name": "Travel & Transportation"
     },{
       "name": "Wholesale"
+    },{
+      "name": "International"
     }
+
   ]

@@ -4,7 +4,7 @@
       "name": "World City Center",
       "url": "http://wcc-la.com",
       "categories": [
-				"Lifestyle"
+				"Education & Child Care"
 			],
       "phone": "3232075803",
       "street": "3911 W Adams Blvd",
@@ -17,7 +17,7 @@
       "name": "Dr. Joslyn Gumbs, MD OBGYN",
       "url": "http://www.drjoslyngumbs.com/",
       "categories": [
-				"Lifestyle"
+				"Health & Medicine"
 			],
       "phone": "3238708506",
       "street": "5255 Sunset Blvd #201",
@@ -30,7 +30,7 @@
       "name": "Eugene's Hair Styling",
       "url": "https://www.yelp.com/biz/eugenes-hair-styling-los-angeles",
       "categories": [
-				"Lifestyle"
+				"Personal Care, Beauty & Hair"
 			],
       "phone": "7326827322",
       "street": "1430 W Martin Luther King Jr Blvd",
@@ -43,7 +43,7 @@
       "name": "Fred's Down Home Burgers",
       "url": "",
       "categories": [
-				"Food & Beverage"
+				"Food & Dining"
 			],
       "phone": "3232987762",
       "street": "2524 W Slauson Ave",
@@ -56,7 +56,7 @@
       "name": "Primerica Financial Services ",
       "url": "http://www.primerica.com/JRedmon",
       "categories": [
-				"Lifestyle"
+				"Real Estate, Insurance, & Financial Services"
 			],
       "phone": "3237128930",
       "street": "4813 1/2 S Gramercy Pl",
@@ -69,7 +69,7 @@
       "name": "Mel's Fish Shack",
       "url": "http://melsfishshack.com",
       "categories": [
-				"Food & Beverage"
+				"Food & Dining"
 			],
       "phone": "3237326357",
       "street": "4524 W Jefferson Blvd",
@@ -82,7 +82,7 @@
       "name": "The Gallery By E. Renard (Photography Studio)",
       "url": "http://www.erenardjackson.zenfolio.com",
       "categories": [
-				"Lifestyle"
+				"Other Services"
 			],
       "phone": "3105626477",
       "street": "327 S Kenmore Ave #204",
@@ -92,10 +92,11 @@
       "country": "USA"
     },
     {
-      "name": "Taj Mahal - Imports, Inc",
+      "name": "Taj Mahal Imports, Inc",
       "url": "http://tajmahalimports.com",
       "categories": [
-				"Retail"
+				"Retail",
+        "Wholesale"
 			],
       "phone": "3232955512",
       "street": "5454 Crenshaw Blvd",
@@ -108,7 +109,7 @@
       "name": "Bee Natural Haircare",
       "url": "http://beenaturalhaircare.com/",
       "categories": [
-				"Health and beauty"
+				"Personal Care, Beauty & Hair"
 			],
       "phone": "3235464247",
       "street": "8301 S Western Ave",
@@ -121,7 +122,8 @@
       "name": "Miles Copy Center",
       "url": "http://milescopycenter.com",
       "categories": [
-				"Retail"
+				"Retail",
+        "Other Services"
 			],
       "phone": "3239035778",
       "street": "5449 Crenshaw Blvd",
@@ -134,7 +136,7 @@
       "name": "Jordan's Hot Dogs",
       "url": "http://jordanshotdogsla.com",
       "categories": [
-				"Food & Beverage"
+				"Food & Dining"
 			],
       "phone": "323-2993747",
       "street": "5960 Crenshaw Blvd",
@@ -147,7 +149,7 @@
       "name": "Mr. J's Louisianna Kitchen",
       "url": "",
       "categories": [
-				"Food & Beverage"
+				"Food & Dining"
 			],
       "phone": "7027506094",
       "street": "4213 Crenshaw Blvd",
@@ -160,7 +162,7 @@
       "name": "Harold & Belle's Resturant",
       "url": "http://haroldandbellesrestaurant.com",
       "categories": [
-				"Food & Beverage"
+				"Food & Dining"
 			],
       "phone": "3237359023",
       "street": "2920 W Jefferson Blvd",
@@ -173,7 +175,7 @@
       "name": "FamilyGo.Global",
       "url": "http://FamilyGo.Global",
       "categories": [
-				"Lifestyle"
+				"Family & Community"
 			],
       "phone": "3235775803",
       "street": "3911 W Adams Blvd",
@@ -186,7 +188,7 @@
       "name": "I work with you Carpet Cleaning",
       "url": "http://iworkwithyoucarpetcleaning.com",
       "categories": [
-				"lifestyle"
+				"Other Services"
 			],
       "phone": "8662631020",
       "street": "3870 Crenshaw Blvd #217",
@@ -199,7 +201,7 @@
       "name": "Taco Mell Catering",
       "url": "http://tacomell.net",
       "categories": [
-				"Food & Beverage"
+				"Food & Dining"
 			],
       "phone": "4247854212",
       "street": "8120 Avalon Blvd",
@@ -212,7 +214,7 @@
       "name": "Ackee Bamboo Jamacian Cuisine",
       "url": "",
       "categories": [
-				"Food & Beverage"
+				"Food & Dining"
 			],
       "phone": "3232957275",
       "street": "4305 Degnan Blvd",
@@ -238,7 +240,8 @@
       "name": "The Marathon Clothing",
       "url": "http://themarathonclothing.com",
       "categories": [
-				"Retail"
+				"Retail",
+        "Apparel & Accessories"
 			],
       "phone": "3238154959",
       "street": "3420 W Slauson Ave f",
@@ -251,7 +254,7 @@
       "name": "Howard's Cafe",
       "url": "http://howardscafe.net",
       "categories": [
-				"Food & Beverage"
+				"Food & Dining"
 			],
       "phone": "2133857991",
       "street": "1051 S Alvarado St",
@@ -264,7 +267,8 @@
       "name": "Eso Won Books ",
       "url": "http://jmfugate@msn.com",
       "categories": [
-				"Retail"
+				"Retail",
+        "Education & Child Care"
 			],
       "phone": "3232901048",
       "street": "4327 Degnan Blvd",
@@ -277,7 +281,8 @@
       "name": "Right Choice Caribbean Market",
       "url": "http://losangelescaribbeanmarket.com",
       "categories": [
-				"Food & Beverage"
+				"Food & Dining",
+        "International"
 			],
       "phone": "3234740328",
       "street": "4233 Crenshaw Blvd",
@@ -290,7 +295,8 @@
       "name": "Dawah's BookShop",
       "url": "",
       "categories": [
-				"Retail"
+				"Retail",
+        "Education & Child Care"
 			],
       "phone": " ",
       "street": "4801 Crenshaw Blvd",
@@ -303,7 +309,8 @@
       "name": "Heaven Sent Business Services",
       "url": "http://heavensbs@yahoo.com",
       "categories": [
-				"Retail"
+				"Retail",
+        "Business Services"
 			],
       "phone": "3237357000",
       "street": "2849 Crenshaw Blvd",
@@ -316,7 +323,8 @@
       "name": "AyeOh Creative Studio",
       "url": "https://ayeoh.carbonmade.com/",
       "categories": [
-				"Lifestyle"
+				"Lifestyle",
+        "Other Services"
 			],
       "phone": "5134354486",
       "street": "Los Angeles",
@@ -328,7 +336,7 @@
       "name": "The EMRLD House",
       "url": "http://www.theEMRLDhouse.com",
       "categories": [
-				"Lifestyle"
+				"Apparel & Accessories"
 			],
       "phone": "8314286083",
       "street": "San Jose",
@@ -340,7 +348,7 @@
       "name": "One Love Dog Walking",
       "url": "https://www.rover.com/sit/arthurj1 ",
       "categories": [
-				"Lifestyle"
+				"Other Services"
 			],
       "phone": "5103933729",
       "street": "3920 Clark St",
@@ -353,7 +361,8 @@
       "name": "BLINKLAB ARCHITECTURE",
       "url": "http://WWW.BLINK-LAB.COM",
       "categories": [
-				"Lifestyle"
+				"Business Services",
+        "Home & Garden"
 			],
       "phone": "510 326 2176",
       "street": "4228 M.L.K. Jr Way",
@@ -363,23 +372,10 @@
       "country": "USA"
     },
     {
-      "name": "The Litvin Group",
-      "url": "http://www.richlitvin.com",
-      "categories": [
-				"Lifestyle"
-			],
-      "phone": "3232089064",
-      "street": "3435 Ocean Park Blvd",
-      "city": "Santa Monica",
-      "state": "CA",
-      "zip": "90405",
-      "country": "USA"
-    },
-    {
       "name": "National Care Financial Group",
       "url": "http://Www.NationalCareFinancial.com",
       "categories": [
-				"Lifestyle"
+				"Real Estate, Insurance, & Financial Services"
 			],
       "phone": "3232825801",
       "street": "1801 Century Park E",
@@ -389,23 +385,11 @@
       "country": "USA"
     },
     {
-      "name": "I work with you Carpet Cleaning",
-      "url": "http://iworkwithyoucarpetcleaning.com",
-      "categories": [
-				"lifestyle"
-			],
-      "phone": "8662631020",
-      "street": "3870 Crenshaw Blvd #217",
-      "city": "Los Angeles",
-      "state": "CA",
-      "zip": "90008",
-      "country": "USA"
-    },
-    {
       "name": "$10 French Boutique",
       "url": "",
       "categories": [
-				"Lifestyle"
+				"Retail",
+        "Apparel & Accessories"
 			],
       "phone": "3234236446",
       "street": "The Promenade at Howard Hughes Center", 
@@ -419,7 +403,7 @@
       "name": "AyeOh Creative Studio",
       "url": "https://ayeoh.carbonmade.com/",
       "categories": [
-				"Lifestyle"
+				"Other Services"
 			],
       "phone": "5134354486",
       "city": "Los Angeles",
@@ -430,7 +414,7 @@
       "name": "Mykal Grant Salon Suite",
       "url": "http://www.mykalgrant.com",
       "categories": [
-				"Lifestyle"
+				"Personal Care, Beauty & Hair"
 			],
       "phone": "3034771712",
       "street": "1152 S Colorado Blvd",
@@ -443,7 +427,7 @@
       "name": "Black Men Smile",
       "url": "http://www.blackmensmile.com",
       "categories": [
-				"Lifestyle"
+				"Family & Community"
 			],
       "phone": "7708456263",
       "street": "1337 Latham St SW",
@@ -456,7 +440,8 @@
       "name": "BEAUTIFUL IN EVERY SHADE",
       "url": "http://www.beautifulineveryshade.com",
       "categories": [
-				"Lifestyle"
+				"Apparel & Accessories",
+        "Family & Community"
 			],
       "phone": "7708456263",
       "street": "1337 Latham St SW",
@@ -469,7 +454,7 @@
       "name": "Your Flower Shop",
       "url": "",
       "categories": [
-				"lifestyle"
+				"Retail"
 			],
       "phone": "2052521722",
       "street": "410 17th St N",
@@ -482,7 +467,7 @@
       "name": "Wonderful People Co",
       "url": "http://wonderfulpeople.co",
       "categories": [
-				"Lifestyle"
+				"Apparel & Accessories"
 			],
       "phone": "8043499996",
       "street": "53 Diamond St",

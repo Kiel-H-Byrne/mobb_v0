@@ -15,13 +15,6 @@ Template.navMenu.events({
 
 		let entered = tpl.find('.form-control').value;
 		console.log(entered);
-		// Meteor.call('geoCode', entered, function(err,res) {
-		// 	let userLoc = res.split(",");
-		// 	GoogleMaps.maps.map.instance.setCenter({"lat": Number(userLoc[0]), "lng": Number(userLoc[1]) });
-		// 	GoogleMaps.maps.map.instance.setZoom(13);
-		// 	// console.log(res); 
-		// 	// Session.set('newLoc', res);
-		// });
 
 		analytics.track("Searched from Nav.", {
 		clientSearch: entered

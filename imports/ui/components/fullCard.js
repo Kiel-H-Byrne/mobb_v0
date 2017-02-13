@@ -10,3 +10,9 @@ Template.fullCard.helpers({
     return test;
   }
 });
+
+Template.fullCard.onRendered(function() {
+  $(document).ready(function() {
+    $('.editModal-trigger').leanModal();
+  });
+});

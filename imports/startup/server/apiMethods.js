@@ -110,7 +110,16 @@ Meteor.methods({
       }
     });
   },
-  addCategory: function(name,str){
+  addCategory: function(doc) {
+    Categories.insert(doc , function(err, res){
+      if (err) {
+        console.log(err.sanitizedError.message);
+      } else {
+        // console.log(res);
+      }
+    });
+  },
+  addToCategory: function(name,str){
     this.unblock();
 // Listings.update({_id: "4JSojEdYpF3W4MFv6" },{$addToSet: { categories: "Barber" }});
     Listings.update({

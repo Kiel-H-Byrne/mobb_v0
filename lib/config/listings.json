@@ -846,6 +846,18 @@
       "owner": "Jessica Farncy",
       "phone": "3017479090",
       "categories": []
+    },
+    {
+      "name": "Leisure Life",
+      "street": "559 Myrtle Avenue ",
+      "city": "Brooklyn ",
+      "state": "NY",
+      "zip": "11205",
+      "country": "USA",
+      "owner": "Charnier Corey",
+      "phone": "3477253167",
+      "social": "@LeisureLifeNYC",
+      "categories": ["Apparel & Accessories", "Retail"]
     }
   ]
 }

@@ -43,4 +43,3 @@ materialize:materialize@=0.97.7
 shell-server
 jeremy:geocomplete
 sergeyt:typeahead
-ssrwpo:uglifyjs2

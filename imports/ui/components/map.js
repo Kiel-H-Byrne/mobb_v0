@@ -12,29 +12,24 @@ import './map.html';
 
 let MAP_ZOOM = 4;
 
-// $.getJSON("https://freegeoip.net/json/", {
-//     format: "jsonp"
-// }).done(function(data){
+$.getJSON("https://freegeoip.net/json/", {
+    format: "jsonp"
+}).done(function(data){
+/*
+    // ================== RESPONSE ================== 
+    // {"ip":"69.138.161.94","country_code":"US","country_name":"United States","region_code":"MD",
+    //  "region_name":"Maryland","city":"Silver Spring","zip_code":"20902","time_zone":"America/New_York",
+    //  "latitude":39.0409,"longitude":-77.0445,"metro_code":511}
+*/
 
- 
-//     //  {"ip":"69.138.161.94","country_code":"US","country_name":"United States","region_code":"MD",
-//     //  "region_name":"Maryland","city":"Silver Spring","zip_code":"20902","time_zone":"America/New_York",
-//     //  "latitude":39.0409,"longitude":-77.0445,"metro_code":511}
-//     let lat = data.latitude;
-//     let lng = data.longitude;
-//     let browserLocation = _.object( ['lat', 'lng'], [lat, lng]);
-//     // console.log("clientLoc is Browser: ", browserLocation);
-//     Session.set('browserLoc', browserLocation);
-//     Session.set('clientState', data.region_code);
+  let lat = data.latitude;
+  let lng = data.longitude;
+  let browserLocation = _.object( ['lat', 'lng'], [lat, lng]);
+  console.log("Coord from Browser: ", browserLocation);
+  Session.set('browserLoc', browserLocation);
+  Session.set('clientState', data.region_code);
 
-//     //              ---------------- ANALYTICS EVENT ---------------
-//     // analytics.track( "Browser IP Data", {
-//     //   title: "Pulled Geo Info",
-//     //   data: browserLocation
-//     // });
-//     // console.log("-= GA : Browser IP Data =-");
-// });
-
+});
 
 
 // ============================= SUBSCRIPTIONS ==================================
@@ -71,8 +66,8 @@ Template.map.onCreated( function() {
             }
         });
       });   
-
-        const offsetCenter = function(latlng, offsetx, offsety) {
+/*
+        const offsetCenter = (latlng, offsetx, offsety) => {
 
         // latlng is the apparent centre-point
         // offsetx is the distance you want that point to move to the right, in pixels
@@ -95,7 +90,7 @@ Template.map.onCreated( function() {
             map.instance.setCenter(newCenter);
             // google.maps.event.trigger(map, "resize");
         };
-
+*/
         //Adding ALT tags to Google Images.       
         $('#googleMap > .map-canvas > div > .gm-style > div:nth-of-type(2) > a > div > img').attr( "alt", "Google Maps" );
         //Adding REL="noopener" to _blank targets
@@ -104,7 +99,6 @@ Template.map.onCreated( function() {
         //====== SET MAP VARIABLES / CONSTANTS ======
  
         // map.instance.setCenter(Session.get('clientLoc') || Session.get('browserLoc'));
-
 
         // offsetCenter(Geolocation.latLng(), 50, 0);
         // console.log(Session.get('browserLoc'));
@@ -176,75 +170,76 @@ Template.map.onCreated( function() {
                 }
             });
         });
-        // as soon as session = true, let autorun proceed for  geolocate;  
-        // then stop outer autorun   
+          // as soon as session = true, let autorun proceed for  geolocate;  
+          // then stop outer autorun
+        self.autorun( () => {   
+          if (Session.equals("geoAccepted", true)) {
+            self.autorun(() => {    
+              //====== AUTO CALCULATE MY LOCATION AND DRAW NEW MARKER WHEN IT CHANGES ======
+              //====== AUTO CALCULATE NEW CLOSEST BUSINESS WHEN MY LOCATION CHANGES ======
+              if (Geolocation.error() || Geolocation.latLng === null || Geolocation.latLng === "null") {
+                console.warn("Geo Error:", Geolocation.error().message);
+                return;
+              } else {
+                  let latLng = Geolocation.latLng();
+                  //offset by a few in x direction, due to split screen. 
+                  //want 'center' to be at 3/4th point of screen.
+                  // let offsetX = -0.02;
+                  // let offsetY = 0.00;
+                  // let lat = (latLng.lat + offsetX);
+                  // let lng = (latLng.lng + offsetY);
+                  // let latLng_offset = {lat: lat , lng: lng};
+                  Session.set('clientLoc', latLng);
+                  console.log("-= Coord from Geo: ", latLng);
 
-                self.autorun(async () =>{    
-                    //====== AUTO CALCULATE MY LOCATION AND DRAW NEW MARKER WHEN IT CHANGES ======
-                    //====== AUTO CALCULATE NEW CLOSEST BUSINESS WHEN MY LOCATION CHANGES ======
-                    if (Session.equals("geoAccepted", true)) {
-                      if (Geolocation.error() || Geolocation.latLng === null || Geolocation.latLng === "null") {
-                          console.warn("Geo Error:", Geolocation.error().message);
-                          return;
-                      } else {
-                          let latLng = await Geolocation.latLng();
-                          //ofset by a few in x direction, due to split screen. 
-                          //want 'center' to be at 3/4th point of screen.
-                          // let offsetX = -0.02;
-                          // let offsetY = 0.00;
-                          // let lat = (latLng.lat + offsetX);
-                          // let lng = (latLng.lng + offsetY);
-                          // let latLng_offset = {lat: lat , lng: lng};
-                          Session.set('clientLoc', latLng);
-                          console.log("-= New Geo Coord: ", latLng);
+                  //              ---------------- ANALYTICS EVENT ---------------
+                  // analytics.track( "Browser IP Data", {
+                  //   title: "Pulled Geo Info",
+                  //   data: Session.get('clientLoc')
+                  // });
+                  // console.log("-= GA : Geolocation Obtained =-");
 
-                          //              ---------------- ANALYTICS EVENT ---------------
-                          // analytics.track( "Browser IP Data", {
-                          //   title: "Pulled Geo Info",
-                          //   data: Session.get('clientLoc')
-                          // });
-                          // console.log("-= GA : Geolocation Obtained =-");
+                  if (!latLng)
+                      // show spinner?
 
-                          if (!latLng)
-                              // show spinner?
+                      return;
 
-                              return;
+                  if (!clientMarker) {
 
-                          if (!clientMarker) {
+                      clientMarker = new google.maps.Marker({
+                          position: new google.maps.LatLng(latLng.lat, latLng.lng),
+                          map: map.instance,
+                          icon: self_icon,
+                          title: "My Location",
+                          // animation: google.maps.Animation.BOUNCE,
+                      }); 
+                      map.instance.setCenter(clientMarker.getPosition());
+                      map.instance.setZoom(12);
+                  
+                  } else {
+                      clientMarker.setPosition(latLng);
+                      // console.log("set Marker...");
+                      //Google Maps does not recenter or rezoom
+                      // map.instance.setCenter(clientMarker.getPosition());
+                      // map.instance.setZoom(MAP_ZOOM);
 
-                              clientMarker = new google.maps.Marker({
-                                  position: new google.maps.LatLng(latLng.lat, latLng.lng),
-                                  map: map.instance,
-                                  icon: self_icon,
-                                  title: "My Location",
-                                  // animation: google.maps.Animation.BOUNCE,
-                              }); 
-                              map.instance.setCenter(clientMarker.getPosition());
-                              map.instance.setZoom(12);
-                          
-                          } else {
-                              clientMarker.setPosition(latLng);
-                              // console.log("set Marker...");
-                              //Google Maps does not recenter or rezoom
-                              // map.instance.setCenter(clientMarker.getPosition());
-                              // map.instance.setZoom(MAP_ZOOM);
+                  }
 
-                          }
+                  // let infoWindow = new google.maps.InfoWindow({
+                  //     content: "Here I Am!"
+                  // });
 
-                          // let infoWindow = new google.maps.InfoWindow({
-                          //     content: "Here I Am!"
-                          // });
-
-                          // clientMarker.addListener('click', function() {
-                          //     infoWindow.setContent("Here I Am!");
-                          //     infoWindow.open(map, clientMarker);
-                          // });
-                      }
-                    }
-                });   
-            
-
-
+                  // clientMarker.addListener('hover', function() {
+                  //     infoWindow.setContent("My Location.");
+                  //     infoWindow.open(map, clientMarker);
+                        // Materialize.toast()
+                  // });
+              }
+            });
+          } else {
+            // console.warn('Get Geo Not Accepted');
+          }
+        });
         // ========================= DOM Events relating to Map =========================
 
         // google.maps.event.addDomListener(map, 'center_changed', function() {
@@ -299,8 +294,8 @@ Template.map.helpers({
     // locate you.
     let mapCenter;
         // if (!Session.get('browserLoc')) {
-            mapCenter = {'lat':39.8333, 'lng':-129.023};
-            // console.log("Set mapCenter to 'Off-West Coast':", mapCenter);
+            mapCenter = {'lat':40.017, 'lng':-109.017};
+            // console.log("Set mapCenter to 'Over West Coast':", mapCenter);
 
         // } else {
         //     mapCenter = Session.get('browserLoc');

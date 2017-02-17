@@ -172,16 +172,16 @@ Template.map.onCreated( function() {
         });
           // as soon as session = true, let autorun proceed for  geolocate;  
           // then stop outer autorun
-        self.autorun( () => {   
+        self.autorun( function() {   
           if (Session.equals("geoAccepted", true)) {
-            self.autorun(() => {    
+            self.autorun(async function() {    
               //====== AUTO CALCULATE MY LOCATION AND DRAW NEW MARKER WHEN IT CHANGES ======
               //====== AUTO CALCULATE NEW CLOSEST BUSINESS WHEN MY LOCATION CHANGES ======
               if (Geolocation.error() || Geolocation.latLng === null || Geolocation.latLng === "null") {
                 console.warn("Geo Error:", Geolocation.error().message);
                 return;
               } else {
-                  let latLng = Geolocation.latLng();
+                  let latLng = await Geolocation.latLng();
                   //offset by a few in x direction, due to split screen. 
                   //want 'center' to be at 3/4th point of screen.
                   // let offsetX = -0.02;
@@ -279,11 +279,6 @@ Template.map.onRendered(function() {
 // ============================= HELPERS ==================================
 
 Template.map.helpers({
-    geolocationError: function() {
-    let error = Geolocation.error();
-    // return error && error.message;
-    return ;
-    },
     mapOptions: function() {
 
     // / ============================= SET MAP CENTER ==================================    

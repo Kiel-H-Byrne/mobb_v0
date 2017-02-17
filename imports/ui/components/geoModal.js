@@ -5,24 +5,24 @@ import './geoModal.html';
 
 Template.geoModal.events({
   'click .geo-accept': function(evt,tpl) {
-    evt.preventDefault();
 
 // --------------- ANALYTICS EVENT ---------------
-    analytics.track( "User Accept", {
+    analytics.track( "User Accepts", {
       title: "Accepted GeoLocation",
       data: true
     });
     
+    Session.set('clientLoc', Geolocation.latLng())
     Session.set('geoAccepted', true);
     $('#modalGeo').closeModal();
-  
   },
   'click .geo-deny': function(evt,tpl) {
     // evt.preventDefault();
-    analytics.track( "User Accept", {
+    analytics.track( "User Accepts", {
       title: "Accepted GeoLocation",
       data: false
     });
+
     Session.set('geoAccepted', false);
     $('#modalGeo').closeModal();
   }

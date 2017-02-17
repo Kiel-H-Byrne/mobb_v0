@@ -58,6 +58,8 @@ Template.nav2.onRendered( function() {
       $("input#search_mo").geocomplete({
         map: GoogleMaps.maps.map.instance,
         mapOptions: GoogleMaps.maps.map.options,
+        country: 'US',
+        type: ['(regions)'],
         markerOptions: {
           disabled: true
         }

@@ -10,7 +10,7 @@ import './map.html';
 
 //====== GLOBALS ======
 
-let MAP_ZOOM = 4;
+MAP_ZOOM = 4;
 
 $.getJSON("https://freegeoip.net/json/", {
     format: "jsonp"
@@ -29,6 +29,7 @@ $.getJSON("https://freegeoip.net/json/", {
   Session.set('browserLoc', browserLocation);
   Session.set('clientState', data.region_code);
 
+
 });
 
 
@@ -45,10 +46,10 @@ Template.map.onCreated( function() {
         $('.addModal-trigger').leanModal({
             dismissible: true,
             opacity: .5,
-            in_duration: 300,
+            in_duration: 200,
             out_duration: 200,
-            starting_top: '0', // Starting top style attribute
-            ending_top: '20px', // Ending top style attribute
+            starting_top: '20px', // Starting top style attribute
+            ending_top: '20%', // Ending top style attribute
             ready: function() {
               // console.log("Modal Triggered, from loggedInNav.js");
                 if($(".lean-overlay").length > 1) {
@@ -116,14 +117,23 @@ Template.map.onCreated( function() {
             // url: 'img/orange_marker_3_sm.png'
             url: 'img/orange_dot_sm_2.png'
         };
-        const self_symbol = {
+        const browser_symbol = {
             path: "M21 3L3 10.53v.98l6.84 2.65L12.48 21h.98L21 3z",
             fillColor: '#FF0000',
             fillOpacity: 0.8,
             anchor: new google.maps.Point(0,-3),
-            strokeWeight: 1,
-            scale: 1.3
+            strokeWeight: .05,
+            scale: 1
         };
+
+        // browserMarker = new google.maps.Marker({
+        //     position: Session.get('browserLoc'),
+        //     map: map.instance,
+        //     icon: browser_symbol,
+        //     title: "Approx. Location...",
+        //     // animation: google.maps.Animation.BOUNCE,
+        // }); 
+
 
         //====== watch the database for changes, draw new marker on change. ====== //
 
@@ -189,9 +199,6 @@ Template.map.onCreated( function() {
                   // let lat = (latLng.lat + offsetX);
                   // let lng = (latLng.lng + offsetY);
                   // let latLng_offset = {lat: lat , lng: lng};
-                  Session.set('clientLoc', latLng);
-                  console.log("-= Coord from Geo: ", latLng);
-
                   //              ---------------- ANALYTICS EVENT ---------------
                   // analytics.track( "Browser IP Data", {
                   //   title: "Pulled Geo Info",
@@ -199,9 +206,10 @@ Template.map.onCreated( function() {
                   // });
                   // console.log("-= GA : Geolocation Obtained =-");
 
-                  if (!latLng)
+                  if (!latLng || latLng === null || latLng === "null")
                       // show spinner?
-
+                      console.log('looking....');
+                      Session.set('geoSearching', true);
                       return;
 
                   if (!clientMarker) {
@@ -287,9 +295,11 @@ Template.map.helpers({
     // prompted by your browser. If you see the error "The Geolocation service
     // failed.", it means you probably did not give permission for the browser to
     // locate you.
-    let mapCenter;
+
+    //setting arbitrary map center, until 'geoAccepted is filled'
+    let mapCenter = {'lat':40.017, 'lng':-109.017};
         // if (!Session.get('browserLoc')) {
-            mapCenter = {'lat':40.017, 'lng':-109.017};
+            // mapCenter = {'lat':40.017, 'lng':-109.017};
             // console.log("Set mapCenter to 'Over West Coast':", mapCenter);
 
         // } else {
@@ -302,7 +312,6 @@ Template.map.helpers({
             return {
                 // ============================= RETURN MAP OPTIONS ==================================    
                 center: new google.maps.LatLng(mapCenter),
-                // center: new google.maps.LatLng(Centers.User[0], Centers.User[1]),
                 zoom: MAP_ZOOM,
                 // mapTypeId:google.maps.MapTypeId.TERRAIN,
                 backgroundColor: "#444",

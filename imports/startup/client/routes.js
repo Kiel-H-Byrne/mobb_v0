@@ -91,6 +91,7 @@ Router.route('/listings/:name', {
   name: 'listing.show',
   layoutTemplate: 'AppLayout',
   yieldRegions: {
+    'fullCard': {to: 'content'},
     'nav2': {to: 'nav'}
   },
   subscriptions: function() {

@@ -11,19 +11,20 @@ const successful = function(position) {
     };
 };
 
-const getLocation = function(callback) {
+getLocation = function(callback) {
+    console.log('Attempting getLocation()');
     navigator.geolocation.getCurrentPosition(function(pos){
         successful(pos);
         console.log("getLocation() successful...", pos);
         typeof callback === 'function' && callback(geoloc);
-    }, function(){
-        console.warn("getLocation() failed....");
+    }, function(err){
+        console.warn("getLocation() failed....", err);
     });
 };
 
 const setCenter = function(pos) {
-        GoogleMaps.maps.map.instance.setCenter(pos);
-        GoogleMaps.maps.map.instance.setZoom(12);
+    GoogleMaps.maps.map.instance.setCenter(pos);
+    GoogleMaps.maps.map.instance.setZoom(12);
 };
 
 Template.centerButton.helpers( function() {
@@ -36,19 +37,12 @@ Template.centerButton.onRendered(function() {
   });
 
   //as soon as geoaccepted is true, ask for geolocation and set to session variable
-
-  if (Session.equals("geoAccepted", true)) {
-
-    
-
-  } else {
-      console.warn('GeoLocation Request not accepted.');
-  }
+ 
 });
 
 Template.centerButton.events({
     'click #centerButton_button' : function(evt,tpl){
-      
+
       if (Session.equals("geoAccepted", true) && Session.get("clientLoc")) {
         let loc = Session.get("clientLoc");
         setCenter(loc);
@@ -57,6 +51,7 @@ Template.centerButton.events({
       } else if (Session.equals("geoAccepted", true) && !Session.get("clientLoc")) {
 
         getLocation(function(pos){
+          console.log("Pulling from satellite...");
           let loc = {"lat": pos.longitude, "lng": pos.latitude};
           console.log(loc);
           setCenter(loc);

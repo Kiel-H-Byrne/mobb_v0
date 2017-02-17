@@ -3,11 +3,17 @@
 .info-card{
 	// margin: 1rem;
 	max-width: 250px;
-	img {
+	
+  img {
 		max-width: 100%;
 	}
-	a {
+	
+  a {
 		color: $clr-green;
 	}
+
+  h5 {
+    font-size: 1.3rem;
+  }
 }
 

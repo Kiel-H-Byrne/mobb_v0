@@ -8,9 +8,9 @@
 
     position: relative;
     z-index: 90;
-    height: 570px;
-    width: 480px;
+    width: 710px;
     margin: 50px auto;
+    padding: 1rem;
     border-radius: 10px;
     background: #6a6340;
     -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
@@ -40,17 +40,26 @@
   </style>
 
   <div class="test-wrapper">
-  <h5>Review</h5>
-  	{{#with greview}}
-      
-    {{/with}}
-    <div>
-  <h3> Heading </h3>
-  <p class="flow-text">
-  Some test to test the font pairing of header and paragraph. Sometimes we just need a litle bit of text to make the copy sound good. and this is just som highfalutent copy in order to make a point about font pairings. This doesn't make any real logical sensical nonsensicalness, but it's worthy of a few lines or two or three or 4 or 50 of text in a dummy paragraph placeholder. right? RIGHT? Copy? Copy!  </p>
+    <div class="row">
+      <div class="col s8">
+        <h5>Review</h5>
+      	{{#with greview}}
+          
+        {{/with}}
+      </div>
+      <div class="col s4">
+      {{> catSelect}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <h3> Heading </h3>
+        <p class="flow-text">
+        Some test to test the font pairing of header and paragraph. Sometimes we just need a litle bit of text to make the copy sound good. and this is just som highfalutent copy in order to make a point about font pairings. This doesn't make any real logical sensical nonsensicalness, but it's worthy of a few lines or two or three or 4 or 50 of text in a dummy paragraph placeholder. right? RIGHT? Copy? Copy!  
+        </p>
+      </div>
+    </div>
   </div>
-  </div>
-  
   <div id="miniMap">
       {{!-- {{> googleMap name="minimap" options = mapOptions }} --}}
   </div>

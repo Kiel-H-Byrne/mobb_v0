@@ -39,9 +39,6 @@ Router.route('/gallery', {
 Router.route('/test', {
     yieldRegions: {
       'test': {to: 'content'},
-      'galleryPage': {to: 'left'},
-      'listPage': {to: 'bottom'},
-      'nav2': {to: 'nav'},
       'footer': {to: 'footer'}
     }
 });

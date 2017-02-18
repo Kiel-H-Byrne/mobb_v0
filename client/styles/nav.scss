@@ -2,80 +2,7 @@
 @import 'materialize/components/variables';
 @import 'palettes/colors';
 
-.nav-search {
-  display: block;
-  overflow: hidden;
-}
 
-.search-wrapper {
-  float: left;
-  margin: 0 280px 0 360px;
-  width: 100%
-
-}
-
-.nav-list {
-  position: absolute;
-  top: 0;
-  right: 0;
-  float: right;
-  a {
-    color: $clr-orange;
-  }
-}
-
-nav {
-
-  .brand-logo {
-    margin: 0 0.4rem;
-    height: $navbar-height;
-  }
-  .btn {
-    i {
-      position: relative;
-      top: -0.45em;
-    }
-  }
-  
-  .nav-input {
-    background-color: $clr-orange;
-    border-radius: 3px;
-    height: 2.5em;
-    margin: 0.95em;
-    text-transform: uppercase;
-    width: 100%;
-
-    i {
-      position: absolute;
-      left: 0.8em;
-      top: -0.4em;
-    }
-
-    input {
-      position: relative;
-      top: -0.66em;
-      left: 0;
-      right: 0;
-
-      }
-  }
-
-  .side-nav {
-
-    input {
-      position: relative;
-      top: 0;
-    }
-
-    .btn {
-      color: $clr-grey;
-
-      i {
-        position: relative;
-        top: 0;
-      }
-    }
-  }
   // ::-webkit-input-placeholder {
   //   color: $clr-orange;
   //   text-transform: capitalize;
@@ -118,6 +45,10 @@ nav {
   //   opacity: 0.3;
   // }
 
+.nav-list {
+  li {
+    display:inline-block;
+  }
 }
 
 .navbar-fixed {
@@ -125,49 +56,19 @@ nav {
   top: 0;
   left: 0;
   right: 0;
-  height: $navbar-height !important;
+  height: $navbar-height;
 
   img {
-    height: $navbar-height;
-  }
-
-  ul {
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    list-style-type: none;
-    justify-content: center;
-    height: 100%; 
-  }
-
-  li {
-    flex: 1;
-    border-radius: 3px;
-    // float: left;
-
-    a {
-      margin: auto;
-      text-decoration: none;
-      color: $clr-orange;
-
-    }
-  }
-
-  i {
-    font-size: 2rem;
-
-  }
-  .row {
-    margin: 0 auto;
+    margin: 0 0.4rem;
+    max-height: $navbar-height;
   }
 
   .input-field {
-    margin: auto;
-    width: 100%;
-    padding: auto 2rem;
+    margin: 1rem auto;
     
-    .form-control {
-
+    i, 
+    span {
+      float: left;
     }
   }
 
@@ -175,7 +76,5 @@ nav {
     margin-bottom: 5px;
     height: 2rem;
   }
-  form {
-    flex: 1;
-  }
 }
+

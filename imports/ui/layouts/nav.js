@@ -102,6 +102,9 @@ Template.nav2.events({
   //   $('#modalAdd').openModal();
   //   // console.log("open!");
   // }
+  'click .tt-suggestion': function(evt, tpl) {
+    console.log(evt, tpl);
+  }
 });
 
 Template.nav2.helpers({

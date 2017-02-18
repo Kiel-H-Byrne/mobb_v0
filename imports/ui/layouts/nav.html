@@ -1,31 +1,32 @@
 
 
 <template name="nav2">
-    <div class="navbar-fixed ">
+    <div class="navbar-fixed">
         {{> corner_ribbon}}
         <div class="grey darken-1 z-depth-0">
-            <div class="row valign-wrapper">
-                <div class="col s7 m4">
+            <div class="row">
+                <div class="col s5 m3 l2">
                     <a class="brand-logo left" href="/">
                         <img class="responsive-img" src="/img/kibu-logo_sm.png" alt="KIBU: The Map" />
                     </a>
                 </div>
-                <div class="col s5 m2 valign">
-                    <ul>
+                <div class="col s7 m5 l6">
+                    <ul class="nav-list">
+                        <li>{{> catSelect}}</li>
                         <!--li class=""><a href="/gallery" class="" alt="View Online Only" ><i class="material-icons " title="View Online Gallery">view_module</i></a></li-->
                         {{#if currentUser}}
-                          <li class=""><a class="addModal-trigger" href="#modalAdd"><i class="material-icons" title="Add a Business">library_add</i></a></li>
+                          <li class=""><a class="addModal-trigger btn waves-effect waves-dark" href="#modalAdd">K.I.B.U.<i class="material-icons right" title="Add a Business">library_add</i></a></li>
                         {{else}}
-                          <li class=""><a class="" href="/register" alt="Add A Business" ><i class="material-icons" title="Add a Business">library_add</i></a></li>
+                          <li class=""><a class="btn waves-effect waves-dark" href="/register" alt="Add A Business" >K.I.B.U.<i class="material-icons right" title="Add a Business">library_add</i></a></li>
                         {{/if}}
                         <!--li class="hide-on-med-and-up"><a class="" href="/list" alt="View Online Listings"><i class="material-icons">view_list</i></a></li-->
-                        <li class="hide-on-med-and-up"><a class="" href="/list" alt="View Online Listings"><i class="material-icons">filter_list</i></a></li>
+                        <li class="hide-on-med-and-up"><a class="btn waves-effect waves-dark" href="/list" alt="View Online Listings"><i class="material-icons">filter_list</i></a></li>
                     </ul>
                 </div>
-                <div class="col m6 hide-on-small-only">
-
+                <div class="col m4 l4 hide-on-small-only">
                     <form id="desktop_search-form">
                       <div class="input-field">
+                        <i class="material-icons">search</i>
                         <input id="search_nav" placeholder="Search..."  class="amber-text form-control typeahead" name="results" type="text" autocomplete="off" spellcheck="off" data-sources="dataset" />
                         <label for="search_nav"></label>
                         <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;" tabindex="-1" />

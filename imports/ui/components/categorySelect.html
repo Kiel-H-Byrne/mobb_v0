@@ -1,23 +1,13 @@
 <template name="catSelect">
-	<li>
-		<a class="dropdown-button btn" href="#" data-activates="category-dropdown">Categories</a>
-		<ul id="category-dropdown" class="dropdown-content">
-		{{#each categories}}
-			<li>{{title}}</li>
-		{{/each}}
-		</ul>
-	</li>
-</template>
-
-<template name="categorySelect">
-<li>
-			<div class="input-field col s12 l4">
-			  <select multiple class="amber-text" id="category-select">
-			    <option value="" disabled >--Select--</option>
-			    {{#each categories}}
-			      <option value="{{_id}}" >{{title}}</option>
-			    {{/each}}
-			  </select>
-			</div>
-	</li>
+	<div class="btn_wrapper">
+		<a class="dropdown-button waves-effect waves-dark btn" href="#" data-activates="cat-dropdown" data-beloworigin="true" data-constrainwidth="false" data-alignment="left">
+		Categories
+		<i class="material-icons">filter_list</i>
+		</a>
+			<ul id="cat-dropdown" class="dropdown-content">
+			{{#each categories}}
+				<li><a href="/categories/{{name}}">{{name}}<span class="badge"> {{count}}</span></a></li>
+			{{/each}}
+			</ul>
+	</div>
 </template>

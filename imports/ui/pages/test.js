@@ -5,6 +5,20 @@ import './test.html';
 
 //place a search on specific name and location, on insert. 
 Template.test.onCreated( function() {  
+    $(document).ready(function() {
+      $('.dpdwn').dropdown({
+        inDuration: 300,
+        outDuration: 225,
+        constrainWidth: false, // Does not change width of dropdown to that of the activator
+        hover: true, // Activate on hover
+        gutter: 0, // Spacing from edge
+        belowOrigin: false, // Displays dropdown below the button
+        alignment: 'left', // Displays dropdown with edge aligned to the left of button
+        stopPropagation: false // Stops event propagation
+      });
+        
+    });
+
     GoogleMaps.ready('minimap', function(map) {
         let service = new google.maps.places.PlacesService(map.instance);
         let request = {

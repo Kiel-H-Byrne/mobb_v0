@@ -1,0 +1,17 @@
+@import 'materialize/components/color';
+@import 'materialize/components/variables';
+@import 'palettes/colors';
+
+
+  .dropdown-content {
+    background-color: $clr-grey-clear;
+    width: 18.5rem;
+  
+    li > a {
+      padding: 0 auto;
+    }
+
+    .badge {
+      background-color: $clr-grey-clear;
+    }
+  }

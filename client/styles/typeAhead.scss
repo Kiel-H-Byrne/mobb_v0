@@ -56,22 +56,29 @@
 }
 
 .tt-suggestion {
-  padding: 3px 20px;
+  padding: auto 1rem;
   font-size: 18px;
   line-height: 24px;
-}
+  
+  :hover {
+    cursor: pointer;
+    background-color: $clr-purple;
+    padding: .3 rem;
+  }
 
-.tt-suggestion:hover {
-  cursor: pointer;
-  background-color: $clr-purple;
-}
+  p {
+    margin: 0;
+  }
 
-.tt-suggestion.tt-cursor {
-  color: #fff;
-  background-color: $clr-purple;
+  ul {
+    margin: 0 auto;
 
-}
+    li {
+      padding: 0.5rem;
+    }
+  }
 
-.tt-suggestion p {
-  margin: 0;
+  .tt-cursor {
+
+  }
 }

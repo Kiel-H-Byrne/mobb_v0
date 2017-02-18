@@ -1,26 +1,33 @@
 @import 'materialize/components/color';
 @import 'materialize/components/variables';
 @import 'palettes/colors';
+@import url('https://fonts.googleapis.com/css?family=Kumar+One');
 
 html,
 body {
   height: 100%;
   width: 100%;
   margin: 0;
-  color: $clr-gold;
   padding-top: $navbar-height/2;
+  color: $clr-gold;
   background-color: $clr-grey;
 }
 
-@media all and (display-mode: standalone) {
-  
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Kumar One', cursive;
+  color: $clr-orange
 }
 
 .brand {
   color: $clr-main;
 }
+
 .smalltext {
-  font-size: .65em;
+  font-size: 0.65em;
 }
 
 .address {
@@ -44,7 +51,7 @@ body {
 
 .modal {
   @media #{$medium-and-down} {
-   width: 90%;
+    width: 90%;
   }
 }
 // .category-select {
@@ -57,5 +64,9 @@ body {
 // }
 
 .at-form {
-  padding-top: 50px
+  padding-top: 50px;
+}
+
+
+@media all and (display-mode: standalone) {
 }

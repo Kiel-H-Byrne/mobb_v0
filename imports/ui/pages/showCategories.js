@@ -6,6 +6,6 @@ import './showCategories.html';
 
 
 Template.showCategories.helpers({
-
+  catName: () => Router.current().params.name
 });
 

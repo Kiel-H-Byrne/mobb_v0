@@ -3,9 +3,9 @@
 
 .masonry { /* Masonry container */
     position: relative;
-    -moz-column-count: 3;
-    -webkit-column-count: 3;
-    column-count: 3;
+    -moz-column-count: 1;
+    -webkit-column-count: 1;
+    column-count: 1;
     -moz-column-gap: 1rem;
     -webkit-column-gap: 1rem;
     column-gap: 1rem;
@@ -23,6 +23,7 @@
 
 @media #{$medium-and-down} {
     .masonry {
+        position: relative;
         -moz-column-count: 1;
         -webkit-column-count: 1;
         column-count: 1;
@@ -47,6 +48,7 @@
 
 @media only screen and (min-width : #{$large-screen-up}) {
     .masonry {
+        position: relative;
         -moz-column-count: 3;
         -webkit-column-count: 3;
         column-count: 3;

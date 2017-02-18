@@ -12,15 +12,19 @@
       <div class="card-content white-text">
           <span class="card-title "> <h5 class="amber-text text-darken-1 center-align">{{name}}</h5></span>
           <h6 class="center-align"><a href="#" target="_blank" rel="noopener" > {{social}}</a></h6>
-          {{#if street}}
+
           <p class="center-align address">
+          {{#if street}}
             <span id="address-content">
               {{street}} <br />
               {{city}} {{state}} {{zip}} <br />
             </span>
-            <a class="center-align phone" href="tel:+1{{phone}}">{{phone}}</a>
-          </p>
           {{/if}}
+          {{#if phone}}
+            <a class="center-align address-phone" href="tel:+1{{phone}}">{{phone}}</a>
+          {{/if}}
+          </p>
+
           <!--p>{{description}}</p-->
       </div>
 

@@ -5,25 +5,25 @@
         {{> corner_ribbon}}
         <div class="grey darken-1 z-depth-0">
             <div class="row">
-                <div class="col s5 m3 l2">
+                <div class="col s2 m3 l2">
                     <a class="brand-logo left" href="/">
                         <img class="responsive-img" src="/img/kibu-logo_sm.png" alt="KIBU: The Map" />
                     </a>
                 </div>
-                <div class="col s7 m5 l6">
+                <div class="col s10 m5 l6">
                     <ul class="nav-list">
                         <li>{{> catSelect}}</li>
                         <!--li class=""><a href="/gallery" class="" alt="View Online Only" ><i class="material-icons " title="View Online Gallery">view_module</i></a></li-->
                         {{#if currentUser}}
-                          <li class=""><a class="addModal-trigger btn waves-effect waves-dark" href="#modalAdd">K.I.B.U.<i class="material-icons right" title="Add a Business">library_add</i></a></li>
+                          <li class=""><a class="addModal-trigger btn waves-effect waves-dark" href="#modalAdd">Add<i class="material-icons right" title="Add a Business">library_add</i></a></li>
                         {{else}}
-                          <li class=""><a class="btn waves-effect waves-dark" href="/register" alt="Add A Business" >K.I.B.U.<i class="material-icons right" title="Add a Business">library_add</i></a></li>
+                          <li class=""><a class="btn waves-effect waves-dark" href="/register" alt="Add A Business" >Add<i class="material-icons right" title="Add a Business">library_add</i></a></li>
                         {{/if}}
                         <!--li class="hide-on-med-and-up"><a class="" href="/list" alt="View Online Listings"><i class="material-icons">view_list</i></a></li-->
-                        <li class="hide-on-med-and-up"><a class="btn waves-effect waves-dark" href="/list" alt="View Online Listings"><i class="material-icons">filter_list</i></a></li>
+                        <!--li class="hide-on-med-and-up"><a class="btn waves-effect waves-dark" href="/list" alt="View Online Listings"><i class="material-icons">filter_list</i></a></li-->
                     </ul>
                 </div>
-                <div class="col m4 l4 hide-on-small-only">
+                <div id="desktop-search_wrapper" class="col m4 l4 hide-on-small-only">
                     <form id="desktop_search-form">
                       <div class="input-field">
                         <i class="material-icons">search</i>
@@ -35,10 +35,10 @@
                 </div>
             </div>
 
-            <div class="row grey darken-2 hide-on-med-and-up">
+            <div id="mobile-search_wrapper" class="row grey darken-2 hide-on-med-and-up">
                 <div class="col s12 m5 l4 right hoverable">
-                <span><i class="material-icons" style="float:left">search</i></span>
-                    <form id="mobile_search-form" style="float:left; min-width: 90%">
+                <span><i class="material-icons">search</i></span>
+                    <form id="mobile_search-form">
                       <div class="input-field">
                         <input id="search_mo" placeholder="Search for Your City... "  class="amber-text form-control" type="text" autocomplete="off" spellcheck="off" />
                         <label for="search_mo"> </label>

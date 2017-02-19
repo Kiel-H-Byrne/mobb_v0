@@ -14,7 +14,7 @@ tracker@1.1.1                 # Meteor's client-side reactive programming librar
 
 standard-minifier-css@1.3.2   # CSS minifier run for production mode
 es5-shim@4.6.15                # ECMAScript 5 compatibility for older 
-ecmascript              # Enable ECMAScript2015+ syntax in app code
+ecmascript@0.6.1              # Enable ECMAScript2015+ syntax in app code
 
 dburles:google-maps
 fourseven:scss
@@ -40,6 +40,6 @@ mdg:geolocation
 orionjs:file-attribute
 vsivsi:orion-file-collection
 materialize:materialize@=0.97.7
-shell-server
+shell-server@0.2.1
 jeremy:geocomplete
 sergeyt:typeahead

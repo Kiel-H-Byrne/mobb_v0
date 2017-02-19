@@ -45,6 +45,7 @@
   //   opacity: 0.3;
   // }
 
+
 .nav-list {
   li {
     display:inline-block;
@@ -59,10 +60,12 @@
   height: $navbar-height;
 
   img {
-    margin: 0 0.4rem;
+    margin: .4rem;
     max-height: $navbar-height;
   }
+}
 
+[id='desktop_search-wrapper'] {
   .input-field {
     margin: 1rem auto;
     
@@ -78,3 +81,23 @@
   }
 }
 
+[id='mobile_search-wrapper'] {
+  form {
+    min-width: 90%;
+  }
+
+  .input-field {
+    margin: 0;
+  }
+
+  i {
+    float: left;
+    margin: auto;
+  }
+ 
+  input {
+    margin-bottom: 5px;
+    height: 2rem;
+  }
+
+}

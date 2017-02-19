@@ -11,6 +11,7 @@ import './map.html';
 //====== GLOBALS ======
 
 MAP_ZOOM = 4;
+clientMarker = null;
 
 $.getJSON("https://freegeoip.net/json/", {
     format: "jsonp"
@@ -193,7 +194,7 @@ Template.map.onCreated( function() {
                   console.warn("Geo Error:", Geolocation.error().message);
                   return;
                 } else {
-                    let latLng = Geolocation.latLng();
+                    
                     //offset by a few in x direction, due to split screen. 
                     //want 'center' to be at 3/4th point of screen.
                     // let offsetX = -0.02;
@@ -208,41 +209,35 @@ Template.map.onCreated( function() {
                     // });
                     // console.log("-= GA : Geolocation Obtained =-");
 
-                    if (!latLng || latLng === null || latLng === "null")
-                        // show spinner?
-                        console.log('looking....');
-                        Session.set('geoSearching', true);
-                        return;
-
-                    if (!clientMarker) {
-
+                    getLocation2().then((pos) => {
+                      Session.set('clientLoc', pos);
+                      let clientMarker;
+                      if (!clientMarker) {
                         clientMarker = new google.maps.Marker({
-                            position: new google.maps.LatLng(latLng.lat, latLng.lng),
+                            position: new google.maps.LatLng(pos.lat, pos.lng),
                             map: map.instance,
-                            icon: self_icon,
+                            icon: {url: 'img/orange_dot_sm_2.png'},
                             title: "My Location",
                             // animation: google.maps.Animation.BOUNCE,
                         }); 
                         map.instance.setCenter(clientMarker.getPosition());
                         map.instance.setZoom(12);
-                    
-                    } else {
-                        clientMarker.setPosition(latLng);
-                        // console.log("set Marker...");
-                        //Google Maps does not recenter or rezoom
-                        // map.instance.setCenter(clientMarker.getPosition());
-                        // map.instance.setZoom(MAP_ZOOM);
-
-                    }
+                      } else {
+                        clientMarker.setPosition(pos);
+                      }
+                      setCenter(pos);
+                      return;
+                    });
 
                     // let infoWindow = new google.maps.InfoWindow({
                     //     content: "Here I Am!"
                     // });
 
                     // clientMarker.addListener('hover', function() {
-                    //     infoWindow.setContent("My Location.");
-                    //     infoWindow.open(map, clientMarker);
-                          // Materialize.toast()
+                    // //     infoWindow.setContent("My Location.");
+                    // //     infoWindow.open(map, clientMarker);
+                    //       console.log(this);
+                    //       // $(this).tooltip({delay:50});
                     // });
                 }
               });
@@ -339,3 +334,5 @@ Template.map.helpers({
         }
     }
 });
+
+

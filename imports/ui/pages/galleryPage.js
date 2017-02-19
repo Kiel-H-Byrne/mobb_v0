@@ -12,7 +12,7 @@ Template.galleryPage.onCreated(function() {
 		}, {
 			sort: { name: 1}
 		});
-	  console.log("-= MAP.JS SUBSCRIBING: ALL ["+ cursor.count() +"] ONLINE ONLY =-");
+	  console.log("-= GALLERYPAGE.JS SUBSCRIBING: ALL ["+ cursor.count() +"] ONLINE ONLY =-");
 	});
 });
 

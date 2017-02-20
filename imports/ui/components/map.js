@@ -46,7 +46,7 @@ Template.map.onCreated( function() {
   
         $('.addModal-trigger').leanModal({
             dismissible: true,
-            opacity: .5,
+            opacity: 0.5,
             in_duration: 200,
             out_duration: 200,
             starting_top: '20px', // Starting top style attribute
@@ -123,7 +123,7 @@ Template.map.onCreated( function() {
             fillColor: '#FF0000',
             fillOpacity: 0.8,
             anchor: new google.maps.Point(0,-3),
-            strokeWeight: .05,
+            strokeWeight: 0.05,
             scale: 1
         };
 

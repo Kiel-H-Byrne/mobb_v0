@@ -8,14 +8,14 @@ Template.editForm.onRendered(function() {
 
     // let state = Session.get('clientState');
     // $("li:contains("+ state +")").addClass("active selected");
-  })
+  });
 });
 
 Template.editForm.helpers({
   formOptions: function() {
     return Categories.find().map(function(c) {
-      return {label: c.name, value: c.name}
-    })
+      return {label: c.name, value: c.name};
+    });
   }
 });
 

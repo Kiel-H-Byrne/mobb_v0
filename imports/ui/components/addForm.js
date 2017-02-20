@@ -33,8 +33,8 @@ Template.addForm.helpers({
   },
   formOptions: function() {
     return Categories.find().map(function(c) {
-      return {label: c.name, value: c.name}
-    })
+      return {label: c.name, value: c.name};
+    });
   }
 });
 

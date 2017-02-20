@@ -35,7 +35,7 @@ Template.listPage.helpers({
       let inArray = !_.isEmpty(_.where(favArray, id));
       return inArray;
     } else {
-      return 
+      return ;
     }
   }
 });

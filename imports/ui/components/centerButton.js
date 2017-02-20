@@ -49,7 +49,7 @@ placeMyMarker = function(pos) {
   } else {
     clientMarker.setPosition(pos);
   }
-}
+};
 
 
 Template.centerButton.helpers( function() {

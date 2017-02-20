@@ -3,12 +3,12 @@ import { Template } from 'meteor/templating';
 import './editForm.html';
 
 Template.editForm.onRendered(function() {
-  $('.collapsible').collapsible();
+  $(document).ready(function() {
+    $('.collapsible').collapsible();
 
-  // let state = Session.get('clientState');
-  // $("li:contains("+ state +")").addClass("active selected");
-
-  
+    // let state = Session.get('clientState');
+    // $("li:contains("+ state +")").addClass("active selected");
+  })
 });
 
 Template.editForm.helpers({

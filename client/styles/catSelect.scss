@@ -4,7 +4,7 @@
 
 
   .dropdown-content {
-    background-color: $clr-grey-clear;
+    background-color: $clr-grey;
     width: 18.5rem;
   
     li > a {
@@ -12,6 +12,7 @@
     }
 
     .badge {
-      background-color: $clr-grey-clear;
+      background-color: $clr-gold;
+      color: $clr-purple;
     }
   }

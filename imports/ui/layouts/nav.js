@@ -20,6 +20,9 @@ import './nav.html';
 
 Template.nav2.onRendered( function() {
   $(document).ready(function() {
+
+    $('.tooltipped').tooltip({delay: 50});
+
     $('.addModal-trigger').leanModal({
         dismissible: true,
         opacity: 0.5,

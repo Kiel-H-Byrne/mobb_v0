@@ -247,7 +247,7 @@ Listings.attachSchema(new SimpleSchema({
     optional: true,
     autoValue: function() {
       if ( !this.field("street").value && this.field("url") ) {
-        return true
+        return true;
       } else {
         return false;
       }

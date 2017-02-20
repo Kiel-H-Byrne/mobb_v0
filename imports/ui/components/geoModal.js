@@ -12,7 +12,7 @@ Template.geoModal.events({
       data: true
     });
     
-    Session.set('clientLoc', Geolocation.latLng())
+    Session.set('clientLoc', Geolocation.latLng());
     Session.set('geoAccepted', true);
     $('#modalGeo').closeModal();
   },

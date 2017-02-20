@@ -17,12 +17,13 @@ Template.addForm.onCreated(function() {
 });
 
 Template.addForm.onRendered(function() {
-  $('.collapsible').collapsible();
+  $(document).ready(function() {
+    $('.collapsible').collapsible();
 
-  // let state = Session.get('clientState');
-  // $("li:contains("+ state +")").addClass("active selected");
+    // let state = Session.get('clientState');
+    // $("li:contains("+ state +")").addClass("active selected");
+  });
 
-  
 });
 
 Template.addForm.helpers({
@@ -32,8 +33,8 @@ Template.addForm.helpers({
   },
   formOptions: function() {
     return Categories.find().map(function(c) {
-      return {label: c.name, value: c.name}
-    })
+      return {label: c.name, value: c.name};
+    });
   }
 });
 

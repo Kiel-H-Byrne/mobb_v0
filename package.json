@@ -1,5 +1,5 @@
 {
-  "name": "KIBU",
+  "name": "kibu",
   "private": true,
   "description": "KIBU: The Map of Black Businesses",
   "main": "main.js",
@@ -21,6 +21,7 @@
     "grunt": "^0.4.5",
     "grunt-contrib-imagemin": "^1.0.1",
     "grunt-real-favicon": "^0.2.0",
+    "har-validator": "^4.2.0",
     "imagemin-mozjpeg": "^6.0.0",
     "jslint": "^0.10.3",
     "meteor-node-stubs": "~0.2.0",

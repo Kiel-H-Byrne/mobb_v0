@@ -3,7 +3,7 @@ import {Template} from 'meteor/templating';
 
 
 import './centerButton.html';
-
+console.log("before map?");
 const successful = function(position) {
     let geoloc = {
         "lat": position.coords.latitude,
@@ -27,14 +27,30 @@ getLocation =function(callback) {
 getLocation2 = async function() {
     console.log('Attempting getLocation2()');
     let pos = await Geolocation.latLng();
-    console.log(pos);
     return pos;
 };
 
-const setCenter = function(pos) {
+setCenter = function(pos) {
     GoogleMaps.maps.map.instance.setCenter(pos);
     GoogleMaps.maps.map.instance.setZoom(12);
 };
+
+placeMyMarker = function(pos) {
+    if (!clientMarker) {
+    clientMarker = new google.maps.Marker({
+        position: new google.maps.LatLng(pos.lat, pos.lng),
+        map: GoogleMaps.maps.map.instance,
+        icon: {url: 'img/orange_dot_sm_2.png'},
+        title: "My Location",
+        // animation: google.maps.Animation.BOUNCE,
+    }); 
+    GoogleMaps.maps.map.instance.setCenter(clientMarker.getPosition());
+    GoogleMaps.maps.map.instance.setZoom(12);
+  } else {
+    clientMarker.setPosition(pos);
+  }
+};
+
 
 Template.centerButton.helpers( function() {
 
@@ -52,9 +68,10 @@ Template.centerButton.onRendered(function() {
 Template.centerButton.events({
     'click #centerButton_button' : function(evt,tpl){
 
-      if (Session.equals("geoAccepted", true) && Session.get("clientLoc")) {
+      if (Session.get("clientLoc")) {
         let loc = Session.get("clientLoc");
-        console.log(loc);
+        // console.log(loc);
+        placeMyMarker(loc);
         setCenter(loc);
         $('#modalGeo').closeModal();
         return;
@@ -69,27 +86,11 @@ Template.centerButton.events({
         // });
 
         getLocation2().then((pos) => {
-          console.log("Pulling from satellite...");
-          console.log(pos);
           Session.set('clientLoc', pos);
-          let clientMarker;
-          if (!clientMarker) {
-            clientMarker = new google.maps.Marker({
-                position: new google.maps.LatLng(pos.lat, pos.lng),
-                map: GoogleMaps.maps.map.instance,
-                icon: {url: 'img/orange_dot_sm_2.png'},
-                title: "My Location",
-                // animation: google.maps.Animation.BOUNCE,
-            }); 
-            GoogleMaps.maps.map.instance.setCenter(clientMarker.getPosition());
-            GoogleMaps.maps.map.instance.setZoom(12);
-          } else {
-            clientMarker.setPosition(pos);
-          }
+          placeMyMarker(pos);
           setCenter(pos);
           return;
-        })
-
+        });
 
       } else if (Session.equals("geoAccepted", false) && Session.equals("geoAsked", true)){ 
         let loc = Session.get('browserLoc');

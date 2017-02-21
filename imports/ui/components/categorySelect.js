@@ -10,7 +10,7 @@ Template.catSelect.onRendered(function() {
     $('.dropdown-button').dropdown({
       // inDuration: 200,
       // outDuration: 225,
-      // constrain_width: true, // Does not change width of dropdown to that of the activator
+      // constrain_width: false, // Does not change width of dropdown to that of the activator
       // hover: false, // Activate on hover
       // gutter: 3, // Spacing from edge
       // belowOrigin: true, // Displays dropdown below the button

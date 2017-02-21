@@ -57,7 +57,7 @@
   top: 0;
   left: 0;
   right: 0;
-  height: $navbar-height;
+  max-height: $navbar-height;
 
   img {
     margin: .4rem;
@@ -68,10 +68,15 @@
     padding: .5rem;
 
     i {
-      line-height: 1rem;
+      line-height: 1.5rem;
       font-size: 1.5rem;
     }
   }
+
+  .row {
+    padding: 0 auto;
+    margin: 0 auto;
+  }  
 }
 
 [id='desktop-search_wrapper'] {
@@ -101,7 +106,7 @@
 [id='mobile-search_wrapper'] {
 
   .input-field {
-    margin:0;
+    margin: 0;
   }
   
   i, 

@@ -5,21 +5,21 @@
         {{> corner_ribbon}}
         <div class="grey darken-1 z-depth-0">
             <div class="row">
-                <div class="col s4 m2 l2">
+                <div class="col m2 l2 hide-on-small-only">
                     <a class="brand-logo left" href="/">
-                        <img class="responsive-img" src="/img/kibu-logo_sm.png" alt="KIBU: The Map" />
+                        <img class="responsive-img " src="/img/kibu-logo_sm.png" alt="KIBU: The Map" />
                     </a>
                 </div>
-                <div class="col s8 m5 l5">
+                <div class="col s12 m5 l5">
                     <ul class="nav-list">
                         <li>{{> catSelect}}</li>
                         <!--li class=""><a href="/gallery" class="" alt="View Online Only" ><i class="material-icons " title="View Online Gallery">view_module</i></a></li-->
                         {{#if currentUser}}
-                          <li class=""><a class="addModal-trigger btn waves-effect waves-dark tooltipped" href="#modalAdd" data-tooltip="Add a listing"><i class="material-icons " title="Add a Business">library_add</i></a></li>
+                          <li class=""><a class="addModal-trigger btn waves-effect waves-dark tooltipped" href="#modalAdd" data-tooltip="Add a listing">Add<i class="material-icons " title="Add a Business">library_add</i></a></li>
                         {{else}}
-                          <li class=""><a class="btn waves-effect waves-dark tooltipped" href="/register" alt="Add A Business" data-tooltip="Add a listing"><i class="material-icons " title="Add a Business">library_add</i></a></li>
+                          <li class=""><a class="btn waves-effect waves-dark tooltipped" href="/register" alt="Add A Business" data-tooltip="Add a listing">Add<i class="material-icons " title="Add a Business">library_add</i></a></li>
                         {{/if}}
-                          <li class="hide-on-med-and-up"><a class="btn waves-effect waves-dark tooltipped" href="/categories" alt="View Online Listings" data-tooltip="View by List" ><i class="material-icons " title="View List">view_list</i></a></li>
+                          <li class="hide-on-med-and-up"><a class="btn waves-effect waves-dark tooltipped" href="/categories" alt="View Online Listings" data-tooltip="View by List" >Online<i class="material-icons " title="View List">view_list</i></a></li>
                           <!--li class="hide-on-med-and-up"><a class="btn waves-effect waves-dark" href="/list" alt="View Online Listings"><i class="material-icons">filter_list</i></a></li-->
                     </ul>
                 </div>

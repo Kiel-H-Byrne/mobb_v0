@@ -5,22 +5,22 @@
   position: fixed;
 
   //right-corner
-  right: -3px;
+  right: -9px;
   //left-corner
   // left: -3px;
-  top: -3px;
+  top: -9px;
   overflow: visible;
   height: 0px;
-  width: 85px;
+  width: 80px;
   z-index: 100;
 }
 
 .ribbon {
-  font: bold 13px Sans-Serif;
+  font: bold 12px Sans-Serif;
   
 
   //right-corner
-  left: -5px;
+  left: -2px;
   //left-corner
   // left: -30px;
   position: relative;
@@ -43,7 +43,7 @@
   text-align: center;
   color: $clr-grey;
   color: $clr-brown;
-  background-color: $clr-grey;
+  background-color: $clr-orange-dark;
   background-image: -webkit-gradient(linear, left top, left bottom, from($clr-orange), to($clr-orange-dark));
   background-image: -webkit-linear-gradient(top, $clr-orange, $clr-orange-dark);
   background-image: -moz-linear-gradient(top, $clr-orange, $clr-orange-dark);

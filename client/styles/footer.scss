@@ -1,46 +1,14 @@
-@import 'materialize/components/color';
-@import 'materialize/components/variables';
-@import 'palettes/colors';
-
-footer.row {
-  background-color: transparent;
-  position: fixed;
+footer {
   bottom: 0;
   right: 0;
-  left: 0;
-  margin-bottom: 0;
+  font-size: 9px;
+  //height to hide Google Maps logo = 1.5rem, 
+  height: 1rem;
+  position: fixed;
+  min-width: 300px;
 
-  > .col {
-    padding: 0;
-  }
-
-  .footer_terms__wrapper{
-    font-size: 9px;
-    //height to hide Google Maps logo = 16px
-    height: 2rem;
-    width: 100%;
-    border-radius: 10px 10px 0 0;
-
-    a {
-      color: inherit;
-      text-decoration: none;
-      font-size: 11px;
-  	}
-
-    .right {
-      padding: 5px 1em;;
-    }
-  }
-
-  .brand-logo {
-    position: fixed;
-    bottom: 0;
-    border-radius: 10px 10px 0 0;
-
-    img {
-      max-height: $navbar-height;
-      padding: .8rem;
-      margin: 0;
-    }
-  }
+  a {
+    color: inherit;
+    text-decoration: none;
+	}
 }

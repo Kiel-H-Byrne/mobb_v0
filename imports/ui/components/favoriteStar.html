@@ -1,0 +1,12 @@
+
+<template name="favoriteStar">
+{{#if in_favorites}}
+  <a href="" class="secondary-content remove_favorite">
+    <i class="material-icons">star</i>
+  </a>
+  {{else}}
+  <a href="" class="secondary-content add_favorite" value="{{_id}}">
+    <i class="material-icons">star_border</i>
+  </a>
+{{/if}}
+</template>

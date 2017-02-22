@@ -67,17 +67,16 @@ Meteor.startup(function() {
 	}
 //=====  Global Template Helpers =====
 
-Template.registerHelper('hasImage', function() {
-    //'this' should be Listings Document
-    // console.log(typeof this.image.url);
-    let test = this.image.url;
-    if (test !== "false") {
-      return true; 
-    } else {
-      return false;
-    }
-});
-
+  Template.registerHelper('hasImage', function() {
+      //'this' should be Listings Document
+      // console.log(typeof this.image.url);
+      let test = this.image.url;
+      if (test !== "false") {
+        return true; 
+      } else {
+        return false;
+      }
+  });
 
 });
 

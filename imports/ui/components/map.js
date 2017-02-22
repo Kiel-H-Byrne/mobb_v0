@@ -11,7 +11,7 @@ import './map.html';
 //====== GLOBALS ======
 
 MAP_ZOOM = 4;
-clientMarker = null;
+let clientMarker;
 
 $.getJSON("https://freegeoip.net/json/", {
     format: "jsonp"
@@ -105,7 +105,7 @@ Template.map.onCreated( function() {
         // offsetCenter(Geolocation.latLng(), 50, 0);
         // console.log(Session.get('browserLoc'));
 
-        let clientMarker;
+        // let clientMarker;
 
         let markerImage = {
           url: 'img/orange_marker_sm.png'
@@ -183,13 +183,14 @@ Template.map.onCreated( function() {
         });
           // as soon as session = true, let autorun proceed for  geolocate;  
           // then stop outer autorun
-        self.autorun( function() {
+        self.autorun( function(z) {
           let getPerm = Session.get("geoAccepted");
-          switch (getPerm) {
-            case true:
+
+          if (getPerm === true) {
               self.autorun(function() {    
                 //====== AUTO CALCULATE MY LOCATION AND DRAW NEW MARKER WHEN IT CHANGES ======
                 //====== AUTO CALCULATE NEW CLOSEST BUSINESS WHEN MY LOCATION CHANGES ======
+                console.log("searching ...");
                 if (Geolocation.error() || Geolocation.latLng === null || Geolocation.latLng === "null") {
                   console.warn("Geo Error:", Geolocation.error().message);
                   return;
@@ -211,7 +212,7 @@ Template.map.onCreated( function() {
 
                     getLocation2().then((pos) => {
                       Session.set('clientLoc', pos);
-                      let clientMarker;
+
                       if (!clientMarker) {
                         clientMarker = new google.maps.Marker({
                             position: new google.maps.LatLng(pos.lat, pos.lng),
@@ -220,12 +221,9 @@ Template.map.onCreated( function() {
                             title: "My Location",
                             // animation: google.maps.Animation.BOUNCE,
                         }); 
-                        map.instance.setCenter(clientMarker.getPosition());
-                        map.instance.setZoom(12);
                       } else {
                         clientMarker.setPosition(pos);
                       }
-                      setCenter(pos);
                       return;
                     });
 
@@ -241,8 +239,7 @@ Template.map.onCreated( function() {
                     // });
                 }
               });
-              break;
-            case false:
+            } else {
             console.warn('Get Geo Not Accepted');
           }
         });

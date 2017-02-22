@@ -8,7 +8,7 @@ import '../../ui/layouts/splitLayout.js';
 console.log("-= imports/startup/client/index.js loaded");
 
 Meteor.startup(function() {
-  Session.set('geoAccepted', false);
+  Session.set('geoAccepted', false)
 
     //-- ANALYTICS EVENT (User dismiss/Accept Home Screen banner) --
 

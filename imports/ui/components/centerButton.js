@@ -3,29 +3,8 @@ import {Template} from 'meteor/templating';
 
 
 import './centerButton.html';
-console.log("before map?");
-const successful = function(position) {
-    let geoloc = {
-        "lat": position.coords.latitude,
-        "lng": position.coords.longitude
-    };
-};
-
-getLocation =function(callback) {
-    console.log('Attempting getLocation()');
-    navigator.geolocation.getCurrentPosition(function(pos){
-        successful(pos);
-        let loc = {"lat": pos.longitude, "lng": pos.latitude};
-        Session.set('clientLoc', loc);
-        console.log("getLocation() successful...", loc);
-        // typeof callback === 'function' && callback(pos);
-    }, function(err){
-        console.warn("getLocation() failed....", err);
-    });
-};
 
 getLocation2 = async function() {
-    console.log('Attempting getLocation2()');
     let pos = await Geolocation.latLng();
     return pos;
 };
@@ -36,17 +15,18 @@ setCenter = function(pos) {
 };
 
 placeMyMarker = function(pos) {
-    if (!clientMarker) {
+  console.log("called");
+  if (!clientMarker) {
+    console.log("exists");
     clientMarker = new google.maps.Marker({
-        position: new google.maps.LatLng(pos.lat, pos.lng),
-        map: GoogleMaps.maps.map.instance,
-        icon: {url: 'img/orange_dot_sm_2.png'},
-        title: "My Location",
-        // animation: google.maps.Animation.BOUNCE,
+      position: new google.maps.LatLng(pos.lat, pos.lng),
+      map: GoogleMaps.maps.map.instance,
+      icon: {url: 'img/orange_dot_sm_2.png'},
+      title: "My Location",
+      // animation: google.maps.Animation.BOUNCE,
     }); 
-    GoogleMaps.maps.map.instance.setCenter(clientMarker.getPosition());
-    GoogleMaps.maps.map.instance.setZoom(12);
   } else {
+    console.log("all set");
     clientMarker.setPosition(pos);
   }
 };
@@ -76,14 +56,6 @@ Template.centerButton.events({
         $('#modalGeo').closeModal();
         return;
       } else if (Session.equals("geoAccepted", true) && !Session.get("clientLoc")) {
-
-        // getLocation(function(pos){
-        //   console.log("Pulling from satellite...");
-        //   let loc = {"lat": pos.longitude, "lng": pos.latitude};
-        //   setCenter(loc);
-        //   $('#modalGeo').closeModal();
-        //   return;
-        // });
 
         getLocation2().then((pos) => {
           Session.set('clientLoc', pos);

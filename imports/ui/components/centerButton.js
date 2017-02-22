@@ -14,10 +14,13 @@ setCenter = function(pos) {
     GoogleMaps.maps.map.instance.setZoom(12);
 };
 
+let clientMarker;
+  
 placeMyMarker = function(pos) {
   console.log("called");
+
   if (!clientMarker) {
-    console.log("exists");
+    console.log("does not exists");
     clientMarker = new google.maps.Marker({
       position: new google.maps.LatLng(pos.lat, pos.lng),
       map: GoogleMaps.maps.map.instance,

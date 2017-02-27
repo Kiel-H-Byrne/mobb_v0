@@ -2,6 +2,10 @@ import { Template } from 'meteor/templating';
 
 import './editForm.html';
 
+Template.editForm.onCreated(function() {
+
+});
+
 Template.editForm.onRendered(function() {
   $(document).ready(function() {
     $('.collapsible').collapsible();
@@ -14,6 +18,7 @@ Template.editForm.onRendered(function() {
 Template.editForm.helpers({
   formOptions: function() {
     return Categories.find().map(function(c) {
+      // console.log(c.name);
       return {label: c.name, value: c.name};
     });
   }

@@ -36,7 +36,7 @@ Template.favoriteStar.helpers({
     let id = this._id;
     if (Meteor.user()) {
       let favArray = Meteor.user().profile.favorites;
-      console.log(favArray);
+      // console.log(favArray);
       let inArray = !_.isEmpty(_.where(favArray, id));
       return inArray;
     } else {

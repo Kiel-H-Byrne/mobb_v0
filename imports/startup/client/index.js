@@ -70,11 +70,13 @@ Meteor.startup(function() {
   Template.registerHelper('hasImage', function() {
       //'this' should be Listings Document
       // console.log(typeof this.image.url);
-      let test = this.image.url;
-      if (test !== "false") {
-        return true; 
-      } else {
-        return false;
+      if (this.image) {
+        let test = this.image.url;
+        if (test !== "false") {
+          return true; 
+        } else {
+          return false;
+        }
       }
   });
 

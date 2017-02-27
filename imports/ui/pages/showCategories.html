@@ -8,69 +8,76 @@
     </div>
   </div>
   <div class="row masonry">
-  {{!-- <a href="{{url}}" target="_blank"> --}}
-
   {{#each list}}
-    <div id="{{_id}}" class=" masonry_item card sticky-action grey darken-2 hoverable grid-item">
+    <a href="{{url}}" target="_blank" rel="noopener">
+      <div id="{{_id}}" class=" masonry_item card sticky-action grey darken-2 hoverable grid-item">
 
-      {{#if hasImage}}
-      <div class="card-image waves-effect waves-block waves-light"> 
-        <img class="responsive-image" src="/img/gallery/{{name}}.png" />
-      </div>
-      {{/if}}
-      <div class="card-content white-text">
-          <span class="card-title "> <h5 class="amber-text text-darken-1 center-align">{{name}}</h5></span>
-          <h6 class="center-align"><a href="#" target="_blank" rel="noopener" > {{social}}</a></h6>
-          {{#if street}}
-          <p class="center-align address">
-            <span id="address-content">
-              {{street}} <br />
-              {{city}} {{state}} {{zip}} <br />
-            </span>
-            <a class="center-align phone" href="tel:+1{{phone}}">{{phone}}</a>
-          </p>
-          {{/if}}
-          <!--p>{{description}}</p-->
-      </div>
+        {{> favoriteStar}}
 
-      <div class="card-reveal">
-        <span class="card-title amber-text text-darken-4">Reviews<i class="material-icons right">close</i></span>
-        
-        <p class="flow-text">We are still working on this feature...</p>
-        <p class="flow-text">{{description}}</p>
-        {{#with google_review}}
-        
-        {{/with}}
-      </div>
-
-      <div class="card-action">
-        <div class="row center-align">
-          {{#if url}}     
-          <div class="col "><a class="btn-floating amber" target="_blank" rel="noopener" title="Website" href="{{url}}"><i class="material-icons">link</i></a></div>
-          {{/if}}
-          {{#if phone}}    
-          <div class="col "><a class="btn-floating amber darken-2" title="Call" href="tel:+1{{phone}}"><i class="material-icons">phone</i></a></div>
-          {{/if}}
-          {{#if currentUser}}
-          <div class="col ">
-            <a class="btn-floating amber darken-3 modal-trigger" id="verify_button" title="Is This Information Correct?" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
-          </div>
-          {{else}}
-          <div class="col ">
-            <a class="disabled btn-floating modal-trigger" id="verify_button" title="Verify This" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
-          </div>
-          {{/if}}
-          {{#if street}}    
-          <div class="col ">
-            <!-- a class="btn-floating amber darken-4 modal-trigger" id="directions_button" title="Directions" href="#modalDirections"><i class="material-icons">navigation</i></a-->
-            <a class="btn-floating amber darken-4" title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" ><i class="material-icons">navigation</i></a>
-          </div>
-          {{/if}}
+        {{#if hasImage}}
+        <div class="card-image waves-effect waves-block waves-light"> 
+          <img class="responsive-image" src="/img/gallery/{{name}}.png" />
         </div>
-      </div>
-    </div>  
+        {{/if}}
+        <div class="card-content white-text">
+            <span class="card-title "> <h5 class="amber-text text-darken-1 center-align">{{name}}</h5></span>
+            <h6 class="center-align"><a href="#" target="_blank" rel="noopener" > {{social}}</a></h6>
+            {{#if street}}
+            <p class="center-align address">
+              <span id="address-content">
+                {{street}} <br />
+                {{city}} {{state}} {{zip}} <br />
+              </span>
+              <a class="center-align phone" href="tel:+1{{phone}}">{{phone}}</a>
+            </p>
+            {{/if}}
+            {{#if description}}
+              <p>{{description}}</p>
+            {{/if}}
+        </div>
+
+        <div class="card-reveal">
+          <span class="card-title amber-text text-darken-4">Reviews<i class="material-icons right">close</i></span>
+          
+          <p class="flow-text">We are still working on this feature...</p>
+          <p class="flow-text">{{description}}</p>
+          {{#with google_review}}
+          
+          {{/with}}
+        </div>
+
+        <div class="card-action">
+          <div class="row center-align">
+{{!--                  {{#if url}}     
+            <div class="col "><a class="btn-floating amber" target="_blank" rel="noopener" title="Website" href="{{url}}"><i class="material-icons">link</i></a></div>
+            {{/if}}
+            {{#if phone}}    
+            <div class="col "><a class="btn-floating amber darken-2" title="Call" href="tel:+1{{phone}}"><i class="material-icons">phone</i></a></div>
+            {{/if}} --}}
+            {{#if isOwner}}
+            <div class="col s3">
+              <a class="btn-floating amber darken-3 editModal-trigger" id="edit_button" title="Edit This Listing" href="#modalEdit"><i class="material-icons">edit</i></a>
+            </div>
+            {{else if currentUser }}
+            <div class="col ">
+              <a class="btn-floating amber darken-3 modal-trigger" id="verify_button" title="Is This Information Correct?" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
+            </div>
+            {{else}}
+            <div class="col ">
+              <a class="disabled btn-floating modal-trigger" id="verify_button" title="Verify This" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
+            </div>
+            {{/if}}
+            {{#if street}}    
+            <div class="col ">
+              <!-- a class="btn-floating amber darken-4 modal-trigger" id="directions_button" title="Directions" href="#modalDirections"><i class="material-icons">navigation</i></a-->
+              <a class="btn-floating amber darken-4" title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" ><i class="material-icons">navigation</i></a>
+            </div>
+            {{/if}}
+          </div>
+        </div>
+      </div>  
+    </a>
     {{/each}}
   </div>
   </div>
-  {{!-- </a> --}}
 </template>

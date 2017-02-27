@@ -1,7 +1,7 @@
 
 
 <template name="galleryCard">
-  <a href="{{url}}" target="_blank">
+  <a href="{{url}}" target="_blank" rel="noopener">
     <div id="{{_id}}" class="info-card masonry_item card sticky-action grey darken-2 hoverable grid-item">
 
       {{#if hasImage}}
@@ -43,9 +43,9 @@
 {{!--           {{#if url}}     
           <div class="col "><a class="btn-floating amber" target="_blank" rel="noopener" title="Website" href="{{url}}"><i class="material-icons">link</i></a></div>
           {{/if}} --}}
-          {{#if phone}}    
+{{!--           {{#if phone}}    
           <div class="col "><a class="btn-floating amber darken-2" title="Call" href="tel:+1{{phone}}"><i class="material-icons">phone</i></a></div>
-          {{/if}}
+          {{/if}} --}}
           {{#if currentUser}}
           <div class="col ">
             <a class="btn-floating amber darken-3 modal-trigger" id="verify_button" title="Is This Information Correct?" href="#modalVerify"><i class="material-icons">thumb_up</i></a>

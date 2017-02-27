@@ -9,3 +9,9 @@ Template.showCategories.helpers({
   catName: () => Router.current().params.name
 });
 
+
+Template.showCategories.onRendered(function() {
+  $(document).ready(function() {
+    $('.editModal-trigger').leanModal();
+  });
+});

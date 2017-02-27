@@ -5,14 +5,16 @@
 
   .dropdown-content {
     background-color: $clr-grey;
-    width: 18.5rem;
-  
+
     li > a {
-      padding: 0 auto;
+      // padding: 0 auto;
     }
 
     .badge {
       background-color: $clr-gold;
       color: $clr-purple;
+      right: .3rem;
+      margin: 0;
+
     }
   }

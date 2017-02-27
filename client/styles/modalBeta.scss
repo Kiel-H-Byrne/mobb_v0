@@ -1,13 +1,10 @@
 @import 'palettes/colors';
 
-@import url('https://fonts.googleapis.com/css?family=Kumar+One|Raleway');
-
 [id='modalBeta'] {
   background-color: $clr-grey;
 
   h4 {
     color: $clr-gold;
     text-decoration: none;
-    font-family: 'Kumar One', cursive;
   }
 }

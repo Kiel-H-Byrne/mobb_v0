@@ -818,11 +818,13 @@
       "country": "USA",
       "url": "http://arelisdominicanstyle.com/",
       "image": {
-        "url": "http://slideshow.hibustudio.com/sliders/2015/9/56146098e4b002e5546e9ef6/5.2015_280_0_0_27.jpg"
+        "url": "https://slideshow.hibustudio.com/sliders/2015/9/56146098e4b002e5546e9ef6/5.2015_280_0_0_27.jpg"
       },
       "phone": "3014953771",
       "owner": "Eunice Jackson",
-			"categories": []
+			"categories": [
+        "Personal Care, Beauty & Hair"
+      ]
 		},
     {
       "name": "Salon Obsessions The Weave Institute",

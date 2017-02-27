@@ -78,6 +78,14 @@ Meteor.startup(function() {
       }
   });
 
+  Template.registerHelper('isOwner', function() {
+    if (Meteor.user()) {
+      let test = Meteor.user()._id === this.creator;
+      // console.log(test);
+      return test;
+    }
+  });
+
 });
 
 

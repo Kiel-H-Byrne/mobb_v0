@@ -1,10 +1,7 @@
 @import 'materialize/components/color';
-
 @import 'materialize/components/variables';
-
 @import 'palettes/colors';
 
-@import url('https://fonts.googleapis.com/css?family=Kumar+One|Raleway');
 
 .terms-wrapper {
   font-family: 'Raleway', sans-serif;
@@ -15,7 +12,6 @@
   h5,
   h6 {
     text-align: center;
-    font-family: 'Kumar One', cursive;
   }
 
   hr {
@@ -25,7 +21,6 @@
   }
 
   .collapsible-header {
-    font-family: 'Kumar One', cursive;
     background-color: rgba(0,0,0,.3);
   }
   li {

@@ -23,6 +23,7 @@
     "grunt-real-favicon": "^0.2.0",
     "imagemin-mozjpeg": "^6.0.0",
     "jslint": "^0.10.3",
+    "materialize-css": "^0.98.0",
     "meteor-node-stubs": "~0.2.0",
     "spawn-sync": "^1.0.15",
     "try-thread-sleep": "^1.0.0",

@@ -1,126 +1,110 @@
-@import 'materialize/components/color';
-@import 'materialize/components/variables';
+@import '{}/node_modules/materialize-css/sass/components/color';
+@import '{}/node_modules/materialize-css/sass/components/variables';
 @import 'palettes/colors';
 
 
-  // ::-webkit-input-placeholder {
-  //   color: $clr-orange;
-  //   text-transform: capitalize;
-  //   transition: opacity 250ms ease-in-out;
-  // }
-
-  // :focus::-webkit-input-placeholder {
-  //   opacity: 0.3;
-  // }
-
-  // :-ms-input-placeholder {
-  //   color: $clr-orange;
-  //   text-transform: capitalize;
-  //   transition: opacity 250ms ease-in-out;
-  // }
-
-  // :focus:-ms-input-placeholder {
-  //   opacity: 0.3;
-  // }
-
-  // ::-moz-placeholder {
-  //   color: $clr-orange;
-  //   opacity: .5;
-  //   text-transform: capitalize;
-  //   transition: opacity 250ms ease-in-out;
-  // }
-
-  // :focus::-moz-placeholder {
-  //   opacity: 0.3;
-  // }
-
-  // :-moz-placeholder {
-  //   color: $clr-orange;
-  //   opacity: .5;
-  //   text-transform: capitalize;
-  //   transition: opacity 250ms ease-in-out;
-  // }
-
-  // :focus:-moz-placeholder {
-  //   opacity: 0.3;
-  // }
-
-
-.nav-list {
-  > li {
-    display: inline-block;
+  ::-webkit-input-placeholder {
+    color: $clr-orange;
+    text-transform: capitalize;
+    transition: opacity 250ms ease-in-out;
   }
-}
+
+  :focus::-webkit-input-placeholder {
+    opacity: 0.3;
+  }
+
+  :-ms-input-placeholder {
+    color: $clr-orange;
+    text-transform: capitalize;
+    transition: opacity 250ms ease-in-out;
+  }
+
+  :focus:-ms-input-placeholder {
+    opacity: 0.3;
+  }
+
+  ::-moz-placeholder {
+    color: $clr-orange;
+    opacity: .5;
+    text-transform: capitalize;
+    transition: opacity 250ms ease-in-out;
+  }
+
+  :focus::-moz-placeholder {
+    opacity: 0.3;
+  }
+
+  :-moz-placeholder {
+    color: $clr-orange;
+    opacity: .5;
+    text-transform: capitalize;
+    transition: opacity 250ms ease-in-out;
+  }
+
+  :focus:-moz-placeholder {
+    opacity: 0.3;
+  }
+
 
 .navbar-fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: $navbar-height;
 
   img {
-    margin: .4rem;
-    max-height: $navbar-height;
-  }
-
-  .btn {
-    padding: 0 .5rem;
-
-    i {
-      margin: 0 .3rem;
-      vertical-align: middle;
-    }
-  }
-
-  .row {
-    margin: 0;
-    
-  }
-}
-
-[id='desktop-search_wrapper'] {
-  .input-field {
-    margin: 1rem auto;
-  }
-  
-  i, 
-  form {
-    display: inline-block;
-    float: left;
+    max-height: ($navbar-height - 7px);
   }
 
   i {
-    margin: 1.7rem 0;  
+    margin: 0 .5rem;
+    vertical-align: middle;
   }
 
-  form {
-    min-width: 90%;
+  .nav-list{
+    // position: relative;
+    // left: 210px;
+  i {
+    line-height: inherit;
   }
 
-  input {
-    margin-bottom: .2rem;
+    form input  {
+      margin: 0 .5rem !important;
+      vertical-align: middle !important;
+      min-width: 211px;
+    }
   }
-}
 
 [id='mobile-search_wrapper'] {
 
   .input-field {
-    margin:0;
-  }
-  
-  i, 
-  form {
-    display: inline-block;
-    float: left;
-  }
-  
-  form {
-    min-width: 90%;
+    label {
+      &:not(.label-icon).active {
+        transform: translateY(-1rem);
+      }
+    }
   }
 
-  input {
-    margin-bottom: .3rem;
-    height: 1.5rem;
+  form input, i {
+    padding-top: .3rem ;
+    padding-bottom: .3rem ;
+    margin: .3rem .5rem;
+    vertical-align: middle !important;
+    line-height: inherit;
   }
+
+//   .input-field {
+//     margin:0;
+//   }
+  
+  
+//   form {
+//     min-width: 90%;
+//   }
+
+//   input {
+//     margin-bottom: .3rem;
+//     height: 1.5rem;
+//   }
+}
+
+
+
+
 }

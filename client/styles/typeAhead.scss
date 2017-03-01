@@ -1,6 +1,6 @@
-@import 'materialize/components/mixins';
-@import 'materialize/components/color';
-@import 'materialize/components/variables';
+@import '{}/node_modules/materialize-css/sass/components/mixins';
+@import '{}/node_modules/materialize-css/sass/components/color';
+@import '{}/node_modules/materialize-css/sass/components/variables';
 @import 'palettes/colors';
 
 .pac-container {
@@ -12,7 +12,7 @@
 }
 
 .pac-item-query {
-  color: $clr-orange;
+  color: $clr-green;
 }
 
 .pac-item-selected {
@@ -24,16 +24,20 @@
 }
 
 .pac-icon-marker {
-  color: $clr-orange;
+  color: $clr-green;
 }
 
 .twitter-typeahead {
   display: block !important;
 }
 
+.tt-header {
+  color: $clr-green;
+}
+
 .tt-menu {
   background-color: $clr-grey-light;
-  color: $clr-orange-dark;
+  color: $clr-orange;
   padding: .5rem;
   @include box-shadow-2(0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
 }
@@ -49,10 +53,11 @@
 }
 
 .tt-menu {
-  width: 422px;
-  margin: 4px 0;
-  border: 1px solid #ccc;
+  // width: 422px;
+  // margin: 4px 0;
+
   border: 1px solid rgba(0, 0, 0, 0.2);
+  border-top: none;
 }
 
 .tt-suggestion {
@@ -62,7 +67,7 @@
   
   :hover {
     cursor: pointer;
-    background-color: $clr-purple;
+    background-color: $clr-grey-clear;
     padding: .3 rem;
   }
 

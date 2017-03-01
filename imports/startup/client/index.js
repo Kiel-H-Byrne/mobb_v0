@@ -31,6 +31,8 @@ import 'materialize-css/js/waves';
 import 'materialize-css/js/date_picker/picker';
 import 'materialize-css/js/date_picker/picker.date';
 
+
+
 // import 'materialize-css/js/materialize';
 
 //Import Routes

@@ -1,12 +1,10 @@
-@import 'materialize/components/color';
-@import 'materialize/components/variables';
+@import '{}/node_modules/materialize-css/sass/components/color';
+@import '{}/node_modules/materialize-css/sass/components/variables';
 
 
 [id='centerButton_button'] {
-  // @media #{$small-and-down} {
-  // }
-  bottom: 2.66rem;
   position: fixed;
+  bottom: 2.66rem;
   right: 0;
   margin: 0.5em;
 

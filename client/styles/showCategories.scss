@@ -1,11 +1,10 @@
-@import 'materialize/components/color';
-@import 'materialize/components/variables';
+@import '{}/node_modules/materialize-css/sass/components/color';
+@import '{}/node_modules/materialize-css/sass/components/variables';
 @import 'palettes/colors';
 
 .showCategories-wrapper {
-  margin-top: 60px;
   background-color: $clr-grey;
-  padding: 0.5rem;
+  padding: 1rem;
   display: -webkit-flex;
   display: flex;
   -webkit-justify-content: center;

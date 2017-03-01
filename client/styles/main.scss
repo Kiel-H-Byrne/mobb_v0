@@ -1,11 +1,10 @@
-@import "../../node_modules/materialize-css/sass/materialize";
 
-@import 'materialize/components/color';
-@import 'materialize/components/variables';
+
+@import '{}/node_modules/materialize-css/sass/components/color';
+@import '{}/node_modules/materialize-css/sass/components/variables';
 @import 'palettes/colors';
 
 @import url('https://fonts.googleapis.com/css?family=Proza+Libre|Quicksand|Raleway');
-
 
 html { 
   box-sizing: border-box; 
@@ -26,7 +25,6 @@ body {
   height: 100%;
   width: 100%;
   margin: 0;
-  padding-top: $navbar-height/2;
   color: $clr-gold;
   background-color: $clr-grey;
 }
@@ -37,7 +35,6 @@ h3,
 h4,
 h5 {
   font-family: 'Raleway', sans-serif;
-  color: $clr-orange;
 }
 
 .brand {
@@ -46,6 +43,7 @@ h5 {
 
 .smalltext {
   font-size: 0.65em;
+  color: $clr-gold;
 }
 
 .address {
@@ -56,7 +54,11 @@ h5 {
 
 .btn {
   color: $clr-grey;
-  background-color: $clr-orange;
+  background-color: $clr-orange ;
+}
+
+.btn:hover {
+  background-color: $clr-orange-dark;
 }
 
 .modal-open {
@@ -72,14 +74,6 @@ h5 {
     width: 90%;
   }
 }
-// .category-select {
-//   position: absolute;
-//   top: 80px;
-//   left: 0;
-//   z-index: 10000;
-//   visibility: visible;
-//   border: 1px solid red;
-// }
 
 .at-form {
   padding-top: 50px;

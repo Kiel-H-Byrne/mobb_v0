@@ -1,20 +1,24 @@
-@import 'materialize/components/color';
-@import 'materialize/components/variables';
+@import '{}/node_modules/materialize-css/sass/components/color';
+@import '{}/node_modules/materialize-css/sass/components/variables';
 @import 'palettes/colors';
 
 
-  .dropdown-content {
-    background-color: $clr-grey;
+.dropdown-content {
+  background-color: $clr-grey-light;
+  
+  li {
+    min-height: inherit;
 
-    li > a {
-      // padding: 0 auto;
-    }
-
-    .badge {
-      background-color: $clr-gold;
-      color: $clr-purple;
-      right: .3rem;
-      margin: 0;
-
+    a {
+        padding: .5rem;
+        color: $clr-orange;
     }
   }
+    
+  .badge {
+    float: right;
+    margin: 0;
+    color: $clr-grey;
+    background-color: $clr-green;
+  }
+}

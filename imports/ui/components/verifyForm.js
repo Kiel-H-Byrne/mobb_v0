@@ -38,7 +38,7 @@ AutoForm.addHooks('upVoteForm', {
         this.event.preventDefault();
         console.log('Just submitted form, from verifyForm.js');
         //close modal on submit
-        $('#modalVerify').closeModal();
+        $('#modalVerify').modal('close');
 
 		    this.done(); // submitted successfully, call onSuccess
 		    return false;
@@ -47,6 +47,6 @@ AutoForm.addHooks('upVoteForm', {
   // Called when any submit (type=insert or update) operation succeeds
   onSuccess: function(formType, result) {
   	console.log("Thanks for Submitting!", result);
-  	$('#modalVerify').closeModal();
+  	$('#modalVerify').modal('close');
   },
 });

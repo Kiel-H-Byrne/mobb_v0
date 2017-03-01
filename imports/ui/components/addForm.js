@@ -45,7 +45,7 @@ AutoForm.addHooks('addListingForm', {
         this.event.preventDefault(); //prevents page reload
         console.log('Just submitted form, from addform.js');
         //close modal on submit
-        // $('#modalAdd').closeModal();
+        // $('#modalAdd').modal('close');
         Listings.insert(insertDoc);
 		    this.done(); // must be called; submitted successfully, call onSuccess, 
 		    return false; //prevents page reload
@@ -61,6 +61,6 @@ AutoForm.addHooks('addListingForm', {
       ' <h3 class="centered"> Thank You! </h3> ' +
       ' </div> '
       );
-    $('#modalAdd').delay(1100).closeModal();
+    $('#modalAdd').delay(1100).modal('close');
   },
 });

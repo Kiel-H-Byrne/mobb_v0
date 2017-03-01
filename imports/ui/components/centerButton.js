@@ -56,7 +56,7 @@ Template.centerButton.events({
         // console.log(loc);
         placeMyMarker(loc);
         setCenter(loc);
-        $('#modalGeo').closeModal();
+        $('#modalGeo').modal('close');
         return;
       } else if (Session.equals("geoAccepted", true) && !Session.get("clientLoc")) {
 
@@ -72,7 +72,7 @@ Template.centerButton.events({
         setCenter(loc);
         return;
       } else {
-        $('#modalGeo').openModal();
+        $('#modalGeo').modal('open');
         Session.set("geoAsked", true);
         let loc = Session.get('browserLoc');
         setCenter(loc);

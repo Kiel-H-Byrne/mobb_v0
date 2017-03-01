@@ -29,7 +29,7 @@ Template.infoModal.onRendered(function() {
 //       //   name: params.name
 //       // });
 //       // console.log(doc);
-//       // $('#modalFull').openModal();
+//       // $('#modalFull').modal('open');
 
 //     // } else if (params.title) {
 //     //   // console.log(result);
@@ -61,12 +61,12 @@ Template.infoModal.events({
 				Session.set('myRoute', d.routes[0]); 
 			}
 		});
-		// $('#modalInfo').closeModal();
-		$('#modalDirections').openModal();
+		// $('#modalInfo').modal('close');
+		$('#modalDirections').modal('open');
 	}, 
 	'click #verify_button': function(evt,tpl) {
 		console.log("Clicked Verify button!");
 		//open modal verify form.
-		$('#modalVerify').openModal();
+		$('#modalVerify').modal('open');
 		}
 }); 

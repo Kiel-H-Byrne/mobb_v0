@@ -4,7 +4,7 @@ import {Template} from 'meteor/templating';
 import './fullListing.html';
 
 Template.fullListing.onRendered(function() {
-  // $('#modalFull').leanModal({
+  // $('#modalFull').modal({
   //     dismissible: true, // Modal can be dismissed by clicking outside of the modal
   //     opacity: .5, // Opacity of modal background
   //     inDuration: 300, // Transition in duration
@@ -21,7 +21,7 @@ Template.fullListing.onRendered(function() {
   //   }
   // );
 
-  $('#modalFull').openModal();
+  $('#modalFull').modal('open');
 
 
 });

@@ -6,7 +6,7 @@ import './loggedInNav.html';
 Template.loggedInNav.onRendered( function() {
 
 	$(document).ready(function(){
-		$('.modal-trigger').leanModal({
+		$('.modal-trigger').modal({
 		    dismissible: true,
 		    opacity: 0.5,
 		    in_duration: 300,

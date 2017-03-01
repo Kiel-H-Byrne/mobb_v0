@@ -44,7 +44,7 @@ Template.map.onCreated( function() {
     GoogleMaps.ready('map', function(map) {
       $(document).ready(function() {
   
-        $('.addModal-trigger').leanModal({
+        $('.addModal-trigger').modal({
             dismissible: true,
             opacity: 0.5,
             in_duration: 200,
@@ -170,7 +170,7 @@ Template.map.onCreated( function() {
 
                         marker.addListener('click', function() {
                             Session.set('openListing', id);
-                            $('#modalInfo').openModal();
+                            $('#modalInfo').modal('open');
 
                             // Router.go('/', {_id: id});
 
@@ -260,7 +260,7 @@ Template.map.onRendered(function() {
     
     //Materialize JQuery Effects
     $(document).ready(function(){
-        $('.modal-trigger').leanModal({
+        $('.modal-trigger').modal({
             dismissible: true,
             opacity: 0.5,
             in_duration: 300,

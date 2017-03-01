@@ -14,6 +14,6 @@ Template.showCategories.helpers({
 
 Template.showCategories.onRendered(function() {
   $(document).ready(function() {
-    $('.editModal-trigger').leanModal();
+    $('.editModal-trigger').modal();
   });
 });

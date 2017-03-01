@@ -14,7 +14,7 @@ Template.geoModal.events({
     
     Session.set('clientLoc', Geolocation.latLng());
     Session.set('geoAccepted', true);
-    $('#modalGeo').closeModal();
+    $('#modalGeo').modal('close');
   },
   'click .geo-deny': function(evt,tpl) {
     // evt.preventDefault();
@@ -24,6 +24,6 @@ Template.geoModal.events({
     });
 
     Session.set('geoAccepted', false);
-    $('#modalGeo').closeModal();
+    $('#modalGeo').modal('close');
   }
 });

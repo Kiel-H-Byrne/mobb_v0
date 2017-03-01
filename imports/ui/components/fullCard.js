@@ -5,6 +5,6 @@ import './fullCard.html';
 
 Template.fullCard.onRendered(function() {
   $(document).ready(function() {
-    $('.editModal-trigger').leanModal();
+    $('.editModal-trigger').modal();
   });
 });

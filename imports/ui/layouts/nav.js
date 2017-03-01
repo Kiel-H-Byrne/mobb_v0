@@ -23,7 +23,7 @@ Template.nav2.onRendered( function() {
 
     $('.tooltipped').tooltip({delay: 50});
 
-    $('.addModal-trigger').leanModal({
+    $('.addModal-trigger').modal({
         dismissible: true,
         opacity: 0.5,
         in_duration: 300,
@@ -102,7 +102,7 @@ Template.nav2.events({
     Materialize.updateTextFields();
   },
   // 'click .addmodal': function() {
-  //   $('#modalAdd').openModal();
+  //   $('#modalAdd').modal('open');
   //   // console.log("open!");
   // }
   // 'click .tt-suggestion': function(evt, tpl) {

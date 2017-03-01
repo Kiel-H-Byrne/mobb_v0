@@ -6,7 +6,7 @@ import './directionsModal.html';
 Template.directionsModal.events({
 	'click #closeButton_button' : function(evt,tpl){
 	    //close modal
-	    this.closeModal();
+	    this.modal('close');
 	  }
 });
 

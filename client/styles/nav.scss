@@ -60,15 +60,26 @@
   .nav-list{
     // position: relative;
     // left: 210px;
-  i {
-    line-height: inherit;
-  }
+    i {
+      line-height: inherit;
+    }
 
     form input  {
       margin: 0 .5rem !important;
       vertical-align: middle !important;
       min-width: 211px;
     }
+
+
+    .no_pad{
+      padding: 0 .3rem;
+    }
+   
+   .more_btn{
+      padding: 0;
+
+    }
+
   }
 
 [id='mobile-search_wrapper'] {
@@ -88,6 +99,7 @@
     vertical-align: middle !important;
     line-height: inherit;
   }
+
 
 //   .input-field {
 //     margin:0;

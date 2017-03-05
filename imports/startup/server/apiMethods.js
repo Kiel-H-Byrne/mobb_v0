@@ -178,7 +178,7 @@ Meteor.methods({
       // console.log(response);
       return response;
     }
-
+    return;
   },
   browserGeo: function(address) {
     this.unblock();

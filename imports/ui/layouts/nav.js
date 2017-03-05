@@ -102,11 +102,11 @@ Template.nav2.events({
   		clientSearch: entered
 		});
 	},
-  'click input': function() {
+  'click, touchstart input': function() {
     // $('.dropdown-button').dropdown('open');
     document.getElementById("mobile_search-form").reset();
   },
-  'mouseup form': function() {
+  'mouseup, touchend form': function() {
     // console.log("mouse fired.");
     Materialize.updateTextFields();
   },

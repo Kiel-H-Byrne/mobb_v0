@@ -44,7 +44,7 @@ Template.infoModal.onRendered(function() {
 });
 
 Template.infoModal.events({
-	'click #directions_button': function(evt,tpl) {
+	'click, touchstart #directions_button': function(evt,tpl) {
 		let address = $('#address-content').text();
 		
 		let browserLoc = _.values(Session.get('browserLoc')).toLocaleString();
@@ -64,7 +64,7 @@ Template.infoModal.events({
 		// $('#modalInfo').modal('close');
 		$('#modalDirections').modal('open');
 	}, 
-	'click #verify_button': function(evt,tpl) {
+	'click, touchstart #verify_button': function(evt,tpl) {
 		console.log("Clicked Verify button!");
 		//open modal verify form.
 		$('#modalVerify').modal('open');

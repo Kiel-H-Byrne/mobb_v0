@@ -49,7 +49,7 @@ Template.centerButton.onRendered(function() {
 });
 
 Template.centerButton.events({
-    'click #centerButton_button' : function(evt,tpl){
+    'click, touchstart #centerButton_button' : function(evt,tpl){
 
       if (Session.get("clientLoc")) {
         let loc = Session.get("clientLoc");

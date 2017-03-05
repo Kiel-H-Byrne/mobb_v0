@@ -5,9 +5,7 @@ Router.configure({
     layoutTemplate: 'AppLayout',
     notFoundTemplate: 'page_404',
     yieldRegions: {
-        nav2: {to: 'nav'},
-        footer: {to: 'footer'},
-        listPage: {to: 'bottom'}
+        nav2: {to: 'nav'}
     }
 });
 

@@ -1,14 +1,6 @@
 
 import { Meteor } from  'meteor/meteor';
 
-Router.configure({
-    layoutTemplate: 'AppLayout',
-    notFoundTemplate: 'page_404',
-    yieldRegions: {
-        nav2: {to: 'nav'}
-    }
-});
-
 // Router.plugin('dataNotFound', {
 //   notFoundTemplate: 'page_404'
 // });
@@ -25,20 +17,11 @@ Router.route('/', {
 });
 
 
-Router.route('/gallery', {
-    layoutTemplate: 'AppLayout',
-    yieldRegions: {
-      'galleryPage': {to: 'content'},
-      'nav2': {to: 'nav'},
-      'footer': {to: 'footer'}
-    }
-});
-
 Router.route('/test', {
-    yieldRegions: {
-      'test': {to: 'content'},
-      'footer': {to: 'footer'}
-    }
+  yieldRegions: {
+    'test': {to: 'content'},
+    'footer': {to: 'footer'}
+  }
 });
 
 // Router.route('/loading', {
@@ -49,6 +32,7 @@ Router.route('/test', {
 // });
 
 Router.route('/terms', {
+    name: 'terms',
     layoutTemplate: 'AppLayout',
     yieldRegions: {
       'terms': {to: 'content'},
@@ -81,6 +65,14 @@ Router.route('/list', {
 //     this.render('footer', {to: 'footer'});
 // });
 
+Router.route('/404', {
+    name: 'page_404',
+    layoutTemplate: 'AppLayout',
+    yieldRegions: {
+      'page_404': {to: 'content'},
+      'nav2': {to: 'nav'}
+    }
+});
 
 Router.route('/listings/:name', {
   name: 'listing.show',
@@ -137,6 +129,8 @@ Router.route('/categories/:name', {
   },
   notFoundTemplate: 'page_404',
 });
+
+
 // Router.route('/add', function(){
 //     this.render('nav2', {to: 'nav'});
 //     this.render('addForm', {to: 'content'});

@@ -17,19 +17,15 @@ setCenter = function(pos) {
 let clientMarker;
   
 placeMyMarker = function(pos) {
-  console.log("called");
-
   if (!clientMarker) {
-    console.log("does not exists");
     clientMarker = new google.maps.Marker({
       position: new google.maps.LatLng(pos.lat, pos.lng),
       map: GoogleMaps.maps.map.instance,
       icon: {url: 'img/orange_dot_sm_2.png'},
       title: "My Location",
-      // animation: google.maps.Animation.BOUNCE,
+      animation: google.maps.Animation.BOUNCE,
     }); 
   } else {
-    console.log("all set");
     clientMarker.setPosition(pos);
   }
 };

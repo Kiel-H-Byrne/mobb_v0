@@ -1,12 +1,8 @@
 
 import { Meteor } from  'meteor/meteor';
 
-// Router.plugin('dataNotFound', {
-//   notFoundTemplate: 'page_404'
-// });
 
 Router.route('/', {
-  // template: 'map',
   layoutTemplate: 'AppLayout',
   yieldRegions: {
     'map': {to: 'content'},
@@ -16,20 +12,13 @@ Router.route('/', {
   }
 });
 
-
-Router.route('/test', {
-  yieldRegions: {
-    'test': {to: 'content'},
-    'footer': {to: 'footer'}
-  }
+Router.route('/loading', {
+  name: 'Loading',
+  layoutTemplate: 'AppLayout',
+    yieldRegions: {
+      'loadingHourglass': {to: 'content'}
+    }
 });
-
-// Router.route('/loading', {
-//   layoutTemplate: 'AppLayout',
-//     yieldRegions: {
-//       'loadingHourglass': {to: 'content'}
-//     }
-// });
 
 Router.route('/terms', {
     name: 'terms',
@@ -40,13 +29,22 @@ Router.route('/terms', {
     }
 });
 
-Router.route('/list', {
-    layoutTemplate: 'AppLayout',
-    yieldRegions: {
-      'listPage': {to: 'content'},
-      'nav2': {to: 'nav'},
-      'footer': {to: 'footer'}
-    }
+// Router.route('/list', {
+//     layoutTemplate: 'AppLayout',
+//     yieldRegions: {
+//       'listPage': {to: 'content'},
+//       'nav2': {to: 'nav'},
+//       'footer': {to: 'footer'}
+//     }
+// });
+
+
+Router.route('/test', {
+  yieldRegions: {
+    // 'test': {to: 'content'},
+    'nav2': {to: 'nav'},
+    'footer': {to: 'footer'}
+  }
 });
 
 // Router.route('/map', function(){
@@ -66,10 +64,10 @@ Router.route('/list', {
 // });
 
 Router.route('/404', {
-    name: 'page_404',
+    name: '404page',
     layoutTemplate: 'AppLayout',
     yieldRegions: {
-      'page_404': {to: 'content'},
+      '404page': {to: 'content'},
       'nav2': {to: 'nav'}
     }
 });
@@ -96,7 +94,8 @@ Router.route('/listings/:name', {
       // this.render('nav2': {to: 'nav'});
       this.render('', {to: 'left'});
     }
-  }
+  },
+  notFoundTemplate: '404page'
 });
 
 Router.route('/categories/:name', {
@@ -127,19 +126,28 @@ Router.route('/categories/:name', {
       this.render('', {to: 'left'});
     }
   },
-  notFoundTemplate: 'page_404',
+  notFoundTemplate: '404page'
 });
 
 
-// Router.route('/add', function(){
-//     this.render('nav2', {to: 'nav'});
-//     this.render('addForm', {to: 'content'});
-// });
-
-
-// Router.route('/error', function() {
-//     this.render('page_404', {to: 'content'});
-// });
+Router.route('/add', {
+  name: 'add',
+  layoutTemplate: 'AppLayout',
+  yieldRegions: {
+    'addForm': {to: 'content'},
+    'nav2': {to: 'nav'}
+  },
+  action: function() {
+    // if (this.ready()) {
+      $('#modalAdd').modal('open');
+    // } else {
+      // this.render('loadingHourglass', {to: 'content'});
+      // this.next();
+      // this.render('nav2': {to: 'nav'});
+      // this.render('', {to: 'left'});
+    // }
+  }
+});
 
 
 // ==================== "atNavButton" routes Button ====================

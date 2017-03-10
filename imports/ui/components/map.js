@@ -221,7 +221,8 @@ Template.map.onCreated( function() {
                               icon: {url: 'img/orange_dot_sm_2.png'},
                               title: "My Location",
                               // animation: google.maps.Animation.BOUNCE,
-                          }); 
+                          });
+                          map.instance.setCenter(pos); 
                         } else {
                           clientMarker.setPosition(pos);
                         }

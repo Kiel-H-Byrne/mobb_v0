@@ -7,7 +7,6 @@
 	.test-wrapper {
 
     position: relative;
-    z-index: 90;
     width: 710px;
     margin: 50px auto;
     padding: 1rem;
@@ -19,36 +18,51 @@
     
   }
 
-    .test-wrapper h3 {
-      font-family: 'Kumar One', cursive;
+  .test_btn {
 
-    }
+  }
 
-    .test-wrapper p {
-      font-family: 'Raleway', sans-serif;
-    }
+  .test-wrapper h3 {
+    font-family: 'Kumar One', cursive;
 
-  [id='miniMap'] {
+  }
+
+  .test-wrapper p {
+    font-family: 'Raleway', sans-serif;
+  }
+
+  .material-icons {
+    white-space: wrap;
+    height: 0;
+    line-height: 0;
+  }
+
+/*  [id='miniMap'] {
     bottom: 50%;
     left: 0;
     position: absolute;
     right: 0;
     top: 0;
-  }
+  }*/
 
 
   </style>
 
   <div class="test-wrapper">
+    <a class="dropdown-button btn-flat test_btn right" href="#" alt="More..." data-activates="test-dropdown" data-beloworigin="true" data-constrainwidth="true" data-alignment="right" >
+        <i class="material-icons" title="...">more_vert</i>
+    </a>
+    <ul id="test-dropdown" class="dropdown-content">
+        <li><a href="/terms">Terms &amp; Conditions </a></li>
+        <li class="divider"></li>
+        <li><a href="/kibu">About Us</a></li>
+    </ul>
     <div class="row">
-      <div class="col s8">
-        <h5>Review</h5>
+      <div class="col s8 push-s2">
+        <h3 class="center-align">Review</h3>
       	{{#with greview}}
           
         {{/with}}
-      </div>
-      <div class="col s4">
-      {{> catSelect}}
       </div>
     </div>
     <div class="row">

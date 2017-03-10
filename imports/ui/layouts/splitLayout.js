@@ -8,4 +8,4 @@ import '../pages/terms.js';
 import '../pages/test.js';
 import '../pages/listPage.js';
 import '../pages/galleryPage.js';
-import '../pages/page_404.js';
+import '../pages/404page.js';

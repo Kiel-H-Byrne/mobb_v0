@@ -16,7 +16,8 @@ Template.test.onCreated( function() {
         alignment: 'left', // Displays dropdown with edge aligned to the left of button
         stopPropagation: false // Stops event propagation
       });
-        
+
+      $('.dropdown-button').dropdown();      
     });
 
     GoogleMaps.ready('minimap', function(map) {

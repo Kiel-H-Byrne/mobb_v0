@@ -181,7 +181,6 @@ Listings.attachSchema(new SimpleSchema({
   state: {
     type: String,
     optional: true,
-    // regEx: /^A[LKSZRAEP]|C[AOT]|D[EC]|F[LM]|G[AU]|HI|I[ADLN]|K[SY]|LA|M[ADEHINOPST]|N[CDEHJMVY]|O[HKR]|P[ARW]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY]$/
     allowedValues: ["AL","AK","AZ","AR","CA","CO","CT","DC","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"],
     autoform: {
       afFieldInput: {
@@ -211,8 +210,16 @@ Listings.attachSchema(new SimpleSchema({
     type: String,
     unique: true,
     label: 'Website',
-    regEx: SimpleSchema.RegEx.Url,
-    optional: true
+    regEx: SimpleSchema.RegEx.Domain,
+    optional: true,
+    autoValue: function() {
+      console.log(this);
+      //if string starts with "http//" or https://", Ok, else prepend with "http://"
+      // let url = this.value;
+      // url = trim(url, '!"#$%&\'()*+,-./@:;<=>[\\]^_`{|}~');
+      // console.log(url);
+      // return url;
+    }
   },
   social: {
     type: String,

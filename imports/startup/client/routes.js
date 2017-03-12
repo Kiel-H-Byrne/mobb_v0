@@ -24,7 +24,6 @@ Router.route('/terms', {
     name: 'terms',
     layoutTemplate: 'AppLayout',
     yieldRegions: {
-      'terms': {to: 'content'},
       'nav2': {to: 'nav'}
     }
 });
@@ -40,6 +39,7 @@ Router.route('/terms', {
 
 
 Router.route('/test', {
+  name: 'test',
   yieldRegions: {
     // 'test': {to: 'content'},
     'nav2': {to: 'nav'},
@@ -63,20 +63,20 @@ Router.route('/test', {
 //     this.render('footer', {to: 'footer'});
 // });
 
-Router.route('/404', {
-    name: '404page',
-    layoutTemplate: 'AppLayout',
-    yieldRegions: {
-      '404page': {to: 'content'},
-      'nav2': {to: 'nav'}
-    }
-});
+// Router.route('/404', {
+//     name: '404page',
+//     layoutTemplate: 'AppLayout',
+//     yieldRegions: {
+//       '404page': {to: 'content'},
+//       'nav2': {to: 'nav'}
+//     }
+// });
 
 Router.route('/listings/:name', {
-  name: 'listing.show',
+  name: 'fullCard',
   layoutTemplate: 'AppLayout',
   yieldRegions: {
-    'fullCard': {to: 'content'},
+    // 'fullCard': {to: 'content'},
     'nav2': {to: 'nav'}
   },
   subscriptions: function() {
@@ -95,14 +95,13 @@ Router.route('/listings/:name', {
       this.render('', {to: 'left'});
     }
   },
-  notFoundTemplate: '404page'
+  // notFoundTemplate: '404page'
 });
 
 Router.route('/categories/:name', {
-  name: 'categories',
+  name: 'showCategories',
   layoutTemplate: 'AppLayout',
   yieldRegions: {
-    'showCategories': {to: 'content'},
     'nav2': {to: 'nav'}
   },
   subscriptions: function() {
@@ -121,31 +120,23 @@ Router.route('/categories/:name', {
     if (this.ready()) {
       this.render();
     } else {
-      this.render('loadingHourglass', {to: 'content'});
+      this.render('loadingHourglass');
       // this.render('nav2': {to: 'nav'});
       this.render('', {to: 'left'});
     }
   },
-  notFoundTemplate: '404page'
+  // notFoundTemplate: '404page'
 });
 
 
 Router.route('/add', {
-  name: 'add',
-  layoutTemplate: 'AppLayout',
-  yieldRegions: {
-    'addForm': {to: 'content'},
-    'nav2': {to: 'nav'}
-  },
+  template: 'nav2',
+  layoutTemplate: '',
   action: function() {
-    // if (this.ready()) {
+    if (this.ready()) {
+      this.render();
       $('#modalAdd').modal('open');
-    // } else {
-      // this.render('loadingHourglass', {to: 'content'});
-      // this.next();
-      // this.render('nav2': {to: 'nav'});
-      // this.render('', {to: 'left'});
-    // }
+    }
   }
 });
 
@@ -157,7 +148,6 @@ AccountsTemplates.configureRoute('signIn', {
   path: '/login',
   layoutTemplate: 'AppLayout',
   yieldRegions: {
-    'fullPageAtForm': {to: 'content'},
     'nav2': {to: 'nav'}
   },  
   redirect: '/'
@@ -168,7 +158,6 @@ AccountsTemplates.configureRoute('signUp', {
   path: '/register',
   layoutTemplate: 'AppLayout',
   yieldRegions: {
-    'fullPageAtForm': {to: 'content'},
     'nav2': {to: 'nav'}
   }
 });

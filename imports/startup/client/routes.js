@@ -99,7 +99,7 @@ Router.route('/listings/:name', {
 });
 
 Router.route('/categories/:name', {
-  // name: 'categories.show',
+  name: 'categories',
   layoutTemplate: 'AppLayout',
   yieldRegions: {
     'showCategories': {to: 'content'},

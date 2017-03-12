@@ -2,38 +2,33 @@
 import 'materialize-css/js/animation';
 import 'materialize-css/js/buttons';
 import 'materialize-css/js/cards';
-import 'materialize-css/js/carousel';
+// import 'materialize-css/js/carousel';
 import 'materialize-css/js/character_counter';
 import 'materialize-css/js/chips';
 import 'materialize-css/js/collapsible';
 import 'materialize-css/js/dropdown';
 import 'materialize-css/js/forms';
 import 'materialize-css/js/global';
-import 'materialize-css/js/init';
 import 'materialize-css/js/initial';
 import 'materialize-css/js/jquery.easing.1.3';
 import 'materialize-css/js/jquery.hammer';
 import 'materialize-css/js/materialbox';
 import 'materialize-css/js/materialize';
 import 'materialize-css/js/modal';
-import 'materialize-css/js/parallax';
-import 'materialize-css/js/prism';
-import 'materialize-css/js/pushpin';
-import 'materialize-css/js/scrollspy';
-import 'materialize-css/js/sideNav';
-import 'materialize-css/js/slider';
-import 'materialize-css/js/tabs';
+// import 'materialize-css/js/parallax';
+// import 'materialize-css/js/prism';
+// import 'materialize-css/js/pushpin';
+// import 'materialize-css/js/scrollspy';
+// import 'materialize-css/js/sideNav';
+// import 'materialize-css/js/slider';
+// import 'materialize-css/js/tabs';
 import 'materialize-css/js/toasts';
 import 'materialize-css/js/tooltip';
 import 'materialize-css/js/transitions';
 import 'materialize-css/js/velocity.min';
 import 'materialize-css/js/waves';
-import 'materialize-css/js/date_picker/picker';
-import 'materialize-css/js/date_picker/picker.date';
-
-
-
-// import 'materialize-css/js/materialize';
+// import 'materialize-css/js/date_picker/picker';
+// import 'materialize-css/js/date_picker/picker.date';
 
 //Import Routes
 import './routes.js';
@@ -44,7 +39,20 @@ import '../../ui/layouts/splitLayout.js';
 
 console.log("-= imports/startup/client/index.js loaded");
 
+
+const isRunningStandalone = function() {
+    return (window.matchMedia('(display-mode: standalone)').matches);
+}
+
+
 Meteor.startup(function() {
+
+if (isRunningStandalone()) {
+    /* This code will be executed if app is running standalone */
+
+}
+
+
   Session.set('geoAccepted', false)
 
     //-- ANALYTICS EVENT (User dismiss/Accept Home Screen banner) --
@@ -124,6 +132,7 @@ Meteor.startup(function() {
       return test;
     }
   });
+
 
 });
 

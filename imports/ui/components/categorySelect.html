@@ -1,12 +1,12 @@
 <template name="catSelect">
-	<div class="btn_wrapper">
+	<div class="select_wrapper">
 		<a class="dropdown-button no_pad " href="#" data-activates="cat-dropdown" data-beloworigin="true" data-constrainwidth="false" data-alignment="left" data-tooltip="Filter by Category">
-		<i class="material-icons left">filter_list</i>
+		<i class="material-icons">filter_list</i>
 		Categories
 		</a>
 			<ul id="cat-dropdown" class="dropdown-content">
 			{{#each categories}}
-				<li><a href="/categories/{{name}}">{{name}}<span class="badge"> {{count}}</span></a></li>
+				<li class="cat_item"><a href="/categories/{{name}}">{{name}}<span class="badge"> {{count}}</span></a></li>
 			{{/each}}
 			</ul>
 	</div>

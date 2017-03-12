@@ -30,7 +30,12 @@ Template.catSelect.helpers({
   }
 });
 
+Template.catSelect.events({
+  'touchstart .cat_item, click .cat_item': function() {
+    $('.dropdown-button').dropdown('close');
+  },
 
+});
 // Template.catSelect.helpers({
 //   get_categories: function() {
 //     var results = [];

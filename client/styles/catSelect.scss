@@ -2,6 +2,17 @@
 @import '{}/node_modules/materialize-css/sass/components/variables';
 @import 'palettes/colors';
 
+// .select_wrapper {
+//   a {    
+//     position: relative;
+//     z-index: 0;
+//   }
+
+//   i {    
+//     position: relative;
+//     z-index: -1;
+//   }
+// }
 
 .dropdown-content {
   background-color: $clr-grey-light;

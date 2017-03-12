@@ -45,7 +45,7 @@ Template.centerButton.onRendered(function() {
 });
 
 Template.centerButton.events({
-    'click, touchstart #centerButton_button' : function(evt,tpl){
+    'click, touchstart' : function(evt,tpl){
 
       if (Session.get("clientLoc")) {
         let loc = Session.get("clientLoc");

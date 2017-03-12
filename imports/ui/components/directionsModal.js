@@ -4,7 +4,7 @@ import {Template} from 'meteor/templating';
 import './directionsModal.html';
 
 Template.directionsModal.events({
-	'click, touchstart #closeButton_button' : function(evt,tpl){
+	'click #closeButton_button, touchstart #closeButton_button' : function(evt,tpl){
 	    //close modal
 	    this.modal('close');
 	  }

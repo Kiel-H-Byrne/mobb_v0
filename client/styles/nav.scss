@@ -2,7 +2,6 @@
 @import '{}/node_modules/materialize-css/sass/components/variables';
 @import 'palettes/colors';
 
-
   ::-webkit-input-placeholder {
     color: $clr-orange;
     text-transform: capitalize;
@@ -49,7 +48,8 @@
 .navbar-fixed {
 
   img {
-    max-height: ($navbar-height - 7px);
+    max-height: ($navbar-height/2);
+    margin: 1rem auto;
   }
 
   i {

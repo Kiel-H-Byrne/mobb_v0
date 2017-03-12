@@ -41,13 +41,19 @@
     "**/extjs/resources/**",
     "**/extjs/src/**",
     "**/extjs/welcome/**",
-    "bower_components/**"
+    ".meteor/**"
   ],
   "critics": {
-    "lint": {"engine": "eslint"}
+    "lint": {"engine": "jslint"}
   },
   "test": [
     "**/test/**",
     "**/tests/**"
-  ]
+  ],
+  "dependencies": {
+    "unused-ignores": [
+      "grunt*",
+      "yelp-fusion",
+    ]
+  }
 }

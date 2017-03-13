@@ -44,7 +44,7 @@
     ".meteor/**"
   ],
   "critics": {
-    "lint": {"engine": "jslint"}
+    "lint": {"engine": "eslint"}
   },
   "test": [
     "**/test/**",

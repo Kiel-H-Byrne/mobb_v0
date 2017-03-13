@@ -8,6 +8,7 @@ import '../components/fullListing.html';
 import '../components/fullCard.js';
 import '../pages/showCategories.js';
 import '../pages/terms.js';
+import '../pages/about.js';
 import '../pages/test.js';
 import '../pages/listPage.js';
 import '../pages/galleryPage.js';

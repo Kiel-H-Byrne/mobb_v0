@@ -140,6 +140,13 @@ Router.route('/add', {
   }
 });
 
+Router.route('/kibu', {
+    name: 'about',
+    layoutTemplate: 'AppLayout',
+    yieldRegions: {
+      'nav2': {to: 'nav'}
+    }
+});
 
 // ==================== "atNavButton" routes Button ====================
 

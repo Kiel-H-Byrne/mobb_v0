@@ -210,15 +210,15 @@ Listings.attachSchema(new SimpleSchema({
     type: String,
     unique: true,
     label: 'Website',
-    regEx: SimpleSchema.RegEx.Domain,
+    regEx: SimpleSchema.RegEx.Url,
     optional: true,
     autoValue: function() {
-      console.log(this);
       //if string starts with "http//" or https://", Ok, else prepend with "http://"
-      // let url = this.value;
-      // url = trim(url, '!"#$%&\'()*+,-./@:;<=>[\\]^_`{|}~');
-      // console.log(url);
-      // return url;
+      let url = this.value;
+      if (!url.includes("http://")) {
+        url = `http://${url}`;
+      }
+      return url;
     }
   },
   social: {
@@ -418,7 +418,9 @@ Listings.attachSchema(new SimpleSchema({
     label: 'Categories',
     optional: true,
     autoValue: function() {
-      let isOnline = this.field('onlineonly').value;
+      if (this.field('onlineonly').value) {
+        let isOnline = this.field('onlineonly').value;  
+      }
       let name = this.field('name').value;
       // if (isOnline) {
       //   if (this.isInsert) {

@@ -56,14 +56,14 @@ AutoForm.addHooks('addListingForm', {
   	console.log("Thanks for Submitting!");
     //draw marker?
     //change content(inner html) of addForm template.
-    $('#modalAdd').html(
-      ` <div id="submitMsg" class="modal-content"> 
-       <h3 class="centered"> Thank You! </h3> 
-       {{{> closeButton}}}
-       </div> 
+    // $('#modalAdd').html(
+    //   ` <div id="submitMsg" class="modal-content"> 
+    //    <h3 class="centered"> Thank You! </h3> 
+    //    {{{> closeButton}}}
+    //    </div> 
 
-       `
-      );
-    // $('#modalAdd').delay(1100).modal('close');
+    //    `
+    //   );
+    $('#modalAdd').delay(1100).modal('close');
   },
 });

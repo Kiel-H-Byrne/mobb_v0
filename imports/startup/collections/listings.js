@@ -422,17 +422,6 @@ Listings.attachSchema(new SimpleSchema({
         let isOnline = this.field('onlineonly').value;  
       }
       let name = this.field('name').value;
-      // if (isOnline) {
-      //   if (this.isInsert) {
-      //     return Listings.update({
-      //       name: name
-      //     },{
-      //       $addToSet: {
-      //          categories: "Online Only"
-      //       }
-      //     });
-      //   }
-      // }
     }
     // autoform: {
     //   afFieldInput: {

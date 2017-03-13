@@ -42,7 +42,7 @@ console.log("-= imports/startup/client/index.js loaded");
 
 const isRunningStandalone = function() {
     return (window.matchMedia('(display-mode: standalone)').matches);
-}
+};
 
 
 Meteor.startup(function() {
@@ -53,7 +53,7 @@ if (isRunningStandalone()) {
 }
 
 
-  Session.set('geoAccepted', false)
+  Session.set('geoAccepted', false);
 
     //-- ANALYTICS EVENT (User dismiss/Accept Home Screen banner) --
 

@@ -1,9 +1,9 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 // ======================== YELP v3 API =============================
-const Yelp = require('yelp-fusion');
-const yelp_client_id = Meteor.settings.public.keys.yelp.app_id;
-const yelp_client_secret = Meteor.settings.public.keys.yelp.app_secret;
+// const Yelp = require('yelp-fusion');
+// const yelp_client_id = Meteor.settings.public.keys.yelp.app_id;
+// const yelp_client_secret = Meteor.settings.public.keys.yelp.app_secret;
 //=================== NEW COLLECTION =========================
 
 Listings = new orion.collection('listings', {
@@ -102,7 +102,9 @@ Listings = new orion.collection('listings', {
 });
 
 if ( Meteor.isServer ) {
+  // ALLOW FOR SORTING (?) 
   Listings._ensureIndex( { name: 1, onlineonly: 1, city: 1 } );
+
   // Meteor.subscribe('categories', function() {
   //   const catArray = Categories.find().fetch();
   //   console.log(catArray);
@@ -215,8 +217,8 @@ Listings.attachSchema(new SimpleSchema({
     autoValue: function() {
       //if string starts with "http//" or https://", Ok, else prepend with "http://"
       let url = this.value;
-      if (!url.includes("http://")) {
-        url = `http://${url}`;
+      if (url && !url.includes("http://")) {
+        url = "http://" + url;
       }
       return url;
     }
@@ -270,6 +272,7 @@ Listings.attachSchema(new SimpleSchema({
     type: String,
     optional: true,
     autoValue: function() {
+      return;
       //do a yelp phone search using phone number, return value of call.
 //       if ( this.field("phone").isSet && this.isInsert && !this.isSet) {
         
@@ -422,8 +425,13 @@ Listings.attachSchema(new SimpleSchema({
         let isOnline = this.field('onlineonly').value;  
       }
       let name = this.field('name').value;
-    }
+    },
     // autoform: {
+      // options: function() {
+      //   return Categories.find().map(function(c) {
+      //     return {label: c.name, value: c.name};
+      //   });
+      // },
     //   afFieldInput: {
     //     type: "select-checkbox",
     //     class: "category-option"
@@ -507,11 +515,5 @@ Listings.deny({
   // fetch: ['locked'] // no need to fetch 'owner'
 });
 
-// Listings.insert(
-//   {
-//     name: 'test biz',
-//     phone: '14157492060'
-//   }
-// );
 
 export default Listings;

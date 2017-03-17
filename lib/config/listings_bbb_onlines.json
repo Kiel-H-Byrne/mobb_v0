@@ -4,7 +4,7 @@
       "name": "A DOG NAMED Paul",
       "url": "https://www.adognamedpaul.com",
       "phone": "2489528364",
-      "social": "@adnpapproach",
+      "social": "adnpapproach",
       "image": {
         "url": false
       },
@@ -495,7 +495,7 @@
       "image": {
         "url": true
       },
-      "categories": [ "Online Only" ]
+      "categories": [ "Online Only", "Professional Services" ]
     },
     {
       "name": "KMF Strategies",
@@ -540,7 +540,7 @@
       "image": {
         "url": false
       },
-      "categories": [ "Online Only" ]
+      "categories": [ "Online Only", "Personal Services" ]
     },
     {
       "name": "Littlebug Web Management",
@@ -549,7 +549,7 @@
       "image": {
         "url": false
       },
-      "categories": [ "Online Only" ]
+      "categories": [ "Online Only", "Professional Services", "Information & Technology" ]
     },
     {
       "name": "Loving Anvil",
@@ -612,7 +612,7 @@
       "image": {
         "url": false
       },
-      "categories": [ "Online Only" ]
+      "categories": [ "Online Only", "Professional Services" ]
     },
     {
       "name": "Modere",
@@ -639,7 +639,7 @@
       "image": {
         "url": false
       },
-      "categories": [ "Online Only" ]
+      "categories": [ "Online Only", "Professional Services" ]
     },
     {
       "name": "New Garden City, LLC",
@@ -684,7 +684,7 @@
       "image": {
         "url": true
       },
-      "categories": [ "Online Only" ]
+      "categories": [ "Online Only", "Professional Services" ]
     },
     {
       "name": "Oyin Handmade",
@@ -716,7 +716,7 @@
     {
       "name": "Phoenix/Milcham, LLC",
       "url": "http://PhoenixMilcham.com",
-      "phone": "601878127",
+      "phone": "6018781271",
       "image": {
         "url": false
       },
@@ -770,7 +770,7 @@
     {
       "name": "Pursue Your Purpose LLC",
       "url": "http://www.PursueYourPurpose.com",
-      "phone": "18775759940",
+      "phone": "8775759940",
       "image": {
         "url": false
       },
@@ -801,7 +801,7 @@
       "image": {
         "url": false
       },
-      "categories": [ "Online Only" ]
+      "categories": [ "Online Only", "Professional Services" ]
     },
     {
       "name": "SK Business Solutions",
@@ -810,7 +810,7 @@
       "image": {
         "url": false
       },
-      "categories": [ "Online Only" ]
+      "categories": [ "Online Only", "Professional Services" ]
     },
     {
       "name": "Safety Pouches and Jewels",
@@ -819,7 +819,7 @@
       "image": {
         "url": false
       },
-      "categories": [ "Online Only" ]
+      "categories": [ "Online Only", "Apparel & Accessories" ]
     },
     {
       "name": "Sell It Now",
@@ -864,7 +864,7 @@
       "image": {
         "url": false
       },
-      "categories": [ "Online Only" ]
+      "categories": [ "Online Only", "Personal Services" ]
     },
     {
       "name": "TAMCO Capital Accounting &amp; inance",
@@ -873,7 +873,7 @@
       "image": {
         "url": false
       },
-      "categories": [ "Online Only" ]
+      "categories": [ "Online Only", "Professional Services" ]
     },
     {
       "name": "TLRay Marketing",
@@ -882,7 +882,7 @@
       "image": {
         "url": false
       },
-      "categories": [ "Online Only" ]
+      "categories": [ "Online Only", "Professional Services" ]
     }
   ]
 }

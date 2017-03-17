@@ -2,7 +2,7 @@
 
 <template name="galleryCard">
   <a href="{{url}}" target="_blank" rel="noopener">
-    <div id="{{_id}}" class="info-card masonry_item card sticky-action grey darken-2 hoverable grid-item">
+    <div id="{{_id}}" class="info-card masonflex_item card sticky-action grey darken-2 hoverable grid-item">
 
       {{#if hasImage}}
       <div class="card-image waves-effect waves-block waves-light"> 
@@ -11,7 +11,7 @@
       {{/if}}
       <div class="card-content white-text">
           <span class="card-title "> <h5 class="amber-text text-darken-1 center-align">{{name}}</h5></span>
-          <h6 class="center-align"><a href="https://twitter.com/{{social}}" target="_blank" rel="noopener" > {{social}}</a></h6>
+          <h6 class="center-align"><a class="social" href="https://twitter.com/{{social}}" target="_blank" rel="noopener" > {{social}}</a></h6>
 
           <p class="center-align address">
           {{#if street}}
@@ -38,14 +38,8 @@
         {{/with}}
       </div>
 
-      <div class="card-action">
+      <!--div class="card-action">
         <div class="row center-align">
-{{!--           {{#if url}}     
-          <div class="col "><a class="btn-floating amber" target="_blank" rel="noopener" title="Website" href="{{url}}"><i class="material-icons">link</i></a></div>
-          {{/if}} --}}
-{{!--           {{#if phone}}    
-          <div class="col "><a class="btn-floating amber darken-2" title="Call" href="tel:+1{{phone}}"><i class="material-icons">phone</i></a></div>
-          {{/if}} --}}
           {{#if currentUser}}
           <div class="col ">
             <a class="btn-floating amber darken-3 modal-trigger" id="verify_button" title="Is This Information Correct?" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
@@ -57,12 +51,11 @@
           {{/if}}
           {{#if street}}    
           <div class="col ">
-            <!-- a class="btn-floating amber darken-4 modal-trigger" id="directions_button" title="Directions" href="#modalDirections"><i class="material-icons">navigation</i></a-->
             <a class="btn-floating amber darken-4" title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" ><i class="material-icons">navigation</i></a>
           </div>
           {{/if}}
         </div>
-      </div>
+      </div-->
     </div>  
   </a>
 </template>

@@ -6,7 +6,12 @@
 		</a>
 			<ul id="cat-dropdown" class="dropdown-content">
 			{{#each categories}}
-				<li class="cat_item"><a href="/categories/{{name}}">{{name}}<span class="badge"> {{count}}</span></a></li>
+				<li class="cat_item">
+				<a href="/categories/{{name}}">
+				<span class="left">{{name}}</span>
+				<span class="badge right"> {{count}}</span>
+				</a>
+				</li>
 			{{/each}}
 			</ul>
 	</div>

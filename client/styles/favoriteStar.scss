@@ -1,8 +1,21 @@
+
+@import '{}/node_modules/materialize-css/sass/components/color';
+@import '{}/node_modules/materialize-css/sass/components/variables';
+@import 'palettes/colors';
+
 .fav_star {
   position: absolute;
   top: 0;
   right: 0;
   z-index: 2;
   padding: .3rem;
-  line-height: 0rem;
+  line-height: 1 rem;
+
+  .remove_favorite {
+    color: $clr-orange;
+  }
+
+  .add_favorite {
+    color: $clr-gold;
+  }
 }

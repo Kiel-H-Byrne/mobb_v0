@@ -2,7 +2,7 @@
 @import '{}/node_modules/materialize-css/sass/components/variables';
 @import 'palettes/colors';
 
-// .select_wrapper {
+.select_wrapper {
 //   a {    
 //     position: relative;
 //     z-index: 0;
@@ -12,24 +12,25 @@
 //     position: relative;
 //     z-index: -1;
 //   }
-// }
 
-.dropdown-content {
-  background-color: $clr-grey-light;
-  
-  li {
-    min-height: inherit;
 
-    a {
-        padding: .5rem;
-        color: $clr-orange;
+  .dropdown-content {
+    min-width: 260px;
+    background-color: $clr-grey-light;
+    
+    li {
+      min-height: inherit;
+
+      a {
+          padding: .5rem;
+          color: $clr-orange;
+      }
+    }
+      
+    .badge {
+      color: $clr-grey;
+      background-color: $clr-green;
     }
   }
-    
-  .badge {
-    float: right;
-    margin: 0;
-    color: $clr-grey;
-    background-color: $clr-green;
-  }
+
 }

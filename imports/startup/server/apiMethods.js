@@ -435,9 +435,11 @@ Meteor.methods({
     
   },
   calcDistance: function(start,finish) {
-    let dist = google.maps.geometry.spherical.computeDistanceBetween(start,finish);
-    console.log(dist);
-    return dist;
+    if (Meteor.isClient) {
+      let dist = google.maps.geometry.spherical.computeDistanceBetween(start,finish);
+      console.log(dist);
+      return dist;
+    }
   }
 });
 

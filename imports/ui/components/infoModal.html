@@ -14,15 +14,16 @@
           <!--div id="infoWrap" class="col s12 m6 offset-m3" style="background-image: url('{{image.url}}'), linear-gradient(rgba(055, 10, 0, 1), rgba(0, 0, 0, .4)) "-->
             <div id="infoWrap" class="col s12 m6 offset-m3" >
             <div class="modal-content white-text" style="padding:3px">
-                  <h5 class="amber-text text-darken-1 center-align"><a href="{{url}}" target="_blank" rel="noopener" >{{name}}</a></h5>
-                  <h6> {{getDistance location}} mi. </h6>
-                  <h6> {{location}} </h6>
+                  <h5 class="amber-text text-darken-1 center-align"><a href="{{url}}" target="_blank" rel="noopener" >{{name}}</a><span class="badge green amber-text"> {{getDistance location}} mi. </span></h5>
+                  
                   <p class="center-align address">
 
                     <span id="address-content">
                     {{street}} <br />
-                    {{city}} {{state}} {{zip}} <br />
+                    {{city}} {{state}} {{zip}} 
+                    <br />
                     </span>
+
                     <a class="center-align phone" href="tel:+1{{phone}}">{{phone}}</a>
                   </p>
             </div>

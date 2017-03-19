@@ -40,7 +40,6 @@ $.getJSON("https://freegeoip.net/json/", {
 Template.map.onCreated( function() {  
     // console.log("-= MAP: Created =-");
     let self = this;
-  
     GoogleMaps.ready('map', function(map) {
       $(document).ready(function() {
   
@@ -171,8 +170,15 @@ Template.map.onCreated( function() {
                         marker.addListener('click', function() {
                             Session.set('openListing', id);
                             $('#modalInfo').modal('open');
-
-                            // Router.go('/', {_id: id});
+                            
+                            //calculate distance 
+                            // let start = new google.maps.LatLng(Session.get('clientLoc') || Session.get('browserLoc'));
+                            // let finish = new google.maps.LatLng(latLngObj);
+                            // console.log(start, finish);
+                            // let dist = google.maps.geometry.spherical.computeDistanceBetween(start,finish);
+                            // // multiply meters by 0.000621371 for number of miles.
+                            // console.log(`${dist * 0.000621371} mi`);
+                            // // Router.go('/', {_id: id});
 
                         });
                     } // else cannot place marker on map, it does not have lat/lng yet

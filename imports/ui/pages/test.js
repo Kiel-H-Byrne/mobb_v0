@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import {Template} from 'meteor/templating';
 
 import './test.html';
-
+import './closestPage.js';
 //place a search on specific name and location, on insert. 
 Template.test.onCreated( function() {  
     $(document).ready(function() {

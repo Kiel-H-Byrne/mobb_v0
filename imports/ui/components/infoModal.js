@@ -13,27 +13,7 @@ Template.infoModal.helpers({
 		let doc = Listings.findOne({_id: id});
 		// console.log(doc);
 		return doc;
-	},
-	'getDistance': function(dest) {
-
-			if (GoogleMaps.loaded()) {
-				let latLng = dest.split(",");
-				if (latLng) {
-		      let lat = Number(latLng[0]);
-		      let lng = Number(latLng[1]);
-		      let latLngObj = _.object( ['lat', 'lng'], [lat, lng]);
-					
-					let start = new google.maps.LatLng(Session.get('clientLoc') || Session.get('browserLoc'));
-          let finish = new google.maps.LatLng(latLngObj);
-					// let res = Meteor.call('calcDistance', loc, dest);
-					
-					let dist = google.maps.geometry.spherical.computeDistanceBetween(start,finish);
-					// multiply meters by 0.000621371 for number of miles.
-          let res = (dist * 0.000621371).toFixed(2)
-					return res;
-				}
-			}
-		}
+	}
 });
 
 Template.infoModal.onRendered(function() {

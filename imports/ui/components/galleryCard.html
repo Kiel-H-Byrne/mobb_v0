@@ -10,6 +10,7 @@
       </div>
       {{/if}}
       <div class="card-content white-text">
+
           <span class="card-title "> <h5 class="amber-text text-darken-1 center-align">{{name}}</h5></span>
           <h6 class="center-align"><a class="social" href="https://twitter.com/{{social}}" target="_blank" rel="noopener" > {{social}}</a></h6>
 
@@ -27,7 +28,9 @@
 
           <!--p>{{description}}</p-->
       </div>
-
+      {{#if location}}
+      <span class="secondary-content badge amber-text text-darken-3"> {{getDistance location}} mi. </span>
+      {{/if}}
       <div class="card-reveal">
         <span class="card-title amber-text text-darken-4">Reviews<i class="material-icons right">close</i></span>
         

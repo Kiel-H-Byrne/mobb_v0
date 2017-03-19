@@ -1,0 +1,36 @@
+@import '{}/node_modules/materialize-css/sass/components/color';
+@import '{}/node_modules/materialize-css/sass/components/variables';
+@import 'palettes/colors';
+
+.closest-wrapper {
+  @media #{$small-and-down} {
+    position: absolute;
+    left:0; 
+    right:0;
+    height: 40%;
+    
+    .title > * {
+      font-size: 2rem;
+    }
+    
+    .card-wrapper {
+      height: 30%;
+      position: fixed;
+      overflow-x: scroll;
+    }
+
+  }
+
+  @media #{$medium-and-up} {
+    position: absolute;
+    left: 0;
+    right: 50%;
+  }
+
+  background-color: $clr-grey-clear;
+  
+  .title {
+    background-color: $clr-grey-light;
+  }
+  margin-top: 30px;
+}

@@ -13,7 +13,13 @@ Template.infoModal.helpers({
 		let doc = Listings.findOne({_id: id});
 		// console.log(doc);
 		return doc;
-	}	
+	},
+	'getDistance': function(dest) {
+		let loc = Session.get('clientLoc');
+		let res = Meteor.call('calcDistance', loc);
+		console.log(res);
+		return res;
+	}
 });
 
 Template.infoModal.onRendered(function() {

@@ -8,7 +8,10 @@ Meteor.publish('listings', function() {
 });
 
 Meteor.publish('listings_locs', function() {
-	let cursor = Listings.find({location: { $exists : 1}, certs: {$exists: 0}});
+	let cursor = Listings.find({
+		location: { $exists : 1}, 
+		certs: {$exists: 0}
+	});
 	console.log("-= PUBLISHING: ALL ["+ cursor.count() +"] LISTINGS WITH LOCATIONS =-");
 	return cursor;
 });
@@ -45,5 +48,13 @@ Meteor.publish('listings_social', function() {
 Meteor.publish('listings_images', function() {
 	let cursor = Listings.find({image: { $exists : 1}});
 	console.log("-= PUBLISHING: ["+ cursor.count() +"] LISTINGS W/ IMAGES =-");
+	return cursor;
+});
+
+Meteor.publish('listings_md', function() {
+	let cursor = Listings.find({
+		state: "MD"
+	});
+	console.log("-= PUBLISHING: ["+ cursor.count() +"] MD LISTINGS =-");
 	return cursor;
 });

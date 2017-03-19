@@ -433,6 +433,11 @@ Meteor.methods({
         // return miles;
     });
     
+  },
+  calcDistance: function(start,finish) {
+    let dist = google.maps.geometry.spherical.computeDistanceBetween(start,finish);
+    console.log(dist);
+    return dist;
   }
 });
 

@@ -1,0 +1,28 @@
+<template name="closestList">
+  <div class="list-wrapper row hide-on-med-and-up">
+    <ul class="collection with-header col s12">
+    <li class="collection-header grey darken-2 hoverable  center-align">
+      <h4>Closest Businesses</h4>
+    </li>
+    {{#each list}}
+
+      <li class="collection-item avatar grey darken-2 hoverable ">
+      {{#if hasImage}}
+        <img src="/img/gallery/{{name}}.png" alt="" class="circle">
+      {{/if}}
+        <h4 class="truncate amber-text text-darken-1">{{name}}</h4>
+        <h6 > {{social}}</h6>
+        {{#if street}}
+        <p class="address">
+              {{street}} <br />
+              {{city}} {{state}} {{zip}} <br />
+        </p>
+        {{/if}}
+        <a class="phone" href="tel:+1{{phone}}">{{phone}}</a>
+        {{> favoriteStar}}
+        
+      </li>
+    {{/each}}
+    </ul>
+  </div>
+</template>

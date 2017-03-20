@@ -11,7 +11,8 @@ import './map.html';
 //====== GLOBALS ======
 
 MAP_ZOOM = 4;
-let clientMarker;
+clientMarker = null;
+clientRadius = null;
 
 $.getJSON("https://freegeoip.net/json/", {
     format: "jsonp"
@@ -117,6 +118,15 @@ Template.map.onCreated( function() {
             // url: 'img/orange_marker_3_sm.png'
             url: 'img/orange_dot_sm_2.png'
         };
+
+        const self_radius = {
+            strokeColor: '#FF7733',
+            strokeOpacity: 0.5,
+            strokeWeight: 2,
+            fillColor: '#FFAA00',
+            fillOpacity: 0.15,
+        }
+
         const browser_symbol = {
             path: "M21 3L3 10.53v.98l6.84 2.65L12.48 21h.98L21 3z",
             fillColor: '#FF0000',
@@ -228,9 +238,22 @@ Template.map.onCreated( function() {
                               title: "My Location",
                               // animation: google.maps.Animation.BOUNCE,
                           });
+                          
+                          clientRadius = new google.maps.Circle({
+                            map: map.instance,
+                            center: pos,
+                            radius: (5 * 1609.34),
+                            strokeColor: '#FF7733',
+                            strokeOpacity: 0.5,
+                            strokeWeight: 2,
+                            fillColor: '#FFAA00',
+                            fillOpacity: 0.15,
+                          });
+
                           map.instance.setCenter(pos); 
                         } else {
                           clientMarker.setPosition(pos);
+                          clientRadius.setCenter(pos);
                         }
                         return;
                       }

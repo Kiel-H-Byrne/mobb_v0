@@ -15,5 +15,11 @@ Template.showCategories.helpers({
 Template.showCategories.onRendered(function() {
   $(document).ready(function() {
     $('.editModal-trigger').modal();
+   
+    let msnry = new Masonry('.categoryFlex', {
+     itemSelector: '.categoryFlex_item',
+     columnWidth: '.categoryFlex_item',
+    });
+
   });
 });

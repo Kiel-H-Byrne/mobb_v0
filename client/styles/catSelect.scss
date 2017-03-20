@@ -20,9 +20,16 @@
     
     li {
       min-height: inherit;
+      
+      &:hover {
+        background-color: $clr-grey-light;
+      }
+      // margin: .3rem;
 
       a {
-          padding: .5rem;
+          padding: 0;
+          margin: 0;
+          height: 2rem;
           color: $clr-orange;
       }
     }

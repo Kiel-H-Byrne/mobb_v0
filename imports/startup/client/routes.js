@@ -43,7 +43,7 @@ Router.route('/test', {
   yieldRegions: {
     // 'test': {to: 'content'},
     'nav2': {to: 'nav'},
-    'footer': {to: 'footer'}
+    'footer': {to: 'footer'},
   }
 });
 

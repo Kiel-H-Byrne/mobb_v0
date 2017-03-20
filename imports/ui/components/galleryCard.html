@@ -1,8 +1,8 @@
 
 
 <template name="galleryCard">
-  <a href="{{url}}" target="_blank" rel="noopener">
-    <div id="{{_id}}" class="info-card masonflex_item card sticky-action grey darken-2 hoverable grid-item">
+  <a class="card_link" href="{{url}}" target="_blank" rel="noopener">
+    <div id="{{_id}}" class="info-card closestFlex_item card sticky-action grey darken-2 hoverable ">
 
       {{#if hasImage}}
       <div class="card-image waves-effect waves-block waves-light"> 
@@ -29,7 +29,8 @@
           <!--p>{{description}}</p-->
       </div>
       {{#if location}}
-      <span class="secondary-content badge amber-text text-darken-3"> {{getDistance location}} mi. </span>
+      <a class="" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener">
+        <span class="badge " data-badge-caption="mi"> {{getDistance location}} </span></a>
       {{/if}}
       <div class="card-reveal">
         <span class="card-title amber-text text-darken-4">Reviews<i class="material-icons right">close</i></span>

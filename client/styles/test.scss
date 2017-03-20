@@ -1,0 +1,40 @@
+  @import url('https://fonts.googleapis.com/css?family=Kumar+One|Raleway');
+
+  .test-wrapper {
+
+    width: 90%;
+    margin: 50px auto;
+    padding: 1rem;
+    border-radius: 10px;
+    background: #6a3340;
+    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+
+    .masonflex {
+
+    }
+
+    .masonflex_item {
+      float: left;
+      width: 80px;
+      height: 60px;
+      border: 2px solid green;
+    }
+    
+    h3 {
+      font-family: 'Kumar One', cursive;
+    }
+
+    p {
+        font-family: 'Raleway', sans-serif;
+    }
+  }
+
+/*  [id='miniMap'] {
+    bottom: 50%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }*/

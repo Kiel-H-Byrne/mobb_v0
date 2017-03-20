@@ -14,9 +14,10 @@ setCenter = function(pos) {
     GoogleMaps.maps.map.instance.setZoom(12);
 };
 
-let clientMarker;
+// let clientMarker;
   
 placeMyMarker = function(pos) {
+  //would only not exist if the template reloaded and the browser didn't...(dev mode)
   if (!clientMarker) {
     clientMarker = new google.maps.Marker({
       position: new google.maps.LatLng(pos.lat, pos.lng),
@@ -25,8 +26,19 @@ placeMyMarker = function(pos) {
       title: "My Location",
       animation: google.maps.Animation.BOUNCE,
     }); 
+    clientRadius = new google.maps.Circle({
+      map: GoogleMaps.maps.map.instance,
+      center: pos,
+      radius: (5 * 1609.34),
+      strokeColor: '#FF7733',
+      strokeOpacity: 0.5,
+      strokeWeight: 2,
+      fillColor: '#FFAA00',
+      fillOpacity: 0.15,
+    });
   } else {
     clientMarker.setPosition(pos);
+    clientRadius.setCenter(pos);
   }
 };
 

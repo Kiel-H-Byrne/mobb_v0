@@ -44,6 +44,7 @@ const isRunningStandalone = function() {
     return (window.matchMedia('(display-mode: standalone)').matches);
 };
 
+Masonry = require('masonry-layout/masonry.js');
 
 Meteor.startup(function() {
 
@@ -135,7 +136,7 @@ if (isRunningStandalone()) {
 
   Template.registerHelper('getDistance', function(dest) {
       //Get distance, convert to miles, flag as 'is_close' class if under X miles, (this class will be visible) 
-      console.log(this)
+      // console.log(this)
       if (GoogleMaps.loaded()) {
         let latLng = dest.split(",");
         if (latLng) {
@@ -156,7 +157,7 @@ if (isRunningStandalone()) {
     });
 
   Template.registerHelper('isClose', function(distance) {
-    if (distance <= 6) {
+    if (distance <= 5) {
       return true;
     } else {
       return false;

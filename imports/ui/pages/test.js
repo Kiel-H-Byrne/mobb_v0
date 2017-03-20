@@ -14,7 +14,7 @@ Template.test.onCreated( function() {
         gutter: 0, // Spacing from edge
         belowOrigin: false, // Displays dropdown below the button
         alignment: 'left', // Displays dropdown with edge aligned to the left of button
-        stopPropagation: false // Stops event propagation
+        stopPropagation: true // Stops event propagation
       });
 
       $('.dropdown-button').dropdown();      

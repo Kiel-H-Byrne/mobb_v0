@@ -8,6 +8,7 @@ import './categorySelect.html';
 Template.catSelect.onRendered(function() {
   $(document).ready(function() {
     $('.dropdown-button').dropdown({
+      stopPropagation: true
       // inDuration: 200,
       // outDuration: 225,
       // constrain_width: false, // Does not change width of dropdown to that of the activator
@@ -31,7 +32,8 @@ Template.catSelect.helpers({
 });
 
 Template.catSelect.events({
-  'touchstart .cat_item, click .cat_item': function() {
+  'touchstart .cat_item, click .cat_item': function(e,t) {
+
     $('.dropdown-button').dropdown('close');
   },
 

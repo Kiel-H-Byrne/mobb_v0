@@ -13,6 +13,7 @@ Template.geoModal.events({
     });
     
     Session.set('clientLoc', Geolocation.latLng());
+    Session.set('geoAsked', true);
     Session.set('geoAccepted', true);
     $('#modalGeo').modal('close');
   },
@@ -22,8 +23,9 @@ Template.geoModal.events({
       title: "Accepted GeoLocation",
       data: false
     });
-
+    Session.set('geoAsked', true);
     Session.set('geoAccepted', false);
+
     $('#modalGeo').modal('close');
   }
 });

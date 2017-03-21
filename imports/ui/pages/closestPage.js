@@ -42,7 +42,8 @@ Template.closestPage.helpers({
     let theList = Listings.find({
       location: { $exists : 1}, 
       certs: {$exists: 0},
-    });
+    }, {sort: {location: -1, name: 1}});
+    
     return theList;
   }
 });

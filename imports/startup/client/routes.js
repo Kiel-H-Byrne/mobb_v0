@@ -109,7 +109,11 @@ Router.route('/categories/:name', {
     this.subscribe('listings', {$in: [this.params.name]}).wait();
   },
   data: function() {
-    let cursor = Listings.find({categories: {$in: [this.params.name]}});
+    let cursor = Listings.find({
+      categories: {$in: [this.params.name]}
+    },{
+      sort: {location: -1, name: 1}
+    });
     if (cursor.fetch().length !== 0) {
       return {list: cursor.fetch()};
     } else {

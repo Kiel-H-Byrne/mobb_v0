@@ -24,7 +24,7 @@ Categories = new orion.collection('categories', {
 });
 
 if ( Meteor.isServer ) {
-  Categories._ensureIndex( { title: 1, count: 1 } );
+  Categories._ensureIndex( { name: 1, count: 1 } );
 }
 
 //=================== COLLECTION SECURITY =========================

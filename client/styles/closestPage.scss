@@ -2,15 +2,37 @@
 @import '{}/node_modules/materialize-css/sass/components/variables';
 @import 'palettes/colors';
 
+.closest-wrapper {
+    background-color: $clr-grey-clear;
+    
+    .title {
+      background-color: $clr-grey-light;
+    }
+
+    .addModal-trigger {
+      display: block;
+      background-color: $clr-orange;   
+      font-size: 1.2rem;
+      color: white;
+      margin: .3rem;
+      padding: .2rem;
+    }
+}
+
 @media #{$small-and-down} {
   .closest-wrapper {
+
+    h3 {
+      margin: .5rem;;
+    }
 
     font-size: .8rem;
     // display: none;
     position: absolute;
     left: 0; 
     width: 33%;
-    top:80px;
+    margin-top:40px;
+    padding: .5rem 0;
 
     .title > * {
       font-size: 1.5rem;
@@ -61,12 +83,6 @@
 
     h3 {
       margin: .5rem;
-    }
-
-    background-color: $clr-grey-clear;
-    
-    .title {
-      background-color: $clr-grey-light;
     }
 
   }

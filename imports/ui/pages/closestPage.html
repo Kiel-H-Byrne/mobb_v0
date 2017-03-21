@@ -1,9 +1,10 @@
 <template name="closestPage">
   <div class="closest-wrapper z-depth-1">
     <div class="row title"> 
-      <h3 class="amber-text text-darken-2 center-align"> Closest Listings </h3>
+      <h3 class="col s12 amber-text text-darken-2 center-align"> Near You: </h3>
     </div>
-    <div class="masonry_wrapper">
+    {{#if list}}
+    <div class="row masonry_wrapper">
       <div class="card-wrapper closestFlex">
       <div class="closestFlex_sizer"></div>
         {{#each list}}
@@ -13,5 +14,16 @@
         {{/each}}
       </div>
     </div>
+    {{else}}
+    <div class="row grey darken-3">
+      <div class="col s12 center-align" >
+        <p class="flow-text">
+        None at the moment... 
+        <a class="addModal-trigger" href="#modalAdd" >Add Some! </a>
+        </p>
+        
+      </div>
+    </div>
+    {{/if}}
   </div>
 </template>

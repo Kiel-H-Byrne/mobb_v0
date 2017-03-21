@@ -29,7 +29,7 @@ placeMyMarker = function(pos) {
     clientRadius = new google.maps.Circle({
       map: GoogleMaps.maps.map.instance,
       center: pos,
-      radius: (5 * 1609.34),
+      radius: (3 * 1609.34),
       strokeColor: '#FF7733',
       strokeOpacity: 0.5,
       strokeWeight: 2,

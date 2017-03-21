@@ -14,7 +14,7 @@
   // flex-flow: row wrap;
 }
 .categoryFlex {
-
+  margin: auto;
 
   .categoryFlex_item {
     float: left;
@@ -25,6 +25,10 @@
 
 //MOBILE 
 @media #{$medium-and-down} {
+  .showCategories-wrapper {
+    margin-top: 35px;
+  }
+
   h2, .row {
     margin: 0;
   }

@@ -151,14 +151,14 @@ if (isRunningStandalone()) {
           
           let dist = google.maps.geometry.spherical.computeDistanceBetween(start,finish);
           // multiply meters by 0.000621371 for number of miles.
-          let res = (dist * 0.000621371).toFixed(2)
+          let res = (dist * 0.000621371).toFixed(1)
           return res;
         }
       }
     });
 
   Template.registerHelper('isClose', function(distance) {
-    if (distance <= 5) {
+    if (distance <= 3) {
       return true;
     } else {
       return false;

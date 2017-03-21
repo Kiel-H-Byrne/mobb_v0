@@ -4,7 +4,7 @@ import {Template} from 'meteor/templating';
 import './geoModal.html';
 
 Template.geoModal.events({
-  'touchstart .geo-accept, click .geo-accept': function(evt,tpl) {
+  'click .geo-accept': function(evt,tpl) {
 
 // --------------- ANALYTICS EVENT ---------------
     analytics.track( "User Accepts", {
@@ -17,7 +17,7 @@ Template.geoModal.events({
     Session.set('geoAccepted', true);
     $('#modalGeo').modal('close');
   },
-  'touchstart .geo-deny, click .geo-deny': function(evt,tpl) {
+  'click .geo-deny': function(evt,tpl) {
     // evt.preventDefault();
     analytics.track( "User Accepts", {
       title: "Accepted GeoLocation",

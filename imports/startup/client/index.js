@@ -24,7 +24,7 @@ import 'materialize-css/js/slider';
 // import 'materialize-css/js/tabs';
 import 'materialize-css/js/toasts';
 import 'materialize-css/js/tooltip';
-import 'materialize-css/js/transitions';
+// import 'materialize-css/js/transitions';
 import 'materialize-css/js/velocity.min';
 import 'materialize-css/js/waves';
 // import 'materialize-css/js/date_picker/picker';

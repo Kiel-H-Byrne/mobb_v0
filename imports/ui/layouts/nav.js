@@ -38,23 +38,23 @@ Template.nav2.onRendered( function() {
         opacity: 0.5,
         in_duration: 300,
         out_duration: 200,
-        starting_top: '0', // Starting top style attribute
-        ending_top: '3%', // Ending top style attribute
-        ready: function() {
+        // starting_top: '0', // Starting top style attribute
+        // ending_top: '3%', // Ending top style attribute
+        // ready: function() {
           // console.log("Modal Triggered, from loggedInNav.js");
-            if($(".lean-overlay").length > 1) {
-                $(".lean-overlay:not(:first)").each(function() {
-                    $(this).remove();
-                    console.log("removed a layer");
-                });
-            }
-        },
-        complete: function() {
-          // console.log("Modal Complete, from loggedInNav.js");
-            $(".lean-overlay").each(function() {
-                $(this).remove();
-            });
-        }
+            // if($(".lean-overlay").length > 1) {
+            //     $(".lean-overlay:not(:first)").each(function() {
+            //         $(this).remove();
+            //         console.log("removed a layer");
+            //     });
+            // }
+        // },
+        // complete: function() {
+        //   // console.log("Modal Complete, from loggedInNav.js");
+        //     $(".lean-overlay").each(function() {
+        //         $(this).remove();
+        //     });
+        // }
     });
 
   });
@@ -103,7 +103,7 @@ Template.nav2.events({
   		clientSearch: entered
 		});
 	},
-  'click input, touchstart input': function() {
+  'click input': function() {
     // $('.dropdown-button').dropdown('open');
     document.getElementById("mobile_search-form").reset();
   },

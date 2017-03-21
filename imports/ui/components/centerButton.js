@@ -57,13 +57,12 @@ Template.centerButton.onRendered(function() {
 });
 
 Template.centerButton.events({
-    'touchstart, click' : function(evt,tpl){
+    'click #centerButton_button' : function(evt,tpl){
       if (Session.get("clientLoc")) {
         let loc = Session.get("clientLoc");
         // console.log(loc);
         placeMyMarker(loc);
         setCenter(loc);
-        // $('#modalGeo').modal('close');
         return;
       } else if (Session.equals("geoAccepted", true) && !Session.get("clientLoc")) {
 

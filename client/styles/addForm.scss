@@ -1,0 +1,56 @@
+@import '{}/node_modules/materialize-css/sass/components/color';
+@import '{}/node_modules/materialize-css/sass/components/variables';
+@import 'palettes/colors';
+
+[id='modalAdd'] {
+    position: fixed;
+    top: 5%;
+    height: 95%;
+    min-height: 90%;
+    background-color: $clr-grey;
+
+  .modal-content {
+    
+    ul {
+      background-color: white;
+    }
+
+    .collapsible-header {
+      color: $clr-grey;
+      font-size: 1.3rem;
+      background-color: $clr-main;
+    }
+  }
+
+  .modal-footer {
+    background-color: $clr-grey;
+    color: $clr-main;
+  }
+}
+
+[id='modalAdd'],
+[id='modalEdit']  {
+  .row {
+    .col {
+      padding: 0 .2rem;
+    }
+
+    margin: 0;
+  }
+
+  .fileUpload {
+    margin: 0;
+  }
+
+  .af-checkbox-group {
+    p {
+      padding: 0;
+    }
+  }
+}
+
+// [id='row_categories'] {
+//   position: relative;
+//   top: -1.5rem;
+// }
+

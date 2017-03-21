@@ -32,7 +32,7 @@ Template.catSelect.helpers({
 });
 
 Template.catSelect.events({
-  'touchstart .cat_item, click .cat_item': function(e,t) {
+  'click .cat_item': function(e,t) {
 
     $('.dropdown-button').dropdown('close');
   },

@@ -13,9 +13,6 @@
   // flex-wrap: wrap;
   // flex-flow: row wrap;
 }
-  h2, .row {
-    margin: 0;
-  }
 .categoryFlex {
 
 
@@ -23,5 +20,12 @@
     float: left;
     width: 278px;
     margin: 1rem;
+  }
+}
+
+//MOBILE 
+@media #{$medium-and-down} {
+  h2, .row {
+    margin: 0;
   }
 }

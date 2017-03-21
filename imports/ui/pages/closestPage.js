@@ -25,6 +25,10 @@ Template.closestPage.onRendered(function() {
      percentPosition: true
     });
 
+    imagesLoaded( 'closestFlex_item', function() {
+      msnry.layout();
+    })
+
     // $('.masonflex').masonry({
     //   itemSelector: '.masonflex_item',
     //   // columnWidth: 160

@@ -21,6 +21,7 @@
     "grunt-contrib-imagemin": "^1.0.1",
     "grunt-real-favicon": "^0.2.0",
     "imagemin-mozjpeg": "^6.0.0",
+    "imagesloaded": "^4.1.1",
     "jslint": "^0.10.3",
     "materialize-css": "^0.98.0",
     "meteor-node-stubs": "~0.2.0",

@@ -2,91 +2,97 @@
 @import '{}/node_modules/materialize-css/sass/components/variables';
 @import 'palettes/colors';
 
-.closest-wrapper {
-  @media #{$small-and-down} {
-    display: none;
+@media #{$small-and-down} {
+  .closest-wrapper {
+
+    font-size: .8rem;
+    // display: none;
     position: absolute;
-    left:0; 
-    right:0;
+    left: 0; 
+    width: 33%;
+    top:80px;
 
     .title > * {
-      font-size: 2rem;
-    }
-    
-    .card-wrapper {
-      position: relative;
-      height: 300px;
+      font-size: 1.5rem;
     }
 
   }
 
-  @media #{$medium-and-up} {
+  .closestFlex { 
+      /* closestFlex container */
+      height: 100%;
+
+      .closestFlex_sizer {
+        width: 99%;
+      }
+
+      .closestFlex_item {
+        float: left;
+        display: inline-block;
+        max-width: 100%;
+        // min-width: 175px;
+        // width: 100%;
+        margin: 1px;
+        
+        .card-content {
+          padding: .3rem;
+          font-size: .9em;
+
+          h5 {
+            font-size: 1.1rem;
+            margin: .3rem;
+          }
+        }
+      }
+    }
+
+
+
+}
+
+
+
+@media #{$medium-and-up} {
+
+  .closest-wrapper {
     position: absolute;
     left: 0;
     right: 50%;
+
+    h3 {
+      margin: .5rem;
+    }
+
+    background-color: $clr-grey-clear;
+    
+    .title {
+      background-color: $clr-grey-light;
+    }
+
   }
 
-  background-color: $clr-grey-clear;
-  
-  .title {
-    background-color: $clr-grey-light;
-  }
+  .closestFlex { 
+    /* closestFlex container */
+    height: 100%;
 
-}
+    .closestFlex_sizer {
+      width: 20%;
+    }
 
-.closestFlex { /* closestFlex container */
-  // position: relative;
-//     -moz-column-gap: 1rem;
-//     -webkit-column-gap: 1rem;
-//     column-gap: 1rem;
-  height: 100%;
+    .closestFlex_item {
+      float: left;
+      display: inline-block;
+      max-width: 48%;
+      // min-width: 175px;
+      // width: 100%;
+      margin: 3px;
 
-  .closestFlex_sizer {
-    width: 20%;
-  }
-
-  .closestFlex_item {
-    float: left;
-    display: inline-block;
-    max-width: 49%;
-    // min-width: 175px;
-    // width: 100%;
-    margin:1px;
-
-    .card-content {
-      padding: .3rem;
-      font-size: .9em;
+      .card-content {
+        padding: .3rem;
+        font-size: .9em;
+      }
     }
   }
+
+
 }
-
-
-
-// @media #{$medium-and-down} {
-//     .closestFlex {
-//         position: relative;
-//         -moz-column-count: 1;
-//         -webkit-column-count: 1;
-//         column-count: 1;
-//     }
-// }
-
-// @media #{$medium-and-up} {
-//     .closestFlex {
-//         -moz-column-count: 2;
-//         -webkit-column-count: 2;
-//         column-count: 2;
-//         -moz-column-gap: .5rem;
-//         -webkit-column-gap: .5rem;
-//         column-gap: .5rem;
-//     }
-// }
-
-// @media only screen and (min-width : #{$large-screen-up}) {
-//     .closestFlex {
-//         position: relative;
-//         -moz-column-count: 3;
-//         -webkit-column-count: 3;
-//         column-count: 3;
-//     }
-// }

@@ -45,6 +45,7 @@ const isRunningStandalone = function() {
 };
 
 Masonry = require('masonry-layout/masonry.js');
+imagesLoaded = require('imagesLoaded/imagesLoaded.js');
 
 Meteor.startup(function() {
 

@@ -60,7 +60,13 @@ Categories.attachSchema(new SimpleSchema({
       // return count.toString();
 
       let cat = this.field("name").value;
-      let count = Listings.find({categories: {$elemMatch: {$in: [ cat ]}}}).count();
+      let cursor = Listings.find({categories: {$elemMatch: {$in: [ cat ]}}});
+      let count = cursor.count();
+      // cursor.observeChanges({
+      //   added: function(id,doc) {
+          
+      //   },
+      // });
       // console.log(count);
       return count;
     },

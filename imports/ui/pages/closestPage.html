@@ -1,17 +1,17 @@
 <template name="closestPage">
-<div class="closest-wrapper z-depth-1">
-  <div class="row title"> 
-    <h3 class="amber-text text-darken-2 center-align"> Closest Listings </h3>
-  </div>
-  <div class="masonry_wrapper">
-    <div class="card-wrapper closestFlex">
-    <div class="closestFlex_sizer"></div>
-      {{#each list}}
-      {{#if isClose (getDistance location)}}
-        {{> galleryCard}}
-      {{/if}}
-      {{/each}}
+  <div class="closest-wrapper z-depth-1">
+    <div class="row title"> 
+      <h3 class="amber-text text-darken-2 center-align"> Closest Listings </h3>
+    </div>
+    <div class="masonry_wrapper">
+      <div class="card-wrapper closestFlex">
+      <div class="closestFlex_sizer"></div>
+        {{#each list}}
+        {{#if isClose (getDistance location)}}
+          {{> galleryCard}}
+        {{/if}}
+        {{/each}}
+      </div>
     </div>
   </div>
-</div>
 </template>

@@ -21,5 +21,9 @@ Template.showCategories.onRendered(function() {
      columnWidth: '.categoryFlex_item',
     });
 
+    imagesLoaded( 'categoryFlex_item', function() {
+      msnry.layout();
+    })
+
   });
 });

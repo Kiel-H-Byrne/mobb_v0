@@ -32,7 +32,7 @@ AutoForm.addHooks('editListingForm', {
         console.log('Just submitted form, from editForm.js');
         //close modal on submit
         // $('#modalAdd').modal('close');
-        Listings.insert(insertDoc);
+        Listings.update(insertDoc);
         this.done(); // must be called; submitted successfully, call onSuccess, 
         return false; //prevents page reload
     },

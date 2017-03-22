@@ -165,6 +165,13 @@ if (isRunningStandalone()) {
     }
   });
 
+  Template.registerHelper('haveLocation', function(distance) {
+    if (Session.get('clientLoc')) {
+      return true;
+    } else {
+      return false;
+    }
+  });
 });
 
 

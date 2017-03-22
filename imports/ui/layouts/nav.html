@@ -33,9 +33,12 @@
                            <i class="material-icons" title="...">more_vert</i>
                         </a>
                         <ul id="more-dropdown" class="dropdown-content">
-                            <li><a href="/terms">Terms &amp; Conditions </a></li>
-                            <li class="divider"></li>
                             <li><a href="/kibu">About Us</a></li>
+                            <li><a href="/terms">Terms &amp; Conditions </a></li>
+                            {{#if currentUser}}
+                            <li class="divider"></li>                            
+                            <li><a class="signout_btn" href="#">Sign Out</a></li>
+                            {{/if}}
                         </ul>                    
               
                     </li>
@@ -75,4 +78,11 @@
     <ul class="">
         <li>{{name}}</li>
     </ul>
+</template>
+
+<template name="leftSide">
+    {{> closestPage}}
+    {{#if currentUser}}
+        {{> favoritesPage}}
+    {{/if}}
 </template>

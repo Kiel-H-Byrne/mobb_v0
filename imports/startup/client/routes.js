@@ -6,7 +6,7 @@ Router.route('/', {
   layoutTemplate: 'AppLayout',
   yieldRegions: {
     'map': {to: 'content'},
-    'closestPage': {to: 'left'},
+    'leftSide': {to: 'left'},
     'nav2': {to: 'nav'},
     'footer': {to: 'footer'}
   }

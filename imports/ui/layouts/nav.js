@@ -14,6 +14,7 @@ import '../components/geoModal.js';
 import '../components/shareModal.js';
 import '../components/betaModal.js';
 import '../components/corner-ribbon.js';
+
 import './nav.html';
 
 
@@ -111,6 +112,9 @@ Template.nav2.events({
     // console.log("mouse fired.");
     Materialize.updateTextFields();
   },
+  'click .signout_btn': function() {
+    Meteor.logout();
+  }
   // 'click .addmodal': function() {
   //   $('#modalAdd').modal('open');
   //   // console.log("open!");

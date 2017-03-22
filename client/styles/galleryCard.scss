@@ -1,4 +1,6 @@
 @import 'palettes/colors';
+@import 'palettes/_plt_orng-tetrad';
+
 
 .info-card {
 	// margin: 1rem;
@@ -8,7 +10,7 @@
 	}
 	
   a, .social{
-		color: $clr-green;
+		color: $rgba-complement-2;
     font-size: .9rem;
 	}
 
@@ -17,8 +19,8 @@
   }
 
   .badge {
-    color: gold;
-    background-color: $clr-plum;
+    color: $rgba-secondary-1-4;
+    background-color: $rgba-complement-2;
     margin: .3rem;
     font-size: .8rem;
   }

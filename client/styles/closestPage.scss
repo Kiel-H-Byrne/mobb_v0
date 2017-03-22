@@ -2,7 +2,7 @@
 @import '{}/node_modules/materialize-css/sass/components/variables';
 @import 'palettes/colors';
 
-.closest-wrapper {
+.closest-wrapper, .favorites-wrapper {
     background-color: $clr-grey-clear;
     
     .title {
@@ -20,7 +20,7 @@
 }
 
 @media #{$small-and-down} {
-  .closest-wrapper {
+  .closest-wrapper, .favorites-wrapper {
 
     h3 {
       margin: .5rem;;
@@ -28,27 +28,26 @@
 
     font-size: .8rem;
     // display: none;
-    position: absolute;
+    position: relative;
     left: 0; 
     width: 33%;
-    margin-top:40px;
+    // margin-top:40px;
     padding: .5rem 0;
-
     .title > * {
       font-size: 1.5rem;
     }
 
   }
 
-  .closestFlex { 
+  .closestFlex, .favoritesFlex { 
       /* closestFlex container */
       height: 100%;
 
-      .closestFlex_sizer {
+      .closestFlex_sizer, .favoritesFlex_sizer {
         width: 99%;
       }
 
-      .closestFlex_item {
+      .closestFlex_item, .favoritesFlex_item {
         float: left;
         display: inline-block;
         max-width: 100%;
@@ -76,7 +75,7 @@
 
 @media #{$medium-and-up} {
 
-  .closest-wrapper {
+  .closest-wrapper, .favorites-wrapper {
     position: absolute;
     left: 0;
     right: 50%;
@@ -87,15 +86,15 @@
 
   }
 
-  .closestFlex { 
+  .closestFlex, .favoritesFlex { 
     /* closestFlex container */
     height: 100%;
 
-    .closestFlex_sizer {
+    .closestFlex_sizer, .favoritesFlex_sizer {
       width: 20%;
     }
 
-    .closestFlex_item {
+    .closestFlex_item, .favoritesFlex_item  {
       float: left;
       display: inline-block;
       max-width: 48%;

@@ -18,22 +18,18 @@ Template.closestPage.onCreated(function() {
 
 Template.closestPage.onRendered(function() {
   $(document).ready(function(){
-    
-    let msnry = new Masonry('.closestFlex', {
-     itemSelector: '.closestFlex_item',
-     columnWidth: '.closestFlex_sizer',
-     percentPosition: true
-    });
+    if ($('.closestFlex')[0]) {
+      let msnry = new Masonry('.closestFlex', {
+       itemSelector: '.closestFlex_item',
+       columnWidth: '.closestFlex_sizer',
+       percentPosition: true
+      });
 
-    imagesLoaded( 'closestFlex_item', function() {
-      msnry.layout();
-    })
-
-    // $('.masonflex').masonry({
-    //   itemSelector: '.masonflex_item',
-    //   // columnWidth: 160
-    // });
-
+      imagesLoaded( 'closestFlex_item', function() {
+        msnry.layout();
+      })
+   }
+   
   });
 });
 

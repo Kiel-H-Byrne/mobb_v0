@@ -1,6 +1,7 @@
 @import '{}/node_modules/materialize-css/sass/components/color';
 @import '{}/node_modules/materialize-css/sass/components/variables';
 @import 'palettes/colors';
+@import 'palettes/_plt_orng-tetrad';
 
 .select_wrapper {
   a {    
@@ -33,8 +34,8 @@
     }
       
     .badge {
-      color: $clr-grey;
-      background-color: $clr-green;
+      color: $rgba-secondary-1-4;
+      background-color: $rgba-complement-2;
       float: right;
     }
   }

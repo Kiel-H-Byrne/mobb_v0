@@ -1,16 +1,18 @@
 @import '{}/node_modules/materialize-css/sass/components/color';
 @import '{}/node_modules/materialize-css/sass/components/variables';
 @import 'palettes/colors';
+@import 'palettes/_plt_orng-tetrad';
 
 [id='modalAdd'] {
-    position: fixed;
-    top: 5%;
-    height: 95%;
-    min-height: 90%;
-    background-color: $clr-grey;
+  position: fixed;
+  top: 5%;
+  height: 95%;
+  min-height: 90%;
+  // background-color: $clr-grey;
 
   .modal-content {
-    
+    padding: .6rem;
+
     ul {
       background-color: white;
     }
@@ -18,7 +20,7 @@
     .collapsible-header {
       color: $clr-grey;
       font-size: 1.3rem;
-      background-color: $clr-main;
+      background-color: $rgba-primary-1;
     }
   }
 

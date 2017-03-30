@@ -1,8 +1,9 @@
 <template name="editForm">
+{{#with currentDoc}}
   <!-- Modal Structure -->
-  <div id="modalEdit" class="modal modal-fixed-footer">
 
-      {{#autoForm id="editListingForm" type="update" collection="Listings" doc=this}}
+  <div id="modalEdit" class="modal modal-fixed-footer">
+      {{#autoForm id="editListingForm" type="update" collection="Listings" doc=_id}}
           <div class="modal-content" >
             <ul class="collapsible" data-collapsible="accordion">
             <li>
@@ -53,4 +54,5 @@
         </div>
       {{/autoForm}}
   </div>
+{{/with}}
 </template>

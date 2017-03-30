@@ -9,6 +9,7 @@
   </div>
   <div class="row categoryFlex">
   {{#each list}}
+{{!--  --}}
     <a href="{{url}}" target="_blank" rel="noopener">
       <div id="{{_id}}" class=" categoryFlex_item card sticky-action grey darken-2 hoverable grid-item">
 
@@ -48,12 +49,7 @@
 
         <div class="card-action">
           <div class="row center-align">
-{{!--                  {{#if url}}     
-            <div class="col "><a class="btn-floating amber" target="_blank" rel="noopener" title="Website" href="{{url}}"><i class="material-icons">link</i></a></div>
-            {{/if}}
-            {{#if phone}}    
-            <div class="col "><a class="btn-floating amber darken-2" title="Call" href="tel:+1{{phone}}"><i class="material-icons">phone</i></a></div>
-            {{/if}} --}}
+
             {{#if isOwner}}
             <div class="col s3">
               <a class="btn-floating amber darken-3 editModal-trigger" id="edit_button" title="Edit This Listing" href="#modalEdit"><i class="material-icons">edit</i></a>
@@ -77,6 +73,7 @@
         </div>
       </div>  
     </a>
+
     {{/each}}
   </div>
   </div>

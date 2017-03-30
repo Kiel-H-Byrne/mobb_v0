@@ -24,7 +24,7 @@ import 'materialize-css/js/slider';
 // import 'materialize-css/js/tabs';
 import 'materialize-css/js/toasts';
 import 'materialize-css/js/tooltip';
-// import 'materialize-css/js/transitions';
+import 'materialize-css/js/transitions';
 import 'materialize-css/js/velocity.min';
 import 'materialize-css/js/waves';
 // import 'materialize-css/js/date_picker/picker';
@@ -138,7 +138,8 @@ if (isRunningStandalone()) {
   Template.registerHelper('getDistance', function(dest) {
       //Get distance, convert to miles, flag as 'is_close' class if under X miles, (this class will be visible) 
       // console.log(this)
-      if (GoogleMaps.loaded()) {
+
+      if (GoogleMaps.loaded() && dest) {
         let latLng = dest.split(",");
         if (latLng) {
           let lat = Number(latLng[0]);
@@ -165,13 +166,33 @@ if (isRunningStandalone()) {
     }
   });
 
-  Template.registerHelper('haveLocation', function(distance) {
+  Template.registerHelper('haveLocation', function() {
     if (Session.get('clientLoc')) {
       return true;
     } else {
       return false;
     }
   });
+
+  Template.registerHelper('hasFavorites', function() {
+    if (Meteor.user() && Meteor.user().profile.favorites.length) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+
+
+Template.registerHelper('currentDoc', function() {
+  if (Session.get('openListing')) {
+    let id = Session.get('openListing');
+    let doc = Listings.findOne({_id: id});
+    // console.log(doc);
+    return doc;
+  }
+});
+
+
 });
 
 

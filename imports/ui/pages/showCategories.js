@@ -9,6 +9,7 @@ Template.showCategories.helpers({
   catName: function() {
     return Router.current().params.name;
   }
+
 });
 
 

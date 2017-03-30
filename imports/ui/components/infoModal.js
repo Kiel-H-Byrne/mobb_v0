@@ -8,16 +8,21 @@ import './closeButton.js';
 
 
 Template.infoModal.helpers({
-	'currentDoc': function() {
-		let id = Session.get('openListing');
-		let doc = Listings.findOne({_id: id});
-		// console.log(doc);
-		return doc;
-	}
+	// 'currentDoc': function() {
+	// 	let id = Session.get('openListing');
+	// 	let doc = Listings.findOne({_id: id});
+	// 	// console.log(doc);
+	// 	return doc;
+	// }
 });
 
 Template.infoModal.onRendered(function() {
-  
+
+  $(document).ready(function() {
+    $('.editModal-trigger').modal();
+  });
+
+ 
 //   this.autorun(function() {
 //     //When url changes to '/listings/:name' or '/categories/:name', open modal with listing data, or filter list to show only those cards in category..
 //     let controller = Iron.controller();

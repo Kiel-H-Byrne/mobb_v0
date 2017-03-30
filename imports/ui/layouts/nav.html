@@ -35,9 +35,12 @@
                         <ul id="more-dropdown" class="dropdown-content">
                             <li><a href="/kibu">About Us</a></li>
                             <li><a href="/terms">Terms &amp; Conditions </a></li>
-                            {{#if currentUser}}
-                            <li class="divider"></li>                            
+                            <li class="divider"></li>    
+                            {{#if currentUser}}                        
                             <li><a class="signout_btn" href="#">Sign Out</a></li>
+                            {{else }}
+                            <li><a class="signin_btn" href="/login">Sign In</a></li>
+                              <!--li> {{> atNavButton}} </li-->
                             {{/if}}
                         </ul>                    
               
@@ -82,7 +85,7 @@
 
 <template name="leftSide">
     {{> closestPage}}
-    {{#if currentUser}}
+    {{#if hasFavorites}}
         {{> favoritesPage}}
     {{/if}}
 </template>

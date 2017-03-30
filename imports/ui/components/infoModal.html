@@ -41,13 +41,13 @@
                 {{else}}
                 <div class="col s3"><a class="disabled btn-floating " title="Call" href="#"><i class="material-icons">phone</i></a></div>
                 {{/if}}
-                {{#if currentUser}}
+                {{#if isOwner}}
+                <div class="col s3">
+                  <a class="btn-floating amber darken-3 editModal-trigger" id="edit_button" title="Edit This Listing" href="#modalEdit"><i class="material-icons">edit</i></a>
+                </div>
+                {{else if currentUser}}
                 <div class="col s3">
                   <a class="btn-floating amber darken-3 modal-trigger" id="verify_button" title="Is This Information Correct?" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
-                </div>
-                {{else}}
-                <div class="col s3">
-                  <a class="disabled btn-floating modal-trigger" id="verify_button" title="Verify This" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
                 </div>
                 {{/if}}
                 <div class="col s3">

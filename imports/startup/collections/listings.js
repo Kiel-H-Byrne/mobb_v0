@@ -212,19 +212,18 @@ Listings.attachSchema(new SimpleSchema({
     type: String,
     unique: true,
     label: 'Website',
-    regEx: SimpleSchema.RegEx.Url,
+    // regEx: SimpleSchema.RegEx.Url,
     optional: true,
-    autoValue: function() {
-      //if string starts with "http//" or https://", Ok, else prepend with "http://"
-      let url = this.value;
-      if (url && (url.includes("http://") || url.includes("https://"))) {
-        return url;
-      } else {
-        url = "http://" + url;
-        return url;
-      };
-      
-    }
+    // autoValue: function() {
+    //   //if string starts with "http//" or https://", Ok, else prepend with "http://"
+    //   let url = this.value;
+    //   if (url && (url.includes("http://") || url.includes("https://"))) {
+    //     return url;
+    //   } else {
+    //     url = "http://" + url;
+    //     return url;
+    //   };
+    // }
   },
   social: {
     type: String,

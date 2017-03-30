@@ -1,11 +1,8 @@
-
-
-<template name="galleryCard">
+<template name="listingsCard">
   <a class="card_link" href="{{url}}" target="_blank" rel="noopener">
     <div id="{{_id}}" class="info-card closestFlex_item card sticky-action grey darken-2 hoverable ">
-      
       {{> favoriteStar}}
-
+      
       {{#if hasImage}}
       <div class="card-image waves-effect waves-block waves-light"> 
         <img class="responsive-image" src="/img/gallery/{{name}}.png" />

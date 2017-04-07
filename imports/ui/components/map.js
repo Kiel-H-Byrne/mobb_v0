@@ -342,16 +342,28 @@ Template.map.helpers({
                 center: new google.maps.LatLng(mapCenter),
                 zoom: MAP_ZOOM,
                 // mapTypeId:google.maps.MapTypeId.TERRAIN,
-                backgroundColor: "#444",
+                backgroundColor: "#631",
                 clickableIcons: false,
                 disableDefaultUI: true,
-                // fullscreenControl: true,
+                fullscreenControl: false,
+                zoomControl: true,
+                zoomControlOptions: {
+                    position: google.maps.ControlPosition.RIGHT_BOTTOM
+                },
+                mapTypeControl: true,
+                mapTypeControlOptions: {
+                    style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+                    position: google.maps.ControlPosition.BOTTOM_LEFT
+                },
+                scaleControl: true,
+                rotateControl: true,
                 minZoom: 3,
                 streetViewControl: false,
                 streetViewControlOptions: {
-                    position: google.maps.ControlPosition.RIGHT_CENTER
+                    position: google.maps.ControlPosition.BOTTOM_CENTER
                 },
-
+                //gestureHandling sets the mobile panning on a scrollable page: COOPERATIVE, GREEDY, AUTO, NONE
+                gestureHandling: 'greedy',
                 // Map styles; snippets from 'Snazzy Maps'.
                 styles: 
                     // lightGray 

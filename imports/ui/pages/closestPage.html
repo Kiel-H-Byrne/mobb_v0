@@ -8,9 +8,9 @@
       <div class="card-wrapper closestFlex">
       <div class="closestFlex_sizer"></div>
         {{#each list}}
-        {{#if isClose (getDistance location)}}
-          {{> galleryCard}}
-        {{/if}}
+          {{#if isClose (getDistance location)}}
+            {{> galleryCard}}
+          {{/if}}
         {{/each}}
       </div>
     </div>

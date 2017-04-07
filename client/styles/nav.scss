@@ -57,6 +57,22 @@
     vertical-align: middle;
   }
 
+  .link_share {
+    // display: inline;
+    // width: 20px;
+    background-color: $clr-main;
+
+    &:hover {
+      background-color: $clr-green;
+    }
+
+    img {
+      height: 1.3em;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
   .nav-list{
     // position: relative;
     // left: 210px;

@@ -40,7 +40,7 @@ Template.nav2.onRendered( function() {
         in_duration: 300,
         out_duration: 200,
         // starting_top: '0', // Starting top style attribute
-        // ending_top: '3%', // Ending top style attribute
+        // ending_top: '0', // Ending top style attribute
         // ready: function() {
           // console.log("Modal Triggered, from loggedInNav.js");
             // if($(".lean-overlay").length > 1) {
@@ -113,7 +113,7 @@ Template.nav2.events({
     Materialize.updateTextFields();
   },
   'click .signout_btn': function() {
-    Meteor.logout();
+    AccountsTemplates.logout();
   }
   // 'click .addmodal': function() {
   //   $('#modalAdd').modal('open');

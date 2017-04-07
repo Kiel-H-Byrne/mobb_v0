@@ -4,7 +4,11 @@
 
 .closest-wrapper, .favorites-wrapper {
     background-color: $clr-grey-clear;
-    
+
+    h3 {
+      margin: .5rem;;
+    }
+
     .title {
       background-color: $clr-grey-light;
     }
@@ -22,22 +26,18 @@
 @media #{$small-and-down} {
   .closest-wrapper, .favorites-wrapper {
 
-    h3 {
-      margin: .5rem;;
-    }
-
     font-size: .8rem;
-    // display: none;
     position: relative;
     top: 35px;
     left: 0; 
     width: 33%;
+    min-width: 175px;
     // margin-top:40px;
     padding: .5rem 0;
+
     .title > * {
       font-size: 1.5rem;
     }
-
   }
 
   .closestFlex, .favoritesFlex { 
@@ -68,23 +68,14 @@
       }
     }
 
-
-
 }
-
-
 
 @media #{$medium-and-up} {
 
   .closest-wrapper, .favorites-wrapper {
-    position: absolute;
+    position: relative;
     left: 0;
-    right: 50%;
-
-    h3 {
-      margin: .5rem;
-    }
-
+    width: 50%;
   }
 
   .closestFlex, .favoritesFlex { 

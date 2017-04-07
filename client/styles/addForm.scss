@@ -5,10 +5,9 @@
 
 [id='modalAdd'] {
   position: fixed;
-  top: 5%;
   height: 95%;
-  min-height: 90%;
-  // background-color: $clr-grey;
+  min-height: 40%;
+  background-color: $rgba-complement-1;
 
   .modal-content {
     padding: .6rem;
@@ -20,13 +19,18 @@
     .collapsible-header {
       color: $clr-grey;
       font-size: 1.3rem;
-      background-color: $rgba-primary-1;
+      background-color: $rgba-primary-2;
     }
   }
 
   .modal-footer {
-    background-color: $clr-grey;
-    color: $clr-main;
+    background-color: $rgba-primary-grey-3;
+    color: $rgba-primary-2;
+
+    button {
+      background-color: $rgba-complement-0;
+      color: $rgba-primary-2;
+    }
   }
 }
 

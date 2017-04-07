@@ -20,6 +20,15 @@ Template.addForm.onRendered(function() {
   $(document).ready(function() {
     $('.collapsible').collapsible();
 
+    $('#modalAdd').modal({
+      dismissible: true, // Modal can be dismissed by clicking outside of the modal
+      opacity: .5, // Opacity of modal background
+      inDuration: 300, // Transition in duration
+      outDuration: 200, // Transition out duration
+      startingTop: '4%', // Starting top style attribute
+      endingTop: '4%', // Ending top style attribute
+    });
+
     // let state = Session.get('clientState');
     // $("li:contains("+ state +")").addClass("active selected");
   });

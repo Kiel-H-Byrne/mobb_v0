@@ -8,7 +8,6 @@ Router.route('/', {
     'map': {to: 'content'},
     'leftSide': {to: 'left'},
     'nav2': {to: 'nav'},
-    'footer': {to: 'footer'}
   }
 });
 

@@ -62,14 +62,14 @@ Router.route('/test', {
 //     this.render('footer', {to: 'footer'});
 // });
 
-// Router.route('/404', {
-//     name: '404page',
-//     layoutTemplate: 'AppLayout',
-//     yieldRegions: {
-//       '404page': {to: 'content'},
-//       'nav2': {to: 'nav'}
-//     }
-// });
+Router.route('/404', {
+    name: '404page',
+    layoutTemplate: 'AppLayout',
+    yieldRegions: {
+      '404page': {to: 'content'},
+      'nav2': {to: 'nav'}
+    }
+});
 
 Router.route('/listings/:name', {
   name: 'fullCard',
@@ -94,7 +94,7 @@ Router.route('/listings/:name', {
       this.render('', {to: 'left'});
     }
   },
-  // notFoundTemplate: '404page'
+  notFoundTemplate: '404page'
 });
 
 Router.route('/categories/:name', {
@@ -128,7 +128,7 @@ Router.route('/categories/:name', {
       this.render('', {to: 'left'});
     }
   },
-  // notFoundTemplate: '404page'
+  notFoundTemplate: '404page'
 });
 
 

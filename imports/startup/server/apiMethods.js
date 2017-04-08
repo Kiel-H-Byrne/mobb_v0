@@ -100,10 +100,9 @@ Meteor.methods({
     Listings.insert(doc , function(err, res){
       if (err) {
         console.log("INSERT FAILED:");
-        console.log(err.sanitizedError.message);
+        console.log(doc.name + ": " + err.sanitizedError.message);
       } else {
-        // res = _id
-        // console.log(res);
+        console.log(doc.name + ": Success");
       }
     });
   },

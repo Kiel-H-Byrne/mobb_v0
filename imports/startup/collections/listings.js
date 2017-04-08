@@ -420,6 +420,41 @@ Listings.attachSchema(new SimpleSchema({
     //   }
     // }
   },
+  //subschema of up/downvotes and userId, timestamp, 
+  upVotes: {
+    type: [Object],
+    optional: true
+  },
+  'upVotes.$': {
+    type: VoteSchema
+  },
+  upVoteCount: {
+    type: Number,
+    optional: true,
+    autoValue: function() {
+      let count = 0;
+      let exists = this.field("upVotes").value;
+      if (exists) {count = exists.length;}
+      return count;
+    }
+  },
+  dnVotes: {
+    type: [Object],
+    optional: true
+  },
+  'dnVotes.$': {
+    type: VoteSchema
+  },
+  dnVoteCount: {
+    type: Number,
+    optional: true,
+    autoValue: function() {
+      let count = 0;
+      let exists = this.field("dnVotes").value;
+      if (exists) {count = exists.length;}
+      return count;
+    }
+  },  
   creator: orion.attribute('createdBy'),
   submitted: orion.attribute('createdAt'),
 }));

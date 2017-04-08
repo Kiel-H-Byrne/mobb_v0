@@ -38,21 +38,29 @@ AutoForm.addHooks('editListingForm', {
     onSubmit: function (insertDoc, updateDoc, currentDoc) {
         this.event.preventDefault(); //prevents page reload
         console.log('Just submitted form, from editForm.js');
-        //close modal on submit
-        // $('#modalAdd').modal('close');
-        Listings.update(insertDoc);
+        console.log(updateDoc);
+        // Listings.update(updateDoc);
+        //if category is in there, increment the count by one. 
+        //Categories.update(
+        //   { name: ,
+        //   { $inc: { : 1}}
+        // })
         this.done(); // must be called; submitted successfully, call onSuccess, 
         return false; //prevents page reload
     },
 
   // Called when any submit operation succeeds
   onSuccess: function(formType, result) {
-    
+    Materialize.toast('Thanks for Submitting!', 4000);
     console.log("Thanks for Submitting!", result);
     //close modal
       $('#modalEdit').modal('close');
       $('#modalInfo').modal('close');
     //center and zoom on new location? marker?
-      targetListing(this.currentDoc.location); 
+      const latLng = this.currentDoc.location.split(",");
+      // let lat = Number(latLng[0]);
+      // let lng = Number(latLng[1]);
+      const latLngObj = _.object( ['lat', 'lng'], [Number(latLng[0]), Number(latLng[1])]);
+      targetListing(latLngObj); 
   },
 });

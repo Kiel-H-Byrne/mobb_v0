@@ -62,25 +62,25 @@ Template.centerButton.events({
         let loc = Session.get("clientLoc");
         // console.log(loc);
         placeMyMarker(loc);
-        setCenter(loc);
+        targetListing(loc);
         return;
       } else if (Session.equals("geoAccepted", true) && !Session.get("clientLoc")) {
 
         getLocation2().then((pos) => {
           Session.set('clientLoc', pos);
           placeMyMarker(pos);
-          setCenter(pos);
+          targetListing(pos);
           return;
         });
 
       } else if (Session.equals("geoAccepted", false) && Session.equals("geoAsked", true)){ 
         let loc = Session.get('browserLoc');
-        setCenter(loc);
+        targetListing(loc);
         return;
       } else {
         $('#modalGeo').modal('open');
         let loc = Session.get('browserLoc');
-        setCenter(loc);
+        targetListing(loc);
       }
     }
 });

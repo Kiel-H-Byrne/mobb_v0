@@ -50,21 +50,17 @@
         <div class="card-action">
           <div class="row center-align">
 
-            {{#if isOwner}}
-            <div class="col s3">
-              <a class="btn-floating amber darken-3 editModal-trigger" id="edit_button" title="Edit This Listing" href="#modalEdit"><i class="material-icons">edit</i></a>
-            </div>
-            {{else if currentUser }}
-            <div class="col ">
+            {{#if currentUser }}
+            <div class="col s6">
               <a class="btn-floating amber darken-3 modal-trigger" id="verify_button" title="Is This Information Correct?" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
             </div>
             {{else}}
-            <div class="col ">
+            <div class="col s6">
               <a class="disabled btn-floating modal-trigger" id="verify_button" title="Verify This" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
             </div>
             {{/if}}
             {{#if street}}    
-            <div class="col ">
+            <div class="col s6">
               <!-- a class="btn-floating amber darken-4 modal-trigger" id="directions_button" title="Directions" href="#modalDirections"><i class="material-icons">navigation</i></a-->
               <a class="btn-floating amber darken-4" title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" ><i class="material-icons">navigation</i></a>
             </div>

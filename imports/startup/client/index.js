@@ -1,6 +1,9 @@
+$ = window.jQuery = require("jquery");
+
 import 'materialize-css/js/initial';
 import 'materialize-css/js/global';
-import 'materialize-css/js/velocity.min';
+// import 'materialize-css/js/velocity.min' ;
+window.Vel = require('materialize-css/js/velocity.min');
 import 'materialize-css/js/hammer.min';
 import 'materialize-css/js/jquery.easing.1.3';
 import 'materialize-css/js/jquery.hammer';
@@ -26,7 +29,6 @@ import 'materialize-css/js/slider';
 import 'materialize-css/js/toasts';
 import 'materialize-css/js/tooltip';
 import 'materialize-css/js/transitions';
-
 import 'materialize-css/js/waves';
 // import 'materialize-css/js/date_picker/picker';
 // import 'materialize-css/js/date_picker/picker.date';

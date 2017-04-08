@@ -26,8 +26,11 @@ Template.catSelect.onCreated(function() {
 
 Template.catSelect.helpers({
   categories: function() {
-    let categories = Categories.find();
-    return categories;
+    return Categories.find();
+
+  },
+  catCount: function(cat) {
+    return Listings.find({categories: {$elemMatch: {$in: [ cat ]}}}).count();
   }
 });
 

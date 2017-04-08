@@ -97,7 +97,7 @@ const apiCall2 = function (apiUrl, headers, callback) {
 
 Meteor.methods({
   addListing: function(doc) {
-    Listings.insert(doc , function(err, res){
+    Listings.upsert(doc , function(err, res){
       if (err) {
         console.log("INSERT FAILED:");
         console.log(doc.name + ": " + err.sanitizedError.message);

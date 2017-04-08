@@ -1,4 +1,5 @@
 import { Template } from 'meteor/templating';
+import Categories from '/imports/startup/collections/categories';
 
 import './editForm.html';
 
@@ -37,22 +38,40 @@ AutoForm.addHooks('editListingForm', {
     // Called when form does not have a `type` attribute or is 'normal'
     onSubmit: function (insertDoc, updateDoc, currentDoc) {
         this.event.preventDefault(); //prevents page reload
-        console.log('Just submitted form, from editForm.js');
-        console.log(updateDoc);
-        // Listings.update(updateDoc);
-        //if category is in there, increment the count by one. 
-        //Categories.update(
-        //   { name: ,
-        //   { $inc: { : 1}}
-        // })
         this.done(); // must be called; submitted successfully, call onSuccess, 
         return false; //prevents page reload
     },
-
   // Called when any submit operation succeeds
   onSuccess: function(formType, result) {
-    Materialize.toast('Thanks for Submitting!', 4000);
-    console.log("Thanks for Submitting!", result);
+    Materialize.toast('Thanks for Submitting!', 3300);
+    console.log(this.currentDoc, this.updateDoc);
+    //if updating categories, increment the count.
+    if (this.updateDoc.$set.categories || this.currentDoc.categories) {
+      let diff = _.difference(this.updateDoc.$set.categories, this.currentDoc.categories);
+      let diff2 = _.difference(this.currentDoc.categories, this.updateDoc.$set.categories);
+      // console.log(`added [${diff}] and removed [${diff2}]`);
+
+      _.each(diff, function(v) {
+        console.log(v);
+        let id = Categories.findOne({name: v})._id;
+        console.log(id);
+        Categories.update(
+          { _id: id },
+          { $inc: { count: 1 } }
+        );
+      });
+
+      _.each(diff2, function(v) {
+        console.log(v);
+        let id = Categories.findOne({name: v})._id;
+        Categories.update(
+          { _id: id },
+          { $inc: { count: -1 } }
+        );
+      });
+
+    }
+    
     //close modal
       $('#modalEdit').modal('close');
       $('#modalInfo').modal('close');
@@ -61,6 +80,6 @@ AutoForm.addHooks('editListingForm', {
       // let lat = Number(latLng[0]);
       // let lng = Number(latLng[1]);
       const latLngObj = _.object( ['lat', 'lng'], [Number(latLng[0]), Number(latLng[1])]);
-      targetListing(latLngObj); 
+      targetListing(latLngObj);
   },
 });

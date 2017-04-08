@@ -48,9 +48,8 @@ Template.infoModal.events({
 		// console.log("Clicked Verify button!");
 		//open modal verify form.
 		$('#modalVerify').modal('open');
-		},
+	},
   'click #edit_button': function(evt,tpl) {
-    console.log("Clicked Edit button!");
     //open modal verify form.
     $('#modalEdit').modal('open')
     $('.collapsible').collapsible();

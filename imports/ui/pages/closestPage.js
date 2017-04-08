@@ -27,7 +27,7 @@ Template.closestPage.onRendered(function() {
 
       imagesLoaded( 'closestFlex_item', function() {
         msnry.layout();
-      })
+      });
    }
    
   });

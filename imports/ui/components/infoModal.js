@@ -11,7 +11,7 @@ Template.infoModal.onRendered(function() {
   $(document).ready(function() {
     $('#modalInfo').modal({
       dismissible: true, // Modal can be dismissed by clicking outside of the modal
-      opacity: .5, // Opacity of modal background
+      opacity: 0.5, // Opacity of modal background
       inDuration: 300, // Transition in duration
       outDuration: 200, // Transition out duration
       startingTop: '4%', // Starting top style attribute
@@ -51,7 +51,7 @@ Template.infoModal.events({
 	},
   'click #edit_button': function(evt,tpl) {
     //open modal verify form.
-    $('#modalEdit').modal('open')
+    $('#modalEdit').modal('open');
     $('.collapsible').collapsible();
     }
 }); 

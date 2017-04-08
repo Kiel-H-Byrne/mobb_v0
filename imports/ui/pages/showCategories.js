@@ -24,7 +24,7 @@ Template.showCategories.onRendered(function() {
 
     imagesLoaded( 'categoryFlex_item', function() {
       msnry.layout();
-    })
+    });
 
   });
 });

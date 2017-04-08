@@ -125,7 +125,7 @@ Template.map.onCreated( function() {
             strokeWeight: 2,
             fillColor: '#FFAA00',
             fillOpacity: 0.15,
-        }
+        };
 
         const browser_symbol = {
             path: "M21 3L3 10.53v.98l6.84 2.65L12.48 21h.98L21 3z",

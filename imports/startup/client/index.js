@@ -155,7 +155,7 @@ if (isRunningStandalone()) {
           
           let dist = google.maps.geometry.spherical.computeDistanceBetween(start,finish);
           // multiply meters by 0.000621371 for number of miles.
-          let res = (dist * 0.000621371).toFixed(1)
+          let res = (dist * 0.000621371).toFixed(1);
           return res;
         }
       }

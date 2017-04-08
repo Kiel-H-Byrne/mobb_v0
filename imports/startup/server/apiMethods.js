@@ -97,12 +97,12 @@ const apiCall2 = function (apiUrl, headers, callback) {
 
 Meteor.methods({
   addListing: function(doc) {
-    Listings.upsert(doc , function(err, res){
+    Listings.insert(doc , function(err, res){
       if (err) {
         console.log("INSERT FAILED:");
         console.log(doc.name + ": " + err.sanitizedError.message);
       } else {
-        console.log(doc.name + ": Success");
+        // console.log(doc.name + ": Success");
       }
     });
   },
@@ -166,7 +166,7 @@ Meteor.methods({
     }
 
     let apiUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + urlParams + '&key=' + Meteor.settings.public.keys.googleServer.key;
-    console.log("--URL--"+apiUrl);
+    // console.log("--URL--"+apiUrl);
     let response = Meteor.wrapAsync(apiCall)(apiUrl);
     // console.log(response);
     if (response) {

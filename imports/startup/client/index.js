@@ -1,5 +1,4 @@
 $ = window.jQuery = require("jquery");
-
 import 'materialize-css/js/initial';
 import 'materialize-css/js/global';
 // import 'materialize-css/js/velocity.min' ;

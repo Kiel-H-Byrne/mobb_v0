@@ -34,7 +34,7 @@ if (Meteor.users.find().count() === 0) {
 	    },
 	    name: 'Rando Rohnson',
 	    username: "rnr",
-	    email: "rando@iam.com",
+	    email: "rnr@iam.com",
 	    password: "password",
 	  });
 

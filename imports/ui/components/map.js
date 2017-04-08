@@ -342,7 +342,7 @@ Template.map.helpers({
                 center: new google.maps.LatLng(mapCenter),
                 zoom: MAP_ZOOM,
                 // mapTypeId:google.maps.MapTypeId.TERRAIN,
-                backgroundColor: "#631",
+                backgroundColor: "#555",
                 clickableIcons: false,
                 disableDefaultUI: true,
                 fullscreenControl: false,
@@ -350,12 +350,13 @@ Template.map.helpers({
                 zoomControlOptions: {
                     position: google.maps.ControlPosition.RIGHT_BOTTOM
                 },
-                mapTypeControl: true,
+                mapTypeControl: false,
                 mapTypeControlOptions: {
-                    style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
-                    position: google.maps.ControlPosition.BOTTOM_LEFT
+                    style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+                    position: google.maps.ControlPosition.RIGHT_CENTER,
+                    // mapTypeIds: ['roadmap', 'terrain']
                 },
-                scaleControl: true,
+                scaleControl: false,
                 rotateControl: true,
                 minZoom: 3,
                 streetViewControl: false,

@@ -9,7 +9,7 @@ getLocation2 = async function() {
     return pos;
 };
 
-setCenter = function(pos) {
+targetListing = function(pos) {
     GoogleMaps.maps.map.instance.setCenter(pos);
     GoogleMaps.maps.map.instance.setZoom(12);
 };

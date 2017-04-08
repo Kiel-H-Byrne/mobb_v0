@@ -8,7 +8,15 @@ Template.editForm.onCreated(function() {
 
 Template.editForm.onRendered(function() {
   $(document).ready(function() {
-    $('.collapsible').collapsible();
+
+    $('#modalEdit').modal({
+      dismissible: true, // Modal can be dismissed by clicking outside of the modal
+      opacity: .5, // Opacity of modal background
+      inDuration: 300, // Transition in duration
+      outDuration: 200, // Transition out duration
+      startingTop: '4%', // Starting top style attribute
+      endingTop: '4%', // Ending top style attribute
+    });
 
     // let state = Session.get('clientState');
     // $("li:contains("+ state +")").addClass("active selected");
@@ -39,14 +47,12 @@ AutoForm.addHooks('editListingForm', {
 
   // Called when any submit operation succeeds
   onSuccess: function(formType, result) {
-    console.log("Thanks for Submitting!");
-    //draw marker?
-    //change content(inner html) of editForm template.
-    $('#modalEdit').html(
-      ' <div id="submitMsg" class="modal-content"> ' +
-      ' <h3 class="centered"> Thank You! </h3> ' +
-      ' </div> '
-      );
-    $('#modalEdit').delay(1100).modal('close');
+    
+    console.log("Thanks for Submitting!", result);
+    //close modal
+      $('#modalEdit').modal('close');
+      $('#modalInfo').modal('close');
+    //center and zoom on new location? marker?
+      targetListing(this.currentDoc.location); 
   },
 });

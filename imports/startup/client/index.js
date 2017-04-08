@@ -119,6 +119,7 @@ if (isRunningStandalone()) {
       // console.log(typeof this.image.url);
       if (this.image) {
         let test = this.image.url;
+        console.log(test);
         if (test !== "false") {
           return true; 
         } else {

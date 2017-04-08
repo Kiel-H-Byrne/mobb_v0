@@ -273,8 +273,8 @@ Listings.attachSchema(new SimpleSchema({
     label: 'Yelp ID',
     type: String,
     optional: true,
-    autoValue: function() {
-      return;
+    // autoValue: function() {
+    //   return;
       //do a yelp phone search using phone number, return value of call.
 //       if ( this.field("phone").isSet && this.isInsert && !this.isSet) {
         
@@ -335,7 +335,7 @@ Listings.attachSchema(new SimpleSchema({
 //       } else {
 //         console.log("No Yelp-Id Assigned");
 //       }
-    }
+    // }
   },
   cbenum: {
     type: String,
@@ -369,14 +369,14 @@ Listings.attachSchema(new SimpleSchema({
       let street = this.field("street").value;
       // console.log(tester);
       if ( street && this.isInsert && !this.isSet) {
-        let params = {};
+        const params = {};
         // console.log(this.docId);
         // console.log(this);
         // params.place_id = this.field("google_id").value;
         params.street = this.field("street").value;
         params.city = this.field("city").value;
         params.zip = this.field("zip").value;
-        let response = Meteor.call('geoCode', params);
+        const response = Meteor.call('geoCode', params);
 
         if (response && response.results.length) {
           let loc = response.results[0].geometry.location;
@@ -395,39 +395,19 @@ Listings.attachSchema(new SimpleSchema({
           //set category to "Online"
           // console.log(typeof street);
           // console.log(this.docId);
-          // this.unset();
+          this.unset();
         }
       }
     }
   },
-  // "location.lat": {
-  //   type: Number,
-  //   autoValue: function() {
-  //     if (Meteor.isServer && this.isInsert) {
-  //       let val = this.value;
-  //       return Number(val);
-  //     }
-  //   }
-  // },
-  // "location.lng": {
-  //   type: Number,
-  //   autoValue: function() {
-  //     if (Meteor.isServer && this.isInsert) {
-  //       let val = this.value;
-  //       return Number(val);
-  //     }
-  //   }
-  // }, 
   categories: {
     type: [String],
     label: 'Categories',
     optional: true,
-    autoValue: function() {
-      if (this.field('onlineonly').value) {
-        let isOnline = this.field('onlineonly').value;  
-      }
-      let name = this.field('name').value;
-    },
+    // custom: function() {
+      // I WANT TO PUSH THE CATEGORY "ONLINE ONLY" TO THIS ARRAY
+      //$set function on this key??
+    // },
     // autoform: {
       // options: function() {
       //   return Categories.find().map(function(c) {
@@ -440,41 +420,6 @@ Listings.attachSchema(new SimpleSchema({
     //   }
     // }
   },
-  //subschema of up/downvotes and userId, timestamp, 
-  upVotes: {
-    type: [Object],
-    optional: true
-  },
-  'upVotes.$': {
-    type: VoteSchema
-  },
-  upVoteCount: {
-    type: Number,
-    optional: true,
-    autoValue: function() {
-      let count = 0;
-      let exists = this.field("upVotes").value;
-      if (exists) {count = exists.length;}
-      return count;
-    }
-  },
-  dnVotes: {
-    type: [Object],
-    optional: true
-  },
-  'dnVotes.$': {
-    type: VoteSchema
-  },
-  dnVoteCount: {
-    type: Number,
-    optional: true,
-    autoValue: function() {
-      let count = 0;
-      let exists = this.field("dnVotes").value;
-      if (exists) {count = exists.length;}
-      return count;
-    }
-  },  
   creator: orion.attribute('createdBy'),
   submitted: orion.attribute('createdAt'),
 }));

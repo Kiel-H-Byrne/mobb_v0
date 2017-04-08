@@ -7,20 +7,8 @@ import './verifyForm.js';
 import './closeButton.js';
 
 
-Template.infoModal.helpers({
-	// 'currentDoc': function() {
-	// 	let id = Session.get('openListing');
-	// 	let doc = Listings.findOne({_id: id});
-	// 	// console.log(doc);
-	// 	return doc;
-	// }
-});
-
 Template.infoModal.onRendered(function() {
-
   $(document).ready(function() {
-    $('.editModal-trigger').modal();
-
     $('#modalInfo').modal({
       dismissible: true, // Modal can be dismissed by clicking outside of the modal
       opacity: .5, // Opacity of modal background
@@ -29,10 +17,7 @@ Template.infoModal.onRendered(function() {
       startingTop: '4%', // Starting top style attribute
       endingTop: '4%', // Ending top style attribute
     });
-
   });
-
- 
 //   this.autorun(function() {
 //     //When url changes to '/listings/:name' or '/categories/:name', open modal with listing data, or filter list to show only those cards in category..
 //     let controller = Iron.controller();
@@ -59,29 +44,15 @@ Template.infoModal.onRendered(function() {
 });
 
 Template.infoModal.events({
-	'click #directions_button': function(evt,tpl) {
-		let address = $('#address-content').text();
-		
-		let browserLoc = _.values(Session.get('browserLoc')).toLocaleString();
-		let clientLoc;
-		if (Session.get('clientLoc')) {
-			clientLoc = _.values(Session.get('clientLoc')).toLocaleString();
-			}
-		let myLocation = clientLoc || browserLoc;
-		Meteor.call('getDirections', myLocation, address, function(e,d) {
-			if (e) {
-				console.log("Error on getDirections Call"); 
-			} else {
-				// console.log(d);
-				Session.set('myRoute', d.routes[0]); 
-			}
-		});
-		// $('#modalInfo').modal('close');
-		$('#modalDirections').modal('open');
-	}, 
 	'click #verify_button': function(evt,tpl) {
-		console.log("Clicked Verify button!");
+		// console.log("Clicked Verify button!");
 		//open modal verify form.
 		$('#modalVerify').modal('open');
-		}
+		},
+  'click #edit_button': function(evt,tpl) {
+    console.log("Clicked Edit button!");
+    //open modal verify form.
+    $('#modalEdit').modal('open')
+    $('.collapsible').collapsible();
+    }
 }); 

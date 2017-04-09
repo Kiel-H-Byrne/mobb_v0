@@ -1,6 +1,21 @@
 @import 'palettes/colors';
+@import 'palettes/plt_orng-tetrad';
+
+.myToast {
+  background-color: $clr-gold;
+}
 
 [id='infoWrap'] {
+
+  .fav_star {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    margin: 0 3px;
+    line-height: .8rem;
+  }
+
   a {
     color: inherit;
   }
@@ -11,21 +26,23 @@
   background-color: rgba(68, 68, 68, .8);
 
   h5 {
+    color: $color-primary-4;
     font-size: 1.4rem;
     margin: .3rem;
   }
   .badge {
     position:absolute;
-    top: 0;
+    bottom: 0;
     right: 0;
     margin: .3rem;
-    background-color: $clr-gold;
-    color: blue;
+    background-color: $color-primary-grey-4;
+    color: $color-primary-1;
     
   }
 
   .address {
     margin: 0;
+    color: $color-primary-1;
   }
 }
 

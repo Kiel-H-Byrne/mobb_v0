@@ -5,6 +5,15 @@
 .info-card {
 	// margin: 1rem;
 	
+  .fav_star {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    margin: 0 3px;
+    line-height: .8rem;
+  }
+
   img {
 		max-width: 100%;
 	}
@@ -19,10 +28,18 @@
   }
 
   .badge {
-    color: $rgba-secondary-1-4;
-    background-color: $rgba-complement-2;
+    color: $color-secondary-2-1;
+    background-color: $rgba-primary-grey-4;
     margin: .3rem;
     font-size: .8rem;
+
+    i {
+      float: right;
+      margin-left: 3px;
+      margin-top: 1px;
+      line-height: 1.4rem;
+      font-size: 1.2rem;
+    }
   }
 }
 

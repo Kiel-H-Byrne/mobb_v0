@@ -4,13 +4,7 @@
 @import 'palettes/colors';
 
 .fav_star {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  z-index: 2;
-  margin: 0 3px;
-  line-height: .8rem;
-
+  
   .remove_favorite {
     color: $clr-main;
   }

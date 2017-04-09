@@ -1,55 +1,55 @@
 @import '{}/node_modules/materialize-css/sass/components/color';
 @import '{}/node_modules/materialize-css/sass/components/variables';
 @import 'palettes/colors';
+@import 'palettes/_plt_orng-tetrad';
 
-  ::-webkit-input-placeholder {
-    color: $clr-orange;
-    text-transform: capitalize;
-    transition: opacity 250ms ease-in-out;
-  }
+::-webkit-input-placeholder {
+  color: $clr-orange;
+  text-transform: capitalize;
+  transition: opacity 250ms ease-in-out;
+}
 
-  :focus::-webkit-input-placeholder {
-    opacity: 0.3;
-  }
+:focus::-webkit-input-placeholder {
+  opacity: 0.3;
+}
 
-  :-ms-input-placeholder {
-    color: $clr-orange;
-    text-transform: capitalize;
-    transition: opacity 250ms ease-in-out;
-  }
+:-ms-input-placeholder {
+  color: $clr-orange;
+  text-transform: capitalize;
+  transition: opacity 250ms ease-in-out;
+}
 
-  :focus:-ms-input-placeholder {
-    opacity: 0.3;
-  }
+:focus:-ms-input-placeholder {
+  opacity: 0.3;
+}
 
-  ::-moz-placeholder {
-    color: $clr-orange;
-    opacity: .5;
-    text-transform: capitalize;
-    transition: opacity 250ms ease-in-out;
-  }
+::-moz-placeholder {
+  color: $clr-orange;
+  opacity: .5;
+  text-transform: capitalize;
+  transition: opacity 250ms ease-in-out;
+}
 
-  :focus::-moz-placeholder {
-    opacity: 0.3;
-  }
+:focus::-moz-placeholder {
+  opacity: 0.3;
+}
 
-  :-moz-placeholder {
-    color: $clr-orange;
-    opacity: .5;
-    text-transform: capitalize;
-    transition: opacity 250ms ease-in-out;
-  }
+:-moz-placeholder {
+  color: $clr-orange;
+  opacity: .5;
+  text-transform: capitalize;
+  transition: opacity 250ms ease-in-out;
+}
 
-  :focus:-moz-placeholder {
-    opacity: 0.3;
-  }
+:focus:-moz-placeholder {
+  opacity: 0.3;
+}
 
 
 .navbar-fixed {
-
   img {
-    max-height: ($navbar-height/2);
-    margin: 1rem auto;
+    max-height: $navbar-height;
+    // margin: 1rem auto;
   }
 
   i {
@@ -76,6 +76,10 @@
   .nav-list{
     // position: relative;
     // left: 210px;
+    a {
+      color: $color-primary-1;
+    }
+
     i {
       line-height: inherit;
     }
@@ -98,41 +102,55 @@
 
   }
 
-[id='mobile-search_wrapper'] {
+  [id='mobile-search_wrapper'] {
 
-  .input-field {
-    label {
-      &:not(.label-icon).active {
-        transform: translateY(-1rem);
+    .input-field {
+      label {
+        &:not(.label-icon).active {
+          transform: translateY(-1rem);
+        }
       }
     }
+
+    form input, i {
+      padding-top: .3rem ;
+      padding-bottom: .3rem ;
+      margin: .3rem .5rem;
+      vertical-align: middle !important;
+      line-height: inherit;
+    }
+
+
+  //   .input-field {
+  //     margin:0;
+  //   }
+    
+    
+  //   form {
+  //     min-width: 90%;
+  //   }
+
+  //   input {
+  //     margin-bottom: .3rem;
+  //     height: 1.5rem;
+  //   }
   }
 
-  form input, i {
-    padding-top: .3rem ;
-    padding-bottom: .3rem ;
-    margin: .3rem .5rem;
-    vertical-align: middle !important;
-    line-height: inherit;
-  }
 
 
-//   .input-field {
-//     margin:0;
-//   }
-  
-  
-//   form {
-//     min-width: 90%;
-//   }
 
-//   input {
-//     margin-bottom: .3rem;
-//     height: 1.5rem;
-//   }
 }
 
-
-
-
+@media #{$medium-and-down} {
+  .navbar-fixed {
+    img {
+      max-height: ($navbar-height - 15px);
+      margin: 4px auto;
+    }
+  }
+  .nav-list {
+    a {
+        padding: 0 7px;
+      }
+    }
 }

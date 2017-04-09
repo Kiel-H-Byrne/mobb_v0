@@ -14,6 +14,8 @@ Template.favoriteStar.events({
       },{
         $addToSet: {"profile.favorites" : docId}
       });
+    } else {
+      Materialize.toast('Log In Before Adding Favorites', 4000, 'myToast');
     }
   },
   'click .remove_favorite': function(evt,tpl) {

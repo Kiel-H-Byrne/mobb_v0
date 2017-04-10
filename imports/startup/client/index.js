@@ -135,7 +135,7 @@ Meteor.startup(function() {
     }
   });
 
-  Template.registerHelper('googleGID', function(name,loc, id) {
+  Template.registerHelper('getGID', function(name,loc, id) {
 
     let locArr = loc.split(",");
     let locObj = _.object( ['lat', 'lng'], [Number(locArr[0]), Number(locArr[1])]);
@@ -175,7 +175,47 @@ Meteor.startup(function() {
 
       // Meteor.call('getGoogleID', params.map, params.name, params.loc) 
     };
-  })
+  });
+
+  Template.registerHelper('getGDetails', function(gid) {
+    // if (Meteor.isServer) {
+    //   ID_Cache._ensureIndex( { "createdAt": 1 }, { expireAfterSeconds: 3600 } );
+    // }
+    if (GoogleMaps.loaded()) {
+      // let dataFromCache = ID_Cache.findOne({key: name});
+      // console.log(dataFromCache);
+      // if(dataFromCache) {
+      //   console.log("Data from Cache...");
+
+      //   return dataFromCache;
+      // } else {
+      //   console.log("Data from API...");
+      //   //get the response and stash it in OCache.
+        let map = GoogleMaps.maps.map || GoogleMaps.maps.minimap;
+        let service = new google.maps.places.PlacesService(map.instance);
+
+        let req = {
+            placeId: gid
+        };
+
+        let cbk = function(res,stat) {
+            if (stat === google.maps.places.PlacesServiceStatus.OK) {
+                console.log(res);
+                // ID_Cache.findOne({key: key}, {$set: {value: place_id}});
+                return res;
+                //inject with jquery into dom?
+                
+            } else {
+                console.log(stat);
+            }
+        };
+
+        // console.log(service);
+        return service.getDetails(req, cbk);
+
+    }
+
+  });
 
 
   Template.registerHelper('getDistance', function(dest) {

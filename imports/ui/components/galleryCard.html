@@ -4,7 +4,7 @@
   <!--a class="card_link" href="{{url}}" target="_blank" rel="noopener"-->
   {{#if google_id }}
   {{else}}
-    {{googleGID name location _id}}
+    {{getGID name location _id}}
   {{/if}}
     <div id="{{_id}}" class="info-card closestFlex_item card sticky-action grey darken-2 hoverable ">
       
@@ -50,9 +50,15 @@
       <div class="card-reveal">
        <span class="card-title">Reviews<i class="material-icons right">close</i></span>
        <p>
-        {{!-- {{#with greview name location _id}}
-          {{place_id}}
-        {{/with}} --}}
+        {{#with getGDetails google_id}}
+          {{#each reviews}}
+          <div>
+            {{author_name}}
+            {{rating}}
+            {{text}}
+            </div>
+          {{/each}}
+        {{/with}}
         </p>
       </div>
 

@@ -1,18 +1,11 @@
   @import url('https://fonts.googleapis.com/css?family=Kumar+One|Raleway');
 
   .test-wrapper {
-
-    width: 90%;
-    margin: 50px auto;
-    padding: 1rem;
-    border-radius: 10px;
-    background: #6a3340;
-    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-    -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-
-    .masonflex {
-
+    margin: 0;
+    padding: 0;
+    
+    .col {
+      padding: 0;
     }
 
     .masonflex_item {
@@ -22,6 +15,18 @@
       border: 2px solid green;
     }
     
+    .content_wrap {
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      background: #6a3340;
+      -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+      -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    }
+    .card-content {
+      padding: 0;
+    }
     h3 {
       font-family: 'Kumar One', cursive;
     }
@@ -31,10 +36,12 @@
     }
   }
 
-/*  [id='miniMap'] {
-    bottom: 50%;
-    left: 0;
+  [id='miniMap'] {
     position: absolute;
     right: 0;
-    top: 0;
-  }*/
+    left: 0;
+    top: 65px;
+    bottom: 50%;
+
+  }
+

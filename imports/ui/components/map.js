@@ -42,6 +42,7 @@ Template.map.onCreated( function() {
     // console.log("-= MAP: Created =-");
     let self = this;
     GoogleMaps.ready('map', function(map) {
+
       $(document).ready(function() {
   
         $('.addModal-trigger').modal({

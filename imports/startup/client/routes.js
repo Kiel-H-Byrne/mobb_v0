@@ -41,8 +41,7 @@ Router.route('/test', {
   name: 'test',
   yieldRegions: {
     // 'test': {to: 'content'},
-    'nav2': {to: 'nav'},
-    'footer': {to: 'footer'},
+    'nav2': {to: 'nav'}
   }
 });
 

@@ -267,7 +267,10 @@ Listings.attachSchema(new SimpleSchema({
   google_id: {
     label: 'Google ID',
     type: String,
-    optional: true
+    optional: true,
+    // autoValue: function() {
+      
+    // }
   },
   yelp_id: {
     label: 'Yelp ID',

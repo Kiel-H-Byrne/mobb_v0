@@ -1,7 +1,11 @@
 
 
 <template name="galleryCard">
-  <a class="card_link" href="{{url}}" target="_blank" rel="noopener">
+  <!--a class="card_link" href="{{url}}" target="_blank" rel="noopener"-->
+  {{#if google_id }}
+  {{else}}
+    {{googleGID name location _id}}
+  {{/if}}
     <div id="{{_id}}" class="info-card closestFlex_item card sticky-action grey darken-2 hoverable ">
       
       {{> favoriteStar}}
@@ -18,7 +22,7 @@
       {{/if}}
       <div class="card-content white-text">
 
-          <span class="card-title "> <h5 class="amber-text text-darken-1 center-align">{{name}}</h5></span>
+          <span class="card-title "> <h5 class="amber-text text-darken-1 center-align activator">{{name}}</h5></span>
           <h6 class="center-align"><a class="social" href="https://twitter.com/{{social}}" target="_blank" rel="noopener" > {{social}}</a></h6>
 
           <p class="center-align address">
@@ -44,13 +48,12 @@
       </a>
       {{/if}}
       <div class="card-reveal">
-        <span class="card-title amber-text text-darken-4">Reviews<i class="material-icons right">close</i></span>
-        
-        <p class="flow-text">We are still working on this feature...</p>
-        <p class="flow-text">{{description}}</p>
-        {{#with google_review}}
-        
-        {{/with}}
+       <span class="card-title">Reviews<i class="material-icons right">close</i></span>
+       <p>
+        {{!-- {{#with greview name location _id}}
+          {{place_id}}
+        {{/with}} --}}
+        </p>
       </div>
 
       <!--div class="card-action">
@@ -72,5 +75,5 @@
         </div>
       </div-->
     </div>  
-  </a>
+  <!--/a-->
 </template>

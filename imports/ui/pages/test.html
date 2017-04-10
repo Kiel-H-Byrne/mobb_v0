@@ -2,52 +2,45 @@
 <template name="test">
 	
 	{{!-- {{> quickForm collection="Listings" doc=this id="insertListingsForm" type="normal"}} --}}
-{{> favoritesPage}}
   <div class="test-wrapper ">
-    <div class="select_wrapper">
-      <a class="dropdown-button" href="#" alt="More..." data-activates="test-dropdown" data-beloworigin="true" data-constrainwidth="true" data-alignment="right" >
-          <i class="material-icons white-text" title="...">more_vert</i>
-      </a>
-      <ul id="test-dropdown" class="dropdown-content">
-          <li><a href="/terms">Terms &amp; Conditions </a></li>
-          <li class="divider"></li>
-          <li><a href="/kibu">About Us</a></li>
-      </ul>
-    </div>
-    <div class="row">
-      <div class="col s8 push-s2">
-        <h3 class="center-align">Review</h3>
-      	{{#with greview}}
-          
-        {{/with}}
+
+    <div class="row map_wrap">
+      <div class="col s12" id="miniMap">
+        {{> googleMap name="minimap" options = mapOptions }}
       </div>
     </div>
-    <div class="row">
+    
+    <div class="row content_wrap">
+      <div class="select_wrapper" style="float:right">
+        <a class="dropdown-button" href="#" alt="More..." data-activates="test-dropdown" data-beloworigin="true" data-constrainwidth="true" data-alignment="right" >
+            <i class="material-icons white-text" title="...">more_vert</i>
+        </a>
+        <ul id="test-dropdown" class="dropdown-content">
+            <li><a href="/terms">Terms &amp; Conditions </a></li>
+            <li class="divider"></li>
+            <li><a href="/kibu">About Us</a></li>
+        </ul>
+      </div>
       <div class="col s12">
-        <h3> Heading </h3>
-        <p class="flow-text">
-        Some test to test the font pairing of header and paragraph. Sometimes we just need a litle bit of text to make the copy sound good. and this is just som highfalutent copy in order to make a point about font pairings. This doesn't make any real logical sensical nonsensicalness, but it's worthy of a few lines or two or three or 4 or 50 of text in a dummy paragraph placeholder. right? RIGHT? Copy? Copy!  
-        </p>
+        <div id="instaMap"></div>
+        <div class="s3" style="width:250px; height:300px">
+      	{{#with randomDoc}}
+          {{> galleryCard}}
+        {{/with}}
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12">
+          <h4> Heading </h4>
+          <p class="flow-text truncate">
+          Some test to test the font pairing of header and paragraph. Sometimes we just need a litle bit of text to make the copy sound good. and this is just som highfalutent copy in order to make a point about font pairings. This doesn't make any real logical sensical nonsensicalness, but it's worthy of a few lines or two or three or 4 or 50 of text in a dummy paragraph placeholder. right? RIGHT? Copy? Copy!  
+          </p>
+        </div>
       </div>
     </div>
-
-    <div class="masonflex">
-      <div class="masonflex_sizer" style="width:20%; height: 80px"></div>
-      <div class=" masonflex_item" style="width:20%; height: 80px"></div>
-      <div class=" masonflex_item" style="width: 15%; height: 200px"></div>
-      <div class=" masonflex_item" style="width: 20%; height: 80px"></div>
-      <div class=" masonflex_item" style="width: 20%; height: 280px"></div>
-      <div class=" masonflex_item" style="width: 15%; height: 180px"></div>
-      <div class=" masonflex_item" style="width: 30%; height: 180px"></div>
-      <div class=" masonflex_item" style="width: 30%; height: 60px"></div>
-      <div class=" masonflex_item" style="width: 20%; height: 110px"></div>
-      <div class=" masonflex_item" style="width: 40%; height: 100px"></div>
-    </div>
-
   </div>
-  <div id="miniMap">
-      {{!-- {{> googleMap name="minimap" options = mapOptions }} --}}
-  </div>
+
 	{{!-- {{> quickForm collection="Categories" doc=this id="insertCategoriesForm" type="normal"}}		 --}}
 </template>
 

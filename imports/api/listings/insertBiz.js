@@ -73,18 +73,13 @@ const myCall = function (func, param, callback) {
 };
 
 Meteor.methods({
-	insertBiz: function(doc) {
-
-		Listings.insert(doc);
-		console.log("Inserted: "+ name);
-		return;
-	},
-  getGoogleID: function(name) {
-    this.unblock();
+  getGoogleID: function(m,n,l) {
+    //map should be GoogleMaps.maps.<<name>> 
+    //name is listing name
+    //loc is object literal
     // if (Meteor.isServer) {
     //   ID_Cache._ensureIndex( { "createdAt": 1 }, { expireAfterSeconds: 3600 } );
     // }
-    if (Meteor.isClient && (Session.get('clientLoc') || Session.get('browserLoc')) && name) {
       // let dataFromCache = ID_Cache.findOne({key: name});
       // console.log(dataFromCache);
       // if(dataFromCache) {
@@ -94,37 +89,28 @@ Meteor.methods({
       // } else {
       //   console.log("Data from API...");
       //   //get the response and stash it in OCache.
-        
-        let inst = GoogleMaps.maps.minimap.instance;
-        let service = new google.maps.places.PlacesService(inst);
+      console.log(this);
+      console.log("MAP READY!", m, n, l);
+      // const service = new google.maps.places.PlacesService(m.instance);
+      // let request2 = {
+      //     //name & location & radius (meters).
+      //     name: n,
+      //     location: l,
+      //     radius: 100,
+      //   };
 
-        let request = {
-            name: name,
-            location: location,
-            radius: 10000,
-          };
-
-        let callback = function(results,status) {
-            if (status === google.maps.places.PlacesServiceStatus.OK) {
-                // console.log(results)
-                let place_id = results[0].place_id;
-                // ID_Cache.findOne({key: key}, {$set: {value: place_id}});
-                return place_id;
-            } else {
-              console.log("HUH?");
-                console.log(status);
-            }
-        };
-
-        // console.log(service);
-        // service.getDetails(request, callback);
-        service.nearbySearch(request, callback);    
-
-    }    
-
+      // let callback = function(results,status) {
+      //     if (status === google.maps.places.PlacesServiceStatus.OK) {
+      //         console.log(results[0]);    
+      //         return results[0].place_id;
+      //     } else {
+      //         console.log(status);
+      //     }
+      // };
+      // service.radarSearch(request2,callback);  
   },
+
  getReviews: function(id) {
-    this.unblock();
     // if (Meteor.isServer) {
     //   ID_Cache._ensureIndex( { "createdAt": 1 }, { expireAfterSeconds: 3600 } );
     // }

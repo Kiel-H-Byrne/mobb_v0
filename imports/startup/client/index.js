@@ -51,15 +51,13 @@ imagesLoaded = require('imagesLoaded/imagesLoaded.js');
 
 Meteor.startup(function() {
 
-if (isRunningStandalone()) {
-    /* This code will be executed if app is running standalone */
-
-}
-
+  if (isRunningStandalone()) {
+    // This code will be executed if app is running standalone 
+  }
 
   Session.set('geoAccepted', false);
 
-    //-- ANALYTICS EVENT (User dismiss/Accept Home Screen banner) --
+  //-- ANALYTICS EVENT (User dismiss/Accept Home Screen banner) --
 
   window.addEventListener('beforeinstallprompt', function(e) {
     // beforeinstallprompt Event fired
@@ -86,16 +84,15 @@ if (isRunningStandalone()) {
     });
   });
 
-//=====  meteor-typeAhead =====
+  //=====  meteor-typeAhead =====
 	Meteor.typeahead.inject();
 
-//=====  GoogleMaps load =====	
+  //=====  GoogleMaps load =====	
 	GoogleMaps.load({
 	  v: '3',
 	  key: Meteor.settings.public.keys.googleClient.key,
 	  libraries: ['places', 'geometry']
 	});
-
 	//=====  HTML Attributes for Facebook opengraph api =====
 	$('html').attr({
 		'xmlns': 'https://www.w3.org/1999/xhtml',
@@ -114,14 +111,14 @@ if (isRunningStandalone()) {
 	    });
 	  });
 	}
-//=====  Global Template Helpers =====
+  //=====  Global Template Helpers =====
 
   Template.registerHelper('hasImage', function() {
       //'this' should be Listings Document
       // console.log(typeof this.image.url);
       if (this.image) {
         let test = this.image.url;
-        console.log(test);
+        // console.log(test);
         if (test !== "false") {
           return true; 
         } else {
@@ -137,6 +134,49 @@ if (isRunningStandalone()) {
       return test;
     }
   });
+
+  Template.registerHelper('googleGID', function(name,loc, id) {
+
+    let locArr = loc.split(",");
+    let locObj = _.object( ['lat', 'lng'], [Number(locArr[0]), Number(locArr[1])]);
+    // console.log(id);
+
+    if (GoogleMaps.loaded() && Meteor.user()) {
+      let map = GoogleMaps.maps.map;
+      // const params = {
+      //   map: map,
+      //   name: 'The Spice Suite',
+      //   loc: {lat: 38.9738619, lng: -77.018299999},
+      // };
+
+      const service = new google.maps.places.PlacesService(map.instance);
+      const req = {
+          //name & location & radius (meters).
+          name: name,
+          location: locObj,
+          radius: 10,
+        };
+
+      const cbk = function(res,stat) {
+          if (stat === google.maps.places.PlacesServiceStatus.OK) {
+              let google_id = res[0].place_id
+              console.log(`Obtained ${google_id} for ${name}.`);
+              //set document
+              Listings.update(
+                { _id: id },
+                { $set: { google_id: google_id } }
+              );
+              return google_id;
+          } else {
+              console.log(stat);
+          }
+      };
+      return service.radarSearch(req,cbk);  
+
+      // Meteor.call('getGoogleID', params.map, params.name, params.loc) 
+    };
+  })
+
 
   Template.registerHelper('getDistance', function(dest) {
       //Get distance, convert to miles, flag as 'is_close' class if under X miles, (this class will be visible) 
@@ -186,16 +226,15 @@ if (isRunningStandalone()) {
   });
 
 
-Template.registerHelper('currentDoc', function() {
-  if (Session.get('openListing')) {
-    let id = Session.get('openListing');
-    let doc = Listings.findOne({_id: id});
-    // console.log(doc);
-    return doc;
-  }
-});
-
-
+  Template.registerHelper('currentDoc', function() {
+    if (Session.get('openListing')) {
+      let id = Session.get('openListing');
+      let doc = Listings.findOne({_id: id});
+      // console.log(doc);
+      return doc;
+    }
+  });
+// STILL INSIDE METEOR.STARTUP
 });
 
 

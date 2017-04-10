@@ -231,6 +231,28 @@ Meteor.methods({
         console.log(e);
       });
   },
+  google_placeID: function(map,name,loc) {
+      GoogleMaps.ready('minimap', function(map) {
+        console.log("MAP READY!", map);
+        const service = new google.maps.places.PlacesService(map.instance);
+        let request2 = {
+            //name & location & radius (meters).
+            name: name,
+            location: loc,
+            radius: 100,
+          };
+
+        let callback = function(results,status) {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+                console.log(results[0]);    
+                return results[0].place_id;
+            } else {
+                console.log(status);
+            }
+        };
+        service.radarSearch(request2,callback);
+    });
+  },
   yelp_reviews: function(term, loc) {
     // FROM 'NODE YELP' : https://github.com/olalonde/node-yelp
     // Request API access: http://www.yelp.com/developers/getting_started/api_access 

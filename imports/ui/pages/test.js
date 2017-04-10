@@ -5,7 +5,10 @@ import './test.html';
 import './favoritesPage.js';
 //place a search on specific name and location, on insert. 
 Template.test.onCreated( function() {  
+    this.subscribe('listings');
     $(document).ready(function() {
+      
+
       $('.dpdwn').dropdown({
         inDuration: 300,
         outDuration: 225,
@@ -20,44 +23,31 @@ Template.test.onCreated( function() {
       $('.dropdown-button').dropdown();      
     });
 
-    GoogleMaps.ready('minimap', function(map) {
-        let service = new google.maps.places.PlacesService(map.instance);
-        let request = {
-            placeId: 'ChIJdT5Y94TIt4kRcIAIK6khBm4'
-        };
-        let request2 = {
-            name: 'The SpiceSuite',
-            location: { lat: 39.0163, lng: -76.9799  },
-            radius: 10000,
-          };
-
-        let callback = function(results,status) {
-            if (status === google.maps.places.PlacesServiceStatus.OK) {
-                console.log(results[0]);    
-            } else {
-                console.log(status);
-            }
-        };
-
-        // console.log(service);
-        // service.getDetails(request, callback);
-        // service.nearbySearch(request2, callback);
-    });
-
 });
 
+Template.test.onRendered(function() {
+  
+
+
+    // self.autorun(function() {
+    //    let mmap  = Session.get('currentMap');
+    // })
+
+  
+})
+
+
 Template.test.helpers({
-  greview: function() {
-    let review = {};
-    return review;
-  }, 
+  randomDoc: function() {
+    const doc =  Listings.findOne();
+    return doc;
+  },
   mapOptions: function() {
         let mapCenter = { lat: 39.0163, lng: -76.9799  };
         if (GoogleMaps.loaded() && mapCenter) {
-          console.log("Map Loaded");
             return {
                 // ============================= RETURN MAP OPTIONS ==================================    
-                center: new google.maps.LatLng(mapCenter),
+                center: mapCenter,
                 // center: new google.maps.LatLng(Centers.User[0], Centers.User[1]),
                 zoom: 9,
                 // mapTypeId:google.maps.MapTypeId.TERRAIN,

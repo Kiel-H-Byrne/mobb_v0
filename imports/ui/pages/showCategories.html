@@ -1,5 +1,4 @@
 
-
 <template name="showCategories">
 <div class="showCategories-wrapper">
   <div class="row">
@@ -10,6 +9,11 @@
   <div class="row categoryFlex">
   {{#each list}}
 {{!--  --}}
+  {{#if google_id }}
+  {{else}}
+    {{googleGID name location _id}}
+  {{/if}}
+  
     <a href="{{url}}" target="_blank" rel="noopener">
       <div id="{{_id}}" class=" categoryFlex_item card sticky-action grey darken-2 hoverable grid-item">
 

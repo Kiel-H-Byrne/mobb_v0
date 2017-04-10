@@ -142,7 +142,7 @@ Meteor.startup(function() {
     // console.log(id);
 
     if (GoogleMaps.loaded() && Meteor.user()) {
-      let map = GoogleMaps.maps.map;
+      let map = GoogleMaps.maps.map || GoogleMaps.maps.minimap;
       // const params = {
       //   map: map,
       //   name: 'The Spice Suite',
@@ -177,6 +177,8 @@ Meteor.startup(function() {
     };
   });
 
+  // var resolvedData = new ReactiveDict();
+
   Template.registerHelper('getGDetails', function(gid) {
     // if (Meteor.isServer) {
     //   ID_Cache._ensureIndex( { "createdAt": 1 }, { expireAfterSeconds: 3600 } );
@@ -202,6 +204,7 @@ Meteor.startup(function() {
             if (stat === google.maps.places.PlacesServiceStatus.OK) {
                 console.log(res);
                 // ID_Cache.findOne({key: key}, {$set: {value: place_id}});
+                // resolvedData.set('placeDetails', res);
                 return res;
                 //inject with jquery into dom?
                 
@@ -211,8 +214,8 @@ Meteor.startup(function() {
         };
 
         // console.log(service);
-        return service.getDetails(req, cbk);
-
+        service.getDetails(req, cbk);
+        // return resolvedData.get('placeDetails');
     }
 
   });

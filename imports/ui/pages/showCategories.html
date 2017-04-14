@@ -14,7 +14,7 @@
     {{getGID name location _id}}
   {{/if}}
   
-    <a href="{{url}}" target="_blank" rel="noopener">
+    <!--a href="{{url}}" target="_blank" rel="noopener"-->
       <div id="{{_id}}" class=" categoryFlex_item card sticky-action grey darken-2 hoverable grid-item">
 
         {{> favoriteStar}}
@@ -25,7 +25,7 @@
         </div>
         {{/if}}
         <div class="card-content white-text">
-            <span class="card-title "> <h5 class="amber-text text-darken-1 center-align">{{name}}</h5></span>
+            <span class="card-title "> <h5 class="amber-text text-darken-1 center-align activator">{{name}}</h5></span>
             <h6 class="center-align"><a href="#" target="_blank" rel="noopener" > {{social}}</a></h6>
             {{#if street}}
             <p class="center-align address">
@@ -43,12 +43,22 @@
 
         <div class="card-reveal">
           <span class="card-title amber-text text-darken-4">Reviews<i class="material-icons right">close</i></span>
-          
-          <p class="flow-text">We are still working on this feature...</p>
-          <p class="flow-text">{{description}}</p>
-          {{#with google_review}}
-          
+         {{#if google_id }}
+          <p>
+          {{#with getGDetails google_id}}
+            {{#each reviews}}
+            <div>
+              {{author_name}}
+              {{rating}}
+              {{text}}
+              </div>
+            {{/each}}
           {{/with}}
+          </p>
+        {{else}}
+          {{getGID name location _id}}
+          <p><a href="#" >Create Review for this Place</a></p>
+        {{/if}}
         </div>
 
         <div class="card-action">
@@ -72,7 +82,7 @@
           </div>
         </div>
       </div>  
-    </a>
+    <!--/a-->
 
     {{/each}}
   </div>

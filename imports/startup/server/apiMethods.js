@@ -126,15 +126,6 @@ Meteor.methods({
       }
     });
   },
-  remListing: function(doc) {
-    Listings.remove(doc , function(err, res){
-      if (err) {
-        console.log(err.details);
-      } else {
-        console.log(res.name+" REMOVED.");
-      }
-    });    
-  },
   loginWith: function(u,p) {
     Meteor.loginWithPassword(u, p);
   },
@@ -176,217 +167,217 @@ Meteor.methods({
     }
     return;
   },
-  browserGeo: function(address) {
+  submitPlace: function(doc) {
     this.unblock();
+/*
+      "location": {
+        "lat": -33.8669710,
+        "lng": 151.1958750
+      }, [REQ'D]
+      "accuracy": 50,
+      "name": "Google Shoes!", [REQ'D]
+      "phone_number": "(02) 9374 4000", [RECC'D]
+      "address": "48 Pirrama Road, Pyrmont, NSW 2009, Australia", [RECC'D]
+      "types": ["OTHER"], [REQ'D (ONLY ONE )]
+      "website": "http://www.google.com.au/", [RECC'D]
+      "language": "en-AU"
+      };
+*/
+    const apiUrl = 'https://maps.googleapis.com/maps/api/place/add/json?key=' + Meteor.settings.public.keys.googleServer.key;
+    const params = {};
+    params.location = doc.location;
+    params.name = doc.name;
+    params.phone_number = doc.phone;
+    params.address = doc.street + ' ' + doc.state + ', ' + doc.zip;
+    params.types = ["other"];
+    params.accuracy = 50;
+    params.website = doc.url;
+    params.language = "en-US";
+
+    // console.log("***calling PLACES API method with "+params);
+    try {
+      const result = HTTP.post(apiUrl, params);
+      console.log(result);
+      return true;
+  } catch(e) {
+    console.log(e);
+    return false;
+  }
     
-    let apiUrl = 'https://freegeoip.net/json/';
-    console.log("--URL--"+apiUrl);
-    let response = Meteor.wrapAsync(apiCall)(apiUrl);
-    console.log("browserGEO RESPONSE:");
-    console.log(response);
-    let lat = response.latitude;
-    let lng = response.longitude;
-    //====== RETURN LAT/LONG OBJECT LITERAL ======
-    let browserLoc = _.object( ['lat', 'lng'], [lat, lng]);
-    return browserLoc;   
-    //====== RETURN STRINGIFIED LAT/LONG NUMBERS ======
-    // let arr =  _.values(loc);
-    // console.log(arr.toLocaleString());
-    // return arr.toLocaleString();    
+
+    return;
   },
-  getDirections: function(orig,dest) {
-    this.unblock();
-    // origin=Disneyland&destination=Universal+Studios+Hollywood4' &key=YOUR_API_KEY' + urlParams + 
-    let params = {};
-    params.origin = orig;
-    params.destination = dest;
-    // console.log("***calling DIRECTIONS API method with "+params);
-    let apiUrl = 'https://maps.googleapis.com/maps/api/directions/json?origin=' + params.origin + '&destination=' + params.destination + '&key=' + Meteor.settings.public.keys.googleServer.key;
-    console.log("--URL--"+apiUrl);
-    let response = Meteor.wrapAsync(apiCall)(apiUrl);
-    // console.log(response);
-    return response;
-  },
-  yelp_search: function(term, loc) {
-    this.unblock();
-    // FROM 'NODE YELP' : https://github.com/olalonde/node-yelp
-    // Request API access: http://www.yelp.com/developers/getting_started/api_access 
+  // getDirections: function(orig,dest) {
+  //   this.unblock();
+  //   // origin=Disneyland&destination=Universal+Studios+Hollywood4' &key=YOUR_API_KEY' + urlParams + 
+  //   let params = {};
+  //   params.origin = orig;
+  //   params.destination = dest;
+  //   // console.log("***calling DIRECTIONS API method with "+params);
+  //   let apiUrl = 'https://maps.googleapis.com/maps/api/directions/json?origin=' + params.origin + '&destination=' + params.destination + '&key=' + Meteor.settings.public.keys.googleServer.key;
+  //   console.log("--URL--"+apiUrl);
+  //   let response = Meteor.wrapAsync(apiCall)(apiUrl);
+  //   // console.log(response);
+  //   return response;
+  // },
+  // yelp_search: function(term, loc) {
+  //   this.unblock();
+  //   // FROM 'NODE YELP' : https://github.com/olalonde/node-yelp
+  //   // Request API access: http://www.yelp.com/developers/getting_started/api_access 
      
-    // See http://www.yelp.com/developers/documentation/v2/search_api 
+  //   // See http://www.yelp.com/developers/documentation/v2/search_api 
 
-    Yelp.accessToken(yelp_id, yelp_secret).then(response => {
-        const token = response.jsonBody.access_token;
-        // console.log("YELP TOKEN:" + token);
-        const client = Yelp.client(token);
+  //   Yelp.accessToken(yelp_id, yelp_secret).then(response => {
+  //       const token = response.jsonBody.access_token;
+  //       // console.log("YELP TOKEN:" + token);
+  //       const client = Yelp.client(token);
 
-        //then do search 
-        client.search({
-          term:'coffee',
-          location: '20902'
-        }).then(response => {
-          console.log("YELP SEARCH EXAMPLE RESPONSE:");
-          console.log(response.jsonBody.businesses[0].name);
-        });
-      }).catch(e => {
-        console.log(e);
-      });
-  },
-  google_placeID: function(map,name,loc) {
-      GoogleMaps.ready('minimap', function(map) {
-        console.log("MAP READY!", map);
-        const service = new google.maps.places.PlacesService(map.instance);
-        let request2 = {
-            //name & location & radius (meters).
-            name: name,
-            location: loc,
-            radius: 100,
-          };
-
-        let callback = function(results,status) {
-            if (status === google.maps.places.PlacesServiceStatus.OK) {
-                console.log(results[0]);    
-                return results[0].place_id;
-            } else {
-                console.log(status);
-            }
-        };
-        service.radarSearch(request2,callback);
-    });
-  },
-  yelp_reviews: function(term, loc) {
-    // FROM 'NODE YELP' : https://github.com/olalonde/node-yelp
-    // Request API access: http://www.yelp.com/developers/getting_started/api_access 
+  //       //then do search 
+  //       client.search({
+  //         term:'coffee',
+  //         location: '20902'
+  //       }).then(response => {
+  //         console.log("YELP SEARCH EXAMPLE RESPONSE:");
+  //         console.log(response.jsonBody.businesses[0].name);
+  //       });
+  //     }).catch(e => {
+  //       console.log(e);
+  //     });
+  // },
+  // yelp_reviews: function(term, loc) {
+  //   // FROM 'NODE YELP' : https://github.com/olalonde/node-yelp
+  //   // Request API access: http://www.yelp.com/developers/getting_started/api_access 
      
-    // See http://www.yelp.com/developers/documentation/v2/search_api 
+  //   // See http://www.yelp.com/developers/documentation/v2/search_api 
 
-    Yelp.accessToken(yelp_id, yelp_secret).then(response => {
-        const token = response.jsonBody.access_token;
-        // console.log("YELP TOKEN:" + token);
-        const client = Yelp.client(token);
+  //   Yelp.accessToken(yelp_id, yelp_secret).then(response => {
+  //       const token = response.jsonBody.access_token;
+  //       // console.log("YELP TOKEN:" + token);
+  //       const client = Yelp.client(token);
 
-        //then do search 
-        client.search({
-          term:'coffee',
-          location: '20902'
-        }).then(response => {
-          console.log(response.jsonBody.businesses[0].name);
-        });
-      }).catch(e => {
-        console.log(e);
-      });
-  },
-  yelp_phoneSearch: function(phone) {
-    this.unblock();
-    // FROM 'NODE YELP' : https://github.com/olalonde/node-yelp
-    // Request API access: http://www.yelp.com/developers/getting_started/api_access 
+  //       //then do search 
+  //       client.search({
+  //         term:'coffee',
+  //         location: '20902'
+  //       }).then(response => {
+  //         console.log(response.jsonBody.businesses[0].name);
+  //       });
+  //     }).catch(e => {
+  //       console.log(e);
+  //     });
+  // },
+  // yelp_phoneSearch: function(phone) {
+  //   this.unblock();
+  //   // FROM 'NODE YELP' : https://github.com/olalonde/node-yelp
+  //   // Request API access: http://www.yelp.com/developers/getting_started/api_access 
      
-    // See http://www.yelp.com/developers/documentation/v2/search_api 
+  //   // See http://www.yelp.com/developers/documentation/v2/search_api 
 
-    Yelp.accessToken(yelp_id, yelp_secret).then(response => {
-        const token = response.jsonBody.access_token;
-        // console.log("YELP TOKEN:" + token);
-        const client = Yelp.client(token);
+  //   Yelp.accessToken(yelp_id, yelp_secret).then(response => {
+  //       const token = response.jsonBody.access_token;
+  //       // console.log("YELP TOKEN:" + token);
+  //       const client = Yelp.client(token);
 
-        //then do search 
-        client.phoneSearch({
-          phone: phone
-        }).then(response => {
-          let res = response.jsonBody.businesses[0];
-          console.log("YELP RESPONSE:");
-          console.log(res);
-          return res;
-        });
-      }).catch(e => {
-        console.log(e);
-      });
-  },
-  yelp_getID: function(phone) {
-    this.unblock();
-    // FROM 'NODE YELP' : https://github.com/olalonde/node-yelp
-    // Request API access: http://www.yelp.com/developers/getting_started/api_access 
+  //       //then do search 
+  //       client.phoneSearch({
+  //         phone: phone
+  //       }).then(response => {
+  //         let res = response.jsonBody.businesses[0];
+  //         console.log("YELP RESPONSE:");
+  //         console.log(res);
+  //         return res;
+  //       });
+  //     }).catch(e => {
+  //       console.log(e);
+  //     });
+  // },
+  // yelp_getID: function(phone) {
+  //   this.unblock();
+  //   // FROM 'NODE YELP' : https://github.com/olalonde/node-yelp
+  //   // Request API access: http://www.yelp.com/developers/getting_started/api_access 
      
-    // See http://www.yelp.com/developers/documentation/v2/search_api 
+  //   // See http://www.yelp.com/developers/documentation/v2/search_api 
 
-    Yelp.accessToken(yelp_id, yelp_secret).then(response => {
-      const token = response.jsonBody.access_token;
-      // console.log("YELP TOKEN:" + token);
-      const client = Yelp.client(token);
+  //   Yelp.accessToken(yelp_id, yelp_secret).then(response => {
+  //     const token = response.jsonBody.access_token;
+  //     // console.log("YELP TOKEN:" + token);
+  //     const client = Yelp.client(token);
 
-      //then do search 
-      let yid = client.phoneSearch({
-        phone: phone
-      }).then(response => {
-        let res = response.jsonBody.businesses[0];
-        console.log("YELP RESPONSE:");
-        console.log(res.id);
-        return res.id;
-      });
-    }).catch(e => {
-      console.log(e);
-    });
+  //     //then do search 
+  //     let yid = client.phoneSearch({
+  //       phone: phone
+  //     }).then(response => {
+  //       let res = response.jsonBody.businesses[0];
+  //       console.log("YELP RESPONSE:");
+  //       console.log(res.id);
+  //       return res.id;
+  //     });
+  //   }).catch(e => {
+  //     console.log(e);
+  //   });
 
-  },
-  yelp_business: function(id, loc) {
-    // FROM 'NODE YELP' : https://github.com/olalonde/node-yelp
-    // Request API access: http://www.yelp.com/developers/getting_started/api_access 
+  // },
+  // yelp_business: function(id, loc) {
+  //   // FROM 'NODE YELP' : https://github.com/olalonde/node-yelp
+  //   // Request API access: http://www.yelp.com/developers/getting_started/api_access 
      
-    // See http://www.yelp.com/developers/documentation/v2/search_api 
+  //   // See http://www.yelp.com/developers/documentation/v2/search_api 
 
-    Yelp.accessToken(yelp_id, yelp_secret).then(response => {
-        const token = response.jsonBody.access_token;
-        // console.log("YELP TOKEN:" + token);
-        const client = Yelp.client(token);
+  //   Yelp.accessToken(yelp_id, yelp_secret).then(response => {
+  //       const token = response.jsonBody.access_token;
+  //       // console.log("YELP TOKEN:" + token);
+  //       const client = Yelp.client(token);
 
-        //then do search 
-        client.business('id').then(response => {
-          console.log(response.jsonBody.name);
-        }).then(response => {
-          console.log(response.jsonBody.businesses[0].name);
-        });
-      }).catch(e => {
-        console.log(e);
-      });
-  },
-  yelp_autocomplete: function(term, loc) {
-    // FROM 'NODE YELP' : https://github.com/olalonde/node-yelp
-    // Request API access: http://www.yelp.com/developers/getting_started/api_access 
+  //       //then do search 
+  //       client.business('id').then(response => {
+  //         console.log(response.jsonBody.name);
+  //       }).then(response => {
+  //         console.log(response.jsonBody.businesses[0].name);
+  //       });
+  //     }).catch(e => {
+  //       console.log(e);
+  //     });
+  // },
+  // yelp_autocomplete: function(term, loc) {
+  //   // FROM 'NODE YELP' : https://github.com/olalonde/node-yelp
+  //   // Request API access: http://www.yelp.com/developers/getting_started/api_access 
      
-    // See http://www.yelp.com/developers/documentation/v2/search_api 
+  //   // See http://www.yelp.com/developers/documentation/v2/search_api 
 
-    Yelp.accessToken(yelp_id, yelp_secret).then(response => {
-        const token = response.jsonBody.access_token;
-        // console.log("YELP TOKEN:" + token);
-        const client = Yelp.client(token);
+  //   Yelp.accessToken(yelp_id, yelp_secret).then(response => {
+  //       const token = response.jsonBody.access_token;
+  //       // console.log("YELP TOKEN:" + token);
+  //       const client = Yelp.client(token);
 
-        //then do search 
-        client.search({
-          term:'coffee',
-          location: '20902'
-        }).then(response => {
-          console.log(response.jsonBody.businesses[0].name);
-        });
-      }).catch(e => {
-        console.log(e);
-      });
-  },
-  yelp_transaction: function(location) {
-    //RECEIVES LOCATION LAT/LNG OBJECT OR STRING
+  //       //then do search 
+  //       client.search({
+  //         term:'coffee',
+  //         location: '20902'
+  //       }).then(response => {
+  //         console.log(response.jsonBody.businesses[0].name);
+  //       });
+  //     }).catch(e => {
+  //       console.log(e);
+  //     });
+  // },
+  // yelp_transaction: function(location) {
+  //   //RECEIVES LOCATION LAT/LNG OBJECT OR STRING
 
-    Yelp.accessToken(yelp_id, yelp_secret).then(response => {
-        const token = response.jsonBody.access_token;
-        // console.log("YELP TOKEN:" + token);
-        const client = Yelp.client(token);
+  //   Yelp.accessToken(yelp_id, yelp_secret).then(response => {
+  //       const token = response.jsonBody.access_token;
+  //       // console.log("YELP TOKEN:" + token);
+  //       const client = Yelp.client(token);
 
-        //then do search 
-        client.transactionSearch('delivery', {
-          location: location
-        }).then(response => {
-          console.log(response.jsonBody.businesses[0].name);
-        });
-      }).catch(e => {
-        console.log(e);
-      });
-  },
+  //       //then do search 
+  //       client.transactionSearch('delivery', {
+  //         location: location
+  //       }).then(response => {
+  //         console.log(response.jsonBody.businesses[0].name);
+  //       });
+  //     }).catch(e => {
+  //       console.log(e);
+  //     });
+  // },
   bizSearch: function() {
     // https://api.business.usa.gov/{ReturnType}?keyword={KeyWordSearch}&page={PageNumber}&api_key={YourAPIKey}
     this.unblock();
@@ -402,10 +393,6 @@ Meteor.methods({
     console.log("--URL--"+apiUrl);
     let response = Meteor.wrapAsync(apiCall)(apiUrl);
   }, 
-  getRoute: function(orig,dest) {
-    this.unblock();
-
-  },
   calcDistance: function(start,finish) {
     if (Meteor.isClient) {
       let dist = google.maps.geometry.spherical.computeDistanceBetween(start,finish);

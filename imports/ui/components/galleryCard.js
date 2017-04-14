@@ -32,6 +32,7 @@ Template.galleryCard.onRendered(function() {
 });
 
 Template.galleryCard.helpers({
+
  
 });
 
@@ -40,4 +41,7 @@ Template.galleryCard.events({
   //   // Session.set('openListing', this._id);
   //   // console.log(this._id);
   // }
+  'click .add-place' : function(evt,tpl) {
+    Meteor.call('submitPlace',this);
+  }
 });

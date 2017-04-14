@@ -2,10 +2,7 @@
 
 <template name="galleryCard">
   <!--a class="card_link" href="{{url}}" target="_blank" rel="noopener"-->
-  {{#if google_id }}
-  {{else}}
-    {{getGID name location _id}}
-  {{/if}}
+
     <div id="{{_id}}" class="info-card closestFlex_item card sticky-action grey darken-2 hoverable ">
       
       {{> favoriteStar}}
@@ -49,17 +46,22 @@
       {{/if}}
       <div class="card-reveal">
        <span class="card-title">Reviews<i class="material-icons right">close</i></span>
-       <p>
-        {{#with getGDetails google_id}}
-          {{#each reviews}}
-          <div>
-            {{author_name}}
-            {{rating}}
-            {{text}}
-            </div>
-          {{/each}}
-        {{/with}}
-        </p>
+         {{#if google_id }}
+          <p>
+          {{#with getGDetails google_id}}
+            {{#each reviews}}
+            <div>
+              {{author_name}}
+              {{rating}}
+              {{text}}
+              </div>
+            {{/each}}
+          {{/with}}
+          </p>
+        {{else}}
+          {{getGID name location _id}}
+          <p><a href="#" >Create Review for this Place</a></p>
+        {{/if}}
       </div>
 
       <!--div class="card-action">

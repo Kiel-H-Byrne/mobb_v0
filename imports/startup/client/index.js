@@ -1,3 +1,5 @@
+import '../../api/orionCache.js';
+
 $ = window.jQuery = require("jquery");
 import 'materialize-css/js/initial';
 import 'materialize-css/js/global';
@@ -45,6 +47,8 @@ console.log("-= imports/startup/client/index.js loaded");
 const isRunningStandalone = function() {
     return (window.matchMedia('(display-mode: standalone)').matches);
 };
+
+const GRCache = new OrionCache('rest', 100000);
 
 Masonry = require('masonry-layout/masonry.js');
 imagesLoaded = require('imagesLoaded/imagesLoaded.js');
@@ -136,7 +140,7 @@ Meteor.startup(function() {
   });
 
   Template.registerHelper('getGID', function(name,loc, id) {
-
+    if (loc) {
     let locArr = loc.split(",");
     let locObj = _.object( ['lat', 'lng'], [Number(locArr[0]), Number(locArr[1])]);
     // console.log(id);
@@ -168,6 +172,10 @@ Meteor.startup(function() {
               );
               return google_id;
           } else {
+              Listings.update(
+                { _id: id },
+                { $set: { google_id: "NONE" } }
+              );
               console.log(stat);
           }
       };
@@ -175,39 +183,37 @@ Meteor.startup(function() {
 
       // Meteor.call('getGoogleID', params.map, params.name, params.loc) 
     };
+  }
   });
 
   // var resolvedData = new ReactiveDict();
 
   Template.registerHelper('getGDetails', function(gid) {
-    // if (Meteor.isServer) {
-    //   ID_Cache._ensureIndex( { "createdAt": 1 }, { expireAfterSeconds: 3600 } );
-    // }
-    if (GoogleMaps.loaded()) {
-      // let dataFromCache = ID_Cache.findOne({key: name});
-      // console.log(dataFromCache);
-      // if(dataFromCache) {
-      //   console.log("Data from Cache...");
+    let dataFromCache = GRCache.get(gid);
+    let res = {};
+    if(dataFromCache) {
+      console.log("Data from Cache...");
+      console.log(dataFromCache);
 
-      //   return dataFromCache;
-      // } else {
-      //   console.log("Data from API...");
-      //   //get the response and stash it in OCache.
+      return dataFromCache;
+    } else {
+        if (GoogleMaps.loaded()) {
+        console.log("Data from API...");
+      //   //get the response and stash it in GRCache.
         let map = GoogleMaps.maps.map || GoogleMaps.maps.minimap;
         let service = new google.maps.places.PlacesService(map.instance);
 
         let req = {
             placeId: gid
         };
-
         let cbk = function(res,stat) {
             if (stat === google.maps.places.PlacesServiceStatus.OK) {
                 console.log(res);
                 // ID_Cache.findOne({key: key}, {$set: {value: place_id}});
+                 GRCache.set(gid, res);
                 // resolvedData.set('placeDetails', res);
                 return res;
                 //inject with jquery into dom?
-                
             } else {
                 console.log(stat);
             }
@@ -216,8 +222,10 @@ Meteor.startup(function() {
         // console.log(service);
         service.getDetails(req, cbk);
         // return resolvedData.get('placeDetails');
+      } else {
+      console.log ("Map not yet loaded..."); 
+      } 
     }
-
   });
 
 

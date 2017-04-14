@@ -23,6 +23,7 @@
     "imagemin-mozjpeg": "^6.0.0",
     "imagesloaded": "^4.1.1",
     "jslint": "^0.10.3",
+    "masonry-layout": "^4.1.1",
     "materialize-css": "^0.98.0",
     "meteor-node-stubs": "~0.2.0",
     "spawn-sync": "^1.0.15",

@@ -20,11 +20,13 @@ OrionCache = function(cacheName, ttl) {
       ]
     }
   });                       
-                                                
+    
+    ttl = ttl || 60;                                                  
+    
+    if (Meteor.Server) {
     // apply index for key                                                         
     this.localCache._ensureIndex( { "key": 1 });                                   
-                                                                                   
-    ttl = ttl || 60;                                                               
+                                                                  
     // ensure key expiration                                                       
     this.localCache._ensureIndex({ "createdAt": 1 }, { expireAfterSeconds: ttl });
 
@@ -32,7 +34,7 @@ OrionCache = function(cacheName, ttl) {
       update: function(userId, query) { return ownsDocument(userId, query); },
       remove: function(userId, query) { return ownsDocument(userId, query); },
     });
-
+  }
 };                                                                               
                                                                                  
 /**                                                                              

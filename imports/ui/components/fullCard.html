@@ -64,9 +64,9 @@
             {{/if}}
           </div>
           <div id="tab2">
-            <h4 class="card-title">Reviews</h4>
              {{#if google_id }}
               <p>
+              <h4 class="card-title">Reviews</h4>
               {{#let place=thisPlace}}
                 {{#if place.reviews}}
                   {{#each review in place.reviews}}
@@ -81,8 +81,6 @@
                 {{/if}}
               {{/let}}
               </p>
-            {{else}}
-              {{getGID name location _id}}
             {{/if}}
           </div>
           <div id="tab3"></div>

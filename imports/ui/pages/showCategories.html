@@ -7,59 +7,37 @@
     </div>
   </div>
   <div class="row categoryFlex">
-  {{#each list}}
+  {{#each card in list}}
 {{!--  --}}
-  {{#if google_id }}
-  {{else}}
-    {{getGID name location _id}}
-  {{/if}}
+    {{#if card.google_id }}
+    {{else}}
+      {{!-- getGID card.name card.location card._id--}}
+    {{/if}}
   
-    <!--a href="{{url}}" target="_blank" rel="noopener"-->
-      <div id="{{_id}}" class=" categoryFlex_item card sticky-action grey darken-2 hoverable grid-item">
-
-        {{> favoriteStar}}
-
-        {{#if hasImage}}
+    <a class="card_link" href="/listings/{{card.name}}">
+      <div id="{{card._id}}" class=" categoryFlex_item card sticky-action grey darken-2 hoverable grid-item">
+        {{> favoriteStar card}}
+        {{#if card hasImage}}
         <div class="card-image waves-effect waves-block waves-light"> 
-          <img class="responsive-image" src="/img/gallery/{{name}}.png" />
+          <img class="responsive-image" src="/img/gallery/{{card.name}}.png" />
         </div>
         {{/if}}
         <div class="card-content white-text">
-            <span class="card-title "> <h5 class="amber-text text-darken-1 center-align activator">{{name}}</h5></span>
-            <h6 class="center-align"><a href="#" target="_blank" rel="noopener" > {{social}}</a></h6>
-            {{#if street}}
+            <span class="card-title "> <h5 class="amber-text text-darken-1 center-align activator">{{card.name}}</h5></span>
+            <h6 class="center-align"><a href="#" target="_blank" rel="noopener" > {{card.social}}</a></h6>
+            {{#if card.street}}
             <p class="center-align address">
               <span id="address-content">
-                {{street}} <br />
-                {{city}} {{state}} {{zip}} <br />
+                {{card.street}} <br />
+                {{card.city}} {{card.state}} {{card.zip}} <br />
               </span>
-              <a class="center-align phone" href="tel:+1{{phone}}">{{phone}}</a>
+              <a class="center-align phone" href="tel:+1{{card.phone}}">{{card.phone}}</a>
             </p>
             {{/if}}
-            {{#if description}}
-              <p>{{description}}</p>
+            {{#if card.description}}
+              <p>{{card.description}}</p>
             {{/if}}
         </div>
-
-        <div class="card-reveal">
-          <span class="card-title amber-text text-darken-4">Reviews<i class="material-icons right">close</i></span>
-         {{#if google_id }}
-          <p>
-          <button class="btn get-reviews" >Reviews</button>
-            {{#if thisPlace}}
-              <div>
-              {{author_name}}
-              {{rating}}
-              {{text}}
-              </div>
-            {{/if}}
-          </p>
-        {{else}}
-          {{getGID name location _id}}
-          <p><a href="#" >Create Review for this Place</a></p>
-        {{/if}}
-        </div>
-
         <div class="card-action">
           <div class="row center-align">
 
@@ -72,7 +50,7 @@
               <a class="disabled btn-floating modal-trigger" id="verify_button" title="Verify This" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
             </div>
             {{/if}}
-            {{#if street}}    
+            {{#if card.street}}    
             <div class="col s6">
               <!-- a class="btn-floating amber darken-4 modal-trigger" id="directions_button" title="Directions" href="#modalDirections"><i class="material-icons">navigation</i></a-->
               <a class="btn-floating amber darken-4" title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" ><i class="material-icons">navigation</i></a>
@@ -81,7 +59,7 @@
           </div>
         </div>
       </div>  
-    <!--/a-->
+    </a>
 
     {{/each}}
   </div>

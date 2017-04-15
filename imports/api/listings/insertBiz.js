@@ -2,7 +2,7 @@ import Listings from '/imports/startup/collections/listings';
 
 // meteor methods should be created on both server and client, so 'optimistic UI' 
 // can take place, call runs from both, but should be called from client. 
-const ID_Cache = new orion.collection('id_cache', {
+ID_Cache = new orion.collection('id_cache', {
   singularName : 'id_cache',
   pluaralName : 'ID_Cache',
   link : {title: 'ID_Cache'}, 
@@ -23,7 +23,12 @@ const ID_Cache = new orion.collection('id_cache', {
     ]
   }
 });  
+
+//schema, unique keys only, response optional.
+
+
 ID_Cache.allow({
+  insert: function(userId, query) { return true; },
   update: function(userId, query) { return ownsDocument(userId, query); },
   remove: function(userId, query) { return ownsDocument(userId, query); },
 });
@@ -77,37 +82,48 @@ Meteor.methods({
     //map should be GoogleMaps.maps.<<name>> 
     //name is listing name
     //loc is object literal
-    // if (Meteor.isServer) {
-    //   ID_Cache._ensureIndex( { "createdAt": 1 }, { expireAfterSeconds: 3600 } );
-    // }
-      // let dataFromCache = ID_Cache.findOne({key: name});
-      // console.log(dataFromCache);
-      // if(dataFromCache) {
-      //   console.log("Data from Cache...");
+    if (Meteor.isServer) {
+      ID_Cache._ensureIndex( { "createdAt": 1 }, { expireAfterSeconds: 10600 } );
+    }
+    let dataFromCache = ID_Cache.findOne({key: n});
+    console.log(GRCache);
+      const res = {};
+      if(dataFromCache) {
+        console.log("Data from Cache...");
+        console.log(dataFromCache);
+        return dataFromCache;
+      } else {
+        if (GoogleMaps.loaded()) {
+          console.log("Data from API...");
+        //   //get the response and stash it in GRCache.
+          const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
+          console.log(map);
+          const service = new google.maps.places.PlacesService(map.instance);
 
-      //   return dataFromCache;
-      // } else {
-      //   console.log("Data from API...");
-      //   //get the response and stash it in OCache.
-      console.log(this);
-      console.log("MAP READY!", m, n, l);
-      // const service = new google.maps.places.PlacesService(m.instance);
-      // let request2 = {
-      //     //name & location & radius (meters).
-      //     name: n,
-      //     location: l,
-      //     radius: 100,
-      //   };
+          const req = {
+              placeId: gid
+          };
+          const cbk = function(res,stat) {
+            if (stat === google.maps.places.PlacesServiceStatus.OK) {
+                console.log(res);
+                // ID_Cache.findOne({key: key}, {$set: {value: place_id}});
+                 GRCache.set(gid, res);
+                 Session.set('thisPlace', res);
+                // resolvedData.set('placeDetails', res);
+                return res;
+                //inject with jquery into dom?
+            } else {
+                console.log(stat);
+                Session.set('thisPlace',null);
+            }
+          };
 
-      // let callback = function(results,status) {
-      //     if (status === google.maps.places.PlacesServiceStatus.OK) {
-      //         console.log(results[0]);    
-      //         return results[0].place_id;
-      //     } else {
-      //         console.log(status);
-      //     }
-      // };
-      // service.radarSearch(request2,callback);  
+        return service.getDetails(req, cbk);
+
+      } else {
+      console.log ("Map not yet loaded..."); 
+      } 
+    } 
   },
 
  getReviews: function(id) {

@@ -5,6 +5,10 @@ import './fullCard.html';
 
 Template.fullCard.onRendered(function() {
   let tpl = this;
+  if (!tpl.data.google_id) {
+    //submit to google places
+    Meteor.call('submitPlace',tpl.data);
+  }
   $(document).ready(function() {
     $('.editModal-trigger').modal();
     $('ul.tabs').tabs({
@@ -18,9 +22,7 @@ Template.fullCard.onRendered(function() {
 });
 
 Template.fullCard.events({
-  'click .get-reviews' : function(evt,tpl) {
-    setGReviews(tpl.data.google_id)
-  }
+
 });
 
 Template.fullCard.helpers({
@@ -44,18 +46,18 @@ Template.fullCard.helpers({
           return {
             // ============================= RETURN MAP OPTIONS ==================================    
             center: new google.maps.LatLng(mapCenter),
-            // center: new google.maps.LatLng(Centers.User[0], Centers.User[1]),
-            zoom: 15,
-            // mapTypeId:google.maps.MapTypeId.TERRAIN,
+            zoom: 16,
+            mapTypeId:google.maps.MapTypeId.TERRAIN,
             backgroundColor: "#444",
             clickableIcons: false,
             disableDefaultUI: true,
             // fullscreenControl: true,
-            minZoom: 2,
+            minZoom: 15,
+            maxZoom: 20,
+            scrollwheel: false,
             streetViewControl: false,
-            streetViewControlOptions: {
-                position: google.maps.ControlPosition.RIGHT_CENTER
-            },
+            draggable: false,
+            gestureHandling: 'none'
           }
        }
     }

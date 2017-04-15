@@ -1,4 +1,5 @@
 import '../../api/orionCache.js';
+import Listings from '/imports/startup/collections/listings';
 
 $ = window.jQuery = require("jquery");
 import 'materialize-css/js/initial';
@@ -41,22 +42,30 @@ import './routes.js';
 import '../../ui/layouts/layout.js';
 import '../../ui/layouts/splitLayout.js';
 
+Masonry = require('masonry-layout/masonry.js');
+imagesLoaded = require('imagesLoaded/imagesLoaded.js');
+
 console.log("-= imports/startup/client/index.js loaded");
 
+// ============================= API DATA CACHEING ==================================
+// let cache = new ApiCache('rest', 120);
+// 100000s = 1.16 days....
+OCache = new OrionCache('rest', 100000);
+
 setGReviews = function(gid) {
-    const dataFromCache = GRCache.get(gid);
+    let dataFromCache = OCache.get(gid);
+    console.log(OCache);
     const res = {};
     if(dataFromCache) {
       console.log("Data from Cache...");
       console.log(dataFromCache);
-
       return dataFromCache;
     } else {
         if (GoogleMaps.loaded()) {
         console.log("Data from API...");
-      //   //get the response and stash it in GRCache.
+      //   //get the response and stash it in OCache.
         const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
-
+        console.log(map);
         const service = new google.maps.places.PlacesService(map.instance);
 
         const req = {
@@ -65,36 +74,106 @@ setGReviews = function(gid) {
         const cbk = function(res,stat) {
             if (stat === google.maps.places.PlacesServiceStatus.OK) {
                 console.log(res);
-                // ID_Cache.findOne({key: key}, {$set: {value: place_id}});
-                 GRCache.set(gid, res);
+                 // OCache.set(gid, res);
                  Session.set('thisPlace', res);
-                // resolvedData.set('placeDetails', res);
                 return res;
                 //inject with jquery into dom?
             } else {
                 console.log(stat);
+                Session.set('thisPlace',null);
             }
         };
 
         // console.log(service);
-        return service.getDetails(req, cbk);
+        service.getDetails(req, cbk);
 
         // return resolvedData.get('placeDetails');
       } else {
       console.log ("Map not yet loaded..."); 
       } 
     }
-  };
-
+};
 
 const isRunningStandalone = function() {
     return (window.matchMedia('(display-mode: standalone)').matches);
 };
 
-const GRCache = new OrionCache('rest', 100000);
+apiCall = function (apiUrl, callback) {
+  // try…catch allows you to handle errors 
+  let errorCode, errorMessage;
+  try {
 
-Masonry = require('masonry-layout/masonry.js');
-imagesLoaded = require('imagesLoaded/imagesLoaded.js');
+    let dataFromCache = OCache.get(apiUrl);
+    // console.log("key: "+apiUrl);
+    let response = {};
+
+    if(dataFromCache) {
+      console.log("Data from Cache...");
+      response = dataFromCache;
+    } else {
+      console.log("Data from API...");
+      response = HTTP.get(apiUrl).data;
+      OCache.set(apiUrl, response);
+    }
+
+    // A successful API call returns no error
+    // but the contents from the JSON response
+    if(callback) {
+      callback(null, response);
+    }
+    
+  } catch (error) {
+    // If the API responded with an error message and a payload 
+    if (error.response) {
+
+      // console.log(error.response);
+      errorCode = error.response.statusCode;
+      errorMessage = error.response.data.error_message;
+      console.log({errorCode, errorMessage});
+    // Otherwise use a generic error message
+    } else {
+      errorCode = 500;
+      errorMessage = 'No idea what happened!';
+    }
+    // Create an Error object and return it via callback
+    // let myError = new Meteor.Error(errorCode, errorMessage);
+    // callback(myError, null);
+  }
+};
+
+apiCall2 = function (apiUrl, headers, callback) {
+  // try...catch allows you to handle errors 
+
+  let dataFromCache = OCache.get(apiUrl);
+  // console.log("key: "+apiUrl);
+  let response = {};
+
+  if(dataFromCache) {
+    console.log("Data from Cache2...");
+    response = dataFromCache;
+  } else {
+    console.log("Data from API2...");
+      if (headers) {
+        response = HTTP.get(apiUrl, {headers: headers}).data;
+        console.log(response);
+      }
+      else {
+        response = HTTP.get(apiUrl).data;
+        console.log(response);
+      }
+    OCache.set(apiUrl, response);
+  }
+
+  // A successful API call returns no error
+  // but the contents from the JSON response
+  if(callback) {
+    callback(null, response);
+  }
+
+  return response;
+  
+};
+
 
 Meteor.startup(function() {
 
@@ -187,9 +266,11 @@ Meteor.startup(function() {
     let locArr = loc.split(",");
     let locObj = _.object( ['lat', 'lng'], [Number(locArr[0]), Number(locArr[1])]);
     // console.log(id);
+    let map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
 
-    if (GoogleMaps.loaded() && Meteor.user()) {
-      let map = GoogleMaps.maps.map || GoogleMaps.maps.minimap;
+    if (GoogleMaps.loaded() && Meteor.user() && map) {
+      // let map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
+      console.log(GoogleMaps.maps.microMap);
       // const params = {
       //   map: map,
       //   name: 'The Spice Suite',
@@ -215,31 +296,32 @@ Meteor.startup(function() {
               );
               return google_id;
           } else {
-              Listings.update(
-                { _id: id },
-                { $set: { google_id: "NONE" } }
-              );
+              // Listings.update(
+              //   { _id: id },
+              //   { $set: { google_id: false } }
+              // );
+              console.log(`Looking for google_id for: ${name}`)
               console.log(stat);
           }
       };
       return service.radarSearch(req,cbk);  
 
       // Meteor.call('getGoogleID', params.map, params.name, params.loc) 
-    };
-  }
+      };
+    }
   });
 
   // var resolvedData = new ReactiveDict();
   Template.registerHelper('thisPlace',  function() {
     const place = Session.get('thisPlace');
       if (place) {
-        console.log(place);
+        // console.log(place);
         return place;
       }
   });
 
   Template.registerHelper('getGDetails', function(gid) {
-    const dataFromCache = GRCache.get(gid);
+    const dataFromCache = OCache.get(gid);
     const res = {};
     if(dataFromCache) {
       console.log("Data from Cache...");
@@ -249,7 +331,7 @@ Meteor.startup(function() {
     } else {
         if (GoogleMaps.loaded()) {
         console.log("Data from API...");
-      //   //get the response and stash it in GRCache.
+      //   //get the response and stash it in OCache.
         const map = GoogleMaps.maps.map;
         const service = new google.maps.places.PlacesService(map.instance);
 
@@ -260,7 +342,7 @@ Meteor.startup(function() {
             if (stat === google.maps.places.PlacesServiceStatus.OK) {
                 console.log(res);
                 // ID_Cache.findOne({key: key}, {$set: {value: place_id}});
-                 GRCache.set(gid, res);
+                 OCache.set(gid, res);
                 // resolvedData.set('placeDetails', res);
                 return res;
                 //inject with jquery into dom?

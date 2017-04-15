@@ -90,7 +90,7 @@ Template.nav2.events({
 	'submit #desktop_search-form': function (event, tpl) {
 		event.preventDefault();
     
-    let entered = tpl.find('input#search_nav').value;
+    const entered = tpl.find('input#search_nav').value;
     if (Listings.findOne({name: entered})) {
       // console.log(doc._id);
       Router.go("/listings/" + Listings.findOne({name: entered}).name);
@@ -109,11 +109,15 @@ Template.nav2.events({
     document.getElementById("mobile_search-form").reset();
   },
   'mouseup form, touchend form': function() {
-    // console.log("mouse fired.");
     Materialize.updateTextFields();
   },
   'click .signout_btn': function() {
     AccountsTemplates.logout();
+  },
+  'mouseup .tt-suggestion>ul>li': function(evt,tpl) {
+    let name = evt.target.innerText;
+    let type = evt.target.parentElement.parentElement.parentElement.firstChild.innerText
+    Router.go('/' + type + '/' + name);
   }
   // 'click .addmodal': function() {
   //   $('#modalAdd').modal('open');

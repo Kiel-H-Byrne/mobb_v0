@@ -11,13 +11,13 @@ Router.route('/', {
   }
 });
 
-Router.route('/loading', {
-  name: 'Loading',
-  layoutTemplate: 'AppLayout',
-    yieldRegions: {
-      'loadingHourglass': {to: 'content'}
-    }
-});
+// Router.route('/loading', {
+//   name: 'Loading',
+//   layoutTemplate: 'AppLayout',
+//     yieldRegions: {
+//       'loadingHourglass': {to: 'content'}
+//     }
+// });
 
 Router.route('/terms', {
     name: 'terms',
@@ -78,7 +78,7 @@ Router.route('/listings/:name', {
     'nav2': {to: 'nav'}
   },
   subscriptions: function() {
-    this.subscribe('listings');
+    // this.subscribe('listings');
     this.subscribe('listings', this.params.name).wait();
   },
   data: function() {
@@ -88,9 +88,9 @@ Router.route('/listings/:name', {
     if (this.ready()) {
       this.render();
     } else {
-      this.render('loadingHourglass', {to: 'content'});
+      // this.render('loadingHourglass', {to: 'content'});
       // this.render('nav2': {to: 'nav'});
-      this.render('', {to: 'left'});
+      // this.render('', {to: 'left'});
     }
   },
   notFoundTemplate: '404page'

@@ -42,6 +42,9 @@ Template.galleryCard.events({
   //   // console.log(this._id);
   // }
   'click .add-place' : function(evt,tpl) {
-    Meteor.call('submitPlace',this);
+    Meteor.call('submitPlace',tpl.data);
+  },
+    'click .get-reviews' : function(evt,tpl) {
+      setGReviews(tpl.data.google_id)
   }
 });

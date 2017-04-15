@@ -45,15 +45,14 @@
           <span class="card-title amber-text text-darken-4">Reviews<i class="material-icons right">close</i></span>
          {{#if google_id }}
           <p>
-          {{#with getGDetails google_id}}
-            {{#each reviews}}
-            <div>
+          <button class="btn get-reviews" >Reviews</button>
+            {{#if thisReviews}}
+              <div>
               {{author_name}}
               {{rating}}
               {{text}}
               </div>
-            {{/each}}
-          {{/with}}
+            {{/if}}
           </p>
         {{else}}
           {{getGID name location _id}}

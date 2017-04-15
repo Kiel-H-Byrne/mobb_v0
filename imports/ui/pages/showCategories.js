@@ -8,8 +8,7 @@ import './showCategories.html';
 Template.showCategories.helpers({
   catName: function() {
     return Router.current().params.name;
-  }
-
+  },
 });
 
 
@@ -28,3 +27,9 @@ Template.showCategories.onRendered(function() {
 
   });
 });
+
+Template.showCategories.events({
+  'click .get-reviews' : function(evt,tpl) {
+    Meteor.call('submitPlace',tpl.data);
+  }
+})

@@ -43,6 +43,50 @@ import '../../ui/layouts/splitLayout.js';
 
 console.log("-= imports/startup/client/index.js loaded");
 
+setGReviews = function(gid) {
+    const dataFromCache = GRCache.get(gid);
+    const res = {};
+    if(dataFromCache) {
+      console.log("Data from Cache...");
+      console.log(dataFromCache);
+
+      return dataFromCache;
+    } else {
+        if (GoogleMaps.loaded()) {
+        console.log("Data from API...");
+      //   //get the response and stash it in GRCache.
+        const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
+        // const map = GoogleMaps.maps.map || GoogleMaps.maps.microMap || GoogleMaps.maps.minimap
+        console.log(map);
+        const service = new google.maps.places.PlacesService(map.instance);
+
+        const req = {
+            placeId: gid
+        };
+        const cbk = function(res,stat) {
+            if (stat === google.maps.places.PlacesServiceStatus.OK) {
+                console.log(res);
+                // ID_Cache.findOne({key: key}, {$set: {value: place_id}});
+                 GRCache.set(gid, res);
+                 Session.set('thisReviews', res);
+                // resolvedData.set('placeDetails', res);
+                return res;
+                //inject with jquery into dom?
+            } else {
+                console.log(stat);
+            }
+        };
+
+        // console.log(service);
+        return service.getDetails(req, cbk);
+
+        // return resolvedData.get('placeDetails');
+      } else {
+      console.log ("Map not yet loaded..."); 
+      } 
+    }
+  };
+
 
 const isRunningStandalone = function() {
     return (window.matchMedia('(display-mode: standalone)').matches);
@@ -187,10 +231,17 @@ Meteor.startup(function() {
   });
 
   // var resolvedData = new ReactiveDict();
+  Template.registerHelper('thisReviews',  function() {
+    const reviews = Session.get('thisReviews');
+      if (reviews) {
+        console.log(reviews);
+        return reviews;
+      }
+  });
 
   Template.registerHelper('getGDetails', function(gid) {
-    let dataFromCache = GRCache.get(gid);
-    let res = {};
+    const dataFromCache = GRCache.get(gid);
+    const res = {};
     if(dataFromCache) {
       console.log("Data from Cache...");
       console.log(dataFromCache);
@@ -200,13 +251,13 @@ Meteor.startup(function() {
         if (GoogleMaps.loaded()) {
         console.log("Data from API...");
       //   //get the response and stash it in GRCache.
-        let map = GoogleMaps.maps.map || GoogleMaps.maps.minimap;
-        let service = new google.maps.places.PlacesService(map.instance);
+        const map = GoogleMaps.maps.map;
+        const service = new google.maps.places.PlacesService(map.instance);
 
-        let req = {
+        const req = {
             placeId: gid
         };
-        let cbk = function(res,stat) {
+        const cbk = function(res,stat) {
             if (stat === google.maps.places.PlacesServiceStatus.OK) {
                 console.log(res);
                 // ID_Cache.findOne({key: key}, {$set: {value: place_id}});
@@ -220,7 +271,8 @@ Meteor.startup(function() {
         };
 
         // console.log(service);
-        service.getDetails(req, cbk);
+        return service.getDetails(req, cbk);
+
         // return resolvedData.get('placeDetails');
       } else {
       console.log ("Map not yet loaded..."); 

@@ -185,7 +185,12 @@ Meteor.methods({
 */
     const apiUrl = 'https://maps.googleapis.com/maps/api/place/add/json?key=' + Meteor.settings.public.keys.googleServer.key;
     const params = {};
-    params.location = doc.location;
+    let locArr = doc.location.split(",")
+    let locObj = {
+      "lat": Number(locArr[0]),
+      "lng": Number(locArr[1])
+    }
+    params.location = locObj;
     params.name = doc.name;
     params.phone_number = doc.phone;
     params.address = doc.street + ' ' + doc.state + ', ' + doc.zip;
@@ -193,10 +198,16 @@ Meteor.methods({
     params.accuracy = 50;
     params.website = doc.url;
     params.language = "en-US";
-
+    console.log(params);
     // console.log("***calling PLACES API method with "+params);
     try {
-      const result = HTTP.post(apiUrl, params);
+      const result = HTTP.post(apiUrl, {data: params});
+      if (result.data) {
+        Listings.update(
+          { _id: id },
+          { $set: { google_id: place_id } }
+        );
+      }
       console.log(result);
       return true;
   } catch(e) {

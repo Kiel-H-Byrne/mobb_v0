@@ -1,7 +1,7 @@
 <template name="fullCard">
   <div class="row" style="margin-top: 7em;">
     <div class="col s12 m6 push-m3">
-      <div class="card">
+      <div class="card large">
       {{> favoriteStar}}
       
       {{#if hasImage}}
@@ -11,18 +11,44 @@
       </div>
       {{/if}}
         <div class="card-content">
-          <span class="card-title "> <h5 class="amber-text text-darken-1 center-align">{{name}}</h5></span>
-          <h6 class="center-align"><a href="#" target="_blank" rel="noopener" > {{social}}</a></h6>
-          <p class="center-align address">
-            <span id="address-content">
-              {{street}} <br />
-              {{city}} {{state}} {{zip}} <br />
-            </span>
-            <a class="center-align phone" href="tel:+1{{phone}}">{{phone}}</a>
-          </p>
-          <p></p>
+          <div class="info">
+            <span class="card-title activator "> <h5 class="amber-text text-darken-1 center-align activator">{{name}}</h5></span>
+            <h6 class="center-align"><a href="#" target="_blank" rel="noopener" > {{social}}</a></h6>
+            <p class="center-align address">
+              <span id="address-content">
+                {{street}} <br />
+                {{city}} {{state}} {{zip}} <br />
+              </span>
+              <a class="center-align phone" href="tel:+1{{phone}}">{{phone}}</a>
+            </p>
+        </div>
+
       </div>
-        <div class="card-action">
+        <div class="" id="microMap" style="width:100%; height: 200px">
+          {{> googleMap name="microMap" options=microMapOptions }}
+        </div>
+      <div class="card-reveal">
+        <span class="card-title">Reviews<i class="material-icons right">close</i></span>
+         {{#if google_id }}
+          <p>
+          <button class="btn get-reviews" >Reviews</button>
+              {{#with thisReviews}}
+                {{#each reviews }}
+                  <div>
+                  <h5>{{author_name}}</h5>
+                  <span class="secondary-content">{{rating}}</span>
+                    <p class="flow-text truncate">{{text}}</p>
+                  </div>
+                {{/each}}
+              {{/with}}
+          </p>
+        {{else}}
+          {{getGID name location _id}}
+          <p><a href="#" >Create Review for this Place</a></p>
+        {{/if}}
+      </div>
+
+      <div class="card-action">
         <div class="row center-align">
           {{#if url}}     
           <div class="col s3"><a class="btn-floating amber" target="_blank" rel="noopener" title="Website" href="{{url}}"><i class="material-icons">link</i></a></div>
@@ -50,6 +76,9 @@
           </div>
           {{/if}}
         </div>
+
+
+
       </div>
       </div>
     </div>

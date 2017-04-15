@@ -1,7 +1,7 @@
 
 
 <template name="galleryCard">
-  <!--a class="card_link" href="{{url}}" target="_blank" rel="noopener"-->
+  <a class="card_link" href="/listings/{{name}}">
 
     <div id="{{_id}}" class="info-card closestFlex_item card sticky-action grey darken-2 hoverable ">
       
@@ -44,48 +44,6 @@
         <span class="badge hoverable" data-badge-caption="mi."><i class="material-icons tiny ">directions</i> {{getDistance location}} </span>
       </a>
       {{/if}}
-      <div class="card-reveal">
-       <span class="card-title">Reviews<i class="material-icons right">close</i></span>
-         {{#if google_id }}
-          <p>
-          <button class="btn get-reviews" >Reviews</button>
-            {{#if thisReviews}}
-              Hi!!
-              {{#with thisReviews}}
-                {{#each reviews }}
-                  <div>
-                  <h6>{{author_name}}</h6>
-                  <span class="secondary-content">{{rating}}</span>
-                    <p class="flow-text truncated">{{text}}</p>
-                  </div>
-                {{/each}}
-              {{/with}}
-            {{/if}}
-          </p>
-        {{else}}
-          {{getGID name location _id}}
-          <p><a href="#" >Create Review for this Place</a></p>
-        {{/if}}
-      </div>
-
-      <!--div class="card-action">
-        <div class="row center-align">
-          {{#if currentUser}}
-          <div class="col ">
-            <a class="btn-floating amber darken-3 modal-trigger" id="verify_button" title="Is This Information Correct?" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
-          </div>
-          {{else}}
-          <div class="col ">
-            <a class="disabled btn-floating modal-trigger" id="verify_button" title="Verify This" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
-          </div>
-          {{/if}}
-          {{#if street}}    
-          <div class="col ">
-            <a class="btn-floating amber darken-4" title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" ><i class="material-icons">navigation</i></a>
-          </div>
-          {{/if}}
-        </div>
-      </div-->
     </div>  
-  <!--/a-->
+  </a>
 </template>

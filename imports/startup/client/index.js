@@ -26,7 +26,7 @@ import 'materialize-css/js/modal';
 // import 'materialize-css/js/scrollspy';
 import 'materialize-css/js/sideNav';
 import 'materialize-css/js/slider';
-// import 'materialize-css/js/tabs';
+import 'materialize-css/js/tabs';
 import 'materialize-css/js/toasts';
 import 'materialize-css/js/tooltip';
 import 'materialize-css/js/transitions';

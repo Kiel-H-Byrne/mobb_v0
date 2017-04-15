@@ -4,14 +4,14 @@
       <div class="card large">
       {{> favoriteStar}}
       
-      {{#if hasImage}}
-      <div class="card-image waves-effect waves-block waves-light"> 
-        <!--img class="responsive-image" src="/img/gallery/{{name}}.png" /-->
-        <img class="responsive-image" src="{{image.url}}" />
-      </div>
-      {{/if}}
+        {{#if hasImage}}
+        <div class="card-image waves-effect waves-block waves-light"> 
+          <!--img class="responsive-image" src="/img/gallery/{{name}}.png" /-->
+          <img class="responsive-image" src="{{image.url}}" />
+        </div>
+        {{/if}}
+
         <div class="card-content">
-          <div class="info">
             <span class="card-title activator "> <h5 class="amber-text text-darken-1 center-align activator">{{name}}</h5></span>
             <h6 class="center-align"><a href="#" target="_blank" rel="noopener" > {{social}}</a></h6>
             <p class="center-align address">
@@ -23,63 +23,67 @@
             </p>
         </div>
 
-      </div>
         <div class="" id="microMap" style="width:100%; height: 200px">
           {{> googleMap name="microMap" options=microMapOptions }}
         </div>
-      <div class="card-reveal">
-        <span class="card-title">Reviews<i class="material-icons right">close</i></span>
-         {{#if google_id }}
-          <p>
-          <button class="btn get-reviews" >Reviews</button>
+
+        <div class="card-tabs">
+          <ul class="tabs tabs-fixed-width">
+            <li class="tab"><a href="#tab1" class="active">Actions</a></li>
+            <li class="tab"><a href="#tab2">Reviews</a></li>
+            <li class="tab"><a href="#tab3">Feedback</a></li>
+          </ul>
+        </div>
+
+        <div class="card-content grey lighten-4">
+          <div id="tab1">
+          {{#if url}}     
+            <div class="col s3"><a class="btn-floating amber" target="_blank" rel="noopener" title="Website" href="{{url}}"><i class="material-icons">link</i></a></div>
+            {{/if}}
+            {{#if phone}}    
+            <div class="col s3"><a class="btn-floating amber darken-2" title="Call" href="tel:+1{{phone}}"><i class="material-icons">phone</i></a></div>
+            {{/if}}
+            {{#if isOwner}}
+            <div class="col s3">
+              <a class="btn-floating amber darken-3 editModal-trigger" id="edit_button" title="Edit This Listing" href="#modalEdit"><i class="material-icons">edit</i></a>
+            </div>
+            {{else if currentUser}}
+            <div class="col s3">
+              <a class="btn-floating amber darken-3 modal-trigger" id="verify_button" title="Is This Information Correct?" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
+            </div>
+            {{else}}
+            <div class="col s3">
+              <a class="disabled btn-floating modal-trigger" id="verify_button" title="Verify This" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
+            </div>
+            {{/if}}
+            {{#if street}}    
+            <div class="col s3">
+              <!-- a class="btn-floating amber darken-4 modal-trigger" id="directions_button" title="Directions" href="#modalDirections"><i class="material-icons">navigation</i></a-->
+              <a class="btn-floating amber darken-4" title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" ><i class="material-icons">navigation</i></a>
+            </div>
+            {{/if}}
+          </div>
+          <div id="tab2">
+            <h4 class="card-title">Reviews</h4>
+             {{#if google_id }}
+              <p>
               {{#with thisReviews}}
                 {{#each reviews }}
                   <div>
                   <h5>{{author_name}}</h5>
                   <span class="secondary-content">{{rating}}</span>
-                    <p class="flow-text truncate">{{text}}</p>
+                    <p class="">{{text}}</p>
                   </div>
                 {{/each}}
               {{/with}}
-          </p>
-        {{else}}
-          {{getGID name location _id}}
-          <p><a href="#" >Create Review for this Place</a></p>
-        {{/if}}
-      </div>
-
-      <div class="card-action">
-        <div class="row center-align">
-          {{#if url}}     
-          <div class="col s3"><a class="btn-floating amber" target="_blank" rel="noopener" title="Website" href="{{url}}"><i class="material-icons">link</i></a></div>
-          {{/if}}
-          {{#if phone}}    
-          <div class="col s3"><a class="btn-floating amber darken-2" title="Call" href="tel:+1{{phone}}"><i class="material-icons">phone</i></a></div>
-          {{/if}}
-          {{#if isOwner}}
-          <div class="col s3">
-            <a class="btn-floating amber darken-3 editModal-trigger" id="edit_button" title="Edit This Listing" href="#modalEdit"><i class="material-icons">edit</i></a>
+              </p>
+            {{else}}
+              {{getGID name location _id}}
+              <p><a href="#" >Create Review for this Place</a></p>
+            {{/if}}
           </div>
-          {{else if currentUser}}
-          <div class="col s3">
-            <a class="btn-floating amber darken-3 modal-trigger" id="verify_button" title="Is This Information Correct?" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
-          </div>
-          {{else}}
-          <div class="col s3">
-            <a class="disabled btn-floating modal-trigger" id="verify_button" title="Verify This" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
-          </div>
-          {{/if}}
-          {{#if street}}    
-          <div class="col s3">
-            <!-- a class="btn-floating amber darken-4 modal-trigger" id="directions_button" title="Directions" href="#modalDirections"><i class="material-icons">navigation</i></a-->
-            <a class="btn-floating amber darken-4" title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" ><i class="material-icons">navigation</i></a>
-          </div>
-          {{/if}}
+          <div id="tab3"></div>
         </div>
-
-
-
-      </div>
       </div>
     </div>
   </div>

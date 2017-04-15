@@ -4,8 +4,16 @@ import {Template} from 'meteor/templating';
 import './fullCard.html';
 
 Template.fullCard.onRendered(function() {
+  let tpl = this;
   $(document).ready(function() {
     $('.editModal-trigger').modal();
+    $('ul.tabs').tabs({
+      onShow: function(tab) {
+        if (tab.selector === '#tab2') {
+          setGReviews(tpl.data.google_id);
+        }
+      }
+    });
   });
 });
 

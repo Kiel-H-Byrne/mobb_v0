@@ -67,19 +67,22 @@
             <h4 class="card-title">Reviews</h4>
              {{#if google_id }}
               <p>
-              {{#with thisReviews}}
-                {{#each reviews }}
-                  <div>
-                  <h5>{{author_name}}</h5>
-                  <span class="secondary-content">{{rating}}</span>
-                    <p class="">{{text}}</p>
-                  </div>
-                {{/each}}
-              {{/with}}
+              {{#let place=thisPlace}}
+                {{#if place.reviews}}
+                  {{#each review in place.reviews}}
+                    <div>
+                    <h5>{{review.author_name}}</h5>
+                    <span class="secondary-content">{{review.rating}}</span>
+                      <p class="">{{review.text}}</p>
+                    </div>
+                  {{/each}}
+                {{else}}
+                  <p><a href="https://search.google.com/local/writereview?placeid={{google_id}}" >Create Review for this Place</a></p>
+                {{/if}}
+              {{/let}}
               </p>
             {{else}}
               {{getGID name location _id}}
-              <p><a href="#" >Create Review for this Place</a></p>
             {{/if}}
           </div>
           <div id="tab3"></div>

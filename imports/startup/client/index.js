@@ -56,8 +56,7 @@ setGReviews = function(gid) {
         console.log("Data from API...");
       //   //get the response and stash it in GRCache.
         const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
-        // const map = GoogleMaps.maps.map || GoogleMaps.maps.microMap || GoogleMaps.maps.minimap
-        console.log(map);
+
         const service = new google.maps.places.PlacesService(map.instance);
 
         const req = {
@@ -68,7 +67,7 @@ setGReviews = function(gid) {
                 console.log(res);
                 // ID_Cache.findOne({key: key}, {$set: {value: place_id}});
                  GRCache.set(gid, res);
-                 Session.set('thisReviews', res);
+                 Session.set('thisPlace', res);
                 // resolvedData.set('placeDetails', res);
                 return res;
                 //inject with jquery into dom?
@@ -231,11 +230,11 @@ Meteor.startup(function() {
   });
 
   // var resolvedData = new ReactiveDict();
-  Template.registerHelper('thisReviews',  function() {
-    const reviews = Session.get('thisReviews');
-      if (reviews) {
-        console.log(reviews);
-        return reviews;
+  Template.registerHelper('thisPlace',  function() {
+    const place = Session.get('thisPlace');
+      if (place) {
+        console.log(place);
+        return place;
       }
   });
 

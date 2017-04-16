@@ -30,8 +30,11 @@
         <div class="card-tabs">
           <ul class="tabs tabs-fixed-width">
             <li class="tab"><a href="#tab1" class="active">Actions</a></li>
-            <li class="tab"><a href="#tab2">Reviews</a></li>
-            <li class="tab"><a href="#tab3">Feedback</a></li>
+            {{#if google_id }}
+              <li class="tab"><a href="#tab2">Reviews</a></li>
+              <li class="tab"><a href="#tab3">Photos</a></li>
+            {{/if}}
+            <li class="tab"><a href="#tab4">Reviews</a></li>
           </ul>
         </div>
 
@@ -63,11 +66,16 @@
             </div>
             {{/if}}
           </div>
-          <div id="tab2">
-             {{#if google_id }}
-              <p>
-              <h4 class="card-title">Reviews</h4>
-              {{#let place=thisPlace}}
+
+
+
+
+
+
+          {{#if google_id }}
+            {{#let place=thisPlace}}
+              <div id="tab2">
+                <h4 class="card-title">Reviews</h4>
                 {{#if place.reviews}}
                   {{#each review in place.reviews}}
                     <div>
@@ -79,11 +87,24 @@
                 {{else}}
                   <p><a href="https://search.google.com/local/writereview?placeid={{google_id}}" >Create Review for this Place</a></p>
                 {{/if}}
-              {{/let}}
-              </p>
-            {{/if}}
+              </div>
+              <div id="tab3">
+              <h4 class="card-title">Reviews</h4>
+                {{#if place.photos}}
+                  {{#each photo in place.photos}}
+                    {{photo.getUrl}}
+
+                  {{/each}}
+                {{/if}}
+              </div>
+            {{/let}}
+          {{/if}}
+
+          <div id="tab4">
+            
           </div>
-          <div id="tab3"></div>
+
+
         </div>
       </div>
     </div>

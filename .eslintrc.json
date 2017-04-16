@@ -10,7 +10,7 @@
         "mongo": true,
         "serviceworker": true
     },
-    "extends": "eslint:recommended",
+    "extends": "airbnb",
     "parserOptions": {
         "sourceType": "script"
     },

@@ -1,5 +1,13 @@
 {
   "ignore": [
+    "**/build/**",
+    "**/dist/**",
+    "**/typings/**",
+    "**/node_modules/**",
+    "**/bower_components/**",
+    "**/tests/**",
+    "**/examples/**",
+    "**/atmosphere-packages/**",
     "**/deps/**",
     "**/node_modules/**",
     "**/thirdparty/**",
@@ -13,7 +21,6 @@
     "**/prototype?(*).js",
     "**/mootools*.*.*.js",
     "**/dojo.js",
-    "**/MochiKit.js",
     "**/yahoo-*.js",
     "**/yui*.js",
     "**/ckeditor*.js",
@@ -44,14 +51,17 @@
     ".meteor/**"
   ],
   "critics": {
-    "lint": {"engine": "jslint"}
+    "lint": {"engine": "tslint"}
   },
   "test": [
     "**/test/**",
-    "**/tests/**"
+    "**/tests/**",
+    "**/spec/**",
+    "**/specs/**"
   ],
   "dependencies": {
     "unused-ignores": [
+      "@types/*",
       "grunt*",
       "yelp-fusion",
     ]

@@ -72,14 +72,13 @@ setGReviews = function(gid) {
         };
         const cbk = function(res,stat) {
             if (stat === google.maps.places.PlacesServiceStatus.OK) {
+                Session.set('thisPlace', res);
                 console.log(res);
-                 // GCache.set(gid, res);
-                 Session.set('thisPlace', res);
+                // GCache.set(gid, res);
                 return res;
                 //inject with jquery into dom?
             } else {
                 console.log(stat);
-                Session.set('thisPlace',null);
             }
         };
 
@@ -238,10 +237,10 @@ Meteor.startup(function() {
   // var resolvedData = new ReactiveDict();
   Template.registerHelper('thisPlace',  function() {
     const place = Session.get('thisPlace');
-      if (place) {
-        // console.log(place);
-        return place;
-      }
+    if (place) {
+      // console.log(place);
+      return place;
+    }
   });
 
   Template.registerHelper('getGDetails', function(gid) {

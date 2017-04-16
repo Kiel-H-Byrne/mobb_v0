@@ -74,23 +74,19 @@ Router.route('/listings/:name', {
   name: 'fullCard',
   layoutTemplate: 'AppLayout',
   yieldRegions: {
-    // 'fullCard': {to: 'content'},
     'nav2': {to: 'nav'}
   },
   subscriptions: function() {
-    // this.subscribe('listings');
     this.subscribe('listings', this.params.name).wait();
   },
   data: function() {
-    return Listings.findOne({name: this.params.name});
+    let doc = Listings.findOne({name: this.params.name});
+    return doc;
   },
   action: function() {
     if (this.ready()) {
       this.render();
     } else {
-      // this.render('loadingHourglass', {to: 'content'});
-      // this.render('nav2': {to: 'nav'});
-      // this.render('', {to: 'left'});
     }
   },
   notFoundTemplate: '404page'

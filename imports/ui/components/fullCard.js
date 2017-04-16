@@ -5,16 +5,21 @@ import './fullCard.html';
 
 Template.fullCard.onRendered(function() {
   let tpl = this;
-  if (!tpl.data.google_id) {
-    //submit to google places
-    Meteor.call('submitPlace',tpl.data);
-  }
-  $(document).ready(function() {
-    $('.editModal-trigger').modal();
-    $('ul.tabs').tabs({
-      onShow: function(tab) {
-        if (tab.selector === '#tab2') {
-          setGReviews(tpl.data.google_id);
+
+    if (!tpl.data.google_id) {
+      //submit to google places
+      Meteor.call('submitPlace',tpl.data);
+    } 
+
+    $(document).ready(function() {
+      $('.editModal-trigger').modal();
+      $('ul.tabs').tabs({
+        onShow: function(tab) {
+          if (tab.selector === '#tab2') {
+            setGReviews(tpl.data.google_id);
+          }
+          if (tab.selector === '#tab3') {
+            //get images
         }
       }
     });
@@ -60,5 +65,14 @@ Template.fullCard.helpers({
             gestureHandling: 'none'
           }
        }
-    }
+    },
+    isPhoto: function() {
+      console.log(this);
+      let options = {'maxWidth': 150, 'maxHeight': 150}
+      return options;
+
+    },
+    getPhoto: function() {
+      console.log(this);
+    },
 });

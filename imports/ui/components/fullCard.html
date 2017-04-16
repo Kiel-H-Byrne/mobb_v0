@@ -34,7 +34,7 @@
               <li class="tab"><a href="#tab2">Reviews</a></li>
               <li class="tab"><a href="#tab3">Photos</a></li>
             {{/if}}
-            <li class="tab"><a href="#tab4">Reviews</a></li>
+            <li class="tab"><a href="#tab4">Feedback</a></li>
           </ul>
         </div>
 
@@ -89,11 +89,12 @@
                 {{/if}}
               </div>
               <div id="tab3">
-              <h4 class="card-title">Reviews</h4>
+              <h4 class="card-title">Photos</h4>
                 {{#if place.photos}}
                   {{#each photo in place.photos}}
-                    {{photo.getUrl}}
-
+                    {{#with photo }}
+                    {{getPhoto}}
+                    {{/with}}
                   {{/each}}
                 {{/if}}
               </div>

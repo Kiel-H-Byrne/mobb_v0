@@ -187,17 +187,17 @@ Meteor.methods({
     params.name = doc.name;
     params.phone_number = doc.phone;
     params.address = doc.street + ' ' + doc.state + ', ' + doc.zip;
-    params.types = ["other"];
+    params.types = ["store"];
     params.accuracy = 50;
     params.website = doc.url;
     params.language = "en-US";
-    console.log(params);
+    // console.log(params);
     // console.log("***calling PLACES API method with "+params);
     try {
       const result = HTTP.post(apiUrl, {data: params});
       if (result.data) {
         Listings.update(
-          { _id: id },
+          { _id: doc._id },
           { $set: { google_id: place_id } }
         );
       }

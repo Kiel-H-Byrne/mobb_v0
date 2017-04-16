@@ -8,7 +8,83 @@ import '../../api/orionCache.js';
 //instantiates ApiCache obect which creates ' rest_+name+ ' upon creation, with time to live.
 //ex. let cache = new ApiCache('name',ttl);
 
+const OCache = new OrionCache('rest', 100000);
 
+apiCall = function (apiUrl, callback) {
+  // try…catch allows you to handle errors 
+  let errorCode, errorMessage;
+  try {
+
+    let dataFromCache = OCache.get(apiUrl);
+    // console.log("key: "+apiUrl);
+    let response = {};
+
+    if(dataFromCache) {
+      console.log("Data from Cache...");
+      response = dataFromCache;
+    } else {
+      console.log("Data from API...");
+      response = HTTP.get(apiUrl).data;
+      OCache.set(apiUrl, response);
+    }
+
+    // A successful API call returns no error
+    // but the contents from the JSON response
+    if(callback) {
+      callback(null, response);
+    }
+    
+  } catch (error) {
+    // If the API responded with an error message and a payload 
+    if (error.response) {
+
+      // console.log(error.response);
+      errorCode = error.response.statusCode;
+      errorMessage = error.response.data.error_message;
+      console.log({errorCode, errorMessage});
+    // Otherwise use a generic error message
+    } else {
+      errorCode = 500;
+      errorMessage = 'No idea what happened!';
+    }
+    // Create an Error object and return it via callback
+    // let myError = new Meteor.Error(errorCode, errorMessage);
+    // callback(myError, null);
+  }
+};
+
+apiCall2 = function (apiUrl, headers, callback) {
+  // try...catch allows you to handle errors 
+
+  let dataFromCache = OCache.get(apiUrl);
+  // console.log("key: "+apiUrl);
+  let response = {};
+
+  if(dataFromCache) {
+    console.log("Data from Cache2...");
+    response = dataFromCache;
+  } else {
+    console.log("Data from API2...");
+      if (headers) {
+        response = HTTP.get(apiUrl, {headers: headers}).data;
+        console.log(response);
+      }
+      else {
+        response = HTTP.get(apiUrl).data;
+        console.log(response);
+      }
+    OCache.set(apiUrl, response);
+  }
+
+  // A successful API call returns no error
+  // but the contents from the JSON response
+  if(callback) {
+    callback(null, response);
+  }
+
+  return response;
+  
+};
 // ======================== YELP v3 API =============================
 
 

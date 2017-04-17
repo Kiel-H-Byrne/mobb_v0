@@ -1,0 +1,142 @@
+@import '{}/node_modules/materialize-css/sass/components/color';
+@import '{}/node_modules/materialize-css/sass/components/variables';
+@import 'palettes/colors';
+@import 'palettes/_plt_orng-tetrad';
+
+.comments-box {
+
+  .comments {
+    padding: 0;
+
+    .header {
+      margin: .7rem 0;
+      font-size: 2rem;
+    }
+
+    form {
+      color: $clr-brown ;
+
+      .button {
+        background-color: $color-complement-2 !important; 
+      }
+    }
+
+    .comment {
+       img {
+        width: 20%;
+        float: left;
+        margin: .5rem .5rem .5rem 0;
+        border-radius: 50%;
+      }
+
+      .metadata {
+        color: $clr-grey;
+        font-size: .8rem;
+      }
+
+      .actions {
+      display: flex;
+      justify-content: space-around;
+      
+      }
+    }   
+  }
+}
+
+//OVERWRITE: 
+
+.comments-box {
+    max-width: 100%;
+    padding: 0;
+
+    .comments {
+        padding-top: 0;
+        transition: 1s background-color;
+
+        .text-span {
+            white-space: pre-wrap;
+        }
+    }
+
+    .unstyled-link {
+        text-decoration: none;
+    }
+
+    .avatar-initials {
+        background-color: $color-complement-2;
+    }
+
+    .avatar-image {
+        height: initial;
+    }
+
+    textarea.create-comment {
+        max-height: 9em !important;
+    }
+
+    .loadmore-action.button {
+        margin-top: 2em;
+    }
+
+    div[contenteditable=true] {
+        background-color: $color-secondary-1-4;
+        border-radius: 0.4em;
+        color: white !important;
+        opacity: 0.8;
+    }
+
+    .padded {
+        padding: 0.5em;
+    }
+
+    .content-media {
+        max-width: 100%;
+        max-height: 300px;
+        margin: 0.5em 0;
+        overflow: hidden;
+
+        > * { max-width: 100%; }
+    }
+
+    // semantic ui
+    .ui.comments {
+        > .comment .comments {
+            background-color: $rgba-primary-grey-0;
+            margin-left: 0;
+
+        }
+
+        .sorting {
+            margin-left: 0;
+            max-width: 100%;
+            text-align: left;
+        }
+    }
+
+    // bootstrap 3
+    .actions .label {
+        margin: 0 0.5em;
+    }
+
+    // ionic
+    .list.card {
+        .stars-action {
+            margin-top: 17px;
+        }
+    }
+
+    .img-avatar {
+        max-width: 20%;
+    }
+
+    .stars-rating {
+        opacity: 0.7;
+        transition: 0.1s opacity;
+
+        &.own-rating, &:hover {
+            opacity: 1;
+        }
+    }
+}
+
+

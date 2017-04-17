@@ -67,10 +67,6 @@
           </div>
 
 
-
-
-
-
           {{#if google_id }}
             {{#let place=thisPlace}}
               <div id="tab2">
@@ -97,7 +93,9 @@
           {{/if}}
 
           <div id="tab3">
-            
+            <div class="comment-section">
+              {{> commentsBox id=_id}}
+            </div>
           </div>
 
 

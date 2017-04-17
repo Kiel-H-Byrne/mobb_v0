@@ -53,6 +53,7 @@ console.log("-= imports/startup/client/index.js loaded");
 const GCache = new OrionCache('gids', 100000);
 
 setGReviews = function(gid) {
+  if (gid) {
     let dataFromCache = GCache.get(gid);
     const res = {};
     if(dataFromCache) {
@@ -90,6 +91,9 @@ setGReviews = function(gid) {
       console.log ("Map not yet loaded..."); 
       } 
     }
+  } else {
+    return false;
+  }
 };
 
 const isRunningStandalone = function() {

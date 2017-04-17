@@ -5,8 +5,11 @@
   <!-- Modal Structure -->
   
   <div id="modalInfo" class="row modal bottom-sheet" style="">
-    {{#with currentDoc}}
-
+    {{#let doc=currentDoc}}
+      {{#if doc.google_id }}
+      {{else}}
+        {{getGID doc.name doc.location doc._id}}
+      {{/if}}
       {{! > closeButton}}
       {{! #if image.url}}
         <!-- div class="heroImg" style="background-image: url('{{image.url}}')"></div-->
@@ -15,39 +18,34 @@
       <!--div id="infoWrap" class="col s12 m6 offset-m3" style="background-image: url('{{image.url}}'), linear-gradient(rgba(055, 10, 0, 1), rgba(0, 0, 0, .4)) "-->
       <div id="infoWrap" class="col s12 m6 offset-m3" >
       <div class="modal-content white-text" style="padding:3px">
-      <span class="badge " data-badge-caption="mi"> {{getDistance location}} </span>
-      {{> favoriteStar}}
-            <h5 class="center-align"><a href="/listings/{{name}}" >{{name}}</a></h5>
+      <span class="badge " data-badge-caption="mi"> {{getDistance doc.location}} </span>
+      {{> favoriteStar doc}}
+            <h5 class="center-align"><a href="/listings/{{doc.name}}" >{{doc.name}}</a></h5>
             
             <p class="center-align address">
 
               <span id="address-content">
-              {{street}} <br />
-              {{city}} {{state}} {{zip}} 
+              {{doc.street}} <br />
+              {{doc.city}} {{doc.state}} {{doc.zip}} 
               <br />
               </span>
-              {{#if phone}}
-              <a class="center-align phone" href="tel:+1{{phone}}">
+              {{#if doc.phone}}
+              <a class="center-align phone" href="tel:+1{{doc.phone}}">
                 <i class="material-icons tiny">phone</i>
-                {{phone}}
+                {{doc.phone}}
               </a>
               <br />
-              {{/if}}
-              {{#if google_id }}
-              <a href="https://search.google.com/local/writereview?placeid={{google_id}}" target="_blank" rel="noopener" >Write a Review </a>
-              {{else}}
-                {{getGID name location _id}}
               {{/if}}
             </p>
       </div>
             <div class="modal-footer transparent">
               <div class="row">
-                {{#if url}}    
-                <div class="col s4"><a class="btn-floating amber darken-1 " target="_blank" rel="noopener" title="Website" href="{{url}}"><i class="material-icons">link</i></a></div>
+                {{#if doc.url}}    
+                <div class="col s4"><a class="btn-floating amber darken-1 " target="_blank" rel="noopener" title="Website" href="{{doc.url}}"><i class="material-icons">link</i></a></div>
                 {{else}}
                 <div class="col s4"><a class="disabled btn-floating" title="Website" href="#"><i class="material-icons">link</i></a></div>
                 {{/if}}
-                {{#if isOwner}}
+                {{#if doc isOwner}}
                 <div class="col s4">
                   <a class="btn-floating waves-effect waves-dark amber darken-3 modal-trigger" href="#modalEdit" id="edit_button" title="Edit This Listing" ><i class="material-icons">edit</i></a>
                 </div>
@@ -58,13 +56,13 @@
                 {{/if}}
                 <div class="col s4">
                   <!-- a class="btn-floating amber darken-4 modal-trigger" id="directions_button" title="Directions" href="#modalDirections"><i class="material-icons">navigation</i></a-->
-                  <a class="btn-floating amber darken-4" title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" ><i class="material-icons">navigation</i></a>
+                  <a class="btn-floating amber darken-4" title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{doc.location}}" target="_blank" rel="noopener" ><i class="material-icons">navigation</i></a>
                 </div>
               </div>
             
             </div>
           </div>  
-    {{/with}}
+    {{/let}}
   </div>
 
 </template>

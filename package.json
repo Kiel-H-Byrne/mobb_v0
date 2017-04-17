@@ -29,5 +29,11 @@
     "spawn-sync": "^1.0.15",
     "try-thread-sleep": "^1.0.0",
     "yelp-fusion": "^1.0.3"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-plugin-meteor": "^4.0.1",
+    "install": "^0.8.8",
+    "npm": "^4.5.0"
   }
 }

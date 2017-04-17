@@ -22,19 +22,18 @@
               <a class="center-align phone" href="tel:+1{{phone}}">{{phone}}</a>
             </p>
         </div>
-
+        {{#if location}}
         <div class="" id="microMap" style="width:100%; height: 200px">
           {{> googleMap name="microMap" options=microMapOptions }}
         </div>
-
+        {{/if}}
         <div class="card-tabs">
           <ul class="tabs tabs-fixed-width">
             <li class="tab"><a href="#tab1" class="active">Actions</a></li>
             {{#if google_id }}
               <li class="tab"><a href="#tab2">Reviews</a></li>
-              <li class="tab"><a href="#tab3">Photos</a></li>
             {{/if}}
-            <li class="tab"><a href="#tab4">Feedback</a></li>
+            <li class="tab"><a href="#tab3">Discussion</a></li>
           </ul>
         </div>
 
@@ -75,33 +74,29 @@
           {{#if google_id }}
             {{#let place=thisPlace}}
               <div id="tab2">
-                <h4 class="card-title">Reviews</h4>
                 {{#if place.reviews}}
+                  <ul class="collection">
                   {{#each review in place.reviews}}
-                    <div>
-                    <h5>{{review.author_name}}</h5>
-                    <span class="secondary-content">{{review.rating}}</span>
-                      <p class="">{{review.text}}</p>
-                    </div>
+                  <li class="collection-item avatar">
+                    <a href="{{review.author_url}}" ><img src="{{review.profile_photo_url}}" alt="" class="circle" /></a>
+                    <span class="title">{{review.author_name}}</span>
+                      <p class="">
+                      {{review.relative_time_description}} <br />
+                      {{review.text}}
+                      </p>
+                      <a href="#" class="secondary-content">RATING: {{review.rating}}/5</a>
+                  </li>
                   {{/each}}
+                  </ul>
                 {{else}}
-                  <p><a href="https://search.google.com/local/writereview?placeid={{google_id}}" >Create Review for this Place</a></p>
+                  <p><a href="https://search.google.com/local/writereview?placeid={{google_id}}" target="_blank" rel="noopener" >Write Your Review.</a></p>
                 {{/if}}
               </div>
-              <div id="tab3">
-              <h4 class="card-title">Photos</h4>
-                {{#if place.photos}}
-                  {{#each photo in place.photos}}
-                    {{#with photo }}
-                    {{getPhoto}}
-                    {{/with}}
-                  {{/each}}
-                {{/if}}
-              </div>
+
             {{/let}}
           {{/if}}
 
-          <div id="tab4">
+          <div id="tab3">
             
           </div>
 

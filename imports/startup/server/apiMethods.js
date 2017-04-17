@@ -188,7 +188,7 @@ Meteor.methods({
     params.phone_number = doc.phone;
     params.address = doc.street + ' ' + doc.state + ', ' + doc.zip;
     params.types = ["store"];
-    params.accuracy = 50;
+    params.accuracy = 20;
     params.website = doc.url;
     params.language = "en-US";
     // console.log(params);
@@ -196,12 +196,12 @@ Meteor.methods({
     try {
       const result = HTTP.post(apiUrl, {data: params});
       if (result.data) {
+        console.log("OBTAINED NEW PLACE_ID FOR "+ doc.name);
         Listings.update(
           { _id: doc._id },
-          { $set: { google_id: place_id } }
+          { $set: { google_id: result.data.place_id } }
         );
       }
-      console.log(result);
       return true;
   } catch(e) {
     console.log(e);

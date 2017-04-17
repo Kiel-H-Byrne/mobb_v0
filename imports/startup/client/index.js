@@ -192,13 +192,6 @@ Meteor.startup(function() {
     let map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
 
     if (GoogleMaps.loaded() && Meteor.user() && map) {
-      // let map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
-      console.log(GoogleMaps.maps.microMap);
-      // const params = {
-      //   map: map,
-      //   name: 'The Spice Suite',
-      //   loc: {lat: 38.9738619, lng: -77.018299999},
-      // };
 
       const service = new google.maps.places.PlacesService(map.instance);
       const req = {

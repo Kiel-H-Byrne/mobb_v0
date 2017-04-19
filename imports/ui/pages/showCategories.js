@@ -25,6 +25,11 @@ Template.showCategories.onRendered(function() {
       msnry.layout();
     });
 
+    $("img").error(function() { 
+      // $(this).hide();
+      $(this).css({visibility:"hidden"}); 
+    });
+
   });
 });
 

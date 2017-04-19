@@ -1,0 +1,12 @@
+@import 'palettes/colors';
+@import 'palettes/_plt_orng-tetrad';
+
+[id='fullCard'] {
+  margin-top: 7em;
+  
+  .fav_star {
+    position: absolute;
+    right: 0;
+    z-index: 3;
+  }
+}

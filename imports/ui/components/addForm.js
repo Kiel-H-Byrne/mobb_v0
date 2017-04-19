@@ -18,8 +18,6 @@ Template.addForm.onCreated(function() {
 
 Template.addForm.onRendered(function() {
   $(document).ready(function() {
-    $('.collapsible').collapsible();
-
     $('#modalAdd').modal({
       dismissible: true, // Modal can be dismissed by clicking outside of the modal
       opacity: 0.5, // Opacity of modal background
@@ -29,6 +27,7 @@ Template.addForm.onRendered(function() {
       endingTop: '4%', // Ending top style attribute
     });
 
+    $('.collapsible').collapsible();
     // let state = Session.get('clientState');
     // $("li:contains("+ state +")").addClass("active selected");
   });

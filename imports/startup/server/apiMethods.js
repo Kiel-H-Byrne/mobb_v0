@@ -176,40 +176,41 @@ Meteor.methods({
       "language": "en-AU"
       };
 */
-    const apiUrl = 'https://maps.googleapis.com/maps/api/place/add/json?key=' + Meteor.settings.public.keys.googleServer.key;
-    const params = {};
-    let locArr = doc.location.split(",")
-    let locObj = {
-      "lat": Number(locArr[0]),
-      "lng": Number(locArr[1])
-    }
-    params.location = locObj;
-    params.name = doc.name;
-    params.phone_number = doc.phone;
-    params.address = doc.street + ' ' + doc.state + ', ' + doc.zip;
-    params.types = ["store"];
-    params.accuracy = 20;
-    params.website = doc.url;
-    params.language = "en-US";
-    // console.log(params);
-    // console.log("***calling PLACES API method with "+params);
-    try {
-      const result = HTTP.post(apiUrl, {data: params});
-      if (result.data) {
-        console.log("OBTAINED NEW PLACE_ID FOR "+ doc.name);
-        Listings.update(
-          { _id: doc._id },
-          { $set: { google_id: result.data.place_id } }
-        );
+    if (doc.location) {
+      const apiUrl = 'https://maps.googleapis.com/maps/api/place/add/json?key=' + Meteor.settings.public.keys.googleServer.key;
+      const params = {};
+      let locArr = doc.location.split(",")
+      let locObj = {
+        "lat": Number(locArr[0]),
+        "lng": Number(locArr[1])
       }
-      return true;
-  } catch(e) {
-    console.log(e);
-    return false;
-  }
-    
-
-    return;
+      params.location = locObj;
+      params.name = doc.name;
+      params.phone_number = doc.phone;
+      params.address = doc.street + ' ' + doc.state + ', ' + doc.zip;
+      params.types = ["store"];
+      params.accuracy = 20;
+      params.website = doc.url;
+      params.language = "en-US";
+      // console.log(params);
+      // console.log("***calling PLACES API method with "+params);
+      try {
+        const result = HTTP.post(apiUrl, {data: params});
+        if (result.data) {
+          console.log("OBTAINED NEW PLACE_ID FOR "+ doc.name);
+          Listings.update(
+            { _id: doc._id },
+            { $set: { google_id: result.data.place_id } }
+          );
+        }
+        return true;
+      } catch(e) {
+        console.log(e);
+        return false;
+      }
+    } else {
+      console.log("NO ADDRESS FOR "+ doc.name);
+    }
   },
   // getDirections: function(orig,dest) {
   //   this.unblock();

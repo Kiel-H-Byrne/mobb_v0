@@ -3,9 +3,9 @@
   <!-- Modal Structure -->
 
   <div id="modalEdit" class="modal modal-fixed-footer">
-  {{#with currentDoc}}
+  {{#let listing=currentDoc}}
       {{#autoForm id="editListingForm" type="update" collection="Listings" doc=this}}
-          <div class="modal-content" >
+          <div class="modal-content">
             <ul class="collapsible" data-collapsible="accordion">
             <li>
               <div class="collapsible-header active"><i class="material-icons">explore</i>Locate</div>
@@ -54,7 +54,7 @@
           </div>
         </div>
       {{/autoForm}}
-{{/with}}
+{{/let}}
   </div>
 
 </template>

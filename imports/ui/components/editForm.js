@@ -9,7 +9,6 @@ Template.editForm.onCreated(function() {
 
 Template.editForm.onRendered(function() {
   $(document).ready(function() {
-
     $('#modalEdit').modal({
       dismissible: true, // Modal can be dismissed by clicking outside of the modal
       opacity: 0.5, // Opacity of modal background
@@ -19,6 +18,7 @@ Template.editForm.onRendered(function() {
       endingTop: '4%', // Ending top style attribute
     });
 
+    $('.collapsible').collapsible();
     // let state = Session.get('clientState');
     // $("li:contains("+ state +")").addClass("active selected");
   });

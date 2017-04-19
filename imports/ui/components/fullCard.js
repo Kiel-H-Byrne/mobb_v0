@@ -22,10 +22,15 @@ Template.fullCard.onRendered(function() {
           }
           if (tab.selector === '#tab3') {
             //get images
+          }
         }
-      }
+      });
+
+      $("img").error(function() { 
+        // $(this).hide();
+        $(this).css({visibility:"hidden"}); 
+      });
     });
-  });
 });
 
 Template.fullCard.events({

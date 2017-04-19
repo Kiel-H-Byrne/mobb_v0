@@ -29,6 +29,14 @@ Template.galleryCard.onRendered(function() {
   //     };
   //     service.radarSearch(request2,callback);  
   // });
+
+  $(document).ready(function() {
+    $("img").error(function() { 
+      // $(this).hide();
+      $(this).css({visibility:"hidden"}); 
+    });
+  });  
+  
 });
 
 Template.galleryCard.helpers({

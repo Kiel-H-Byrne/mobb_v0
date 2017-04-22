@@ -1,13 +1,13 @@
 <template name="fullCard">
   <div id="fullCard" class="row">
-    <div class="col s12 m6 push-m3">
+    <div class="col s10 push-s1 m6 push-m3 l6 push-l3">
       <div class="card large">
       {{> favoriteStar}}
       
         {{#if hasImage}}
-        <div class="card-image waves-effect waves-block waves-light"> 
+        <div class="card-image waves-effect waves-block waves-dark"> 
           <!--img class="responsive-image" src="/img/gallery/{{name}}.png" /-->
-          <img class="responsive-image" src="{{image.url}}" />
+          <img src="{{image.url}}" />
         </div>
         {{/if}}
 
@@ -23,7 +23,7 @@
             </p>
         </div>
         {{#if location}}
-        <div class="" id="microMap" style="width:100%; height:200px">
+        <div class="card-map" id="microMap">
           {{> googleMap name="microMap" options=microMapOptions }}
         </div>
         {{/if}}

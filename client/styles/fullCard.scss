@@ -2,11 +2,26 @@
 @import 'palettes/_plt_orng-tetrad';
 
 [id='fullCard'] {
-  margin-top: 7em;
+  margin: 7em 0;
+  height: 100%;
   
   .fav_star {
     position: absolute;
     right: 0;
     z-index: 3;
+  }
+
+  .card-map {
+    width: 100%; 
+    height: 200px;
+  }
+  .card-image {
+    img {
+      // position: relative;
+      // top: auto;
+      // bottom: auto;
+      // left: 0;
+      // right:0;
+    }
   }
 }

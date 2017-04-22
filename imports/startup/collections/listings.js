@@ -212,7 +212,7 @@ Listings.attachSchema(new SimpleSchema({
     type: String,
     unique: true,
     label: 'Website',
-    // regEx: SimpleSchema.RegEx.Url,
+    regEx: SimpleSchema.RegEx.Url,
     optional: true,
     // autoValue: function() {
     //   //if string starts with "http//" or https://", Ok, else prepend with "http://"
@@ -469,7 +469,7 @@ Listings.allow({
 
   // only allow insertion if you are logged in
   insert: (userId, doc) => !! userId,
-  update: (userId, doc) => doc.creator === userId,
+  update: (userId, doc) => !! userId,
   remove: (userId, doc) => false
 });
 

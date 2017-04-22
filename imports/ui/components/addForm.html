@@ -2,7 +2,7 @@
   <!-- Modal Structure -->
   <div id="modalAdd" class="modal modal-fixed-footer">
 
-			{{#autoForm id="addListingForm" type="normal" collection="Listings" doc=this}}
+			{{#autoForm id="addListingForm" type="normal" collection="Listings"}}
 			    <div class="modal-content">
 					  <ul class="collapsible" data-collapsible="accordion">
 			    	<li>
@@ -30,7 +30,7 @@
 							<div class="collapsible-body">
 							  {{> afQuickField name="owner"}}
 							  {{> afQuickField name="phone"}}
-							  {{> afQuickField name="url"}}
+							  {{> afQuickField name="url" value="http://"}}
 							</div>
 			    	</li>
 		    		<li>

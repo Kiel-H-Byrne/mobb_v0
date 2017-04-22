@@ -322,10 +322,14 @@ Meteor.startup(function() {
   });
 
   Template.registerHelper('hasFavorites', function() {
-    if (Meteor.user() && Meteor.user().profile.favorites.length) {
-      return true;
-    } else {
-      return false;
+    let user = Meteor.user();
+    if (user && user.profile.favorites) {
+      let profile = user.profile;
+      if (profile.favorites.length) {
+        return true;
+      } else {
+        return false;
+      }
     }
   });
 

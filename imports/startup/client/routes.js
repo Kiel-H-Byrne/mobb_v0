@@ -71,7 +71,7 @@ Router.route('/404', {
 });
 
 Router.route('/listings/:name', {
-  name: 'fullCard',
+  name: 'fullPage',
   layoutTemplate: 'AppLayout',
   yieldRegions: {
     'nav2': {to: 'nav'}

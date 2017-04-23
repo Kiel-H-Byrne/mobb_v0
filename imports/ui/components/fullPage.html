@@ -1,0 +1,134 @@
+
+<template name="fullPage">
+  <div id="fullPage" class="container" >
+  <div class="row">
+
+    <div class="col l7 m6 s12">
+      <h2 class="card-title center-align">{{name}}</h2>
+      <div class="card">
+        {{#if hasImage}}
+        <div class="card-image">
+          <img class="" src="{{image.url}}" />
+        </div>
+        {{/if}}
+      <div class="card-content">
+      </div>
+      
+      <div class="card-action">
+      {{#if url}}     
+        <div class="col s3"><a class="btn-floating amber" target="_blank" rel="noopener" title="Website" href="{{url}}"><i class="material-icons">link</i></a></div>
+        {{/if}}
+        {{#if phone}}    
+        <div class="col s3"><a class="btn-floating amber darken-2" title="Call" href="tel:+1{{phone}}"><i class="material-icons">phone</i></a></div>
+        {{/if}}
+        {{#if isOwner}}
+        <div class="col s3">
+          <a class="btn-floating amber darken-3 editModal-trigger" id="edit_button" title="Edit This Listing" href="#modalEdit"><i class="material-icons">edit</i></a>
+        </div>
+        {{else if currentUser}}
+        <div class="col s3">
+          <a class="btn-floating amber darken-3 modal-trigger" id="verify_button" title="Is This Information Correct?" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
+        </div>
+        {{else}}
+        <div class="col s3">
+          <a class="disabled btn-floating modal-trigger" id="verify_button" title="Verify This" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
+        </div>
+        {{/if}}
+        {{#if street}}    
+        <div class="col s3">
+          <!-- a class="btn-floating amber darken-4 modal-trigger" id="directions_button" title="Directions" href="#modalDirections"><i class="material-icons">navigation</i></a-->
+          <a class="btn-floating amber darken-4" title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" ><i class="material-icons">directions</i></a>
+        </div>
+      {{/if}}
+      </div>
+
+      </div>  
+    </div>
+
+    <div class="col l5 m6 s12">
+      <div class="card-panel">
+        <h6> DETAILS </h6>
+        <hr />        
+        <span class="card-title "><i class="material-icons">location_on</i>Address</span>
+        <span class=""><a target="_blank" rel="noopener" > {{social}}</a></span>
+        <p class="">
+          <span id="address-content">
+            {{street}} <br />
+            {{city}} {{state}} {{zip}} <br />
+          </span>
+          <a class="center-align phone" href="tel:+1{{phone}}"><i class="material-icons" style="font-size:100%; margin-right:2px; ">phone</i>{{phone}}</a>
+        </p>
+        <hr />
+        {{#if location}}
+          <span class="card-title "><i class="material-icons">map</i>Location</span>
+          <div class="card-map" id="microMap">
+            {{> googleMap name="microMap" options=microMapOptions }}
+          </div>
+        <hr />
+        {{/if}}
+        {{#if isPlace }}
+          {{#let place=thisPlace}}
+            <span class="card-title "><i class="material-icons">watch_later</i>Hours: </span>
+            {{#if place.opening_hours}}
+              {{#if isOpen place}}
+              <span class="now_open green-text">Open Now!</span>
+              {{else}}
+              <span class="now_closed grey-text">Closed Now</span>
+              {{/if}}
+            <ul class="list_hours">
+              {{#each place.opening_hours.weekday_text}}
+              <li>{{this}}</li>
+              {{/each}}
+            </ul>
+            {{/if}}
+            <hr />
+            <span class="card-title "><i class="material-icons">star</i>Reviews</span>
+            {{#if place.reviews}}
+              <ul class="collection">
+              {{#each review in place.reviews}}
+              <li class="collection-item">
+                <div class="row">
+                  <div class="col s4 valign-wrapper">
+                    <div class="">
+                      <a href="{{review.author_url}}" class="" ><img src="{{review.profile_photo_url}}" alt="{{review.author_name}}" class="circle" /></a>
+                    </div>
+                  </div>
+                  <div class="col s8">
+                    <a href="{{review.author_url}}"><h6>{{review.author_name}}</h6></a>
+                    <h6 class="">{{review.relative_time_description}}</h6>
+                    <a class="">RATING: {{review.rating}}/5</a>
+                  </div>
+                </div>
+                <div class="row">
+                  <p class="s12">
+                  {{review.text}}
+                  </p>
+                </div>
+              </li>
+              {{/each}}
+              </ul>
+            {{else}}
+              <p><a href="https://search.google.com/local/writereview?placeid={{google_id}}" target="_blank" rel="noopener" >Write Your Review.</a></p>
+            {{/if}}
+            <hr />
+            {{!-- #if place.photos}}  
+            <span class="card-title "><i class="material-icons">star</i>Photos</span>
+            {{#each photo in place.photos}}
+              {{isPhoto photo}}
+
+            {{/each}}
+            <hr />
+            {{/if--}}
+          {{/let}}
+
+        {{/if}}
+
+        <span class="card-title "><i class="material-icons">comment</i>Comments</span>
+          <div class="comment-section">
+            {{> commentsBox id=_id loadingTemplate="loadingHourglass"}}
+          </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</template>

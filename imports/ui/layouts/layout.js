@@ -4,7 +4,7 @@ import './layout.html';
 import './nav.js';
 import './footer.js';
 import '../components/map.js';
-import '../components/fullListing.html';
+import '../components/fullPage.js';
 import '../components/fullCard.js';
 import '../pages/showCategories.js';
 import '../pages/closestPage.js';

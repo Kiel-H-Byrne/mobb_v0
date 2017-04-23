@@ -85,6 +85,7 @@ Router.route('/listings/:name', {
   },
   action: function() {
     if (this.ready()) {
+      $('#modalInfo').modal('close');
       this.render();
     } else {
     }

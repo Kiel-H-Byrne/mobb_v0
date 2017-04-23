@@ -2,7 +2,6 @@ import { Meteor } from 'meteor/meteor';
 import {Template} from 'meteor/templating';
 
 import './listPage.html';
-import '../components/favoriteStar.js';
 
 Template.listPage.onCreated(function() {
   Meteor.subscribe('listings_online_only', function() {

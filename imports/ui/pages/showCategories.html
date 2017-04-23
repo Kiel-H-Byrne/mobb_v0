@@ -8,21 +8,17 @@
   </div>
   <div class="row categoryFlex">
   {{#each card in list}}
-{{!--  --}}
-    {{#if card.google_id }}
-    {{else}}
-      {{!-- getGID card.name card.location card._id--}}
-    {{/if}}
-  
-    <a class="card_link" href="/listings/{{card.name}}">
       <div id="{{card._id}}" class=" categoryFlex_item card sticky-action grey darken-2 hoverable grid-item">
         {{> favoriteStar card}}
+        {{> shareListing card}}
+
         {{#if card hasImage}}
         <div class="card-image waves-effect waves-block waves-light"> 
-          <img class="responsive-image" src="/img/gallery/{{card.name}}.png" />
+          <a href="/listings/{{card.name}}"> <img class="responsive-image" src="/img/gallery/{{card.name}}.png" /></a>
         </div>
         {{/if}}
-        <div class="card-content white-text">
+        <a href="/listings/{{card.name}}">
+          <div class="card-content white-text">
             <span class="card-title "> <h5 class="amber-text text-darken-1 center-align activator">{{card.name}}</h5></span>
             <h6 class="center-align"><a href="#" target="_blank" rel="noopener" > {{card.social}}</a></h6>
             {{#if card.street}}
@@ -37,29 +33,20 @@
             {{#if card.description}}
               <p>{{card.description}}</p>
             {{/if}}
-        </div>
+          </div>
+        </a>
         <div class="card-action">
           <div class="row center-align">
 
-            {{#if currentUser }}
-            <div class="col s6">
-              <a class="btn-floating amber darken-3 modal-trigger" id="verify_button" title="Is This Information Correct?" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
-            </div>
-            {{else}}
-            <div class="col s6">
-              <a class="disabled btn-floating modal-trigger" id="verify_button" title="Verify This" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
-            </div>
-            {{/if}}
             {{#if card.street}}    
             <div class="col s6">
               <!-- a class="btn-floating amber darken-4 modal-trigger" id="directions_button" title="Directions" href="#modalDirections"><i class="material-icons">navigation</i></a-->
-              <a class="btn-floating amber darken-4" title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" ><i class="material-icons">navigation</i></a>
+              <a class="btn-floating amber darken-4" title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" ><i class="material-icons">directions</i></a>
             </div>
             {{/if}}
           </div>
         </div>
       </div>  
-    </a>
 
     {{/each}}
   </div>

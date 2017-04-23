@@ -15,7 +15,7 @@ Template.infoModal.onRendered(function() {
       outDuration: 200, // Transition out duration
       startingTop: '4%', // Starting top style attribute
       endingTop: '4%', // Ending top style attribute
-    });
+    });    
   });
 //   this.autorun(function() {
 //     //When url changes to '/listings/:name' or '/categories/:name', open modal with listing data, or filter list to show only those cards in category..

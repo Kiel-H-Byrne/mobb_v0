@@ -6,6 +6,15 @@
 }
 
 [id='infoWrap'] {
+  position:relative;
+
+  .badge-share {
+    margin: 3px;
+    position:absolute;
+    top:0;
+    right:0;
+
+  }
 
   .fav_star {
     position: absolute;

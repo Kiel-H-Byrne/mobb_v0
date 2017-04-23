@@ -1,10 +1,17 @@
+@import '{}/node_modules/materialize-css/sass/components/color';
+@import '{}/node_modules/materialize-css/sass/components/variables';
 @import 'palettes/colors';
+@import 'palettes/_plt_orng-tetrad';
 
 [id='modalBeta'] {
-  background-color: $clr-grey;
+  background-color: $rgba-primary-1;
 
   h4 {
     color: $clr-gold;
     text-decoration: none;
+  }
+
+  p {
+    line-height: 2rem;
   }
 }

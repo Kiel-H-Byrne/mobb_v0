@@ -1,0 +1,32 @@
+
+@import '{}/node_modules/materialize-css/sass/components/color';
+@import '{}/node_modules/materialize-css/sass/components/variables';
+@import 'palettes/colors';
+@import 'palettes/_plt_orng-tetrad';
+
+.badge-share {
+  margin: 3px;
+
+  i {
+    font-size: 1.5rem;
+    color: $clr-main;
+  }
+
+  li {
+     min-height: 20px;
+  }
+
+  .link-share {
+    padding: 3px 10px;
+
+    &:hover {
+      background-color: $rgba-primary-2;
+    }
+
+    img {
+      height: 1.5em;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}

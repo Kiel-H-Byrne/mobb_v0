@@ -15,12 +15,11 @@ Template.fullPage.onRendered(function() {
 
     $(document).ready(function() {
       $('.editModal-trigger').modal();
-    
+      $('select').material_select();
     // $('pinned').pushpin({
     //   top: 0,
     //   offset: 0
     // });
-
 
       setGReviews(tpl.data.google_id);
 

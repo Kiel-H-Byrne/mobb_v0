@@ -14,6 +14,8 @@ import '../components/geoModal.js';
 import '../components/shareModal.js';
 import '../components/betaModal.js';
 import '../components/corner-ribbon.js';
+import '../components/favoriteStar.js';
+import '../components/shareListing.js';
 
 import './nav.html';
 

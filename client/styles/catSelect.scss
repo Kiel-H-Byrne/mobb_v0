@@ -28,12 +28,14 @@
       // margin: .3rem;
 
       a {
-          padding: .3rem;
+          padding: 4px;
           color: $clr-orange;
       }
     }
       
     .badge {
+      min-width: 3em;
+      font-size: 14px;
       color: $rgba-secondary-1-4;
       background-color: $rgba-complement-2;
       float: right;

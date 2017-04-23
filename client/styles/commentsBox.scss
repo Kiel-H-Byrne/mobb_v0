@@ -5,22 +5,6 @@
 
 .comments-box {
 
-  .comments {
-    padding: 0;
-
-    .header {
-      margin: .7rem 0;
-      font-size: 2rem;
-    }
-
-    form {
-      color: $clr-brown ;
-
-      .button {
-        background-color: $color-complement-2 !important; 
-      }
-    }
-
     .comment {
        img {
         width: 20%;
@@ -39,8 +23,12 @@
       justify-content: space-around;
       
       }
+
+      .content {
+        margin: 5px 0;
+      }
     }   
-  }
+  
 }
 
 //OVERWRITE: 
@@ -50,12 +38,26 @@
     padding: 0;
 
     .comments {
-        padding-top: 0;
-        transition: 1s background-color;
+      padding: 0;
+      transition: 1s background-color;
 
-        .text-span {
-            white-space: pre-wrap;
+      .header {
+        margin: .7rem 0;
+        font-size: 2rem;
+      }
+
+      form {
+        margin: 5px 0;
+        color: $clr-brown ;
+
+        .button {
+          background-color: $color-complement-2 !important; 
         }
+      }
+
+      .text-span {
+          white-space: pre-wrap;
+      }
     }
 
     .unstyled-link {
@@ -107,18 +109,37 @@
         }
 
         .sorting {
-            margin-left: 0;
-            max-width: 100%;
-            text-align: left;
+          max-width:100%;
+          text-align: left;
+
+          .select-wrapper {
+            display: inline-block;
+            font-size: 16px;
+            margin-left: 2rem;
+            
+            .select-dropdown {
+              margin:0;
+
+              li {
+                min-height: 30px;
+                
+                span {
+                  padding: 4px;
+                }
+              }
+            }
+          }
+
+
         }
     }
 
-    // bootstrap 3
+
     .actions .label {
         margin: 0 0.5em;
     }
 
-    // ionic
+
     .list.card {
         .stars-action {
             margin-top: 17px;

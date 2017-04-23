@@ -57,13 +57,11 @@
     vertical-align: middle;
   }
 
-  .link_share {
-    // display: inline;
-    // width: 20px;
-    background-color: $clr-main;
-
+  .link-share {
+    background-color: $rgba-primary-0;
+    width: 100%;
     &:hover {
-      background-color: $clr-green;
+      background-color: $rgba-primary-2;
     }
 
     img {
@@ -90,7 +88,9 @@
       min-width: 211px;
     }
 
-
+    li a {
+      color: $rgba-primary-0;
+    }
     .no_pad{
       padding: 0 .3rem;
     }

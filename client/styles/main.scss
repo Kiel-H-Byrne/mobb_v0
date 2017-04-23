@@ -10,8 +10,8 @@
 // ELEMENTS
 html { 
   box-sizing: border-box; 
-  font-height: 16px;
-  line-height: 1 em;
+  font-height: 14px;
+  line-height: 1em;
 } 
 
 *, 
@@ -94,6 +94,25 @@ h5 {
     z-index: -1;
     display: inline !important;
   }
+}
+
+.card {
+  p {
+    line-height: 1.3rem;
+  }
+  .card-action {
+    display: -webkit-flex;
+    -webkit-justify-content: space-around;
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.flex-center {
+  display: -webkit-flex;
+  -webkit-justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 
 [id='at-signIn'] {

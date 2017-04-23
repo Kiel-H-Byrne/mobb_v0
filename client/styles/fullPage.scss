@@ -2,20 +2,27 @@
 @import 'palettes/_plt_orng-tetrad';
 
 [id='fullPage'] {
+
   .card-panel {
     padding: 1rem;
+    
+    p {
+      margin: 0;
+      line-height: 16px;
+    }
 
     .card-title {
       font-size: 1.2rem;
-      font-weight: 800;
+
       i {
-        font-size: 1.2rem;
+        font-size: 16px;
         position: relative;
-        bottom: -3px;
+        bottom: -2px;
         margin-right: 3px;
+        margin-bottom: 10px;
       }
     }
- 
+
     .fav_star {
       position: absolute;
       right: 0;
@@ -42,14 +49,14 @@
     }
 
     .collection-item {
-      padding: .3rem 1rem;
+      padding: 3px 1rem;
 
       img {
         margin: 0;
         width: 100%;
       }
       p {
-        // margin: .3rem;
+        margin: 3px;
       }
     }
 

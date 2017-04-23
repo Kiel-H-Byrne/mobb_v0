@@ -17,7 +17,9 @@
   }
 
   .link-share {
+    fill: $rgba-primary-0;
     padding: 3px 10px;
+    background-color: $rgba-primary-0;;
 
     &:hover {
       background-color: $rgba-primary-2;

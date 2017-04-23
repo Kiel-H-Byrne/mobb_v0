@@ -6,6 +6,11 @@
   .card-panel {
     padding: 1rem;
     
+    .badge-distance {
+      background-color: $rgba-complement-3;
+      color: $rgba-complement-1;
+      font-size: 1rem;
+    }
     p {
       margin: 0;
       line-height: 16px;
@@ -15,6 +20,7 @@
       font-size: 1.2rem;
 
       i {
+        color: $rgba-complement-3;
         font-size: 16px;
         position: relative;
         bottom: -2px;

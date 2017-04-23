@@ -22,6 +22,7 @@ Template.catSelect.onRendered(function() {
 
 Template.catSelect.onCreated(function() {
   this.subscribe('categories');
+  this.subscribe('listings');
 });
 
 Template.catSelect.helpers({

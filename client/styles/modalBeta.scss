@@ -5,6 +5,7 @@
 
 [id='modalBeta'] {
   background-color: $rgba-primary-1;
+  max-width: 80%;
 
   h4 {
     color: $clr-gold;
@@ -13,5 +14,6 @@
 
   p {
     line-height: 2rem;
+    text-align: justify;
   }
 }

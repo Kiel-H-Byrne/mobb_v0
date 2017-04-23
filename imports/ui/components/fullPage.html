@@ -53,7 +53,7 @@
         <span class=""><a target="_blank" rel="noopener" > {{social}}</a></span>
         <p class="">
 
-          {{#if phone}}    
+          {{#if street}}    
             {{street}} <br />
             {{city}} {{state}},  {{zip}} <br />
           {{/if}}
@@ -66,7 +66,7 @@
         {{#if location}}
           <span class="card-title "><i class="material-icons">map</i>Location :</span>
           <a class="" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener">
-            <span class="badge hoverable" data-badge-caption="mi."><i class="material-icons tiny ">directions</i> {{getDistance location}} </span>
+            <span class="badge badge-distance" data-badge-caption="mi."><i class="material-icons tiny ">directions</i> {{getDistance location}} </span>
           </a>
           <div class="card-map" id="microMap">
             {{> googleMap name="microMap" options=microMapOptions }}

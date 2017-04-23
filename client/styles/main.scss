@@ -29,8 +29,8 @@ body {
   height: 100%;
   width: 100%;
   margin: 0;
-  color: $clr-gold;
-  background-color: $clr-grey;
+  color: $rgba-primary-grey-4;
+  background-color: $clr-grey-clear;
 }
 
 h1,
@@ -40,7 +40,9 @@ h4,
 h5 {
   font-family: 'Raleway', sans-serif;
 }
-
+p {
+  line-height: 1.5rem;
+}
 // MATERIALIZE OVERWRITES 
 .btn {
   color: $clr-grey;
@@ -63,18 +65,19 @@ h5 {
 
 // ALDEED AUTOFORMS OVERWRITES
 .at-form {
-  padding-top: 50px;
+  background-color: $rgba-primary-1;
+  padding: 50px;
 }
 
 // CUSTOM CLASSES
 
 .brand {
-  color: $clr-main;
+  color: $rgba-complement-4;
+  font-weight: 800;
 }
 
 .smalltext {
   font-size: 0.65em;
-  color: $clr-gold;
 }
 
 .address {
@@ -97,9 +100,7 @@ h5 {
 }
 
 .card {
-  p {
-    line-height: 1.3rem;
-  }
+
   .card-action {
     display: -webkit-flex;
     -webkit-justify-content: space-around;

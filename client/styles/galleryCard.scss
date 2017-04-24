@@ -9,13 +9,18 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    z-index: 2;
     margin: 0 3px;
+    line-height: .8rem;
+  }
+  .badge-share {
+    position:absolute;
+    bottom:0;
+    left: 2rem;
     line-height: .8rem;
   }
 
   img {
-		max-width: 100%;
+		// max-width: 100%;
 	}
 	
   a, .social{
@@ -28,7 +33,7 @@
   }
 
   .badge {
-    color: $color-secondary-2-1;
+    color: $color-secondary-2-4;
     background-color: $rgba-primary-grey-4;
     margin: .3rem;
     font-size: .8rem;

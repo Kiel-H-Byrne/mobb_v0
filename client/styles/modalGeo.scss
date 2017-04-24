@@ -3,15 +3,10 @@
 @import 'palettes/colors';
 @import 'palettes/_plt_orng-tetrad';
 
-[id='modalBeta'] {
+[id='modalGeo'] {
   background-color: $rgba-primary-1;
   color: $rgba-primary-grey-3;
   max-width: 80%;
-
-  h4 {
-    color: $clr-gold;
-    text-decoration: none;
-  }
 
   p {
     line-height: 2rem;

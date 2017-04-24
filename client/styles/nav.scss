@@ -3,49 +3,6 @@
 @import 'palettes/colors';
 @import 'palettes/_plt_orng-tetrad';
 
-::-webkit-input-placeholder {
-  color: $clr-orange;
-  text-transform: capitalize;
-  transition: opacity 250ms ease-in-out;
-}
-
-:focus::-webkit-input-placeholder {
-  opacity: 0.3;
-}
-
-:-ms-input-placeholder {
-  color: $clr-orange;
-  text-transform: capitalize;
-  transition: opacity 250ms ease-in-out;
-}
-
-:focus:-ms-input-placeholder {
-  opacity: 0.3;
-}
-
-::-moz-placeholder {
-  color: $clr-orange;
-  opacity: .5;
-  text-transform: capitalize;
-  transition: opacity 250ms ease-in-out;
-}
-
-:focus::-moz-placeholder {
-  opacity: 0.3;
-}
-
-:-moz-placeholder {
-  color: $clr-orange;
-  opacity: .5;
-  text-transform: capitalize;
-  transition: opacity 250ms ease-in-out;
-}
-
-:focus:-moz-placeholder {
-  opacity: 0.3;
-}
-
-
 .navbar-fixed {
   img {
     max-height: $navbar-height;

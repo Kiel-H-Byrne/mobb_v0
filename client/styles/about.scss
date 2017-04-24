@@ -1,9 +1,26 @@
+@import '{}/node_modules/materialize-css/sass/components/color';
+@import '{}/node_modules/materialize-css/sass/components/variables';
+@import 'palettes/colors';
+@import 'palettes/_plt_orng-tetrad';
+
 .about-wrapper {
   position: relative;
-  top: 33%;
-
-  .vendor_badge {
-    position: relative;
-    bottom: 0 ;
+  top: 3rem;
+  
+  .hint {
+    color: $rgba-secondary-grey-2-1;
   }
+
+  h4,h5 {
+    color: $rgba-primary-0;
+  }
+  img.brand {
+    margin:auto;
+    position: absolute;
+    width: 100%;
+    max-height:200%;
+    opacity: 0.1;
+    filter: alpha(opacity=10); /* For IE8 and earlier */
+  }
+
 }

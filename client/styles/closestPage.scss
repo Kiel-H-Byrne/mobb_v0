@@ -1,25 +1,19 @@
 @import '{}/node_modules/materialize-css/sass/components/color';
 @import '{}/node_modules/materialize-css/sass/components/variables';
 @import 'palettes/colors';
+@import 'palettes/_plt_orng-tetrad';
 
 .closest-wrapper, .favorites-wrapper {
     background-color: $clr-grey-clear;
+    webkit-border-radius: 1.5rem;
+    border-radius: 1.5rem;
 
     h3 {
       margin: .5rem;;
     }
 
     .title {
-      background-color: $clr-grey-light;
-    }
-
-    .addModal-trigger {
-      display: block;
-      background-color: $clr-orange;   
-      font-size: 1.2rem;
-      color: white;
-      margin: .3rem;
-      padding: .2rem;
+      background-color: $rgba-primary-grey-3;
     }
 }
 

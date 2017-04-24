@@ -27,6 +27,7 @@ Template.addForm.onRendered(function() {
       endingTop: '4%', // Ending top style attribute
     });
 
+    $('input[name="phone"]').characterCounter();
     $('.collapsible').collapsible();
     // let state = Session.get('clientState');
     // $("li:contains("+ state +")").addClass("active selected");

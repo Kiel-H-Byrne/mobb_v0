@@ -4,10 +4,13 @@
 [id='fullPage'] {
 
   .card-panel {
+    position: relative;
     padding: 1rem;
-    
+    background-color: $rgba-primary-grey-1;
+    color: $rgba-primary-grey-4;
+
     .badge-distance {
-      background-color: $rgba-complement-3;
+      background-color: $rgba-complement-2;
       color: $rgba-complement-1;
       font-size: 1rem;
     }
@@ -20,7 +23,7 @@
       font-size: 1.2rem;
 
       i {
-        color: $rgba-complement-3;
+        color: $rgba-complement-2;
         font-size: 16px;
         position: relative;
         bottom: -2px;
@@ -32,7 +35,19 @@
     .fav_star {
       position: absolute;
       right: 0;
-      z-index: 3;
+      margin: 0 1rem;
+      i {
+        color: $rgba-complement-3;
+      }
+    }
+
+    .badge-share {
+      position: absolute;
+      left: 0;
+      margin: 0 1rem;
+      i {
+        color: $rgba-complement-3;
+      }
     }
 
     .card-map {

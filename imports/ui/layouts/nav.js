@@ -111,7 +111,7 @@ Template.nav2.events({
     document.getElementById("mobile_search-form").reset();
   },
   'mouseup form, touchend form': function() {
-    Materialize.updateTextFields();
+    // Materialize.updateTextFields();
   },
   'click .signout_btn': function() {
     AccountsTemplates.logout();

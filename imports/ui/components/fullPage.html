@@ -6,14 +6,18 @@
     <div class="col l7 m6 s12">
       <h3 class="card-title center-align">{{name}}</h3>
       <div class="card">
-        {{#if hasImage}}
         <div class="card-image">
-          <img class="" src="{{image.url}}" />
-        </div>
-        {{/if}}
-      <div class="card-content">
+        {{#unless image.url}}
+          <img src="{{getImage url _id}}" />
+        {{else}}
+          <img src="{{image.url}}" />
+        {{/unless}}
       </div>
-      
+      <div class="card-content">
+        <p class="flow-text">
+          {{description}}
+        </p>
+      </div>
       <div class="card-action">
       {{#if url}}     
         <a class="btn-floating amber" target="_blank" rel="noopener" title="Website" href="{{url}}"><i class="material-icons">link</i></a>

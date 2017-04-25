@@ -100,8 +100,9 @@ Template.fullPage.helpers({
       // return options;
 
     },
-    getPhoto: function(doc) {
-      console.log(this);
+    getImage: function(url, id) {
+      // getOGS(url);
+      Meteor.call('getOG', url, id);
     },
 });
 

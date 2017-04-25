@@ -40,7 +40,7 @@ apiCall = function (apiUrl, callback) {
 
       // console.log(error.response);
       errorCode = error.response.statusCode;
-      errorMessage = error.response.data.error_message;
+      errorMessage = error.response || error.response.data.error_message;
       console.log({errorCode, errorMessage});
     // Otherwise use a generic error message
     } else {
@@ -198,10 +198,11 @@ Meteor.methods({
         const result = HTTP.post(apiUrl, {data: params});
         if (result.data) {
           console.log("OBTAINED NEW PLACE_ID FOR "+ doc.name);
-          Listings.update(
-            { _id: doc._id },
-            { $set: { google_id: result.data.place_id } }
-          );
+          Listings.update({
+            _id: doc._id 
+          },{
+            $set: { google_id: result.data.place_id } 
+          });
         }
         return true;
       } catch(e) {
@@ -210,6 +211,48 @@ Meteor.methods({
       }
     } else {
       console.log("NO ADDRESS FOR "+ doc.name);
+    }
+  },
+  getOG: function(url, id) {
+    this.unblock();
+    if (url) {
+    let param = encodeURIComponent(url);
+    console.log(param);
+    console.log(`***calling OPENGRAPH API method with ${param}`);
+    let apiUrl = `https://opengraph.io/api/1.0/site/${param}?app_id=${Meteor.settings.public.keys.openGraph.key}` ;
+    console.log("--URL--"+apiUrl);
+    let response = Meteor.wrapAsync(apiCall)(apiUrl);
+    let obj = {};
+    if (!response.openGraph.error && response.openGraph.image){
+      obj = response.openGraph;
+    } else if (response.hybridGraph.image) {
+      obj = response.hybridGraph;
+    } else if (response.htmlInferred) {
+      obj = response.htmlInferred;
+    }
+    let img;
+    console.log(obj);
+    if (obj.images.length) {
+      let img = obj.images[0]
+    } else {
+      let img = obj.image || null;
+    }
+
+    let description = obj.description;
+    let title = obj.title;
+    let status = response.requestInfo.responseCode;
+    console.log(description);
+    Listings.update({
+      _id: id 
+    },{
+      $set: { 
+        "image.url": img,
+        description: description,
+    } });
+    return img;
+    } else {
+      console.log(`No URL for ${id}`);
+      return
     }
   },
   // getDirections: function(orig,dest) {

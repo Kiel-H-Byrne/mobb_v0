@@ -11,6 +11,7 @@
         "app_id" : "qY7ReHuqqRcd46uO35EdDw",
   			"app_secret" : "sraEpUUq73L9aPc6S4OTzRZh8qETaaFJFDiU5hJJTqlwya8ppphEdIX5nS1TwNdL"
       },
+      "openGraph": {"key":"58febcd49b8ad70f00f5f6f0"},
       "mailgun" : {
         "pubKey" : "pubkey-67863056eeb5b73ef0e430fb745ee491",
         "key" : "key-7dd23326d5aa872424d23f8a8038dc72",

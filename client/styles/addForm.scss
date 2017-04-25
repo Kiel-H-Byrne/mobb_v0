@@ -3,7 +3,7 @@
 @import 'palettes/colors';
 @import 'palettes/_plt_orng-tetrad';
 
-[id='modalAdd'] {
+[id='modalAdd'],[id='modalEdit'] {
   position: fixed;
   height: 95%;
   min-height: 40%;

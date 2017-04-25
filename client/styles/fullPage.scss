@@ -2,7 +2,9 @@
 @import 'palettes/_plt_orng-tetrad';
 
 [id='fullPage'] {
-
+  .card-content {
+    color: $rgba-primary-grey-4;
+  }
   .card-panel {
     position: relative;
     padding: 1rem;

@@ -82,8 +82,5 @@ Template.fullCard.helpers({
       let options = {'maxWidth': 150, 'maxHeight': 150}
       return options;
 
-    },
-    getPhoto: function() {
-      console.log(this);
-    },
+    }
 });

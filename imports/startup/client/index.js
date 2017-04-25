@@ -52,6 +52,22 @@ console.log("-= imports/startup/client/index.js loaded");
 // 100000s = 1.16 days....
 const GCache = new OrionCache('gids', 100000);
 
+
+// getOGS = function(url) {
+//   let options = {
+//     'url': url,
+//     'timeout': 4000
+//   };
+//   ogs(options, function (err, results) {
+//     if (err) {
+//       console.log('OGS Error:', err); // This is returns true or false. True if there was a error. The error it self is inside the results object.
+//       console.log('OGS Results:', results);  
+//     } else {
+//       console.log('OGS Results:', results);  
+//     }
+//   });
+// };
+
 setGReviews = function(gid) {
   if (gid) {
     let dataFromCache = GCache.get(gid);

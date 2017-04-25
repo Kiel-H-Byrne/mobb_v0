@@ -63,6 +63,7 @@ AutoForm.addHooks('addListingForm', {
   // Called when any submit operation succeeds
   onSuccess: function(formType, result) {
   	console.log("Thanks for Submitting!");
+    console.log(result, insertDoc);
     //draw marker?
     //change content(inner html) of addForm template.
     // $('#modalAdd').html(

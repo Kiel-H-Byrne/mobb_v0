@@ -128,16 +128,16 @@ Router.route('/categories/:name', {
 });
 
 
-Router.route('/add', {
-  template: 'nav2',
-  layoutTemplate: '',
-  action: function() {
-    if (this.ready()) {
-      this.render();
-      $('#modalAdd').modal('open');
-    }
-  }
-});
+// Router.route('/add', {
+//   template: 'nav2',
+//   layoutTemplate: '',
+//   action: function() {
+//     if (this.ready()) {
+//       this.render();
+//       $('#modalAdd').modal('open');
+//     }
+//   }
+// });
 
 Router.route('/kibu', {
     name: 'about',
@@ -184,7 +184,7 @@ AccountsTemplates.configureRoute('resetPwd', {
 AccountsTemplates.configureRoute('enrollAccount', {
   name: 'enrollAccount',
   path: '/enroll',
-  redirect: '/add'
+  redirect: '/'
 });
 
 // AccountsTemplates.configureRoute('ensureSignedIn', {

@@ -5,45 +5,30 @@
       "url": "https://www.adognamedpaul.com",
       "phone": "2489528364",
       "social": "adnpapproach",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Accurate Tax Solutions",
       "url": "http://www.atsolutionsla.com/",
       "phone": "3109100646",
-      "image": {
-        "url": true
-      },
       "categories": [ "Online Only", "Business Services" ]
     },
     {
       "name": "Adrienne La Faye's Paintings",
       "url": "http://www.adriennelafayeart.com",
       "phone": "2068583981",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "African Globe",
       "url": "http://africanglobe.net",
       "phone": " ",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Ainsley-August.com",
       "url": "http://ainsley-august.com",
       "phone": "7047652219",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only", "Other Services" ]
     },
     {
@@ -51,837 +36,558 @@
       "url": "http://www.airfordable.com",
       "email": "team@airfordable.com",
       "description": "Payment Plans for Flights",
-      "image": {
-        "url": true
-      },
       "categories": [ "Online Only", "Travel & Transportation" ]
     },
     {
       "name": "Artist Candy Carver",
       "url": "http://Candycarver.com ",
       "phone": "5746123466",
-      "image": {
-        "url": true
-      },
       "categories": [ "Online Only", "Other Services" ]
     },
     {
       "name": "Ask A Black Person",
       "url": "https://medium.com/@c52153bfdae/a18a1ffcec7e",
       "phone": "",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only", "Other Services" ]
     },
     {
       "name": "Atelier Synthia SAINT JAMES",
       "url": "https://squareup.com/store/atelier-saint-james",
       "phone": "3239935722",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "BeGreat Bow ties",
       "url": "http://BeGreatbowties.com",
       "phone": "7062885756",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only", "Apparel & Accessories" ]
     },
     {
       "name": "Beautiful Ideas - Graphic Design",
       "url": "http://www.beautiful-ideas.co",
       "phone": "9196171006",
-      "image": {
-        "url": true
-      },
       "categories": [ "Online Only", "Other Services" ]
     },
     {
       "name": "Black Agenda Report",
       "url": "http://blackagendareport.com",
       "phone": " ",
-      "image": {
-        "url": true
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Black Hollywood Live",
       "url": "http://youtube.com/user/Blackhollywoodlive",
       "phone": " ",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Black News 102",
       "url": "http://youtube.com/user/Blacknews102",
       "phone": " ",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Black Talk Radio Network",
       "url": "http://blacktalkradionetwork.com",
       "phone": " ",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Brand Bright Design",
       "url": "https://brandbrightdesigndotcom.wordpress.com/",
       "phone": "4807445510",
-      "image": {
-        "url": true
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Brick Light Media",
       "url": "http://Bricklightmedia.com ",
       "phone": "4153554821",
-      "image": {
-        "url": true
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Business Women Solutions",
       "url": "http://businesswomensolutions.com",
       "phone": "4049818326",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Buyer's Point",
       "url": "https://thebuyerspoint.com",
       "phone": "8135632169",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "CCTV Africa",
       "url": "http://cctv-africa.com",
       "phone": " ",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Callaloo Jewelry",
       "url": "http://www.callalooboutique.com",
       "phone": "3476748437",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only", "Apparel & Accessories" ]
     },
     {
       "name": "Centiment.io",
       "url": "http://centiment.io",
       "phone": "3472574063",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Chew Street",
       "url": "https://www.chewstreet.com",
       "phone": "6475007198",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only", "Apparel & Accessories" ]
     },
     {
       "name": "Chisom Custom Designs",
       "url": "http://www.etsy.com/shop/ChisomDesigns",
       "email": "chisomcustomdesigns@gmail.com",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only", "Apparel & Accessories" ]
     },
     {
       "name": "Colorstock",
       "url": "http://www.getcolorstock.com",
       "phone": "7472COLOR1",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Cozy Mous",
       "url": "https://www.cozymous.com",
       "phone": "4432396390",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Crochet From My Heart",
       "url": "http://www.etsy.com/shop/niseylee",
       "phone": "4044090092",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only", "Apparel & Accessories" ]
     },
     {
       "name": "Cruel Valentine",
       "url": "http://CruelValentine.com",
       "phone": "8723027835",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only", "Other Services" ]
     },
     {
       "name": "CultureCorner.com",
       "url": "http://www.CultureCorner.com",
       "phone": "3104006692",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only", "Apparel & Accessories" ]
     },
     {
       "name": "DBA Necessities by Nichelle",
       "url": "http://www.etsy.com/shop/justnichelle",
       "phone": "3015837812",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only", "Apparel & Accessories" ]
     },
     {
       "name": "DFWBlackArts",
       "url": "http://DFWBlackArts.com",
       "phone": "2144176095",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "DTM Strategies",
       "url": "http://www.dtmstrategies.win",
       "phone": "4157355340",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Date While You Wait",
       "url": "http://Datewhileyouwait.com",
       "phone": "7062885756",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Drank Tanks",
       "url": "http://www.DRANKTANKS.COM ",
       "phone": "7737041088",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "E-graphX Omnimedia",
       "url": "http://e-graphx.com",
       "phone": "8434766168",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "ELEV8ED Urban Supply Company",
       "url": "http://www.elev8edusc.com",
       "phone": "4049692542",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only", "Apparel & Accessories"  ]
     },
     {
       "name": "EUR-Electronic Urban Report",
       "url": "http://www.EURweb.com",
       "phone": "3232549599",
-      "image": {
-        "url": true
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Employment Marketplace LLC",
       "url": "https://employmentmarketplace.net",
       "phone": "8003545210",
-      "image": {
-        "url": true
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Entre-SLAM",
       "url": "http://www.entreslam.com/centerstage",
       "phone": "7342762736",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Epiphany365.com",
       "url": "https://epiphany365.com",
       "phone": "5155956914",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Eve4Eve Online",
       "url": "http://www.eve4eveonline.com",
       "phone": "3233918812",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Ever After Me",
       "url": "http://www.everafterme.etsy.com",
       "phone": "9073289384",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Forever Loving Memories Printing",
       "url": "http://www.flmprinting.com",
       "phone": "2055434180",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Free Negro University",
       "url": "http://Freenegrouniversity.etsy.com",
       "phone": "9175320727",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Good Mayweather Consulting",
       "url": "https://www.doingthegoodwork.com",
       "phone": "7347071230",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "GraphicDezine.com",
       "url": "http://GraphicDezine.com",
       "phone": "4437189658",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Gray Eye Graphics, LLC",
       "url": "http://www.grayeyegraphics.com",
       "phone": "2676390352",
-      "image": {
-        "url": true
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Grow Your Own Zone",
       "url": "http://growyourownzone.com",
       "phone": "510 3347070",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Happy Hair LLC",
       "url": "http://www.happyhairshop.com",
       "phone": "4046922792",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Intuitive Hypnotherapy",
       "url": "http://www.drmichaelmosley.com",
       "phone": "9164674448",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Island Printed Leggings, LLC",
       "url": "http://islandprinted.com",
       "phone": "7139796745",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "JennyLights Designs",
       "url": "http://cafepress.com/jennylights",
       "phone": "8434766168",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Jewels by CocoaRoxy",
       "url": "http://www.cocoaroxyjewels.com",
       "phone": "8482529574",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Juju Seeds Media",
       "url": "http://www.jujuseeds.com",
       "phone": "4438299292",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "KLA Web Designs",
       "url": "http://klawebdesigns.com",
       "phone": "9104757805",
-      "image": {
-        "url": true
-      },
       "categories": [ "Online Only", "Professional Services" ]
     },
     {
       "name": "KMF Strategies",
       "url": "http://www.kmfstrategies.com",
       "phone": "7196607730",
-      "image": {
-        "url": true
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "KelJo Solutions LLC",
       "url": "http://keljosolutionsllc.net",
       "phone": "9313924979",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Kings Rule Together",
       "url": "http://kingsruletogether.com/",
       "phone": " ",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "LA Progressive",
       "url": "https://www.laprogressive.com",
       "phone": "3232260622",
-      "image": {
-        "url": true
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Liquid Courage Cosmetics",
       "url": "http://www.liquidcouragecosmetics.com",
       "phone": "3476961246",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only", "Personal Services" ]
     },
     {
       "name": "Littlebug Web Management",
       "url": "http://www.littlebug.love",
       "phone": "8027776019",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only", "Professional Services", "Information & Technology" ]
     },
     {
       "name": "Loving Anvil",
       "url": "http://Lovinganvil.com",
       "phone": "9716459710",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Lunch",
       "url": "http://yepitslunch.com",
       "phone": "",
-      "image": {
-        "url": true
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "MS By Maple Syrup &amp; Co LLC",
       "url": "http://MapleSyrupCo.com",
       "phone": "3474686939",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Malaika Apparel Co.",
       "url": "http://www.malaikaapparel.com/shop-malaika",
       "phone": "6078820143",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Masterwork Digital",
       "url": "http://www.masterworkdigital.com",
       "phone": "4405390567",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Mindful",
       "url": "http://getmindfully.com/pal/blm",
       "phone": "2165864575",
-      "image": {
-        "url": true
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "MoHill Accounting Services",
       "url": "http://www.mohillaccounting.com/",
       "phone": "8442449377",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only", "Professional Services" ]
     },
     {
       "name": "Modere",
       "url": "http://www.victoriafranklin.com",
       "phone": "3012377786",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Morgan Young Books",
       "url": "http://www.MorganYoungBooks.com",
       "phone": "",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "NTB Consulting",
       "url": "http://www.ntbconsulting.net",
       "phone": "8007883446",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only", "Professional Services" ]
     },
     {
       "name": "New Garden City, LLC",
       "url": "http://shardy.towergarden.com ",
       "phone": "5206610406",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "OBA Quilts",
       "url": "http://obaquilts.com",
       "phone": "4044185413",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Oh Tiffany Writes",
       "url": "http://www.ohtiffanywrites.com",
       "phone": "7324859640",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "One Epiphany LLC",
       "url": "http://one-epiphany.com",
       "phone": "6469266584",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Online Business Consulting LLC",
       "url": "http://www.onlinebusinessconsultants.net/",
       "phone": "8885146748",
-      "image": {
-        "url": true
-      },
       "categories": [ "Online Only", "Professional Services" ]
     },
     {
       "name": "Oyin Handmade",
       "url": "http://www.oyinhandmade.com",
       "phone": "8882436922",
-      "image": {
-        "url": true
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Passion is Purity",
       "url": "http://www.passionispurity.com",
       "phone": " ",
-      "image": {
-        "url": true
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Philadelphia Printworks",
       "url": "https://www.philadelphiaprintworks.com/",
       "phone": " ",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Phoenix/Milcham, LLC",
       "url": "http://PhoenixMilcham.com",
       "phone": "6018781271",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Postmodern Woman",
       "url": "http://postmodernwoman.com",
       "phone": "",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Princess Zoey's Socks",
       "url": "http://Princesszoeyssocks.com",
       "phone": "5713778381",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Product of Society LLC",
       "url": "http://Productofsociety.org",
       "phone": "2814672571",
-      "image": {
-        "url": true
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Properis Group",
       "url": "http://www.properisgrp.com",
       "phone": "6692010185",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Prysmatic Dreams",
       "url": "http://prysmaticdreams.com/",
       "phone": "8034662778",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Pursue Your Purpose LLC",
       "url": "http://www.PursueYourPurpose.com",
       "phone": "8775759940",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Reactor Core LLC",
       "url": "http://seoprime.net",
       "phone": "8175004256",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Rebel Earwear",
       "url": "http://www.rebelearwear.com",
       "phone": "2819055002",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "SBP Marketing &amp; Branding",
       "url": "http://Sbpnyc.com",
       "phone": "3478353371",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only", "Professional Services" ]
     },
     {
       "name": "SK Business Solutions",
       "url": "http://www.facebook.com/skbsolutions",
       "phone": "2624047527",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only", "Professional Services" ]
     },
     {
       "name": "Safety Pouches and Jewels",
       "url": "https://www.facebook.com/spouchesandjewels/",
       "phone": "8572078469",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only", "Apparel & Accessories" ]
     },
     {
       "name": "Sell It Now",
       "url": "http://www.SellItNow.org",
       "phone": "2064125204",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Sensitivity Editor",
       "url": "http://MichonNeal.com",
       "phone": "",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Shades of Melanin Inc.",
       "url": "http://www.shadesofmelanin.com",
       "phone": "9545996938",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "Sisters of Flow",
       "url": "http://www.sistersofflow.com",
       "phone": "7273006722",
-      "image": {
-        "url": true
-      },
       "categories": [ "Online Only" ]
     },
     {
       "name": "SydelleCosmetics.com",
       "url": "http://SydelleCosmetics.com",
       "phone": "2024700891",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only", "Personal Services" ]
     },
     {
       "name": "TAMCO Capital Accounting &amp; inance",
       "url": "http://www.tamcocapital.solutions",
       "phone": "4074035749",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only", "Professional Services" ]
     },
     {
       "name": "TLRay Marketing",
       "url": "http://www.tlraymarketing.co",
       "phone": "5626187056",
-      "image": {
-        "url": false
-      },
       "categories": [ "Online Only", "Professional Services" ]
     }
   ]

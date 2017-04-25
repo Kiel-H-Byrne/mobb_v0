@@ -232,7 +232,7 @@ Meteor.methods({
     }
     let img;
     console.log(obj);
-    if (obj.images[0]) {
+    if (obj.images && obj.images.length) {
       let img = obj.images[0]
     } else {
       let img = obj.image || null;

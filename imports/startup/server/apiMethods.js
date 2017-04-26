@@ -233,15 +233,15 @@ Meteor.methods({
     let img;
     console.log(obj);
     if (obj.images && obj.images.length) {
-      let img = obj.images[0]
+      img = obj.images[0]
     } else {
-      let img = obj.image || null;
+      img = obj.image || null;
     }
 
     let description = obj.description;
     let title = obj.title;
     let status = response.requestInfo.responseCode;
-    console.log(description);
+    console.log(img);
     Listings.update({
       _id: id 
     },{

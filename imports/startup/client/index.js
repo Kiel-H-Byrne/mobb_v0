@@ -44,6 +44,7 @@ import '../../ui/layouts/splitLayout.js';
 
 Masonry = require('masonry-layout/masonry.js');
 imagesLoaded = require('imagesLoaded/imagesLoaded.js');
+iDownload = require('image-downloader')
 
 console.log("-= imports/startup/client/index.js loaded");
 
@@ -67,6 +68,22 @@ const GCache = new OrionCache('gids', 100000);
 //     }
 //   });
 // };
+
+dlImage = async function(url) {
+
+  const options = {
+    "url": url,
+    "dest": '/public/img'
+  };
+
+  try {
+    const { filename, image } = await iDownload.image(options);
+    console.log(filename) // => /path/to/dest/image.jpg;
+  } catch (e) {
+    throw e;
+  }
+
+}
 
 setGReviews = function(gid) {
   if (gid) {

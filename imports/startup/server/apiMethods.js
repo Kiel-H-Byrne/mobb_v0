@@ -1,7 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import Listings from '/imports/startup/collections/listings';
-iDownload = require('image-downloader')
 
 import '../../api/orionCache.js';
 // import './yelp.js';
@@ -10,22 +9,6 @@ import '../../api/orionCache.js';
 //ex. let cache = new ApiCache('name',ttl);
 
 const OCache = new OrionCache('rest', 100000);
-
-dlImage = function(url) {
-
-  const options = {
-    "url": url,
-    "dest": '/public/img'
-  }
-
-  try {
-    const { filename, image } = await iDownload.image(options)
-    console.log(filename) // => /path/to/dest/image.jpg
-  } catch (e) {
-    throw e
-  }
-
-}
 
 apiCall = function (apiUrl, callback) {
   // try…catch allows you to handle errors 

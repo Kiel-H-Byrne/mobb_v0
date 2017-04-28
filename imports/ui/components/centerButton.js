@@ -4,14 +4,15 @@ import {Template} from 'meteor/templating';
 
 import './centerButton.html';
 
-getLocation2 = async function() {
-    let pos = await Geolocation.latLng();
+getLocation = async function() {
+    const pos = await Geolocation.latLng();
     return pos;
 };
 
 targetListing = function(pos) {
-    GoogleMaps.maps.map.instance.setCenter(pos);
-    GoogleMaps.maps.map.instance.setZoom(12);
+    const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
+    map.instance.setCenter(pos);
+    map.instance.setZoom(12);
 };
 
 // let clientMarker;
@@ -19,15 +20,16 @@ targetListing = function(pos) {
 placeMyMarker = function(pos) {
   //would only not exist if the template reloaded and the browser didn't...(dev mode)
   if (!clientMarker) {
+    const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
     clientMarker = new google.maps.Marker({
       position: new google.maps.LatLng(pos.lat, pos.lng),
-      map: GoogleMaps.maps.map.instance,
+      map: map.instance,
       icon: {url: 'img/orange_dot_sm_2.png'},
       title: "My Location",
-      animation: google.maps.Animation.BOUNCE,
+      // animation: google.maps.Animation.BOUNCE,
     }); 
     clientRadius = new google.maps.Circle({
-      map: GoogleMaps.maps.map.instance,
+      map: map.instance,
       center: pos,
       radius: (3 * 1609.34),
       strokeColor: '#FF7733',
@@ -59,28 +61,28 @@ Template.centerButton.onRendered(function() {
 Template.centerButton.events({
     'click #centerButton_button' : function(evt,tpl){
       if (Session.get("clientLoc")) {
-        let loc = Session.get("clientLoc");
+        //I ALREADY HAVE YOUR LOCATION
+        const loc = Session.get("clientLoc");
         // console.log(loc);
         placeMyMarker(loc);
         targetListing(loc);
         return;
-      } else if (Session.equals("geoAccepted", true) && !Session.get("clientLoc")) {
-
-        getLocation2().then((pos) => {
+      } else if ( !Session.get("clientLoc") && Session.equals("geoAccepted", true) ) {
+        //I DON'T HAVE YOUR LOCATION, BUT YOU'RE OK WITH ME GETTING IT.
+        getLocation().then((pos) => {
           Session.set('clientLoc', pos);
           placeMyMarker(pos);
           targetListing(pos);
           return;
         });
-
       } else if (Session.equals("geoAccepted", false) && Session.equals("geoAsked", true)){ 
-        let loc = Session.get('browserLoc');
+        // I'VE ASKED FOR YOUR LOCATION, BUT YOU DON'T WANT TO GIVE IT.
+        const loc = Session.get('browserLoc');
         targetListing(loc);
         return;
       } else {
+        //I HAVE NOTHING, ASK IF I CAN DO SOMETHING.
         $('#modalGeo').modal('open');
-        let loc = Session.get('browserLoc');
-        targetListing(loc);
       }
     }
 });

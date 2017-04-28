@@ -78,7 +78,7 @@ Listings = new orion.collection('listings', {
         data: "expdate", 
         title: "CBE Expiration" 
       },
-      orion.attributeColumn('file', 'image', 'Image'),
+      orion.attributeColumn('image', 'image', 'Image'),
       { 
         data: "categories", 
         title: "Categories" 

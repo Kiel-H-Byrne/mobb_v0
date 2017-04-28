@@ -227,7 +227,7 @@ Template.map.onCreated( function() {
                     // });
                     // console.log("-= GA : Geolocation Obtained =-");
 
-                    getLocation2().then((pos) => {
+                    getLocation().then((pos) => {
                       if (pos) {
                         Session.set('clientLoc', pos);
 

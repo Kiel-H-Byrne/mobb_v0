@@ -1,3 +1,5 @@
+@import '{}/node_modules/materialize-css/sass/components/color';
+@import '{}/node_modules/materialize-css/sass/components/variables';
 @import 'palettes/colors';
 @import 'palettes/_plt_orng-tetrad';
 
@@ -86,5 +88,13 @@
     .comments > .header {
       display:none;
     }
+  }
+}
+
+
+//MOBILE 
+@media #{$medium-and-down} {
+  [id='fullPage'] {
+    margin-top: 35px;
   }
 }

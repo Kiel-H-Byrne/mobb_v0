@@ -10,6 +10,9 @@ import '../../api/orionCache.js';
 
 const OCache = new OrionCache('rest', 100000);
 
+console.log(request);
+
+
 apiCall = function (apiUrl, callback) {
   // try…catch allows you to handle errors 
   let errorCode, errorMessage;
@@ -216,43 +219,45 @@ Meteor.methods({
   getOG: function(url, id) {
     this.unblock();
     if (url) {
-    let param = encodeURIComponent(url);
-    console.log(param);
-    console.log(`***calling OPENGRAPH API method with ${param}`);
-    let apiUrl = `https://opengraph.io/api/1.0/site/${param}?app_id=${Meteor.settings.public.keys.openGraph.key}` ;
-    console.log("--URL--"+apiUrl);
-    let response = Meteor.wrapAsync(apiCall)(apiUrl);
-    let obj = {};
-    if (!response.openGraph.error && response.openGraph.image){
-      obj = response.openGraph;
-    } else if (response.hybridGraph.image) {
-      obj = response.hybridGraph;
-    } else if (response.htmlInferred) {
-      obj = response.htmlInferred;
-    }
-    let img;
-    console.log(obj);
-    if (obj.images && obj.images.length) {
-      img = obj.images[0]
-    } else {
-      img = obj.image || null;
-    }
+      let param = encodeURIComponent(url);
+      console.log(param);
+      console.log(`***calling OPENGRAPH API method with ${param}`);
+      let apiUrl = `https://opengraph.io/api/1.0/site/${param}?app_id=${Meteor.settings.public.keys.openGraph.key}` ;
+      console.log("--URL--"+apiUrl);
+      const response = Meteor.wrapAsync(apiCall)(apiUrl);
+      let obj = {};
+      if (!response.openGraph.error && response.openGraph.image){
+        obj = response.openGraph;
+      } else if (response.hybridGraph.image) {
+        obj = response.hybridGraph;
+      } else if (response.htmlInferred) {
+        obj = response.htmlInferred;
+      }
+      let img;
+      console.log(obj);
+      if (obj.images && obj.images.length) {
+        img = obj.images[0]
+      } else if (obj.image) {
+        img = obj.image
+      } else {
+        return false;
+      }
 
-    let description = obj.description;
-    let title = obj.title;
-    let status = response.requestInfo.responseCode;
-    console.log(img);
+      let description = obj.description;
+      let title = obj.title;
+      let status = response.requestInfo.responseCode;
+      console.log(img);
 
-    dlImage(img);
+      // downloadImage(img);
 
-    Listings.update({
-      _id: id 
-    },{
-      $set: { 
-        "image.url": img,
-        description: description,
-    } });
-    return img;
+      Listings.update({
+        _id: id 
+      },{
+        $set: { 
+          "image.url": img,
+          description: description,
+      } });
+      return img;
     } else {
       console.log(`No URL for ${id}`);
       return
@@ -449,6 +454,15 @@ Meteor.methods({
       let dist = google.maps.geometry.spherical.computeDistanceBetween(start,finish);
       console.log(dist);
       return dist;
+    }
+  },
+  convertImage: function(imageUrl) {
+    try {
+      let result = request.getSync(imageUrl, {encoding: null});
+      // return 'data:image/png;base64,' + new Buffer(result.body).toString('base64');
+      console.log(result);
+    } catch(e) {
+      throw new Meteor.Error("cant-download", "Error: Can't download image." + e);
     }
   }
 });

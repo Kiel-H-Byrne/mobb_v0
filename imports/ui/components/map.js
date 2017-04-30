@@ -31,7 +31,6 @@ $.getJSON("https://freegeoip.net/json/", {
   Session.set('browserLoc', browserLocation);
   Session.set('clientState', data.region_code);
 
-
 });
 
 
@@ -207,9 +206,12 @@ Template.map.onCreated( function() {
               self.autorun(function() {    
                 //====== AUTO CALCULATE MY LOCATION AND DRAW NEW MARKER WHEN IT CHANGES ======
                 //====== AUTO CALCULATE NEW CLOSEST BUSINESS WHEN MY LOCATION CHANGES ======
+                Materialize.toast('Locating...', 1100, 'myToast');
+
                 console.log("searching ...");
                 if (Geolocation.error() || Geolocation.latLng === null || Geolocation.latLng === "null") {
                   console.warn("Geo Error:", Geolocation.error().message);
+                    Materialize.toast('Error', 1300, 'errorToast');                  
                   return;
                 } else {
                     
@@ -251,7 +253,10 @@ Template.map.onCreated( function() {
                             fillOpacity: 0.15,
                           });
 
-                          map.instance.setCenter(pos); 
+                          // map.instance.setCenter(pos);
+                          // map.instance.setZoom(12); 
+                          targetListing(map,pos);
+
                         } else {
                           clientMarker.setPosition(pos);
                           clientRadius.setCenter(pos);

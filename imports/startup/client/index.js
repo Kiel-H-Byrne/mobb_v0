@@ -42,9 +42,10 @@ import './routes.js';
 import '../../ui/layouts/layout.js';
 import '../../ui/layouts/splitLayout.js';
 
+//client Libraries
 Masonry = require('masonry-layout/masonry.js');
 imagesLoaded = require('imagesLoaded/imagesLoaded.js');
-iDownload = require('image-downloader')
+// downloadImage = require('download-image');
 
 console.log("-= imports/startup/client/index.js loaded");
 
@@ -69,21 +70,61 @@ const GCache = new OrionCache('gids', 100000);
 //   });
 // };
 
-dlImage = async function(url) {
+// dlImage = async function(url) {
 
-  const options = {
-    "url": url,
-    "dest": '/public/img'
-  };
+//   const options = {
+//     "url": url,
+//     "dest": '/public/img'
+//   };
 
-  try {
-    const { filename, image } = await iDownload.image(options);
-    console.log(filename) // => /path/to/dest/image.jpg;
-  } catch (e) {
-    throw e;
+//   try {
+//     const { filename, image } = await download.image(options);
+//     console.log(filename) // => /path/to/dest/image.jpg;
+//   } catch (e) {
+//     throw e;
+//   }
+
+// }
+
+
+getLocation = async function() {
+    const pos = await Geolocation.latLng();
+    return pos;
+};
+
+targetListing = function(map,pos) {
+    map.instance.setCenter(pos);
+    map.instance.setZoom(12);
+};
+
+// let clientMarker;
+  
+placeMyMarker = function(map,pos) {
+  //would only not exist if the template reloaded and the browser didn't...(dev mode)
+  if (!clientMarker) {
+    const radius = 3;
+    const clientMarker = new google.maps.Marker({
+      position: new google.maps.LatLng(pos.lat, pos.lng),
+      map: map.instance,
+      icon: {url: 'img/orange_dot_sm_2.png'},
+      title: "My Location",
+      // animation: google.maps.Animation.BOUNCE,
+    }); 
+    const clientRadius = new google.maps.Circle({
+      map: map.instance,
+      center: pos,
+      radius: (radius * 1609.34),
+      strokeColor: '#FF7733',
+      strokeOpacity: 0.4,
+      strokeWeight: 2,
+      fillColor: '#FFAA00',
+      fillOpacity: 0.10,
+    });
+  } else {
+    clientMarker.setPosition(pos);
+    clientRadius.setCenter(pos);
   }
-
-}
+};
 
 setGReviews = function(gid) {
   if (gid) {

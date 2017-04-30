@@ -25,7 +25,14 @@ Template.fullPage.onRendered(function() {
 
       $("img").error(function() { 
         // $(this).hide();
-        $(this).css({visibility:"hidden", display:"none"}); 
+        try {
+          $("img").each(function() {
+            $(this).attr("src", $(this).attr("src").replace("http://", "https://"));
+          });
+        } catch (e) {
+          $(this).css({visibility:"hidden", display:"none"});   
+        }
+        
       });
     
 
@@ -72,7 +79,7 @@ Template.fullPage.helpers({
           return {
             // ============================= RETURN MAP OPTIONS ==================================    
             center: new google.maps.LatLng(mapCenter),
-            zoom: 16,
+            zoom: 14,
             // mapTypeId:google.maps.MapTypeId.TERRAIN,
             backgroundColor: "#444",
             clickableIcons: false,
@@ -102,6 +109,7 @@ Template.fullPage.helpers({
     },
     getImage: function(url, id) {
       // getOGS(url);
+      Meteor.call('convertImage', url);
       Meteor.call('getOG', url, id);
     },
 });

@@ -137,9 +137,15 @@
         {{/if}}
 
         <span class="card-title "><i class="material-icons">comment</i>Comments</span>
+        {{#if currentUser}}
           <div class="comment-section">
             {{> commentsBox id=_id loadingTemplate="loadingHourglass"}}
           </div>
+        {{else}}
+          <div class="comment-section">
+            <p> <a href="/login">Sign In</a> to Join the Discussion</p>
+          </div>
+        {{/if}}
       </div>
     </div>
     </div>

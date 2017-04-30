@@ -80,6 +80,7 @@ AutoForm.addHooks('editListingForm', {
       // let lat = Number(latLng[0]);
       // let lng = Number(latLng[1]);
       const latLngObj = _.object( ['lat', 'lng'], [Number(latLng[0]), Number(latLng[1])]);
-      targetListing(latLngObj);
+      const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
+      targetListing(map,latLngObj);
   },
 });

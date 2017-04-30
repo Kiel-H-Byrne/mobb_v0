@@ -12,11 +12,14 @@
         {{> favoriteStar card}}
         {{> shareListing card}}
 
-        {{#if card hasImage}}
-        <div class="card-image waves-effect waves-block waves-light"> 
-          <a href="/listings/{{card.name}}"> <img class="responsive-image" src="/img/gallery/{{card.name}}.png" /></a>
+        <div class="card-image">
+          {{#unless card.image.url}}
+            <img src="{{getImage card.url card._id}}" />
+          {{else}}
+            <img src="{{card.image.url}}" />
+          {{/unless}}
         </div>
-        {{/if}}
+
         <a href="/listings/{{card.name}}">
           <div class="card-content white-text">
             <span class="card-title "> <h5 class="amber-text text-darken-1 center-align activator">{{card.name}}</h5></span>

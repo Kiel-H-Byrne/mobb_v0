@@ -1,5 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
+import { request } from 'request/request';
+
 import Listings from '/imports/startup/collections/listings';
 
 import '../../api/orionCache.js';
@@ -9,9 +11,6 @@ import '../../api/orionCache.js';
 //ex. let cache = new ApiCache('name',ttl);
 
 const OCache = new OrionCache('rest', 100000);
-
-console.log(request);
-
 
 apiCall = function (apiUrl, callback) {
   // try…catch allows you to handle errors 
@@ -457,10 +456,11 @@ Meteor.methods({
     }
   },
   convertImage: function(imageUrl) {
+    console.log(imageUrl);
     try {
-      let result = request.getSync(imageUrl, {encoding: null});
+      // let result = request.getSync(imageUrl, {encoding: null});
       // return 'data:image/png;base64,' + new Buffer(result.body).toString('base64');
-      console.log(result);
+      // console.log(result);
     } catch(e) {
       throw new Meteor.Error("cant-download", "Error: Can't download image." + e);
     }

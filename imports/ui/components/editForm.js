@@ -14,8 +14,8 @@ Template.editForm.onRendered(function() {
       opacity: 0.5, // Opacity of modal background
       inDuration: 300, // Transition in duration
       outDuration: 200, // Transition out duration
-      startingTop: '4%', // Starting top style attribute
-      endingTop: '4%', // Ending top style attribute
+      startingTop: '0%', // Starting top style attribute
+      endingTop: '10%', // Ending top style attribute
     });
 
     $('.collapsible').collapsible();
@@ -43,7 +43,7 @@ AutoForm.addHooks('editListingForm', {
     },
   // Called when any submit operation succeeds
   onSuccess: function(formType, result) {
-    Materialize.toast('Thanks for Submitting!', 3300);
+    Materialize.toast('Thanks for Submitting!', 3300, 'myToast');
     console.log(this.currentDoc, this.updateDoc);
     //if updating categories, increment the count.
     if (this.updateDoc.$set.categories || this.currentDoc.categories) {

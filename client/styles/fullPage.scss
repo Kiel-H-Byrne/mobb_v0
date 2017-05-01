@@ -4,6 +4,12 @@
 @import 'palettes/_plt_orng-tetrad';
 
 [id='fullPage'] {
+  .card-image {
+
+    img {
+
+    }
+  }
   .card-content {
     color: $rgba-primary-grey-4;
   }

@@ -70,6 +70,34 @@ Router.route('/404', {
     }
 });
 
+//https://www.yourdomain.com/image?user={{Meteor.userId()}}&img={{imgUrl}}
+
+Router.route('/image/', {
+    name: 'imageProxy',
+    // action: function() {
+    //   // # This proxy filters traffic on paths with ‘/image’ and takes 2 required params:
+    //   // # img = an image url
+    //   // # user= a Meteor user id
+    //   WebApp.connectHandlers.use((req, res, next), function() {
+    //    const request = require('request');
+    //    const url = require('url');
+    //   // # only process image urls
+    //    return next() unless url.parse(req.url, true).pathname == '/image';
+    //    queryData = url.parse(req.url, true).query;
+       
+    //    return next() unless queryData.img? and queryData.user?
+    //    userId = queryData.user
+    //    img = queryData.img
+    //    // # check if user exists
+    //    u = Meteor.users.findOne _id: userId
+    //    return next() unless u?
+    //    // # pipe request to client
+    //    x = request(img);
+    //    req.pipe(x).pipe res;
+    //   })
+    // }
+});
+
 Router.route('/listings/:name', {
   name: 'fullPage',
   layoutTemplate: 'AppLayout',

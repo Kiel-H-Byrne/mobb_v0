@@ -28,18 +28,16 @@
       // margin: .3rem;
 
       a {
-          line-height: 1rem;
-          padding: 3px;
+          padding: 5px 2px;
           color: $clr-orange;
       }
     }
       
     .badge {
-      min-width: 3em;
-      font-size: 13px;
+      min-width: 5ch;
+      font-size: .9rem;
       color: $rgba-secondary-1-4;
       background-color: $rgba-complement-2;
-      float: right;
     }
   }
 

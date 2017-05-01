@@ -3,12 +3,11 @@
 @import 'palettes/colors';
 @import 'palettes/_plt_orng-tetrad';
 
-[id='modalAdd'],[id='modalEdit'] {
-  position: fixed;
-  height: 95%;
-  min-height: 40%;
+[id='modalAdd'],
+[id='modalEdit'] {
   background-color: $rgba-primary-1;
   color: $rgba-secondary-2-4;
+  
 
   .modal-content {
     padding: .6rem;
@@ -61,4 +60,14 @@
 //   position: relative;
 //   top: -1.5rem;
 // }
+
+//MOBILE 
+@media #{$medium-and-down} {
+  [id='modalAdd'],
+  [id='modalEdit'] {
+    margin-top: 35px;
+    height: 100%;
+    z-index: 1000;
+  }
+}
 

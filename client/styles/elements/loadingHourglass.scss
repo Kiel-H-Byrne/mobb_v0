@@ -1,14 +1,15 @@
 @import '../palettes/colors';
+@import '../palettes/_plt_orng-tetrad';
 
-$bg: $clr-grey;
-$fill: $clr-gold;
-$sand: $clr-orange;
+$bg: $rgba-primary-grey-4;
+$fill: $rgba-primary-3;
+$sand: $rgba-primary-grey-1;
 $h: 5em;
 $w: 10em;
 
 .hourglass-spinner{
     margin: $w auto;
-    display:block;
+    display: block;
     background:$bg;
     width: $h;
     height: $w;
@@ -36,7 +37,7 @@ $w: 10em;
             inset $bg 0 $w 0 0,
             inset $sand 0 $w 0 0;
     }
-    85%{
+    50%{
         transform:rotate(0deg);
         box-shadow:
             inset $bg 0 $h 0 0,

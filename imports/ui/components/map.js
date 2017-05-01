@@ -211,7 +211,7 @@ Template.map.onCreated( function() {
                 console.log("searching ...");
                 if (Geolocation.error() || Geolocation.latLng === null || Geolocation.latLng === "null") {
                   console.warn("Geo Error:", Geolocation.error().message);
-                    Materialize.toast('Error', 1300, 'errorToast');                  
+                    Materialize.toast('Error', 1300, 'myBadToast');                  
                   return;
                 } else {
                     

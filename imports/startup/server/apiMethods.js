@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
-import { request } from 'request/request';
+import { Request } from 'request/request';
 
 import Listings from '/imports/startup/collections/listings';
 
@@ -216,7 +216,7 @@ Meteor.methods({
     }
   },
   getOG: function(url, id) {
-    this.unblock();
+    // this.unblock();
     if (url) {
       let param = encodeURIComponent(url);
       console.log(param);
@@ -225,15 +225,20 @@ Meteor.methods({
       console.log("--URL--"+apiUrl);
       const response = Meteor.wrapAsync(apiCall)(apiUrl);
       let obj = {};
-      if (!response.openGraph.error && response.openGraph.image){
-        obj = response.openGraph;
-      } else if (response.hybridGraph.image) {
-        obj = response.hybridGraph;
-      } else if (response.htmlInferred) {
-        obj = response.htmlInferred;
+      let images = [];
+      if (response.openGraph) {
+        console.log(response);
+        if ( !response.openGraph.error && response.openGraph.image){
+          obj = response.openGraph;
+        } else if (response.hybridGraph.image) {
+          obj = response.hybridGraph;
+        } else if (response.htmlInferred) {
+          obj = response.htmlInferred;
+        }
       }
-      let img;
-      console.log(obj);
+      
+      let img, description;
+
       if (obj.images && obj.images.length) {
         img = obj.images[0]
       } else if (obj.image) {
@@ -241,12 +246,15 @@ Meteor.methods({
       } else {
         return false;
       }
-
-      let description = obj.description;
-      let title = obj.title;
+      if (obj.description) {
+        description = obj.description;
+      } else if (obj.title) {
+        let description = obj.title;
+      }
       let status = response.requestInfo.responseCode;
-      console.log(img);
+      // console.log(status);
 
+      Meteor.call('convertImage', img);
       // downloadImage(img);
 
       Listings.update({
@@ -258,8 +266,8 @@ Meteor.methods({
       } });
       return img;
     } else {
-      console.log(`No URL for ${id}`);
-      return
+      console.log(`No URL for ${id}, so no OpenGraph.`);
+      return false;
     }
   },
   // getDirections: function(orig,dest) {
@@ -458,6 +466,7 @@ Meteor.methods({
   convertImage: function(imageUrl) {
     console.log(imageUrl);
     try {
+      console.log(Request);
       // let result = request.getSync(imageUrl, {encoding: null});
       // return 'data:image/png;base64,' + new Buffer(result.body).toString('base64');
       // console.log(result);

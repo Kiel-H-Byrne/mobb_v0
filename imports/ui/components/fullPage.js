@@ -30,7 +30,7 @@ Template.fullPage.onRendered(function() {
             $(this).attr("src", $(this).attr("src").replace("http://", "https://"));
           });
         } catch (e) {
-          $(this).css({visibility:"hidden", display:"none"});   
+          $(this).css({visibility:"hidden"});   
         }
         
       });
@@ -108,8 +108,7 @@ Template.fullPage.helpers({
 
     },
     getImage: function(url, id) {
-      // getOGS(url);
-      Meteor.call('convertImage', url);
+      // Meteor.call('convertImage', url);
       Meteor.call('getOG', url, id);
     },
 });

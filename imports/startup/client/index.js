@@ -36,7 +36,7 @@ import 'materialize-css/js/waves';
 // import 'materialize-css/js/date_picker/picker.date';
 
 //Import Routes
-import './routes.js';
+import '/lib/config/routes.js';
 
 //Import Layouts
 import '../../ui/layouts/layout.js';

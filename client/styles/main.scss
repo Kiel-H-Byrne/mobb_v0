@@ -116,9 +116,6 @@ p {
 .modal {
   @media #{$medium-and-down} {
     width: 90%;
-    min-height: 40%;
-    height:90%;
-    max-height: 95%;
   }
 }
 

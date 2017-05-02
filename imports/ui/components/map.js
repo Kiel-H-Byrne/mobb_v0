@@ -206,7 +206,7 @@ Template.map.onCreated( function() {
               self.autorun(function() {    
                 //====== AUTO CALCULATE MY LOCATION AND DRAW NEW MARKER WHEN IT CHANGES ======
                 //====== AUTO CALCULATE NEW CLOSEST BUSINESS WHEN MY LOCATION CHANGES ======
-                Materialize.toast('Locating...', 1100, 'myToast');
+                // Materialize.toast('Locating...', 1100, 'myToast');
 
                 console.log("searching ...");
                 if (Geolocation.error() || Geolocation.latLng === null || Geolocation.latLng === "null") {

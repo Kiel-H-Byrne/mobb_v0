@@ -26,14 +26,14 @@ Template.centerButton.events({
         targetListing(map,loc);
         return;
       } else if ( !Session.get("clientLoc") && Session.equals("geoAccepted", true) ) {
-        //I DON'T HAVE YOUR LOCATION, BUT YOU'RE OK WITH ME GETTING IT.
+        //I DON'T HAVE YOUR LOCATION, BUT YOU'RE OK WITH ME GETTING IT. -needed when Maps is already loaded so new geolocation isnt found.
         
-        // getLocation().then((pos) => {
-        //   Session.set('clientLoc', pos);
-        //   placeMyMarker(map,loc);
-        //   targetListing(map,loc);
-        //   return;
-        // });
+        getLocation().then((pos) => {
+          Session.set('clientLoc', pos);
+          placeMyMarker(map,loc);
+          targetListing(map,loc);
+          return;
+        });
           placeMyMarker(map,loc);
           targetListing(map,loc);
       } else if (Session.equals("geoAccepted", false) && Session.equals("geoAsked", true)){ 

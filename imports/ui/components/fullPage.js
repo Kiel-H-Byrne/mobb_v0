@@ -25,18 +25,10 @@ Template.fullPage.onRendered(function() {
 
       $("img").error(function() { 
         // $(this).hide();
-        try {
           $("img").each(function() {
-            $(this).attr("src", $(this).attr("src").replace("http://", "https://"));
+            $(this).attr("src", $(this).attr("src").replace("http://", "https://")).css({visibility:"hidden"}); ;
           });
-        } catch (e) {
-          $(this).css({visibility:"hidden"});   
-        }
-        
-      });
-    
-
-
+        });
     });
 });
 

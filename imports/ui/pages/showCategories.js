@@ -30,17 +30,14 @@ Template.showCategories.onRendered(function() {
       msnry.layout();
     });
 
-      $("img").error(function() { 
-        // $(this).hide();
-        try {
-          $("img").each(function() {
-            $(this).attr("src", $(this).attr("src").replace("http://", "https://"));
+    $("img").error(function() { 
+      // $(this).hide();
+        $("img").each(function() {
+          $(this).attr("src", $(this).attr("src").replace("http://", "https://")).error(function() {
+            $(this).css({visibility:"hidden"});
           });
-        } catch (e) {
-          $(this).css({visibility:"hidden"});   
-        }
-        
-      });
+        });
+    });
 
   });
 });

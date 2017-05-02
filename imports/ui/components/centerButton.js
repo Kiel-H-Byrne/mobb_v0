@@ -18,7 +18,7 @@ Template.centerButton.onRendered(function() {
 
 Template.centerButton.events({
     'click #centerButton_button' : function(evt,tpl){
-      const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
+      let map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
       if (Session.get("clientLoc")) {
         //I ALREADY HAVE YOUR LOCATION
         const loc = Session.get("clientLoc");
@@ -30,8 +30,8 @@ Template.centerButton.events({
         
         getLocation().then((pos) => {
           Session.set('clientLoc', pos);
-          placeMyMarker(map,loc);
-          targetListing(map,loc);
+          placeMyMarker(map,pos);
+          targetListing(map,pos);
           return;
         });
           placeMyMarker(map,loc);

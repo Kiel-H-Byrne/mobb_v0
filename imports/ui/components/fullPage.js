@@ -23,12 +23,22 @@ Template.fullPage.onRendered(function() {
 
       setGReviews(tpl.data.google_id);
 
+      // $("img").error(function() { 
+      //   // $(this).hide();
+      //   $("img").each(function() {
+      //     $(this).attr("src", $(this).attr("src").replace("http://", "https://")).css({visibility:"hidden"}); ;
+      //   });
+      // });
+
       $("img").error(function() { 
         // $(this).hide();
           $("img").each(function() {
-            $(this).attr("src", $(this).attr("src").replace("http://", "https://")).css({visibility:"hidden"}); ;
+            $(this).attr("src", $(this).attr("src").replace("http://", "https://")).error(function() {
+              $(this).css({visibility:"hidden"});
+            });
           });
-        });
+      });
+
     });
 });
 

@@ -30,14 +30,27 @@ Template.showCategories.onRendered(function() {
       msnry.layout();
     });
 
-    $("img").error(function() { 
-      // $(this).hide();
-        $("img").each(function() {
-          $(this).attr("src", $(this).attr("src").replace("http://", "https://")).error(function() {
-            $(this).css({visibility:"hidden"});
-          });
-        });
-    });
+    // $("img").error(function() { 
+    //   // $(this).hide();
+    //     $("img").each(function() {
+    //       $(this).attr("src", $(this).attr("src").replace("http://", "https://")).error(function() {
+    //         $(this).css({visibility:"hidden"});
+    //       });
+    //     });
+    // });
+
+
+      $("img").error(function() { 
+        try {
+          $(this).attr("src").replace("http://", "https://");
+          console.log('broken');
+        }
+        catch {
+          $(this).css({visibility:"hidden"});
+          console.log('still broken');
+
+        }
+      });
 
   });
 });

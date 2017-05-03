@@ -30,13 +30,22 @@ Template.fullPage.onRendered(function() {
       //   });
       // });
 
-      $("img").error(function() { 
-        // $(this).hide();
-          $("img").each(function() {
-            $(this).attr("src", $(this).attr("src").replace("http://", "https://")).error(function() {
-              $(this).css({visibility:"hidden"});
-            });
-          });
+      // $("img").error(function() { 
+      //   // $(this).hide();
+      //     console.log(this);
+      //     // $("img").each(function() {
+      //       // $(this)
+      //       // .attr("src", $(this).attr("src").replace("http://", "https://"));
+      //       // .error(function() {
+      //       //   $(this).css({visibility:"hidden"});
+      //       // });
+      //     // });
+      // }).attr("src").replace("http://", "https://");
+
+      $('img').on('error', function () {
+        if(!$(this).hasClass('broken-image')) {
+          $(this).prop('src', 'img/broken.png').addClass('broken-image');
+        }
       });
 
     });

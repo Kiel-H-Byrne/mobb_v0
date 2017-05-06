@@ -857,7 +857,9 @@
       "country": "Usa",
       "owner": "Charnier Corey",
       "phone": "3477253167",
-      "social": "@leisurelifenyc",
+      "social": {
+        "facebook" : "leisurelifenyc"
+      },
       "categories": [
         "Apparel & Accessories", 
         "Retail"

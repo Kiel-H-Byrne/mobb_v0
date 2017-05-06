@@ -1,4 +1,5 @@
 <template name="favoritesPage">
+{{#if favorites.length}}
   <div class="favorites-wrapper z-depth-1">
     <div class="row title"> 
       <h3 class="col s12 amber-text text-darken-2 center-align"> Favorites: </h3>
@@ -11,6 +12,7 @@
         {{/each}}
       </div>
     </div>
+{{/if}}
 {{!--     {{else}}
     <div class="row grey darken-3">
       <div class="col s12 center-align" >

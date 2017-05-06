@@ -7,8 +7,12 @@
       "state": "",
       "zip": "",
       "url": "http://shopthebalm.co",
-      "social.instagram": "thebalmco",
-      "categories": [ "Online Only" ]
+      "social": {
+        "instagram": "thebalmco"
+      },
+      "categories": [
+        "Online Only"
+      ]
     },
     {
       "name": "CiCiCouture Lip Lustre",
@@ -17,8 +21,12 @@
       "state": "",
       "zip": "",
       "url": "http://cicicoutureliplustre.bigcartel.com",
-      "social.instagram": "cicicouture",
-      "categories": [ "Online Only" ]
+      "social": {
+        "instagram": "cicicouture"
+      },
+      "categories": [
+        "Online Only"
+      ]
     },
     {
       "name": "CocoaButterMothers",
@@ -27,8 +35,12 @@
       "state": "",
       "zip": "",
       "url": "http://cocoabuttermothers.com",
-      "social.instagram": "cocoabuttermothers",
-      "categories": [ "Online Only" ]
+      "social": {
+        "instagram": "cocoabuttermothers"
+      },
+      "categories": [
+        "Online Only"
+      ]
     },
     {
       "name": "Garners Garden",
@@ -37,8 +49,12 @@
       "state": "",
       "zip": "",
       "url": "http://garnersgarden.com",
-      "social.instagram": "garnersgarden",
-      "categories": [ "Online Only" ]
+      "social": {
+        "instagram": "garnersgarden"
+      },
+      "categories": [
+        "Online Only"
+      ]
     },
     {
       "name": "Oyin Homemade",
@@ -47,8 +63,12 @@
       "state": "",
       "zip": "",
       "url": "http://oyinhandmade.com",
-      "social.instagram": "oyinhandmade",
-      "categories": [ "Online Only" ]
+      "social": {
+        "instagram": "oyinhandmade"
+      },
+      "categories": [
+        "Online Only"
+      ]
     },
     {
       "name": "Marie's Beauty Supply",
@@ -57,8 +77,12 @@
       "state": "MD",
       "zip": "20743",
       "url": "",
-      "social.instagram": "",
-      "categories": [ "Retail" ]
+      "social": {
+        "instagram": ""
+      },
+      "categories": [
+        "Retail"
+      ]
     },
     {
       "name": "Mercy Beauty",
@@ -67,8 +91,12 @@
       "state": "DC",
       "zip": "20001",
       "url": "",
-      "social.instagram": "mercybeautyllc",
-      "categories": [ "Retail" ]
+      "social": {
+        "instagram": "mercybeautyllc"
+      },
+      "categories": [
+        "Retail"
+      ]
     },
     {
       "name": "Naturally Chic Hair Salon",
@@ -77,8 +105,12 @@
       "state": "MD",
       "zip": "21230",
       "url": "http://naturallychicsalon.com",
-      "social.instagram": "naturallychichairsalon",
-      "categories": [ "Retail" ]
+      "social": {
+        "instagram": "naturallychichairsalon"
+      },
+      "categories": [
+        "Retail"
+      ]
     },
     {
       "name": "Shea Yeleen Health and Beauty",
@@ -87,8 +119,12 @@
       "state": "DC",
       "zip": "20002",
       "url": "http://sheayeleen.com",
-      "social.instagram": "SheaYeleen",
-      "categories": [ "Retail" ]
+      "social": {
+        "instagram": "SheaYeleen"
+      },
+      "categories": [
+        "Retail"
+      ]
     },
     {
       "name": "Because of Them We Can",
@@ -98,8 +134,12 @@
       "zip": "",
       "phone": "2122341155",
       "url": "http://becauseofthemwecan.com/collections",
-      "social.instagram": "becauseofthem",
-      "categories": [ "Online Only" ]
+      "social": {
+        "instagram": "becauseofthem"
+      },
+      "categories": [
+        "Online Only"
+      ]
     },
     {
       "name": "Coliseum Apparel",
@@ -108,8 +148,12 @@
       "state": "",
       "zip": "",
       "url": "http://coliseumapparel.com",
-      "social.instagram": "coliseumapparel",
-      "categories": [ "Online Only" ]
+      "social": {
+        "instagram": "coliseumapparel"
+      },
+      "categories": [
+        "Online Only"
+      ]
     },
     {
       "name": "Dowdy's Epiphany Boutique",
@@ -118,8 +162,12 @@
       "state": "DC",
       "zip": "20018",
       "url": "http://dowdysepiphanyboutque.com",
-      "social.instagram": "DowdysEpiphanyBoutque",
-      "categories": [ "Retail" ]
+      "social": {
+        "instagram": "DowdysEpiphanyBoutque"
+      },
+      "categories": [
+        "Retail"
+      ]
     },
     {
       "name": "Nomad Yard Collectiv",
@@ -128,8 +176,12 @@
       "state": "DC",
       "zip": "20002",
       "url": "http://nomadyardcollectiv.com",
-      "social.instagram": "nomadyard",
-      "categories": [ "Retail" ]
+      "social": {
+        "instagram": "nomadyard"
+      },
+      "categories": [
+        "Retail"
+      ]
     },
     {
       "name": "Nubian Hueman Ethnic Boutique",
@@ -138,8 +190,12 @@
       "state": "DC",
       "zip": "20020",
       "url": "",
-      "social.instagram": "nubianhueman",
-      "categories": [ "Retail" ]
+      "social": {
+        "instagram": "nubianhueman"
+      },
+      "categories": [
+        "Retail"
+      ]
     },
     {
       "name": "PJ Payne Designs",
@@ -148,8 +204,12 @@
       "state": "",
       "zip": "",
       "url": "http://thepjpaynebrand.com/#!shop-pj-payne/c1bya",
-      "social.instagram": "",
-      "categories": [ "Online Only" ]
+      "social": {
+        "instagram": ""
+      },
+      "categories": [
+        "Online Only"
+      ]
     },
     {
       "name": "ProsperiteezClothing",
@@ -158,8 +218,12 @@
       "state": "",
       "zip": "",
       "url": "http://prosperiteezclothing.com",
-      "social.instagram": "prosperiteezclothing",
-      "categories": [ "Online Only" ]
+      "social": {
+        "instagram": "prosperiteezclothing"
+      },
+      "categories": [
+        "Online Only"
+      ]
     },
     {
       "name": "The Shoe Asylum",
@@ -168,8 +232,12 @@
       "state": "",
       "zip": "",
       "url": "http://theshoeasylum.com",
-      "social.instagram": "theshoeasylum",
-      "categories": [ "Online Only" ]
+      "social": {
+        "instagram": "theshoeasylum"
+      },
+      "categories": [
+        "Online Only"
+      ]
     },
     {
       "name": "Cocktail Row Spirits",
@@ -178,8 +246,12 @@
       "state": "",
       "zip": "",
       "url": "http://cocktailrow.com",
-      "social.instagram": "cocktailrow",
-      "categories": [ "Online Only" ]
+      "social": {
+        "instagram": "cocktailrow"
+      },
+      "categories": [
+        "Online Only"
+      ]
     },
     {
       "name": "Dellicious Gourmet Popcorn",
@@ -188,8 +260,12 @@
       "state": "",
       "zip": "",
       "url": "http://delliciouspopcorn.com",
-      "social.instagram": "delliciouspopcorn",
-      "categories": [ "Online Only" ]
+      "social": {
+        "instagram": "delliciouspopcorn"
+      },
+      "categories": [
+        "Online Only"
+      ]
     },
     {
       "name": "Edelheiss Wine",
@@ -198,8 +274,12 @@
       "state": "",
       "zip": "",
       "url": "http://edelheiss-wine.com",
-      "social.instagram": "edelheisswine",
-      "categories": [ "Online Only" ]
+      "social": {
+        "instagram": "edelheisswine"
+      },
+      "categories": [
+        "Online Only"
+      ]
     },
     {
       "name": "Gradys Seafood Dip",
@@ -208,8 +288,12 @@
       "state": "",
       "zip": "",
       "url": "http://gradysseafooddip.bigcartel.com",
-      "social.instagram": "gradysseafooddip",
-      "categories": [ "Online Only" ]
+      "social": {
+        "instagram": "gradysseafooddip"
+      },
+      "categories": [
+        "Online Only"
+      ]
     },
     {
       "name": "KitchenCray",
@@ -218,8 +302,12 @@
       "state": "",
       "zip": "",
       "url": "http://kitchencray.com",
-      "social.instagram": "kitchencray",
-      "categories": [ "Online Only" ]
+      "social": {
+        "instagram": "kitchencray"
+      },
+      "categories": [
+        "Online Only"
+      ]
     },
     {
       "name": "The SpiceSuite",
@@ -228,8 +316,12 @@
       "state": "DC",
       "zip": "20012",
       "url": "http://thespicesuite.com",
-      "social.instagram": "thespicesuite",
-      "categories": [ "Retail" ]
+      "social": {
+        "instagram": "thespicesuite"
+      },
+      "categories": [
+        "Retail"
+      ]
     },
     {
       "name": "Ruby Scoops Ice Cream & Sweets",
@@ -238,8 +330,12 @@
       "state": "DC",
       "zip": "20002",
       "url": "http://rubyscoops.com",
-      "social.instagram": "rubyscoopsic",
-      "categories": [ "Retail" ]
+      "social": {
+        "instagram": "rubyscoopsic"
+      },
+      "categories": [
+        "Retail"
+      ]
     },
     {
       "name": "BN Fit",
@@ -248,8 +344,12 @@
       "state": "",
       "zip": "",
       "url": "http://bn-fit.com/bootcamps",
-      "social.instagram": "bnfit",
-      "categories": [ "Online Only" ]
+      "social": {
+        "instagram": "bnfit"
+      },
+      "categories": [
+        "Online Only"
+      ]
     },
     {
       "name": "ChampTime Fitness",
@@ -258,8 +358,12 @@
       "state": "",
       "zip": "",
       "url": "http://champtimefitness.com",
-      "social.instagram": "Dommo_ChampTime",
-      "categories": [ "Online Only" ]
+      "social": {
+        "instagram": "Dommo_ChampTime"
+      },
+      "categories": [
+        "Online Only"
+      ]
     },
     {
       "name": "Embrace Yoga DC",
@@ -268,8 +372,12 @@
       "state": "DC",
       "zip": "20009",
       "url": "http://embracedc.com",
-      "social.instagram": "embraceyogadc",
-      "categories": [ "Retail" ]
+      "social": {
+        "instagram": "embraceyogadc"
+      },
+      "categories": [
+        "Retail"
+      ]
     },
     {
       "name": "All Things B. Alexis",
@@ -278,8 +386,12 @@
       "state": "",
       "zip": "",
       "url": "http://facebook.com/AllThingsBAlexis",
-      "social.instagram": "allthingsbalexis",
-      "categories": [ "Online Only" ]
+      "social": {
+        "instagram": "allthingsbalexis"
+      },
+      "categories": [
+        "Online Only"
+      ]
     },
     {
       "name": "The O Factory",
@@ -288,8 +400,12 @@
       "state": "",
       "zip": "",
       "url": "http://theofactory.com",
-      "social.instagram": "theofactory",
-      "categories": [ "Online Only" ]
+      "social": {
+        "instagram": "theofactory"
+      },
+      "categories": [
+        "Online Only"
+      ]
     },
     {
       "name": "Zawadi African Art Gallery",
@@ -298,8 +414,12 @@
       "state": "DC",
       "zip": "20009",
       "url": "http://zawadiarts.com",
-      "social.instagram": "zawadiarts",
-      "categories": [ "Retail" ]
+      "social": {
+        "instagram": "zawadiarts"
+      },
+      "categories": [
+        "Retail"
+      ]
     },
     {
       "name": "A4dable Events",
@@ -308,8 +428,12 @@
       "state": "",
       "zip": "",
       "url": "http://a4dableevents.com",
-      "social.instagram": "a4dableevents",
-      "categories": [ "Online Only" ]
+      "social": {
+        "instagram": "a4dableevents"
+      },
+      "categories": [
+        "Online Only"
+      ]
     },
     {
       "name": "B. Carter Solutions",
@@ -318,8 +442,12 @@
       "state": "",
       "zip": "",
       "url": "http://bcartersolutions.com",
-      "social.instagram": "carterlove",
-      "categories": [ "Online Only" ]
+      "social": {
+        "instagram": "carterlove"
+      },
+      "categories": [
+        "Online Only"
+      ]
     },
     {
       "name": "Black Male Entrepreneurs",
@@ -328,8 +456,12 @@
       "state": "",
       "zip": "",
       "url": "http://bmeinstitute.org",
-      "social.instagram": "bmeinstitute",
-      "categories": [ "Online Only" ]
+      "social": {
+        "instagram": "bmeinstitute"
+      },
+      "categories": [
+        "Online Only"
+      ]
     },
     {
       "name": "Black Swan Academy",
@@ -338,8 +470,12 @@
       "state": "",
       "zip": "",
       "url": "http://blackswanacademy.org",
-      "social.instagram": "blackswanacademy",
-      "categories": [ "Online Only" ]
+      "social": {
+        "instagram": "blackswanacademy"
+      },
+      "categories": [
+        "Online Only"
+      ]
     },
     {
       "name": "The Black upStart",
@@ -348,8 +484,12 @@
       "state": "",
       "zip": "",
       "url": "http://theblackupstart.com",
-      "social.instagram": "theblackupstart",
-      "categories": [ "Online Only" ]
+      "social": {
+        "instagram": "theblackupstart"
+      },
+      "categories": [
+        "Online Only"
+      ]
     },
     {
       "name": "Home Buyers Marketing II Inc. Real Estate Company",
@@ -358,8 +498,12 @@
       "state": "VA",
       "zip": "20109",
       "url": "http://greatdcmetrohomes.info",
-      "social.instagram": "",
-      "categories": [ "Online Only" ]
+      "social": {
+        "instagram": ""
+      },
+      "categories": [
+        "Online Only"
+      ]
     },
     {
       "name": "LaVan Anderson Photography",
@@ -368,8 +512,12 @@
       "state": "",
       "zip": "",
       "url": "http://everydaylavan.squarespace.com",
-      "social.instagram": "everydaylavan",
-      "categories": [ "Online Only" ]
+      "social": {
+        "instagram": "everydaylavan"
+      },
+      "categories": [
+        "Online Only"
+      ]
     },
     {
       "name": "Mother Maid I",
@@ -378,8 +526,12 @@
       "state": "",
       "zip": "",
       "url": "http://mothermaidi.com",
-      "social.instagram": "mothermaidi",
-      "categories": [ "Online Only" ]
+      "social": {
+        "instagram": "mothermaidi"
+      },
+      "categories": [
+        "Online Only"
+      ]
     },
     {
       "name": "Pee Wee Piano",
@@ -388,8 +540,12 @@
       "state": "MD",
       "zip": "20774",
       "url": "http://peeweepiano.com",
-      "social.instagram": "peeweepiano",
-      "categories": [ "Retail" ]
+      "social": {
+        "instagram": "peeweepiano"
+      },
+      "categories": [
+        "Retail"
+      ]
     },
     {
       "name": "Roach Media",
@@ -398,8 +554,12 @@
       "state": "",
       "zip": "",
       "url": "http://roachmedia.net",
-      "social.instagram": "roachmediallc",
-      "categories": [ "Online Only" ]
+      "social": {
+        "instagram": "roachmediallc"
+      },
+      "categories": [
+        "Online Only"
+      ]
     },
     {
       "name": "Savoire Faire Academy",
@@ -408,8 +568,12 @@
       "state": "DC",
       "zip": "20002",
       "url": "http://savoirefaireartsacademy.com",
-      "social.instagram": "savoirefa",
-      "categories": [ "Retail" ]
+      "social": {
+        "instagram": "savoirefa"
+      },
+      "categories": [
+        "Retail"
+      ]
     },
     {
       "name": "The Sitter Circle",
@@ -418,8 +582,12 @@
       "state": "",
       "zip": "",
       "url": "http://thesittercircle.com",
-      "social.instagram": "thesittercircle",
-      "categories": [ "Online Only" ]
+      "social": {
+        "instagram": "thesittercircle"
+      },
+      "categories": [
+        "Online Only"
+      ]
     },
     {
       "name": "TAA PR",
@@ -428,8 +596,12 @@
       "state": "DC",
       "zip": "20007",
       "url": "",
-      "social.instagram": "taa_pr",
-      "categories": [ "Retail" ]
+      "social": {
+        "instagram": "taa_pr"
+      },
+      "categories": [
+        "Retail"
+      ]
     },
     {
       "name": "Tint Spot 301",
@@ -438,8 +610,12 @@
       "state": "MD",
       "zip": "20715",
       "url": "http://tintspot301.com",
-      "social.instagram": "tint_spot_301",
-      "categories": [ "Retail" ]
+      "social": {
+        "instagram": "tint_spot_301"
+      },
+      "categories": [
+        "Retail"
+      ]
     },
     {
       "name": "Top Notch Property Solutions",
@@ -448,8 +624,12 @@
       "state": "",
       "zip": "",
       "url": "http://topnotchpropertysolutions.com",
-      "social.instagram": "tnpropertysolutions",
-      "categories": [ "Online Only" ]
+      "social": {
+        "instagram": "tnpropertysolutions"
+      },
+      "categories": [
+        "Online Only"
+      ]
     },
     {
       "name": "Ujamaa Box",
@@ -458,8 +638,12 @@
       "state": "",
       "zip": "",
       "url": "http://ujamaabox.com",
-      "social.instagram": "ujamaabox",
-      "categories": [ "Online Only" ]
+      "social": {
+        "instagram": "ujamaabox"
+      },
+      "categories": [
+        "Online Only"
+      ]
     }
   ]
 }

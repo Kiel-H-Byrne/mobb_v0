@@ -4,7 +4,9 @@
       "name": "A DOG NAMED Paul",
       "url": "https://www.adognamedpaul.com",
       "phone": "2489528364",
-      "social": "adnpapproach",
+      "social": {
+        "facebook" : "adnpapproach"
+      },
       "categories": [ "Online Only" ]
     },
     {

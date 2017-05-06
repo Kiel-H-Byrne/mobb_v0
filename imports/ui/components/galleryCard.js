@@ -31,16 +31,20 @@ Template.galleryCard.onRendered(function() {
   // });
 
   $(document).ready(function() {
-    $("img").error(function() { 
-      // $(this).hide();
-      $(this).css({visibility:"hidden"}); 
+    $('img').on('error', function () {
+      console.log("on broken image", this);
+      $(this).css({visibility:"hidden"});
     });
   });  
   
 });
 
 Template.galleryCard.helpers({
-
+  getImage: function(url, id) {
+    // getOGS(url);
+    // Meteor.call('convertImage', url);
+    Meteor.call('getOG', url, id);
+  }
  
 });
 

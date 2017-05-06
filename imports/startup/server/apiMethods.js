@@ -95,7 +95,7 @@ Meteor.methods({
     Listings.insert(doc , function(err, res){
       if (err) {
         console.log("INSERT FAILED:");
-        console.log(doc.name + ": " + err.sanitizedError.message);
+        console.log(doc.name + ": " + err);
       } else {
         // console.log(doc.name + ": Success");
       }
@@ -219,15 +219,15 @@ Meteor.methods({
     // this.unblock();
     if (url) {
       let param = encodeURIComponent(url);
-      console.log(param);
-      console.log(`***calling OPENGRAPH API method with ${param}`);
+      // console.log(param);
+      console.log(`***calling OPENGRAPH API method with URL ${param} and ID ${Meteor.settings.public.keys.openGraph.key}`);
       let apiUrl = `https://opengraph.io/api/1.0/site/${param}?app_id=${Meteor.settings.public.keys.openGraph.key}` ;
-      console.log("--URL--"+apiUrl);
+      // console.log("--URL--"+apiUrl);
       const response = Meteor.wrapAsync(apiCall)(apiUrl);
       let obj = {};
       let images = [];
+// console.log(response);
       if (response.openGraph) {
-        console.log(response);
         if ( !response.openGraph.error && response.openGraph.image){
           obj = response.openGraph;
         } else if (response.hybridGraph.image) {
@@ -235,16 +235,22 @@ Meteor.methods({
         } else if (response.htmlInferred) {
           obj = response.htmlInferred;
         }
+      } else if (response.error) {
+        console.log(response.error.message);
+        return false;
       }
       
       let img, description;
 
       if (obj.images && obj.images.length) {
         img = obj.images[0]
+        // console.log(img);
       } else if (obj.image) {
         img = obj.image
+        // console.log(img);
       } else {
-        return false;
+        console.log(obj);
+        console.log("empty object?? Has description?")
       }
       if (obj.description) {
         description = obj.description;
@@ -253,8 +259,19 @@ Meteor.methods({
       }
       let status = response.requestInfo.responseCode;
       // console.log(status);
-
-      Meteor.call('convertImage', img);
+      if (img) {
+        console.log(img);
+        if (img.includes('http://')) {
+          img = img.replace("http://", "https://images.weserv.nl/?url=");
+          console.log(img);
+        } else if (img.includes('https://')) {
+          img = img.replace("https://", "https://images.weserv.nl/?url=ssl:");
+        }
+      }
+      // let result = request.getSync(imageUrl, {encoding: null});
+      // return 'data:image/png;base64,' + new Buffer(result.body).toString('base64');
+      // console.log(result);
+      
       // downloadImage(img);
 
       Listings.update({

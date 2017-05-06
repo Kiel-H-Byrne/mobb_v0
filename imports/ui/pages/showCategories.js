@@ -26,7 +26,7 @@ Template.showCategories.onRendered(function() {
      columnWidth: '.categoryFlex_item',
     });
 
-    imagesLoaded( 'categoryFlex_item', function() {
+    imagesLoaded( '.categoryFlex_item', function() {
       msnry.layout();
     });
 
@@ -40,17 +40,29 @@ Template.showCategories.onRendered(function() {
     // });
 
 
-      $("img").error(function() { 
-        try {
-          $(this).attr("src").replace("http://", "https://");
-          console.log('broken');
-        }
-        catch {
-          $(this).css({visibility:"hidden"});
-          console.log('still broken');
+    //   $("img").error(function() { 
+    // //       $(this)
+    // //       .attr("src")
+    // //       .replace("http://", "https://")
 
-        }
-      });
+    // //       // console.log('broken', this);
+    // //   })
+    // // //   .delay(300)
+    //   // .error(function() { 
+    //   console.log("broken image", this);
+    //   $(this)
+    //   .css({visibility:"hidden"});
+    //   // console.log('still broken', this);
+    // });
+
+    $('img').on('error', function () {
+      console.log("on broken image", this);
+      $(this).css({visibility:"hidden"});
+      // if(!$(this).hasClass('broken-image')) {
+      //   $(this).addClass('broken-image');
+      // });
+    });
+
 
   });
 });

@@ -43,9 +43,11 @@ Template.fullPage.onRendered(function() {
       // }).attr("src").replace("http://", "https://");
 
       $('img').on('error', function () {
-        if(!$(this).hasClass('broken-image')) {
-          $(this).prop('src', 'img/broken.png').addClass('broken-image');
-        }
+        console.log("broken image", this);
+        $(this).css({visibility:"hidden"});
+        // if(!$(this).hasClass('broken-image')) {
+        //   $(this).addClass('broken-image');
+        // });
       });
 
     });

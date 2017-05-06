@@ -51,8 +51,14 @@ Listings = new orion.collection('listings', {
         data: "url", 
         title: "URL" 
       },{
-        data: "social",
-        title: "Social Media"
+        data: "social.facebook",
+        title: "Facebook"
+      },{
+        data: "social.instagram",
+        title: "Instagram"
+      },{
+        data: "social.twitter",
+        title: "Twitter"
       },{ 
         data: "owner", 
         title: "Owner" 
@@ -82,18 +88,6 @@ Listings = new orion.collection('listings', {
       { 
         data: "categories", 
         title: "Categories" 
-      },{ 
-        data: "upVotes", 
-        title: "Up Votes" 
-      },{ 
-        data: "upVoteCount", 
-        title: "Down Votes" 
-      },{ 
-        data: "dnVotes", 
-        title: "Up Votes" 
-      },{ 
-        data: "dnVoteCount", 
-        title: "Down Votes" 
       },
       orion.attributeColumn('createdBy', 'creator', 'Created By'),
       orion.attributeColumn('createdAt', 'submitted', 'Created @'), 
@@ -224,12 +218,6 @@ Listings.attachSchema(new SimpleSchema({
     //     return url;
     //   };
     // }
-  },
-  social: {
-    type: String,
-    optional: true,
-    unique: true,
-    label: 'Social Media'
   },
   owner: {
     type: String,
@@ -423,41 +411,26 @@ Listings.attachSchema(new SimpleSchema({
     //   }
     // }
   },
-  //subschema of up/downvotes and userId, timestamp, 
-  upVotes: {
-    type: [Object],
-    optional: true
-  },
-  'upVotes.$': {
-    type: VoteSchema
-  },
-  upVoteCount: {
-    type: Number,
+  social: {
+    type: Object,
     optional: true,
-    autoValue: function() {
-      let count = 0;
-      let exists = this.field("upVotes").value;
-      if (exists) {count = exists.length;}
-      return count;
-    }
+    label: 'Social Media'
   },
-  dnVotes: {
-    type: [Object],
-    optional: true
-  },
-  'dnVotes.$': {
-    type: VoteSchema
-  },
-  dnVoteCount: {
-    type: Number,
+  'social.facebook': {
+    type: String,
     optional: true,
-    autoValue: function() {
-      let count = 0;
-      let exists = this.field("dnVotes").value;
-      if (exists) {count = exists.length;}
-      return count;
-    }
-  },  
+    label: 'Facebook Handle'
+  },
+    'social.instagram': {
+    type: String,
+    optional: true,
+    label: 'Instagram Handle'
+  },
+    'social.twitter': {
+    type: String,
+    optional: true,
+    label: 'Twitter Handle'
+  },
   creator: orion.attribute('createdBy'),
   submitted: orion.attribute('createdAt'),
 }));

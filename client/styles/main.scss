@@ -129,13 +129,17 @@ p {
 
 // CUSTOM CLASSES
 
+.broken-image {
+  visibility: hidden;
+}
+
 .brand {
   color: $rgba-primary-4;
   font-weight: 800;
 }
 
 .smalltext {
-  font-size: 0.65em;
+  font-size: 0.85em;
 }
 
 .address {
@@ -190,6 +194,7 @@ p {
 // ADDED TO HOMSESCREEN CSS  
 @media all and (display-mode: standalone) {
 // Here goes the CSS rules that will only apply if app is running standalone 
-
+//ios standalone mode add 20px to top for bar.
+//back button?
 
 }

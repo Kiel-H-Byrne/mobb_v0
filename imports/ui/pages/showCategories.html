@@ -13,17 +13,27 @@
         {{> shareListing card}}
 
         <div class="card-image">
+        <a href="/listings/{{card.name}}">
           {{#unless card.image.url}}
-            <img src="{{getImage card.url card._id}}f" />
+            <img src="{{getImage card.url card._id}}" />
           {{else}}
-            <img src="{{card.image.url}}g" />
+            <img src="{{card.image.url}}" />
           {{/unless}}
+        </a>
         </div>
 
         <a href="/listings/{{card.name}}">
           <div class="card-content white-text">
             <span class="card-title "> <h5 class="amber-text text-darken-1 center-align activator">{{card.name}}</h5></span>
-            <h6 class="center-align"><a href="#" target="_blank" rel="noopener" > {{card.social}}</a></h6>
+            {{#if card.social.facebook}}
+            fb: <a href="https://www.facebook.com/{{card.social.facebook}}" target="_blank" rel="noopener" > @{{card.social.facebook}}</a> <br />
+            {{/if}}
+            {{#if card.social.instagram}}
+            ig: <a href="https://www.instagram.com/{{card.social.instagram}}" target="_blank" rel="noopener" > @{{card.social.instagram}}</a> <br />
+            {{/if}}
+            {{#if card.social.twitter}}
+            tt: <a href="https://www.twitter.com/{{card.social.twitter}}" target="_blank" rel="noopener" > @{{card.social.twitter}}</a> <br />
+            {{/if}}
             {{#if card.street}}
             <p class="center-align address">
               <span id="address-content">
@@ -44,7 +54,7 @@
             {{#if card.street}}    
             <div class="col s6">
               <!-- a class="btn-floating amber darken-4 modal-trigger" id="directions_button" title="Directions" href="#modalDirections"><i class="material-icons">navigation</i></a-->
-              <a class="btn-floating amber darken-4" title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" ><i class="material-icons">directions</i></a>
+              <a class="btn-floating amber darken-4" title="Go There Now!" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" ><i class="material-icons">directions</i></a>
             </div>
             {{/if}}
           </div>

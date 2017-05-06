@@ -24,7 +24,7 @@ Template.favoritesPage.onRendered(function() {
        percentPosition: true
       });
 
-      imagesLoaded( 'favoritesFlex_item', function() {
+      imagesLoaded( '.favoritesFlex_item', function() {
         msnry.layout();
       });
     }

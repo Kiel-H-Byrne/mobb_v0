@@ -1,0 +1,190 @@
+{
+  "listings_iddc": [
+    {
+      "name": "Twisted Soul Cookhouse and Pours",
+      "description": "Featuring Southern Fusion cuisine",
+      "street": "1133 Huff Road, Suite D",
+      "city": "Atlanta",
+      "state": "GA",
+      "zip": "30318",
+      "url": "http://www.twistedsoulcookhouseandpours.com",
+      "phone": "4043505500",
+      "social": {
+        "facebook": "twistedsoulcookhouse",
+        "instagram": "twistedsoulcookhouse",
+        "twitter": "twistedsoulatl"
+      },
+      "categories": [
+        "Food & Dining"
+      ]
+    },
+    {
+      "name": "Delta’s Restaurant",
+      "description": "Featuring Southern cuisine",
+      "street": "19 Dennis St",
+      "city": "New Brunswick",
+      "state": "NJ",
+      "zip": "08901",
+      "url": "http://www.deltasrestaurant.com",
+      "email": "deltasrestauranthotmail.com",
+      "phone": "7322491551",
+      "social": {
+        "facebook": "DeltasRestaurant",
+        "instagram": "deltas99",
+        "twitter": "DeltasNJ"
+      },
+      "categories": [
+        "Food & Dining"
+      ]
+    },
+    {
+      "name": "Amarachi Restaurant",
+      "description": "Featuring Afro-Caribbean cuisine",
+      "street": "189 Bridge St",
+      "city": "Brooklyn",
+      "state": "NY",
+      "zip": "11201",
+      "url": "http://www.amarachi325.com",
+      "email": "amarachiprimegmail.com,",
+      "phone": "7182221010",
+      "social": {
+        "facebook": "AmarachiPrime",
+        "instagram": "dine_amarachi",
+        "twitter": "amarachiprime"
+      },
+      "categories": [
+        "Food & Dining"
+      ]
+    },
+    {
+      "name": "Brooklyn Beso",
+      "description": "Featuring Latin Caribbean cuisine",
+      "street": "370 Lewis Ave",
+      "city": "Brooklyn",
+      "state": "NY",
+      "zip": "11233",
+      "url": "http://www.brooklynbeso.com",
+      "phone": "3479152900",
+      "social": {
+        "facebook": "bkbeso",
+        "instagram": "bkbeso"
+      },
+      "categories": [
+        "Food & Dining"
+      ]
+    },
+    {
+      "name": "The Edge Harlem",
+      "description": "Featuring Jamaican and British cuisine with a little New York attitude",
+      "street": "101 Edgecombe Ave",
+      "city": "New York",
+      "state": "NY",
+      "zip": "10030",
+      "url": "http://www.theedgeharlem.com",
+      "email": "infotheedgeharlem.com,",
+      "phone": "2129399688",
+      "social": {
+        "facebook": "theedgeharlem",
+        "instagram": "theedgeharlem",
+        "twitter": "theedgeharlem"
+      },
+      "categories": [
+        "Food & Dining"
+      ]
+    },
+    {
+      "name": "Fusion East Caribbean & Soul Food Restaurant",
+      "description": "Featuring Caribbean and Soul Food cuisine",
+      "street": "1179 Elton St",
+      "city": "Brooklyn",
+      "state": "NY",
+      "zip": "11239",
+      "url": "http://www.fusioneastny.com",
+      "email": "andrewfusioneastny.com,",
+      "phone": "7189755065",
+      "social": {
+        "facebook": "fusioneastrestaurant",
+        "instagram": "fusioneastrestaurant"
+      },
+      "categories": [
+        "Food & Dining"
+      ]
+    },
+    {
+      "name": "LoLo’s Seafood Shack",
+      "description": "Featuring Caribbean BBQ and Cape Cod Seafood cuisine",
+      "street": "303 W 116th St",
+      "city": "New York",
+      "state": "NY",
+      "zip": "10026",
+      "url": "http://www.lolosseafoodshack.com",
+      "email": "lolosseafoodshackgmail.com,",
+      "phone": "466493356",
+      "social": {
+        "facebook": "lolosseafoodshack",
+        "instagram": "lolosseafood",
+        "twitter": "lolosseafood"
+      },
+      "categories": [
+        "Food & Dining"
+      ]
+    },
+    {
+      "name": "Sip unWINE",
+      "description": "Featuring Caribbean-Asian Fusion and Modern American cuisine",
+      "street": "1197 Flatbush Ave",
+      "city": "Brooklyn",
+      "state": "NY",
+      "zip": "11226",
+      "url": "http://www.sipunwine.com",
+      "email": "sipunwinegmail.com,",
+      "phone": "718–576-6424",
+      "social": {
+        "facebook": "sipunwine",
+        "instagram": "sipunwine",
+        "twitter": "sipunwine"
+      },
+      "categories": [
+        "Food & Dining"
+      ]
+    },
+    {
+      "name": "Suede NYC",
+      "description": "Featuring Modern Caribbean cuisine",
+      "street": "5610 Clarendon Rd",
+      "city": "Brooklyn",
+      "state": "NY",
+      "zip": "11203",
+      "url": "http://www.suedenyc.com",
+      "email": "SuedeBrooklyngmail.com,",
+      "phone": "3474747328",
+      "social": {
+        "facebook": "suedenyc",
+        "instagram": "suedenyc",
+        "twitter": "suede_nyc"
+      },
+      "categories": [
+        "Food & Dining"
+      ]
+    },
+    {
+      "name": "Therapy Wine Bar",
+      "description": "Featuring American cuisine",
+      "street": "364 Lewis Ave",
+      "city": "Brooklyn",
+      "state": "NY",
+      "zip": "11233",
+      "url": "http://www.therapywinebar.co",
+      "email": "therapywinebargmail.com,",
+      "phone": "7185130686",
+      "social": {
+        "facebook": "TherapyWineBar",
+        "instagram": "therapywinebar",
+        "twitter": "therapywinebar"
+      },
+      "categories": [
+        "Food & Dining"
+      ]
+    }
+  ]
+}

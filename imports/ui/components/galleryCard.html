@@ -8,16 +8,15 @@
       {{> favoriteStar}}
       {{> shareListing}}
       <a class="card_link" href="/listings/{{name}}">
-      {{#if hasImage}}
+      {{#unless image.url}}
         <div class="card-image "> 
-          <!--img class="responsive-image" src="/img/{{name}}.png" /-->
-          <img class="responsive-image" src="{{image.url}}" />
+          <img class="responsive-image" src="{{getImage url _id}}" />
         </div>
         {{else}}
         <div class="card-image ">       
           <img class="responsive-image" src="{{image.url}}" />
         </div>
-      {{/if}}
+          {{/unless}}
       </a>
       <a class="card_link" href="/listings/{{name}}">
         <div class="card-content white-text">

@@ -27,6 +27,15 @@
       right: 0;
       z-index: 3;
     }
+
+    .card-content {
+      padding: 1rem;
+      line-height: 1.3rem;
+
+      p {
+        margin: 1rem 0;
+      }
+    }
   }
 }
 

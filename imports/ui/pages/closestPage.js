@@ -25,7 +25,7 @@ Template.closestPage.onRendered(function() {
        percentPosition: true
       });
 
-      imagesLoaded( 'closestFlex_item', function() {
+      imagesLoaded( '.closestFlex_item', function() {
         msnry.layout();
       });
    }

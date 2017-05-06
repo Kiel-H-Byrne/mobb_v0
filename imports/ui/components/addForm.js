@@ -4,7 +4,6 @@ import Listings from '/imports/startup/collections/listings';
 import './addForm.html';
 
 
-
 // Template.addForm.onRendered(function () {
 // //show the input form for optional fields, only if the associated checkbox is checked
 // 	$('#supplied').click(function () {
@@ -16,8 +15,8 @@ Template.addForm.onCreated(function () {
   this.subscribe('categories');
 });
 
-Template.addForm.onRendered(function () {
-  $(document).ready(function () {
+Template.addForm.onRendered(() => {
+  $(document).ready(() => {
     $('#modalAdd').modal({
       dismissible: true, // Modal can be dismissed by clicking outside of the modal
       opacity: 0.5, // Opacity of modal background
@@ -32,46 +31,43 @@ Template.addForm.onRendered(function () {
     // let state = Session.get('clientState');
     // $("li:contains("+ state +")").addClass("active selected");
   });
-
 });
 
 Template.addForm.helpers({
-  getState : function () {
-    let state = Session.get('clientState');
+  getState() {
+    const state = Session.get('clientState');
     return state;
   },
-  formOptions: function () {
-    return Categories.find().map(function(c) {
-      return {label: c.name, value: c.name};
-    });
-  }
+  formOptions() {
+    return Categories.find().map(c => ({ label: c.name, value: c.name }));
+  },
 });
 
 
 AutoForm.addHooks('addListingForm', {
 	  // Called when form does not have a `type` attribute or is 'normal'
-    onSubmit: function (insertDoc, updateDoc, currentDoc) {
-        this.event.preventDefault(); //prevents page reload
-        console.log('Just submitted form, from addform.js');
-        //close modal on submit
+  onSubmit(insertDoc, updateDoc, currentDoc) {
+    this.event.preventDefault(); // prevents page reload
+    console.log('Just submitted form, from addform.js');
+        // close modal on submit
         // $('#modalAdd').modal('close');
-        Listings.insert(insertDoc);
-		    this.done(); // must be called; submitted successfully, call onSuccess, 
-		    return false; //prevents page reload
-    },
+    Listings.insert(insertDoc);
+		    this.done(); // must be called; submitted successfully, call onSuccess,
+		    return false; // prevents page reload
+  },
 
   // Called when any submit operation succeeds
-  onSuccess: function(formType, result) {
+  onSuccess(formType, result) {
     Materialize.toast('Thanks for Submitting!', 3300, 'myToast');
   	// console.log("Thanks for Submitting!");
     console.log(result, insertDoc);
-    //draw marker?
-    //change content(inner html) of addForm template.
+    // draw marker?
+    // change content(inner html) of addForm template.
     // $('#modalAdd').html(
-    //   ` <div id="submitMsg" class="modal-content"> 
-    //    <h3 class="centered"> Thank You! </h3> 
+    //   ` <div id="submitMsg" class="modal-content">
+    //    <h3 class="centered"> Thank You! </h3>
     //    {{{> closeButton}}}
-    //    </div> 
+    //    </div>
 
     //    `
     //   );

@@ -207,6 +207,10 @@ Template.map.onCreated( function () {
                 //====== AUTO CALCULATE MY LOCATION AND DRAW NEW MARKER WHEN IT CHANGES ======
                 //====== AUTO CALCULATE NEW CLOSEST BUSINESS WHEN MY LOCATION CHANGES ======
                 // Materialize.toast('Locating...', 1100, 'myToast');
+                //add class 'pulse' to button, then remove it once found
+              $(document).ready(function (){
+                $('[id="centerButton_button"]').addClass('pulse');
+              });
 
                 console.log("searching ...");
                 if (Geolocation.error() || Geolocation.latLng === null || Geolocation.latLng === "null") {

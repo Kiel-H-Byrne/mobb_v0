@@ -119,9 +119,5 @@ Template.fullPage.helpers({
       // return options;
 
     },
-    getImage: function(url, id) {
-      // Meteor.call('convertImage', url);
-      Meteor.call('getOG', url, id);
-    },
 });
 

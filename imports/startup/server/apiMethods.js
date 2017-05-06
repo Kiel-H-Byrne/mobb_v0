@@ -260,20 +260,19 @@ Meteor.methods({
       let status = response.requestInfo.responseCode;
       // console.log(status);
       if (img) {
-        console.log(img);
-        if (img.includes('http://')) {
-          img = img.replace("http://", "https://images.weserv.nl/?url=");
-          console.log(img);
+        let uri = encodeURIComponent(img); 
+        console.log(uri);
+        // if (uri.includes('http://')) {
+        if (uri.includes('http%3A%2F%2F')) {  
+          uri = uri.replace("http%3A%2F%2F", "https://images.weserv.nl/?url=");
+          console.log(uri);
         } 
         // else if (img.includes('https://')) {
-        //   img = img.replace("https://", "https://images.weserv.nl/?url=ssl:");
-        // }
+        else if (uri.includes('https%3A%2F%2F')) {  
+          uri = uri.replace("https%3A%2F%2F", "https://images.weserv.nl/?url=ssl:");
+          console.log(uri);
+        }
       }
-      // let result = request.getSync(imageUrl, {encoding: null});
-      // return 'data:image/png;base64,' + new Buffer(result.body).toString('base64');
-      // console.log(result);
-      
-      // downloadImage(img);
 
       Listings.update({
         _id: id 

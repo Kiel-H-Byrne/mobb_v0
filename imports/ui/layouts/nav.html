@@ -75,7 +75,8 @@
             </div>
         </nav>
     </div>
-
+    
+    {{> mobileNav}}
     <!-- Modals stays below here in nav Template or else show behind gray overlay-->
     {{> addForm}}
     {{> editForm}}
@@ -95,8 +96,8 @@
 </template>
 
 <template name="leftSide">
-    {{> closestPage}}
+{{!--     {{> closestPage}}
     {{#if hasFavorites}}
         {{> favoritesPage}}
-    {{/if}}
+    {{/if}} --}}
 </template>

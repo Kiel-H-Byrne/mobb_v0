@@ -39,15 +39,6 @@ Template.galleryCard.onRendered(function () {
   
 });
 
-Template.galleryCard.helpers({
-  getImage: function(url, id) {
-    // getOGS(url);
-    // Meteor.call('convertImage', url);
-    Meteor.call('getOG', url, id);
-  }
- 
-});
-
 Template.galleryCard.events({
   // 'click': function(evt,tpl) {
   //   // Session.set('openListing', this._id);

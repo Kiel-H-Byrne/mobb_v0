@@ -9,11 +9,6 @@ Template.showCategories.helpers({
   catName: function () {
     return Router.current().params.name;
   },
-  getImage: function(url, id) {
-    // getOGS(url);
-    // Meteor.call('convertImage', url);
-    Meteor.call('getOG', url, id);
-  },
 });
 
 

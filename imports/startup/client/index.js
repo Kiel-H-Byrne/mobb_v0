@@ -101,6 +101,9 @@ targetListing = function(map,pos) {
   
 placeMyMarker = function(map,pos) {
   //would only not exist if the template reloaded and the browser didn't...(dev mode)
+  $(document).ready(function (){
+    $('[id="centerButton_button"]').removeClass('pulse');
+  });
   if (!clientMarker) {
     const radius = 3;
     const clientMarker = new google.maps.Marker({
@@ -239,6 +242,9 @@ Meteor.startup(function () {
 	  });
 	}
   //=====  Global Template Helpers =====
+  Template.registerHelper('getImage', function(url, id) {
+    Meteor.call('getOG', url, id);
+  });
 
   Template.registerHelper('hasImage', function () {
       //'this' should be Listings Document

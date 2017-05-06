@@ -1,34 +1,63 @@
 
 <template name="mobileNav">
-  <ul id="slide-out" class="side-nav">
-  <li><a href="#!">First Sidebar Link</a></li>
-  <li><a href="#!">Second Sidebar Link</a></li>
-  <li class="no-padding">
-    <ul class="collapsible collapsible-accordion">
-      <li>
-        <a class="collapsible-header">Dropdown<i class="material-icons">arrow_drop_down</i></a>
-        <div class="collapsible-body">
-          <ul>
-            <li><a href="#!">First</a></li>
-            <li><a href="#!">Second</a></li>
-            <li><a href="#!">Third</a></li>
-            <li><a href="#!">Fourth</a></li>
-          </ul>
-        </div>
-      </li>
+{{#if hasFavorites}}
+  <ul id="slide-out-fav" class="side-nav">
+    <li class="collection-header"><a><i class="material-icons">favorite</i>Favorites:</a></li>
+    <li><div class="divider"></div></li>
+    <ul class="collection">
+      {{#each favorites}}
+        <li>{{> listCard}}</li>
+      {{/each}}
     </ul>
-  </li>
   </ul>
-  <ul class="right hide-on-med-and-down">
-  <li><a href="#!">First Sidebar Link</a></li>
-  <li><a href="#!">Second Sidebar Link</a></li>
-  <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
-  <ul id='dropdown1' class='dropdown-content'>
-    <li><a href="#!">First</a></li>
-    <li><a href="#!">Second</a></li>
-    <li><a href="#!">Third</a></li>
-    <li><a href="#!">Fourth</a></li>
+  <a data-activates="slide-out-fav" class="z-depth-4 button-collapse_fav slide_badge_fav"><i class="material-icons">favorite</i></a>
+{{/if}}
+{{#if haveLocation}}
+  <ul id="slide-out-near" class="side-nav">
+    <li class="collection-header"><a><i class="material-icons">near_me</i><h5>Nearest:</h5></a></li>
+    <li><div class="divider"></div></li>
+    <ul class="collection">
+      {{#each list}}
+        {{#if isClose (getDistance location)}}
+          <li>{{> listCard}}</li>
+        {{/if}}
+      {{/each}}
+    </ul>
   </ul>
-  </ul>
-  <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+  <a data-activates="slide-out-near" class="z-depth-4 button-collapse_near slide_badge_near"><i class="material-icons">near_me</i></a>
+  {{/if}}
+</template>
+
+<template name="listCard">
+      <li class="collection-item avatar grey darken-2 hoverable ">
+        {{#if image.url}}
+          <img class="circle" src="{{image.url}}" />
+        {{else}}
+          <img class="circle" src="{{getImage url _id}}" />
+        {{/if}}
+        <span class="title">{{name}}</span>
+
+        <p>
+          {{#if social.facebook}}
+          fb: <a href="https://www.facebook.com/{{social.facebook}}" target="_blank" rel="noopener" > @{{social.facebook}}</a> <br />
+          {{/if}}
+          {{#if social.instagram}}
+          ig: <a href="https://www.instagram.com/{{social.instagram}}" target="_blank" rel="noopener" > @{{social.instagram}}</a> <br />
+          {{/if}}
+          {{#if social.twitter}}
+          tt: <a href="https://www.twitter.com/{{social.twitter}}" target="_blank" rel="noopener" > @{{social.twitter}}</a> <br />
+          {{/if}}
+        </p>
+        {{#if street}}
+        <p class="address">
+          {{street}} <br />
+          {{city}} {{state}} {{zip}} <br />
+        </p>
+        {{/if}}
+        {{#if phone}}    
+          <a class="phone" href="tel:+1{{phone}}"><i class="material-icons" style="font-size:100%; margin-right:2px; ">phone</i>{{phone}}</a> <br />
+        {{/if}}
+        {{> favoriteStar}}
+        
+      </li>
 </template>

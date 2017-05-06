@@ -71,10 +71,10 @@ AutoForm.addHooks('editListingForm', {
       });
 
     }
-    
     //close modal
-      $('#modalEdit').modal('close');
-      $('#modalInfo').modal('close');
+    $('#modalEdit').modal('close');
+    $('#modalInfo').modal('close');
+    if (this.currentDoc.location) {
     //center and zoom on new location? marker?
       const latLng = this.currentDoc.location.split(",");
       // let lat = Number(latLng[0]);
@@ -82,5 +82,6 @@ AutoForm.addHooks('editListingForm', {
       const latLngObj = _.object( ['lat', 'lng'], [Number(latLng[0]), Number(latLng[1])]);
       const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
       targetListing(map,latLngObj);
+    }
   },
 });

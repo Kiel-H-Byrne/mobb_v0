@@ -264,9 +264,10 @@ Meteor.methods({
         if (img.includes('http://')) {
           img = img.replace("http://", "https://images.weserv.nl/?url=");
           console.log(img);
-        } else if (img.includes('https://')) {
-          img = img.replace("https://", "https://images.weserv.nl/?url=ssl:");
-        }
+        } 
+        // else if (img.includes('https://')) {
+        //   img = img.replace("https://", "https://images.weserv.nl/?url=ssl:");
+        // }
       }
       // let result = request.getSync(imageUrl, {encoding: null});
       // return 'data:image/png;base64,' + new Buffer(result.body).toString('base64');

@@ -1,19 +1,18 @@
-import { Meteor } from 'meteor/meteor';
-import {Template} from 'meteor/templating';
+
 
 import './fullPage.html';
 
-Template.fullPage.onCreated(function() {
+Template.fullPage.onCreated(function () {
   if (!this.data.google_id) {
-    //submit to google places
-    Meteor.call('submitPlace',this.data);
-  } 
+    // submit to google places
+    Meteor.call('submitPlace', this.data);
+  }
 });
 
-Template.fullPage.onRendered(function() {
+Template.fullPage.onRendered(function () {
   let tpl = this;
 
-    $(document).ready(function() {
+    $(document).ready(function () {
       $('.editModal-trigger').modal();
       $('select').material_select();
     // $('pinned').pushpin({
@@ -23,20 +22,20 @@ Template.fullPage.onRendered(function() {
 
       setGReviews(tpl.data.google_id);
 
-      // $("img").error(function() { 
+      // $("img").error(function () { 
       //   // $(this).hide();
-      //   $("img").each(function() {
+      //   $("img").each(function () {
       //     $(this).attr("src", $(this).attr("src").replace("http://", "https://")).css({visibility:"hidden"}); ;
       //   });
       // });
 
-      // $("img").error(function() { 
+      // $("img").error(function () { 
       //   // $(this).hide();
       //     console.log(this);
-      //     // $("img").each(function() {
+      //     // $("img").each(function () {
       //       // $(this)
       //       // .attr("src", $(this).attr("src").replace("http://", "https://"));
-      //       // .error(function() {
+      //       // .error(function () {
       //       //   $(this).css({visibility:"hidden"});
       //       // });
       //     // });
@@ -58,7 +57,7 @@ Template.fullPage.events({
 });
 
 Template.fullPage.helpers({
-  isPlace: function() {
+  isPlace: function () {
     let check1 = this.google_id;
     if (check1) {
       let check2 = check1.charAt(0) === 'C'; //is from google
@@ -71,7 +70,7 @@ Template.fullPage.helpers({
     let check = doc.opening_hours.open_now;
     return check;
   },
-  microMapOptions: function() {
+  microMapOptions: function () {
     // console.log(this.location);
     let locArr = this.location.split(",");
     // console.log(locArr);
@@ -79,7 +78,7 @@ Template.fullPage.helpers({
       "lat": Number(locArr[0]),
       "lng": Number(locArr[1])
     };
-      GoogleMaps.ready('microMap', function() {
+      GoogleMaps.ready('microMap', function () {
         let marker = new google.maps.Marker({
           position: mapCenter,
           map: GoogleMaps.maps.microMap.instance,

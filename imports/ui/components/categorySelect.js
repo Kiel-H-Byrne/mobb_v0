@@ -5,8 +5,8 @@ import Categories from '/imports/startup/collections/categories';
 import './categorySelect.html';
 
 
-Template.catSelect.onRendered(function() {
-  $(document).ready(function() {
+Template.catSelect.onRendered(function () {
+  $(document).ready(function () {
     $('.dropdown-button').dropdown({
       stopPropagation: true
       // inDuration: 200,
@@ -20,13 +20,13 @@ Template.catSelect.onRendered(function() {
   });
 });
 
-Template.catSelect.onCreated(function() {
+Template.catSelect.onCreated(function () {
   this.subscribe('categories');
   this.subscribe('listings');
 });
 
 Template.catSelect.helpers({
-  categories: function() {
+  categories: function () {
     return Categories.find();
 
   },
@@ -43,7 +43,7 @@ Template.catSelect.events({
 
 });
 // Template.catSelect.helpers({
-//   get_categories: function() {
+//   get_categories: function () {
 //     var results = [];
 
 //     var mapChildren = function(category, level) {

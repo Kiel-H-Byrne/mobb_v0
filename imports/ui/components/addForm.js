@@ -5,19 +5,19 @@ import './addForm.html';
 
 
 
-// Template.addForm.onRendered(function() {
+// Template.addForm.onRendered(function () {
 // //show the input form for optional fields, only if the associated checkbox is checked
-// 	$('#supplied').click(function() {
+// 	$('#supplied').click(function () {
 // 	  $('.date')[this.checked ? "show" : "hide"]();
 // 	});
 // });
 
-Template.addForm.onCreated(function() {
+Template.addForm.onCreated(function () {
   this.subscribe('categories');
 });
 
-Template.addForm.onRendered(function() {
-  $(document).ready(function() {
+Template.addForm.onRendered(function () {
+  $(document).ready(function () {
     $('#modalAdd').modal({
       dismissible: true, // Modal can be dismissed by clicking outside of the modal
       opacity: 0.5, // Opacity of modal background
@@ -36,11 +36,11 @@ Template.addForm.onRendered(function() {
 });
 
 Template.addForm.helpers({
-  getState : function() {
+  getState : function () {
     let state = Session.get('clientState');
     return state;
   },
-  formOptions: function() {
+  formOptions: function () {
     return Categories.find().map(function(c) {
       return {label: c.name, value: c.name};
     });

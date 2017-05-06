@@ -3,12 +3,12 @@ import {Template} from 'meteor/templating';
 
 import './centerButton.html';
 
-Template.centerButton.helpers( function() {
+Template.centerButton.helpers( function () {
 
 });
 
-Template.centerButton.onRendered(function() {
-  $(document).ready(function(){
+Template.centerButton.onRendered(function () {
+  $(document).ready(function (){
     $('.tooltipped').tooltip({delay: 50});
   });
 

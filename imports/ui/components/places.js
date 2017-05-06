@@ -10,7 +10,7 @@ import './map.html';
 
 
 //place a search on specific name and location, on insert. 
-Template.test.onCreated( function() {  
+Template.test.onCreated( function () {  
     // GoogleMaps.ready('map', function(map) {
     //     let service = new google.maps.places.PlaceService(map);
     //     service.nearbySearch({
@@ -28,7 +28,7 @@ Template.test.onCreated( function() {
 });
 
 Template.test.helpers({  
-    mapOptions: function() {
+    mapOptions: function () {
         let mapCenter = {'lat':39.833, 'lng':-98.583};
         if (GoogleMaps.loaded() && mapCenter) {
             return {

@@ -3,12 +3,12 @@ import Categories from '/imports/startup/collections/categories';
 
 import './editForm.html';
 
-Template.editForm.onCreated(function() {
+Template.editForm.onCreated(function () {
 
 });
 
-Template.editForm.onRendered(function() {
-  $(document).ready(function() {
+Template.editForm.onRendered(function () {
+  $(document).ready(function () {
     $('#modalEdit').modal({
       dismissible: true, // Modal can be dismissed by clicking outside of the modal
       opacity: 0.5, // Opacity of modal background
@@ -25,7 +25,7 @@ Template.editForm.onRendered(function() {
 });
 
 Template.editForm.helpers({
-  formOptions: function() {
+  formOptions: function () {
     return Categories.find().map(function(c) {
       // console.log(c.name);
       return {label: c.name, value: c.name};

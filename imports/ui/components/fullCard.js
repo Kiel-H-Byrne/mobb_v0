@@ -3,17 +3,17 @@ import {Template} from 'meteor/templating';
 
 import './fullCard.html';
 
-Template.fullCard.onCreated(function() {
+Template.fullCard.onCreated(function () {
   if (!this.data.google_id) {
     //submit to google places
     Meteor.call('submitPlace',this.data);
   } 
 });
 
-Template.fullCard.onRendered(function() {
+Template.fullCard.onRendered(function () {
   let tpl = this;
 
-    $(document).ready(function() {
+    $(document).ready(function () {
       $('.editModal-trigger').modal();
       $('ul.tabs').tabs({
         onShow: function(tab) {
@@ -26,7 +26,7 @@ Template.fullCard.onRendered(function() {
         }
       });
 
-      $("img").error(function() { 
+      $("img").error(function () { 
         // $(this).hide();
         $(this).css({visibility:"hidden"}); 
       });
@@ -38,7 +38,7 @@ Template.fullCard.events({
 });
 
 Template.fullCard.helpers({
-  microMapOptions: function() {
+  microMapOptions: function () {
     // console.log(this.location);
     let locArr = this.location.split(",");
     // console.log(locArr);
@@ -46,7 +46,7 @@ Template.fullCard.helpers({
       "lat": Number(locArr[0]),
       "lng": Number(locArr[1])
     };
-      GoogleMaps.ready('microMap', function() {
+      GoogleMaps.ready('microMap', function () {
         let marker = new google.maps.Marker({
           position: mapCenter,
           map: GoogleMaps.maps.microMap.instance,
@@ -77,7 +77,7 @@ Template.fullCard.helpers({
           }
        }
     },
-    isPhoto: function() {
+    isPhoto: function () {
       console.log(this);
       let options = {'maxWidth': 150, 'maxHeight': 150}
       return options;

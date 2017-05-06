@@ -37,12 +37,12 @@ $.getJSON("https://freegeoip.net/json/", {
 // ============================= SUBSCRIPTIONS ==================================
 
 
-Template.map.onCreated( function() {  
+Template.map.onCreated( function () {  
     // console.log("-= MAP: Created =-");
     let self = this;
     GoogleMaps.ready('map', function(map) {
 
-      $(document).ready(function() {
+      $(document).ready(function () {
   
         $('.addModal-trigger').modal({
             dismissible: true,
@@ -51,18 +51,18 @@ Template.map.onCreated( function() {
             out_duration: 200,
             // starting_top: '5%', // Starting top style attribute
             // ending_top: '10%', // Ending top style attribute
-            // ready: function() {
+            // ready: function () {
             //   // console.log("Modal Triggered, from loggedInNav.js");
             //     if($(".lean-overlay").length > 1) {
-            //         $(".lean-overlay:not(:first)").each(function() {
+            //         $(".lean-overlay:not(:first)").each(function () {
             //             $(this).remove();
             //             console.log("removed a layer");
             //         });
             //     }
             // },
-            // complete: function() {
+            // complete: function () {
             //   // console.log("Modal Complete, from loggedInNav.js");
-            //     // $(".lean-overlay").each(function() {
+            //     // $(".lean-overlay").each(function () {
             //     //     $(this).remove();
             //     // });
             // }
@@ -147,7 +147,7 @@ Template.map.onCreated( function() {
 
         //====== watch the database for changes, draw new marker on change. ====== //
 
-        let subscription = self.subscribe('listings_locs', function() {
+        let subscription = self.subscribe('listings_locs', function () {
             let cursor = Listings.find({
                 location: { $exists : 1 }, 
                 certs: { $exists: 0 }
@@ -177,7 +177,7 @@ Template.map.onCreated( function() {
                         });
                         marker.set('title', doc.name);
 
-                        marker.addListener('click', function() {
+                        marker.addListener('click', function () {
                             Session.set('openListing', id);
                             $('#modalInfo').modal('open');
                             
@@ -203,7 +203,7 @@ Template.map.onCreated( function() {
           let getPerm = Session.get("geoAccepted");
 
           if (getPerm === true) {
-              self.autorun(function() {    
+              self.autorun(function () {    
                 //====== AUTO CALCULATE MY LOCATION AND DRAW NEW MARKER WHEN IT CHANGES ======
                 //====== AUTO CALCULATE NEW CLOSEST BUSINESS WHEN MY LOCATION CHANGES ======
                 // Materialize.toast('Locating...', 1100, 'myToast');
@@ -270,7 +270,7 @@ Template.map.onCreated( function() {
                     //     content: "Here I Am!"
                     // });
 
-                    // clientMarker.addListener('hover', function() {
+                    // clientMarker.addListener('hover', function () {
                     // //     infoWindow.setContent("My Location.");
                     // //     infoWindow.open(map, clientMarker);
                     //       console.log(this);
@@ -284,7 +284,7 @@ Template.map.onCreated( function() {
         });
         // ========================= DOM Events relating to Map =========================
 
-        // google.maps.event.addDomListener(map, 'center_changed', function() {
+        // google.maps.event.addDomListener(map, 'center_changed', function () {
         //     google.maps.event.trigger(map, "resize");
         //     console.log("new center");
         // })
@@ -292,24 +292,24 @@ Template.map.onCreated( function() {
 
 });
 
-Template.map.onRendered(function() {
+Template.map.onRendered(function () {
     
     //Materialize JQuery Effects
-    $(document).ready(function(){
+    $(document).ready(function (){
         $('.modal-trigger').modal({
             dismissible: true,
             opacity: 0.5,
             in_duration: 300,
             out_duration: 200,
-            // ready: function() {
+            // ready: function () {
             //     if($(".lean-overlay").length > 1) {
-            //         $(".lean-overlay:not(:first)").each(function() {
+            //         $(".lean-overlay:not(:first)").each(function () {
             //             $(this).remove();
             //         });
             //     }
             // },
-            // complete: function() {
-            //     $(".lean-overlay").each(function() {
+            // complete: function () {
+            //     $(".lean-overlay").each(function () {
             //         $(this).remove();
             //     });
             // }
@@ -321,7 +321,7 @@ Template.map.onRendered(function() {
 // ============================= HELPERS ==================================
 
 Template.map.helpers({
-    mapOptions: function() {
+    mapOptions: function () {
 
     // / ============================= SET MAP CENTER ==================================    
     //Get Client's Location using W3C HTML5 GeoLocation Standard and set Marker/InfoWindow

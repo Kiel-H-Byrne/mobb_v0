@@ -27,8 +27,8 @@ Template.verifyForm.events({
 	// }
 });
 
-Template.verifyForm.onRendered(function() {
-  $(document).ready(function() {
+Template.verifyForm.onRendered(function () {
+  $(document).ready(function () {
       $('#modalVerify').modal({
         dismissible: true, // Modal can be dismissed by clicking outside of the modal
         opacity: 0.5, // Opacity of modal background

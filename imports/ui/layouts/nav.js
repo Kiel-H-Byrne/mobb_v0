@@ -21,8 +21,8 @@ import './nav.html';
 
 
 
-Template.nav2.onRendered( function() {
-  $(document).ready(function() {
+Template.nav2.onRendered( function () {
+  $(document).ready(function () {
     $('.dropdown-button').dropdown({
       stopPropagation: true
       // inDuration: 200,
@@ -43,18 +43,18 @@ Template.nav2.onRendered( function() {
         out_duration: 200,
         // starting_top: '0', // Starting top style attribute
         // ending_top: '0', // Ending top style attribute
-        // ready: function() {
+        // ready: function () {
           // console.log("Modal Triggered, from loggedInNav.js");
             // if($(".lean-overlay").length > 1) {
-            //     $(".lean-overlay:not(:first)").each(function() {
+            //     $(".lean-overlay:not(:first)").each(function () {
             //         $(this).remove();
             //         console.log("removed a layer");
             //     });
             // }
         // },
-        // complete: function() {
+        // complete: function () {
         //   // console.log("Modal Complete, from loggedInNav.js");
-        //     $(".lean-overlay").each(function() {
+        //     $(".lean-overlay").each(function () {
         //         $(this).remove();
         //     });
         // }
@@ -106,14 +106,14 @@ Template.nav2.events({
   		clientSearch: entered
 		});
 	},
-  'click input': function() {
+  'click input': function () {
     // $('.dropdown-button').dropdown('open');
     document.getElementById("mobile_search-form").reset();
   },
-  'mouseup form, touchend form': function() {
+  'mouseup form, touchend form': function () {
     // Materialize.updateTextFields();
   },
-  'click .signout_btn': function() {
+  'click .signout_btn': function () {
     AccountsTemplates.logout();
   },
   'mouseup .tt-suggestion>ul>li': function(evt,tpl) {
@@ -121,7 +121,7 @@ Template.nav2.events({
     let type = evt.target.parentElement.parentElement.parentElement.firstChild.innerText
     Router.go('/' + type + '/' + name);
   }
-  // 'click .addmodal': function() {
+  // 'click .addmodal': function () {
   //   $('#modalAdd').modal('open');
   //   // console.log("open!");
   // }
@@ -131,13 +131,13 @@ Template.nav2.events({
 });
 
 Template.nav2.helpers({
-  dataset: function() {
+  dataset: function () {
     return [
       {
         name: 'categories',
         valueKey: 'name',
         displayKey: 'name',
-        local: function() { return Categories.find().fetch(); },
+        local: function () { return Categories.find().fetch(); },
         header: '<h4 class="tt-header">Categories</h4>',
         template: 'results'
       },
@@ -145,7 +145,7 @@ Template.nav2.helpers({
         name: 'listings',
         valueKey: 'name',
         displayKey: 'name',
-        local: function() { return Listings.find().fetch(); },
+        local: function () { return Listings.find().fetch(); },
         header: '<h4 class="tt-header">Listings</h4>',
         template: 'results'
       }

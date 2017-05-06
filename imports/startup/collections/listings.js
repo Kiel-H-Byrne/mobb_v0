@@ -99,7 +99,7 @@ if ( Meteor.isServer ) {
   // ALLOW FOR SORTING (?) 
   Listings._ensureIndex( { name: 1, onlineonly: 1, city: 1 } );
 
-  // Meteor.subscribe('categories', function() {
+  // Meteor.subscribe('categories', function () {
   //   const catArray = Categories.find().fetch();
   //   console.log(catArray);
   // }); 
@@ -208,7 +208,7 @@ Listings.attachSchema(new SimpleSchema({
     label: 'Website',
     regEx: SimpleSchema.RegEx.Url,
     optional: true,
-    // autoValue: function() {
+    // autoValue: function () {
     //   //if string starts with "http//" or https://", Ok, else prepend with "http://"
     //   let url = this.value;
     //   if (url && (url.includes("http://") || url.includes("https://"))) {
@@ -244,7 +244,7 @@ Listings.attachSchema(new SimpleSchema({
     label: 'Online Only?',
     type: Boolean,
     optional: true,
-    autoValue: function() {
+    autoValue: function () {
       if ( !this.field("street").value && this.field("url") ) {
         return true;
       } else {
@@ -256,7 +256,7 @@ Listings.attachSchema(new SimpleSchema({
     label: 'Google ID',
     type: String,
     optional: true,
-    // autoValue: function() {
+    // autoValue: function () {
       
     // }
   },
@@ -264,7 +264,7 @@ Listings.attachSchema(new SimpleSchema({
     label: 'Yelp ID',
     type: String,
     optional: true,
-    // autoValue: function() {
+    // autoValue: function () {
     //   return;
       //do a yelp phone search using phone number, return value of call.
 //       if ( this.field("phone").isSet && this.isInsert && !this.isSet) {
@@ -356,7 +356,7 @@ Listings.attachSchema(new SimpleSchema({
   location: {
     type: String,
     optional: true,
-    autoValue: function() {
+    autoValue: function () {
       let street = this.field("street").value;
       // console.log(tester);
       if ( street && this.isInsert && !this.isSet) {
@@ -395,12 +395,12 @@ Listings.attachSchema(new SimpleSchema({
     type: [String],
     label: 'Categories',
     optional: true,
-    // custom: function() {
+    // custom: function () {
       // I WANT TO PUSH THE CATEGORY "ONLINE ONLY" TO THIS ARRAY
       //$set function on this key??
     // },
     // autoform: {
-      // options: function() {
+      // options: function () {
       //   return Categories.find().map(function(c) {
       //     return {label: c.name, value: c.name};
       //   });

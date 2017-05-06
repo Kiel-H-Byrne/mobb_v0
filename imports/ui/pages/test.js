@@ -4,9 +4,9 @@ import {Template} from 'meteor/templating';
 import './test.html';
 import './favoritesPage.js';
 //place a search on specific name and location, on insert. 
-Template.test.onCreated( function() {  
+Template.test.onCreated( function () {  
     this.subscribe('listings');
-    $(document).ready(function() {
+    $(document).ready(function () {
       
 
       $('.dpdwn').dropdown({
@@ -25,11 +25,11 @@ Template.test.onCreated( function() {
 
 });
 
-Template.test.onRendered(function() {
+Template.test.onRendered(function () {
   
 
 
-    // self.autorun(function() {
+    // self.autorun(function () {
     //    let mmap  = Session.get('currentMap');
     // })
 
@@ -38,11 +38,11 @@ Template.test.onRendered(function() {
 
 
 Template.test.helpers({
-  randomDoc: function() {
+  randomDoc: function () {
     const doc =  Listings.findOne();
     return doc;
   },
-  mapOptions: function() {
+  mapOptions: function () {
         let mapCenter = { lat: 39.0163, lng: -76.9799  };
         if (GoogleMaps.loaded() && mapCenter) {
             return {

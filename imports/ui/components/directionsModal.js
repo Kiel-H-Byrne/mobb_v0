@@ -11,7 +11,7 @@ Template.directionsModal.events({
 });
 
 Template.directionsModal.helpers({
-	'route': function() {
+	'route': function () {
 		let route = Session.get('myRoute');
 		if (route) {
 			let leg = route.legs[0];

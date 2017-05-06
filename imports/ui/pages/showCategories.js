@@ -6,7 +6,7 @@ import './showCategories.html';
 
 
 Template.showCategories.helpers({
-  catName: function() {
+  catName: function () {
     return Router.current().params.name;
   },
   getImage: function(url, id) {
@@ -17,8 +17,8 @@ Template.showCategories.helpers({
 });
 
 
-Template.showCategories.onRendered(function() {
-  $(document).ready(function() {
+Template.showCategories.onRendered(function () {
+  $(document).ready(function () {
     $('.editModal-trigger').modal();
    
     let msnry = new Masonry('.categoryFlex', {
@@ -26,21 +26,21 @@ Template.showCategories.onRendered(function() {
      columnWidth: '.categoryFlex_item',
     });
 
-    imagesLoaded( '.categoryFlex_item', function() {
+    imagesLoaded( '.categoryFlex_item', function () {
       msnry.layout();
     });
 
-    // $("img").error(function() { 
+    // $("img").error(function () { 
     //   // $(this).hide();
-    //     $("img").each(function() {
-    //       $(this).attr("src", $(this).attr("src").replace("http://", "https://")).error(function() {
+    //     $("img").each(function () {
+    //       $(this).attr("src", $(this).attr("src").replace("http://", "https://")).error(function () {
     //         $(this).css({visibility:"hidden"});
     //       });
     //     });
     // });
 
 
-    //   $("img").error(function() { 
+    //   $("img").error(function () { 
     // //       $(this)
     // //       .attr("src")
     // //       .replace("http://", "https://")
@@ -48,7 +48,7 @@ Template.showCategories.onRendered(function() {
     // //       // console.log('broken', this);
     // //   })
     // // //   .delay(300)
-    //   // .error(function() { 
+    //   // .error(function () { 
     //   console.log("broken image", this);
     //   $(this)
     //   .css({visibility:"hidden"});

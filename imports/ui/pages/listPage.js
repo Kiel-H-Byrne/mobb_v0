@@ -3,8 +3,8 @@ import {Template} from 'meteor/templating';
 
 import './listPage.html';
 
-Template.listPage.onCreated(function() {
-  Meteor.subscribe('listings_online_only', function() {
+Template.listPage.onCreated(function () {
+  Meteor.subscribe('listings_online_only', function () {
     let cursor = Listings.find({
       url: { $exists : 1}, 
       street: {$exists: 0}
@@ -17,7 +17,7 @@ Template.listPage.onCreated(function() {
 
 
 Template.listPage.helpers({
-  list: function() {
+  list: function () {
     let urlList = Listings.find({
       url: { $exists : 1}, 
       street: {$exists: 0}

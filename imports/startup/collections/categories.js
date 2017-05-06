@@ -53,7 +53,7 @@ Categories.attachSchema(new SimpleSchema({
   },
   count: {
     type: Number,
-    autoValue: function() {
+    autoValue: function () {
       // count equals the sum of all collections which contain a match in it's category array, a match to this record's sibling field; title
       //find the amount of listings the associated category matches
       // let count = Math.round(Math.random() * (50 - 2) + 2);

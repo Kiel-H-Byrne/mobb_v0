@@ -4,8 +4,8 @@ import { Template } from 'meteor/templating';
 import './favoritesPage.html';
 import '../components/galleryCard.js';
 
-Template.favoritesPage.onCreated(function() {
-  Meteor.subscribe('listings_locs', function() {
+Template.favoritesPage.onCreated(function () {
+  Meteor.subscribe('listings_locs', function () {
   let cursor = Listings.find({
     location: { $exists : 1}, 
     certs: {$exists: 0},
@@ -15,8 +15,8 @@ Template.favoritesPage.onCreated(function() {
   });
 });
 
-Template.favoritesPage.onRendered(function() {
-  $(document).ready(function(){
+Template.favoritesPage.onRendered(function () {
+  $(document).ready(function (){
     if ($('.favoritesFlex')[0]) {
       let msnry = new Masonry('.favoritesFlex', {
        itemSelector: '.favoritesFlex_item',
@@ -24,7 +24,7 @@ Template.favoritesPage.onRendered(function() {
        percentPosition: true
       });
 
-      imagesLoaded( '.favoritesFlex_item', function() {
+      imagesLoaded( '.favoritesFlex_item', function () {
         msnry.layout();
       });
     }
@@ -33,7 +33,7 @@ Template.favoritesPage.onRendered(function() {
 });
 
 Template.favoritesPage.helpers({
-  favorites: function() {
+  favorites: function () {
     // get the array of ids
     let arr = Meteor.user().profile.favorites;
     let cursor = Listings.find({

@@ -4,8 +4,8 @@ import {Template} from 'meteor/templating';
 import './shareListing.html';
 
 
-Template.shareListing.onRendered( function() {
-  $(document).ready(function() {
+Template.shareListing.onRendered( function () {
+  $(document).ready(function () {
     $('.share-drop').dropdown({
       // inDuration: 200,
       stopPropagation: true,

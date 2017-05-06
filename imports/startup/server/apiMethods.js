@@ -459,7 +459,7 @@ Meteor.methods({
   //       console.log(e);
   //     });
   // },
-  bizSearch: function() {
+  bizSearch: function () {
     // https://api.business.usa.gov/{ReturnType}?keyword={KeyWordSearch}&page={PageNumber}&api_key={YourAPIKey}
     this.unblock();
     let urlParams;

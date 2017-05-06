@@ -6,8 +6,8 @@ import './infoModal.html';
 import './verifyForm.js';
 import './closeButton.js';
 
-Template.infoModal.onRendered(function() {
-  $(document).ready(function() {
+Template.infoModal.onRendered(function () {
+  $(document).ready(function () {
     $('#modalInfo').modal({
       dismissible: true, // Modal can be dismissed by clicking outside of the modal
       opacity: 0.5, // Opacity of modal background
@@ -17,7 +17,7 @@ Template.infoModal.onRendered(function() {
       endingTop: '4%', // Ending top style attribute
     });    
   });
-//   this.autorun(function() {
+//   this.autorun(function () {
 //     //When url changes to '/listings/:name' or '/categories/:name', open modal with listing data, or filter list to show only those cards in category..
 //     let controller = Iron.controller();
 //     let params = controller.getParams();

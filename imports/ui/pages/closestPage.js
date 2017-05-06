@@ -5,8 +5,8 @@ import { Template } from 'meteor/templating';
 import './closestPage.html';
 import '../components/galleryCard.js';
 
-Template.closestPage.onCreated(function() {
-  Meteor.subscribe('listings_locs', function() {
+Template.closestPage.onCreated(function () {
+  Meteor.subscribe('listings_locs', function () {
   let cursor = Listings.find({
     location: { $exists : 1}, 
     certs: {$exists: 0},
@@ -16,8 +16,8 @@ Template.closestPage.onCreated(function() {
   });
 });
 
-Template.closestPage.onRendered(function() {
-  $(document).ready(function(){
+Template.closestPage.onRendered(function () {
+  $(document).ready(function (){
     if ($('.closestFlex')[0]) {
       let msnry = new Masonry('.closestFlex', {
        itemSelector: '.closestFlex_item',
@@ -25,7 +25,7 @@ Template.closestPage.onRendered(function() {
        percentPosition: true
       });
 
-      imagesLoaded( '.closestFlex_item', function() {
+      imagesLoaded( '.closestFlex_item', function () {
         msnry.layout();
       });
    }
@@ -34,7 +34,7 @@ Template.closestPage.onRendered(function() {
 });
 
 Template.closestPage.helpers({
-  list: function() {
+  list: function () {
     let theList = Listings.find({
       location: { $exists : 1}, 
       certs: {$exists: 0},

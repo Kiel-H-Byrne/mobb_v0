@@ -33,7 +33,7 @@ Template.favoriteStar.events({
 
 
 Template.favoriteStar.helpers({
-  in_favorites: function() {
+  in_favorites: function () {
     //if id matches in favorites array, return true.
     let id = this._id;
     if (Meteor.user()) {

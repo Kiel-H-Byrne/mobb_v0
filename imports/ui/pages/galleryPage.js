@@ -4,8 +4,8 @@ import { Template } from 'meteor/templating';
 import './galleryPage.html';
 import '../components/galleryCard.js';
 
-Template.galleryPage.onCreated(function() {
-	Meteor.subscribe('listings_online_only', function() {
+Template.galleryPage.onCreated(function () {
+	Meteor.subscribe('listings_online_only', function () {
 		let cursor = Listings.find({
 			url: { $exists : 1}, 
 			street: {$exists: 0}
@@ -16,8 +16,8 @@ Template.galleryPage.onCreated(function() {
 	});
 });
 
-Template.galleryPage.onRendered(function() {
-	$(document).ready(function(){
+Template.galleryPage.onRendered(function () {
+	$(document).ready(function (){
 		// const msnry = new Masonry('.card-wrapper', {
 		// 	// columnWidth: 200,
 		// 	itemSelector: '.info-card'
@@ -31,7 +31,7 @@ Template.galleryPage.onRendered(function() {
 	});
 });
 Template.galleryPage.helpers({
-  list: function() {
+  list: function () {
 		let urlList = Listings.find({
 			url: { $exists : 1}, 
 			street: {$exists: 0}

@@ -20,8 +20,8 @@ import './closestCard.html';
 	//     });
 	// }
 
-Template.closestCard.onRendered(function() {
-	let subscription = this.subscribe('listings_locs', function() {
+Template.closestCard.onRendered(function () {
+	let subscription = this.subscribe('listings_locs', function () {
 	    console.log('-= MAP SUBSCRIBING: All Listing Locations =-');
 	    // console.log(Listings.find().count() + " Listings: ", Listings.find().fetch());
 	});
@@ -29,7 +29,7 @@ Template.closestCard.onRendered(function() {
 
 Template.closestCard.helpers({
 
-	getClosest: function(){
+	getClosest: function (){
 		// let latLng = Session.get('clientLoc');
 		// console.log(latLng);
 		
@@ -90,13 +90,13 @@ Template.closestCard.helpers({
 		});
 		return true;
 	},
-	closestName: function() {
+	closestName: function () {
 		// if (Session.get('closestListing')) {
 			// let obj = Session.get('closestListing');
 			// return obj.address;
 		// }
 	},
-	closestStats: function() {
+	closestStats: function () {
 		// if (Session.get('closestListing')) {
 			// let obj = Session.get('closestListing');
 			// return obj.

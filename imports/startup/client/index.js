@@ -87,7 +87,7 @@ const GCache = new OrionCache('gids', 100000);
 // }
 
 
-getLocation = async function() {
+getLocation = async function () {
     const pos = await Geolocation.latLng();
     return pos;
 };
@@ -170,13 +170,13 @@ setGReviews = function(gid) {
   }
 };
 
-const isRunningStandalone = function() {
+const isRunningStandalone = function () {
     return (window.matchMedia('(display-mode: standalone)').matches);
 };
 
 
 
-Meteor.startup(function() {
+Meteor.startup(function () {
 
   if (isRunningStandalone()) {
     // This code will be executed if app is running standalone 
@@ -228,7 +228,7 @@ Meteor.startup(function() {
 
 	//=====  ServiceWorker installation =====
 	if ('serviceWorker' in navigator) {
-	  window.addEventListener('load', function() {
+	  window.addEventListener('load', function () {
 	    navigator.serviceWorker.register('/sw.js').then(function(registration) {
 	      // Registration was successful
 	      console.log('ServiceWorker registration successful with scope: ', registration.scope);
@@ -240,7 +240,7 @@ Meteor.startup(function() {
 	}
   //=====  Global Template Helpers =====
 
-  Template.registerHelper('hasImage', function() {
+  Template.registerHelper('hasImage', function () {
       //'this' should be Listings Document
       // console.log(typeof this.image.url);
       if (this.image) {
@@ -254,7 +254,7 @@ Meteor.startup(function() {
       }
   });
 
-  Template.registerHelper('isOwner', function() {
+  Template.registerHelper('isOwner', function () {
     if (Meteor.user()) {
       let test = Meteor.user()._id === this.creator;
       // console.log(test);
@@ -306,7 +306,7 @@ Meteor.startup(function() {
   });
 
   // var resolvedData = new ReactiveDict();
-  Template.registerHelper('thisPlace',  function() {
+  Template.registerHelper('thisPlace',  function () {
     const place = Session.get('thisPlace');
     if (place) {
       // console.log(place);
@@ -387,7 +387,7 @@ Meteor.startup(function() {
     }
   });
 
-  Template.registerHelper('haveLocation', function() {
+  Template.registerHelper('haveLocation', function () {
     if (Session.get('clientLoc')) {
       return true;
     } else {
@@ -395,7 +395,7 @@ Meteor.startup(function() {
     }
   });
 
-  Template.registerHelper('hasFavorites', function() {
+  Template.registerHelper('hasFavorites', function () {
     let user = Meteor.user();
     if (user && user.profile.favorites) {
       let profile = user.profile;
@@ -408,7 +408,7 @@ Meteor.startup(function() {
   });
 
 
-  Template.registerHelper('currentDoc', function() {
+  Template.registerHelper('currentDoc', function () {
     if (Session.get('openListing')) {
       let id = Session.get('openListing');
       let doc = Listings.findOne({_id: id});

@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import {Template} from 'meteor/templating';
 import './galleryCard.html';
 
-Template.galleryCard.onRendered(function() {
+Template.galleryCard.onRendered(function () {
   //WORKING
 
   //   GoogleMaps.ready('minimap', function(map) {
@@ -30,7 +30,7 @@ Template.galleryCard.onRendered(function() {
   //     service.radarSearch(request2,callback);  
   // });
 
-  $(document).ready(function() {
+  $(document).ready(function () {
     $('img').on('error', function () {
       console.log("on broken image", this);
       $(this).css({visibility:"hidden"});

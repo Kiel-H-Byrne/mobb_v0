@@ -240,7 +240,7 @@ Meteor.methods({
         return false;
       }
       
-      let img, description;
+      let img, uri, description;
 
       if (obj.images && obj.images.length) {
         img = obj.images[0]
@@ -263,13 +263,13 @@ Meteor.methods({
         let uri = encodeURIComponent(img); 
         console.log(uri);
         // if (uri.includes('http://')) {
-        if (uri.includes('http%3A%2F%2F')) {  
-          uri = uri.replace("http%3A%2F%2F", "https://images.weserv.nl/?url=");
+        if (img.includes('http://')) {  
+          uri = img.replace("http://", "https://images.weserv.nl/?url=");
           console.log(uri);
         } 
         // else if (img.includes('https://')) {
-        else if (uri.includes('https%3A%2F%2F')) {  
-          uri = uri.replace("https%3A%2F%2F", "https://images.weserv.nl/?url=ssl:");
+        else if (img.includes('https://')) {  
+          uri = img.replace("https://", "https://images.weserv.nl/?url=ssl:");
           console.log(uri);
         }
       }
@@ -278,10 +278,10 @@ Meteor.methods({
         _id: id 
       },{
         $set: { 
-          "image.url": img,
+          "image.url": uri,
           description: description,
       } });
-      return img;
+      return uri;
     } else {
       console.log(`No URL for ${id}, so no OpenGraph.`);
       return false;

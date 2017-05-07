@@ -53,7 +53,7 @@ console.log("-= imports/startup/client/index.js loaded");
 // let cache = new ApiCache('rest', 120);
 // 100000s = 1.16 days....
 const GCache = new OrionCache('gids', 100000);
-
+console.log(GCache);
 
 // getOGS = function(url) {
 //   let options = {
@@ -101,9 +101,6 @@ targetListing = function(map,pos) {
   
 placeMyMarker = function(map,pos) {
   //would only not exist if the template reloaded and the browser didn't...(dev mode)
-  $(document).ready(function (){
-    $('[id="centerButton_button"]').removeClass('pulse');
-  });
   if (!clientMarker) {
     const radius = 3;
     const clientMarker = new google.maps.Marker({
@@ -127,6 +124,10 @@ placeMyMarker = function(map,pos) {
     clientMarker.setPosition(pos);
     clientRadius.setCenter(pos);
   }
+
+  $(document).ready(function (){
+    $('[id="centerButton_button"]').removeClass('pulse');
+  });
 };
 
 setGReviews = function(gid) {
@@ -305,8 +306,6 @@ Meteor.startup(function () {
           }
       };
       return service.radarSearch(req,cbk);  
-
-      // Meteor.call('getGoogleID', params.map, params.name, params.loc) 
       };
     }
   });

@@ -4,8 +4,6 @@ import {Template} from 'meteor/templating';
 import Listings from '/imports/startup/collections/listings';
 
 import './centerButton.js';
-import './closestCards.js';
-import './closestCard.js';
 import './map.html';
 
 //====== GLOBALS ======
@@ -199,7 +197,7 @@ Template.map.onCreated( function () {
         });
           // as soon as session = true, let autorun proceed for  geolocate;  
           // then stop outer autorun
-        self.autorun( function(z) {
+        self.autorun( function(c) {
           let getPerm = Session.get("geoAccepted");
 
           if (getPerm === true) {
@@ -208,84 +206,59 @@ Template.map.onCreated( function () {
                 //====== AUTO CALCULATE NEW CLOSEST BUSINESS WHEN MY LOCATION CHANGES ======
                 // Materialize.toast('Locating...', 1100, 'myToast');
                 //add class 'pulse' to button, then remove it once found
-              $(document).ready(function (){
-                $('[id="centerButton_button"]').addClass('pulse');
-              });
+                $(document).ready(function (){
+                  $('[id="centerButton_button"]').addClass('pulse');
+                });
 
                 console.log("searching ...");
                 if (Geolocation.error() || Geolocation.latLng === null || Geolocation.latLng === "null") {
                   console.warn("Geo Error:", Geolocation.error().message);
-                    Materialize.toast('Error', 1300, 'myBadToast');                  
+                    Materialize.toast('Geolocation Error.', 1000, 'myBadToast');                  
                   return;
                 } else {
-                    
-                    //offset by a few in x direction, due to split screen. 
-                    //want 'center' to be at 3/4th point of screen.
-                    // let offsetX = -0.02;
-                    // let offsetY = 0.00;
-                    // let lat = (latLng.lat + offsetX);
-                    // let lng = (latLng.lng + offsetY);
-                    // let latLng_offset = {lat: lat , lng: lng};
-                    //              ---------------- ANALYTICS EVENT ---------------
-                    // analytics.track( "Browser IP Data", {
-                    //   title: "Pulled Geo Info",
-                    //   data: Session.get('clientLoc')
-                    // });
-                    // console.log("-= GA : Geolocation Obtained =-");
+                  getLocation().then((pos) => {
+                    if (pos) {
+                      Session.set('clientLoc', pos);
 
-                    getLocation().then((pos) => {
-                      if (pos) {
-                        Session.set('clientLoc', pos);
-
-                        if (!clientMarker) {
-                          clientMarker = new google.maps.Marker({
-                              position: new google.maps.LatLng(pos.lat, pos.lng),
-                              map: map.instance,
-                              icon: {url: 'img/orange_dot_sm_2.png'},
-                              title: "My Location",
-                              // animation: google.maps.Animation.BOUNCE,
-                          });
-                          
-                          clientRadius = new google.maps.Circle({
+                      if (!clientMarker) {
+                        clientMarker = new google.maps.Marker({
+                            position: new google.maps.LatLng(pos.lat, pos.lng),
                             map: map.instance,
-                            center: pos,
-                            radius: (3 * 1609.34),
-                            strokeColor: '#FF7733',
-                            strokeOpacity: 0.5,
-                            strokeWeight: 2,
-                            fillColor: '#FFAA00',
-                            fillOpacity: 0.15,
-                          });
+                            icon: {url: 'img/orange_dot_sm_2.png'},
+                            title: "My Location",
+                            // animation: google.maps.Animation.BOUNCE,
+                        });
+                        
+                        clientRadius = new google.maps.Circle({
+                          map: map.instance,
+                          center: pos,
+                          radius: (3 * 1609.34),
+                          strokeColor: '#FF7733',
+                          strokeOpacity: 0.5,
+                          strokeWeight: 2,
+                          fillColor: '#FFAA00',
+                          fillOpacity: 0.15,
+                        });
 
-                          // map.instance.setCenter(pos);
-                          // map.instance.setZoom(12); 
-                          targetListing(map,pos);
+                        // map.instance.setCenter(pos);
+                        // map.instance.setZoom(12); 
+                        targetListing(map,pos);
 
-                        } else {
-                          clientMarker.setPosition(pos);
-                          clientRadius.setCenter(pos);
-                        }
-                        return;
+                      } else {
+                        clientMarker.setPosition(pos);
+                        clientRadius.setCenter(pos);
                       }
-                    });
-
-
-                    // let infoWindow = new google.maps.InfoWindow({
-                    //     content: "Here I Am!"
-                    // });
-
-                    // clientMarker.addListener('hover', function () {
-                    // //     infoWindow.setContent("My Location.");
-                    // //     infoWindow.open(map, clientMarker);
-                    //       console.log(this);
-                    //       // $(this).tooltip({delay:50});
-                    // });
+                      return;
+                    }
+                  });
                 }
               });
+              c.stop();
             } else {
-            console.warn('Get Geo Not Accepted');
+            console.warn('Get Geolocation: Not Accepted, Yet.');
           }
         });
+
         // ========================= DOM Events relating to Map =========================
 
         // google.maps.event.addDomListener(map, 'center_changed', function () {

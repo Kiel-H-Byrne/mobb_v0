@@ -96,8 +96,10 @@
 </template>
 
 <template name="leftSide">
-{{!--     {{> closestPage}}
+<div class="hide-on-med-and-down">
+    {{> closestPage}}
     {{#if hasFavorites}}
         {{> favoritesPage}}
-    {{/if}} --}}
+    {{/if}}
+</div>
 </template>

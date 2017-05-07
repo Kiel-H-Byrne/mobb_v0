@@ -462,6 +462,38 @@ Meteor.methods({
   //       console.log(e);
   //     });
   // },
+//     getYelpID: function(phone) {
+//     this.unblock();
+//     let apiUrl = "https://api.yelp.com/v3/businesses/search/phone?phone=%2B1" + phone;
+
+//     const access_token = 'BAYaQkXitLcxtW-pKp3w6p8pEMVZYv7FF5FTEUJVrtJWbtVt5YQ9k80EgQ3bVv2eJr-Hh4xXh_uG0xWmf4hYKKM4Wy-cFrz8b803Xfi--USK3Em78pgQTr9hYT1nWHYx';
+//     let headers = {
+//       Authorization: 'Bearer '+ access_token
+//     };
+//     console.log("--URL--"+apiUrl);
+//     let response = Meteor.wrapAsync(apiCall2)(apiUrl, headers);
+//     console.log("YELP RESPONSE");
+//     console.log(response);
+//     return response;
+// //node js request    
+//     // let request = require("request");
+
+//     // let options = { method: 'GET',
+//     //   url: 'https://api.yelp.com/v3/businesses/search/phone',
+//     //   qs: { phone: phone },
+//     //   headers: {
+//     //     authorization: 'Bearer BAYaQkXitLcxtW-pKp3w6p8pEMVZYv7FF5FTEUJVrtJWbtVt5YQ9k80EgQ3bVv2eJr-Hh4xXh_uG0xWmf4hYKKM4Wy-cFrz8b803Xfi--USK3Em78pgQTr9hYT1nWHYx' } };
+
+//     // request(options, function (error, response, body) {
+//     //   if (error) {
+//     //     console.log(error);
+//     //   } else {
+//     //     console.log(body);
+//     //     return body;
+//     //   };
+//     // });
+
+//   },
   bizSearch: function () {
     // https://api.business.usa.gov/{ReturnType}?keyword={KeyWordSearch}&page={PageNumber}&api_key={YourAPIKey}
     this.unblock();

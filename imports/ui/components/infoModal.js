@@ -17,29 +17,6 @@ Template.infoModal.onRendered(function () {
       endingTop: '4%', // Ending top style attribute
     });    
   });
-//   this.autorun(function () {
-//     //When url changes to '/listings/:name' or '/categories/:name', open modal with listing data, or filter list to show only those cards in category..
-//     let controller = Iron.controller();
-//     let params = controller.getParams();
-    
-//     // console.log(params);
-//     if (params.name) {
-//       // let doc = Listings.findOne({
-//       //   name: params.name
-//       // });
-//       // console.log(doc);
-//       // $('#modalFull').modal('open');
-
-//     // } else if (params.title) {
-//     //   // console.log(result);
-//     //   let category = Categories.findOne({
-//     //     title: result
-//     //   });
-//     //   console.log(category);
-//     //   Router.go('/categories/' + category._id);
-//     }
-//   });
-
 });
 
 Template.infoModal.events({

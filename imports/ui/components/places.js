@@ -3,8 +3,6 @@ import {Template} from 'meteor/templating';
 
 import Listings from '/imports/startup/collections/listings';
 import './centerButton.js';
-import './closestCards.js';
-import './closestCard.js';
 import './map.html';
 
 
@@ -36,7 +34,7 @@ Template.test.helpers({
                 center: new google.maps.LatLng(mapCenter),
                 // center: new google.maps.LatLng(Centers.User[0], Centers.User[1]),
                 zoom: 15,
-                // mapTypeId:google.maps.MapTypeId.TERRAIN,
+                // mapTypeId:google.`maps.MapTypeId.TERRAIN,
                 backgroundColor: "#444",
                 clickableIcons: false,
                 disableDefaultUI: true,

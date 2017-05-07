@@ -252,15 +252,17 @@ Meteor.methods({
         console.log(obj);
         console.log("empty object?? Has description?")
       }
+
       if (obj.description) {
         description = obj.description;
       } else if (obj.title) {
         let description = obj.title;
       }
+
       let status = response.requestInfo.responseCode;
       // console.log(status);
       if (img) {
-        let uri = encodeURIComponent(img); 
+        uri = encodeURIComponent(img); 
         console.log(uri);
         // if (uri.includes('http://')) {
         if (img.includes('http://')) {  
@@ -281,6 +283,8 @@ Meteor.methods({
           "image.url": uri,
           description: description,
       } });
+
+      console.log(uri);
       return uri;
     } else {
       console.log(`No URL for ${id}, so no OpenGraph.`);

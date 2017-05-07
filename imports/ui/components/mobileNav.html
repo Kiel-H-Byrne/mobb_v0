@@ -1,12 +1,17 @@
 
 <template name="mobileNav">
+<div id="mobileNav">
 {{#if hasFavorites}}
   <ul id="slide-out-fav" class="side-nav">
-    <li class="collection-header"><a><i class="material-icons">favorite</i>Favorites:</a></li>
+    <li class="collection-header"><i class="material-icons">favorite</i>Favorites:</li>
     <li><div class="divider"></div></li>
     <ul class="collection">
       {{#each favorites}}
-        <li>{{> listCard}}</li>
+        <li>
+          <a class="card_link" href="/listings/{{name}}">
+            {{> listCard}}
+          </a>
+        </li>
       {{/each}}
     </ul>
   </ul>
@@ -14,50 +19,54 @@
 {{/if}}
 {{#if haveLocation}}
   <ul id="slide-out-near" class="side-nav">
-    <li class="collection-header"><a><i class="material-icons">near_me</i><h5>Nearest:</h5></a></li>
+    <li class="collection-header"><i class="material-icons">near_me</i>Nearest:</li>
     <li><div class="divider"></div></li>
     <ul class="collection">
       {{#each list}}
         {{#if isClose (getDistance location)}}
-          <li>{{> listCard}}</li>
+          <li>
+            <a class="card_link" href="/listings/{{name}}">
+              {{> listCard}}
+            </a>
+          </li>
         {{/if}}
       {{/each}}
     </ul>
   </ul>
   <a data-activates="slide-out-near" class="z-depth-4 button-collapse_near slide_badge_near"><i class="material-icons">near_me</i></a>
   {{/if}}
+</div>
 </template>
 
 <template name="listCard">
-      <li class="collection-item avatar grey darken-2 hoverable ">
-        {{#if image.url}}
-          <img class="circle" src="{{image.url}}" />
-        {{else}}
-          <img class="circle" src="{{getImage url _id}}" />
-        {{/if}}
-        <span class="title">{{name}}</span>
+  <li class="collection-item avatar grey darken-2 hoverable ">
+    {{> favoriteStar}}
+    {{#if image.url}}
+      <img class="circle" src="{{image.url}}" />
+    {{else}}
+      <img class="circle" src="{{getImage url _id}}" />
+    {{/if}}
+    <span class="title">{{name}}</span>
 
-        <p>
-          {{#if social.facebook}}
-          fb: <a href="https://www.facebook.com/{{social.facebook}}" target="_blank" rel="noopener" > @{{social.facebook}}</a> <br />
-          {{/if}}
-          {{#if social.instagram}}
-          ig: <a href="https://www.instagram.com/{{social.instagram}}" target="_blank" rel="noopener" > @{{social.instagram}}</a> <br />
-          {{/if}}
-          {{#if social.twitter}}
-          tt: <a href="https://www.twitter.com/{{social.twitter}}" target="_blank" rel="noopener" > @{{social.twitter}}</a> <br />
-          {{/if}}
-        </p>
-        {{#if street}}
-        <p class="address">
-          {{street}} <br />
-          {{city}} {{state}} {{zip}} <br />
-        </p>
-        {{/if}}
-        {{#if phone}}    
-          <a class="phone" href="tel:+1{{phone}}"><i class="material-icons" style="font-size:100%; margin-right:2px; ">phone</i>{{phone}}</a> <br />
-        {{/if}}
-        {{> favoriteStar}}
-        
-      </li>
+    <p>
+      {{#if social.facebook}}
+      fb: <a href="https://www.facebook.com/{{social.facebook}}" target="_blank" rel="noopener" > @{{social.facebook}}</a> <br />
+      {{/if}}
+      {{#if social.instagram}}
+      ig: <a href="https://www.instagram.com/{{social.instagram}}" target="_blank" rel="noopener" > @{{social.instagram}}</a> <br />
+      {{/if}}
+      {{#if social.twitter}}
+      tt: <a href="https://www.twitter.com/{{social.twitter}}" target="_blank" rel="noopener" > @{{social.twitter}}</a> <br />
+      {{/if}}
+    </p>
+    {{#if street}}
+    <p class="address">
+      {{street}} <br />
+      {{city}} {{state}} {{zip}} <br />
+    </p>
+    {{/if}}
+    {{#if phone}}    
+      <a class="phone" href="tel:+1{{phone}}"><i class="material-icons" style="font-size:100%; margin-right:2px; ">phone</i>{{phone}}</a> <br />
+    {{/if}}
+  </li>
 </template>

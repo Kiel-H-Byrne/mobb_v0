@@ -270,10 +270,10 @@ Meteor.methods({
           console.log(uri);
         } 
         // else if (img.includes('https://')) {
-        else if (img.includes('https://')) {  
-          uri = img.replace("https://", "https://images.weserv.nl/?url=ssl:");
-          console.log(uri);
-        }
+        // else if (img.includes('https://')) {  
+        //   uri = img.replace("https://", "https://images.weserv.nl/?url=ssl:");
+        //   console.log(uri);
+        // }
       }
 
       Listings.update({

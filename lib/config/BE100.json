@@ -1,0 +1,602 @@
+[
+  {
+    "Company": "World Wide Technology Inc.",
+    "Location": "St. Louis, MO",
+    "Chief Executive": "David L. Steward/James P. Kavanaugh",
+    "TYPE OF BUSINESS": "IT products/services"
+  },
+  {
+    "Company": "ACT-1 Group",
+    "Location": "Torrance, CA",
+    "Chief Executive": "Janice Bryant Howroyd",
+    "TYPE OF BUSINESS": "Staffing services"
+  },
+  {
+    "Company": "Bridgewater Interiors L.L.C.",
+    "Location": "Detroit, MI",
+    "Chief Executive": "Ronald E. Hall Jr.",
+    "TYPE OF BUSINESS": "Automotive parts"
+  },
+  {
+    "Company": "Modular Assembly Innovations L.L.C.",
+    "Location": "Dublin, OH",
+    "Chief Executive": "Billy R. Vickers",
+    "TYPE OF BUSINESS": "Automotive partsy"
+  },
+  {
+    "Company": "Piston Automotive L.L.C.",
+    "Location": "Redford, MI",
+    "Chief Executive": "Vincent Johnson",
+    "TYPE OF BUSINESS": "Automotive parts"
+  },
+  {
+    "Company": "Manna Inc.",
+    "Location": "Louisville, KY",
+    "Chief Executive": "Ulysses Bridgeman Jr.",
+    "TYPE OF BUSINESS": "Quick service restaurants"
+  },
+  {
+    "Company": "The Anderson-DuBose Co.",
+    "Location": "Lordstown, OH",
+    "Chief Executive": "Warren E. Anderson",
+    "TYPE OF BUSINESS": "Food and paper product distribution"
+  },
+  {
+    "Company": "Thompson Hospitality Corp.",
+    "Location": "Reston, VA",
+    "Chief Executive": "Warren M. Thompson",
+    "TYPE OF BUSINESS": "Food and facilities management, quick service restaurants"
+  },
+  {
+    "Company": "Radio One Inc.",
+    "Location": "Silver Spring, MD",
+    "Chief Executive": "Alfred C.y Liggins III",
+    "TYPE OF BUSINESS": "Multimedia"
+  },
+  {
+    "Company": "Global Automotive Alliance L.L.C.",
+    "Location": "Detroit, MI",
+    "Chief Executive": "Sylvester Hester",
+    "TYPE OF BUSINESS": "Automotive parts"
+  },
+  {
+    "Company": "Millennium Steel Service L.L.C.",
+    "Location": "Princeton, IN",
+    "Chief Executive": "Henry L. Jackson",
+    "TYPE OF BUSINESS": "Automotive steel processing and warehousing"
+  },
+  {
+    "Company": "Fair Oaks Farms L.L.C.",
+    "Location": "Pleasant Prairie, WI",
+    "Chief Executive": "Michael L. Thompson",
+    "TYPE OF BUSINESS": "Food services"
+  },
+  {
+    "Company": "H. J. Russell & Co.",
+    "Location": "Atlanta, GA",
+    "Chief Executive": "Michael B. Russell",
+    "TYPE OF BUSINESS": "Construction, real estate, and food concessions"
+  },
+  {
+    "Company": "Adams Communication & Engineering Technology Inc.",
+    "Location": "Waldorf, MD",
+    "Chief Executive": "Charles M. Adams",
+    "TYPE OF BUSINESS": "IT and security systems services"
+  },
+  {
+    "Company": "Hightowers Petroleum Co.",
+    "Location": "Middletown, OH",
+    "Chief Executive": "Stephen L. Hightower",
+    "TYPE OF BUSINESS": "Petroleum products distribution"
+  },
+  {
+    "Company": "Millennium Steel of Texas",
+    "Location": "San Antonio, TX",
+    "Chief Executive": "Henryy L. Jackson",
+    "TYPE OF BUSINESS": "Automotive steel processing and warehousing"
+  },
+  {
+    "Company": "TV One L.L.C.",
+    "Location": "Silver Spring, MD",
+    "Chief Executive": "Alfred C. Liggins III",
+    "TYPE OF BUSINESS": "Media"
+  },
+  {
+    "Company": "Baldwin Richardson Foods Co.",
+    "Location": "Oakbrook Terrace, IL",
+    "Chief Executive": "Eric G. Johnson",
+    "TYPE OF BUSINESS": "Food services"
+  },
+  {
+    "Company": "Health Resources Inc.",
+    "Location": "Owings Mills, MD",
+    "Chief Executive": "David L. Dalton",
+    "TYPE OF BUSINESS": "Pharmaceutical products/services"
+  },
+  {
+    "Company": "The Gourmet Cos.",
+    "Location": "Atlanta, GA",
+    "Chief Executive": "Nathaniel R. Goldston III",
+    "TYPE OF BUSINESS": "Food services, facilities management, concessions"
+  },
+  {
+    "Company": "THOR Construction Inc.",
+    "Location": "Minneapolis, MN",
+    "Chief Executive": "Ravi Normany",
+    "TYPE OF BUSINESS": "Contracting, construction management"
+  },
+  {
+    "Company": "Sun State International Trucks L.L.C.",
+    "Location": "Tampa, FL",
+    "Chief Executive": "Oscar J. Horton",
+    "TYPE OF BUSINESS": "Commercial truck dealership"
+  },
+  {
+    "Company": "Jackmont Hospitality Inc.",
+    "Location": "Atlanta, GA",
+    "Chief Executive": "Daniel J. Halpern",
+    "TYPE OF BUSINESS": "Quick service restaurants, food services"
+  },
+  {
+    "Company": "James Group International Inc.",
+    "Location": "Detroit, MI",
+    "Chief Executive": "John A. James",
+    "TYPE OF BUSINESS": "Supply chain management"
+  },
+  {
+    "Company": "Systems Automotive Interiors L.L.C.",
+    "Location": "Mantachie, MS",
+    "Chief Executive": "Toni D. Cooley",
+    "TYPE OF BUSINESS": "Automotive parts"
+  },
+  {
+    "Company": "Urban Lending Solutions",
+    "Location": "Pittsburgh, PA",
+    "Chief Executive": "Charles S. Sanders",
+    "TYPE OF BUSINESS": "Business services to the banking/mortgage industry"
+  },
+  {
+    "Company": "Trillion Communications Corp.",
+    "Location": "Bessemer, AL",
+    "Chief Executive": "Brian C. Hamilton",
+    "TYPE OF BUSINESS": "Telecommunications products/services"
+  },
+  {
+    "Company": "Harpo Inc.",
+    "Location": "Chicago, IL",
+    "Chief Executive": "Oprah Winfrey",
+    "TYPE OF BUSINESS": "Multimedia"
+  },
+  {
+    "Company": "Diversant L.L.C.",
+    "Location": "Red Bank , NJ",
+    "Chief Executive": "Gene C. Waddy",
+    "TYPE OF BUSINESS": "IT Staffingy"
+  },
+  {
+    "Company": "The Lewis Group L.L.P.",
+    "Location": "Houston, TX",
+    "Chief Executive": "Sherman Lewis lll",
+    "TYPE OF BUSINESS": "Quick service restaurants, gas stations, and convenience stores"
+  },
+  {
+    "Company": "K. Neal International Trucks Inc.",
+    "Location": "Hyattsville, MD",
+    "Chief Executive": "Stephen W. Neal",
+    "TYPE OF BUSINESS": "yCommercial truck dealership"
+  },
+  {
+    "Company": "Golden Krust Caribbean Bakery & Grill",
+    "Location": "Bronx, NY",
+    "Chief Executive": "Lowell Hawthorne",
+    "TYPE OF BUSINESS": "Quick service restaurants, food services"
+  },
+  {
+    "Company": "Systems Electro Coating L.L.C.",
+    "Location": "Madison, MS",
+    "Chief Executive": "Toni D. Cooley",
+    "TYPE OF BUSINESS": "Automotive parts"
+  },
+  {
+    "Company": "PRWT Services Inc.",
+    "Location": "Philadelphia, PA",
+    "Chief Executive": "Malik Majeed",
+    "TYPE OF BUSINESS": "Business process solutions, facilities management"
+  },
+  {
+    "Company": "ChemicoMays L.L.C.",
+    "Location": "Southfield, MI",
+    "Chief Executive": "Leon C. Richardson",
+    "TYPE OF BUSINESS": "Chemical management services"
+  },
+  {
+    "Company": "Mays Chemical Co. Inc.",
+    "Location": "Indianapolis, IN",
+    "Chief Executive": "Kristin Mays-Corbitt",
+    "TYPE OF BUSINESS": "Chemical distribution and management"
+  },
+  {
+    "Company": "V and J Holding Cos. Inc.",
+    "Location": "Milwaukee, WI",
+    "Chief Executive": "Valerie Daniels-Carter",
+    "TYPE OF BUSINESS": "Quick service restaurants"
+  },
+  {
+    "Company": "Facility Interiors Inc.",
+    "Location": "Carrollton, TX",
+    "Chief Executive": "Charles Griggsby",
+    "TYPE OF BUSINESS": "Office furniture and facility services"
+  },
+  {
+    "Company": "Raven Transport Co. Inc.",
+    "Location": "Jacksonville, FL",
+    "Chief Executive": "W. Randolph Lee",
+    "TYPE OF BUSINESS": "Truckload freight transportation"
+  },
+  {
+    "Company": "New Horizons Baking Co.y",
+    "Location": "Norwalk, OH",
+    "Chief Executive": "Tilmon F. Brown",
+    "TYPE OF BUSINESS": "Food services"
+  },
+  {
+    "Company": "Benton-Georgia L.L.C.",
+    "Location": "Douglasville, GA",
+    "Chief Executive": "Dale LeFebvre",
+    "TYPE OF BUSINESS": "Construction materials and equipment suppliery"
+  },
+  {
+    "Company": "Beauchamp Distributing Co.",
+    "Location": "Compton, CA",
+    "Chief Executive": "Patrick L. Beauchamp",
+    "TYPE OF BUSINESS": "Beverage distribution"
+  },
+  {
+    "Company": "All American Meats Inc.",
+    "Location": "Omaha, NE",
+    "Chief Executive": "Shawn Buchanan",
+    "TYPE OF BUSINESS": "Food manufacturing"
+  },
+  {
+    "Company": "Powers & Sons Construction Co. Inc.",
+    "Location": "Gary, IN",
+    "Chief Executive": "Mamon Powers Jr.",
+    "TYPE OF BUSINESS": "Contracting, construction management"
+  },
+  {
+    "Company": "Ozanne Construction Co.",
+    "Location": "Cleveland, OH",
+    "Chief Executive": "Dominic L. Ozanne",
+    "TYPE OF BUSINESS": "Contracting, construction management"
+  },
+  {
+    "Company": "Bird Electric",
+    "Location": "Eastland, TX",
+    "Chief Executive": "Dale LeFebvre",
+    "TYPE OF BUSINESS": "Electrical contracting services"
+  },
+  {
+    "Company": "SENTEL Corp.",
+    "Location": "Alexandria, VA",
+    "Chief Executive": "Russell T. Wright",
+    "TYPE OF BUSINESS": "Engineering and IT services"
+  },
+  {
+    "Company": "The Peebles Corp.",
+    "Location": "New York, NY",
+    "Chief Executive": "R. Donahue Peebles",
+    "TYPE OF BUSINESS": "Real estate development/management"
+  },
+  {
+    "Company": "VMS365 Inc.",
+    "Location": "Rochester Hills, MI",
+    "Chief Executive": "Rumia Ambrose-Burbank",
+    "TYPE OF BUSINESS": "Materials and inventory mangement, strategic sourcing"
+  },
+  {
+    "Company": "C. D. Moody Construction Co. Inc.",
+    "Location": "Lithonia, GA",
+    "Chief Executive": "C. David Moody Jr.",
+    "TYPE OF BUSINESS": "Contracting, construction management"
+  },
+  {
+    "Company": "Tolston Holdings L.L.C.",
+    "Location": "Timmonsville, SC",
+    "Chief Executive": "James R. Tolston III",
+    "TYPE OF BUSINESS": "Automotive parts"
+  },
+  {
+    "Company": "SoBran Inc.",
+    "Location": "Fairfax, VA",
+    "Chief Executive": "Amos L. Otis",
+    "TYPE OF BUSINESS": "Biomedical and environmental research support, and security support"
+  },
+  {
+    "Company": "Summus Industries Inc.",
+    "Location": "Sugar Land, TX",
+    "Chief Executive": "Rodney L. Craig",
+    "TYPE OF BUSINESS": "Supply chain solutionsy"
+  },
+  {
+    "Company": "Parrish Restaurants Ltd.",
+    "Location": "Dallas, TX",
+    "Chief Executive": "Roland G. Parrish",
+    "TYPE OF BUSINESS": "Quick service restaurants"
+  },
+  {
+    "Company": "Engineering Design Technologies Inc.",
+    "Location": "Marietta, GA",
+    "Chief Executive": "Anthony Taylory",
+    "TYPE OF BUSINESS": "Construction, energy, healthcare, transportation/warehousing"
+  },
+  {
+    "Company": "W3R Consulting",
+    "Location": "Southfield , MI",
+    "Chief Executive": "Eric Hardy",
+    "TYPE OF BUSINESS": "IT consultingy"
+  },
+  {
+    "Company": "Advanced Systems Development Inc.",
+    "Location": "Alexandria, VA",
+    "Chief Executive": "Richard L. Bennett",
+    "TYPE OF BUSINESS": "IT products/services"
+  },
+  {
+    "Company": "TAG Holdings L.L.C.",
+    "Location": "Wixom, MI",
+    "Chief Executive": "Joseph B. Anderson Jr.",
+    "TYPE OF BUSINESS": "Mechanical parts supplier, warehousing"
+  },
+  {
+    "Company": "Neta Scientific Inc.",
+    "Location": "Hainesport, NJ",
+    "Chief Executive": "Garnetta Sanders",
+    "TYPE OF BUSINESS": "Distributor of laboratory supplies and equipmenty"
+  },
+  {
+    "Company": "DKW Communications Inc.",
+    "Location": "Washington, DC",
+    "Chief Executive": "Darryl K. Washington",
+    "TYPE OF BUSINESS": "IT and security services"
+  },
+  {
+    "Company": "The Client Base Funding Group Inc.*y",
+    "Location": "Los Angeles, CA",
+    "Chief Executive": "Bill Richardson",
+    "TYPE OF BUSINESS": "Security equipment leasing, sales,instalation financial servicesy"
+  },
+  {
+    "Company": "Systems Application and Technologies Inc. (SA-TECH)",
+    "Location": "Largo, MD",
+    "Chief Executive": "Timothy J. Adams",
+    "TYPE OF BUSINESS": "Engineering and technology services, logistics"
+  },
+  {
+    "Company": "Boersma Travel Inc.",
+    "Location": "Ann Arbor, MI",
+    "Chief Executive": "James E. Kimble",
+    "TYPE OF BUSINESS": "Travel managementy"
+  },
+  {
+    "Company": "Rocket Lawyer",
+    "Location": "San Francisco, CA",
+    "Chief Executive": "Charley Moore",
+    "TYPE OF BUSINESS": "Online legal services"
+  },
+  {
+    "Company": "IAP Cos.",
+    "Location": "Columbus, OH",
+    "Chief Executive": "Thomas G. Banks",
+    "TYPE OF BUSINESS": "Contracting, construction management"
+  },
+  {
+    "Company": "TME Enterprises 1 Ltd.",
+    "Location": "Smyrna, GA",
+    "Chief Executive": "Michael E. Melton",
+    "TYPE OF BUSINESS": "Quick service restaurants"
+  },
+  {
+    "Company": "Zycron Inc.",
+    "Location": "Nashville, TN",
+    "Chief Executive": "Darrell S. Freeman Sr.",
+    "TYPE OF BUSINESS": "IT solutions and staffing"
+  },
+  {
+    "Company": "On-Target Supplies & Logistics Ltd.",
+    "Location": "Dallas, TX",
+    "Chief Executive": "Albert C. Black Jr.",
+    "TYPE OF BUSINESS": "Logistics services and supply chain management"
+  },
+  {
+    "Company": "Alpha Office Supplies Inc.**",
+    "Location": "Philadelphia, PA",
+    "Chief Executive": "Chester A. Riddick Jr.",
+    "TYPE OF BUSINESS": "Office furniture supplies and energy management"
+  },
+  {
+    "Company": "Towne Mortgage",
+    "Location": "Troy, MI",
+    "Chief Executive": "Dale LeFebvre",
+    "TYPE OF BUSINESS": "Financial services"
+  },
+  {
+    "Company": "Premier Management Corp.",
+    "Location": "Columbia, MD",
+    "Chief Executive": "Marcus Board",
+    "TYPE OF BUSINESS": "Financial managementy services, linguistics,IT solutions"
+  },
+  {
+    "Company": "Southeast Fuels Inc.",
+    "Location": "Greensboro, NC",
+    "Chief Executive": "Ken Bethea",
+    "TYPE OF BUSINESS": "Energy"
+  },
+  {
+    "Company": "VETS etc. L.L.C.",
+    "Location": "Seaside, CA",
+    "Chief Executive": "John Nash Sr.",
+    "TYPE OF BUSINESS": "Logistics services"
+  },
+  {
+    "Company": "JMA Solutions L.L.C.",
+    "Location": "Washington, DC",
+    "Chief Executive": "Janice M. Adams",
+    "TYPE OF BUSINESS": "Air traffic control and engineering"
+  },
+  {
+    "Company": "General Microsystems Inc.",
+    "Location": "Bellevue, WA",
+    "Chief Executive": "Earl W. Overstreet II",
+    "TYPE OF BUSINESS": "IT solutions"
+  },
+  {
+    "Company": "Diverse Facility Solutions Inc.",
+    "Location": "Chicago, IL",
+    "Chief Executive": "Mark S. Wright Sr.",
+    "TYPE OF BUSINESS": "Facilities management"
+  },
+  {
+    "Company": "InScope International",
+    "Location": "Reston, VA",
+    "Chief Executive": "Michael Bruce",
+    "TYPE OF BUSINESS": "Staffing, engineering, and information services solutions"
+  },
+  {
+    "Company": "Ag Trucking Inc.",
+    "Location": "Goshen, IN",
+    "Chief Executive": "Dale LeFebvre",
+    "TYPE OF BUSINESS": "Transportation services"
+  },
+  {
+    "Company": "Manufacturers Industrial Group L.L.C. (MIGO)",
+    "Location": "Lexington, TN",
+    "Chief Executive": "Andre L. Gist",
+    "TYPE OF BUSINESS": "Automotive parts"
+  },
+  {
+    "Company": "B & S Electric Supply Co. Inc.",
+    "Location": "Atlanta, GA",
+    "Chief Executive": "Clarence W. Robie",
+    "TYPE OF BUSINESS": "Electrical equipment supplier"
+  },
+  {
+    "Company": "Keystone Electrical Manufacturing Co.",
+    "Location": "Des Moines, IA",
+    "Chief Executive": "Frederick V. Buie",
+    "TYPE OF BUSINESS": "Electrical manufacturing, engineering services"
+  },
+  {
+    "Company": "Capstone Corp.",
+    "Location": "Alexandria, VA",
+    "Chief Executive": "William J. Moore III",
+    "TYPE OF BUSINESS": "Defense support services/IT products/services"
+  },
+  {
+    "Company": "ChaseSource L.P.",
+    "Location": "Houston, TX",
+    "Chief Executive": "Anthony R. Chase",
+    "TYPE OF BUSINESS": "Staffing and facilities managementy"
+  },
+  {
+    "Company": "Detroit Chassis L.L.C.",
+    "Location": "Detroit, MI",
+    "Chief Executive": "Michael J. Guthrie",
+    "TYPE OF BUSINESS": "Automotive parts"
+  },
+  {
+    "Company": "Signature Packaging and Paper L.L.C.",
+    "Location": "Jackson, MO",
+    "Chief Executive": "Dennis Vinson",
+    "TYPE OF BUSINESS": "Paper and packaging services"
+  },
+  {
+    "Company": "Victory Personnel Services Inc.",
+    "Location": "Milwaukee, WI",
+    "Chief Executive": "Joseph A. Tucker Sr.",
+    "TYPE OF BUSINESS": "Staffing services"
+  },
+  {
+    "Company": "Logistics Systems Inc.",
+    "Location": "Washington, DCy",
+    "Chief Executive": "Lawrence Wilkerson",
+    "TYPE OF BUSINESS": "Logistics management"
+  },
+  {
+    "Company": "Earl G. Graves Ltd.",
+    "Location": "New York, NY",
+    "Chief Executive": "Earl G. Graves Jr.",
+    "TYPE OF BUSINESS": "Multimedia, business conferences"
+  },
+  {
+    "Company": "Metters Industries Inc.",
+    "Location": "McLean, VA",
+    "Chief Executive": "Samuel Metters",
+    "TYPE OF BUSINESS": "IT solutions and services"
+  },
+  {
+    "Company": "Alexander Mechanical Contractors Inc.",
+    "Location": "Kansas City, MO",
+    "Chief Executive": "William H. Alexander",
+    "TYPE OF BUSINESS": "Mechanical contractor, plumbing and piping"
+  },
+  {
+    "Company": "Brodie Contractors Inc.",
+    "Location": "Raleigh, NC",
+    "Chief Executive": "Calvin Brodie",
+    "TYPE OF BUSINESS": "General contracting"
+  },
+  {
+    "Company": "The Robert Cos.***y",
+    "Location": "St. Louis, MO",
+    "Chief Executive": "Steven C. Roberts",
+    "TYPE OF BUSINESS": "Real estate development, telecommunications"
+  },
+  {
+    "Company": "Che International Group L.L.C.",
+    "Location": "Cincinnati, OH",
+    "Chief Executive": "Christopher Che",
+    "TYPE OF BUSINESS": "Paper and packaging, printing"
+  },
+  {
+    "Company": "MCL JASCO Inc.y",
+    "Location": "Detroit, MIy",
+    "Chief Executive": "Louis E. James",
+    "TYPE OF BUSINESS": "Metal processing, logistics and energy management services"
+  },
+  {
+    "Company": "1 Source Consulting Inc.",
+    "Location": "Washington, DC",
+    "Chief Executive": "William Teel",
+    "TYPE OF BUSINESS": "IT solutions and services"
+  },
+  {
+    "Company": "CarterBrothers Security Services L.L.C.",
+    "Location": "East Point, GA",
+    "Chief Executive": "John F. Cartery",
+    "TYPE OF BUSINESS": "Electronic security systems"
+  },
+  {
+    "Company": "DigiFlight Inc.",
+    "Location": "Columbia, MD",
+    "Chief Executive": "Stanford Oliver",
+    "TYPE OF BUSINESS": "IT and security solutionsy"
+  },
+  {
+    "Company": "White Construction Co. Inc.",
+    "Location": "Detroit, MI",
+    "Chief Executive": "W. Bernard White",
+    "TYPE OF BUSINESS": "Contracting and construction"
+  },
+  {
+    "Company": "ALL(n)1 Security Services Inc.",
+    "Location": "Atlanta, GA",
+    "Chief Executive": "Mary Parker",
+    "TYPE OF BUSINESS": "Security solutions and staffing"
+  },
+  {
+    "Company": "Aire Sheet Metal Inc.",
+    "Location": "Redwood City, CA",
+    "Chief Executive": "Eugene Bramlett",
+    "TYPE OF BUSINESS": "General contracting and sheet metal provider"
+  }
+]

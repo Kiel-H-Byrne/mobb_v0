@@ -3,7 +3,7 @@
 <template name="nav2">
     <div class="navbar-fixed">
         {{> corner_ribbon}}
-        <nav class="grey darken-1 z-depth-2 nav-extended">
+        <nav class="z-depth-2 nav-extended">
             <div class="nav-wrapper">
 
                 <a class="brand-logo left" href="/">
@@ -15,7 +15,7 @@
                     <li class="hide-on-small-only ">
                         <form id="desktop_search-form">
                           <div class="input-field">
-                            <input id="search_nav" placeholder="Search..."  class="amber-text form-control typeahead" name="results" type="text" autocomplete="off" spellcheck="off" data-sources="dataset" />
+                            <input id="search_nav" placeholder="Search..."  class="form-control typeahead" name="results" type="text" autocomplete="off" spellcheck="off" data-sources="dataset" />
                             <label for="search_nav"><i class="material-icons">search</i></label>
                             <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;" tabindex="-1" />
                           </div>
@@ -62,11 +62,11 @@
                 </ul>
             </div>
 
-            <div id="mobile-search_wrapper" class="grey darken-2 hide-on-med-and-up nav-content">
+            <div id="mobile-search_wrapper" class="hide-on-med-and-up nav-content">
                 <div class="hoverable">
                     <form id="mobile_search-form">
                       <div class="input-field">
-                        <input id="search_mo" placeholder="Search for Your City... "  class="amber-text form-control" type="text" autocomplete="off" spellcheck="off" />
+                        <input id="search_mo" placeholder="Search for Your City... "  class="form-control" type="text" autocomplete="off" spellcheck="off" />
                         <label for="search_mo"><i class="material-icons">search</i></label>
                         <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;" tabindex="-1" />
                       </div>

@@ -1,6 +1,6 @@
 @import '{}/node_modules/materialize-css/sass/components/color';
 @import '{}/node_modules/materialize-css/sass/components/variables';
-
+@import 'palettes/_plt_orng-tetrad';
 
 [id='centerButton_button'] {
   position: fixed;
@@ -10,6 +10,7 @@
   height: 40px;
   width: 40px;
   i {
+    color: $rgba-primary-grey-4;
     font-size: 1.7rem;
   }
 }

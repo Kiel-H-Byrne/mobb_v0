@@ -4,6 +4,9 @@
 @import 'palettes/_plt_orng-tetrad';
 
 .navbar-fixed {
+  nav {
+    background-color: $rgba-primary-grey-3;
+  }
   img {
     max-height: $navbar-height;
     // margin: 1rem auto;

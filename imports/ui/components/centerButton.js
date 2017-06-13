@@ -82,38 +82,37 @@ Template.centerButton.events({
         // });
 
 
+      const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
 
-
-      let map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
       if (Session.get("clientLoc")) {
         //I ALREADY HAVE YOUR LOCATION
+
+
         const loc = Session.get("clientLoc");
+
         placeMyMarker(map,loc);
         targetListing(map,loc);
         return;
-      } else if ( !Session.get("clientLoc") && Session.equals("geoAccepted", true) ) {
+      } else {
         //I DON'T HAVE YOUR LOCATION, BUT YOU'RE OK WITH ME GETTING IT. -needed when Maps is already loaded so new geolocation isnt found.
-        
+        // I'VE ASKED FOR YOUR LOCATION, BUT YOU DON'T WANT TO GIVE IT.
+        Session.set('geoAccepted', true);
+        const loc = Session.get('browserLoc');
+
+        $(document).ready(function (){
+          $('[id="centerButton_button"]').addClass('pulse');
+        });
+        targetListing(map,loc);
+
         getLocation().then((pos) => {
           Session.set('clientLoc', pos);
           placeMyMarker(map,pos);
           targetListing(map,pos);
-          return;
+          // $(document).ready(function (){
+            $('[id="centerButton_button"]').removeClass('pulse');
+          // });
+            return;
         });
-      } else if (Session.equals("geoAccepted", false) && Session.equals("geoAsked", true)){ 
-        // I'VE ASKED FOR YOUR LOCATION, BUT YOU DON'T WANT TO GIVE IT.
-        const loc = Session.get('browserLoc');
-        targetListing(map,loc);
-
-        $(document).ready(function (){
-          $('[id="centerButton_button"]').removeClass('pulse');
-        });
-
-        return;
-        
-      } else {
-        //I HAVE NOTHING, ASK IF I CAN DO SOMETHING.
-        $('#modalGeo').modal('open');
-      }
+      } 
     }
 });

@@ -1,3 +1,4 @@
+
 import { Meteor } from 'meteor/meteor';
 import {Template} from 'meteor/templating';
 
@@ -36,6 +37,7 @@ $.getJSON("https://freegeoip.net/json/", {
 
 
 Template.map.onCreated( function () {  
+
     // console.log("-= MAP: Created =-");
     let self = this;
     GoogleMaps.ready('map', function(map) {
@@ -66,6 +68,17 @@ Template.map.onCreated( function () {
             // }
         });
       });   
+
+      self.autorun(function (c) {
+        let pos = Session.get('clientLoc');
+        if (pos) {
+            console.log(map,pos);
+            targetListing(map,pos);
+            c.stop();
+        }
+        console.log("location found, marker placed, loop stopped.")
+      });
+
 /*
         const offsetCenter = (latlng, offsetx, offsety) => {
 

@@ -19,9 +19,16 @@ Template.centerButton.onRendered(function () {
 Template.centerButton.events({
   'click #centerButton_button' : function(evt,tpl){
 
+
       let map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
       let clientMarker;
-      console.log(clientMarker);
+
+      if (!Session.get('clientLoc')) {
+        targetBrowser(map);
+      } else {
+        let pos = Session.get('clientLoc');
+        tartgetListing(map,pos)
+      }
 
       tpl.autorun(function () {    
         //====== AUTO CALCULATE MY LOCATION AND DRAW NEW MARKER WHEN IT CHANGES ======
@@ -51,15 +58,7 @@ Template.centerButton.events({
           });
         }
       });
-      if (Session.get('clientLoc');) {
-        let pos = Session.get('clientLoc');
-        targetListing(map,pos);
-      } else {
-        targetBrowser(map);
-      }
 
-      
-      console.log(map,pos);
       // if (Session.get("clientLoc")) {
       //   //I ALREADY HAVE YOUR LOCATION -- ZOOM BACK TO MY LOCATION
       //   targetListing(map,pos);
@@ -87,7 +86,5 @@ Template.centerButton.events({
       //   });
       // } 
     }
-
-
 
 });

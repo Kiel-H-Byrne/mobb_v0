@@ -195,69 +195,69 @@ Template.map.onCreated( function () {
                 }
             });
         });
+        
           // as soon as session = true, let autorun proceed for  geolocate;  
           // then stop outer autorun
-        self.autorun( function(c) {
-          let getPerm = Session.get("geoAccepted");
+        // self.autorun( function(c) {
+        //   let getPerm = Session.get("geoAccepted");
 
-          if (getPerm === true) {
-              self.autorun(function () {    
-                //====== AUTO CALCULATE MY LOCATION AND DRAW NEW MARKER WHEN IT CHANGES ======
-                //====== AUTO CALCULATE NEW CLOSEST BUSINESS WHEN MY LOCATION CHANGES ======
-                // Materialize.toast('Locating...', 1100, 'myToast');
-                //add class 'pulse' to button, then remove it once found
-                $(document).ready(function (){
-                  $('[id="centerButton_button"]').addClass('pulse');
-                });
+        //   if (getPerm === true) {
+        //       self.autorun(function () {    
+        //         //====== AUTO CALCULATE MY LOCATION AND DRAW NEW MARKER WHEN IT CHANGES ======
+        //         //====== AUTO CALCULATE NEW CLOSEST BUSINESS WHEN MY LOCATION CHANGES ======
+        //         // Materialize.toast('Locating...', 1100, 'myToast');
+        //         //add class 'pulse' to button, then remove it once found
+        //         $(document).ready(function (){
+        //           $('[id="centerButton_button"]').addClass('pulse');
+        //         });
 
-                console.log("searching ...");
-                if (Geolocation.error() || Geolocation.latLng === null || Geolocation.latLng === "null") {
-                  console.warn("Geo Error:", Geolocation.error().message);
-                    Materialize.toast('Geolocation Error.', 1000, 'myBadToast');                  
-                  return;
-                } else {
-                  getLocation().then((pos) => {
-                    if (pos) {
-                      Session.set('clientLoc', pos);
+        //         console.log("searching ...");
+        //         if (Geolocation.error() || Geolocation.latLng === null || Geolocation.latLng === "null") {
+        //           console.warn("Geopositioning Error:", Geolocation.error().message);
+        //           return;
+        //         } else {
+        //           getLocation().then((pos) => {
+        //             if (pos) {
+        //               Session.set('clientLoc', pos);
 
-                      if (!clientMarker) {
-                        clientMarker = new google.maps.Marker({
-                            position: new google.maps.LatLng(pos.lat, pos.lng),
-                            map: map.instance,
-                            icon: {url: 'img/orange_dot_sm_2.png'},
-                            title: "My Location",
-                            // animation: google.maps.Animation.BOUNCE,
-                        });
+        //               if (!clientMarker) {
+        //                 clientMarker = new google.maps.Marker({
+        //                     position: new google.maps.LatLng(pos.lat, pos.lng),
+        //                     map: map.instance,
+        //                     icon: {url: 'img/orange_dot_sm_2.png'},
+        //                     title: "My Location",
+        //                     // animation: google.maps.Animation.BOUNCE,
+        //                 });
                         
-                        clientRadius = new google.maps.Circle({
-                          map: map.instance,
-                          center: pos,
-                          radius: (3 * 1609.34),
-                          strokeColor: '#FF7733',
-                          strokeOpacity: 0.5,
-                          strokeWeight: 2,
-                          fillColor: '#FFAA00',
-                          fillOpacity: 0.15,
-                        });
+        //                 clientRadius = new google.maps.Circle({
+        //                   map: map.instance,
+        //                   center: pos,
+        //                   radius: (3 * 1609.34),
+        //                   strokeColor: '#FF7733',
+        //                   strokeOpacity: 0.5,
+        //                   strokeWeight: 2,
+        //                   fillColor: '#FFAA00',
+        //                   fillOpacity: 0.15,
+        //                 });
 
-                        // map.instance.setCenter(pos);
-                        // map.instance.setZoom(12); 
-                        targetListing(map,pos);
+        //                 // map.instance.setCenter(pos);
+        //                 // map.instance.setZoom(12); 
+        //                 targetListing(map,pos);
 
-                      } else {
-                        clientMarker.setPosition(pos);
-                        clientRadius.setCenter(pos);
-                      }
-                      return;
-                    }
-                  });
-                }
-              });
-              c.stop();
-            } else {
-            console.warn('Get Geolocation: Not Accepted, Yet.');
-          }
-        });
+        //               } else {
+        //                 clientMarker.setPosition(pos);
+        //                 clientRadius.setCenter(pos);
+        //               }
+        //               return;
+        //             }
+        //           });
+        //         }
+        //       });
+        //       c.stop();
+        //     } else {
+        //     console.warn('Get Geolocation: Not Accepted, Yet.');
+        //   }
+        // });
 
         // ========================= DOM Events relating to Map =========================
 

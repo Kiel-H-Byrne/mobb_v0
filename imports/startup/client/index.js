@@ -53,7 +53,6 @@ console.log("-= imports/startup/client/index.js loaded");
 // let cache = new ApiCache('rest', 120);
 // 100000s = 1.16 days....
 const GCache = new OrionCache('gids', 100000);
-console.log(GCache);
 
 // getOGS = function(url) {
 //   let options = {
@@ -97,30 +96,37 @@ targetListing = function(map,pos) {
     map.instance.setZoom(12);
 };
 
+targetBrowser = function(map) {
+  let pos = Session.get('browserLoc');
+  map.instance.setCenter(pos);
+  map.instance.setZoom(8);
+};
+
 // let clientMarker;
   
 placeMyMarker = function(map,pos) {
   //would only not exist if the template reloaded and the browser didn't...(dev mode)
   if (!clientMarker) {
     const radius = 3;
-    const clientMarker = new google.maps.Marker({
+    clientMarker = new google.maps.Marker({
       position: new google.maps.LatLng(pos.lat, pos.lng),
       map: map.instance,
       icon: {url: 'img/orange_dot_sm_2.png'},
       title: "My Location",
       // animation: google.maps.Animation.BOUNCE,
     }); 
-    const clientRadius = new google.maps.Circle({
+    clientRadius = new google.maps.Circle({
       map: map.instance,
       center: pos,
       radius: (radius * 1609.34),
       strokeColor: '#FF7733',
-      strokeOpacity: 0.4,
+      strokeOpacity: 0.2,
       strokeWeight: 2,
       fillColor: '#FFAA00',
       fillOpacity: 0.10,
     });
   } else {
+    //MARKER EXISTS, SO WE MOVE IT.
     clientMarker.setPosition(pos);
     clientRadius.setCenter(pos);
   }

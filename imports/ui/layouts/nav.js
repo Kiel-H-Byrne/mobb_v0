@@ -66,7 +66,7 @@ Template.nav2.onRendered( function () {
 
 
   // Google GeoComplete 
-  console.log(this);
+  // console.log(this);
   
   this.autorun(function (c) {
 

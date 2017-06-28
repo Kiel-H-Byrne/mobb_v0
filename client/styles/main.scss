@@ -6,11 +6,9 @@
 
 @import url('https://fonts.googleapis.com/css?family=Proza+Libre|Quicksand|Raleway');
 
-// ELEMENTS
+// ================================================ ELEMENTS ================================================
 html { 
   box-sizing: border-box; 
-  font-height: 14px;
-  line-height: 1em;
 } 
 
 *, 
@@ -19,31 +17,15 @@ html {
   box-sizing: inherit; 
 } 
 
-* {
-  font-family: 'Quicksand', sans-serif;  
-}
-
 html,
 body {
   height: 100%;
   width: 100%;
   margin: 0;
-  color: $rgba-primary-grey-1;
   background-color: $rgba-primary-grey-4;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
-  font-family: 'Raleway', sans-serif;
-}
-p {
-  line-height: 1.5rem;
-}
-
-// INPUTS AND FORMS 
+// ================================================ INPUTS AND FORMS ================================================
 ::-webkit-input-placeholder {
   color: $color-primary-grey-2;
   text-transform: capitalize;
@@ -87,23 +69,11 @@ p {
 }
 
 
-// MATERIALIZE OVERWRITES 
+// ================================================ MATERIALIZE OVERWRITES ================================================ 
 .btn {
-  color: $clr-grey;
   background-color: $clr-orange ;
 }
 
-.myToast {
-  background-color: $clr-gold;
-}
-
-.myGoodToast {
-  background-color: $color-secondary-2-2;
-}
-
-.myBadToast {
-  background-color: $clr-warn;
-}
 
 .btn:hover {
   background-color: $clr-orange-dark;
@@ -119,34 +89,31 @@ p {
   }
 }
 
-// ALDEED AUTOFORMS OVERWRITES
+// ================================================ ALDEED AUTOFORMS OVERWRITES ================================================
 .at-form {
   background-color: $rgba-primary-1;
-  color: $rgba-primary-grey-4;
   padding: 50px;
   min-width: 80%;
 }
+ 
+// ================================================ CUSTOM CLASSES ================================================
 
-// CUSTOM CLASSES
+.myToast {
+  background-color: $clr-gold;
+}
+
+.myGoodToast {
+  background-color: $color-secondary-2-2;
+}
+
+.myBadToast {
+  background-color: $clr-warn;
+}
 
 .broken-image {
   visibility: hidden;
 }
 
-.brand {
-  color: $rgba-primary-4;
-  font-weight: 800;
-}
-
-.smalltext {
-  font-size: 0.85em;
-}
-
-.address {
-  a {
-    color: $color-secondary-2-2;
-  }
-}
 
 .select_wrapper {
   a {
@@ -179,7 +146,6 @@ p {
 }
 
 [id='at-signIn'] {
-  font-size: 1.2rem;
   background-color: $color-primary-2;
   padding: .3rem 1.3rem;
   border-radius: 5px;
@@ -187,11 +153,7 @@ p {
 
 }
 
-.orion-materialize-admin {
-  color: $rgba-primary-grey-4;
-}
-
-// ADDED TO HOMSESCREEN CSS  
+// ================================================ ADDED TO HOMSESCREEN CSS ================================================  
 @media all and (display-mode: standalone) {
 // Here goes the CSS rules that will only apply if app is running standalone 
 //ios standalone mode add 20px to top for bar.

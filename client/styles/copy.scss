@@ -1,0 +1,70 @@
+@import 'palettes/colors';
+@import 'palettes/_plt_orng-tetrad';
+
+@import url('https://fonts.googleapis.com/css?family=Proza+Libre|Quicksand|Raleway');
+
+
+* {
+  font-family: 'Quicksand', sans-serif;  
+}
+
+html {
+  font-height: 14px;
+  line-height: 1em;
+  color: $rgba-primary-grey-1;
+}
+
+.card-content, 
+.modal-content {
+  color: $color-primary-grey-1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Raleway', sans-serif;
+  color: $color-primary-3;
+}
+
+p {
+  line-height: 1.5rem;
+}
+
+.btn {
+  color: $clr-grey;
+}
+
+.at-form {
+  color: $rgba-primary-grey-4;
+}
+
+
+.muted {
+  color: $color-primary-grey-2;
+}
+
+.brand {
+  color: $rgba-primary-4;
+  font-weight: 800;
+}
+
+.smalltext {
+  font-size: 0.85em;
+}
+
+.address {
+  a {
+    color: $color-secondary-2-2;
+  }
+}
+
+[id='at-signIn'] {
+  font-size: 1.2rem;
+}
+
+.orion-materialize-admin {
+  color: $rgba-primary-grey-4;
+}
+

@@ -75,8 +75,8 @@ Template.map.onCreated( function () {
             console.log(map,pos);
             targetListing(map,pos);
             c.stop();
+            console.log("location found, marker placed, loop stopped.");
         }
-        console.log("location found, marker placed, loop stopped.")
       });
 
 /*

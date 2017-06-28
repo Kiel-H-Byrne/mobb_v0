@@ -2,7 +2,6 @@ import {Template} from 'meteor/templating';
 
 import './layout.html';
 import './nav.js';
-import './footer.js';
 import '../components/map.js';
 import '../components/fullPage.js';
 import '../components/fullCard.js';

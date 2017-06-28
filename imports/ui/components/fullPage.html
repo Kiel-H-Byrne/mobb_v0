@@ -94,9 +94,9 @@
             <span class="card-title "><i class="material-icons">watch_later</i>Hours: </span>
             {{#if place.opening_hours}}
               {{#if isOpen place}}
-              <span class="now_open green-text">Open Now!</span>
+              <span class="now_open">Open Now!</span>
               {{else}}
-              <span class="now_closed grey-text">Closed Now</span>
+              <span class="now_closed muted">Closed Now</span>
               {{/if}}
             <ul class="list_hours">
               {{#each place.opening_hours.weekday_text}}

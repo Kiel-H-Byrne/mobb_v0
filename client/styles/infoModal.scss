@@ -53,4 +53,18 @@
 
 .modal-footer > .row {
   margin-bottom: 0;
+  a {
+    &:nth-child(1) {
+      background-color: $rgba-primary-4;
+    }
+    &:nth-child(2) {
+      background-color: darken($rgba-primary-4, 10%);
+    }    
+    &:nth-child(3) {
+      background-color: darken($rgba-primary-4, 20%);
+    }    
+    &:nth-child(4) {
+      background-color: darken($rgba-primary-4, 30%);
+    }    
+  }
 }

@@ -4,6 +4,7 @@
 
 .info-card {
 	// margin: 1rem;
+  background-color: $rgba-primary-grey-3;
 	
   .fav_star {
     position: absolute;
@@ -24,8 +25,8 @@
 	}
 	
   a, .social{
-		color: $rgba-secondary-2-0;
-    font-size: .9rem;
+		color: $rgba-secondary-1-1;
+    // font-size: .9rem;
 	}
 
   h5 {

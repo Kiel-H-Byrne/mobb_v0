@@ -1,6 +1,6 @@
 <template name="listingsCard">
   <a class="card_link" href="{{url}}" target="_blank" rel="noopener">
-    <div id="{{_id}}" class="info-card closestFlex_item card sticky-action grey darken-2 hoverable ">
+    <div id="{{_id}}" class="info-card closestFlex_item card sticky-action hoverable ">
       {{> favoriteStar}}
       
       {{#if hasImage}}
@@ -46,7 +46,7 @@
         <div class="row center-align">
           {{#if currentUser}}
           <div class="col ">
-            <a class="btn-floating amber darken-3 modal-trigger" id="verify_button" title="Is This Information Correct?" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
+            <a class="btn-floating  modal-trigger" id="verify_button" title="Is This Information Correct?" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
           </div>
           {{else}}
           <div class="col ">
@@ -55,7 +55,7 @@
           {{/if}}
           {{#if street}}    
           <div class="col ">
-            <a class="btn-floating amber darken-4" title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" ><i class="material-icons">navigation</i></a>
+            <a class="btn-floating " title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" ><i class="material-icons">navigation</i></a>
           </div>
           {{/if}}
         </div>

@@ -28,7 +28,11 @@
     background-color: $rgba-primary-grey-4;
     
     .collection {
-      border-color: $rgba-primary-grey-3
+      border-color: $rgba-primary-grey-3;
+
+      .collection-item {
+        background-color: $rgba-primary-grey-3;
+      }
     }
     .collection-header {
       text-align: center;

@@ -4,14 +4,38 @@
 @import 'palettes/_plt_orng-tetrad';
 
 [id='fullPage'] {
-  .card-image {
+  h4,h5 {
+    color: $rgba-complement-4;
+  }
 
+  .card {
+    padding: 1rem;
+    background-color: $rgba-primary-grey-1;
+  }
+  .card-image {
     img {
 
     }
   }
   .card-content {
+    padding: 0;
     color: $rgba-primary-grey-4;
+  }
+  .card-action {
+    a {
+      &:nth-child(1) {
+        background-color: $rgba-complement-2;
+      }
+      &:nth-child(2) {
+        background-color: $rgba-complement-0;
+      }      
+      &:nth-child(3) {
+        background-color: $rgba-complement-3;
+      }
+      &:nth-child(4) {
+        background-color: $rgba-complement-4;
+      }            
+    }
   }
   .card-panel {
     position: relative;
@@ -24,6 +48,7 @@
       color: $rgba-complement-1;
       font-size: 1rem;
     }
+
     p {
       margin: 0;
       line-height: 1.3rem;

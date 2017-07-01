@@ -4,7 +4,7 @@
 @import 'palettes/_plt_orng-tetrad';
 
 .showCategories-wrapper {
-  background-color: $clr-grey;
+  background-color: $rgba-primary-grey-4;
   padding: 1rem;
   // display: -webkit-flex;
   // display: flex;
@@ -18,6 +18,7 @@
   margin: auto;
 
   .categoryFlex_item {
+    background-color: $rgba-primary-grey-3;
     float: left;
     width: 278px;
     margin: 1rem;
@@ -27,6 +28,10 @@
       right: 0;
       z-index: 3;
     }
+    .card-image {
+      max-height: 20rem;
+      overflow-y: hidden;
+    }
 
     .card-content {
       padding: 1rem;
@@ -34,6 +39,11 @@
 
       p {
         margin: 1rem 0;
+      }
+    }
+    .card-action {
+      a {
+        background-color: $rgba-primary-4;
       }
     }
   }

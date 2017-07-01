@@ -1,12 +1,12 @@
 <template name="listPage">
   <div class="list-wrapper row">
     <ul class="collection with-header col s12">
-    <li class="collection-header grey darken-2 hoverable  center-align">
+    <li class="collection-header hoverable  center-align">
       <h4>Online Businesses</h4>
     </li>
     {{#each list}}
 
-      <li class="collection-item avatar grey darken-2 hoverable ">
+      <li class="collection-item avatar hoverable ">
       {{#if hasImage}}
         <img src="/img/gallery/{{name}}.png" alt="" class="circle">
       {{/if}}

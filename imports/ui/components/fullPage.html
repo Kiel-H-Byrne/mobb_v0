@@ -4,47 +4,48 @@
   <div class="row">
 
     <div class="col l7 m6 s12">
-      <h3 class="card-title center-align">{{name}}</h3>
+      
       <div class="card">
+        <h4 class="center-align">{{name}}</h4>
         <div class="card-image">
         {{#unless image.url}}
           <img src="{{getImage url _id}}" />
         {{else}}
           <img src="{{image.url}}" />
         {{/unless}}
-      </div>
-      <div class="card-content">
-        <p class="flow-text">
-          {{description}}
-        </p>
-      </div>
-      <div class="card-action">
-      {{#if url}}     
-        <a class="btn-floating amber" target="_blank" rel="noopener" title="Website" href="{{url}}"><i class="material-icons">link</i></a>
-        {{/if}}
-        {{#if phone}}    
-        <a class="btn-floating amber darken-2" title="Call" href="tel:+1{{phone}}"><i class="material-icons">phone</i></a>
-        {{/if}}
-        {{#if isOwner}}
-        
-          <a class="btn-floating amber darken-3 editModal-trigger" id="edit_button" title="Edit This Listing" href="#modalEdit"><i class="material-icons">edit</i></a>
-        
-        {{else if currentUser}}
-        
-          <a class="btn-floating amber darken-3 modal-trigger" id="verify_button" title="Is This Information Correct?" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
-        
-        {{else}}
-        
-          <a class="disabled btn-floating modal-trigger" id="verify_button" title="Verify This" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
-        
-        {{/if}}
-        {{#if street}}    
-        
-          <!-- a class="btn-floating amber darken-4 modal-trigger" id="directions_button" title="Directions" href="#modalDirections"><i class="material-icons">navigation</i></a-->
-          <a class="btn-floating amber darken-4" title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" ><i class="material-icons">directions</i></a>
+        </div>
+        <div class="card-content">
+          <p class="flow-text">
+            {{description}}
+          </p>
+        </div>
+        <div class="card-action">
+        {{#if url}}     
+          <a class="btn-floating" target="_blank" rel="noopener" title="Website" href="{{url}}"><i class="material-icons">link</i></a>
+          {{/if}}
+          {{#if phone}}    
+          <a class="btn-floating" title="Call" href="tel:+1{{phone}}"><i class="material-icons">phone</i></a>
+          {{/if}}
+          {{#if isOwner}}
+          
+            <a class="btn-floating editModal-trigger" id="edit_button" title="Edit This Listing" href="#modalEdit"><i class="material-icons">edit</i></a>
+          
+          {{else if currentUser}}
+          
+            <a class="btn-floating modal-trigger" id="verify_button" title="Is This Information Correct?" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
+          
+          {{else}}
+          
+            <a class="disabled btn-floating modal-trigger" id="verify_button" title="Verify This" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
+          
+          {{/if}}
+          {{#if street}}    
+          
+            <!-- a class="btn-floating modal-trigger" id="directions_button" title="Directions" href="#modalDirections"><i class="material-icons">navigation</i></a-->
+            <a class="btn-floating " title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" ><i class="material-icons">directions</i></a>
 
-      {{/if}}
-      </div>
+        {{/if}}
+        </div>
 
       </div>  
     </div>

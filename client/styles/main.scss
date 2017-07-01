@@ -6,7 +6,11 @@
 
 @import url('https://fonts.googleapis.com/css?family=Proza+Libre|Quicksand|Raleway');
 
+// ================================================ CSS RESET ================================================
+
+
 // ================================================ ELEMENTS ================================================
+
 html { 
   box-sizing: border-box; 
 } 
@@ -113,7 +117,6 @@ body {
 .broken-image {
   visibility: hidden;
 }
-
 
 .select_wrapper {
   a {

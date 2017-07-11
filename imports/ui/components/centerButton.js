@@ -1,6 +1,3 @@
-import { Meteor } from 'meteor/meteor';
-import {Template} from 'meteor/templating';
-
 import './centerButton.html';
 
 Template.centerButton.helpers( function () {

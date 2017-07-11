@@ -1,4 +1,3 @@
-import { Meteor } from 'meteor/meteor';
 import Categories from '/imports/startup/collections/categories';
 
 Meteor.publish('categories', function () {

@@ -1,5 +1,3 @@
-import { Meteor } from 'meteor/meteor';
-import {Template} from 'meteor/templating';
 import Listings from '/imports/startup/collections/listings';
 
 import './infoModal.html';

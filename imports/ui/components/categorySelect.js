@@ -1,5 +1,3 @@
-import { Meteor } from 'meteor/meteor';
-import {Template} from 'meteor/templating';
 import Categories from '/imports/startup/collections/categories';
 
 import './categorySelect.html';

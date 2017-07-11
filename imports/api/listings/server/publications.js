@@ -1,4 +1,3 @@
-import { Meteor } from 'meteor/meteor';
 import Listings from '/imports/startup/collections/listings';
 
 Meteor.publish('listings', function () {

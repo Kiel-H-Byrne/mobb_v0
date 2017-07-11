@@ -1,9 +1,6 @@
 @import 'palettes/colors';
 @import 'palettes/_plt_orng-tetrad';
 
-@import url('https://fonts.googleapis.com/css?family=Proza+Libre|Quicksand|Raleway');
-
-
 * {
   font-family: 'Quicksand', sans-serif;  
 }
@@ -23,7 +20,8 @@ h1,
 h2,
 h3,
 h4,
-h5 {
+h5,
+h6 {
   font-family: 'Raleway', sans-serif;
   color: $color-primary-3;
 }

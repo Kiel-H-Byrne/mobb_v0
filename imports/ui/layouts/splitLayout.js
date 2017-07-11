@@ -1,4 +1,3 @@
-import {Template} from 'meteor/templating';
 
 import './splitLayout.html';
 import './nav.js';

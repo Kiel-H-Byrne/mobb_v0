@@ -16,12 +16,7 @@
   "author": "Kiel Hamilton Byrne",
   "dependencies": {
     "babel-runtime": "^6.20.0",
-    "bcrypt": "^1.0.1",
     "download-image": "^1.0.1",
-    "grunt": "^0.4.5",
-    "grunt-contrib-imagemin": "^1.0.1",
-    "grunt-real-favicon": "^0.2.0",
-    "imagemin-mozjpeg": "^6.0.0",
     "imagesloaded": "^4.1.1",
     "jslint": "^0.10.3",
     "masonry-layout": "^4.1.1",
@@ -34,12 +29,17 @@
     "yelp-fusion": "^1.0.3"
   },
   "devDependencies": {
+    "bcrypt": "^1.0.2",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-meteor": "^4.0.1",
     "eslint-plugin-react": "^6.10.3",
+    "grunt": "^0.4.5",
+    "grunt-contrib-imagemin": "^1.0.1",
+    "grunt-real-favicon": "^0.2.0",
+    "imagemin-mozjpeg": "^6.0.0",
     "install": "^0.8.8",
     "npm": "^4.5.0"
   }

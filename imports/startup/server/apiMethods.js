@@ -1,6 +1,4 @@
-import { Meteor } from 'meteor/meteor';
-import { Accounts } from 'meteor/accounts-base';
-import { Request } from 'request/request';
+// import { Request } from 'request/request';
 
 import Listings from '/imports/startup/collections/listings';
 

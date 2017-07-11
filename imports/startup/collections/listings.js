@@ -1,5 +1,3 @@
-import { Meteor } from 'meteor/meteor';
-import { Template } from 'meteor/templating';
 // ======================== YELP v3 API =============================
 // const Yelp = require('yelp-fusion');
 // const yelp_client_id = Meteor.settings.public.keys.yelp.app_id;

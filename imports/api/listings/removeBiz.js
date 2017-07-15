@@ -2,6 +2,7 @@ import Listings from '/imports/startup/collections/listings';
 
 Meteor.methods({
 	removeBiz(id) {
+		check(id, String);
 		if(!this.userId)
 			throw new Meteor.Error('Unauthorized for Remove');
 		if(!id)

@@ -10,7 +10,7 @@ Template.geoModal.onRendered(function () {
 });
 
 Template.geoModal.events({
-  'click .geo-accept': function(evt,tpl) {
+  'click .geo-accept': function(event,templateInstance) {
 
 // --------------- ANALYTICS EVENT ---------------
     analytics.track( "User Accepts", {
@@ -23,7 +23,7 @@ Template.geoModal.events({
     Session.set('geoAccepted', true);
     $('#modalGeo').modal('close');
   },
-  'click .geo-deny': function(evt,tpl) {
+  'click .geo-deny': function(event,templateInstance) {
     // evt.preventDefault();
     analytics.track( "User Accepts", {
       title: "Accepted GeoLocation",

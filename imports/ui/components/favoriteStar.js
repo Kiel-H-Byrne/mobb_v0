@@ -2,7 +2,7 @@
 import './favoriteStar.html';
 
 Template.favoriteStar.events({
-  'click .add_favorite': function(evt,tpl) {
+  'click .add_favorite': function(event,templateInstance) {
     if (Meteor.user()) {
       let docId = this._id;
       let userId = Meteor.user()._id;
@@ -16,7 +16,7 @@ Template.favoriteStar.events({
       Materialize.toast('Log In Before Adding Favorites', 4000, 'myToast');
     }
   },
-  'click .remove_favorite': function(evt,tpl) {
+  'click .remove_favorite': function(event,templateInstance) {
     if (Meteor.user()) {
       let docId = this._id;
       let userId = Meteor.user()._id;

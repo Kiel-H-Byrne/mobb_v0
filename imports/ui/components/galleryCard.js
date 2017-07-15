@@ -38,14 +38,14 @@ Template.galleryCard.onRendered(function () {
 });
 
 Template.galleryCard.events({
-  // 'click': function(evt,tpl) {
+  // 'click': function(event,templateInstance) {
   //   // Session.set('openListing', this._id);
   //   // console.log(this._id);
   // }
-  'click .add-place' : function(evt,tpl) {
-    Meteor.call('submitPlace',tpl.data);
+  'click .add-place' : function(event,templateInstance) {
+    Meteor.call('submitPlace',templateInstance.data);
   },
-    'click .get-reviews' : function(evt,tpl) {
-      setGReviews(tpl.data.google_id);
+    'click .get-reviews' : function(event,templateInstance) {
+      setGReviews(templateInstance.data.google_id);
   }
 });

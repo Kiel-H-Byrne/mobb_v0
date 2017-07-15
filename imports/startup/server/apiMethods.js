@@ -89,6 +89,7 @@ apiCall2 = function (apiUrl, headers, callback) {
 
 Meteor.methods({
   addListing: function(doc) {
+    check(doc, Object);
     Listings.insert(doc , function(err, res){
       if (err) {
         console.log("INSERT FAILED:");
@@ -99,6 +100,7 @@ Meteor.methods({
     });
   },
   addCategory: function(doc) {
+    check(doc, Object);
     Categories.insert(doc , function(err, res){
       if (err) {
         console.log(err.sanitizedError.message);
@@ -108,6 +110,8 @@ Meteor.methods({
     });
   },
   addToCategory: function(name,str){
+    check(name, String);
+    check(str, String);
     this.unblock();
 // Listings.update({_id: "4JSojEdYpF3W4MFv6" },{$addToSet: { categories: "Barber" }});
     Listings.update({
@@ -119,9 +123,12 @@ Meteor.methods({
     });
   },
   loginWith: function(u,p) {
+    check(u, String);
+    check(p, String);
     Meteor.loginWithPassword(u, p);
   },
   registerMe: function(o) {
+    check(o, Object);
     let newUserId = Accounts.createUser({
         username: o.username,
         email: o.email,
@@ -138,6 +145,7 @@ Meteor.methods({
     Meteor.loginWithPassword(o.email, o.password);
   },
   geoCode: function(address) {
+    check(address, Object);
     this.unblock();
     
     let urlParams;
@@ -160,6 +168,7 @@ Meteor.methods({
     return;
   },
   submitPlace: function(doc) {
+    check(doc, Object);
     this.unblock();
 /*
       "location": {
@@ -213,7 +222,10 @@ Meteor.methods({
     }
   },
   getOG: function(url, id) {
+    check(url, String);
+    check(id, String);
     // this.unblock();
+    
     if (!url) {
       console.log(`No URL for ${id}, so no OpenGraph.`);
       return false;
@@ -240,7 +252,7 @@ Meteor.methods({
 
       img = (obj.images && obj.images.length) ? obj.images[0] : (obj.image) ? obj.image : console.log(obj);
 
-      description = (obj.description) ? obj.description : (obj.title) ? obj.title;
+      description = (obj.description) ? obj.description : (obj.title) ? obj.title : null;
 
       let status = response.requestInfo.responseCode;
       // console.log(status);
@@ -287,6 +299,8 @@ Meteor.methods({
     let response = Meteor.wrapAsync(apiCall)(apiUrl);
   }, 
   calcDistance: function(start,finish) {
+    check(start, Object);
+    check(finish, Object);
     if (Meteor.isClient) {
       let dist = google.maps.geometry.spherical.computeDistanceBetween(start,finish);
       console.log(dist);
@@ -294,6 +308,7 @@ Meteor.methods({
     }
   },
   convertImage: function(imageUrl) {
+    check(imageUrl, String);
     console.log(imageUrl);
     try {
       console.log(Request);

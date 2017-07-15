@@ -88,10 +88,10 @@ Template.nav2.events({
 	//====== SEARCH FORM ON NAVBAR =======
 	//when form is submitted, set new center. 
 	
-	'submit #desktop_search-form': function (event, tpl) {
+	'submit #desktop_search-form': function (event, templateInstance) {
 		event.preventDefault();
     
-    const entered = tpl.find('input#search_nav').value;
+    const entered = templateInstance.find('input#search_nav').value;
     if (Listings.findOne({name: entered})) {
       // console.log(doc._id);
       Router.go("/listings/" + Listings.findOne({name: entered}).name);
@@ -115,17 +115,17 @@ Template.nav2.events({
   'click .signout_btn': function () {
     AccountsTemplates.logout();
   },
-  'mouseup .tt-suggestion>ul>li': function(evt,tpl) {
-    let name = evt.target.innerText;
-    let type = evt.target.parentElement.parentElement.parentElement.firstChild.innerText;
+  'mouseup .tt-suggestion>ul>li': function(event,templateInstance) {
+    let name = event.target.innerText;
+    let type = event.target.parentElement.parentElement.parentElement.firstChild.innerText;
     Router.go('/' + type + '/' + name);
   }
   // 'click .addmodal': function () {
   //   $('#modalAdd').modal('open');
   //   // console.log("open!");
   // }
-  // 'click .tt-suggestion': function(evt, tpl) {
-  //   // console.log(evt, tpl);
+  // 'click .tt-suggestion': function(event, templateInstance) {
+  //   // console.log(event, templateInstance);
   // }
 });
 

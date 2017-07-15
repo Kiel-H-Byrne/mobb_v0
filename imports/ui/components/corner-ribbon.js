@@ -4,7 +4,7 @@ import { Template } from 'meteor/templating';
 import './corner-ribbon.html';
 
 
-Template.corner_ribbon.helpers({
+Template.cornerRibbon.helpers({
   label() {
     const string = 'BETA';
     return string;

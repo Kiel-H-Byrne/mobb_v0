@@ -14,7 +14,7 @@ Template.centerButton.onRendered(function () {
 });
 
 Template.centerButton.events({
-  'click #centerButton_button' : function(evt,tpl){
+  'click #centerButton_button' : function(event,templateInstance){
 
 
       let map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
@@ -27,7 +27,7 @@ Template.centerButton.events({
         targetListing(map,pos);
       }
 
-      tpl.autorun(function () {    
+      templateInstance.autorun(function () {    
         //====== AUTO CALCULATE MY LOCATION AND DRAW NEW MARKER WHEN IT CHANGES ======
         //====== AUTO CALCULATE NEW CLOSEST BUSINESS WHEN MY LOCATION CHANGES ======
         // Materialize.toast('Locating...', 1100, 'myToast');

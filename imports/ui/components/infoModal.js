@@ -18,12 +18,12 @@ Template.infoModal.onRendered(function () {
 });
 
 Template.infoModal.events({
-	'click #verify_button': function(evt,tpl) {
+	'click #verify_button': function(event,templateInstance) {
 		// console.log("Clicked Verify button!");
 		//open modal verify form.
 		$('#modalVerify').modal('open');
 	},
-  'click #edit_button': function(evt,tpl) {
+  'click #edit_button': function(event,templateInstance) {
     //open modal verify form.
     $('#modalEdit').modal('open');
     $('.collapsible').collapsible();

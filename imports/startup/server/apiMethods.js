@@ -214,7 +214,10 @@ Meteor.methods({
   },
   getOG: function(url, id) {
     // this.unblock();
-    if (url) {
+    if (!url) {
+      console.log(`No URL for ${id}, so no OpenGraph.`);
+      return false;
+    } else {
       let param = encodeURIComponent(url);
       // console.log(param);
       console.log(`***calling OPENGRAPH API method with URL ${param} and ID ${Meteor.settings.public.keys.openGraph.key}`);
@@ -226,7 +229,7 @@ Meteor.methods({
 // console.log(response);
       obj = (!response.openGraph.error && response.openGraph.image) ? !response.openGraph : {};
       obj = (response.hybridGraph.image)? response.hybridGraph : {};
-      obj = response.htmlInferred
+      obj = response.htmlInferred;
 
       if (response.error) {
         console.log(response.error.message);
@@ -235,22 +238,9 @@ Meteor.methods({
       
       let img, uri, description;
 
-      if (obj.images && obj.images.length) {
-        img = obj.images[0];
-        // console.log(img);
-      } else if (obj.image) {
-        img = obj.image;
-        // console.log(img);
-      } else {
-        console.log(obj);
-        console.log("empty object?? Has description?");
-      }
+      img = (obj.images && obj.images.length) ? obj.images[0] : (obj.image) ? obj.image : console.log(obj);
 
-      if (obj.description) {
-        description = obj.description;
-      } else if (obj.title) {
-        let description = obj.title;
-      }
+      description = (obj.description) ? obj.description : (obj.title) ? obj.title;
 
       let status = response.requestInfo.responseCode;
       // console.log(status);
@@ -279,9 +269,6 @@ Meteor.methods({
 
       console.log(uri);
       return uri;
-    } else {
-      console.log(`No URL for ${id}, so no OpenGraph.`);
-      return false;
     }
   },
   bizSearch: function () {

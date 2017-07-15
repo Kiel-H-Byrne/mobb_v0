@@ -86,7 +86,7 @@ const GCache = new OrionCache('gids', 100000);
 // }
 
 
-getLocation = async function () {
+async function getLocation() {
   //const or let??
     let pos = await Geolocation.latLng();
     return pos;

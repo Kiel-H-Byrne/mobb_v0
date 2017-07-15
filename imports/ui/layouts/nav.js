@@ -117,7 +117,7 @@ Template.nav2.events({
   },
   'mouseup .tt-suggestion>ul>li': function(evt,tpl) {
     let name = evt.target.innerText;
-    let type = evt.target.parentElement.parentElement.parentElement.firstChild.innerText
+    let type = evt.target.parentElement.parentElement.parentElement.firstChild.innerText;
     Router.go('/' + type + '/' + name);
   }
   // 'click .addmodal': function () {

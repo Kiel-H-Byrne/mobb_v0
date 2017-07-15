@@ -24,7 +24,7 @@ Template.centerButton.events({
         targetBrowser(map);
       } else {
         let pos = Session.get('clientLoc');
-        targetListing(map,pos)
+        targetListing(map,pos);
       }
 
       tpl.autorun(function () {    

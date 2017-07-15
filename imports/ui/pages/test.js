@@ -32,7 +32,7 @@ Template.test.onRendered(function () {
     // })
 
   
-})
+});
 
 
 Template.test.helpers({

@@ -236,14 +236,14 @@ Meteor.methods({
       let img, uri, description;
 
       if (obj.images && obj.images.length) {
-        img = obj.images[0]
+        img = obj.images[0];
         // console.log(img);
       } else if (obj.image) {
-        img = obj.image
+        img = obj.image;
         // console.log(img);
       } else {
         console.log(obj);
-        console.log("empty object?? Has description?")
+        console.log("empty object?? Has description?");
       }
 
       if (obj.description) {

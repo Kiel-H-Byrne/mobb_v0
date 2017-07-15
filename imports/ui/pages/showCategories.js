@@ -64,4 +64,4 @@ Template.showCategories.events({
   'click .get-reviews' : function(evt,tpl) {
     Meteor.call('submitPlace',tpl.data);
   }
-})
+});

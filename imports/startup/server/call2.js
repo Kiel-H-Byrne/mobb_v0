@@ -38,23 +38,3 @@ let apiCall2 = function (apiUrl, params, headers, callback) {
     }
   }
 };
-
-
-
-// ({
-//   getYelpID: function(phone) {
-//     this.unblock();
-//     let quotesUrl = "https://api.yelp.com/v3/businesses/search/phone";
-//     let quotesParams = {
-//       phone: phone
-//     };
-//     const access_token = 'BAYaQkXitLcxtW-pKp3w6p8pEMVZYv7FF5FTEUJVrtJWbtVt5YQ9k80EgQ3bVv2eJr-Hh4xXh_uG0xWmf4hYKKM4Wy-cFrz8b803Xfi--USK3Em78pgQTr9hYT1nWHYx';
-//     let quotesHeaders = {
-//       'Authorization': 'Bearer '+ access_token
-//     };
-//     let response = Meteor.wrapAsync(apiCall2)(quotesUrl, quotesParams,quotesHeaders);
-//     //console.log("ending get news ticker feed {}", response);
-
-//     return response;
-//   }
-// })

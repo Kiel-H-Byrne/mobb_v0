@@ -1,9 +1,3 @@
-// ======================== YELP v3 API =============================
-// const Yelp = require('yelp-fusion');
-// const yelp_client_id = Meteor.settings.public.keys.yelp.app_id;
-// const yelp_client_secret = Meteor.settings.public.keys.yelp.app_secret;
-//=================== NEW COLLECTION =========================
-
 Listings = new orion.collection('listings', {
   singularName: 'listing', // The name of one of these items
   pluralName: 'listings', // The name of more than one of these items
@@ -263,67 +257,7 @@ Listings.attachSchema(new SimpleSchema({
     type: String,
     optional: true,
     // autoValue: function () {
-    //   return;
-      //do a yelp phone search using phone number, return value of call.
-//       if ( this.field("phone").isSet && this.isInsert && !this.isSet) {
-        
-//         let phone = this.field("phone").value;
-//         /////////////////// YELP PACKAGE
-//         Yelp.accessToken(yelp_client_id, yelp_client_secret).then(response => {
-//           const token = response.jsonBody.access_token;
-//           const client = Yelp.client(token);
-//           //then do search 
-//           client.phoneSearch({
-//             phone: phone
-//           }).then(response => {
-//             let biz = response.jsonBody.businesses[0];
-//             // console.log(biz);
-//             if (biz.id) {
-//               console.log('biz id: '+ biz.id);
-//               //set the yelp-id value for this _id document
-//               return biz.id;
-
-//               // return 'yelp-idz';
-//             } else {
-//               //no yelp id for this business.
-//               console.log("no yelp ID Available");
-//               // this.unset();
-//             }
-//           });
-
-
-//           // let userId = getId;
-
-//           // getId.then(function(res) {
-//           //   console.log(res);
-//           //   return res;
-//           // })
-//           //response = Yelp.client;
-//           // console.log(rez);
-//           // return rez;
-
-//         }).catch(e => {
-
-//           console.log(e);
-//         });
-//         /////////////////// YELP API
-//         // Meteor.call('getYelpID', phone, function(err,res) {
-//         //   if (res) {
-//         //     console.log(res);
-//         //   } else {
-//         //     console.log(err);
-//         //   }
-//         // });
-// ///////////////////////////////////////////////////////////////////////////////
-//         // console.log(resp);
-//         // return resp;
-//         // return 'yelp-id';
-
-//         // console.log(response);
-//         // return response;
-//       } else {
-//         console.log("No Yelp-Id Assigned");
-//       }
+      
     // }
   },
   cbenum: {

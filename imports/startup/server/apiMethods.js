@@ -3,7 +3,7 @@
 import Listings from '/imports/startup/collections/listings';
 
 import '../../api/orionCache.js';
-// import './yelp.js';
+
 //milktam:server-cache package - https://github.com/miktam/server-cache
 //instantiates ApiCache obect which creates ' rest_+name+ ' upon creation, with time to live.
 //ex. let cache = new ApiCache('name',ttl);
@@ -85,7 +85,6 @@ apiCall2 = function (apiUrl, headers, callback) {
   return response;
   
 };
-// ======================== YELP v3 API =============================
 
 
 Meteor.methods({

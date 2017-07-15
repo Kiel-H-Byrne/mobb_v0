@@ -178,11 +178,11 @@ Meteor.methods({
     if (doc.location) {
       const apiUrl = 'https://maps.googleapis.com/maps/api/place/add/json?key=' + Meteor.settings.public.keys.googleServer.key;
       const params = {};
-      let locArr = doc.location.split(",")
+      let locArr = doc.location.split(",");
       let locObj = {
         "lat": Number(locArr[0]),
         "lng": Number(locArr[1])
-      }
+      };
       params.location = locObj;
       params.name = doc.name;
       params.phone_number = doc.phone;
@@ -224,15 +224,11 @@ Meteor.methods({
       let obj = {};
       let images = [];
 // console.log(response);
-      if (response.openGraph) {
-        if ( !response.openGraph.error && response.openGraph.image){
-          obj = response.openGraph;
-        } else if (response.hybridGraph.image) {
-          obj = response.hybridGraph;
-        } else if (response.htmlInferred) {
-          obj = response.htmlInferred;
-        }
-      } else if (response.error) {
+      obj = (!response.openGraph.error && response.openGraph.image) ? !response.openGraph : {};
+      obj = (response.hybridGraph.image)? response.hybridGraph : {};
+      obj = response.htmlInferred
+
+      if (response.error) {
         console.log(response.error.message);
         return false;
       }

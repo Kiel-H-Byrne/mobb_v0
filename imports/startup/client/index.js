@@ -87,7 +87,8 @@ const GCache = new OrionCache('gids', 100000);
 
 
 getLocation = async function () {
-    const pos = await Geolocation.latLng();
+  //const or let??
+    let pos = await Geolocation.latLng();
     return pos;
 };
 
@@ -283,7 +284,7 @@ Meteor.startup(function () {
     let map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
 
     if (GoogleMaps.loaded() && Meteor.user() && map) {
-
+      //WHY DO U HAVE TO BE LOGGED IN??
       const service = new google.maps.places.PlacesService(map.instance);
       const req = {
           //name & location & radius (meters).
@@ -294,7 +295,7 @@ Meteor.startup(function () {
 
       const cbk = function(res,stat) {
           if (stat === google.maps.places.PlacesServiceStatus.OK) {
-              let google_id = res[0].place_id
+              let google_id = res[0].place_id;
               console.log(`Obtained ${google_id} for ${name}.`);
               //set document
               Listings.update(
@@ -307,12 +308,12 @@ Meteor.startup(function () {
               //   { _id: id },
               //   { $set: { google_id: false } }
               // );
-              console.log(`Looking for google_id for: ${name}`)
+              console.log(`Looking for google_id for: ${name}`);
               console.log(stat);
           }
       };
       return service.radarSearch(req,cbk);  
-      };
+      } // ELSE MAP NOT LOADED NOR A USER
     }
   });
 

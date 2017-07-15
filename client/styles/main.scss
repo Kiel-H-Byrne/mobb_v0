@@ -73,14 +73,16 @@ body {
 
 
 // ================================================ MATERIALIZE OVERWRITES ================================================ 
-.btn {
-  background-color: $clr-orange ;
+.btn,
+.btn-floating {
+  background-color: $clr-orange;
+
+  &:hover {
+    background-color: $clr-orange-dark !important;
+  }
 }
 
 
-.btn:hover {
-  background-color: $clr-orange-dark;
-}
 
 .modal-open {
   overflow: visible;

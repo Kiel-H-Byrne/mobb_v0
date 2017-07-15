@@ -63,7 +63,6 @@
     "unused-ignores": [
       "@types/*",
       "grunt*",
-      "yelp-fusion",
     ]
   }
 }

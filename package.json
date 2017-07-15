@@ -28,10 +28,13 @@
     "try-thread-sleep": "^1.0.0"
   },
   "devDependencies": {
+    "babel-eslint": "^7.2.3",
     "bcrypt": "^1.0.2",
     "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.2",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-meteor": "^4.0.1",
+    "eslint-plugin-react": "^7.1.0",
     "grunt": "^0.4.5",
     "grunt-contrib-imagemin": "^1.0.1",
     "grunt-real-favicon": "^0.2.0",

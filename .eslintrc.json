@@ -8,10 +8,7 @@
   },
   "env": {
     "browser": true,
-    "node": true,
-    "jquery": true,
-    "meteor": true,
-    "serviceworker": true
+    "node": true
   },
   "rules" : {
     "no-unused-vars" : 2,

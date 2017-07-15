@@ -18,7 +18,6 @@
     "babel-runtime": "^6.20.0",
     "download-image": "^1.0.1",
     "imagesloaded": "^4.1.1",
-    "jslint": "^0.10.3",
     "masonry-layout": "^4.1.1",
     "materialize-css": "^0.98.0",
     "meteor-node-stubs": "~0.2.0",
@@ -28,7 +27,6 @@
     "try-thread-sleep": "^1.0.0"
   },
   "devDependencies": {
-    "babel-eslint": "^7.2.3",
     "bcrypt": "^1.0.2",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.2",
@@ -36,9 +34,6 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-meteor": "^4.0.1",
     "eslint-plugin-react": "^7.1.0",
-    "grunt": "^0.4.5",
-    "grunt-contrib-imagemin": "^1.0.1",
-    "grunt-real-favicon": "^0.2.0",
     "imagemin-mozjpeg": "^6.0.0",
     "install": "^0.8.8",
     "npm": "^4.5.0"

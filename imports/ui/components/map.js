@@ -33,7 +33,8 @@ $.getJSON("https://freegeoip.net/json/", {
 // ============================= SUBSCRIPTIONS ==================================
 
 
-Template.map.onCreated( function () {  
+Template.map.onCreated( function () {
+console.log(this); 
 
     // console.log("-= MAP: Created =-");
     let self = this;
@@ -69,7 +70,7 @@ Template.map.onCreated( function () {
       self.autorun(function (c) {
         let pos = Session.get('clientLoc');
         if (pos) {
-            console.log(map,pos);
+            // console.log(map,pos);
             targetListing(map,pos);
             c.stop();
             console.log("location found, marker placed, loop stopped.");
@@ -118,13 +119,14 @@ Template.map.onCreated( function () {
         let markerImage = {
           url: 'img/orange_marker_sm.png'
         };
+
         let closeMarkerImage = {
           url: 'img/red_marker_sm.png'
         };
 
         const self_icon = {
             // url: 'img/orange_marker_3_sm.png'
-            url: 'img/orange_dot_sm_2.png'
+            url: 'img/orange_dot_sm_2.png',
         };
 
         const self_radius = {
@@ -182,6 +184,7 @@ Template.map.onCreated( function () {
                           position: latLngObj,
                           map: map.instance,
                           icon: markerImage,
+
                         });
                         marker.set('title', doc.name);
 

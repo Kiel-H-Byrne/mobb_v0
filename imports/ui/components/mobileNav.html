@@ -44,7 +44,9 @@
     {{#if image.url}}
       <img class="circle" src="{{image.url}}" />
     {{else}}
+      {{#if url}}
       <img class="circle" src="{{getImage url _id}}" />
+      {{/if}}
     {{/if}}
     <span class="title">{{name}}</span>
 

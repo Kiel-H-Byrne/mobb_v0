@@ -222,10 +222,9 @@ Meteor.methods({
     }
   },
   getOG: function(url, id) {
+    this.unblock();
     check(url, String);
     check(id, String);
-    // this.unblock();
-    
     if (!url) {
       console.log(`No URL for ${id}, so no OpenGraph.`);
       return false;

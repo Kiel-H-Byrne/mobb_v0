@@ -83,13 +83,15 @@
     .closestFlex_item, .favoritesFlex_item  {
       float: left;
       display: inline-block;
-      max-width: 48%;
+      max-width: 33%;
+      vertical-align: middle;
       // min-width: 175px;
       // width: 100%;
-      margin: 3px;
-
+      margin: 5px;
+      padding: 5px;
+    
       .card-content {
-        padding: .3rem;
+        padding: 3px;
         font-size: .9em;
       }
     }

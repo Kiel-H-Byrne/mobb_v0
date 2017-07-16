@@ -17,8 +17,11 @@
 
   .dropdown-content {
     background-color: $rgba-primary-grey-3;
+    min-width: 230px;
+
     li {
       min-height: inherit;
+      max-height: 2 rem;
       
       &:hover {
         background-color: $clr-grey-light;
@@ -27,15 +30,17 @@
 
       a {
           padding: 5px 2px;
-          color: $clr-orange;
+          color: $rgba-primary-4;
       }
     }
       
     .badge {
+      position: absolute;
       min-width: 4ch;
       font-size: .8rem;
       color: $rgba-complement-4;
       background-color: $rgba-complement-1;
+      right: 0;
     }
   }
 

@@ -6,10 +6,10 @@
 		</a>
 			<ul id="cat-dropdown" class="dropdown-content">
 			{{#each cat in categories}}
-				<li class="cat_item ">
+				<li class="cat_item">
 				<a href="/categories/{{cat.name}}" >
 					<span class="">{{cat.name}}</span>
-					<span class="right badge"> {{catCount cat.name}}</span>
+					<span class="badge"> {{catCount cat.name}}</span>
 				</a>
 				</li>
 			{{/each}}

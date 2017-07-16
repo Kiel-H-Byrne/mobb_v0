@@ -59,6 +59,7 @@ p {
 }
 
 [id='at-signIn'] {
+  color: $color-primary-1;
   font-size: 1.2rem;
 }
 
@@ -66,3 +67,8 @@ p {
   color: $rgba-primary-grey-4;
 }
 
+.dropdown-content {
+  li > span{
+    color: $rgba-primary-4;
+  }
+}

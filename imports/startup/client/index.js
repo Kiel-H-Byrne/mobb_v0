@@ -54,6 +54,13 @@ console.log("-= imports/startup/client/index.js loaded");
 // 100000s = 1.16 days....
 const GCache = new OrionCache('gids', 100000);
 
+  //=====  GoogleMaps load =====  
+  GoogleMaps.load({
+    v: '3',
+    key: Meteor.settings.public.keys.googleClient.key,
+    libraries: ['places', 'geometry']
+  });
+  
 // getOGS = function(url) {
 //   let options = {
 //     'url': url,
@@ -86,7 +93,7 @@ const GCache = new OrionCache('gids', 100000);
 // }
 
 
-async function getLocation() {
+getLocation = async function() {
   //const or let??
     let pos = await Geolocation.latLng();
     return pos;
@@ -225,12 +232,6 @@ Meteor.startup(function () {
   //=====  meteor-typeAhead =====
 	Meteor.typeahead.inject();
 
-  //=====  GoogleMaps load =====	
-	GoogleMaps.load({
-	  v: '3',
-	  key: Meteor.settings.public.keys.googleClient.key,
-	  libraries: ['places', 'geometry']
-	});
 	//=====  HTML Attributes for Facebook opengraph api =====
 	$('html').attr({
 		'xmlns': 'https://www.w3.org/1999/xhtml',

@@ -9,7 +9,9 @@
         <h4 class="center-align">{{name}}</h4>
         <div class="card-image">
         {{#unless image.url}}
+          {{#if url}}
           <img src="{{getImage url _id}}" />
+          {{/if}}
         {{else}}
           <img src="{{image.url}}" />
         {{/unless}}

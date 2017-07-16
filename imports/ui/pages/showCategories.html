@@ -15,7 +15,9 @@
         <div class="card-image">
         <a href="/listings/{{card.name}}">
           {{#unless card.image.url}}
+            {{#if url}}
             <img src="{{getImage card.url card._id}}" />
+            {{/if}}
           {{else}}
             <img src="{{card.image.url}}" />
           {{/unless}}

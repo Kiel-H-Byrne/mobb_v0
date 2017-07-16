@@ -9,14 +9,16 @@
       {{> shareListing}}
       <a class="card_link" href="/listings/{{name}}">
       {{#unless image.url}}
-        <div class="card-image "> 
-          <img class="responsive-image" src="{{getImage url _id}}" />
-        </div>
-        {{else}}
+        {{#if url}}
+          <div class="card-image "> 
+            <img class="responsive-image" src="{{getImage url _id}}" />
+          </div>
+        {{/if}}
+      {{else}}
         <div class="card-image ">       
           <img class="responsive-image" src="{{image.url}}" />
         </div>
-          {{/unless}}
+      {{/unless}}
       </a>
       <a class="card_link" href="/listings/{{name}}">
         <div class="card-content">

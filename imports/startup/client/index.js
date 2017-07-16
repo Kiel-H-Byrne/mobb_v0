@@ -229,9 +229,6 @@ Meteor.startup(function () {
     });
   });
 
-  //=====  meteor-typeAhead =====
-	Meteor.typeahead.inject();
-
 	//=====  HTML Attributes for Facebook opengraph api =====
 	$('html').attr({
 		'xmlns': 'https://www.w3.org/1999/xhtml',

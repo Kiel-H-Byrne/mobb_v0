@@ -34,7 +34,6 @@ $.getJSON("https://freegeoip.net/json/", {
 
 
 Template.map.onCreated( function () {
-console.log(this); 
 
     // console.log("-= MAP: Created =-");
     let self = this;

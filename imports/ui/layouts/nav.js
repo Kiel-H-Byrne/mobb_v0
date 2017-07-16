@@ -62,7 +62,6 @@ Template.nav2.onRendered( function () {
   Meteor.typeahead.inject();
   $('.twitter-typeahead').css("display:block");
 
-
   // Google GeoComplete 
   // console.log(this);
   

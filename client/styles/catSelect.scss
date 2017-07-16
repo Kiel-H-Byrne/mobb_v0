@@ -18,6 +18,8 @@
   .dropdown-content {
     background-color: $rgba-primary-grey-3;
     min-width: 230px;
+    padding: 3px;
+    top: 64px;
 
     li {
       min-height: inherit;
@@ -41,6 +43,7 @@
       color: $rgba-complement-4;
       background-color: $rgba-complement-1;
       right: 0;
+      border-radius:3px;
     }
   }
 

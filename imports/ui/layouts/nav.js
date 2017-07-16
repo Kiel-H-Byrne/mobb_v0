@@ -146,6 +146,13 @@ Template.nav2.helpers({
         local: function () { return Listings.find().fetch(); },
         header: '<h4 class="tt-header">Listings</h4>',
         template: 'results'
+      },{
+        name: 'cities',
+        valueKey: 'city',
+        displayKey: 'city',
+        local: function () { return Listings.find().fetch(); },
+        header: '<h4 class="tt-header">Cities</h4>',
+        template: 'results'
       }
     ];
   }

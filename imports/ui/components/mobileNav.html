@@ -24,7 +24,7 @@
     <ul class="collection">
       {{#each list}}
         {{#if isClose (getDistance location)}}
-          <li>
+          <li class="collection-item avatar hoverable ">
             <a class="card_link" href="/listings/{{name}}">
               {{> listCard}}
             </a>
@@ -39,8 +39,7 @@
 </template>
 
 <template name="listCard">
-  <li class="collection-item avatar hoverable ">
-    {{> favoriteStar}}
+  <div>
     {{#if image.url}}
       <img class="circle" src="{{image.url}}" />
     {{else}}
@@ -68,7 +67,8 @@
     </p>
     {{/if}}
     {{#if phone}}    
-      <a class="phone" href="tel:+1{{phone}}"><i class="material-icons" style="font-size:100%; margin-right:2px; ">phone</i>{{phone}}</a> <br />
+      <a class="phone" href="tel:+1{{phone}}"><i class="material-icons">phone</i>{{phone}}</a> 
     {{/if}}
-  </li>
+  </div>
+  {{> favoriteStar}}
 </template>

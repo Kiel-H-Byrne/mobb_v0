@@ -18,13 +18,17 @@ Template.centerButton.events({
 
 
       let map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
-      let clientMarker;
+      // let clientMarker;
 
       if (!Session.get('clientLoc')) {
+        console.log('using browser.');
         targetBrowser(map);
       } else {
         let pos = Session.get('clientLoc');
-        targetListing(map,pos);
+        targetClient(map, pos);
+        placeMyMarker(map, pos);
+        //also check if clientmarker is drawn, if not, draw it and radius. 
+        console.log("check and place marker?");
       }
 
       templateInstance.autorun(function () {    
@@ -58,7 +62,7 @@ Template.centerButton.events({
 
       // if (Session.get("clientLoc")) {
       //   //I ALREADY HAVE YOUR LOCATION -- ZOOM BACK TO MY LOCATION
-      //   targetListing(map,pos);
+      //   targetClient(map,pos);
 
       //   return;
       // } else {
@@ -70,12 +74,12 @@ Template.centerButton.events({
       //   $(document).ready(function (){
       //     $('[id="centerButton_button"]').addClass('pulse');
       //   });
-      //   targetListing(map,loc);
+      //   targetClient(map,loc);
       //   //CALLBACK TO GET GEOLOCATION; WILL PROMPT GEO PERMISSION FROM PHONE.
       //   getLocation().then((pos) => {
       //     Session.set('clientLoc', pos);
       //     placeMyMarker(map,pos);
-      //     targetListing(map,pos);
+      //     targetClient(map,pos);
       //     // $(document).ready(function (){
       //       $('[id="centerButton_button"]').removeClass('pulse');
       //     // });

@@ -6,8 +6,9 @@
 .slide_badge_fav, .slide_badge_near {
   position: fixed;
   z-index: 3;
-  background-color: $rgba-primary-grey-1;
-  padding: 4px 4px 4px 20px;
+  background-color: $rgba-primary-grey-2;
+  padding: 4px 4px 2px 20px;
+  border-radius: 0 3px 3px 0;
 }
 
 .slide_badge_fav {
@@ -21,7 +22,11 @@
 [id="mobileNav"]{
 
   .fav_star {
-    position: static;
+    position: absolute;
+    right: .5rem;
+    bottom: 3rem;
+    height: 1rem;
+    z-index: 5;
   }
 
   .side-nav{
@@ -32,6 +37,27 @@
 
       .collection-item {
         background-color: $rgba-primary-grey-3;
+        padding-right: 3px;
+        margin: 3px 0 0 0;
+
+        .title {
+          color: $rgba-primary-3;
+          font-size: 1.4rem;
+        }
+
+        .phone {
+          color: $rgba-secondary-2-0;
+          line-height: 1.4rem;
+          height: auto;
+
+          i {
+            color: $rgba-secondary-2-0;
+            line-height: 1.3rem;
+            font-size: 1rem;
+            width: 1ch;
+            margin: 0 .1rem;
+          }
+        }
       }
     }
     .collection-header {
@@ -39,36 +65,24 @@
       font-size: 2rem;
       
       i {
+        position: relative;
         margin: 0 1rem;
+        top: 3px;
       }
       // color: $rgba-primary-grey-4;
     }
 
-    .title {
-      color: $rgba-primary-3;
-    }
-
     li {
-
-      margin: 2px 0;
-
        a {
         padding: 0;
-        line-height: 1.3rem;
         height: auto;
-        color: $rgba-secondary-2-0;
-
-        i {
-          line-height: 1.3rem;
-          height: 1.3rem;
-          color: $rgba-secondary-2-0;
-
-        }
       }
 
       p {
         color: white;
       }
     }
+
+
   }
 }

@@ -99,7 +99,7 @@ getLocation = async function() {
     return pos;
 };
 
-targetListing = function(map,pos) {
+targetClient = function(map,pos) {
     map.instance.setCenter(pos);
     map.instance.setZoom(12);
 };

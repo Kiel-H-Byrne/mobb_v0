@@ -70,9 +70,9 @@ Template.map.onCreated( function () {
         let pos = Session.get('clientLoc');
         if (pos) {
             // console.log(map,pos);
-            targetListing(map,pos);
+            targetClient(map,pos);
             c.stop();
-            console.log("location found, marker placed, loop stopped.");
+            console.log("location found, targeted client, loop stopped...");
         }
       });
 
@@ -254,7 +254,7 @@ Template.map.onCreated( function () {
 
         //                 // map.instance.setCenter(pos);
         //                 // map.instance.setZoom(12); 
-        //                 targetListing(map,pos);
+        //                 targetClient(map,pos);
 
         //               } else {
         //                 clientMarker.setPosition(pos);

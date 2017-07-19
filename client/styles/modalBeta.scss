@@ -4,8 +4,7 @@
 @import 'palettes/_plt_orng-tetrad';
 
 [id='modalBeta'] {
-  background-color: $rgba-primary-1;
-  color: $rgba-primary-grey-3;
+  background-color: $rgba-primary-grey-4;
   max-width: 80%;
 
   h4 {
@@ -16,5 +15,6 @@
   p {
     line-height: 2rem;
     text-align: justify;
+    padding: .5rem;
   }
 }

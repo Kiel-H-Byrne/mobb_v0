@@ -81,7 +81,7 @@ AutoForm.addHooks('editListingForm', {
       // let lng = Number(latLng[1]);
       const latLngObj = _.object( ['lat', 'lng'], [Number(latLng[0]), Number(latLng[1])]);
       const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
-      targetListing(map,latLngObj);
+      targetClient(map,latLngObj);
     }
   },
 });

@@ -5,12 +5,12 @@
   position: fixed;
 
   //right-corner
-  right: -9px;
+  // right: -9px;
   //left-corner
-  // left: -3px;
+  left: -15px;
   top: -9px;
   overflow: visible;
-  height: 0px;
+  height: 0;
   width: 80px;
   z-index: 100;
 }
@@ -20,9 +20,9 @@
   
 
   //right-corner
-  left: -2px;
+  // left: -2px;
   //left-corner
-  // left: -30px;
+  left: -30px;
   position: relative;
   top: 15px;
   width: 120px;
@@ -30,15 +30,15 @@
 
   //right-corner
 
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
+  // -webkit-transform: rotate(45deg);
+  // -moz-transform: rotate(45deg);
+  // -ms-transform: rotate(45deg);
+  // -o-transform: rotate(45deg);
   //left-corner
-  // -webkit-transform: rotate(-45deg);
-  // -moz-transform: rotate(-45deg);
-  // -ms-transform: rotate(-45deg);
-  // -o-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
 
   text-align: center;
   color: $clr-grey;

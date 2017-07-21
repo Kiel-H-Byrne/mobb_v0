@@ -23,16 +23,20 @@
     }
     .collapsible-body {
       color: $rgba-primary-grey-2;
+      padding: .5rem;
     }
   }
 
   .modal-footer {
     background-color: $rgba-primary-grey-1;
-    color: $rgba-primary-grey-4;
+    
+    h5 {
+      color: $rgba-primary-grey-4;
+    }
 
     button {
-      background-color: $rgba-complement-4;
-      color: $rgba-primary-3;
+      background-color: $rgba-complement-3;
+      color: $rgba-primary-grey-1;
     }
   }
 }

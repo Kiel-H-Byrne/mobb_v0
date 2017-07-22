@@ -23,10 +23,12 @@ Template.centerButton.events({
       if (!Session.get('clientLoc')) {
         console.log('using browser.');
         targetBrowser(map);
+        $('.tooltipped').tooltip('remove');
       } else {
         let pos = Session.get('clientLoc');
         targetClient(map, pos);
         placeMyMarker(map, pos);
+        $('.tooltipped').tooltip('remove');
         //also check if clientmarker is drawn, if not, draw it and radius. 
         console.log("check and place marker?");
       }

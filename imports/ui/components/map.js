@@ -66,15 +66,7 @@ Template.map.onCreated( function () {
         });
       });   
 
-      self.autorun(function (c) {
-        let pos = Session.get('clientLoc');
-        if (pos) {
-            // console.log(map,pos);
-            targetClient(map,pos);
-            c.stop();
-            console.log("location found, targeted client, loop stopped...");
-        }
-      });
+
 
 /*
         const offsetCenter = (latlng, offsetx, offsety) => {
@@ -282,28 +274,38 @@ Template.map.onCreated( function () {
 });
 
 Template.map.onRendered(function () {
-    
-    //Materialize JQuery Effects
-    $(document).ready(function (){
-        $('.modal-trigger').modal({
-            dismissible: true,
-            opacity: 0.5,
-            in_duration: 300,
-            out_duration: 200,
-            // ready: function () {
-            //     if($(".lean-overlay").length > 1) {
-            //         $(".lean-overlay:not(:first)").each(function () {
-            //             $(this).remove();
-            //         });
-            //     }
-            // },
-            // complete: function () {
-            //     $(".lean-overlay").each(function () {
-            //         $(this).remove();
-            //     });
-            // }
-        });
+    // const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
+    // console.log(map);
+    // let pos = Session.get('clientLoc');
+    // if (pos) {
+    //     // console.log(map,pos);
+    //     targetClient(map,pos);
+    //     placeMyMarker(map,pos)
+    //     console.log("location found, targeted client, loop stopped...");
+    // }
+
+
+  //Materialize JQuery Effects
+  $(document).ready(function (){
+    $('.modal-trigger').modal({
+        dismissible: true,
+        opacity: 0.5,
+        in_duration: 300,
+        out_duration: 200,
+        // ready: function () {
+        //     if($(".lean-overlay").length > 1) {
+        //         $(".lean-overlay:not(:first)").each(function () {
+        //             $(this).remove();
+        //         });
+        //     }
+        // },
+        // complete: function () {
+        //     $(".lean-overlay").each(function () {
+        //         $(this).remove();
+        //     });
+        // }
     });
+  });
 });
 
 

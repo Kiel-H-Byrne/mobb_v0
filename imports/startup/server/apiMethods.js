@@ -256,12 +256,12 @@ Meteor.methods({
       let status = response.requestInfo.responseCode;
       // console.log(status);
       if (img) {
-        uri = encodeURIComponent(img); 
-        console.log(uri);
+        // uri = encodeURIComponent(img); 
+        console.log(img);
         // if (uri.includes('http://')) {
         if (img.includes('http://')) {  
-          uri = img.replace("http://", "https://images.weserv.nl/?url=");
-          console.log(uri);
+          img = img.replace("http://", "https://images.weserv.nl/?url=");
+          console.log(img);
         } 
         // else if (img.includes('https://')) {
         // else if (img.includes('https://')) {  
@@ -278,8 +278,8 @@ Meteor.methods({
           description: description,
       } });
 
-      console.log(uri);
-      return uri;
+      console.log(img);
+      return img;
     }
   },
   bizSearch: function () {

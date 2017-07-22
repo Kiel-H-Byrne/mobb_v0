@@ -31,7 +31,7 @@ Template.galleryCard.onRendered(function () {
   $(document).ready(function () {
     $('img').on('error', function () {
       // console.log("on broken image", this);
-      $(this).css({visibility:"hidden"});
+      $(this).css({display:"none"});
     });
   });  
   

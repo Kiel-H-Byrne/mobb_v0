@@ -26,7 +26,7 @@ Template.fullCard.onRendered(function () {
 
       $("img").error(function () { 
         // $(this).hide();
-        $(this).css({visibility:"hidden"}); 
+        $(this).css({display:"none"});
       });
     });
 });

@@ -21,13 +21,13 @@
                           </div>
                         </form>
                     </li>
-                    <li>{{> catSelect}}</li>
                     <!--li class=""><a href="/gallery" class="" alt="View Online Only" ><i class="material-icons " title="View Online Gallery">view_module</i></a></li-->
                     {{#if currentUser}}
                       <li><a class="addModal-trigger  " href="#modalAdd"><i class="material-icons left" title="Add a Business">library_add</i>Add</a></li>
                     {{else}}
                       <li><a class=" " href="/register" alt="Add A Business"><i class="material-icons left" title="Add a Business">library_add</i>Add</a></li>
                     {{/if}}
+                    <li>{{> catSelect}}</li>
                     <li class="select_wrapper">
                         <a class="dropdown-button" alt="..." data-activates="more-dropdown" data-beloworigin="true" data-constrainwidth="false" data-alignment="right"  > 
                            <i class="material-icons" title="...">more_vert</i>

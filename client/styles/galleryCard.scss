@@ -15,7 +15,7 @@
   }
   .badge-share {
     position:absolute;
-    bottom:0;
+    bottom: 0;
     left: 2rem;
     line-height: .8rem;
   }
@@ -25,7 +25,7 @@
 	}
 	
   a, .social{
-		color: $rgba-secondary-1-1;
+		color: $rgba-secondary-2-1;
     // font-size: .9rem;
 	}
 
@@ -34,7 +34,7 @@
   }
 
   .badge {
-    color: $color-secondary-2-4;
+    color: $rgba-secondary-2-2;
     background-color: $rgba-primary-grey-4;
     margin: .3rem;
     font-size: .8rem;

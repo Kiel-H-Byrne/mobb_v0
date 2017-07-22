@@ -4,8 +4,25 @@
   <div class="row">
 
     <div class="col l7 m6 s12">
-      
       <div class="card">
+        <div class="select_wrapper right">
+        <a class="dropdown-button" alt="..." data-activates="card-dropdown" data-beloworigin="true" data-constrainwidth="false" data-alignment="right"  > 
+               <i class="material-icons" title="...">more_vert</i>
+            </a>
+            <ul id="card-dropdown" class="dropdown-content">
+                {{#if currentUser}}
+                <li><a href="/?claim={{_id}}"><i class="material-icons">fingerprint</i>Claim Business</a></li>
+                {{/if}}
+                {{#if isOwner}}
+                <li><a class="editModal-trigger" title="Edit This Listing" href="#modalEdit"><i class="material-icons">edit</i>Modify Business</a></li>
+                {{/if}}
+                <li>
+                {{!-- <a href="/?verify={{_id}}"> --}}
+                <a class="modal-trigger" id="verify_button" title="Verify This" href="#modalVerify">
+                <i class="material-icons">done_all</i>Verify Business</a></li>
+            </ul>                    
+
+        </div>
         <h4 class="center-align">{{name}}</h4>
         <div class="card-image">
         {{#unless image.url}}
@@ -27,19 +44,6 @@
           {{/if}}
           {{#if phone}}    
           <a class="btn-floating" title="Call" href="tel:+1{{phone}}"><i class="material-icons">phone</i></a>
-          {{/if}}
-          {{#if isOwner}}
-          
-            <a class="btn-floating editModal-trigger" id="edit_button" title="Edit This Listing" href="#modalEdit"><i class="material-icons">edit</i></a>
-          
-          {{else if currentUser}}
-          
-            <a class="btn-floating modal-trigger" id="verify_button" title="Is This Information Correct?" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
-          
-          {{else}}
-          
-            <a class="disabled btn-floating modal-trigger" id="verify_button" title="Verify This" href="#modalVerify"><i class="material-icons">thumb_up</i></a>
-          
           {{/if}}
           {{#if street}}    
           

@@ -21,41 +21,50 @@ Template.centerButton.events({
       // let clientMarker;
 
       if (!Session.get('clientLoc')) {
-        console.log('using browser.');
+        // console.log('using browser.');
         targetBrowser(map);
         $('.tooltipped').tooltip('remove');
       } else {
         let pos = Session.get('clientLoc');
         targetClient(map, pos);
-        placeMyMarker(map, pos);
+
         $('.tooltipped').tooltip('remove');
         //also check if clientmarker is drawn, if not, draw it and radius. 
-        console.log("check and place marker?");
+        //after returning to browser, marker is not shown... so check if the object still exists
+        // console.log(clientMarker);
+        // IF I PLACE A MARKER EVERY TIME I PRESS THIS BUTTON, WHEN I MOVE, WILL IT REPLACE ITSELF? WILL THEYS TACK UP?
+        placeMyMarker(map, pos);
       }
 
-      templateInstance.autorun(function () {    
+      // zoom once i have clientPosition then stop
+      templateInstance.autorun(function (c) {
+        let pos = Session.get('clientLoc');
+        if (pos) {
+          targetClient(map, pos);
+          c.stop();
+        }
+      });
+
+      templateInstance.autorun(function (c) {    
         //====== AUTO CALCULATE MY LOCATION AND DRAW NEW MARKER WHEN IT CHANGES ======
         //====== AUTO CALCULATE NEW CLOSEST BUSINESS WHEN MY LOCATION CHANGES ======
         // Materialize.toast('Locating...', 1100, 'myToast');
         //add class 'pulse' to button, then remove it once found
 
-        console.log("searching ...");
         if (Geolocation.error() || Geolocation.latLng === null || Geolocation.latLng === "null") {
           console.warn("Geopositioning Error:", Geolocation.error().message);
           $('[id="centerButton_button"]').removeClass('pulse');          
           return;
         
         } else {
+          // console.log("searching ...");
           getLocation().then((pos) => {
             $('[id="centerButton_button"]').addClass('pulse');
 
             if (pos) {
               Session.set('clientLoc', pos);
-
               $('[id="centerButton_button"]').removeClass('pulse');
- 
               placeMyMarker(map,pos);
-
               return;
             }
           });

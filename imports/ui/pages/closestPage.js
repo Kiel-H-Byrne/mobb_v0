@@ -12,7 +12,7 @@ Template.closestPage.onCreated(function () {
     certs: {$exists: 0},
     // state: state
   });
-    console.log("-= closestPage.JS SUBSCRIBING: ALL ["+ cursor.count() +"] ONLINE ONLY =-");
+    console.log("-= closestPage.JS SUBSCRIBING: ALL ["+ cursor.count() +"] LOCATIONS ONLY =-");
   });
 });
 

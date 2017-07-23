@@ -3,7 +3,7 @@ import './test.html';
 import './favoritesPage.js';
 //place a search on specific name and location, on insert. 
 Template.test.onCreated( function () {  
-    this.subscribe('listings');
+    this.subscribe('listings_locs');
     $(document).ready(function () {
       
 

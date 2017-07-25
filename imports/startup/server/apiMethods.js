@@ -237,31 +237,37 @@ Meteor.methods({
       const response = Meteor.wrapAsync(apiCall)(apiUrl);
       let obj = {};
       let images = [];
-// console.log(response);
-      obj = (!response.openGraph.error && response.openGraph.image) ? !response.openGraph : {};
-      obj = (response.hybridGraph.image)? response.hybridGraph : {};
-      obj = response.htmlInferred;
+      console.log(response);
 
       if (response.error) {
         console.log(response.error.message);
         return false;
       }
+
+      let hiObj = response.htmlInferred;
+      let hgObj = (response.hybridGraph.image) ? response.hybridGraph : null;
+      let ogObj = (!response.openGraph.error && response.openGraph.image) ? response.openGraph : null;
       
+      obj = hgObj || ogObj || hiObj;
+      console.log(obj);
+
       let img, uri, description;
 
-      img = (obj.images && obj.images.length) ? obj.images[0] : (obj.image) ? obj.image : console.log(obj);
+      // img = (ogObj) ? ogObj.image.url : (hgObj) ? hiObj.image : (hiObj) ? hiObj.image_guess : console.log("no img");
+      img = (obj.image) ? obj.image || obj.image.url : (obj.image_guess) ? obj.image_guess : console.log("no img");
 
-      description = (obj.description) ? obj.description : (obj.title) ? obj.title : null;
+      // description = (ogObj) ? ogObj.description || ogObj.title : (hgObj) ? hgObj.description || hgObj.title : (hiObj) ? hiObj.description || hiObj.title : console.log("no descr");;
+      description = obj.description || obj.title || console.log("no descrip");
 
       let status = response.requestInfo.responseCode;
       // console.log(status);
       if (img) {
         // uri = encodeURIComponent(img); 
-        console.log(img);
+        // console.log(img);
         // if (uri.includes('http://')) {
         if (img.includes('http://')) {  
           img = img.replace("http://", "https://images.weserv.nl/?url=");
-          console.log(img);
+          // console.log(img);
         } 
         // else if (img.includes('https://')) {
         // else if (img.includes('https://')) {  
@@ -274,7 +280,7 @@ Meteor.methods({
         _id: id 
       },{
         $set: { 
-          "image.url": uri,
+          "image.url": img,
           description: description,
       } });
 

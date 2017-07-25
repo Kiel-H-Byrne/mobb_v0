@@ -22,7 +22,11 @@ $.getJSON("https://freegeoip.net/json/", {
 
   let lat = data.latitude;
   let lng = data.longitude;
-  let browserLocation = _.object( ['lat', 'lng'], [lat, lng]);
+  // let browserLocation = _.object( ['lat', 'lng'], [lat, lng]);
+  let browserLocation = {
+    'lat': lat,
+    'lng': lng
+  };
   // console.log("Coord from Browser: ", browserLocation);
   Session.set('browserLoc', browserLocation);
   Session.set('clientState', data.region_code);

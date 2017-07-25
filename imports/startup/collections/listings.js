@@ -235,11 +235,10 @@ Listings.attachSchema(new SimpleSchema({
     type: Boolean,
     optional: true,
     autoValue: function () {
-      if ( !this.field("street").value && this.field("url") ) {
+      if ( !this.field("street").value && this.field("url").value ) {
         return true;
-      } else {
-        return false;
-      }
+      } 
+      return false;
     }
   },
   google_id: {

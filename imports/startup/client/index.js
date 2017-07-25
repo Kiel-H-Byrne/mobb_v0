@@ -149,7 +149,7 @@ setGReviews = function(gid) {
     let dataFromCache = GCache.get(gid);
     const res = {};
     if(dataFromCache) {
-      console.log("Data from Cache...");
+      console.log("Reviews Data from GCache...");
       console.log(dataFromCache);
       return dataFromCache;
     } else {
@@ -167,7 +167,7 @@ setGReviews = function(gid) {
             if (stat === google.maps.places.PlacesServiceStatus.OK) {
                 Session.set('thisPlace', res);
                 console.log(res);
-                // GCache.set(gid, res);
+                GCache.set(gid, res);
                 return res;
                 //inject with jquery into dom?
             } else {
@@ -184,6 +184,7 @@ setGReviews = function(gid) {
       } 
     }
   } else {
+    //NO GOOGLE ID
     return false;
   }
 };
@@ -325,10 +326,11 @@ Meteor.startup(function () {
   });
 
   Template.registerHelper('getGDetails', function(gid) {
-    const dataFromCache = GCache.get(gid);
+    let dataFromCache = GCache.get(gid);
+    console.log(GCache.get(gid));
     const res = {};
     if(dataFromCache) {
-      console.log("Data from Cache...");
+      console.log("Details Data from GCache...");
       console.log(dataFromCache);
 
       return dataFromCache;

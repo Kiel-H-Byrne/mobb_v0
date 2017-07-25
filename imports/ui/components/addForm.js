@@ -63,7 +63,7 @@ AutoForm.addHooks('addListingForm', {
   onSuccess(formType, result) {
     Materialize.toast('Thanks for Submitting!', 3300, 'myToast');
   	// console.log("Thanks for Submitting!");
-    console.log(result, insertDoc);
+    console.log(result);
     // draw marker?
     // change content(inner html) of addForm template.
     // $('#modalAdd').html(

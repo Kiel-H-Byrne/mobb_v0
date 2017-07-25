@@ -24,6 +24,13 @@ OrionCache = function(cacheName, ttl) {
     ttl = ttl || 60;                                                  
     
     if (Meteor.Server) {
+      console.log(this);
+    Meteor.publish('cache_' + cacheName, function() {
+      console.log(this);
+      // let cursor = this.localCache.find();
+      // return cursor;
+    });  
+
     // apply index for key                                                         
     this.localCache._ensureIndex( { "key": 1 });                                   
                                                                   
@@ -31,8 +38,9 @@ OrionCache = function(cacheName, ttl) {
     this.localCache._ensureIndex({ "createdAt": 1 }, { expireAfterSeconds: ttl });
 
     this.localCache.allow({
+      insert: function(userId, query) { return true },
       update: function(userId, query) { return ownsDocument(userId, query); },
-      remove: function(userId, query) { return ownsDocument(userId, query); },
+      remove: function(userId, query) { return ownsDocument(userId, query); }
     });
   }
 };                                                                               

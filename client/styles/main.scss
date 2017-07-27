@@ -116,7 +116,9 @@ body {
 }
 
 .broken-image {
-  visibility: hidden;
+  //visibility:hidden hides image and preserves height.
+  //display:none removes element.
+  display:none;
 }
 
 .select_wrapper {

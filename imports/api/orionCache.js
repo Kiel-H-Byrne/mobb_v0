@@ -23,13 +23,14 @@ OrionCache = function(cacheName, ttl) {
     
     ttl = ttl || 60;                                                  
     
-    if (Meteor.Server) {
-      console.log(this);
-    Meteor.publish('cache_' + cacheName, function() {
-      console.log(this);
-      // let cursor = this.localCache.find();
-      // return cursor;
-    });  
+    if (Meteor.isServer) {
+      // console.log(this);
+      // Meteor.publish('cache_' + cacheName, function() {
+      //   // console.log(this);
+      //   let cursor = this.localCache.find();
+      //   console.log(cursor);
+      //   return cursor;
+      // });  
 
     // apply index for key                                                         
     this.localCache._ensureIndex( { "key": 1 });                                   

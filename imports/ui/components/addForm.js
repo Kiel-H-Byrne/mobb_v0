@@ -27,9 +27,15 @@ Template.addForm.onRendered(() => {
       endingTop: '10%', // Ending top style attribute
     });
 
-    $('.collapsible').collapsible();
+    $('.collapsible').collapsible('open');
 
     $('input[name="phone"]').characterCounter();
+
+    $('input[name="phone"]').keydown(function(){
+     let self = $(this);
+     let removedText = self.val().replace(/\D/, '');
+     self.val(removedText);
+    });
     
     // let state = Session.get('clientState');
     // $("li:contains("+ state +")").addClass("active selected");
@@ -38,11 +44,15 @@ Template.addForm.onRendered(() => {
 
 Template.addForm.helpers({
   getState() {
-    const state = Session.get('clientState');
+    let state = Session.get('clientState');
     return state;
   },
   formOptions() {
-    return Categories.find().map(c => ({ label: c.name, value: c.name }));
+    // return Categories.find().map(c => ({ label: c.name, value: c.name }));
+    return Categories.find().map(function(c) {
+      // console.log(c.name);
+      return {label: c.name, value: c.name};
+    });
   },
 });
 
@@ -51,19 +61,20 @@ AutoForm.addHooks('addListingForm', {
 	  // Called when form does not have a `type` attribute or is 'normal'
   onSubmit(insertDoc, updateDoc, currentDoc) {
     this.event.preventDefault(); // prevents page reload
-    console.log('Just submitted form, from addform.js');
+    // console.log('Just submitted form, from addform.js');
         // close modal on submit
         // $('#modalAdd').modal('close');
-    Listings.insert(insertDoc);
-		    this.done(); // must be called; submitted successfully, call onSuccess,
-		    return false; // prevents page reload
+      Meteor.call('addListing', insertDoc);
+	    this.done(); // must be called; submitted successfully, call onSuccess,
+	    return false; // prevents page reload
   },
 
   // Called when any submit operation succeeds
   onSuccess(formType, result) {
+    $('#modalAdd').modal('close');
     Materialize.toast('Thanks for Submitting!', 3300, 'myToast');
   	// console.log("Thanks for Submitting!");
-    console.log(result);
+    // console.log(result);
     // draw marker?
     // change content(inner html) of addForm template.
     // $('#modalAdd').html(
@@ -71,9 +82,6 @@ AutoForm.addHooks('addListingForm', {
     //    <h3 class="centered"> Thank You! </h3>
     //    {{{> closeButton}}}
     //    </div>
-
-    //    `
     //   );
-    $('#modalAdd').delay(1100).modal('close');
   },
 });

@@ -54,9 +54,9 @@ Template.fullPage.onRendered(function () {
       $('img').on('error', function () {
         console.log("broken image", this);
         $(this).css({display:"none"});
-        // if(!$(this).hasClass('broken-image')) {
-        //   $(this).addClass('broken-image');
-        // });
+        if(!$(this).hasClass('broken-image')) {
+          $(this).addClass('broken-image');
+        };
       });
 
     });

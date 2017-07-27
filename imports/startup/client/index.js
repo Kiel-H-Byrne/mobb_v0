@@ -144,6 +144,12 @@ placeMyMarker = function(map,pos) {
   });
 };
 
+hideImg = function() {
+  $(this).css({display:"none"});
+  console.log('img broken');
+};
+
+
 setGReviews = function(gid) {
   if (gid) {
     let dataFromCache = GCache.get(gid);
@@ -297,10 +303,7 @@ Meteor.startup(function () {
               let google_id = res[0].place_id;
               console.log(`Obtained ${google_id} for ${name}.`);
               //set document
-              Listings.update(
-                { _id: id },
-                { $set: { google_id: google_id } }
-              );
+              Meteor.call('setGID',id, google_id);
               return google_id;
           } else {
               // Listings.update(

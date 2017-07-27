@@ -16,9 +16,6 @@ Listings = new orion.collection('listings', {
         data: "location", 
         title: "Location" 
       },{ 
-        data: "onlineonly", 
-        title: "Online Only" 
-      },{ 
         data: "street", 
         title: "Street" 
       },{ 
@@ -89,7 +86,7 @@ Listings = new orion.collection('listings', {
 
 if ( Meteor.isServer ) {
   // ALLOW FOR SORTING (?) 
-  Listings._ensureIndex( { name: 1, onlineonly: 1, city: 1 } );
+  Listings._ensureIndex( { name: 1, city: 1 } );
 
   // Meteor.subscribe('categories', function () {
   //   const catArray = Categories.find().fetch();
@@ -230,17 +227,6 @@ Listings.attachSchema(new SimpleSchema({
     label: 'Upload an Image',
     optional: true
   }),
-  onlineonly: {
-    label: 'Online Only?',
-    type: Boolean,
-    optional: true,
-    autoValue: function () {
-      if ( !this.field("street").value && this.field("url").value ) {
-        return true;
-      } 
-      return false;
-    }
-  },
   google_id: {
     label: 'Google ID',
     type: String,

@@ -99,6 +99,17 @@ Meteor.methods({
       }
     });
   },
+  editListing: function(doc) {
+    check(doc, Object);
+    Listings.update(doc , function(err, res){
+      if (err) {
+        console.log("UPDATE FAILED:");
+        console.log(doc.name + ": " + err);
+      } else {
+        // console.log(doc.name + ": Success");
+      }
+    });
+  },
   addCategory: function(doc) {
     check(doc, Object);
     Categories.insert(doc , function(err, res){
@@ -203,7 +214,7 @@ Meteor.methods({
       // console.log(params);
       // console.log("***calling PLACES API method with "+params);
       try {
-        const result = HTTP.post(apiUrl, {data: params});
+        let result = HTTP.post(apiUrl, {data: params});
         if (result.data) {
           console.log("OBTAINED NEW PLACE_ID FOR "+ doc.name);
           Listings.update({
@@ -287,6 +298,14 @@ Meteor.methods({
       console.log(img);
       return img;
     }
+  },
+  setGID: function(id, google_id) {
+    check(id, String);
+    check(google_id, String);
+    Listings.update(
+      { _id: id },
+      { $set: { google_id: google_id } }
+    );
   },
   bizSearch: function () {
     // https://api.business.usa.gov/{ReturnType}?keyword={KeyWordSearch}&page={PageNumber}&api_key={YourAPIKey}

@@ -32,7 +32,7 @@ if ( Meteor.isServer ) {
 
 Categories.allow({
   // only allow insertion if you are logged in
-  insert: (userId, doc) => !! userId,
+  insert: (userId, doc) => false,
   update: (userId, doc) => !! userId,
   remove: (userId, doc) => false,
 });

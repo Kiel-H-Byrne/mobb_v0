@@ -19,7 +19,7 @@
 								  <div class="col s6 m3"> {{> afFormGroup name="state" type="select" firstOption=getState value=getState options="allowed" label=false}} </div>
 								  <div class="col s6 m4"> {{> afQuickField name="zip" label="Zipcode (optional)"}} </div>
 							  </div>
-							  {{> afQuickField name="phone" data-length="14"}}
+							  {{> afQuickField name="phone" data-length="11"}}
 							  {{> afQuickField name="url" value="http://"}}
 			    		</div>
 		    		</li>
@@ -33,12 +33,12 @@
 							  
 							  {{> afQuickField name="owner"}}
 							  {{> afQuickField name="image"}}
-							  <!--div class="row" id="row_categories">
+{{!-- 							  <div class="row" id="row_categories">
 								  <div class="col s12">
 								  <h5 class="center-align"> Categories: </h5>
 									  {{> afFormGroup name="" type="select-checkbox-inline" options=formOptions}}
 								  </div>
-							  </div-->
+							  </div> --}}
 							  {{> afQuickField name="description"}}
 							</div>
 			    	</li>

@@ -20,6 +20,11 @@
   .card-content {
     padding: 0;
     color: $rgba-primary-grey-4;
+
+    p {
+      padding: 1rem;
+      line-height: 1.7rem;
+    }
   }
   .card-action {
     a {

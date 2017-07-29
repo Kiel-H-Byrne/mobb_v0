@@ -56,7 +56,7 @@ Template.fullPage.onRendered(function () {
         $(this).css({display:"none"});
         if(!$(this).hasClass('broken-image')) {
           $(this).addClass('broken-image');
-        };
+        }
       });
 
     });

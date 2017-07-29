@@ -39,7 +39,7 @@ OrionCache = function(cacheName, ttl) {
     this.localCache._ensureIndex({ "createdAt": 1 }, { expireAfterSeconds: ttl });
 
     this.localCache.allow({
-      insert: function(userId, query) { return true },
+      insert: function(userId, query) { return true; },
       update: function(userId, query) { return ownsDocument(userId, query); },
       remove: function(userId, query) { return ownsDocument(userId, query); }
     });

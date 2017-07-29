@@ -16,7 +16,7 @@ Template.fullPage.onRendered(function () {
       $('.editModal-trigger').modal();
       $('select').material_select();
       $('.dropdown-button').dropdown({
-      stopPropagation: true
+      // stopPropagation: true
       // inDuration: 200,
       // outDuration: 225,
       // constrain_width: false, // Does not change width of dropdown to that of the activator
@@ -54,9 +54,9 @@ Template.fullPage.onRendered(function () {
       $('img').on('error', function () {
         console.log("broken image", this);
         $(this).css({display:"none"});
-        if(!$(this).hasClass('broken-image')) {
-          $(this).addClass('broken-image');
-        }
+        // if(!$(this).hasClass('broken-image')) {
+        //   $(this).addClass('broken-image');
+        // }
       });
 
     });

@@ -1,74 +1,39 @@
 
 <template name="mobileNav">
-<div id="mobileNav" class="hide-on-large-only">
-{{#if hasFavorites}}
-  <ul id="slide-out-fav" class="side-nav">
-    <li class="collection-header"><i class="material-icons">favorite</i>Favorites:</li>
-    <li><div class="divider"></div></li>
-    <ul class="collection">
-      {{#each favorites}}
-        <li class="collection-item avatar hoverable ">
-          <a class="card_link" href="/listings/{{name}}">
-            {{> listCard}}
-          </a>
-        </li>
-      {{/each}}
-    </ul>
-  </ul>
-  <a data-activates="slide-out-fav" class="z-depth-4 button-collapse_fav slide_badge_fav"><i class="material-icons">favorite</i></a>
-{{/if}}
-{{#if haveLocation}}
-  <ul id="slide-out-near" class="side-nav">
-    <li class="collection-header"><i class="material-icons">near_me</i>Nearest:</li>
-    <li><div class="divider"></div></li>
-    <ul class="collection">
-      {{#each list}}
-        {{#if isClose (getDistance location)}}
+  <div id="mobileNav" class="hide-on-large-only">
+  {{#if hasFavorites}}
+    <ul id="slide-out-fav" class="side-nav">
+      <li class="collection-header"><i class="material-icons">favorite</i>Favorites:</li>
+      <li><div class="divider"></div></li>
+      <ul class="collection">
+        {{#each favorites}}
           <li class="collection-item avatar hoverable ">
             <a class="card_link" href="/listings/{{name}}">
               {{> listCard}}
             </a>
           </li>
-        {{/if}}
-      {{/each}}
+        {{/each}}
+      </ul>
     </ul>
-  </ul>
-  <a data-activates="slide-out-near" class="z-depth-4 button-collapse_near slide_badge_near"><i class="material-icons">near_me</i></a>
+    <a data-activates="slide-out-fav"  class="z-depth-4 button-collapse_fav slide_badge_fav"><i class="material-icons">favorite</i></a>
   {{/if}}
-</div>
-</template>
-
-<template name="listCard">
-  <div>
-    {{#if image.url}}
-      <img class="circle" src="{{image.url}}" />
-    {{else}}
-      {{#if url}}
-      <img class="circle" src="{{getImage url _id}}" />
-      {{/if}}
-    {{/if}}
-    <span class="title">{{name}}</span>
-
-    <p>
-      {{#if social.facebook}}
-      fb: <a href="https://www.facebook.com/{{social.facebook}}" target="_blank" rel="noopener" > @{{social.facebook}}</a> <br />
-      {{/if}}
-      {{#if social.instagram}}
-      ig: <a href="https://www.instagram.com/{{social.instagram}}" target="_blank" rel="noopener" > @{{social.instagram}}</a> <br />
-      {{/if}}
-      {{#if social.twitter}}
-      tt: <a href="https://www.twitter.com/{{social.twitter}}" target="_blank" rel="noopener" > @{{social.twitter}}</a> <br />
-      {{/if}}
-    </p>
-    {{#if street}}
-    <p class="address">
-      {{street}} <br />
-      {{city}} {{state}} {{zip}} <br />
-    </p>
-    {{/if}}
-    {{#if phone}}    
-      <a class="phone" href="tel:+1{{phone}}"><i class="material-icons">phone</i>{{phone}}</a> 
+  {{#if haveLocation}}
+    <ul id="slide-out-near" class="side-nav">
+      <li class="collection-header"><i class="material-icons">near_me</i>Nearest:</li>
+      <li><div class="divider"></div></li>
+      <ul class="collection">
+        {{#each list}}
+          {{#if isClose (getDistance location)}}
+            <li class="collection-item avatar hoverable ">
+              <a class="card_link" href="/listings/{{name}}">
+                {{> listCard}}
+              </a>
+            </li>
+          {{/if}}
+        {{/each}}
+      </ul>
+    </ul>
+    <a data-activates="slide-out-near" class="z-depth-4 button-collapse_near slide_badge_near"><i class="material-icons">near_me</i></a>
     {{/if}}
   </div>
-  {{> favoriteStar}}
 </template>

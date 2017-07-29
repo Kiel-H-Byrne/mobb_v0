@@ -5,6 +5,7 @@ import './categorySelect.html';
 
 Template.catSelect.onRendered(function () {
   $(document).ready(function () {
+    $('.tooltipped').tooltip();
     $('.dropdown-button').dropdown({
       stopPropagation: true
       // inDuration: 200,

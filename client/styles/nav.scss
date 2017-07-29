@@ -5,7 +5,7 @@
 
 .navbar-fixed {
   nav {
-    background-color: $rgba-primary-grey-3;
+    background-color: $rgba-primary-grey-5;
   }
   img {
     max-height: $navbar-height;
@@ -32,25 +32,26 @@
   }
 
   .nav-list{
-    // position: relative;
-    // left: 210px;
-    a {
-      color: $color-primary-1;
-    }
-
     i {
       line-height: inherit;
     }
 
+  .more_icon {
+    padding: 0 5px 0 7px;
+    margin: auto;
+  }
+
     form input  {
       margin: 0 .5rem !important;
       vertical-align: middle !important;
-      min-width: 211px;
+      width: auto;
+      // min-width: 175px;
     }
 
     li a {
       color: $rgba-primary-0;
     }
+
     .no_pad{
       padding: 0 .3rem;
     }
@@ -113,4 +114,16 @@
         padding: 0 7px;
       }
     }
+}
+
+@media #{$small-and-down} {
+  .navbar-fixed {
+    position: fixed;
+    bottom: 0;
+
+    img {
+      position: fixed;
+      top: 0;
+    }
+  }
 }

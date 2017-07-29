@@ -6,7 +6,7 @@ Template.centerButton.helpers( function () {
 
 Template.centerButton.onRendered(function () {
   $(document).ready(function (){
-    $('.tooltipped').tooltip({delay: 50});
+    $('.tooltipped').tooltip();
   });
 
   //as soon as geoaccepted is true, ask for geolocation and set to session variable

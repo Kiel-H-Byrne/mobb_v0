@@ -1,5 +1,6 @@
 
 
+
 <template name="nav2">
     <div class="navbar-fixed">
         {{! > cornerRibbon}}
@@ -12,10 +13,10 @@
 
 
                 <ul class=" nav-list right">
-                    <li class="hide-on-small-only ">
+                    <li class="">
                         <form id="desktop_search-form">
                           <div class="input-field">
-                            <input id="search_nav" placeholder="Search..."  class="form-control typeahead" name="results" type="text" autocomplete="off" spellcheck="off" data-sources="dataset" />
+                            <input id="search_nav" placeholder="Search..." size="15" class="form-control typeahead" name="results" type="text" autocomplete="off" spellcheck="off" data-sources="dataset" />
                             <label for="search_nav"><i class="material-icons">search</i></label>
                             <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;" tabindex="-1" />
                           </div>
@@ -28,33 +29,35 @@
                       <li><a class=" " href="/register" alt="Add A Business"><i class="material-icons left" title="Add a Business">library_add</i>Add</a></li>
                     {{/if}}
                     <li>{{> catSelect}}</li>
-                    <li class="select_wrapper">
-                        <a class="dropdown-button" alt="..." data-activates="more-dropdown" data-beloworigin="true" data-constrainwidth="false" data-alignment="right"  > 
-                           <i class="material-icons" title="...">more_vert</i>
-                        </a>
-                        <ul id="more-dropdown" class="dropdown-content">
-                            <li class="flex-center">
-                                <a class="link-share" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkibumap%2Ecom&amp;title=Locate%2C+Promote%2C+%26+Support+a+Business+Owned+By+Us%2E" target="_blank" rel="noopener" title="Share on Facebook" >
-                                    <img class=" " src="/img/fbook-share.png" />
-                                </a>
-                                <a class="link-share" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2FKIBUmap%2Ecom&amp;title=Locate%2C+Promote%2C+%26+Support+a+Business+Owned+By+Us%2E&amp;source=www%2Ekibumap%2Ecom" target="_blank" rel="noopener" title="Share on LinkedIn" >
-                                    <img class=" " src="/img/linkedin-share.png" />
-                                </a>
-                                <a class="link-share " href="https://twitter.com/intent/tweet?text=Locate%2C+Promote%2C+%26+Support+a+Business+Owned+By+Us%3A+KIBUmap%2Ecom" target="_blank" rel="noopener" title="Share on Twitter" >
-                                    <img class=" " src="/img/twitter-share.png" />
-                                </a>
-                            </li>
-                            <li><a href="/kibu">About Us</a></li>
-                            <li><a href="/terms">Terms &amp; Conditions </a></li>
-                            <li class="divider"></li>    
-                            {{#if currentUser}}                        
-                            <li><a class="signout_btn" href="#">Sign Out</a></li>
-                            {{else }}
-                            <li><a class="signin_btn" href="/login">Sign In</a></li>
-                              <!--li> {{> atNavButton}} </li-->
-                            {{/if}}
-                        </ul>                    
-              
+                    <li>
+                        <div class="select_wrapper">
+                            <a class="dropdown-button more_icon" alt="..." data-activates="more-dropdown" data-beloworigin="true" data-constrainwidth="false" data-alignment="right" data-stoppropagation="true" > 
+                               <i class="material-icons more_icon" title="...">more_vert</i>
+                               
+                            </a>
+                            <ul id="more-dropdown" class="dropdown-content">
+                                <li class="flex-center">
+                                    <a class="link-share" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkibumap%2Ecom&amp;title=Locate%2C+Promote%2C+%26+Support+a+Business+Owned+By+Us%2E" target="_blank" rel="noopener" title="Share on Facebook" >
+                                        <img class=" " src="/img/fbook-share.png" />
+                                    </a>
+                                    <a class="link-share" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2FKIBUmap%2Ecom&amp;title=Locate%2C+Promote%2C+%26+Support+a+Business+Owned+By+Us%2E&amp;source=www%2Ekibumap%2Ecom" target="_blank" rel="noopener" title="Share on LinkedIn" >
+                                        <img class=" " src="/img/linkedin-share.png" />
+                                    </a>
+                                    <a class="link-share " href="https://twitter.com/intent/tweet?text=Locate%2C+Promote%2C+%26+Support+a+Business+Owned+By+Us%3A+KIBUmap%2Ecom" target="_blank" rel="noopener" title="Share on Twitter" >
+                                        <img class=" " src="/img/twitter-share.png" />
+                                    </a>
+                                </li>
+                                <li><a href="/kibu">About Us</a></li>
+                                <li><a href="/terms">Terms &amp; Conditions </a></li>
+                                <li class="divider"></li>    
+                                {{#if currentUser}}                        
+                                <li><a class="signout_btn" href="#">Sign Out</a></li>
+                                {{else }}
+                                <li><a class="signin_btn" href="/login">Sign In</a></li>
+                                  <!--li> {{> atNavButton}} </li-->
+                                {{/if}}
+                            </ul>                    
+                        </div>
                     </li>
                       <!--li class="hide-on-med-and-up"><a class="btn waves-effect waves-dark tooltipped" href="/categories/Online Only" alt="View Online Listings" data-tooltip="View by List" >Online<i class="material-icons " title="View List">view_list</i></a></li-->
                       <!--li class="hide-on-med-and-up"><a class="btn waves-effect waves-dark" href="/list" alt="View Online Listings"><i class="material-icons">filter_list</i></a></li-->

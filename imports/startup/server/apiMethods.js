@@ -252,7 +252,7 @@ Meteor.methods({
 
       if (response.error) {
         console.log(response.error.message);
-        return false;
+        return ;
       }
 
       let hiObj = response.htmlInferred;
@@ -285,18 +285,19 @@ Meteor.methods({
         //   uri = img.replace("https://", "https://images.weserv.nl/?url=ssl:");
         //   console.log(uri);
         // }
-      }
-
-      Listings.update({
-        _id: id 
-      },{
-        $set: { 
-          "image.url": img,
-          description: description,
-      } });
+        Listings.update({
+          _id: id 
+        },{
+          $set: { 
+            "image.url": img,
+            description: description,
+          } 
+        });
 
       console.log(img);
       return img;
+      }
+      return ; 
     }
   },
   setGID: function(id, google_id) {

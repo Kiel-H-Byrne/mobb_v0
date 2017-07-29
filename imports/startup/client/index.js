@@ -52,7 +52,7 @@ imagesLoaded = require('imagesLoaded/imagesLoaded.js');
 // downloadImage = require('download-image');
 
 console.log("-= imports/startup/client/index.js loaded");
-
+Session.set('loading', true);
 // ============================= API DATA CACHEING ==================================
 // let cache = new ApiCache('rest', 120);
 // 100000s = 1.16 days....
@@ -123,6 +123,10 @@ Meteor.startup(function () {
 	  });
 	}
   //=====  Global Template Helpers =====
+  Template.registerHelper('loading', function() {
+    return Session.get('loading');
+  });
+
   Template.registerHelper('getImage', function(url, id) {
     Meteor.call('getOG', url, id);
   });

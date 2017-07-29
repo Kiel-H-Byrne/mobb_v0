@@ -2,6 +2,7 @@
 import Listings from '/imports/startup/collections/listings';
 
 import './centerButton.js';
+import './loadingScreen.html';
 import './map.html';
 
 //====== GLOBALS ======
@@ -40,6 +41,7 @@ $.getJSON("https://freegeoip.net/json/", {
 Template.map.onCreated( function () {
 
     // console.log("-= MAP: Created =-");
+
     let self = this;
     GoogleMaps.ready('map', function(map) {
 
@@ -153,6 +155,7 @@ Template.map.onCreated( function () {
         //====== watch the database for changes, draw new marker on change. ====== //
 
         let subscription = self.subscribe('listings_locs', function () {
+          Session.set('loading', false);
             let cursor = Listings.find({
                 location: { $exists : 1 }, 
                 certs: { $exists: 0 }
@@ -326,7 +329,7 @@ Template.map.helpers({
     // locate you.
 
     //setting arbitrary map center, until 'geoAccepted is filled'
-    let mapCenter = {'lat':40.017, 'lng':-109.017};
+    let mapCenter = {'lat':40.017, 'lng':-99.017};
         // if (!Session.get('browserLoc')) {
             // mapCenter = {'lat':40.017, 'lng':-109.017};
             // console.log("Set mapCenter to 'Over West Coast':", mapCenter);

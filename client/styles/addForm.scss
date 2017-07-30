@@ -75,7 +75,7 @@
 @media #{$medium-and-down} {
   [id='modalAdd'],
   [id='modalEdit'] {
-    min-width: 97%;
+    min-width: 90%;
     min-height: 80%;
     z-index: 1000;
   }

@@ -263,10 +263,7 @@ Meteor.methods({
       console.log(res.obj);
 
       // img = (ogObj) ? ogObj.image.url : (hgObj) ? hiObj.image : (hiObj) ? hiObj.image_guess : console.log("no img");
-      let img = (res.obj.image) ? res.obj.image || res.obj.image.url : (res.obj.image_guess) ? res.obj.image_guess : () => { 
-        console.log("no img");
-        return; 
-      };
+      let img = (res.obj.image) ? res.obj.image || res.obj.image.url : (res.obj.image_guess) ? res.obj.image_guess : res.obj.images[0];
 
       // description = (ogObj) ? ogObj.description || ogObj.title : (hgObj) ? hgObj.description || hgObj.title : (hiObj) ? hiObj.description || hiObj.title : console.log("no descr");;
       const description = res.obj.description || res.obj.title || null;
@@ -299,7 +296,6 @@ Meteor.methods({
       console.log(img);
       return img;
       }
-      return ; 
     }
   },
   scrapeOG: function(url,id) {
@@ -313,28 +309,29 @@ Meteor.methods({
       let options = {'url': url};
       ogs(options, function(error,results) {
         if (!error && results.data) {
-          const data = results.data
-          let img = data.ogImage.url;
-          if (img.includes('http://')) {  
-            img = img.replace("http://", "https://images.weserv.nl/?url=");
-            // console.log(img);
-          } 
+          console.log(results);
+          const data = results.data;
+          let img = (data.ogImage) ? (data.ogImage.url) : null;
           let title = data.ogTitle;
           let description = data.ogDescription;
+
+          if (img)
+            if (img.includes('http://')) {  
+            img = img.replace("http://", "https://images.weserv.nl/?url=");
+            // console.log(img);
+            } 
+
+            Listings.update({
+              _id: id 
+            },{
+              $set: { 
+                "image.url": img,
+                description: description,
+              } 
+            });
+          console.log(img);
+          return img;
         }
-
-        // Listings.update({
-        //   _id: id 
-        // },{
-        //   $set: { 
-        //     "image.url": img,
-        //     description: description,
-        //   } 
-        // });
-
-        console.log(img);
-        return img;
-      
       })
     }
   },

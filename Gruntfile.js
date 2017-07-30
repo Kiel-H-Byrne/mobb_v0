@@ -19,11 +19,13 @@ module.exports = function(grunt) {
                 src: 'public/img/KIBU-logo_lg.png',
                 dest: 'public/img/icons',
                 options: {
-                    iconsPath: '/img',
-                    html: ['client/head.html'],
+                    iconsPath: 'img/icons/',
+                    html: [ 'public/icon_head.html' ],
                     design: {
                         ios: {
-                            pictureAspect: 'noChange',
+                            pictureAspect: 'backgroundAndMargin',
+                            backgroundColor: '#ed7e0e',
+                            margin: '14%',
                             assets: {
                                 ios6AndPriorIcons: true,
                                 ios7AndLaterIcons: true,
@@ -34,7 +36,7 @@ module.exports = function(grunt) {
                         desktopBrowser: {},
                         windows: {
                             pictureAspect: 'noChange',
-                            backgroundColor: '#da532c',
+                            backgroundColor: '#ed7e0e',
                             onConflict: 'override',
                             assets: {
                                 windows80Ie10Tile: true,
@@ -42,20 +44,19 @@ module.exports = function(grunt) {
                                     small: true,
                                     medium: true,
                                     big: false,
-                                    rectangle: true
+                                    rectangle: false
                                 }
                             }
                         },
                         androidChrome: {
-                            pictureAspect: 'noChange',
+                            pictureAspect: 'backgroundAndMargin',
+                            margin: '17%',
+                            backgroundColor: '#ed7e0e',
                             themeColor: '#ed7e0e',
                             manifest: {
                                 name: 'KIBU: The Map',
-                                short_name: "KIBU",
-                                description: "The Map of Black Owned Businesses",
                                 display: 'standalone',
-                                orientation: 'portrait',
-                                start_url: '/?utm_source=homescreen',
+                                orientation: 'notSet',
                                 onConflict: 'override',
                                 declared: true
                             },
@@ -66,11 +67,12 @@ module.exports = function(grunt) {
                         },
                         safariPinnedTab: {
                             pictureAspect: 'blackAndWhite',
-                            threshold: 20,
+                            threshold: 16.875,
                             themeColor: '#ed7e0e'
                         }
                     },
                     settings: {
+                        compression: 3,
                         scalingAlgorithm: 'Mitchell',
                         errorOnImageTooSmall: false
                     }

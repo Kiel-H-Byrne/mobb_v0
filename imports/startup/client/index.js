@@ -128,8 +128,12 @@ Meteor.startup(function () {
   });
 
   Template.registerHelper('getImage', function(url, id) {
+    // does not get inferred images, sometimes will not return image. 
+    // if no image returned, call "scrapeOG" ?
+    // Meteor.call('scrapeOG', url, id); 
+
     Meteor.call('getOG', url, id);
-    Meteor.call('scrapeOG', url, id);
+    
     
   });
 

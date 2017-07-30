@@ -237,7 +237,7 @@ Meteor.methods({
     check(url, String);
     check(id, String);
     if (!url) {
-      console.log(`No URL for ${id}, so no OpenGraph.`);
+      console.log(`No URL for ${id}, so no OpenGraph Data.`);
       return false;
     } else {
       let param = encodeURIComponent(url);
@@ -246,14 +246,14 @@ Meteor.methods({
       let apiUrl = `https://opengraph.io/api/1.0/site/${param}?app_id=${Meteor.settings.public.keys.openGraph.key}` ;
       // console.log("--URL--"+apiUrl);
       const response = Meteor.wrapAsync(apiCall)(apiUrl);
-      let obj = {};
-      let images = [];
-      console.log(response);
-
+      
       if (response.error) {
         console.log(response.error.message);
         return ;
       }
+
+      let obj = {};
+      // console.log(response);
 
       let hiObj = response.htmlInferred;
       let hgObj = (response.hybridGraph.image) ? response.hybridGraph : null;
@@ -262,13 +262,15 @@ Meteor.methods({
       obj = hgObj || ogObj || hiObj;
       console.log(obj);
 
-      let img, uri, description;
-
       // img = (ogObj) ? ogObj.image.url : (hgObj) ? hiObj.image : (hiObj) ? hiObj.image_guess : console.log("no img");
-      img = (obj.image) ? obj.image || obj.image.url : (obj.image_guess) ? obj.image_guess : console.log("no img");
+      let img = (obj.image) ? obj.image || obj.image.url : (obj.image_guess) ? obj.image_guess : () => { 
+        console.log("no img");
+        return; 
+      };
 
       // description = (ogObj) ? ogObj.description || ogObj.title : (hgObj) ? hgObj.description || hgObj.title : (hiObj) ? hiObj.description || hiObj.title : console.log("no descr");;
-      description = obj.description || obj.title || console.log("no descrip");
+      let description = obj.description || obj.title || null;
+    
 
       let status = response.requestInfo.responseCode;
       // console.log(status);

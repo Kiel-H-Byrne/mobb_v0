@@ -2,6 +2,10 @@
   "short_name": "KIBU",
   "name": "KIBU: The Map",
   "description": "The Map of Black Owned Businesses",
+  "start_url": "/?utm_source=homescreen",
+  "background_color": "#ED7E0E",
+  "theme_color": "#ED7E0E",
+  "display": "standalone",
   "icons": [
     {
       "src": "img/icons/set_map/Icon-16.png",
@@ -103,9 +107,5 @@
         "sizes": "512x512",
         "type": "image/png"
     }    
-  ],
-  "start_url": "/?utm_source=homescreen",
-  "background_color": "#ED7E0E",
-  "theme_color": "#ED7E0E",
-  "display": "standalone"
+  ]
 }

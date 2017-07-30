@@ -5,6 +5,17 @@ Template.centerButton.helpers( function () {
 });
 
 Template.centerButton.onRendered(function () {
+
+  // zoom once i have clientPosition then stop
+  this.autorun(function (c) {
+    let pos = Session.get('clientLoc');
+    if (pos) {
+      let map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
+      targetClient(map, pos);
+      c.stop();
+    }
+  });
+
   $(document).ready(function (){
     $('.tooltipped').tooltip();
   });
@@ -16,34 +27,24 @@ Template.centerButton.onRendered(function () {
 Template.centerButton.events({
   'click #centerButton_button' : function(event,templateInstance){
 
-
       let map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
       // let clientMarker;
-
-      if (!Session.get('clientLoc')) {
-        // console.log('using browser.');
-        targetBrowser(map);
-        $('.tooltipped').tooltip('remove');
-      } else {
-        let pos = Session.get('clientLoc');
-        targetClient(map, pos);
+      const cl = Session.get('clientLoc');
+      if (cl) {
+        console.log('map', map);
+        targetClient(map, cl);
 
         $('.tooltipped').tooltip('remove');
         //also check if clientmarker is drawn, if not, draw it and radius. 
         //after returning to browser, marker is not shown... so check if the object still exists
         // console.log(clientMarker);
         // IF I PLACE A MARKER EVERY TIME I PRESS THIS BUTTON, WHEN I MOVE, WILL IT REPLACE ITSELF? WILL THEYS TACK UP?
-        placeMyMarker(map, pos);
+        placeMyMarker(map, cl);
+      } else {
+        // console.log('using browser.');
+        targetBrowser(map);
+        $('.tooltipped').tooltip('remove');
       }
-
-      // zoom once i have clientPosition then stop
-      templateInstance.autorun(function (c) {
-        let pos = Session.get('clientLoc');
-        if (pos) {
-          targetClient(map, pos);
-          c.stop();
-        }
-      });
 
       templateInstance.autorun(function (c) {    
         //====== AUTO CALCULATE MY LOCATION AND DRAW NEW MARKER WHEN IT CHANGES ======

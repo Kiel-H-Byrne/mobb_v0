@@ -3,7 +3,7 @@
 /*global module:false*/
 module.exports = function(grunt) {
 
-    var mozjpeg = require('imagemin-mozjpeg');
+    // var mozjpeg = require('imagemin-mozjpeg');
     // Project configuration.
     grunt.initConfig({
         // Metadata.
@@ -25,7 +25,7 @@ module.exports = function(grunt) {
                         ios: {
                             pictureAspect: 'noChange',
                             assets: {
-                                ios6AndPriorIcons: false,
+                                ios6AndPriorIcons: true,
                                 ios7AndLaterIcons: true,
                                 precomposedIcons: false,
                                 declareOnlyDefaultIcon: true
@@ -39,16 +39,16 @@ module.exports = function(grunt) {
                             assets: {
                                 windows80Ie10Tile: true,
                                 windows10Ie11EdgeTiles: {
-                                    small: false,
+                                    small: true,
                                     medium: true,
                                     big: false,
-                                    rectangle: false
+                                    rectangle: true
                                 }
                             }
                         },
                         androidChrome: {
                             pictureAspect: 'noChange',
-                            themeColor: '#ffffff',
+                            themeColor: '#ed7e0e',
                             manifest: {
                                 name: 'KIBU: The Map',
                                 short_name: "KIBU",

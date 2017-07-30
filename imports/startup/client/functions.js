@@ -38,6 +38,7 @@ getLocation = async function() {
 
 targetClient = function(map,pos) {
     map.instance.setCenter(pos);
+    google.maps.event.trigger(map, 'resize');
     map.instance.setZoom(12);
 };
 
@@ -50,6 +51,7 @@ targetBrowser = function(map) {
 // let clientMarker;
   
 placeMyMarker = function(map,pos) {
+  google.maps.event.trigger(map, 'resize');
   //would only not exist if the template reloaded and the browser didn't...(dev mode)
   if (!clientMarker) {
     const radius = 3;

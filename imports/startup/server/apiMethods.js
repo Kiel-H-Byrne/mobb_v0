@@ -252,27 +252,27 @@ Meteor.methods({
         return ;
       }
 
-      let obj = {};
+      const res = {};
       // console.log(response);
 
       let hiObj = response.htmlInferred;
       let hgObj = (response.hybridGraph.image) ? response.hybridGraph : null;
       let ogObj = (!response.openGraph.error && response.openGraph.image) ? response.openGraph : null;
       
-      obj = hgObj || ogObj || hiObj;
-      console.log(obj);
+      res.obj = hgObj || ogObj || hiObj;
+      console.log(res.obj);
 
       // img = (ogObj) ? ogObj.image.url : (hgObj) ? hiObj.image : (hiObj) ? hiObj.image_guess : console.log("no img");
-      let img = (obj.image) ? obj.image || obj.image.url : (obj.image_guess) ? obj.image_guess : () => { 
+      let img = (res.obj.image) ? res.obj.image || res.obj.image.url : (res.obj.image_guess) ? res.obj.image_guess : () => { 
         console.log("no img");
         return; 
       };
 
       // description = (ogObj) ? ogObj.description || ogObj.title : (hgObj) ? hgObj.description || hgObj.title : (hiObj) ? hiObj.description || hiObj.title : console.log("no descr");;
-      let description = obj.description || obj.title || null;
+      const description = res.obj.description || res.obj.title || null;
     
 
-      let status = response.requestInfo.responseCode;
+      const status = response.requestInfo.responseCode;
       // console.log(status);
       if (img) {
         // uri = encodeURIComponent(img); 
@@ -300,6 +300,21 @@ Meteor.methods({
       return img;
       }
       return ; 
+    }
+  },
+  scrapeOG: function(url,id) {
+    check(url, String);
+    check(id, String);
+    if (!url) {
+      console.log(`No URL for ${id}, so no OpenGraph Data.`);
+      return false;
+    } else {
+      const ogs = require('open-graph-scraper');
+      let options = {'url': url};
+      ogs(options, function(error,results) {
+        console.log('err:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
+        console.log('results:', results);
+      })
     }
   },
   setGID: function(id, google_id) {

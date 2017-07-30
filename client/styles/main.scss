@@ -75,7 +75,7 @@ body {
 // ================================================ MATERIALIZE OVERWRITES ================================================ 
 .btn,
 .btn-floating {
-  background-color: $clr-orange;
+  background-color: $clr-orange !important;
 
   &:hover {
     background-color: $clr-orange-dark !important;

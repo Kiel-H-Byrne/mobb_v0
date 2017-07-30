@@ -49,6 +49,7 @@ import '/imports/ui/layouts/splitLayout.js';
 //client Libraries
 Masonry = require('masonry-layout/masonry.js');
 imagesLoaded = require('imagesLoaded/imagesLoaded.js');
+GCache = new OrionCache('gids', 100000);
 // downloadImage = require('download-image');
 
 console.log("-= imports/startup/client/index.js loaded");
@@ -56,14 +57,13 @@ Session.set('loading', true);
 // ============================= API DATA CACHEING ==================================
 // let cache = new ApiCache('rest', 120);
 // 100000s = 1.16 days....
-const GCache = new OrionCache('gids', 100000);
 
-  //=====  GoogleMaps load =====  
-  GoogleMaps.load({
-    v: '3',
-    key: Meteor.settings.public.keys.googleClient.key,
-    libraries: ['places', 'geometry']
-  });
+//=====  GoogleMaps load =====  
+GoogleMaps.load({
+  v: '3',
+  key: Meteor.settings.public.keys.googleClient.key,
+  libraries: ['places', 'geometry']
+});
 
 
 Meteor.startup(function () {
@@ -129,6 +129,8 @@ Meteor.startup(function () {
 
   Template.registerHelper('getImage', function(url, id) {
     Meteor.call('getOG', url, id);
+    Meteor.call('scrapeOG', url, id);
+    
   });
 
   Template.registerHelper('hasImage', function () {

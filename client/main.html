@@ -45,9 +45,156 @@
 
   <title>KIBU: The Map</title> 
 
+  <style type="text/css">
+  /* LOADING SCREEN */
+    #loading-wrapper {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100; }
+
+  .content-wrapper {
+    width: 20rem;
+    height: 20rem;
+    margin: auto; }
+
+  #loading-text {
+    display: block;
+    position: absolute;
+    line-height: 100%;
+    font-size: 4rem;
+    text-align: center;
+    bottom: 30%;
+    margin: auto; }
+
+  #loading-content {
+    display: block;
+    position: relative;
+    margin: auto;
+    top: 33%;
+    width: 100%;
+    height: 100%;
+    border: 3px solid #FFBE58;
+    border: 3px solid transparent;
+    border-top-color: #FFD89A;
+    border-bottom-color: #FFD89A;
+    border-radius: 50%;
+    -webkit-animation: loader 2s linear infinite;
+    -moz-animation: loader 2s linear infinite;
+    -o-animation: loader 2s linear infinite;
+    animation: loader 2s linear infinite; }
+    #loading-content:after {
+      content: "";
+      position: absolute;
+      border: 3px solid #2985F2;
+      left: 15px;
+      right: 15px;
+      top: 15px;
+      bottom: 15px; }
+    #loading-content:before {
+      content: "";
+      position: absolute;
+      left: 5px;
+      right: 5px;
+      top: 5px;
+      bottom: 5px;
+      border: 3px solid transparent;
+      border-top-color: #FF9C00;
+      border-bottom-color: #FF9C00;
+      border-radius: 50%;
+      -webkit-animation: loader 3s linear infinite;
+      -moz-animation: loader 2s linear infinite;
+      -o-animation: loader 2s linear infinite;
+      animation: loader 3s linear infinite; }
+    #loading-content:after {
+      border: 3px solid transparent;
+      border-top-color: #00F0AE;
+      border-bottom-color: #00F0AE;
+      border-radius: 50%;
+      -webkit-animation: loader 1.5s linear infinite;
+      animation: loader 1.5s linear infinite;
+      -moz-animation: loader 2s linear infinite;
+      -o-animation: loader 2s linear infinite; }
+
+  @-webkit-keyframes loaders {
+    0% {
+      -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      transform: rotate(0deg); }
+    100% {
+      -webkit-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      transform: rotate(360deg); } }
+
+  @keyframes loader {
+    0% {
+      -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      transform: rotate(0deg); }
+    100% {
+      -webkit-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      transform: rotate(360deg); } }
+
+  /* NAV BAR */
+  .navbar-fixed nav {
+  background-color: rgba(086,082,080,.9); }
+
+  .navbar-fixed img {
+    max-height: 65px; }
+
+  .navbar-fixed i {
+    margin: 0 .5rem;
+    vertical-align: middle; }
+
+  .navbar-fixed .link-share {
+    background-color: #FFBE58;
+    width: 100%; }
+    .navbar-fixed .link-share:hover {
+      background-color: #FFD89A; }
+    .navbar-fixed .link-share img {
+      height: 1.3em;
+      display: block;
+      margin: 0 auto; }
+
+  .navbar-fixed .nav-list i {
+    line-height: inherit; }
+
+  .navbar-fixed .nav-list .more_icon {
+    padding: 0 5px 0 7px;
+    margin: auto; }
+
+  .navbar-fixed .nav-list form input {
+    margin: 0 .5rem !important;
+    vertical-align: middle !important;
+    width: auto; }
+
+  .navbar-fixed .nav-list li a {
+    color: #FFBE58; }
+
+  .navbar-fixed .nav-list .no_pad {
+    padding: 0 .3rem; }
+
+  .navbar-fixed .nav-list .more_btn {
+    padding: 0; }
+
+  .navbar-fixed [id='mobile-search_wrapper'] .input-field label:not(.label-icon).active {
+    transform: translateY(-1rem); }
+
+  .navbar-fixed [id='mobile-search_wrapper'] form input, .navbar-fixed [id='mobile-search_wrapper'] i {
+    padding-top: .3rem;
+    padding-bottom: .3rem;
+    margin: .3rem .5rem;
+    vertical-align: middle !important;
+    line-height: inherit; }
+
+  </style>
+
   <noscript>
     <style>
-      body{
+      body {
         font-size: 52px;
         text-align: center;
         line-height: 100vh;
@@ -59,6 +206,8 @@
     </style>
     Please enable Javascript to properly use this site.
   </noscript>
+
+
 </head>
 
 <body>

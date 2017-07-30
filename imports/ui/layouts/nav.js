@@ -18,7 +18,7 @@ import './nav.html';
 
 
 
-Template.nav2.onRendered( function () {
+Template.nav.onRendered( function () {
   $(document).ready(function () {
     $('.dropdown-button').dropdown({
       stopPropagation: true
@@ -83,7 +83,7 @@ Template.nav2.onRendered( function () {
 
 });
 
-Template.nav2.events({
+Template.nav.events({
 	//====== SEARCH FORM ON NAVBAR =======
 	//when form is submitted, set new center. 
 	
@@ -128,7 +128,7 @@ Template.nav2.events({
   // }
 });
 
-Template.nav2.helpers({
+Template.nav.helpers({
   dataset: function () {
     return [
       {

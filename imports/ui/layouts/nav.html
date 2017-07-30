@@ -1,7 +1,15 @@
 
+<template name="nav">
 
-
-<template name="nav2">
+    <style type="text/css">
+        .mobile_search_input,
+        .desktop_search_input{
+            position: absolute; 
+            left: -9999px; 
+            width: 1px; 
+            height: 1px;
+        }
+    </style>
     <div class="navbar-fixed">
         {{! > cornerRibbon}}
         <nav class="z-depth-2 nav">
@@ -18,7 +26,7 @@
                           <div class="input-field">
                             <input id="search_nav" placeholder="Search..." size="15" class="form-control typeahead" name="results" type="text" autocomplete="off" spellcheck="off" data-sources="dataset" />
                             <label for="search_nav"><i class="material-icons">search</i></label>
-                            <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;" tabindex="-1" />
+                            <input class="desktop_search_input" type="submit" tabindex="-1" />
                           </div>
                         </form>
                     </li>
@@ -71,7 +79,7 @@
                       <div class="input-field">
                         <input id="search_mo" placeholder="Search for Your City... "  class="form-control" type="text" autocomplete="off" spellcheck="off" />
                         <label for="search_mo"><i class="material-icons">search</i></label>
-                        <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;" tabindex="-1" />
+                        <input class="mobile_search_input" type="submit" tabindex="-1" />
                       </div>
                     </form>
                 </div>

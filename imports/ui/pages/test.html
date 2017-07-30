@@ -1,5 +1,13 @@
 
 <template name="test">
+  <head>
+    <style>
+      [id='instaMap'] > .s3{
+        width:250px; height:300px
+      }
+    </style>
+  </head>
+
 	
 	{{!-- {{> quickForm collection="Listings" doc=this id="insertListingsForm" type="normal"}} --}}
   <div class="test-wrapper ">
@@ -23,7 +31,7 @@
       </div>
       <div class="col s12">
         <div id="instaMap"></div>
-        <div class="s3" style="width:250px; height:300px">
+        <div class="s3" >
       	{{#with randomDoc}}
           {{> galleryCard}}
         {{/with}}

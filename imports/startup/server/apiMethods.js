@@ -312,8 +312,29 @@ Meteor.methods({
       const ogs = require('open-graph-scraper');
       let options = {'url': url};
       ogs(options, function(error,results) {
-        console.log('err:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
-        console.log('results:', results);
+        if (!error && results.data) {
+          const data = results.data
+          let img = data.ogImage.url;
+          if (img.includes('http://')) {  
+            img = img.replace("http://", "https://images.weserv.nl/?url=");
+            // console.log(img);
+          } 
+          let title = data.ogTitle;
+          let description = data.ogDescription;
+        }
+
+        // Listings.update({
+        //   _id: id 
+        // },{
+        //   $set: { 
+        //     "image.url": img,
+        //     description: description,
+        //   } 
+        // });
+
+        console.log(img);
+        return img;
+      
       })
     }
   },

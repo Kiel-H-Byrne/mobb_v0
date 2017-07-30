@@ -11,8 +11,10 @@ Template.centerButton.onRendered(function () {
     let pos = Session.get('clientLoc');
     if (pos) {
       let map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
-      targetClient(map, pos);
-      c.stop();
+      if (map) {
+        targetClient(map, pos);
+        c.stop();
+      }
     }
   });
 
@@ -31,7 +33,6 @@ Template.centerButton.events({
       // let clientMarker;
       const cl = Session.get('clientLoc');
       if (cl) {
-        console.log('map', map);
         targetClient(map, cl);
 
         $('.tooltipped').tooltip('remove');
@@ -45,6 +46,14 @@ Template.centerButton.events({
         targetBrowser(map);
         $('.tooltipped').tooltip('remove');
       }
+
+      templateInstance.autorun(function(l) {
+        if (!Session.get('clientLoc')) {
+          Materialize.toast('Locating...', 1300, 'myToast');
+        } else {
+          l.stop();
+        }
+      });
 
       templateInstance.autorun(function (c) {    
         //====== AUTO CALCULATE MY LOCATION AND DRAW NEW MARKER WHEN IT CHANGES ======

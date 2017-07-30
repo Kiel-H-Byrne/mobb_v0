@@ -28,7 +28,9 @@
         {{#if image.url}}
           <img src="{{image.url}}" />
         {{else}}
-          <img src="{{getImage url _id}}"/>
+          {{#if url}}
+            <img src="{{getImage url _id}}"/>
+            {{/if}}
         {{/if}}
         </div>
         <div class="card-content">

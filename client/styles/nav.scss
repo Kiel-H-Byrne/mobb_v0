@@ -104,7 +104,7 @@
 
 @media #{$small-and-down} {
   .navbar-fixed {
-    position: absolute;
+    position: fixed;
     bottom: 0;
 
     .brand-logo {

@@ -8,6 +8,7 @@ Template.editForm.onCreated(function () {
 });
 
 Template.editForm.onRendered(function () {
+  
   $(document).ready(function () {
     $('#modalEdit').modal({
       dismissible: true, // Modal can be dismissed by clicking outside of the modal

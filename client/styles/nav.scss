@@ -13,7 +13,8 @@
   }
 
   i {
-    margin: 0 .5rem;
+    margin: 0 0;
+    padding: 0 0;
     vertical-align: middle;
   }
 
@@ -37,7 +38,7 @@
     }
 
   .more_icon {
-    padding: 0 5px 0 7px;
+    padding: 0 3px 0 7px;
     margin: auto;
   }
 
@@ -106,9 +107,16 @@
     position: absolute;
     bottom: 0;
 
-    img {
+    .brand-logo {
       position: fixed;
       top: 0;
+      height: 3rem;
     }
+  }
+}
+
+@media #{$medium-and-up} {
+  .nav-list{
+    float:right //only on large screen...
   }
 }

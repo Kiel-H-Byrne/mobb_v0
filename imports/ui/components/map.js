@@ -187,9 +187,9 @@ Template.map.onCreated( function () {
                         marker.set('title', doc.name);
 
                         marker.addListener('click', function () {
+                            this.preventDefault;
                             Session.set('openListing', id);
                             $('#modalInfo').modal('open');
-                            
                             //calculate distance 
                             // let start = new google.maps.LatLng(Session.get('clientLoc') || Session.get('browserLoc'));
                             // let finish = new google.maps.LatLng(latLngObj);
@@ -276,6 +276,12 @@ Template.map.onCreated( function () {
         //     google.maps.event.trigger(map, "resize");
         //     console.log("new center");
         // })
+        google.maps.event.addListener(map, "dblclick", function(event) {
+            console.debug("caught double click");
+            // reference the global event object
+            // ignore the googleMapsEvent passed in by Google Maps!
+            event.preventDefault();
+        });
     });
 
 });

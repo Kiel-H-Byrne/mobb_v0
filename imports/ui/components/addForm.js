@@ -27,7 +27,7 @@ Template.addForm.onRendered(() => {
       endingTop: '10%', // Ending top style attribute
     });
 
-    $('.collapsible').collapsible('open');
+    $('.collapsible').collapsible();
 
     $('input[name="phone"]').characterCounter();
 

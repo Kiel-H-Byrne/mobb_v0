@@ -27,11 +27,11 @@ Template.nav.onRendered( function () {
       // constrain_width: false, // Does not change width of dropdown to that of the activator
       // hover: false, // Activate on hover
       // gutter: 3, // Spacing from edge
-      // belowOrigin: true, // Displays dropdown below the button
+      // belowOrigin: false, // Displays dropdown below the button
       // alignment: 'left' // Displays dropdown with edge aligned to the left of button
     });
 
-    $('.tooltipped').tooltip({delay: 50});
+    $('.collapsible').collapsible();
 
     $('.addModal-trigger').modal({
         dismissible: true,

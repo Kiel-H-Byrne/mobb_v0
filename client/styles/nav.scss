@@ -83,9 +83,6 @@
     }
   }
 
-
-
-
 }
 
 @media #{$medium-and-down} {
@@ -95,22 +92,23 @@
       margin: 4px auto;
     }
   }
-  .nav-list {
-    a {
-        padding: 0 7px;
-      }
-    }
 }
 
 @media #{$small-and-down} {
   .navbar-fixed {
     // position: fixed;
-    bottom: 0;
+    // bottom: 0;
 
     .brand-logo {
       // position: fixed;
       // top: 0;
-      height: 3rem;
+      height: 36px;
+    }
+
+    .nav-list {
+      a {
+          // padding: 0 7px;
+      }
     }
   }
 }

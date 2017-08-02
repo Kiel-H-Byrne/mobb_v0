@@ -3,9 +3,11 @@
 import './fullPage.html';
 
 Template.fullPage.onCreated(function () {
-  if (!this.data.google_id) {
+  if (this.data.street && !this.data.google_id) {
     // submit to google places
     Meteor.call('submitPlace', this.data);
+  } else {
+    // console.log(this.data.google_id);
   }
 });
 

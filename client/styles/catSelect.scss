@@ -16,10 +16,10 @@
 
 
   .dropdown-content {
-    background-color: $rgba-primary-grey-3;
+    background-color: $rgba-primary-grey-5;
     min-width: 230px;
     padding: 3px;
-    top: 64px;
+    top: $navbar-height !important;
 
     li {
       min-height: inherit;

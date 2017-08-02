@@ -123,7 +123,6 @@ Meteor.methods({
   addToCategory: function(name,str){
     check(name, String);
     check(str, String);
-    this.unblock();
 // Listings.update({_id: "4JSojEdYpF3W4MFv6" },{$addToSet: { categories: "Barber" }});
     Listings.update({
       name: name
@@ -195,7 +194,13 @@ Meteor.methods({
       "language": "en-AU"
       };
 */
-    if (doc.location) {
+    let fromCache = OCache.get(doc.street);
+    console.log(fromCache);
+
+    if (fromCache) {
+      console.log('returning from cache...');
+      return fromCache;
+    } else {
       const apiUrl = 'https://maps.googleapis.com/maps/api/place/add/json?key=' + Meteor.settings.public.keys.googleServer.key;
       const params = {};
       let locArr = doc.location.split(",");
@@ -222,14 +227,14 @@ Meteor.methods({
           },{
             $set: { google_id: result.data.place_id } 
           });
+
+          OCache.set(doc.street, result.data.place_id);
         }
         return true;
       } catch(e) {
         console.log(e);
         return false;
       }
-    } else {
-      console.log("NO ADDRESS FOR "+ doc.name);
     }
   },
   getOG: function(url, id) {
@@ -301,6 +306,7 @@ Meteor.methods({
   scrapeOG: function(url,id) {
     check(url, String);
     check(id, String);
+    
     if (!url) {
       console.log(`No URL for ${id}, so no OpenGraph Data.`);
       return false;
@@ -320,7 +326,6 @@ Meteor.methods({
             img = img.replace("http://", "https://images.weserv.nl/?url=");
             // console.log(img);
             } 
-
             Listings.update({
               _id: id 
             },{
@@ -365,18 +370,6 @@ Meteor.methods({
       let dist = google.maps.geometry.spherical.computeDistanceBetween(start,finish);
       console.log(dist);
       return dist;
-    }
-  },
-  convertImage: function(imageUrl) {
-    check(imageUrl, String);
-    console.log(imageUrl);
-    try {
-      console.log(Request);
-      // let result = request.getSync(imageUrl, {encoding: null});
-      // return 'data:image/png;base64,' + new Buffer(result.body).toString('base64');
-      // console.log(result);
-    } catch(e) {
-      throw new Meteor.Error("cant-download", "Error: Can't download image." + e);
     }
   }
 });

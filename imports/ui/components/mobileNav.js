@@ -11,19 +11,19 @@ Template.mobileNav.onCreated(function () {
     certs: {$exists: 0},
     // state: state
   });
-    console.log("-= closestPage.JS SUBSCRIBING: ALL ["+ cursor.count() +"] LOCATIONS ONLY =-");
+    console.log("-= mobileNav.JS SUBSCRIBING: ALL ["+ cursor.count() +"] LOCATIONS ONLY =-");
   });
 });
 
 
 Template.mobileNav.helpers({
   list: function () {
-    let theList = Listings.find({
+    let cursor = Listings.find({
       location: { $exists : 1}, 
       certs: {$exists: 0},
     }, {sort: {location: -1, name: 1}});
     
-    return theList;
+    return cursor;
   },
   favorites: function () {
   // get the array of ids

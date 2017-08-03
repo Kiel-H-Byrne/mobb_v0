@@ -6,10 +6,10 @@
       <li class="collection-header"><i class="material-icons">favorite</i>Favorites:</li>
       <li><div class="divider"></div></li>
       <ul class="collection">
-        {{#each favorites}}
+        {{#each fav in favorites}}
           <li class="collection-item avatar hoverable ">
-            <a class="card_link" href="/listings/{{name}}">
-              {{> listCard}}
+            <a class="card_link" href="/listings/{{fav.name}}">
+              {{> listCard fav}}
             </a>
           </li>
         {{/each}}
@@ -24,9 +24,10 @@
       <ul class="collection">
         {{#each list}}
           {{#if isClose (getDistance location)}}
+          <img href="favicon.ico" />
             <li class="collection-item avatar hoverable ">
               <a class="card_link" href="/listings/{{name}}">
-                {{> listCard}}
+                {{> listCard }}
               </a>
             </li>
           {{/if}}

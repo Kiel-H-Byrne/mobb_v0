@@ -5,6 +5,12 @@
 @import 'palettes/_plt_orng-tetrad';
 
 
+// ================================================ MIXINSS ================================================
+@mixin box-shadow-2($args1, $args2) {
+    -webkit-box-shadow: $args1, $args2;
+    -moz-box-shadow: $args1, $args2;
+    box-shadow: $args1, $args2;
+}
 // ================================================ CSS RESET ================================================
 
 

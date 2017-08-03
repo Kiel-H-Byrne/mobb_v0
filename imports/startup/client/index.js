@@ -273,7 +273,7 @@ Meteor.startup(function () {
     });
 
   Template.registerHelper('isClose', function(distance) {
-    if (distance <= 3) {
+     if (distance <= 3) {
       return true;
     } else {
       return false;

@@ -1,5 +1,6 @@
 import { Template } from 'meteor/templating';
 import Listings from '/imports/startup/collections/listings';
+import Categories from '/imports/startup/collections/categories';
 
 import './addForm.html';
 

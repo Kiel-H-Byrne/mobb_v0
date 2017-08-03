@@ -39,6 +39,9 @@ p {
   color: $rgba-primary-grey-4;
 }
 
+.title, .address {
+  text-transform: capitalize;
+}
 
 .muted {
   color: $color-primary-grey-2;

@@ -40,14 +40,25 @@
     bottom: 0;
     right: 0;
     margin: .3rem;
-    background-color: $rgba-primary-2;
-    color: $rgba-complement-4;
+    color: $rgba-primary-grey-4;
+    background-color: $rgba-complement-2;
     
   }
 
   .address {
     margin: 0;
     color: $color-primary-1;
+
+    .phone {
+      color: $rgba-secondary-2-0;
+
+      i {
+        color: $rgba-secondary-2-0;
+        width: 1ch;
+        margin: 0 3px;
+      }
+    }
+
   }
 }
 

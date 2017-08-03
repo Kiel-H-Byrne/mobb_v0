@@ -19,7 +19,6 @@
     background-color: $rgba-primary-grey-5;
     min-width: 230px;
     padding: 3px;
-    top: $navbar-height !important;
 
     li {
       min-height: inherit;
@@ -47,4 +46,17 @@
     }
   }
 
+}
+
+
+@media #{$medium-and-down} {
+  .dropdown-content {
+    top: $navbar-height ($navbar-height - 15px) !important;
+  }
+}
+
+@media #{$small-and-down} {
+  .dropdown-content {
+    top: $navbar-height !important;
+      }
 }

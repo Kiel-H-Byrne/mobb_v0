@@ -105,7 +105,7 @@ let styleTag = `
 `;
 
 let loadingDiv = `
-  <div id="loading-wrapper">
+  <div id="loading-wrapper" class="server_rendered">
 
     <div class="content-wrapper">
       <div id="loading-text">LOADING...</div>
@@ -114,7 +114,13 @@ let loadingDiv = `
   </div>
   `;
 
+let navDiv = `
+<div class="navbar-fixed server_rendered">
+<nav><a href="/?whywait" > </a></nav>
+</div>
+`;
+
 onPageLoad(sink => {
   sink.appendToHead(linkTags + styleTag);
-  sink.appendToBody(loadingDiv);
+  sink.appendToBody(loadingDiv + navDiv);
 });

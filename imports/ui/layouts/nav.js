@@ -20,7 +20,7 @@ import './nav.html';
 
 Template.nav.onRendered( function () {
   $(document).ready(function () {
-    $('[id="loading-wrapper"]').css({display:"none"});
+    $('[id="loading-wrapper"], .server_rendered').fadeOut();
     
     $('.dropdown-button').dropdown({
       stopPropagation: true

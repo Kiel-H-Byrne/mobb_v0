@@ -9,7 +9,6 @@ Template.shareListing.onRendered( function () {
       stopPropagation: true,
       gutter: 0,
       belowOrigin: true, // Displays dropdown below the button
-      alignment: 'left' // Displays dropdown with edge aligned to the left of button
     });
   });
 });

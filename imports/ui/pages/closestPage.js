@@ -12,12 +12,7 @@ Template.closestPage.onCreated(function () {
 
 Template.closestPage.onRendered(function () {
   Meteor.subscribe('listings_locs', function () {
-    let cursor = Listings.find({
-      location: { $exists : 1}, 
-      certs: {$exists: 0},
-      // state: state
-    });
-    console.log("-= closestPage.JS SUBSCRIBING: ALL ["+ cursor.count() +"] LOCATIONS ONLY =-");
+    // console.log("-= closestPage.JS SUBSCRIBING: ALL ["+ cursor.count() +"] LOCATIONS ONLY =-");
   });
     
   $(document).ready(function (){

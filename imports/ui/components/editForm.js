@@ -17,6 +17,9 @@ Template.editForm.onRendered(function () {
       outDuration: 200, // Transition out duration
       startingTop: '0%', // Starting top style attribute
       endingTop: '10%', // Ending top style attribute
+      ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+        $('.collapsible').collapsible();        
+      },
     });
 
     $('.collapsible').collapsible();
@@ -80,7 +83,7 @@ AutoForm.addHooks('editListingForm', {
       const latLng = this.currentDoc.location.split(",");
       // let lat = Number(latLng[0]);
       // let lng = Number(latLng[1]);
-      const latLngObj = _.object( ['lat', 'lng'], [Number(latLng[0]), Number(latLng[1])]);
+      const latLngObj = {'lat': Number(latLng[0]), 'lng': Number(latLng[1]) };
       const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
       targetClient(map,latLngObj);
     }

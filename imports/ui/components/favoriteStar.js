@@ -5,7 +5,7 @@ Template.favoriteStar.events({
   'click .add_favorite': function(event,templateInstance) {
     if (Meteor.user()) {
       let docId = this._id;
-      let userId = Meteor.user()._id;
+      let userId = Meteor.userId();
       // Meteor.user().profile.favorites.push(id);
       Meteor.users.update({
         _id: userId
@@ -13,13 +13,13 @@ Template.favoriteStar.events({
         $addToSet: {"profile.favorites" : docId}
       });
     } else {
-      Materialize.toast('Log In Before Adding Favorites', 4000, 'myToast');
+      Materialize.toast('Log In Before Adding Favorites', 3000, 'myToast');
     }
   },
   'click .remove_favorite': function(event,templateInstance) {
     if (Meteor.user()) {
       let docId = this._id;
-      let userId = Meteor.user()._id;
+      let userId = Meteor.userId();
       Meteor.users.update({
         _id: userId
       },{

@@ -6,6 +6,7 @@ import './closeButton.js';
 
 Template.infoModal.onRendered(function () {
   $(document).ready(function () {
+    $('.share-drop').dropdown();
     $('#modalInfo').modal({
       dismissible: true, // Modal can be dismissed by clicking outside of the modal
       opacity: 0.5, // Opacity of modal background

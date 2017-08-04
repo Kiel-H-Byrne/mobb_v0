@@ -153,7 +153,7 @@ Meteor.startup(function () {
 
   Template.registerHelper('isOwner', function () {
     if (Meteor.user()) {
-      let test = Meteor.user()._id === this.creator;
+      let test = Meteor.userId() === this.creator;
       // console.log(test);
       return test;
     }
@@ -162,7 +162,7 @@ Meteor.startup(function () {
   Template.registerHelper('getGID', function(name,loc, id) {
     if (loc) {
     let locArr = loc.split(",");
-    let locObj = _.object( ['lat', 'lng'], [Number(locArr[0]), Number(locArr[1])]);
+    let locObj = {'lat': Number(locArr[0]), 'lng': Number(locArr[1]) };
     // console.log(id);
     let map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
 
@@ -258,7 +258,7 @@ Meteor.startup(function () {
         if (latLng) {
           let lat = Number(latLng[0]);
           let lng = Number(latLng[1]);
-          let latLngObj = _.object( ['lat', 'lng'], [lat, lng]);
+          let latLngObj = {'lat': lat, 'lng': lng };
           
           let start = new google.maps.LatLng(Session.get('clientLoc') || Session.get('browserLoc'));
           let finish = new google.maps.LatLng(latLngObj);

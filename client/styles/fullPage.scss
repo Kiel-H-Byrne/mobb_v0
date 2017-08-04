@@ -11,6 +11,18 @@
   .card {
     padding: 1rem;
     background-color: $rgba-primary-grey-1;
+
+    .dropdown-content {
+      background-color: $rgba-primary-grey-4;
+      li > a {
+        color: $rgba-primary-grey-1;
+      }
+    }
+    .dropdown-button.active {
+      display: block;
+      color: $rgba-primary-grey-1;
+      background-color: $rgba-primary-grey-4;
+    }
   }
   .card-image {
     img {
@@ -73,8 +85,6 @@
     }
 
     .fav_star {
-      position: absolute;
-      right: 0;
       margin: 0 1rem;
       i {
         color: $rgba-complement-3;
@@ -82,8 +92,6 @@
     }
 
     .badge-share {
-      position: absolute;
-      left: 0;
       margin: 0 1rem;
       i {
         color: $rgba-complement-3;

@@ -23,11 +23,7 @@ $.getJSON("https://freegeoip.net/json/", {
 
   let lat = data.latitude;
   let lng = data.longitude;
-  // let browserLocation = _.object( ['lat', 'lng'], [lat, lng]);
-  let browserLocation = {
-    'lat': lat,
-    'lng': lng
-  };
+  let browserLocation = {'lat': lat, 'lng': lng };
   // console.log("Coord from Browser: ", browserLocation);
   Session.set('browserLoc', browserLocation);
   Session.set('clientState', data.region_code);
@@ -172,7 +168,7 @@ Template.map.onCreated( function () {
                         let latLng = doc.location.split(",");
                         let lat = Number(latLng[0]);
                         let lng = Number(latLng[1]);
-                        let latLngObj = _.object( ['lat', 'lng'], [lat, lng]);
+                        let latLngObj = {'lat': lat, 'lng': lng };
 
                         //===== LEAVE DOC LOCATION FIELD AS OBJECT LITERAL =====
                         // let latLngObj = doc.location;

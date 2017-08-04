@@ -1,6 +1,7 @@
 
 <template name="listCard">
-  <div>
+  <div class="info_list">
+    <a class="card_link" href="/listings/{{name}}">
     {{#if image.url}}
       <img class="circle" src="{{image.url}}" />
     {{else}}
@@ -8,7 +9,10 @@
       <img class="circle" src="{{getImage url _id}}" />
       {{/if}}
     {{/if}}
-    <span class="title">{{name}}</span>
+    </a>
+    <span class="title">
+      <a class="card_link" href="/listings/{{name}}">{{name}}</a>
+    </span>
 
     <p>
       {{#if social.facebook}}

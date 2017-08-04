@@ -8,9 +8,7 @@
       <ul class="collection">
         {{#each fav in favorites}}
           <li class="collection-item avatar hoverable ">
-            <a class="card_link" href="/listings/{{fav.name}}">
-              {{> listCard fav}}
-            </a>
+            {{> listCard fav}}
           </li>
         {{/each}}
       </ul>
@@ -26,9 +24,7 @@
           {{#if isClose (getDistance location)}}
           <img href="favicon.ico" />
             <li class="collection-item avatar hoverable ">
-              <a class="card_link" href="/listings/{{name}}">
-                {{> listCard }}
-              </a>
+              {{> listCard }}
             </li>
           {{/if}}
         {{/each}}

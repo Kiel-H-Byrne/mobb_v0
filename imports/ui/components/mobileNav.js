@@ -5,14 +5,7 @@ import './listCard.js';
 
 
 Template.mobileNav.onCreated(function () {
-  Meteor.subscribe('listings_locs', function () {
-  let cursor = Listings.find({
-    location: { $exists : 1}, 
-    certs: {$exists: 0},
-    // state: state
-  });
-    console.log("-= mobileNav.JS SUBSCRIBING: ALL ["+ cursor.count() +"] LOCATIONS ONLY =-");
-  });
+  Meteor.subscribe('listings_favorites');
 });
 
 

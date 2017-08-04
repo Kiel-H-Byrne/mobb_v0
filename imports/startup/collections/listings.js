@@ -186,8 +186,15 @@ Listings.attachSchema(new SimpleSchema({
   phone: {
     type: String,
     label: 'Phone Number',
-    max: 15,
-    optional: true
+    max: 14,
+    optional: true,
+    autoValue: function() {
+      if (this.value) {
+        let removedText = this.value.replace(/\D/, '');
+        this.value = removedText;
+       return removedText;
+     }
+    }
   },
   url: {
     type: String,

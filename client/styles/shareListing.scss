@@ -6,11 +6,28 @@
 
 .badge-share {
   margin: 3px;
+  padding: 3px;
+
+  .dropdown-content {
+    background-color: $rgba-primary-grey-4;
+    li > a {
+      color: $rgba-primary-3;
+    }
+  }
+
+  .dropdown-button {
+    color: $rgba-primary-3;
+  }
+
+  .dropdown-button.active {
+    display: block;
+    color: $rgba-primary-grey-4;
+    background-color: $rgba-primary-0;
+  }
 
   i {
     cursor: pointer;
     font-size: 1.5rem;
-    color: $clr-main;
   }
 
   li {

@@ -26,17 +26,20 @@ Template.addForm.onRendered(() => {
       outDuration: 200, // Transition out duration
       startingTop: '0%', // Starting top style attribute
       endingTop: '10%', // Ending top style attribute
+      ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+        $('.collapsible').collapsible();        
+      },
     });
 
     $('.collapsible').collapsible();
 
     $('input[name="phone"]').characterCounter();
 
-    $('input[name="phone"]').keydown(function(){
-     let self = $(this);
-     let removedText = self.val().replace(/\D/, '');
-     self.val(removedText);
-    });
+    // $('input[name="phone"]').keydown(function(){
+    //  let self = $(this);
+    //  let removedText = self.val().replace(/\D/, '');
+    //  self.val(removedText);
+    // });
     
     // let state = Session.get('clientState');
     // $("li:contains("+ state +")").addClass("active selected");

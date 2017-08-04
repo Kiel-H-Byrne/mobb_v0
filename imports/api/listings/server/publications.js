@@ -50,10 +50,16 @@ Meteor.publish('listings_images', function () {
 	return cursor;
 });
 
-Meteor.publish('listings_md', function () {
-	let cursor = Listings.find({
-		state: "MD"
-	});
-	console.log("-= PUBLISHING: ["+ cursor.count() +"] MD LISTINGS =-");
-	return cursor;
+Meteor.publish('listings_favorites', function () {
+	if (Meteor.user()) {
+		let arr = Meteor.user().profile.favorites;
+	  let cursor = Listings.find({
+	    _id : {$in : arr}
+	  }, {
+	    sort: {name: 1, location: -1 }
+	  });
+
+		console.log("-= PUBLISHING: ["+ cursor.count() +"] FAVORITE LISTINGS =-");
+		return cursor;
+	}
 });

@@ -20,8 +20,8 @@ Template.catSelect.onRendered(function () {
 });
 
 Template.catSelect.onCreated(function () {
-  this.subscribe('categories');
-  this.subscribe('listings_locs');
+  // this.subscribe('categories');
+  // this.subscribe('listings_locs');
 });
 
 Template.catSelect.helpers({

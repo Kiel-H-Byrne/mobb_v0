@@ -1,14 +1,21 @@
 @import '{}/node_modules/materialize-css/sass/components/color';
 @import '{}/node_modules/materialize-css/sass/components/variables';
+@import 'palettes/_colors';
 @import 'palettes/_plt_orng-tetrad';
 
 [id='centerButton_button'] {
+  background-color: $clr-orange !important;
   position: fixed;
   bottom: 80px;
   right: 0;
   margin: 0.2em;
   height: 40px;
   width: 40px;
+
+  &:hover {
+    background-color: $clr-orange-dark !important;
+  }
+  
   i {
     color: $rgba-primary-grey-4;
     font-size: 1.7rem;

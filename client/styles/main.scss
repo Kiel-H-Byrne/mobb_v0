@@ -81,14 +81,18 @@ body {
 // ================================================ MATERIALIZE OVERWRITES ================================================ 
 .btn,
 .btn-floating {
-  background-color: $clr-orange !important;
+  background-color: $clr-orange;
 
   &:hover {
-    background-color: $clr-orange-dark !important;
+    background-color: $clr-orange-dark;
   }
 }
 
 
+.card_link {
+  color: inherit;
+  text-decoration: none;
+}
 
 .modal-open {
   overflow: visible;

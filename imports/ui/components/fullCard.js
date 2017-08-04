@@ -1,4 +1,4 @@
-
+//not used
 import './fullCard.html';
 
 Template.fullCard.onCreated(function () {

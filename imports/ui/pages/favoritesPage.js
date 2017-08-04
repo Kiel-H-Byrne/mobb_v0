@@ -5,13 +5,8 @@ import './favoritesPage.html';
 import '../components/galleryCard.js';
 
 Template.favoritesPage.onCreated(function () {
-  Meteor.subscribe('listings_locs', function () {
-  let cursor = Listings.find({
-    location: { $exists : 1}, 
-    certs: {$exists: 0},
-    // state: state
-  });
-    console.log("-= favoritesPage.JS SUBSCRIBING: ALL ["+ cursor.count() +"] ONLINE ONLY =-");
+  Meteor.subscribe('listings_favorites', function () {
+    // console.log("-= favoritesPage.JS SUBSCRIBING: ALL ["+ cursor.count() +"] FAVORITES =-");
   });
 });
 

@@ -20,6 +20,8 @@ import './nav.html';
 
 Template.nav.onRendered( function () {
   $(document).ready(function () {
+    $('[id="loading-wrapper"]').css({display:"none"});
+    
     $('.dropdown-button').dropdown({
       stopPropagation: true
       // inDuration: 200,

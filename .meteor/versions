@@ -127,6 +127,7 @@ retry@1.0.9
 reywood:publish-composite@1.4.2
 routepolicy@1.0.12
 sergeyt:typeahead@0.11.1_9
+server-render@0.1.0
 service-configuration@1.0.11
 session@1.1.7
 sha@1.0.9

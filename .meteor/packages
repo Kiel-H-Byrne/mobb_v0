@@ -46,3 +46,4 @@ standard-minifier-js@2.1.1
 facebook-config-ui
 google-config-ui
 dynamic-import
+server-render

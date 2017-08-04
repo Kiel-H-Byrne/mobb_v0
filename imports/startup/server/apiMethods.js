@@ -337,7 +337,7 @@ Meteor.methods({
           console.log(img);
           return img;
         }
-      })
+      });
     }
   },
   setGID: function(id, google_id) {

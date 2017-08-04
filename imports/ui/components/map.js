@@ -185,7 +185,7 @@ Template.map.onCreated( function () {
                         marker.set('title', doc.name);
 
                         marker.addListener('click', function () {
-                            this.preventDefault;
+                            this.preventDefault();
                             Session.set('openListing', id);
                             $('#modalInfo').modal('open');
                             //calculate distance 

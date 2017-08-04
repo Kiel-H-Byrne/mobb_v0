@@ -40,7 +40,7 @@ import 'materialize-css/js/waves';
 import '/lib/config/routes.js';
 
 //Import Functions
-import './functions.js'
+import './functions.js';
 
 //Import Layouts
 import '/imports/ui/layouts/layout.js';

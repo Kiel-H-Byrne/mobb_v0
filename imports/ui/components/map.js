@@ -152,6 +152,8 @@ Template.map.onCreated( function () {
 
         let subscription = self.subscribe('listings_locs', function () {
           Session.set('loading', false);
+          // append "hide to loading screen div"
+          $('[id="loading-wrapper"]').css({display:"none"});
             let cursor = Listings.find({
                 location: { $exists : 1 }, 
                 certs: { $exists: 0 }

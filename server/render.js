@@ -1,7 +1,6 @@
 import { onPageLoad } from "meteor/server-render";
 
-let linkTags = `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css?family=Quicksand|Raleway" rel="stylesheet"> `
+let linkTags = `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /> `;
 
 let styleTag = `
 <style type="text/css">
@@ -105,7 +104,17 @@ let styleTag = `
   </style>
 `;
 
+let loadingDiv = `
+  <div id="loading-wrapper">
+
+    <div class="content-wrapper">
+      <div id="loading-text">LOADING...</div>
+      <div id="loading-content"></div>
+    </div>
+  </div>
+  `;
 
 onPageLoad(sink => {
-  sink.appendToBody(linkTags + styleTag)});
-
+  sink.appendToHead(linkTags + styleTag);
+  sink.appendToBody(loadingDiv);
+});

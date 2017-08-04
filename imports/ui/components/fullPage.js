@@ -30,7 +30,7 @@ Template.fullPage.onRendered(function () {
       // $("img").error(function () { 
       //   // $(this).hide();
       //   $("img").each(function () {
-      //     $(this).attr("src", $(this).attr("src").replace("http://", "https://")).css({visibility:"hidden"}); ;
+      //     $(this).attr("src", $(this).attr("src").replace("http://", "https://")).css({display:"none"}); ;
       //   });
       // });
 
@@ -41,7 +41,7 @@ Template.fullPage.onRendered(function () {
       //       // $(this)
       //       // .attr("src", $(this).attr("src").replace("http://", "https://"));
       //       // .error(function () {
-      //       //   $(this).css({visibility:"hidden"});
+      //       //   $(this).css({display:"none"});
       //       // });
       //     // });
       // }).attr("src").replace("http://", "https://");

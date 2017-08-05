@@ -102,18 +102,7 @@ let styleTag = `
   background-color: rgba(086,082,080,.9); }
 
   /* MATERIAL ICONS */
-  @font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: url(fonts/material/MaterialIcons-Regular.eot); /* For IE6-8 */
-  src: local('Material Icons'),
-    local('MaterialIcons-Regular'),
-    url(fonts/material/MaterialIcons-Regular.woff2) format('woff2'),
-    url(fonts/material/MaterialIcons-Regular.woff) format('woff'),
-    url(fonts/material/MaterialIcons-Regular.ttf) format('truetype');
-  }
-
+  
   .material-icons {
     font-family: 'Material Icons';
     font-weight: normal;

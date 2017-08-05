@@ -1,4 +1,28 @@
+
+<template name="verifyForm">
+  <div id="modalVerify" class="modal">
+    <div class="modal-content">
+      <h4> I Verify... </h4>
+      <p>
+      I can verify that this Business is majorily owned by a person who identifies as African or a member of the Diaspora. <br />
+      Sincerely, <br />
+      {{> quickForm id="upVoteForm" collection="Listings" type="update-pushArray"  doc=this scope="verifiers" schema=Schema.Verifier omitFields="$.id"}}
+      </p>
+    </div>
+  </div>
+</template>
+
 <template name="verifyForm2">
+  <div id="modalVerify" class="modal">
+    <div class="modal-content">
+      <h4> Comments... </h4>
+      
+      {{> quickForm id="upVoteForm" collection="Listings" type="update-pushArray"  doc=this scope="upVotes"}}
+    </div>
+  </div>
+</template>
+
+<template name="verifyForm3">
   <div id="modalVerify" class="modal modal-fixed-footer">
     <div class="modal-content">
 			<h4> Add Comment </h4>
@@ -22,13 +46,4 @@
 
 </template>
 
-<template name="verifyForm">
-  <div id="modalVerify" class="modal">
-    <div class="modal-content">
-			<h4> Comments... </h4>
-      
-			{{> quickForm id="upVoteForm" collection="Listings" type="update-pushArray"  doc=this scope="upVotes"}}
-		</div>
-  </div>
-</template>
 

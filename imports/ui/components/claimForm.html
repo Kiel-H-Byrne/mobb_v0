@@ -1,0 +1,18 @@
+<template name="claimForm">
+  <div id="modalClaim" class="modal">
+    <div class="modal-content">
+      <h4> Claim This Business </h4>
+      <!-- form class="col s12 m8 l8">
+        <input id="Comment" type="textarea" name="Comment" />
+        <label for="Comment">Comment</label>
+      </form --> 
+
+      {{!-- {{> quickForm collection="Listings.upVotes" doc=this id="verifyForm" type="insert"}} --}}
+      
+      {{> quickForm id="claimForm" type="update-pushArray" collection="Listings" doc=this scope="claims" schema=Schema.Claim omitFields="$.id"}}
+      {{!-- {{> quickForm id="dnVoteForm" type="update-pushArray" collection="Listings" doc=this scope="dnVotes"}} --}}
+    </div>
+  </div>
+</template>
+
+

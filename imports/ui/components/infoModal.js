@@ -1,8 +1,6 @@
-import Listings from '/imports/startup/collections/listings';
+
 
 import './infoModal.html';
-import './verifyForm.js';
-import './closeButton.js';
 
 Template.infoModal.onRendered(function () {
   $(document).ready(function () {

@@ -1,6 +1,8 @@
 
 
 import './fullPage.html';
+import './verifyForm.js';
+import './claimForm.js';
 
 Template.fullPage.onCreated(function () {
   if (this.data.street && !this.data.google_id) {

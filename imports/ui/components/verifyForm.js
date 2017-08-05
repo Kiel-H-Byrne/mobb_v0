@@ -1,5 +1,3 @@
-import { Template } from 'meteor/templating';
-import Listings from '/imports/startup/collections/listings';
 
 import './verifyForm.html';
 

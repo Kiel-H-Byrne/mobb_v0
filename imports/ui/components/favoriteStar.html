@@ -2,11 +2,11 @@
 <template name="favoriteStar">
 <div class="fav_star left">
 {{#if in_favorites}}
-  <a href="" class="secondary-content remove_favorite">
+  <a href="" class="remove_favorite">
     <i class="material-icons">favorite</i>
   </a>
   {{else}}
-  <a href="" class="secondary-content add_favorite" value="{{_id}}">
+  <a href="" class="add_favorite" value="{{_id}}">
     <i class="material-icons">favorite_border</i>
   </a>
 {{/if}}

@@ -19,9 +19,6 @@ Listings = new orion.collection('listings', {
         data: "street", 
         title: "Street" 
       },{ 
-        data: "address2", 
-        title: "Address2" 
-      },{ 
         data: "city", 
         title: "City" 
       },{ 
@@ -49,11 +46,20 @@ Listings = new orion.collection('listings', {
         data: "social.twitter",
         title: "Twitter"
       },{ 
-        data: "owner", 
+        data: "verifications.count", 
+        title: "Verifications" 
+      },{ 
+        data: "claims.count", 
+        title: "Claims" 
+      },{ 
+        data: "owner.name", 
         title: "Owner" 
       },{ 
-        data: "ownphone", 
+        data: "owner.phone", 
         title: "Owner Phone" 
+      },{ 
+        data: "owner.email", 
+        title: "Owner Email" 
       },{
         data: "description",
         title: "Description"
@@ -135,6 +141,59 @@ const VoteSchema = new SimpleSchema({
   }
 });
 
+const OwnerSchema = new SimpleSchema({
+  name: {
+    type: String,
+    label: 'Owner Name'
+  },
+  phone: {
+    type: String,
+    label: 'Owner Phone'
+  },
+  email: {
+    type: String,
+    label: 'Owner E-mail'
+  }
+});
+
+const ClaimSchema = new SimpleSchema({
+  claims: {
+    type: [Object]
+  },
+  "claims.$.id": {
+    type: String,
+    autoValue: function() {
+      return Meteor.userId();
+    }
+  },
+  "claims.$.name": {
+    type: String
+  },
+  count: {
+    type: Number
+  }
+});
+
+const VerificationSchema = new SimpleSchema({
+  verifiers: {
+    type: [Object]
+  },
+  "verifier.$.id": {
+    type: String,
+    autoValue: function() {
+      return Meteor.userId();
+    }
+  },
+  "verifier.$.name": {
+    type: String
+  },
+  count: {
+    type: Number
+  }
+});
+
+
+
 // Votes.attachSchema(VoteSchema);
 
 Listings.attachSchema(new SimpleSchema({
@@ -152,11 +211,6 @@ Listings.attachSchema(new SimpleSchema({
     type: String,
     max: 80
   },
-  address2: {
-    type: String,
-    max: 50,
-    optional: true
-  },  
   city: {
     type: String,
     optional: true,
@@ -214,10 +268,17 @@ Listings.attachSchema(new SimpleSchema({
     // }
   },
   owner: {
-    type: String,
-    label: 'Owner Name',
+    type: OwnerSchema,
     optional: true
   },
+  claims: {
+    type: [ClaimSchema],
+    optional: true
+  },
+  verifications: {
+    type: [VerificationSchema],
+    optional: true
+  },  
   description: {
     type: String,
     label: 'Description',

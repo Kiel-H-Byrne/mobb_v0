@@ -90,12 +90,13 @@ apiCall2 = function (apiUrl, headers, callback) {
 Meteor.methods({
   addListing: function(doc) {
     check(doc, Object);
-    Listings.insert(doc , function(err, res){
+    return Listings.insert(doc , function(err, res){
       if (err) {
         console.log("INSERT FAILED:");
         console.log(doc.name + ": " + err);
       } else {
         // console.log(doc.name + ": Success");
+        return res;
       }
     });
   },

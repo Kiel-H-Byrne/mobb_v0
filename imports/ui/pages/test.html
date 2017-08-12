@@ -1,53 +1,45 @@
 
 <template name="test">
-  <head>
-    <style>
-      [id='instaMap'] > .s3{
-        width:250px; height:300px
-      }
-    </style>
-  </head>
-
 	
 	{{!-- {{> quickForm collection="Listings" doc=this id="insertListingsForm" type="normal"}} --}}
-  <div class="test-wrapper ">
+  <div class="test-wrapper container-fluid">
 
-    <div class="row map_wrap">
+{{!--     <div class="row map_wrap">
       <div class="col s12" id="miniMap">
         {{> googleMap name="minimap" options = mapOptions }}
       </div>
-    </div>
+    </div> --}}
     
     <div class="row content_wrap">
-      <div class="select_wrapper" style="float:right">
-        <a class="dropdown-button" href="#" alt="More..." data-activates="test-dropdown" data-beloworigin="true" data-constrainwidth="true" data-alignment="right" data-stoppropagation="true">
-            <i class="material-icons" title="...">more_vert</i>
-        </a>
-        <ul id="test-dropdown" class="dropdown-content">
-            <li><a href="/terms">Terms &amp; Conditions </a></li>
-            <li class="divider"></li>
-            <li><a href="/kibu">About Us</a></li>
-        </ul>
-      </div>
-      <div class="col s12">
-        <div id="instaMap"></div>
-        <div class="s3" >
+      <div class="col s6 m3 l2">
+        <div>
       	{{#with randomDoc}}
           {{> galleryCard}}
         {{/with}}
         </div>
       </div>
+    </div>
 
-      <div class="row">
-        <div class="col s12">
-          <h4> Heading </h4>
-          <p class="flow-text truncate">
-          Some test to test the font pairing of header and paragraph. Sometimes we just need a litle bit of text to make the copy sound good. and this is just som highfalutent copy in order to make a point about font pairings. This doesn't make any real logical sensical nonsensicalness, but it's worthy of a few lines or two or three or 4 or 50 of text in a dummy paragraph placeholder. right? RIGHT? Copy? Copy!  
-          </p>
-        </div>
+    <div class="row">
+      <div class="input-field col s6 l3">
+        <input id="autocomplete_test" placeholder="" type="text" name="" />
+        <label for="autocomplete_test">Search Address</label>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col s12">
+        <h4> Heading </h4>
+        <p class="flow-text truncate">
+        Some test to test the font pairing of header and paragraph. Sometimes we just need a litle bit of text to make the copy sound good. and this is just som highfalutent copy in order to make a point about font pairings. This doesn't make any real logical sensical nonsensicalness, but it's worthy of a few lines or two or three or 4 or 50 of text in a dummy paragraph placeholder. right? RIGHT? Copy? Copy!  
+        </p>
+      </div>
+    </div>
+
+    
   </div>
+
+
 
 	{{!-- {{> quickForm collection="Categories" doc=this id="insertCategoriesForm" type="normal"}}		 --}}
 </template>

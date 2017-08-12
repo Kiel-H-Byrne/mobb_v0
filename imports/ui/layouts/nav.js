@@ -16,8 +16,6 @@ import '../components/mobileNav.js';
 
 import './nav.html';
 
-
-
 Template.nav.onRendered( function () {
   $(document).ready(function () {
     $('[id="loading-wrapper"], .server_rendered').fadeOut();
@@ -64,25 +62,6 @@ Template.nav.onRendered( function () {
   Meteor.typeahead.inject();
   $('.twitter-typeahead').css("display:block");
 
-  // Google GeoComplete 
-  // console.log(this);
-  
-  this.autorun(function (c) {
-
-    if (GoogleMaps.loaded() && GoogleMaps.maps.map) {
-
-      $("input#search_mo").geocomplete({
-        map: GoogleMaps.maps.map.instance,
-        mapOptions: GoogleMaps.maps.map.options,
-        country: 'US',
-        type: ['(regions)'],
-        markerOptions: {
-          disabled: true
-        }
-      });
-    }
-  });
-
 });
 
 Template.nav.events({
@@ -106,13 +85,6 @@ Template.nav.events({
   		clientSearch: entered
 		});
 	},
-  'click input': function () {
-    // $('.dropdown-button').dropdown('open');
-    document.getElementById("mobile_search-form").reset();
-  },
-  'mouseup form, touchend form': function () {
-    // Materialize.updateTextFields();
-  },
   'click .signout_btn': function () {
     AccountsTemplates.logout();
   },

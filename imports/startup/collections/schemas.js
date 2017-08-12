@@ -161,15 +161,18 @@ Schema.Owner = new SimpleSchema({
   },
   "$.name": {
     type: String,
-    label: 'Owner Name'
+    label: 'Owner Name',
+    optional: true
   },
   "$.phone": {
     type: String,
-    label: 'Owner Phone'
+    label: 'Owner Phone',
+    optional: true
   },
   "$.email": {
     type: String,
-    label: 'Owner E-mail'
+    label: 'Owner E-mail',
+    optional: true
   }
 });
 
@@ -228,7 +231,7 @@ Schema.Listings = new SimpleSchema({
     type: String,
     allowedValues: ["AL","AK","AZ","AR","CA","CO","CT","DC","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"],
     autoform: {
-      afFieldInput: {
+      afQuickField: {
         firstOption: "--"
       }
     }
@@ -243,12 +246,12 @@ Schema.Listings = new SimpleSchema({
     min: 2,
     max: 3,
     optional: true,
-    defaultValue: 'USA'
+    defaultValue: 'US'
   },
   phone: {
     type: String,
     label: 'Phone Number',
-    max: 14,
+    max: 13,
     optional: true,
     autoValue: function() {
       if (this.value) {
@@ -287,7 +290,9 @@ Schema.Listings = new SimpleSchema({
     type: Number,
     optional: true,
     autoValue: function() {
-      return this.sfield("claims").value.length();
+      if (this.field("claims").value) {
+        return this.field("claims").value.length();
+      }
     }
   },
   verifiers: {
@@ -298,7 +303,9 @@ Schema.Listings = new SimpleSchema({
     type: Number,
     optional: true,
     autoValue: function() {
-      return this.field("verifiers").value.length();
+      if (this.field("verifiers").value) {
+        return this.field("verifiers").value.length();
+      }
     }
   },
   description: {

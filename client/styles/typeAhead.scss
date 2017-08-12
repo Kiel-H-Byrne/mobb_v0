@@ -3,30 +3,6 @@
 @import '{}/node_modules/materialize-css/sass/components/variables';
 @import 'palettes/colors';
 
-.pac-container {
-  background-color: $clr-grey;
-
-  ::after {
-    // display: none;
-  }
-}
-
-.pac-item-query {
-  color: $clr-green;
-}
-
-.pac-item-selected {
-  background-color: #ffe;
-}
-
-.pac-matched {
-  color: $clr-green;
-}
-
-.pac-icon-marker {
-  color: $clr-green;
-}
-
 .twitter-typeahead {
   display: block !important;
 }

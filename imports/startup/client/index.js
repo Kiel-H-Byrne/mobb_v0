@@ -75,6 +75,7 @@ Meteor.startup(function () {
     // This code will be executed if app is running standalone 
   }
 
+  
   Session.set('geoAccepted', false);
 
   //-- ANALYTICS EVENT (User dismiss/Accept Home Screen banner) --
@@ -291,14 +292,11 @@ Meteor.startup(function () {
 
   Template.registerHelper('hasFavorites', function () {
     let user = Meteor.user();
-    if (user && user.profile.favorites) {
-      let profile = user.profile;
-      if (profile.favorites.length) {
+    if (user && user.profile.favorites.length > 1) {
         return true;
       } else {
         return false;
       }
-    }
   });
 
 
@@ -313,7 +311,11 @@ Meteor.startup(function () {
 // STILL INSIDE METEOR.STARTUP
 });
 
-
+Template.orionMaterializeHeaderContainer.onRendered(function() {
+  $(document).ready(function () {
+      $('[id="loading-wrapper"], .server_rendered').fadeOut();
+  });
+});
 
 
 

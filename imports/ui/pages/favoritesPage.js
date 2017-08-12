@@ -31,12 +31,18 @@ Template.favoritesPage.helpers({
   favorites: function () {
     // get the array of ids
     let arr = Meteor.user().profile.favorites;
-    let cursor = Listings.find({
-      _id : {$in : arr}
-    }, {
-      sort: {name: 1, location: -1 }
-    });
-    return cursor;
+    // for some reason the favorites array has one entry: 'NeQChWMre5Yh4ooBq'
+    // so it's nevery truly 'empty'; if greater than one, return list.
+    if (arr.length > 1) {
+      let cursor = Listings.find({
+        _id : {$in : arr}
+      }, {
+        sort: {name: 1, location: -1 }
+      });
+      return cursor;
+    } else {
+      return false;
+    }
   }
 });
 

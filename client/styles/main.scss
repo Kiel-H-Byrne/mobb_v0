@@ -168,6 +168,35 @@ body {
   @include box-shadow-2(0 5px 5px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
 }
 
+
+.pac-container {
+  // background-color: $clr-grey;
+  //needs to be in front of modal which is at z-index: 1003
+  z-index: 1005;
+  ::after {
+    // display: none;
+  }
+}
+
+.pac-item-query {
+  color: $clr-green;
+}
+
+.pac-item-selected {
+  background-color: #ffe;
+}
+
+.pac-matched {
+  color: $clr-green;
+}
+
+.pac-icon-marker {
+  color: $clr-green;
+}
+
+
+
+
 // ================================================ ADDED TO HOMSESCREEN CSS ================================================  
 @media all and (display-mode: standalone) {
 // Here goes the CSS rules that will only apply if app is running standalone 

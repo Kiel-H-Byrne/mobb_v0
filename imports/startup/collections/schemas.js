@@ -136,7 +136,7 @@ Schema.Profile = new SimpleSchema({
 });
 
 Schema.Owner = new SimpleSchema({
-  "owner.id": {
+  "owner.$.id": {
     type: String,
     optional: true,
     autoValue: function() {
@@ -145,17 +145,17 @@ Schema.Owner = new SimpleSchema({
       }
     }
   },
-  "owner.name": {
+  "owner.$.name": {
     type: String,
     label: "Owner's Name",
     optional: true
   },
-  "owner.phone": {
+  "owner.$.phone": {
     type: String,
     label: "Owner's Phone",
     optional: true
   },
-  "owner.email": {
+  "owner.$.email": {
     type: String,
     label: "Owner's E-mail",
     optional: true

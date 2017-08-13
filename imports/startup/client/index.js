@@ -49,7 +49,7 @@ import '/imports/ui/layouts/layout.js';
 //client Libraries
 Masonry = require('masonry-layout/masonry.js');
 imagesLoaded = require('imagesLoaded/imagesLoaded.js');
-GCache = new OrionCache('gids', 100000);
+
 // downloadImage = require('download-image');
 
 console.log("-= imports/startup/client/index.js loaded");
@@ -207,49 +207,6 @@ Meteor.startup(function () {
       return place;
     }
   });
-
-  Template.registerHelper('getGDetails', function(gid) {
-    let dataFromCache = GCache.get(gid);
-    console.log(GCache.get(gid));
-    const res = {};
-    if(dataFromCache) {
-      console.log("Details Data from GCache...");
-      console.log(dataFromCache);
-
-      return dataFromCache;
-    } else {
-        if (GoogleMaps.loaded()) {
-        console.log("Data from API...");
-      //   //get the response and stash it in GCache.
-        const map = GoogleMaps.maps.map;
-        const service = new google.maps.places.PlacesService(map.instance);
-
-        const req = {
-            placeId: gid
-        };
-        const cbk = function(res,stat) {
-            if (stat === google.maps.places.PlacesServiceStatus.OK) {
-                console.log(res);
-                // ID_Cache.findOne({key: key}, {$set: {value: place_id}});
-                 GCache.set(gid, res);
-                // resolvedData.set('placeDetails', res);
-                return res;
-                //inject with jquery into dom?
-            } else {
-                console.log(stat);
-            }
-        };
-
-        // console.log(service);
-        return service.getDetails(req, cbk);
-
-        // return resolvedData.get('placeDetails');
-      } else {
-      console.log ("Map not yet loaded..."); 
-      } 
-    }
-  });
-
 
   Template.registerHelper('getDistance', function(dest) {
       //Get distance, convert to miles, flag as 'is_close' class if under X miles, (this class will be visible) 

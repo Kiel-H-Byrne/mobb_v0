@@ -1,4 +1,5 @@
-  
+import { GCache } from '/imports/startup/collections/caches';
+
 // getOGS = function(url) {
 //   let options = {
 //     'url': url,
@@ -99,7 +100,7 @@ setGReviews = function(gid) {
       return dataFromCache;
     } else {
         if (GoogleMaps.loaded()) {
-        console.log("Data from API...");
+        console.log("Reviews Data from API...");
       //   //get the response and stash it in GCache.
         const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
         // console.log(map);
@@ -134,3 +135,28 @@ setGReviews = function(gid) {
   }
 };
 
+getGDetails = function(gid) {
+    if (GoogleMaps.loaded()) {
+    console.log("Details Data from API...");
+    //   //get the response and stash it in GCache.
+    const map = GoogleMaps.maps.map;
+    console.log(map);
+    const service = new google.maps.places.PlacesService(map.instance);
+    const req = {
+      placeId: gid
+    };
+    const cbk = function(res,stat) {
+      if (stat === google.maps.places.PlacesServiceStatus.OK) {
+        console.log(res);
+        // ID_Cache.findOne({key: key}, {$set: {value: place_id}});
+        Meteor.call('setGCache', gid, res);
+        // resolvedData.set('placeDetails', res);
+        return res;
+        //inject with jquery into dom?
+      } else {
+        console.log(stat);
+      }
+    };
+    return service.getDetails(req, cbk);
+  }
+}

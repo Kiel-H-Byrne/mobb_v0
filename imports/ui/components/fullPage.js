@@ -1,5 +1,4 @@
 
-
 import './fullPage.html';
 import './verifyForm.js';
 import './claimForm.js';
@@ -7,28 +6,44 @@ import './claimForm.js';
 Template.fullPage.onCreated(function () {
   if (this.data.street && !this.data.google_id) {
     // submit to google places
-    Meteor.call('submitPlace', this.data);
+    Meteor.call('submitPlace', this.data, function(error, result) {
+      console.log(result);
+      Meteor.call('checkGDetails',result);  
+    });
   } else {
-    // console.log(this.data.google_id);
+    Meteor.call('checkGDetails',this.data.google_id);  
   }
 });
 
 Template.fullPage.onRendered(function () {
   let tpl = this;
 
-    $(document).ready(function () {
-      $('.modal-trigger').modal();
-      $('select').material_select();
-      $('.dropdown-button').dropdown({
-      // stopPropagation: true
+  $(document).ready(function () {
+    $('.modal-trigger').modal();
+    $('select').material_select();
+    $('.dropdown-button').dropdown({
+    // stopPropagation: true
     });
+    $('img').on('error', function () {
+      console.log("broken image", this);
+      $(this).css({display:"none"});
+      // if(!$(this).hasClass('broken-image')) {
+      //   $(this).addClass('broken-image');
+      // }
+    });
+
     // $('pinned').pushpin({
     //   top: 0,
     //   offset: 0
     // });
 
-      setGReviews(tpl.data.google_id);
+    // setGReviews(tpl.data.google_id);
 
+    // if (tpl.data.google_id) {
+    //   Meteor.call('getGDetails',tpl.data.google_id);  
+    // } else {
+    //   Meteor.call('submitPlace', this.data);
+    // }
       // $("img").error(function () { 
       //   // $(this).hide();
       //   $("img").each(function () {
@@ -48,15 +63,8 @@ Template.fullPage.onRendered(function () {
       //     // });
       // }).attr("src").replace("http://", "https://");
 
-      $('img').on('error', function () {
-        console.log("broken image", this);
-        $(this).css({display:"none"});
-        // if(!$(this).hasClass('broken-image')) {
-        //   $(this).addClass('broken-image');
-        // }
-      });
-
     });
+
 });
 
 Template.fullPage.events({

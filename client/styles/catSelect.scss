@@ -51,12 +51,12 @@
 
 @media #{$medium-and-down} {
   .dropdown-content {
-    top: $navbar-height ($navbar-height - 15px) !important;
+    top: $navbar-height - 1px !important;
   }
 }
 
 @media #{$small-and-down} {
   .dropdown-content {
-    top: $navbar-height !important;
-      }
+    top: ($navbar-height - 8px) !important;
+  }
 }

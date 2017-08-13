@@ -47,5 +47,6 @@ Template.galleryCard.events({
   },
     'click .get-reviews' : function(event,templateInstance) {
       setGReviews(templateInstance.data.google_id);
+      // Meteor.call('getGDetails',templateInstance.data.google_id);  
   }
 });

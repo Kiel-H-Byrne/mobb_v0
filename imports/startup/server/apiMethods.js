@@ -1,14 +1,10 @@
 // import { Request } from 'request/request';
 
 import Listings from '/imports/startup/collections/listings';
+import { OCache } from '/imports/startup/collections/caches';
+import { GCache } from '/imports/startup/collections/caches';
 
-import '../../api/orionCache.js';
-
-//milktam:server-cache package - https://github.com/miktam/server-cache
-//instantiates ApiCache obect which creates ' rest_+name+ ' upon creation, with time to live.
-//ex. let cache = new ApiCache('name',ttl);
-
-const OCache = new OrionCache('rest', 100000);
+// import '../../api/orionCache.js';
 
 apiCall = function (apiUrl, callback) {
   // try…catch allows you to handle errors 
@@ -52,40 +48,6 @@ apiCall = function (apiUrl, callback) {
     // callback(myError, null);
   }
 };
-
-apiCall2 = function (apiUrl, headers, callback) {
-  // try...catch allows you to handle errors 
-
-  let dataFromCache = OCache.get(apiUrl);
-  // console.log("key: "+apiUrl);
-  let response = {};
-
-  if(dataFromCache) {
-    console.log("Data from Cache2...");
-    response = dataFromCache;
-  } else {
-    console.log("Data from API2...");
-      if (headers) {
-        response = HTTP.get(apiUrl, {headers: headers}).data;
-        console.log(response);
-      }
-      else {
-        response = HTTP.get(apiUrl).data;
-        console.log(response);
-      }
-    OCache.set(apiUrl, response);
-  }
-
-  // A successful API call returns no error
-  // but the contents from the JSON response
-  if(callback) {
-    callback(null, response);
-  }
-
-  return response;
-  
-};
-
 
 Meteor.methods({
   addListing: function(doc) {
@@ -138,6 +100,18 @@ Meteor.methods({
     check(p, String);
     Meteor.loginWithPassword(u, p);
   },
+  setCache: function(cache, key, val) {
+    check(cache, Object);
+    check(key, String);
+    check(val, Object);
+    // check(val, String);
+    return cache.set(key,val);
+  },
+  getCache: function(cache, key) {
+    check(cache, Object);
+    check(key, String);
+    return cache.get(key);
+  },
   registerMe: function(o) {
     check(o, Object);
     let newUserId = Accounts.createUser({
@@ -156,9 +130,9 @@ Meteor.methods({
     Meteor.loginWithPassword(o.email, o.password);
   },
   geoCode: function(address) {
-    check(address, Object);
     this.unblock();
-    
+    check(address, Object);
+   
     let urlParams;
     if (typeof address === "object" && ! _.isEmpty(address))  {
       urlParams = _.values(address);
@@ -178,9 +152,25 @@ Meteor.methods({
     }
     return;
   },
-  submitPlace: function(doc) {
-    check(doc, Object);
+  checkGDetails: function(gid) {
     this.unblock();
+    check(gid, String);
+    let dataFromCache = GCache.get(gid);
+    if(dataFromCache) {
+      console.log("Details Data from GCache...");
+      console.log(dataFromCache);
+      return dataFromCache;
+    } else {
+      if (Meteor.isClient) {
+        getGDetails(gid);
+      }
+    }
+  },
+  submitPlace: function(doc) {
+    //THIS METHOD SUBMITS THE ADDRESS TO GOOGLE, AND GOOGLE RETURNS A "GOOGLE_ID"
+    this.unblock();
+    check(doc, Object);
+    
 /*
       "location": {
         "lat": -33.8669710,
@@ -195,12 +185,15 @@ Meteor.methods({
       "language": "en-AU"
       };
 */
-    let fromCache = OCache.get(doc.street);
-    console.log(fromCache);
-
-    if (fromCache) {
-      console.log('returning from cache...');
-      return fromCache;
+    let gidFromCache = OCache.get(doc.street);
+    if (gidFromCache) {
+      Listings.update({
+        _id: doc._id 
+      },{
+        $set: { google_id: gidFromCache } 
+      });
+      console.log('RETURNING PLACE_ID FROM OCACHE...');
+      return gidFromCache;
     } else {
       const apiUrl = 'https://maps.googleapis.com/maps/api/place/add/json?key=' + Meteor.settings.public.keys.googleServer.key;
       const params = {};
@@ -213,7 +206,7 @@ Meteor.methods({
       params.name = doc.name;
       params.phone_number = doc.phone;
       params.address = doc.street + ' ' + doc.state + ', ' + doc.zip;
-      params.types = ["store"];
+      params.types = ["establishment"];
       params.accuracy = 20;
       params.website = doc.url;
       params.language = "en-US";
@@ -231,7 +224,7 @@ Meteor.methods({
 
           OCache.set(doc.street, result.data.place_id);
         }
-        return true;
+        return result.data.place_id;
       } catch(e) {
         console.log(e);
         return false;

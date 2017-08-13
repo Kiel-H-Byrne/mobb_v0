@@ -17,7 +17,7 @@ Template.fullPage.onRendered(function () {
   let tpl = this;
 
     $(document).ready(function () {
-      $('.editModal-trigger').modal();
+      $('.modal-trigger').modal();
       $('select').material_select();
       $('.dropdown-button').dropdown({
       // stopPropagation: true

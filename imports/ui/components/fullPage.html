@@ -6,23 +6,32 @@
     <div class="col l7 m6 s12">
       <div class="card">
         <div class="select_wrapper right">
-        <a class="dropdown-button" alt="..." data-activates="card-dropdown" data-beloworigin="true" data-constrainwidth="false" data-alignment="right" data-stoppropagation="true" > 
-               <i class="material-icons" title="...">more_vert</i>
-            </a>
-            <ul id="card-dropdown" class="dropdown-content">
-                {{#if currentUser}}
-                <li><a href="#modalClaim"><i class="material-icons">fingerprint</i>Claim Business</a></li>
-                {{/if}}
-                {{#if isOwner}}
-                <li><a class="editModal-trigger" title="Edit This Listing" href="#modalEdit"><i class="material-icons">edit</i>Modify Business</a></li>
-                {{/if}}
-                {{!-- <li>
-                  <a class="modal-trigger" id="verify_button" title="Verify This" href="#modalVerify">
-                  <i class="material-icons">done_all</i>Verify Business
-                  </a>
-                </li> --}}
-            </ul>                    
-
+          <a class="dropdown-button" alt="..." data-activates="card-dropdown" data-beloworigin="true" data-constrainwidth="false" data-alignment="right" data-stoppropagation="true" > 
+             <i class="material-icons" title="...">more_vert</i>
+          </a>
+          <ul id="card-dropdown" class="dropdown-content">
+            {{#if currentUser}}
+              <li><a class="modal-trigger" href="#modalClaim"><i class="material-icons">fingerprint</i>Claim Business</a></li>
+            {{else }}
+              <li><a href="/register"><i class="material-icons">fingerprint</i>Claim Business</a></li>
+            {{/if}}
+            {{#if isOwner}}
+              <li><a class="modal-trigger" title="Edit This Listing" href="#modalEdit"><i class="material-icons">edit</i>Modify Business</a></li>
+            {{/if}}
+              <li>
+            {{#if currentUser}}
+              <a class="modal-trigger" id="verify_button" title="Verify This" href="#modalVerify">
+                <i class="material-icons">done_all</i>
+                Verify Business  
+              </a>
+            {{else}}
+              <a class="" id="verify_button" title="Verify This" href="/register" >
+                <i class="material-icons">done_all</i>
+                Verify Business  
+              </a>
+            {{/if}}
+              </li>
+          </ul> 
         </div>
         <h4 class="center-align">{{name}}</h4>
         <div class="card-image">

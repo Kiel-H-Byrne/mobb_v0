@@ -44,7 +44,7 @@ import './functions.js';
 
 //Import Layouts
 import '/imports/ui/layouts/layout.js';
-import '/imports/ui/layouts/splitLayout.js';
+// import '/imports/ui/layouts/splitLayout.js';
 
 //client Libraries
 Masonry = require('masonry-layout/masonry.js');

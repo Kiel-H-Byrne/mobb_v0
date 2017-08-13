@@ -153,25 +153,28 @@ Schema.Vote = new SimpleSchema({
 });
 
 Schema.Owner = new SimpleSchema({
-  "$.id": {
+  "owner.id": {
     type: String,
+    optional: true,
     autoValue: function() {
-      return Meteor.userId();
+      if (Meteor.userId()) {
+        return Meteor.userId();
+      }
     }
   },
-  "$.name": {
+  "owner.name": {
     type: String,
-    label: 'Owner Name',
+    label: "Owner's Name",
     optional: true
   },
-  "$.phone": {
+  "owner.phone": {
     type: String,
-    label: 'Owner Phone',
+    label: "Owner's Phone",
     optional: true
   },
-  "$.email": {
+  "owner.email": {
     type: String,
-    label: 'Owner E-mail',
+    label: "Owner's E-mail",
     optional: true
   }
 });
@@ -180,12 +183,16 @@ Schema.Owner = new SimpleSchema({
 Schema.Verifier = new SimpleSchema({
   "$.id": {
     type: String,
+    optional: true,
     autoValue: function() {
-      return Meteor.userId();
+      if (Meteor.userId()) {
+        return Meteor.userId();
+      }
     }
   },
   "$.name": {
-    type: String
+    type: String,
+    optional: true
   }
 });
 
@@ -283,7 +290,11 @@ Schema.Listings = new SimpleSchema({
     optional: true
   },
   claims: {
-    type: [Schema.Owner],
+    type: [Object],
+    optional: true
+  },
+  "claims.$": {
+    type: Schema.Owner,
     optional: true
   },
   claimCount: {
@@ -296,9 +307,13 @@ Schema.Listings = new SimpleSchema({
     }
   },
   verifiers: {
-    type: [Schema.Verifier],
+    type: [Object],
     optional: true
-  },  
+  },
+  "verifiers.$": {
+    type: Schema.Verifier,
+    optional: true
+  },
   verifierCount: {
     type: Number,
     optional: true,

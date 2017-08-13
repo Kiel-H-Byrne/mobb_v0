@@ -25,7 +25,15 @@ Template.verifyForm.events({
 	// }
 });
 
-Template.verifyForm.onRendered(function () {
+Template.verifyForm2.helpers({
+  getName: function() {
+    let user = Meteor.user();
+    console.log(user.profile.name);
+    return user.profile.name;
+  }
+})
+
+Template.verifyForm2.onRendered(function () {
   $(document).ready(function () {
       $('#modalVerify').modal({
         dismissible: true, // Modal can be dismissed by clicking outside of the modal

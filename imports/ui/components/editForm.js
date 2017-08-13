@@ -48,17 +48,17 @@ AutoForm.addHooks('editListingForm', {
   // Called when any submit operation succeeds
   onSuccess: function(formType, result) {
     Materialize.toast('Thanks for Submitting!', 3300, 'myToast');
-    console.log(this.currentDoc, this.updateDoc);
+    console.log(this.updateDoc);
     //if updating categories, increment the count.
-    if (this.updateDoc.$set.categories || this.currentDoc.categories) {
+    if (this.updateDoc.$set.categories) {
       let diff = _.difference(this.updateDoc.$set.categories, this.currentDoc.categories);
       let diff2 = _.difference(this.currentDoc.categories, this.updateDoc.$set.categories);
       // console.log(`added [${diff}] and removed [${diff2}]`);
 
       _.each(diff, function(v) {
-        console.log(v);
+        // console.log(v);
         let id = Categories.findOne({name: v})._id;
-        console.log(id);
+        // console.log(id);
         Categories.update(
           { _id: id },
           { $inc: { count: 1 } }

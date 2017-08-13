@@ -2,23 +2,37 @@
 <template name="verifyForm">
   <div id="modalVerify" class="modal">
     <div class="modal-content">
-      <h4> I Verify... </h4>
-      <p>
-      I can verify that this Business is majorily owned by a person who identifies as African or a member of the Diaspora. <br />
-      Sincerely, <br />
-      {{> quickForm id="upVoteForm" collection="Listings" type="update-pushArray"  doc=this scope="verifiers" schema=Schema.Verifier omitFields="$.id"}}
+    <h4>Verification:</h4>
+      <p class="flow-text">
+      I can verify that this Business is majorily owned by a person who identifies as African or a member of the African Diaspora. <br />
       </p>
+      {{> quickForm id="upVoteForm" collection="Listings" type="update-pushArray" doc=this scope="verifiers" schema=Schema.Verifier omitFields="$.id" }}
     </div>
   </div>
 </template>
 
 <template name="verifyForm2">
-  <div id="modalVerify" class="modal">
+  <div id="modalVerify" class="modal modal-fixed-footer">
+  {{#autoForm id="upVoteForm" collection="Listings" type="update-pushArray" doc=this  scope="verifiers" schema=Schema.Verifier omitFields="$.id" }}
     <div class="modal-content">
-      <h4> Comments... </h4>
+      <h4> Verification:</h4>
       
-      {{> quickForm id="upVoteForm" collection="Listings" type="update-pushArray"  doc=this scope="upVotes"}}
+      <p class="flow-text">
+        I can verify that this Business is majorily owned by a person who identifies as African or a member of the African Diaspora. <br />
+        Sincerely, <br />
+        {{> afQuickField name="$.name" id="address_group" value=getName}}
+      </p>
     </div>
+    <div class="modal-footer">
+      <div class="row">
+        <div class="col s12">
+          <button class="right-align btn modal-actionz waves-effect waves-light" type="submit" name="action">Verify
+            <i class="material-icons right">verified_user</i>
+          </button>
+        </div>
+      </div>
+    </div>
+  {{/autoForm}}
   </div>
 </template>
 

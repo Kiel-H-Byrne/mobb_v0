@@ -66,7 +66,6 @@ Template.test.onRendered(function () {
       // fields in the form.
       autocomplete.addListener('place_changed', function() {
         fillInAddress();
-        console.log('fillInAddress')
       });
     }
   });

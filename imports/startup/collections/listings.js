@@ -1,4 +1,4 @@
-import './schemas.js'
+import './schemas.js';
 
 Listings = new orion.collection('listings', {
   singularName: 'listing', // The name of one of these items

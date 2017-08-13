@@ -11,6 +11,14 @@ html {
   color: $rgba-primary-grey-1;
 }
 
+.card-content {
+  color: $rgba-primary-2;
+
+  .address-phone {
+    color: $color-primary-0;
+  }
+}
+
 .modal-content {
   color: $color-primary-grey-3;
 }

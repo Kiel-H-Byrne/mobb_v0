@@ -119,12 +119,12 @@ Schema.Profile = new SimpleSchema({
     optional: true,
     label: 'Facebook Handle'
   },
-    'social.instagram': {
+  'social.instagram': {
     type: String,
     optional: true,
     label: 'Instagram Handle'
   },
-    'social.twitter': {
+  'social.twitter': {
     type: String,
     optional: true,
     label: 'Twitter Handle'
@@ -132,23 +132,6 @@ Schema.Profile = new SimpleSchema({
   listingIDs: {
     type: [String],
     optional: true
-  }
-});
-
-
-Schema.Vote = new SimpleSchema({
-  // voter: orion.attribute('createdBy'),
-  // date: orion.attribute('createdAt'),
-  comment: {
-    type: String,
-    min: 5,
-    max: 140,
-    optional: true, 
-    autoform: {
-      afFieldInput: {
-        type: "textarea"
-      }
-    }
   }
 });
 
@@ -181,7 +164,7 @@ Schema.Owner = new SimpleSchema({
 
 
 Schema.Verifier = new SimpleSchema({
-  "$.id": {
+  "verifier.$.id": {
     type: String,
     optional: true,
     autoValue: function() {
@@ -190,9 +173,16 @@ Schema.Verifier = new SimpleSchema({
       }
     }
   },
-  "$.name": {
+  "verifier.$.name": {
     type: String,
     optional: true
+  },
+  "verifier.$.date": {
+    type: Date,
+    optional: true,
+    autoValue: function() {
+      return new Date();
+    }
   }
 });
 
@@ -290,7 +280,7 @@ Schema.Listings = new SimpleSchema({
     optional: true
   },
   claims: {
-    type: [Object],
+    type: [Schema.Owner],
     optional: true
   },
   "claims.$": {
@@ -302,16 +292,12 @@ Schema.Listings = new SimpleSchema({
     optional: true,
     autoValue: function() {
       if (this.field("claims").value) {
-        return this.field("claims").value.length();
+        return this.field("claims").value.length;
       }
     }
   },
   verifiers: {
-    type: [Object],
-    optional: true
-  },
-  "verifiers.$": {
-    type: Schema.Verifier,
+    type: [Schema.Verifier],
     optional: true
   },
   verifierCount: {
@@ -319,7 +305,7 @@ Schema.Listings = new SimpleSchema({
     optional: true,
     autoValue: function() {
       if (this.field("verifiers").value) {
-        return this.field("verifiers").value.length();
+        return this.field("verifiers").value.length;
       }
     }
   },
@@ -381,7 +367,7 @@ Schema.Listings = new SimpleSchema({
     autoValue: function () {
       let street = this.field("street").value;
       // console.log(tester);
-      if ( street && this.isInsert && !this.isSet) {
+      if ( street && (this.isInsert || this.isUpdate)) {
         const params = {};
         // console.log(this.docId);
         // console.log(this);
@@ -392,14 +378,14 @@ Schema.Listings = new SimpleSchema({
         const response = Meteor.call('geoCode', params);
 
         if (response && response.results.length) {
-          let loc = response.results[0].geometry.location;
+          const loc = response.results[0].geometry.location;
           // console.log("GOOGLE TYPES:") ;
           // console.log(response.results[0].types);
           // this.field("google_id").value = place_id;
           //====== RETURN LAT/LONG OBJECT LITERAL ======
           // return loc;
           //====== RETURN STRINGIFIED LAT/LONG NUMBERS ======
-          let arr =  _.values(loc);
+          const arr =  _.values(loc);
           // console.log(arr.toLocaleString());
           return arr.toLocaleString();
         } else {
@@ -441,3 +427,4 @@ Schema.Listings = new SimpleSchema({
   creator: orion.attribute('createdBy'),
   submitted: orion.attribute('createdAt'),
 });
+

@@ -159,4 +159,4 @@ getGDetails = function(gid) {
     };
     return service.getDetails(req, cbk);
   }
-}
+};

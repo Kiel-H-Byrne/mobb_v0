@@ -10,7 +10,7 @@
       {{#if hasImage}}
         <img src="/img/gallery/{{name}}.png" alt="" class="circle">
       {{/if}}
-        <h4 class="truncate">{{name}}</h4>
+        <h4>{{name}}</h4>
         <h6 > {{social}}</h6>
         {{#if street}}
         <p class="address">
@@ -18,7 +18,9 @@
               {{city}} {{state}} {{zip}} <br />
         </p>
         {{/if}}
-        <a class="phone" href="tel:+1{{phone}}">{{phone}}</a>
+    {{#if phone}}    
+      <a class="address-phone" href="tel:+1{{phone}}"><i class="material-icons">phone</i>{{phone}}</a> 
+    {{/if}}
         {{> favoriteStar}}
         
       </li>

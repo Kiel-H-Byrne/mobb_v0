@@ -11,14 +11,14 @@
           </a>
           <ul id="card-dropdown" class="dropdown-content">
             {{#if currentUser}}
-              <li><a class="modal-trigger" href="#modalClaim"><i class="material-icons">fingerprint</i>Claim Business</a></li>
+              {{!-- <li><a class="modal-trigger" href="#modalClaim"><i class="material-icons">fingerprint</i>Claim Business</a></li> --}}
             {{else }}
               <li><a href="/register"><i class="material-icons">fingerprint</i>Claim Business</a></li>
             {{/if}}
             {{#if isOwner}}
               <li><a class="modal-trigger" title="Edit This Listing" href="#modalEdit"><i class="material-icons">edit</i>Modify Business</a></li>
             {{/if}}
-              <li>
+{{!--               <li>
             {{#if currentUser}}
               <a class="modal-trigger" id="verify_button" title="Verify This" href="#modalVerify">
                 <i class="material-icons">done_all</i>
@@ -30,7 +30,7 @@
                 Verify Business  
               </a>
             {{/if}}
-              </li>
+              </li> --}}
           </ul> 
         </div>
         <h4 class="center-align">{{name}}</h4>

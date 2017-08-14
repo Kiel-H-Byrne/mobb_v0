@@ -3,7 +3,7 @@
 @import 'palettes/colors';
 @import 'palettes/_plt_orng-tetrad';
 
-.select_wrapper {
+ .select_wrapper {
   a {    
     position: relative;
     z-index: 0;
@@ -50,13 +50,13 @@
 
 
 @media #{$medium-and-down} {
-  .dropdown-content {
+ li .dropdown-content {
     top: $navbar-height - 1px !important;
   }
 }
 
 @media #{$small-and-down} {
-  .dropdown-content {
+ li .dropdown-content {
     top: ($navbar-height - 8px) !important;
   }
 }

@@ -42,7 +42,12 @@
                 {{card.street}} <br />
                 {{card.city}} {{card.state}} {{card.zip}} <br />
               </span>
-              <a class="center-align phone" href="tel:+1{{card.phone}}">{{card.phone}}</a>
+              {{#if card.phone}}
+                <a class="center-align address-phone" href="tel:+1{{card.phone}}">
+                  <i class="material-icons tiny">phone</i>
+                  {{card.phone}}
+                </a>
+              {{/if}}
             </p>
             {{/if}}
             {{#if card.description}}

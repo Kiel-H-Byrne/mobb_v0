@@ -31,7 +31,7 @@ Template.verifyForm2.helpers({
     console.log(user.profile.name);
     return user.profile.name;
   }
-})
+});
 
 Template.verifyForm2.onRendered(function () {
   $(document).ready(function () {

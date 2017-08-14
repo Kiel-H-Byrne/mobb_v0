@@ -15,7 +15,11 @@ html {
   color: $rgba-primary-2;
 
   .address-phone {
-    color: $color-primary-0;
+    color: $rgba-secondary-2-0;
+   
+    i {
+      color: $rgba-secondary-2-0;
+    }
   }
 }
 

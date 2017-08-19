@@ -178,7 +178,7 @@ Meteor.methods({
       "language": "en-AU"
       };
 */
-    let gidFromCache = OCache.get(doc.street);
+    let gidFromCache = OCache.get(doc.address);
     if (gidFromCache) {
       Listings.update({
         _id: doc._id 
@@ -198,7 +198,7 @@ Meteor.methods({
       params.location = locObj;
       params.name = doc.name;
       params.phone_number = doc.phone;
-      params.address = doc.street + ' ' + doc.state + ', ' + doc.zip;
+      params.address = doc.address;
       params.types = ["establishment"];
       params.accuracy = 20;
       params.website = doc.url;
@@ -215,7 +215,7 @@ Meteor.methods({
             $set: { google_id: result.data.place_id } 
           });
 
-          OCache.set(doc.street, result.data.place_id);
+          OCache.set(doc.address, result.data.place_id);
         }
         return result.data.place_id;
       } catch(e) {

@@ -18,6 +18,9 @@ Listings = new orion.collection('listings', {
         data: "location", 
         title: "Location" 
       },{ 
+        data: "address", 
+        title: "Address" 
+      },{ 
         data: "street", 
         title: "Street" 
       },{ 
@@ -48,38 +51,20 @@ Listings = new orion.collection('listings', {
         data: "social.twitter",
         title: "Twitter"
       },{ 
-        data: "verifier.count", 
+        data: "verifierCount", 
         title: "Verifiers" 
       },{ 
-        data: "claims.count", 
+        data: "claimsCount", 
         title: "Claims" 
       },{ 
         data: "owner.name", 
         title: "Owner" 
-      },{ 
-        data: "owner.phone", 
-        title: "Owner Phone" 
-      },{ 
-        data: "owner.email", 
-        title: "Owner Email" 
-      },{
-        data: "description",
-        title: "Description"
       },{ 
         data: "google_id", 
         title: "Google ID" 
       },{ 
         data: "yelp_id", 
         title: "Yelp ID" 
-      },{ 
-        data: "cbenum", 
-        title: "CBE#" 
-      },{ 
-        data: "certs", 
-        title: "Certs" 
-      },{ 
-        data: "expdate", 
-        title: "CBE Expiration" 
       },
       orion.attributeColumn('image', 'image', 'Image'),
       { 

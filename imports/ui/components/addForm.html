@@ -34,6 +34,12 @@
 							  </div>
 							  {{> afQuickField name="phone" data-length="11" id="phone_input"}}
 							  {{> afQuickField name="url" value="http://"}}
+                <div class="row">
+	                <h6 class="center-align">Social Media</h6>
+                  <div class="col s4"> {{> afQuickField name="social.facebook" }} </div>
+                  <div class="col s4"> {{> afQuickField name="social.twitter"}} </div>
+                  <div class="col s4"> {{> afQuickField name="social.instagram"}} </div>
+                </div>
 			    		</div>
 		    		</li>
 		    		<li>
@@ -43,8 +49,6 @@
 							<i class="material-icons right">expand_more</i>
 							</div>
 							<div class="collapsible-body">
-							  
-							  {{> afQuickField name="description"}}
 							  {{> afQuickField name="image"}}
 							  {{> afFormGroup name="categories" type="select-checkbox-inline" options=formOptions}} <br />
 							</div>
@@ -57,7 +61,7 @@
 					    <h5 class="center-align valign"> Add Business: </h5>
 				    </div>
 				    <div class="col s6">
-							<button class="right-align btn modal-actionz waves-effect waves-light" type="submit" name="action">Add
+							<button class="right-align btn modal-actionz waves-effect waves-light" type="submit" name="action" aria-label="Add">Add
 								<i class="material-icons right">add_circle</i>
 							</button>
 						</div>

@@ -6,6 +6,13 @@ Meteor.publish('listings', function () {
 	return cursor;
 });
 
+Meteor.publish('listings_one', function (name) {
+	check(name, String);
+	let cursor = Listings.find({name: name});
+	console.log(`-= PUBLISHING SINGLE LISTING: [${name}] =-`);
+	return cursor;
+});
+
 Meteor.publish('listings_locs', function () {
 	let cursor = Listings.find({
 		location: { $exists : 1}, 

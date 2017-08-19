@@ -91,8 +91,6 @@ Schema.User = new SimpleSchema({
 //========================================================================================================================================
 //========================================================================================================================================
 
-
-
 Schema.Profile = new SimpleSchema({
   firstName: {
       type: String,
@@ -129,14 +127,18 @@ Schema.Profile = new SimpleSchema({
     optional: true,
     label: 'Twitter Handle'
   },
-  listingIDs: {
+  ownedListings: {
     type: [String],
     optional: true
-  }
+  },
+  verifiedListings: {
+    type: [String],
+    optional: true
+  }  
 });
 
 Schema.Owner = new SimpleSchema({
-  "owner.$.id": {
+  "owner.id": {
     type: String,
     optional: true,
     autoValue: function() {
@@ -145,17 +147,17 @@ Schema.Owner = new SimpleSchema({
       }
     }
   },
-  "owner.$.name": {
+  "owner.name": {
     type: String,
     label: "Owner's Name",
     optional: true
   },
-  "owner.$.phone": {
+  "owner.phone": {
     type: String,
     label: "Owner's Phone",
     optional: true
   },
-  "owner.$.email": {
+  "owner.email": {
     type: String,
     label: "Owner's E-mail",
     optional: true
@@ -164,7 +166,7 @@ Schema.Owner = new SimpleSchema({
 
 
 Schema.Verifier = new SimpleSchema({
-  "verifier.$.id": {
+  "verifier.id": {
     type: String,
     optional: true,
     autoValue: function() {
@@ -173,11 +175,11 @@ Schema.Verifier = new SimpleSchema({
       }
     }
   },
-  "verifier.$.name": {
+  "verifier.name": {
     type: String,
     optional: true
   },
-  "verifier.$.date": {
+  "verifier.date": {
     type: Date,
     optional: true,
     autoValue: function() {
@@ -215,9 +217,59 @@ Schema.Listings = new SimpleSchema({
     type: String,
     unique: true
   },
+  address: {
+    type: String,
+    unique: true,
+    optional: true,
+    custom: function() {
+      //if street has no value and isSet(), and this has no value, throw error 
+      let hasStreet = this.field('street').value;
+
+      if (!hasStreet) {
+        // inserts
+        if (!this.operator) {
+          if (!this.isSet || this.value === null || this.value === "") return "required";
+        }
+
+        // updates
+        else if (this.isSet) {
+          if (this.operator === "$set" && this.value === null || this.value === "") return "required";
+          if (this.operator === "$unset") return "required";
+          if (this.operator === "$rename") return "required";
+        }
+      }
+    },
+    autoValue: function() {
+      if (this.isInsert && this.field('street').value) {
+        let addressString =  `${this.field('street').value} ${this.field('city').value}, ${this.field('state').value} ${this.field('zip').value}`;
+        console.log(addressString);
+        return addressString;
+      }
+    }
+  },
   street: {
     type: String,
-    max: 80
+    max: 80,
+    optional: true,
+    custom: function() {
+      //if street has no value and isSet(), and this has no value, throw error 
+      let hasAddress = this.field('address').value;
+      // console.log(this.field('address'));
+
+      if (!hasAddress) {
+        // inserts
+        if (!this.operator) {
+          if (!this.isSet || this.value === null || this.value === "") return "required";
+        }
+
+        // updates
+        else if (this.isSet) {
+          if (this.operator === "$set" && this.value === null || this.value === "") return "required";
+          if (this.operator === "$unset") return "required";
+          if (this.operator === "$rename") return "required";
+        }
+      }
+    }
   },
   city: {
     type: String,
@@ -231,7 +283,8 @@ Schema.Listings = new SimpleSchema({
       afQuickField: {
         firstOption: "--"
       }
-    }
+    },
+    optional: true
   },
   zip: {
     type: String,
@@ -275,19 +328,12 @@ Schema.Listings = new SimpleSchema({
     //   };
     // }
   },
-  owner: {
-    type: Schema.Owner,
+  //IMPLICIT ARRAY
+  "claims.$.ownerId": {
+    type: String,
     optional: true
   },
-  claims: {
-    type: [Schema.Owner],
-    optional: true
-  },
-  "claims.$": {
-    type: Schema.Owner,
-    optional: true
-  },
-  claimCount: {
+  claimsCount: {
     type: Number,
     optional: true,
     autoValue: function() {
@@ -296,8 +342,8 @@ Schema.Listings = new SimpleSchema({
       }
     }
   },
-  verifiers: {
-    type: [Schema.Verifier],
+  "verifiers.$.verifierId": {
+    type: String,
     optional: true
   },
   verifierCount: {
@@ -356,47 +402,91 @@ Schema.Listings = new SimpleSchema({
     label: 'E-Mail',
     optional: true
   },
-  expdate: {
-    type: String,
-    label: 'Expiration Date',
-    optional: true
-  },
   location: {
     type: String,
     optional: true,
     autoValue: function () {
+      let address = this.field("address").value;
       let street = this.field("street").value;
-      // console.log(tester);
-      if ( street && (this.isInsert || this.isUpdate)) {
-        const params = {};
+      let addressString;
+      if (address) {
+        addressString = address;
+      } else if (street) {
+        
         // console.log(this.docId);
         // console.log(this);
         // params.place_id = this.field("google_id").value;
-        params.street = this.field("street").value;
-        params.city = this.field("city").value;
-        params.zip = this.field("zip").value;
-        const response = Meteor.call('geoCode', params);
 
-        if (response && response.results.length) {
-          const loc = response.results[0].geometry.location;
-          // console.log("GOOGLE TYPES:") ;
-          // console.log(response.results[0].types);
-          // this.field("google_id").value = place_id;
-          //====== RETURN LAT/LONG OBJECT LITERAL ======
-          // return loc;
-          //====== RETURN STRINGIFIED LAT/LONG NUMBERS ======
-          const arr =  _.values(loc);
-          // console.log(arr.toLocaleString());
-          return arr.toLocaleString();
-        } else {
-          // console.log(response);
-          //no street name, so must be online Only. 
-          //set category to "Online"
-          // console.log(typeof street);
-          // console.log(this.docId);
-          this.unset();
+        let city = this.field("city").value;
+        let zip = this.field("zip").value;
+        let state = this.field("state").value ;
+        addressString = `${street} ${city} ${state}, ${zip}`;
+      } 
+      const response = Meteor.call('geoCode', addressString);
+
+      if (response && response.results.length) {
+        // console.log(response.results[0].address_components);
+        const loc = response.results[0].geometry.location;
+        // console.log("GOOGLE TYPES:") ;
+        // console.log(response.results[0].types);
+        // this.field("google_id").value = place_id;
+        //====== SET OTHER VALUES IN DOCUMENT ======
+      let componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'short_name',
+        country: 'short_name',
+        postal_code: 'short_name'
+      };
+      let num;
+      let components = {
+        street: '',
+        city: '',
+        state: '',
+        zip: '',
+        country: ''
+      };
+
+      for (let i = 0; i < response.results[0].address_components.length; i++) {
+        let addressType = response.results[0].address_components[i].types[0];
+        let val = response.results[0].address_components[i][componentForm[addressType]];
+        
+        if (componentForm[addressType]) {
+          switch (addressType) {
+          case 'street_number':
+            num = val;
+            break;
+          case 'route':
+            components.street = `${num}  ${val}`;
+            this.field('street').value = components.street;
+            break;
+          case 'locality':
+            components.city = val;
+            this.field('city').value = components.city;
+            break;
+          case 'administrative_area_level_1':
+            components.state = val;
+            this.field('state').value = components.state;
+            break;
+          case 'postal_code':
+            components.zip = val;
+            this.field('zip').value = components.zip;
+            break;
+          case 'country':
+            components.country = val;
+            this.field('country').value = components.country;
+            break;
+          }
         }
       }
+      //====== RETURN LAT/LONG OBJECT LITERAL ======
+      // return loc;
+      //====== RETURN STRINGIFIED LAT/LONG NUMBERS ======
+      const arr =  _.values(loc);
+      // console.log(arr.toLocaleString());
+      return arr.toLocaleString();
+      } 
     }
   },
   categories: {
@@ -423,7 +513,7 @@ Schema.Listings = new SimpleSchema({
     type: Schema.Social,
     optional: true,
     label: 'Social Media'
-},
+  },
   creator: orion.attribute('createdBy'),
   submitted: orion.attribute('createdAt'),
 });

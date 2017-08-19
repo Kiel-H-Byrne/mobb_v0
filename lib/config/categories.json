@@ -2,11 +2,7 @@
     {
       "name": "Apparel & Accessories"
     },{
-      "name": "Automotive Services"
-    },{
-      "name": "Business Services"
-    },{
-      "name": "Other Services"
+      "name": "Auto Services"
     },{
       "name": "Family & Community"
     },{
@@ -14,19 +10,17 @@
     },{
       "name": "Entertainment & Media"
     },{
-      "name": "Food & Dining"
+      "name": "Food & Beverage"
     },{
-      "name": "Health & Medicine"
+      "name": "Health & Wellness"
     },{
       "name": "Home & Garden"
     },{
       "name": "Information Technology"
     },{
-      "name": "Personal Services"
+      "name": "Beauty & Lifestyle"
     },{
       "name": "Professional Services"
-    },{
-      "name": "Retail"
     },{
       "name": "Sole Proprietor"
     },{
@@ -44,5 +38,4 @@
     },{
       "name": "International"
     }
-
   ]

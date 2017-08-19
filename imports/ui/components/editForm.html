@@ -21,7 +21,13 @@
                 </div>
                 {{> afQuickField name="phone"}}
                 {{> afQuickField name="url"}}
-              </div>
+                <div class="row">
+                  <h6 class="center-align">Social Media</h6>
+                  <div class="col s4"> {{> afQuickField name="social.facebook" }} </div>
+                  <div class="col s4"> {{> afQuickField name="social.twitter"}} </div>
+                  <div class="col s4"> {{> afQuickField name="social.instagram"}} </div>
+                </div>
+                </div>
             </li>
             <li>
               <div class="collapsible-header">
@@ -46,7 +52,7 @@
               <h5 class="center-align valign"> Edit Business: </h5>
             </div>
             <div class="col s6">
-              <button class="right-align btn modal-actionz waves-effect waves-light" type="submit" name="action">Save
+              <button class="right-align btn modal-actionz waves-effect waves-light" type="submit" name="action" aria-label="Edit">Save
                 <i class="material-icons right">add_circle</i>
               </button>
             </div>

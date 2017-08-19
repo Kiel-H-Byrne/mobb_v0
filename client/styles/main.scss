@@ -112,6 +112,13 @@ body {
 }
  
 // ================================================ CUSTOM CLASSES ================================================
+.mobile_search_input,
+.desktop_search_input{
+    position: absolute; 
+    left: -9999px; 
+    width: 1px; 
+    height: 1px;
+}
 
 .myToast {
   background-color: $clr-gold;

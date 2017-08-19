@@ -131,18 +131,10 @@ Meteor.methods({
   },
   geoCode: function(address) {
     this.unblock();
-    check(address, Object);
+    check(address, String);
    
-    let urlParams;
-    if (typeof address === "object" && ! _.isEmpty(address))  {
-      urlParams = _.values(address);
-    } else {
-      // console.log(address);
-      urlParams = address;
-    }
-
-    let apiUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + urlParams + '&key=' + Meteor.settings.public.keys.googleServer.key;
-    // console.log("--URL--"+apiUrl);
+    let apiUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&key=' + Meteor.settings.public.keys.googleServer.key;
+    console.log("--'geoCode()' URL--"+apiUrl);
     let response = Meteor.wrapAsync(apiCall)(apiUrl);
     // console.log(response);
     if (response) {
@@ -164,6 +156,7 @@ Meteor.methods({
       if (Meteor.isClient) {
         getGDetails(gid);
       }
+      return;
     }
   },
   submitPlace: function(doc) {
@@ -351,7 +344,6 @@ Meteor.methods({
     } else {
       urlParams = address;
     }
-
     console.log("***calling GEOCODE API method with "+urlParams);
     let apiUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + urlParams;
     console.log("--URL--"+apiUrl);

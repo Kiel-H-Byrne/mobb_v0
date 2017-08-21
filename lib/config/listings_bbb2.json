@@ -2,28 +2,28 @@
   "Listings_BBB2" : [
   {
     "name": "The Last Crumb of Cake",
-    "url": "www.thelastcrumbofcake.com",
+    "url": "http://www.thelastcrumbofcake.com",
     "categories": ["Food & Beverage"],
     "phone": "3019632253",
     "address": "8377 Snouffer School Rd, Gaithersburg, MD 20879"
   },
   {
     "name": "The Essential Theatre",
-    "url": "www.theessentialtheatre.org",
+    "url": "http://www.theessentialtheatre.org",
     "categories": ["Retail"],
     "phone": "2023280569",
     "address": "1231 Good Hope Rd SE, Washington, DC 20020"
   },
   {
     "name": "Bikram Yoga Ivy City",
-    "url": "www.bikramyogariveric.com",
+    "url": "http://www.bikramyogariveric.com",
     "categories": ["Lifestyle"],
     "phone": "2026218028",
     "address": "1510 Okie St NE, Washington, DC 20002"
   },
   {
     "name": "Triton Development ",
-    "url": "Triton-development.com",
+    "url": "http://Triton-development.com",
     "categories": ["Retail"],
     "phone": "2402732777",
     "address": "3409 Rhode Island Ave #200, Mt Rainier, MD 20712"
@@ -51,28 +51,28 @@
   },
   {
     "name": "Underground Tree Projects",
-    "url": "www.utreep.com",
+    "url": "http://www.utreep.com",
     "categories": ["Entertainment & Media"],
     "phone": "2029104409",
     "address": "1740 14th St NW, Washington, DC 20009"
   },
   {
     "name": "Bikram Yoga Riverdale Park",
-    "url": "www.bikramyogariveric.com",
+    "url": "http://www.bikramyogariveric.com",
     "categories": ["Lifestyle"],
     "phone": "3016991300",
     "address": "6202 Rhode Island Ave #200, Riverdale, MD 20737"
   },
   {
     "name": "Wynn Family Medicine",
-    "url": "www.wynnfamilymedicine.com",
+    "url": "http://www.wynnfamilymedicine.com",
     "categories": ["Health & Wellness"],
     "phone": "7035600300",
     "address": "8316 Arlington Blvd #234, Fairfax, VA 22031"
   },
   {
     "name": "Godwin Motors",
-    "url": "www.godwinmotorsonline.com",
+    "url": "http://www.godwinmotorsonline.com",
     "categories": ["Automotive Services"],
     "phone": "3015770400",
     "address": "9071 Lanham Severn Rd, Lanham, MD 20706"
@@ -86,42 +86,42 @@
   },
   {
     "name": "PsycYourMind Consulting, LLC ",
-    "url": "www.psycyourmind.com",
+    "url": "http://www.psycyourmind.com",
     "categories": ["Health & Wellness"],
     "phone": "2026171903",
     "address": "6930 Carroll Ave #830, Takoma Park, MD 20912"
   },
   {
     "name": "Khepera Wellness Group",
-    "url": "www.kheperawellness.com",
+    "url": "http://www.kheperawellness.com",
     "categories": ["Health & Wellness"],
     "phone": "7706052203",
     "address": "2008 Rhode Island Ave NE, Washington, DC 20018"
   },
   {
     "name": "Wealthcare Financial Group, Inc.",
-    "url": "www.wcfingroup.com",
+    "url": "http://www.wcfingroup.com",
     "categories": ["Lifestyle"],
     "phone": "2404823752",
     "address": "4800 Hampden Ln #200, Bethesda, MD 20814"
   },
   {
     "name": "MCB Chiropractic ",
-    "url": "www.dc-chiropractor.com",
+    "url": "http://www.dc-chiropractor.com",
     "categories": ["Health & Wellness"],
     "phone": "2023216221",
     "address": "2440 M St NW #807, Washington, DC 20037"
   },
   {
     "name": "U.S. Care",
-    "url": "www.myUSCARE.com",
+    "url": "http://www.myUSCARE.com",
     "categories": ["Health & Wellness"],
     "phone": "8889783801",
     "address": "4031 University Dr #100, Fairfax, VA 22030"
   },
   {
     "name": "National Care Financial Group",
-    "url": "Www.NationalCareFinancial.com",
+    "url": "http://www.NationalCareFinancial.com",
     "categories": ["Lifestyle"],
     "phone": "7036526312",
     "address": "2101 L St NW #800, Washington, DC 20037"
@@ -149,35 +149,35 @@
   },
   {
     "name": "Millie's International Creations ",
-    "url": "www.milliesint.com",
+    "url": "http://www.milliesint.com",
     "categories": ["International"],
     "phone": "3013328295",
     "address": "11410 Strand Dr, North Bethesda, MD 20852"
   },
   {
     "name": "Andy's Jamaican Spot",
-    "url": "Andysjamaicanspot.com",
+    "url": "http://Andysjamaicanspot.com",
     "categories": ["Food & Beverage"],
     "phone": "3013227322",
     "address": "7756 Landover Rd, Hyattsville, MD 20785"
   },
   {
     "name": "Peaceful Earth, Graceful Birth",
-    "url": "www.peacefulearthgracefulbirth.com",
+    "url": "http://www.peacefulearthgracefulbirth.com",
     "categories": ["Health & Wellness"],
     "phone": "2022972722",
     "address": "1312 Oates St, Capitol Heights, MD 20743"
   },
   {
     "name": "Pamper Me Good Kids Salon",
-    "url": "Pmgsalon.com ",
+    "url": "http://Pmgsalon.com ",
     "categories": ["Health & Wellness"],
     "phone": "3018391980",
     "address": "9221 Oxon Hill Rd, Fort Washington, MD 20744"
   },
   {
     "name": "BTXR PERSONAL TRAINING ",
-    "url": "www.btxrmaster.com",
+    "url": "http://www.btxrmaster.com",
     "categories": ["Lifestyle"],
     "phone": "4435403672",
     "address": "11840 W Market Pl g, Fulton, MD 20759"
@@ -191,21 +191,20 @@
   },
   {
     "name": "Maree's Early Learning Center ",
-    "url": " ",
     "categories": ["Lifestyle"],
     "phone": "3018941556",
     "address": "5114 Abbott Dr, Temple Hills, MD 20748"
   },
   {
     "name": "DC Analyst",
-    "url": "www.dcanalyst.co",
+    "url": "http://www.dcanalyst.co",
     "categories": [""],
     "phone": "2028275662",
     "address": "601 I St NW, Washington, DC 20001"
   },
   {
     "name": "Law Office of Seifeldein & Associates, PC",
-    "url": "Www.mseiflaw.com",
+    "url": "http://www.mseiflaw.com",
     "categories": ["Lifestyle"],
     "phone": "7037786841",
     "address": "6066 Leesburg Pike #420, Falls Church, VA 22041"
@@ -256,7 +255,6 @@
     "name": "Urban Network",
     "url": "http://www.uixdetroit.com/projects/urban-network.aspx",
     "categories": ["Lifestyle"],
-    "phone": " ",
     "address": "5740 Grand River Ave, Detroit, MI 48208"
   },
   {
@@ -289,7 +287,7 @@
   },
   {
     "name": "MY TOUCH FILMS",
-    "url": "WWW.MYTOUCHFILMS.COM",
+    "url": "http://www.MYTOUCHFILMS.COM",
     "categories": ["Entertainment & Media"],
     "phone": "3135100043",
     "address": "412 Frazier St, River Rouge, MI 48218"
@@ -340,7 +338,6 @@
     "name": "Global Automotive Alliance L.L.C.",
     "url": "http://listings.findthecompany.com/l/14341848/Global-Automotive-Alliance-Llc-in-Detroit-MI",
     "categories": ["Lifestyle"],
-    "phone": " ",
     "address": "2627 Clark Ave, Detroit, MI 48210"
   },
   {
@@ -352,7 +349,7 @@
   },
   {
     "name": "Bendell Beauty Lash +  Brow",
-    "url": "www.bendell-beauty.com",
+    "url": "http://www.bendell-beauty.com",
     "categories": ["Health & Wellness"],
     "phone": "2488717949",
     "address": "195 W Troy St, Ferndale, MI 48220"
@@ -366,7 +363,7 @@
   },
   {
     "name": "Vegan Soul",
-    "url": "detroitvegansoul.com",
+    "url": "http://detroitvegansoul.com",
     "categories": ["Food & Beverage"],
     "phone": "3136492759",
     "address": "8029 Agnes St, Detroit, MI 48214"
@@ -394,7 +391,7 @@
   },
   {
     "name": "Savannah Blue ",
-    "url": "Savannahbluedetroit.com ",
+    "url": "http://Savannahbluedetroit.com ",
     "categories": ["Food & Beverage"],
     "phone": "3139260738",
     "address": "1431 Times Square, Detroit, MI 48226"
@@ -408,7 +405,7 @@
   },
   {
     "name": "Textures by Nefertiti",
-    "url": "texturesbynef.com ",
+    "url": "http://texturesbynef.com ",
     "categories": ["Health & Wellness"],
     "phone": "3138314771",
     "address": "4147 Cass Ave #200, Detroit, MI 48201"
@@ -436,14 +433,14 @@
   },
   {
     "name": "Integrity Clinical Consulting & Training",
-    "url": "www.integrityclinicalconsulting.com",
+    "url": "http://www.integrityclinicalconsulting.com",
     "categories": ["Health & Wellness"],
     "phone": "7087946511",
     "address": "900 Ridge Rd #1sw, Homewood, IL 60430"
   },
   {
     "name": "VAM STUDIO",
-    "url": "Vamstudio.net",
+    "url": "http://Vamstudio.net",
     "categories": ["Entertainment & Media"],
     "phone": "3129258308",
     "address": "2921 W Diversey Ave, Chicago, IL 60647"
@@ -457,7 +454,7 @@
   },
   {
     "name": "McMillan Holmes LLC",
-    "url": "www.mcmillanholmes.com",
+    "url": "http://www.mcmillanholmes.com",
     "categories": ["Lifestyle"],
     "phone": "7733408003",
     "address": "8525 S Stony Island Ave, Chicago, IL 60617"
@@ -471,7 +468,7 @@
   },
   {
     "name": "A. Beauford Graphics & Photography",
-    "url": "abeauford.com",
+    "url": "http://abeauford.com",
     "categories": ["Lifestyle"],
     "phone": "6308353139",
     "address": "4225 Saratoga Ave, Downers Grove, IL 60515"
@@ -485,28 +482,28 @@
   },
   {
     "name": "FieldCrest School of Performing Arts ",
-    "url": "Www.FieldcrestPerArts.com ",
+    "url": "http://www.FieldcrestPerArts.com ",
     "categories": ["Entertainment & Media"],
     "phone": "7086797960",
     "address": "201 Main St, Park Forest, IL 60466"
   },
   {
     "name": "Mignonette Bridal ",
-    "url": "Mignonettebridal.com",
+    "url": "http://Mignonettebridal.com",
     "categories": ["Apparel & Accessories"],
     "phone": "7738809141",
     "address": "1747 W Belmont Ave, Chicago, IL 60657"
   },
   {
     "name": "Waiters Chiropractic ",
-    "url": "www.waiterschiro.com",
+    "url": "http://www.waiterschiro.com",
     "categories": ["Health & Wellness"],
     "phone": "7082779340",
     "address": "1020 Chicago Rd #6, Chicago Heights, IL 60411"
   },
   {
     "name": "Verge Studios Graphic and Web Design",
-    "url": "www.vergegraphics.com",
+    "url": "http://www.vergegraphics.com",
     "categories": ["Lifestyle"],
     "phone": "3176918482",
     "address": "925 W Huron St, Chicago, IL 60642"
@@ -520,70 +517,69 @@
   },
   {
     "name": "J. Paye & Associates",
-    "url": "jpaye.com",
+    "url": "http://jpaye.com",
     "categories": ["Lifestyle"],
     "phone": "3126270054",
     "address": "332 S Michigan Ave, Chicago, IL 60604"
   },
   {
     "name": "Urban Warrior Fitness & Wellness",
-    "url": "www.urbanwarrioredge.com",
+    "url": "http://www.urbanwarrioredge.com",
     "categories": ["Health & Wellness"],
     "phone": "7737547351",
     "address": "1546 Howard St, Chicago, IL 60626"
   },
   {
     "name": "House of Music",
-    "url": " ",
     "categories": ["Entertainment & Media"],
     "phone": "7737349100",
     "address": "1637 E 87th St, Chicago, IL 60617"
   },
   {
     "name": "Farmers Insurance Darling Agency",
-    "url": "agents.farmers.com/mdarling",
+    "url": "http://agents.farmers.com/mdarling",
     "categories": ["Professional Services"],
     "phone": "8479841575",
     "address": "111 W Maple Ave b, Mundelein, IL 60060"
   },
   {
     "name": "Greer",
-    "url": "greerchicago.com",
+    "url": "http://greerchicago.com",
     "categories": [""],
     "phone": "3123378000",
     "address": "1013 W Webster Ave, Chicago, IL 60614"
   },
   {
     "name": "Monica's Skincare Boutique",
-    "url": "www.mhskincare.com",
+    "url": "http://www.mhskincare.com",
     "categories": ["Health & Wellness"],
     "phone": "7083180333",
     "address": "1001 Garfield St, Oak Park, IL 60304"
   },
   {
     "name": "MASTERs Plus Tutoring Program",
-    "url": "Www.Mptutors.com",
+    "url": "http://www.Mptutors.com",
     "categories": ["Education & Childcare"],
     "phone": "7087988400",
     "address": "18354 Governors Hwy, Homewood, IL 60430"
   },
   {
     "name": "Cakewalk Chicago",
-    "url": "www.cakewalkchicago.com",
+    "url": "http://www.cakewalkchicago.com",
     "categories": ["Retail"],
     "phone": "7732337335",
     "address": "1741 W 99th St, Chicago, IL 60643"
   },
   {
     "name": "McKay Arts/ McKaw Theater",
-    "url": "Mckayarts.net",
+    "url": "http://Mckayarts.net",
     "categories": ["Entertainment & Media"],
     "phone": "7737065940",
     "address": "1439 W Jarvis Ave, Chicago, IL 60626"
   },
   {
     "name": "Payton Studios/RPM Urban",
-    "url": "www.prmurban.com",
+    "url": "http://www.prmurban.com",
     "categories": ["Lifestyle"],
     "phone": "3126610049",
     "address": "540 N Dearborn Pkwy, Chicago, IL 60610"
@@ -597,35 +593,35 @@
   },
   {
     "name": "Khadijah Kysia, Licensed Acupuncturist",
-    "url": "rayjingheart.com",
+    "url": "http://rayjingheart.com",
     "categories": ["Health & Wellness"],
     "phone": "7734440810",
     "address": "2618 W Division St, Chicago, IL 60622"
   },
   {
     "name": "Take A Break Playcare",
-    "url": "www.takeabreakplaycare.com",
+    "url": "http://www.takeabreakplaycare.com",
     "categories": ["Entertainment & Media"],
     "phone": "7736619944",
     "address": "2855 N Lincoln Ave, Chicago, IL 60657"
   },
   {
     "name": "Mama J's",
-    "url": "www.mamajskitchen.com ",
+    "url": "http://www.mamajskitchen.com ",
     "categories": ["Food & Beverage"],
     "phone": "8042258555",
     "address": "415 N 1st St, Richmond, VA 23219"
   },
   {
     "name": "Munford Jewelry Buyers",
-    "url": "mjbuyers.com",
+    "url": "http://mjbuyers.com",
     "categories": ["Retail"],
     "phone": "8045924529",
     "address": "6980-6924 Lakeside Ave #103, Henrico, VA 23228"
   },
   {
     "name": "Embrace Midwifery Care & Birth Center",
-    "url": "Www.embracebirthva.com",
+    "url": "http://www.embracebirthva.com",
     "categories": ["Health & Wellness"],
     "phone": "8045962229",
     "address": "130 Buford Rd, Richmond, VA 23235"
@@ -639,14 +635,14 @@
   },
   {
     "name": "Phoenix Rising Health and Wellness",
-    "url": "Www.phoenixrisinghealth.com ",
+    "url": "http://www.phoenixrisinghealth.com ",
     "categories": ["Health & Wellness"],
     "phone": "5406935497",
     "address": "1300 Hospital Dr #202, Fredericksburg, VA 22401"
   },
   {
     "name": "RVA Cleaning Solutions",
-    "url": "Www.rvacleaningsolutions.com",
+    "url": "http://www.rvacleaningsolutions.com",
     "categories": ["Retail"],
     "phone": "8048554936",
     "address": "1243 Gateway Centre Pkwy, Bon Air, VA 23235"
@@ -660,7 +656,7 @@
   },
   {
     "name": "Top Notch Driving School LLC ",
-    "url": "topnotchdriving.net",
+    "url": "http://topnotchdriving.net",
     "categories": ["Retail"],
     "phone": "7579265956",
     "address": "3301 Hampton Hwy f, Yorktown, VA 23693"
@@ -674,14 +670,14 @@
   },
   {
     "name": "Tipsy Cupcakes RVA LLC",
-    "url": "Www.tipsycupcakes.com",
+    "url": "http://www.tipsycupcakes.com",
     "categories": ["Food & Beverage"],
     "phone": "8043264737",
     "address": "3302 Williamsburg Rd, Richmond, VA 23231"
   },
   {
     "name": "All About Car Audio",
-    "url": "allaboutcaraudio.com",
+    "url": "http://allaboutcaraudio.com",
     "categories": ["Lifestyle"],
     "phone": "4342496765",
     "address": "407 Earhart St, Charlottesville, VA 22903"
@@ -709,49 +705,49 @@
   },
   {
     "name": "Professional Real Estate Management",
-    "url": "premrentals.com",
+    "url": "http://premrentals.com",
     "categories": ["Lifestyle"],
     "phone": "7578271033",
     "address": "4120 Victoria Blvd, Hampton, VA 23669"
   },
   {
     "name": "Temple in the Woods Bed & Breakfast",
-    "url": "Www.Facebook.com/TempleInTheWoods",
+    "url": "http://www.Facebook.com/TempleInTheWoods",
     "categories": ["Lifestyle"],
     "phone": "8044664105",
     "address": "1585 Ullainee Rd, Caret, VA 22436"
   },
   {
     "name": "Lettie D Creations ",
-    "url": "Lettie-D-Creations.com ",
+    "url": "http://Lettie-D-Creations.com ",
     "categories": ["Lifestyle"],
     "phone": "8044261336",
     "address": "7330 Staples Mill Rd #110, Henrico, VA 23228"
   },
   {
     "name": "Out of Sight Events",
-    "url": "www.outofsightevents.com",
+    "url": "http://www.outofsightevents.com",
     "categories": ["Lifestyle"],
     "phone": "4348825048",
     "address": "8108 Porters Rd, Esmont, VA 22937"
   },
   {
     "name": "The Croaker's Spot ",
-    "url": "Croakersspot.com",
+    "url": "http://Croakersspot.com",
     "categories": ["Food & Beverage"],
     "phone": "8042690464",
     "address": "1020 Hull St, Richmond, VA 23224"
   },
   {
     "name": "APPOMATTOX DRUGS",
-    "url": "www.appomattoxdrugs.com",
+    "url": "http://www.appomattoxdrugs.com",
     "categories": ["Retail"],
     "phone": "8044312969",
     "address": "21414 Chesterfield Ave, Petersburg, VA 23803"
   },
   {
     "name": "Bland-Reid Funeral Home ",
-    "url": "WWW.BLANDREIDFH.COM",
+    "url": "http://www.BLANDREIDFH.COM",
     "categories": ["Lifestyle"],
     "phone": "4343923773",
     "address": "413 Griffin Blvd, Farmville, VA 23901"
@@ -765,7 +761,7 @@
   },
   {
     "name": "Mama J's Kitchen ",
-    "url": "Mamajskitchen.com",
+    "url": "http://Mamajskitchen.com",
     "categories": ["Food & Beverage"],
     "phone": "8042257449",
     "address": "415 N 1st St, Richmond, VA 23219"

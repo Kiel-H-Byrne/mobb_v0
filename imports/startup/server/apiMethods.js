@@ -204,23 +204,23 @@ Meteor.methods({
       params.website = doc.url;
       params.language = "en-US";
       // console.log(params);
-      // console.log("***calling PLACES API method with "+params);
+      // console.log("***calling PLACES API method", params);
       try {
         let result = HTTP.post(apiUrl, {data: params});
         if (result.data) {
           console.log("OBTAINED NEW PLACE_ID FOR "+ doc.name);
-          Listings.update({
-            _id: doc._id 
-          },{
-            $set: { google_id: result.data.place_id } 
-          });
+          // Listings.update({
+          //   _id: doc._id 
+          // },{
+          //   $set: { google_id: result.data.place_id } 
+          // });
 
           OCache.set(doc.address, result.data.place_id);
-        }
         return result.data.place_id;
+        }
       } catch(e) {
         console.log(e);
-        return false;
+        // return false;
       }
     }
   },

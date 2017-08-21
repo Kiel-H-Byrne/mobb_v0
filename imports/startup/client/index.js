@@ -133,7 +133,7 @@ Meteor.startup(function () {
     // does not get inferred images, sometimes will not return image. 
     // if no image returned, call "scrapeOG" ?
     // Meteor.call('scrapeOG', url, id); 
-    console.log(url, id);
+    // console.log(url, id);
     Meteor.call('getOG', url, id);
     
     

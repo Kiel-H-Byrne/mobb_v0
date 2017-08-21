@@ -150,7 +150,7 @@ Meteor.methods({
     let dataFromCache = GCache.get(gid);
     if(dataFromCache) {
       console.log("Details Data from GCache...");
-      console.log(dataFromCache);
+      // console.log(dataFromCache);
       return dataFromCache;
     } else {
       if (Meteor.isClient) {
@@ -161,7 +161,6 @@ Meteor.methods({
   },
   submitPlace: function(doc) {
     //THIS METHOD SUBMITS THE ADDRESS TO GOOGLE, AND GOOGLE RETURNS A "GOOGLE_ID"
-    this.unblock();
     check(doc, Object);
     
 /*
@@ -179,7 +178,8 @@ Meteor.methods({
       };
 */
     let gidFromCache = OCache.get(doc.address);
-    if (gidFromCache) {
+    if (gidFromCache && !doc.google_id) {
+      // console.log(gidFromCache);
       Listings.update({
         _id: doc._id 
       },{
@@ -188,7 +188,7 @@ Meteor.methods({
       console.log('RETURNING PLACE_ID FROM OCACHE...');
       return gidFromCache;
     } else {
-      const apiUrl = 'https://maps.googleapis.com/maps/api/place/add/json?key=' + Meteor.settings.public.keys.googleServer.key;
+      let apiUrl = 'https://maps.googleapis.com/maps/api/place/add/json?key=' + Meteor.settings.public.keys.googleServer.key;
       const params = {};
       let locArr = doc.location.split(",");
       let locObj = {
@@ -209,11 +209,11 @@ Meteor.methods({
         let result = HTTP.post(apiUrl, {data: params});
         if (result.data) {
           console.log("OBTAINED NEW PLACE_ID FOR "+ doc.name);
-          // Listings.update({
-          //   _id: doc._id 
-          // },{
-          //   $set: { google_id: result.data.place_id } 
-          // });
+          Listings.update({
+            _id: doc._id 
+          },{
+            $set: { google_id: result.data.place_id } 
+          });
 
           OCache.set(doc.address, result.data.place_id);
         return result.data.place_id;
@@ -225,23 +225,23 @@ Meteor.methods({
     }
   },
   getOG: function(url, id) {
-    this.unblock();
     check(url, String);
     check(id, String);
+    
     if (!url) {
       console.log(`No URL for ${id}, so no OpenGraph Data.`);
       return false;
     } else {
       let param = encodeURIComponent(url);
       // console.log(param);
-      console.log(`***calling OPENGRAPH API method with URL ${param} and ID ${Meteor.settings.public.keys.openGraph.key}`);
+      console.log(`***calling OPENGRAPH API method with URL ${param} and KEY ${Meteor.settings.public.keys.openGraph.key}`);
       let apiUrl = `https://opengraph.io/api/1.0/site/${param}?app_id=${Meteor.settings.public.keys.openGraph.key}` ;
       // console.log("--URL--"+apiUrl);
       const response = Meteor.wrapAsync(apiCall)(apiUrl);
-      
+      // console.log(response);
       if (response.error) {
         console.log(response.error.message);
-        return ;
+        return false ;
       }
 
       const res = {};
@@ -252,7 +252,7 @@ Meteor.methods({
       let ogObj = (!response.openGraph.error && response.openGraph.image) ? response.openGraph : null;
       
       res.obj = hgObj || ogObj || hiObj;
-      console.log(res.obj);
+      // console.log(res.obj);
 
       // img = (ogObj) ? ogObj.image.url : (hgObj) ? hiObj.image : (hiObj) ? hiObj.image_guess : console.log("no img");
       let img = (res.obj.image) ? res.obj.image || res.obj.image.url : (res.obj.image_guess) ? res.obj.image_guess : res.obj.images[0];
@@ -276,6 +276,9 @@ Meteor.methods({
         //   uri = img.replace("https://", "https://images.weserv.nl/?url=ssl:");
         //   console.log(uri);
         // }
+        //this was causing schema to balk; had to add "if this.isInsert" to location autovalue.
+        //sibling fields were returning undefined in schemas during update process.
+
         Listings.update({
           _id: id 
         },{

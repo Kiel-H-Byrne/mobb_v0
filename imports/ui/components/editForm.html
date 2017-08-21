@@ -13,12 +13,16 @@
               </div>
               <div class="collapsible-body">
                 {{> afQuickField name="name"}}
-                {{> afQuickField name="street"}}
-                <div class="row">
-                  <div class="col s12 m5"> {{> afQuickField name="city"}} </div>
-                  <div class="col s6 m3"> {{> afQuickField name="state"}} </div>
-                  <div class="col s6 m4"> {{> afQuickField name="zip"}} </div>
-                </div>
+                {{#if address}}
+                  {{> afQuickField name="address"}}
+                {{else}}
+                  {{> afQuickField name="street"}}
+                  <div class="row">
+                    <div class="col s12 m5"> {{> afQuickField name="city"}} </div>
+                    <div class="col s6 m3"> {{> afQuickField name="state"}} </div>
+                    <div class="col s6 m4"> {{> afQuickField name="zip"}} </div>
+                  </div>
+                {{/if}}
                 {{> afQuickField name="phone"}}
                 {{> afQuickField name="url"}}
                 <div class="row">

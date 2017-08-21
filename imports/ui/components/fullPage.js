@@ -6,17 +6,17 @@ import './claimForm.js';
 Template.fullPage.onCreated(function () {
   if ((this.data.street || this.data.address) && !this.data.google_id) {
     // submit to google places
-    console.log("getting google ID ");
+    // console.log("getting google ID ");
     Meteor.call('submitPlace', this.data, function(error, result) {
       if (error) {
-        console.log(error) 
+        console.log("got error", error) 
       } else if (result) { 
         console.log("got id: " + result);
         Meteor.call('checkGDetails',result);  
       }      
     });
   } else if (this.data.google_id) {
-    console.log("have google ID already");
+    // console.log("have google ID already");
     Meteor.call('checkGDetails',this.data.google_id);  
   }
 });

@@ -55,7 +55,7 @@
           {{#if phone}}    
           <a class="btn-floating" title="Call" href="tel:+1{{phone}}"><i class="material-icons">phone</i></a>
           {{/if}}
-          {{#if street}}    
+          {{#if location}}    
           
             <!-- a class="btn-floating modal-trigger" id="directions_button" title="Directions" href="#modalDirections"><i class="material-icons">navigation</i></a-->
             <a class="btn-floating " title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" ><i class="material-icons">directions</i></a>
@@ -74,10 +74,15 @@
         <hr />        
         <span class="card-title "><i class="material-icons">location_on</i>Address</span>
         <p class="">
-
-          {{#if street}}    
+          {{#if address}}    
+            <span>
+            {{address}}<br />
+            </span>
+          {{else}}
+            <span>
             {{street}} <br />
             {{city}} {{state}},  {{zip}} <br />
+            </span>
           {{/if}}
 
           {{#if phone}}    

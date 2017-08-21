@@ -36,12 +36,17 @@
             {{#if card.social.twitter}}
             tt: <a href="https://www.twitter.com/{{card.social.twitter}}" target="_blank" rel="noopener" > @{{card.social.twitter}}</a> <br />
             {{/if}}
-            {{#if card.street}}
             <p class="center-align address">
-              <span id="address-content">
-                {{card.street}} <br />
-                {{card.city}} {{card.state}} {{card.zip}} <br />
-              </span>
+              {{#if card.address}}
+                <span>
+                  {{card.address}}
+                </span>
+              {{else}}
+                <span id="address-content">
+                  {{card.street}} <br />
+                  {{card.city}} {{card.state}} {{card.zip}} <br />
+                </span>
+              {{/if}}
               {{#if card.phone}}
                 <a class="center-align address-phone" href="tel:+1{{card.phone}}">
                   <i class="material-icons tiny">phone</i>
@@ -49,7 +54,6 @@
                 </a>
               {{/if}}
             </p>
-            {{/if}}
             {{#if card.description}}
               <p>{{card.description}}</p>
             {{/if}}

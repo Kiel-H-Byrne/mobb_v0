@@ -11,7 +11,7 @@ Template.fullPage.onCreated(function () {
       if (error) {
         console.log("got error", error) 
       } else if (result) { 
-        console.log("got id: " + result);
+        // console.log("got id: " + result);
         Meteor.call('checkGDetails',result);  
       }      
     });

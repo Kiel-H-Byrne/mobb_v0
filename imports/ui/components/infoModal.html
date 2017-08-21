@@ -25,12 +25,18 @@
              <h5 class="center-align">{{doc.name}}</h5>
               
               <p class="center-align address">
-
-                <span id="address-content">
-                {{doc.street}} <br />
-                {{doc.city}} {{doc.state}} {{doc.zip}} 
-                <br />
-                </span>
+                {{#if doc.address}}
+                <p>
+                  {{doc.address}}
+                </p>
+                {{else}}
+                  <span id="address-content">
+                  {{doc.street}} <br />
+                  {{doc.city}} {{doc.state}} {{doc.zip}} 
+                  <br />
+                  </span>
+                {{/if}}
+                
                 {{#if doc.phone}}
                 <a class="center-align phone" href="tel:+1{{doc.phone}}">
                   <i class="material-icons tiny">phone</i>

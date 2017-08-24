@@ -133,7 +133,7 @@ Template.addForm.events({
       geocomplete.setBounds(circle.getBounds());
     }
   },
-  'keyup input#phone_input, mouseleave input#phone_input': function(event) {
+  'keyup input#phone_input, mouseleave input#phone_input, click input#phone_input': function(event) {
     if (event.target.value) {
       let removedText = event.target.value.replace(/\D/, '');
       event.target.value = removedText;

@@ -9,7 +9,7 @@ Template.fullPage.onCreated(function () {
     // console.log("getting google ID ");
     Meteor.call('submitPlace', this.data, function(error, result) {
       if (error) {
-        console.log("got error", error) 
+        console.log("got error", error);
       } else if (result) { 
         // console.log("got id: " + result);
         Meteor.call('checkGDetails',result);  

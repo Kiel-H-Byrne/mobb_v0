@@ -215,11 +215,11 @@ Schema.Listings = new SimpleSchema({
   // 'type' is where you can set the expected data type for the 'title' key's value
   name: {
     type: String,
-    unique: true
+    unique: true,
   },
   address: {
     type: String,
-    unique: true,
+    // unique: true,
     optional: true,
     custom: function() {
       //if street has no value and isSet(), and this has no value, throw error 
@@ -251,6 +251,7 @@ Schema.Listings = new SimpleSchema({
     type: String,
     max: 80,
     optional: true,
+    // unique: true,
     custom: function() {
       //if street has no value and isSet(), and this has no value, throw error 
       let hasAddress = this.field('address').value;
@@ -301,7 +302,7 @@ Schema.Listings = new SimpleSchema({
   phone: {
     type: String,
     label: 'Phone Number',
-    max: 13,
+    max: 14,
     optional: true,
     autoValue: function() {
       if (this.value) {
@@ -313,7 +314,6 @@ Schema.Listings = new SimpleSchema({
   },
   url: {
     type: String,
-    unique: true,
     label: 'Website',
     regEx: SimpleSchema.RegEx.Url,
     optional: true,
@@ -409,7 +409,7 @@ Schema.Listings = new SimpleSchema({
       if (this.isInsert) {
         let address = this.field("address").value;
         let street = this.field("street").value;
-        console.log(address,street);
+        // console.log(address,street);
         let addressString;
         if (address) {
           addressString = address;
@@ -433,62 +433,13 @@ Schema.Listings = new SimpleSchema({
           // console.log("GOOGLE TYPES:") ;
           // console.log(response.results[0].types);
           // this.field("google_id").value = place_id;
-          //====== SET OTHER VALUES IN DOCUMENT ======
-        let componentForm = {
-          street_number: 'short_name',
-          route: 'long_name',
-          locality: 'long_name',
-          administrative_area_level_1: 'short_name',
-          country: 'short_name',
-          postal_code: 'short_name'
-        };
-        let num;
-        let components = {
-          street: '',
-          city: '',
-          state: '',
-          zip: '',
-          country: ''
-        };
 
-        for (let i = 0; i < response.results[0].address_components.length; i++) {
-          let addressType = response.results[0].address_components[i].types[0];
-          let val = response.results[0].address_components[i][componentForm[addressType]];
-          
-          if (componentForm[addressType]) {
-            switch (addressType) {
-            case 'street_number':
-              num = val;
-              break;
-            case 'route':
-              components.street = `${num}  ${val}`;
-              this.field('street').value = components.street;
-              break;
-            case 'locality':
-              components.city = val;
-              this.field('city').value = components.city;
-              break;
-            case 'administrative_area_level_1':
-              components.state = val;
-              this.field('state').value = components.state;
-              break;
-            case 'postal_code':
-              components.zip = val;
-              this.field('zip').value = components.zip;
-              break;
-            case 'country':
-              components.country = val;
-              this.field('country').value = components.country;
-              break;
-            }
-          }
-        }
-        //====== RETURN LAT/LONG OBJECT LITERAL ======
-        // return loc;
-        //====== RETURN STRINGIFIED LAT/LONG NUMBERS ======
-        const arr =  _.values(loc);
-        // console.log(arr.toLocaleString());
-        return arr.toLocaleString();
+          //====== RETURN LAT/LONG OBJECT LITERAL ======
+          // return loc;
+          //====== RETURN STRINGIFIED LAT/LONG NUMBERS ======
+          const arr =  _.values(loc);
+          // console.log(arr.toLocaleString());
+          return arr.toLocaleString();
         } 
       }
     }

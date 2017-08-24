@@ -24,15 +24,15 @@
         <div class="card-content">
 
             <span class="card-title "> <h5 class="center-align activator">{{name}}</h5></span>
-            <p>
+            <p class="center-align">
               {{#if social.facebook}}
-                fb: <a href="https://www.facebook.com/{{social.facebook}}" target="_blank" rel="noopener" > @{{social.facebook}}</a> <br />
+                <span> fb: <a href="https://www.facebook.com/{{social.facebook}}" target="_blank" rel="noopener" > @{{social.facebook}}</a> </span> <br />
               {{/if}}
               {{#if social.instagram}}
-                ig: <a href="https://www.instagram.com/{{social.instagram}}" target="_blank" rel="noopener" > @{{social.instagram}}</a> <br />
+                <span> ig: <a href="https://www.instagram.com/{{social.instagram}}" target="_blank" rel="noopener" > @{{social.instagram}}</a> </span> <br />
               {{/if}}
               {{#if social.twitter}}
-                tt: <a href="https://www.twitter.com/{{social.twitter}}" target="_blank" rel="noopener" > @{{social.twitter}}</a> <br />
+                <span> tt: <a href="https://www.twitter.com/{{social.twitter}}" target="_blank" rel="noopener" > @{{social.twitter}}</a> </span> <br />
               {{/if}}
             </p>
             <p class="center-align address">

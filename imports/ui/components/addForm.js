@@ -93,14 +93,14 @@ Template.addForm.onRendered(function() {
     $('.collapsible').collapsible();
 
       //mask is array of strings and regex
-      const VTM = require('vanilla-text-mask/dist/vanillaTextMask.js');
+    const VTM = require('vanilla-text-mask/dist/vanillaTextMask.js');
 
-      let telMask = ['(', /[1-9]/, /\d/, /\d/, ')', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
-      let telInput = document.querySelector('#phone_input');
-      let telInputMask = VTM.maskInput({
-        inputElement: telInput,
-        mask: telMask
-      });
+    let telMask = ['(', /[1-9]/, /\d/, /\d/, ')',' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+    let telInput = document.querySelector('#phone_input_add');
+    let telInputMask = VTM.maskInput({
+      inputElement: telInput,
+      mask: telMask
+    });
       
     // let state = Session.get('clientState');
     // $("li:contains("+ state +")").addClass("active selected");

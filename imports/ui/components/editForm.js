@@ -23,6 +23,17 @@ Template.editForm.onRendered(function () {
     });
 
     $('.collapsible').collapsible();
+
+    const VTM = require('vanilla-text-mask/dist/vanillaTextMask.js');
+
+    let telMask = ['(', /[1-9]/, /\d/, /\d/, ')',' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+    let telInput = document.querySelector('#phone_input_edit');
+    let telInputMask = VTM.maskInput({
+      inputElement: telInput,
+      mask: telMask
+    });
+
+
     // let state = Session.get('clientState');
     // $("li:contains("+ state +")").addClass("active selected");
   });

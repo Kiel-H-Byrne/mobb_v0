@@ -36,8 +36,8 @@ let styleTag = `
     height: 100%;
     border: 3px solid #00A466;
     border: 3px solid transparent;
-    border-top-color: #8104A0;
-    border-bottom-color: #8104A0;
+    border-top-color: #824691;
+    border-bottom-color: #824691;
     border-radius: 50%;
     -webkit-animation: loader 2s linear infinite;
     -moz-animation: loader 2s linear infinite;

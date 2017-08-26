@@ -13,5 +13,4 @@ import '../pages/loadingRings.html';
 import '../pages/loadingHourglass.html';
 import '../pages/404page.js';
 import '../pages/myJoin.html';
-
-// import '../pages/test.js';
+import '../pages/test.js';

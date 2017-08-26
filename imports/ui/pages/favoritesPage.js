@@ -19,7 +19,7 @@ Template.favoritesPage.onRendered(function () {
        percentPosition: true
       });
 
-      imagesLoaded( '.favoritesFlex_item', function () {
+      ImagesLoaded( '.favoritesFlex_item', function () {
         msnry.layout();
       });
     }

@@ -23,7 +23,8 @@
     "meteor-node-stubs": "~0.2.0",
     "opengraph-io": "^1.1.2",
     "spawn-sync": "^1.0.15",
-    "try-thread-sleep": "^1.0.0"
+    "try-thread-sleep": "^1.0.0",
+    "vanilla-text-mask": "^5.0.1"
   },
   "devDependencies": {
     "bcrypt": "^1.0.2",

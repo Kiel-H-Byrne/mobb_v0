@@ -92,14 +92,16 @@ Template.addForm.onRendered(function() {
 
     $('.collapsible').collapsible();
 
-    $('input[name="phone"]').characterCounter();
+      //mask is array of strings and regex
+      const VTM = require('vanilla-text-mask/dist/vanillaTextMask.js');
 
-    // $('input[name="phone"]').keydown(function(){
-    //  let self = $(this);
-    //  let removedText = self.val().replace(/\D/, '');
-    //  self.val(removedText);
-    // });
-    
+      let telMask = ['(', /[1-9]/, /\d/, /\d/, ')', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+      let telInput = document.querySelector('#phone_input');
+      let telInputMask = VTM.maskInput({
+        inputElement: telInput,
+        mask: telMask
+      });
+      
     // let state = Session.get('clientState');
     // $("li:contains("+ state +")").addClass("active selected");
   
@@ -131,13 +133,6 @@ Template.addForm.events({
       });
       // console.log(circle);
       geocomplete.setBounds(circle.getBounds());
-    }
-  },
-  'keyup input#phone_input, mouseleave input#phone_input, click input#phone_input': function(event) {
-    if (event.target.value) {
-      let removedText = event.target.value.replace(/\D/, '');
-      event.target.value = removedText;
-     return removedText;
     }
   }
 });

@@ -23,7 +23,7 @@ Template.closestPage.onRendered(function () {
        percentPosition: true
       });
 
-      imagesLoaded( '.closestFlex_item', function () {
+      ImagesLoaded( '.closestFlex_item', function () {
         msnry.layout();
       });
    }

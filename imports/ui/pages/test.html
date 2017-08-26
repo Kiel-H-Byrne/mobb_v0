@@ -11,7 +11,7 @@
     </div> --}}
     
     <div class="row content_wrap">
-      <div class="col s6 m3 l2">
+      <div class="col s6 push-s3">
         <div>
       	{{#with randomDoc}}
           {{> galleryCard}}
@@ -21,16 +21,36 @@
     </div>
 
     <div class="row">
-      <div class="input-field col s6 l3">
-        <input id="autocomplete_test" placeholder="" type="text" name="" />
-        <label for="autocomplete_test">Search Address</label>
-      </div>
+    <form  class="col s12">
+      
+
+        <div class="input-field row">
+          <input id="tmtest-tel" placeholder="(___) ___-____" type="tel" />
+          <label for="tmtest-tel">Phone </label>
+        </div>
+        <div class="input-field row">
+          <input id="tmtest-url" placeholder="" type="url" phone="" />
+          <label for="tmtest-url">URL</label>
+        </div>
+        <div class="input-field row">
+          <input id="tmtest-address" placeholder="" type="text" phone="" />
+          <label for="tmtest-address">Address</label>
+        </div>
+        <div class="input-field row">
+          <input id="tmtest-email" placeholder="" type="text" phone="" />
+          <label for="tmtest-email">Email</label>
+        </div>
+        <div class="input-field row">
+          <input id="tmtest-search" placeholder="" type="search" phone="" />
+          <label for="tmtest-search">Search</label>
+        </div>
+    </form>
     </div>
 
     <div class="row">
-      <div class="col s12">
+      <div class="col s5">
         <h4> Heading </h4>
-        <p class="flow-text truncate">
+        <p class="">
         Some test to test the font pairing of header and paragraph. Sometimes we just need a litle bit of text to make the copy sound good. and this is just som highfalutent copy in order to make a point about font pairings. This doesn't make any real logical sensical nonsensicalness, but it's worthy of a few lines or two or three or 4 or 50 of text in a dummy paragraph placeholder. right? RIGHT? Copy? Copy!  
         </p>
       </div>

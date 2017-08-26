@@ -293,43 +293,6 @@ Meteor.methods({
       }
     }
   },
-  scrapeOG: function(url,id) {
-    check(url, String);
-    check(id, String);
-    
-    if (!url) {
-      console.log(`No URL for ${id}, so no OpenGraph Data.`);
-      return false;
-    } else {
-      const ogs = require('open-graph-scraper');
-      let options = {'url': url};
-      ogs(options, function(error,results) {
-        if (!error && results.data) {
-          console.log(results);
-          const data = results.data;
-          let img = (data.ogImage) ? (data.ogImage.url) : null;
-          let title = data.ogTitle;
-          let description = data.ogDescription;
-
-          if (img)
-            if (img.includes('http://')) {  
-            img = img.replace("http://", "https://images.weserv.nl/?url=");
-            // console.log(img);
-            } 
-            Listings.update({
-              _id: id 
-            },{
-              $set: { 
-                "image.url": img,
-                description: description,
-              } 
-            });
-          console.log(img);
-          return img;
-        }
-      });
-    }
-  },
   setGID: function(id, google_id) {
     check(id, String);
     check(google_id, String);

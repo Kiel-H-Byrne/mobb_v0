@@ -1,6 +1,7 @@
   // @import url('https://fonts.googleapis.com/css?family=Raleway');
 
   .test-wrapper {
+
     margin: 0;
     padding: 0;
     
@@ -27,12 +28,12 @@
     .card-content {
       padding: 0;
     }
-    h3 {
-      // font-family: 'Kumar One', cursive;
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Palatino Linotype', Palatino, serif;
     }
 
     p {
-        // font-family: 'Raleway', sans-serif;
+        font-family: 'Trebuchet MS', Helvetica, sans-serif;
     }
   }
 

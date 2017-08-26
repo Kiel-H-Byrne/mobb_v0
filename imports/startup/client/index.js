@@ -48,8 +48,9 @@ import '/imports/ui/layouts/layout.js';
 
 //client Libraries
 Masonry = require('masonry-layout/masonry.js');
-imagesLoaded = require('imagesLoaded/imagesLoaded.js');
-
+ImagesLoaded = require('imagesLoaded/imagesLoaded.js');
+// VTM = require('vanilla-text-mask/dist/vanillaTextMask.js');
+// console.log(VTM);
 // downloadImage = require('download-image');
 
 console.log("-= imports/startup/client/index.js loaded");

@@ -36,7 +36,11 @@
               {{/if}}
             </p>
             <p class="center-align address">
-            {{#if street}}
+            {{#if address}}
+              <span>
+                {{address}}
+              </span><br />
+            {{else}}
               <span id="address-content">
                 {{street}} <br />
                 {{city}} {{state}} {{zip}} <br />

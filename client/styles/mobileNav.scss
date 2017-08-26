@@ -26,34 +26,6 @@
     
     .collection {
       border-color: $rgba-primary-grey-3;
-
-      .collection-item {
-        background-color: $rgba-primary-grey-3;
-        padding: 0 auto;
-        margin: 3px 0 0 0;
-
-        p {
-          line-height: 1.2rem;
-        }
-
-        .title {
-          color: $rgba-primary-3;
-          font-size: 1.4rem;
-          // line-height: 1.4rem;
-        }
-
-        .address-phone {
-          color: $rgba-secondary-2-0;
-          height: auto;
-
-          i {
-            color: $rgba-secondary-2-0;
-            font-size: 1rem;
-            width: 1ch;
-            margin: 0 4px;
-          }
-        }
-      }
     }
     .collection-header {
       text-align: center;
@@ -66,19 +38,5 @@
       }
       // color: $rgba-primary-grey-4;
     }
-
-    li {
-       a {
-        padding: 1px;
-        height: auto;
-        line-height: 1.4rem;
-      }
-
-      p {
-        color: white;
-      }
-    }
-
-
   }
 }

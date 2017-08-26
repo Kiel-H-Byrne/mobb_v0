@@ -1,36 +1,32 @@
 
 <template name="mobileNav">
   <div id="mobileNav" class="hide-on-large-only">
-  {{#if hasFavorites}}
+    {{#if hasFavorites}}
+    <a data-activates="slide-out-fav"  class="z-depth-4 button-collapse_fav slide_badge_fav"><i class="material-icons">favorite</i></a>
+    
     <ul id="slide-out-fav" class="side-nav">
       <li class="collection-header"><i class="material-icons">favorite</i>Favorites:</li>
       <li><div class="divider"></div></li>
       <ul class="collection">
         {{#each fav in favorites}}
-          <li class="collection-item avatar hoverable ">
-            {{> listCard fav}}
-          </li>
+          {{> listCard fav}}
         {{/each}}
       </ul>
     </ul>
-    <a data-activates="slide-out-fav"  class="z-depth-4 button-collapse_fav slide_badge_fav"><i class="material-icons">favorite</i></a>
-  {{/if}}
-  {{#if haveLocation}}
+    {{/if}}
+    {{#if haveLocation}}
+    <a data-activates="slide-out-near" class="z-depth-4 button-collapse_near slide_badge_near"><i class="material-icons">near_me</i></a>
     <ul id="slide-out-near" class="side-nav">
       <li class="collection-header"><i class="material-icons">near_me</i>Nearest:</li>
       <li><div class="divider"></div></li>
       <ul class="collection">
         {{#each list}}
           {{#if isClose (getDistance location)}}
-          <img href="favicon.ico" />
-            <li class="collection-item avatar hoverable ">
-              {{> listCard }}
-            </li>
+            {{> listCard }}
           {{/if}}
         {{/each}}
       </ul>
     </ul>
-    <a data-activates="slide-out-near" class="z-depth-4 button-collapse_near slide_badge_near"><i class="material-icons">near_me</i></a>
     {{/if}}
   </div>
 </template>

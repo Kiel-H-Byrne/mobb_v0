@@ -1,44 +1,61 @@
 
 <template name="listCard">
-<div class="row" style="position:absolute; bottom: 0; left:-7px">
+  <li class="collection-item avatar hoverable list_card">
+    <div class="card_info">
+        <a class="card_link" href="/listings/{{name}}">
+        {{#if image.url}}
+          <img class="circle" src="{{image.url}}" />
+        {{else}}
+          {{#if url}}
+          <img class="circle" src="{{getImage url _id}}" />
+          {{/if}}
+        {{/if}}
+        </a>
+        <span class="title">
+          <a class="card_link" href="/listings/{{name}}">{{name}}</a>
+        </span>
+
+        <p>
+          {{#if social.facebook}}
+          fb: <a href="https://www.facebook.com/{{social.facebook}}" target="_blank" rel="noopener" > @{{social.facebook}}</a> <br />
+          {{/if}}
+          {{#if social.instagram}}
+          ig: <a href="https://www.instagram.com/{{social.instagram}}" target="_blank" rel="noopener" > @{{social.instagram}}</a> <br />
+          {{/if}}
+          {{#if social.twitter}}
+          tt: <a href="https://www.twitter.com/{{social.twitter}}" target="_blank" rel="noopener" > @{{social.twitter}}</a> <br />
+          {{/if}}
+        </p>
+        <p class="address">
+          {{#if address}}
+            <span>
+              {{address}}
+            </span><br />
+          {{else}}
+            <span id="address-content">
+              {{street}} <br />
+              {{city}} {{state}} {{zip}} <br />
+            </span>
+          {{/if}}
+        </p>
+        {{#if phone}}    
+          <a class="address-phone" href="tel:+1{{phone}}"><i class="material-icons">phone</i>{{phone}}</a> 
+        {{/if}}
+    </div>
+    <div class="row">
       <div class="col s12">
-        {{> favoriteStar}}
-        {{> shareListing}}
+        <div class="left">
+          {{> favoriteStar}}
+          {{> shareListing}}
+        </div>
+        <div class="badge_distance right">
+          {{#if location}}
+            <a href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener">
+              <span class="badge hoverable" data-badge-caption="mi."><i class="material-icons tiny ">directions</i> {{getDistance location}} </span>
+            </a>
+          {{/if}} 
+        </div>
       </div>
     </div>
-  <div class="info_list">
-    <a class="card_link" href="/listings/{{name}}">
-    {{#if image.url}}
-      <img class="circle" src="{{image.url}}" />
-    {{else}}
-      {{#if url}}
-      <img class="circle" src="{{getImage url _id}}" />
-      {{/if}}
-    {{/if}}
-    </a>
-    <span class="title">
-      <a class="card_link" href="/listings/{{name}}">{{name}}</a>
-    </span>
-
-    <p>
-      {{#if social.facebook}}
-      fb: <a href="https://www.facebook.com/{{social.facebook}}" target="_blank" rel="noopener" > @{{social.facebook}}</a> <br />
-      {{/if}}
-      {{#if social.instagram}}
-      ig: <a href="https://www.instagram.com/{{social.instagram}}" target="_blank" rel="noopener" > @{{social.instagram}}</a> <br />
-      {{/if}}
-      {{#if social.twitter}}
-      tt: <a href="https://www.twitter.com/{{social.twitter}}" target="_blank" rel="noopener" > @{{social.twitter}}</a> <br />
-      {{/if}}
-    </p>
-    {{#if street}}
-    <p class="address">
-      {{street}} <br />
-      {{city}} {{state}} {{zip}} <br />
-    </p>
-    {{/if}}
-    {{#if phone}}    
-      <a class="address-phone" href="tel:+1{{phone}}"><i class="material-icons">phone</i>{{phone}}</a> 
-    {{/if}}
-  </div>
+  </li>
 </template>

@@ -18,11 +18,10 @@
     "babel-runtime": "^6.20.0",
     "download-image": "^1.0.1",
     "imagesloaded": "^4.1.1",
-    "masonry-layout": "^4.1.1",
+    "masonry-layout": "^4.2.0",
     "materialize-css": "^0.98.0",
     "meteor-node-stubs": "~0.2.0",
-    "open-graph-scraper": "^2.5.0",
-    "opengraph-io": "^1.0.3",
+    "opengraph-io": "^1.1.2",
     "spawn-sync": "^1.0.15",
     "try-thread-sleep": "^1.0.0"
   },

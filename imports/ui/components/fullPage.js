@@ -7,7 +7,7 @@ Template.fullPage.onCreated(function () {
   if (this.data.location && !this.data.google_id) {
     // submit to google places
     // console.log("getting google ID ");
-    let place = Meteor.call('placesSearch', this.data.name, this.data.location, function(error, result) {
+    Meteor.call('placesSearch', this.data.name, this.data.location, function(error, result) {
       if (error) {
         console.log("got error", error);
         return false
@@ -19,8 +19,6 @@ Template.fullPage.onCreated(function () {
         // Meteor.call('submitPlace',this.data);  
       }
     });
-    console.log(place);
-    Session.set('thisPlace', place);
     if (!place) {
       console.log("no id found");
       // Meteor.call('submitPlace', this.data);

@@ -151,6 +151,7 @@ getGDetails = function(gid) {
         // ID_Cache.findOne({key: key}, {$set: {value: place_id}});
         Meteor.call('setGCache', gid, res);
         // resolvedData.set('placeDetails', res);
+        Session.set('thisPlace', res);
         return res;
         //inject with jquery into dom?
       } else {
@@ -158,5 +159,7 @@ getGDetails = function(gid) {
       }
     };
     return service.getDetails(req, cbk);
+  } else {
+    console.log("no map laoded");
   }
 };

@@ -4,20 +4,37 @@ import './verifyForm.js';
 import './claimForm.js';
 
 Template.fullPage.onCreated(function () {
-  if ((this.data.street || this.data.address) && !this.data.google_id) {
+  if (this.data.location && !this.data.google_id) {
     // submit to google places
     // console.log("getting google ID ");
-    Meteor.call('submitPlace', this.data, function(error, result) {
+    let place = Meteor.call('placesSearch', this.data.name, this.data.location, function(error, result) {
       if (error) {
         console.log("got error", error);
-      } else if (result) { 
-        // console.log("got id: " + result);
-        Meteor.call('checkGDetails',result);  
-      }      
+        return false
+      } else if (!result) { 
+        console.log("not sure what happened here");
+        // console.log("got id: " + result.place_id);
+        return false
+        // console.log("Submitting to Google: "+ this.data.name)
+        // Meteor.call('submitPlace',this.data);  
+      }
     });
+    console.log(place);
+    Session.set('thisPlace', place);
+    if (!place) {
+      console.log("no id found");
+      // Meteor.call('submitPlace', this.data);
+    }
   } else if (this.data.google_id) {
-    // console.log("have google ID already");
-    Meteor.call('checkGDetails',this.data.google_id);  
+    console.log("have google ID already");
+    // if starts with q, check again
+    Meteor.call('placeDetails',this.data.google_id, function(error, result) {
+      if (error) {
+        console.log(error);
+      } else if (result) {
+        Session.set('thisPlace', result);
+      };
+    });
   }
 });
 
@@ -79,10 +96,10 @@ Template.fullPage.events({
 
 Template.fullPage.helpers({
   isPlace: function () {
-    let check1 = this.google_id;
-    if (check1) {
-      let check2 = check1.charAt(0) === 'C'; //is from google
-      if (check1 && check2) {
+    let id = this.google_id;
+    if (id) {
+      let startswC = id.charAt(0) !== 'q'; //is from google
+      if (id && startswC) {
         return true;
       }
     }

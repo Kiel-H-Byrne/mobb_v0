@@ -12,9 +12,8 @@ apiCall = function (apiUrl, callback) {
   try {
 
     let dataFromCache = OCache.get(apiUrl);
-    // console.log("key: "+apiUrl);
+    console.log("CHECKING CACHE: "+apiUrl);
     let response = {};
-
     if(dataFromCache) {
       console.log("Data from Cache...");
       response = dataFromCache;
@@ -153,12 +152,74 @@ Meteor.methods({
       // console.log(dataFromCache);
       return dataFromCache;
     } else {
+// this runs when i have google ID already and nothing in cache
       if (Meteor.isClient) {
+        console.log("nothing in cache");
         getGDetails(gid);
       }
       return;
     }
   },
+  placeDetails: function(google_id) {
+    this.unblock();
+    check(google_id, String);
+    const key = Meteor.settings.public.keys.googleServer.key;
+    const apiUri = `https://maps.googleapis.com/maps/api/place/details/json?placeid=${google_id}&key=${key}`;
+    // console.log("--GOOGLE PLACES: DETAILS SEARCH URL--" + apiUri);
+    let response = Meteor.wrapAsync(apiCall)(apiUri);
+    if (response) {
+      // console.log(response);
+      return response.result; 
+    }
+    return;
+  },
+  placesSearch: function (name, loc) {
+    // SEARCHES FOR A GOOGLE PLACE_ID GIVEN NAME AND LOCATION (CAN ALSO USE ADDRESS, NAME, LOCATION)
+    // UPDATES RELATED DOCUMENTs GOOGLE_ID
+    // CALLED FROM SCHEMA (LOCATION FIELD)
+    this.unblock();
+    check(name, String);
+    check(loc, String);
+    //requ'd: key, location, radius (meters), 
+    // optional: keyword ()
+    const key = Meteor.settings.public.keys.googleServer.key;
+
+    const apiUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${loc}&radius=20&keyword=${name}&key=${key}`;
+    // console.log("--GOOGLE PLACES: NEARBY SEARCH URL--"+apiUrl);
+    const response = Meteor.wrapAsync(apiCall)(apiUrl, function(n,r) {
+      if (r.status === "ZERO_RESULTS") {
+        //no place_id exists in google, so return false and submit one on their behalf.
+        console.log("no results");
+        return false;
+      } else {
+        let result = r.results[0];
+        console.log(result);  
+        const doc = Listings.findOne({"name": name});
+        if (result.name) {
+          let firstours = result.name.split(/\W/, 1)[0];
+          let firsttheirs = result.name.split(/\W/, 1)[0];
+          console.log(firstours, firsttheirs,);
+          if (firstours == firsttheirs) {
+            console.log("MATCH!")
+            Listings.update({
+              _id: doc._id 
+            },{
+              $set: { google_id: result.place_id } 
+            });
+            return result.place_id;
+          } else {
+            console.log(`${result.name}(googles) and ${name}(ours) are not a match`);
+            return false
+          }
+        } else {
+          console.log("no name to check against");
+          return false
+        }
+      }
+    });
+    // console.log("still running");
+    return response;
+  }, 
   submitPlace: function(doc) {
     //THIS METHOD SUBMITS THE ADDRESS TO GOOGLE, AND GOOGLE RETURNS A "GOOGLE_ID"
     check(doc, Object);
@@ -234,7 +295,7 @@ Meteor.methods({
     } else {
       let param = encodeURIComponent(url);
       // console.log(param);
-      console.log(`***calling OPENGRAPH API method with URL ${param} and KEY ${Meteor.settings.public.keys.openGraph.key}`);
+      // console.log(`***calling OPENGRAPH API method with URL ${param} and KEY ${Meteor.settings.public.keys.openGraph.key}`);
       let apiUrl = `https://opengraph.io/api/1.0/site/${param}?app_id=${Meteor.settings.public.keys.openGraph.key}` ;
       // console.log("--URL--"+apiUrl);
       const response = Meteor.wrapAsync(apiCall)(apiUrl);
@@ -301,20 +362,6 @@ Meteor.methods({
       { $set: { google_id: google_id } }
     );
   },
-  bizSearch: function () {
-    // https://api.business.usa.gov/{ReturnType}?keyword={KeyWordSearch}&page={PageNumber}&api_key={YourAPIKey}
-    this.unblock();
-    let urlParams;
-    if (typeof address === "object") {
-      urlParams = _.values(address);
-    } else {
-      urlParams = address;
-    }
-    console.log("***calling GEOCODE API method with "+urlParams);
-    let apiUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + urlParams;
-    console.log("--URL--"+apiUrl);
-    let response = Meteor.wrapAsync(apiCall)(apiUrl);
-  }, 
   calcDistance: function(start,finish) {
     check(start, Object);
     check(finish, Object);

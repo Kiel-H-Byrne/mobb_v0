@@ -61,7 +61,11 @@ Template.addForm.onRendered(function() {
             } else if (addressType == 'route') {
               let val = place.address_components[i][componentForm[addressType]];
               // document.getElementById('route').value = `${document.getElementById('route').value}  ${val}`;
-              document.getElementById('route').value = `${num}  ${val}`;
+              if (num) {
+                document.getElementById('route').value = `${num}  ${val}`;
+              } else {
+                document.getElementById(addressType).value = val;
+              }
             } else {
 
             let val = place.address_components[i][componentForm[addressType]];

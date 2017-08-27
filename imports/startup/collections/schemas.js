@@ -242,7 +242,7 @@ Schema.Listings = new SimpleSchema({
     autoValue: function() {
       if (this.isInsert && this.field('street').value) {
         let addressString =  `${this.field('street').value} ${this.field('city').value}, ${this.field('state').value} ${this.field('zip').value}`;
-        console.log(addressString);
+        // console.log(addressString);
         return addressString;
       }
     }
@@ -398,9 +398,10 @@ Schema.Listings = new SimpleSchema({
     type: String,
     optional: true,
     autoValue: function () {
-      if (this.isInsert) {
+      if (this.field("address").value || this.field("street").value) {
         let address = this.field("address").value;
         let street = this.field("street").value;
+        let name = this.field("name").value;
         // console.log(address,street);
         let addressString;
         if (address) {
@@ -416,7 +417,7 @@ Schema.Listings = new SimpleSchema({
           let state = this.field("state").value ;
           addressString = `${street} ${city} ${state}, ${zip}`;
         } 
-        console.log(addressString);
+        // console.log(addressString);
         const response = Meteor.call('geoCode', addressString);
 
         if (response && response.results.length) {
@@ -431,7 +432,11 @@ Schema.Listings = new SimpleSchema({
           //====== RETURN STRINGIFIED LAT/LONG NUMBERS ======
           const arr =  _.values(loc);
           // console.log(arr.toLocaleString());
-          return arr.toLocaleString();
+          const locationString = arr.toLocaleString();
+          // console.log(name, locationString);
+          Meteor.call('placesSearch', name, locationString);
+
+          return locationString;
         } 
       }
     }

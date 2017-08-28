@@ -163,7 +163,7 @@ Meteor.methods({
   placeDetails: function(google_id) {
     this.unblock();
     check(google_id, String);
-    const key = Meteor.settings.public.keys.googleServer.key;
+    const key = Meteor.settings.public.keys.googleAPI.key;
     const apiUri = `https://maps.googleapis.com/maps/api/place/details/json?placeid=${google_id}&key=${key}`;
     // console.log("--GOOGLE PLACES: DETAILS SEARCH URL--" + apiUri);
     let response = Meteor.wrapAsync(apiCall)(apiUri);
@@ -219,7 +219,24 @@ Meteor.methods({
     });
     // console.log("still running");
     return response;
-  }, 
+  },
+  getPlacePhotos: function(photoref) {
+    check(photoref,String);
+    console.log(photoref);
+    let uri = "https://maps.googleapis.com/maps/api/place/photo?";
+    let key = Meteor.settings.public.keys.googleServer.key;
+    let options = {maxwidth: 100};
+    const apiUri = `${uri}maxwidth=100&reference=${photoref}&key=${key}`;
+    let response = Meteor.wrapAsync(apiCall)(apiUri);
+    if (response) {
+      console.log(response);
+      return response.result; 
+    }
+    return;
+
+
+// https://maps.googleapis.com/maps/api/place/photo?reference=CmRaAAAAIhZlz7AzBuXRVNqLTYHTR3-mRm7qJsrJzNMAyatu0FA-_-N43pG7OVkUUf26_xaqIYYVDIfQT_uvDJT1g9AsorUTkTiQIUqv9_XhqBOvzUGOfKeGS9SNF2Cc0DYo_3tuEhCedP0FW5EZw-7iiIoTgPegGhSxA0PGScR3BEPhcxagdSRwvXZayg&maxwidth=100&key=AIzaSyAuvQtaNuOF1phJQcTv3ytk9VyNCrlrOO4
+  },
   submitPlace: function(doc) {
     //THIS METHOD SUBMITS THE ADDRESS TO GOOGLE, AND GOOGLE RETURNS A "GOOGLE_ID"
     check(doc, Object);

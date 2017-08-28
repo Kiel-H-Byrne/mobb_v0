@@ -144,11 +144,11 @@
                     <a class="">RATING: {{review.rating}}/5</a>
                   </div>
                 </div>
-                <div class="row">
+                <!-- div class="row">
                   <p class="s12">
                   {{review.text}}
                   </p>
-                </div>
+                </div -->
               </li>
               {{/each}}
               </ul>
@@ -156,14 +156,13 @@
               <p><a href="https://search.google.com/local/writereview?placeid={{google_id}}" target="_blank" rel="noopener" >Write Your Review.</a></p>
             {{/if}}
             <hr />
-            {{!-- #if place.photos}}  
+            {{#if place.photos}}  
             <span class="card-title "><i class="material-icons">star</i>Photos</span>
             {{#each photo in place.photos}}
-              {{isPhoto photo}}
-
+              <img src="{{getUrl photo.photo_reference}}">
             {{/each}}
             <hr />
-            {{/if--}}
+            {{/if}}
           {{/let}}
 
         {{/if}}

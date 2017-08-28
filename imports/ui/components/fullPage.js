@@ -147,13 +147,22 @@ Template.fullPage.helpers({
     },
     isPhoto: function(doc) {
       let options = {'maxWidth': 150, 'maxHeight': 150};
-      // let url = doc.getUrl(options);
+      // let uri = doc.getUrl(options);
+      // console.log(uri);
       let photos = Session.get('thisPlace').photos;
       if (photos) {
-        console.log(photos);
+        console.log(photos.getUrl(options));
       }
       // return options;
-
     },
+    getUrl: function(pic) {
+      //take this photo and return whatever the result of the call is. 
+      //req'd key, photoreference, & maxheight or maxwidth
+      // Meteor.wrapAsync(apiCall)(apiUrl);
+// https://maps.googleapis.com/maps/api/place/photo?parameters
+
+    return Meteor.call('getPlacePhotos', pic);
+      // console.log(this,pic);
+    }
 });
 

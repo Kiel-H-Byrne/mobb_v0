@@ -10,11 +10,11 @@ Template.fullPage.onCreated(function () {
     Meteor.call('placesSearch', this.data.name, this.data.location, function(error, result) {
       if (error) {
         console.log("got error", error);
-        return false
+        return false;
       } else if (!result) { 
         console.log("not sure what happened here");
         // console.log("got id: " + result.place_id);
-        return false
+        return false;
         // console.log("Submitting to Google: "+ this.data.name)
         // Meteor.call('submitPlace',this.data);  
       }
@@ -31,7 +31,7 @@ Template.fullPage.onCreated(function () {
         console.log(error);
       } else if (result) {
         Session.set('thisPlace', result);
-      };
+      }
     });
   }
 });

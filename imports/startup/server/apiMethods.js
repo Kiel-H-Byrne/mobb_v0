@@ -198,9 +198,9 @@ Meteor.methods({
         if (result.name) {
           let firstours = result.name.split(/\W/, 1)[0];
           let firsttheirs = result.name.split(/\W/, 1)[0];
-          console.log(firstours, firsttheirs,);
+          console.log(firstours, firsttheirs);
           if (firstours == firsttheirs) {
-            console.log("MATCH!")
+            console.log("MATCH!");
             Listings.update({
               _id: doc._id 
             },{
@@ -209,11 +209,11 @@ Meteor.methods({
             return result.place_id;
           } else {
             console.log(`${result.name}(googles) and ${name}(ours) are not a match`);
-            return false
+            return false;
           }
         } else {
           console.log("no name to check against");
-          return false
+          return false;
         }
       }
     });

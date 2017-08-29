@@ -434,6 +434,7 @@ Schema.Listings = new SimpleSchema({
           // console.log(arr.toLocaleString());
           const locationString = arr.toLocaleString();
           // console.log(name, locationString);
+          //NOW THAT I HAVE LOCATION, DO A GOOGLE PLACES SEARCH TO DETERMINE PLACES_ID
           Meteor.call('placesSearch', name, locationString);
 
           return locationString;

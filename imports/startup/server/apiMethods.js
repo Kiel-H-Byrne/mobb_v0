@@ -190,6 +190,9 @@ Meteor.methods({
       if (r.status === "ZERO_RESULTS") {
         //no place_id exists in google, so return false and submit one on their behalf.
         console.log("no results");
+        //submit on their behalf???
+        console.log("not sure what happened here");
+        
         return false;
       } else {
         let result = r.results[0];

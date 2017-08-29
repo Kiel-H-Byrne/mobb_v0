@@ -4,25 +4,17 @@ import './verifyForm.js';
 import './claimForm.js';
 
 Template.fullPage.onCreated(function () {
+
+});
+
+Template.fullPage.onRendered(function () {
+  let tpl = this;
+
   if (this.data.location && !this.data.google_id) {
     // submit to google places
     // console.log("getting google ID ");
-    Meteor.call('placesSearch', this.data.name, this.data.location, function(error, result) {
-      if (error) {
-        console.log("got error", error);
-        return false;
-      } else if (!result) { 
-        console.log("not sure what happened here");
-        // console.log("got id: " + result.place_id);
-        return false;
-        // console.log("Submitting to Google: "+ this.data.name)
-        // Meteor.call('submitPlace',this.data);  
-      }
-    });
-    if (!place) {
-      console.log("no id found");
-      // Meteor.call('submitPlace', this.data);
-    }
+    Meteor.call('placesSearch', this.data.name, this.data.location); 
+
   } else if (this.data.google_id) {
     console.log("have google ID already");
     // if starts with q, check again
@@ -34,10 +26,6 @@ Template.fullPage.onCreated(function () {
       }
     });
   }
-});
-
-Template.fullPage.onRendered(function () {
-  let tpl = this;
 
   $(document).ready(function () {
     $('.modal-trigger').modal();
@@ -60,11 +48,7 @@ Template.fullPage.onRendered(function () {
 
     // setGReviews(tpl.data.google_id);
 
-    // if (tpl.data.google_id) {
-    //   Meteor.call('getGDetails',tpl.data.google_id);  
-    // } else {
-    //   Meteor.call('submitPlace', this.data);
-    // }
+
       // $("img").error(function () { 
       //   // $(this).hide();
       //   $("img").each(function () {

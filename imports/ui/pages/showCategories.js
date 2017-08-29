@@ -59,9 +59,3 @@ Template.showCategories.onRendered(function () {
 
   });
 });
-
-Template.showCategories.events({
-  'click .get-reviews' : function(event,templateInstance) {
-    Meteor.call('submitPlace',templateInstance.data);
-  }
-});

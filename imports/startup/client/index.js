@@ -200,9 +200,8 @@ Meteor.startup(function () {
     }
   });
 
-  // var resolvedData = new ReactiveDict();
   Template.registerHelper('thisPlace',  function () {
-    const place = Session.get('thisPlace');
+    let place = Session.get('thisPlace');
     if (place) {
       // console.log(place);
       return place;

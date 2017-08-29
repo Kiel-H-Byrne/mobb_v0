@@ -42,11 +42,5 @@ Template.galleryCard.events({
   //   // Session.set('openListing', this._id);
   //   // console.log(this._id);
   // }
-  'click .add-place' : function(event,templateInstance) {
-    Meteor.call('submitPlace',templateInstance.data);
-  },
-    'click .get-reviews' : function(event,templateInstance) {
-      setGReviews(templateInstance.data.google_id);
-      // Meteor.call('getGDetails',templateInstance.data.google_id);  
-  }
+
 });

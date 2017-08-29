@@ -4,7 +4,7 @@ import './fullCard.html';
 Template.fullCard.onCreated(function () {
   if (!this.data.google_id) {
     //submit to google places
-    Meteor.call('submitPlace',this.data);
+    // Meteor.call('submitPlace',this.data);
   } 
 });
 

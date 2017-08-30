@@ -334,66 +334,6 @@ Schema.Listings = new SimpleSchema({
       }
     }
   },
-  "verifiers.$.verifierId": {
-    type: String,
-    optional: true
-  },
-  verifierCount: {
-    type: Number,
-    optional: true,
-    autoValue: function() {
-      if (this.field("verifiers").value) {
-        return this.field("verifiers").value.length;
-      }
-    }
-  },
-  description: {
-    type: String,
-    label: 'Description',
-    optional: true,
-    max: 2000,
-    autoform: {
-      afFieldInput: {
-        type: "textarea",
-        rows: 7
-      }
-    }
-  },
-  image: orion.attribute('file', {
-    label: 'Upload an Image',
-    optional: true
-  }),
-  google_id: {
-    label: 'Google ID',
-    type: String,
-    optional: true,
-    // autoValue: function () {
-      
-    // }
-  },
-  yelp_id: {
-    label: 'Yelp ID',
-    type: String,
-    optional: true,
-    // autoValue: function () {
-      
-    // }
-  },
-  cbenum: {
-    type: String,
-    label: 'CBE #',
-    optional: true
-  },
-  certs: {
-    type: String,
-    label: 'CBE Certifications',
-    optional: true
-  },
-  email: {
-    type: String,
-    label: 'E-Mail',
-    optional: true
-  },
   location: {
     type: String,
     optional: true,
@@ -435,12 +375,79 @@ Schema.Listings = new SimpleSchema({
           const locationString = arr.toLocaleString();
           // console.log(name, locationString);
           //NOW THAT I HAVE LOCATION, DO A GOOGLE PLACES SEARCH TO DETERMINE PLACES_ID
-          Meteor.call('placesSearch', name, locationString);
+          // Meteor.call('placesSearch', name, locationString);
 
           return locationString;
         } 
       }
     }
+  },
+  "verifiers.$.verifierId": {
+    type: String,
+    optional: true
+  },
+  verifierCount: {
+    type: Number,
+    optional: true,
+    autoValue: function() {
+      if (this.field("verifiers").value) {
+        return this.field("verifiers").value.length;
+      }
+    }
+  },
+  description: {
+    type: String,
+    label: 'Description',
+    optional: true,
+    max: 2000,
+    autoform: {
+      afFieldInput: {
+        type: "textarea",
+        rows: 7
+      }
+    }
+  },
+  image: orion.attribute('file', {
+    label: 'Upload an Image',
+    optional: true
+  }),
+  google_id: {
+    label: 'Google ID',
+    type: String,
+    optional: true,
+    autoValue: function () {
+      //if starts with c, do nothing. 
+      //if blank and is insert, find new
+      //if scope = APP, do not update.
+      if (this.field("location").value) {
+        let location = this.field("location").value;
+        let name = this.field("name").value;
+        Meteor.call('placesSearch', name, location);  
+      }
+    }
+  },
+  yelp_id: {
+    label: 'Yelp ID',
+    type: String,
+    optional: true,
+    // autoValue: function () {
+      
+    // }
+  },
+  cbenum: {
+    type: String,
+    label: 'CBE #',
+    optional: true
+  },
+  certs: {
+    type: String,
+    label: 'CBE Certifications',
+    optional: true
+  },
+  email: {
+    type: String,
+    label: 'E-Mail',
+    optional: true
   },
   categories: {
     type: [String],

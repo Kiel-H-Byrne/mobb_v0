@@ -182,11 +182,11 @@ Meteor.methods({
     check(loc, String);
     //requ'd: key, location, radius (meters), 
     // optional: keyword ()
-    const key = Meteor.settings.public.keys.googleServer.key;
+    const key = Meteor.settings.public.keys.googleAPI.key;
 
     const apiUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${loc}&radius=20&keyword=${name}&key=${key}`;
     // console.log("--GOOGLE PLACES: NEARBY SEARCH URL--"+apiUrl);
-    const response = Meteor.wrapAsync(apiCall)(apiUrl, function(n,r) {
+    let response = Meteor.wrapAsync(apiCall)(apiUrl, function(n,r) {
       if (r.status === "ZERO_RESULTS") {
         //no place_id exists in google, so return false and submit one on their behalf.
         console.log("no results");
@@ -221,7 +221,11 @@ Meteor.methods({
       }
     });
     // console.log("still running");
-    return response;
+    if (response) {
+      return response
+    };
+
+    return;
   },
   getPlacePhotos: function(photoref) {
     check(photoref,String);

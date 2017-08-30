@@ -10,7 +10,7 @@ Template.fullPage.onCreated(function () {
 Template.fullPage.onRendered(function () {
   let tpl = this;
 
-  if (this.data.location && !this.data.google_id) {
+  if (this.data.location ) {
     // submit to google places
     // console.log("getting google ID ");
     Meteor.call('placesSearch', this.data.name, this.data.location); 

@@ -191,12 +191,11 @@ Meteor.methods({
         //no place_id exists in google, so return false and submit one on their behalf.
         console.log("no results");
         //submit on their behalf???
-        console.log("not sure what happened here");
-        
+        // console.log("not sure what happened here");
         return false;
       } else {
         let result = r.results[0];
-        console.log(result);  
+        console.log(wwresult);  
         const doc = Listings.findOne({"name": name});
         if (result.name) {
           let firstours = result.name.split(/\W/, 1)[0];

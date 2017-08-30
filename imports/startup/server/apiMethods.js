@@ -187,17 +187,18 @@ Meteor.methods({
     const apiUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${loc}&radius=20&keyword=${name}&key=${key}`;
     // console.log("--GOOGLE PLACES: NEARBY SEARCH URL--"+apiUrl);
     let response = Meteor.wrapAsync(apiCall)(apiUrl, function(n,r) {
+      console.log(r);
       if (r.status === "ZERO_RESULTS") {
         //no place_id exists in google, so return false and submit one on their behalf.
         console.log("no results");
         //submit on their behalf???
         // console.log("not sure what happened here");
         return false;
-      } else {
+      } else if (r.results[0]){
         let result = r.results[0];
-        console.log(result);  
         const doc = Listings.findOne({"name": name});
         if (result.name) {
+          //check first word of both listings (ours and theirs)
           let firstours = result.name.split(/\W/, 1)[0];
           let firsttheirs = result.name.split(/\W/, 1)[0];
           console.log(firstours, firsttheirs);

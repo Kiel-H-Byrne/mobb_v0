@@ -195,7 +195,7 @@ Meteor.methods({
         return false;
       } else {
         let result = r.results[0];
-        console.log(wwresult);  
+        console.log(result);  
         const doc = Listings.findOne({"name": name});
         if (result.name) {
           let firstours = result.name.split(/\W/, 1)[0];

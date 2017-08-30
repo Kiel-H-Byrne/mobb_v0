@@ -163,7 +163,7 @@ Meteor.methods({
   placeDetails: function(google_id) {
     this.unblock();
     check(google_id, String);
-    const key = Meteor.settings.public.keys.googleAPI.key;
+    const key = Meteor.settings.public.keys.googleServer.key;
     const apiUri = `https://maps.googleapis.com/maps/api/place/details/json?placeid=${google_id}&key=${key}`;
     // console.log("--GOOGLE PLACES: DETAILS SEARCH URL--" + apiUri);
     let response = Meteor.wrapAsync(apiCall)(apiUri);
@@ -182,7 +182,7 @@ Meteor.methods({
     check(loc, String);
     //requ'd: key, location, radius (meters), 
     // optional: keyword ()
-    const key = Meteor.settings.public.keys.googleAPI.key;
+    const key = Meteor.settings.public.keys.googleServer.key;
 
     const apiUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${loc}&radius=20&keyword=${name}&key=${key}`;
     // console.log("--GOOGLE PLACES: NEARBY SEARCH URL--"+apiUrl);

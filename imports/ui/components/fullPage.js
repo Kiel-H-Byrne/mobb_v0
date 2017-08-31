@@ -10,13 +10,24 @@ Template.fullPage.onCreated(function () {
 Template.fullPage.onRendered(function () {
   let tpl = this;
 
-  if (this.data.location ) {
-    // submit to google places
-    // console.log("getting google ID ");
-    Meteor.call('placesSearch', this.data.name, this.data.location); 
+  // if (this.data.location && !this.data.google_id ) {
+  //   // submit to google places
+  //   // console.log("getting google ID ");
+  //   let id = Meteor.call('placesSearch', this.data.name, this.data.location); 
+  //   console.log(id); 
+  //   if (id) {
+  //     Meteor.call('placeDetails',this.data.google_id, function(error, result) {
+  //       if (error) {
+  //         console.log(error);
+  //       } else if (result) {
+  //         Session.set('thisPlace', result);
+  //       }
+  //     });  
+  //   }
 
-  } else if (this.data.google_id) {
-    console.log("have google ID already");
+  // } else 
+  if (this.data.google_id) {
+    console.log("Have google ID");
     // if starts with q, check again
     Meteor.call('placeDetails',this.data.google_id, function(error, result) {
       if (error) {

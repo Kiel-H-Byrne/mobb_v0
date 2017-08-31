@@ -161,6 +161,7 @@ Meteor.methods({
     }
   },
   placeDetails: function(google_id) {
+    //CONSUME ID, RETURN DETAILS OBJECT
     this.unblock();
     check(google_id, String);
     const key = Meteor.settings.public.keys.googleServer.key;
@@ -186,46 +187,22 @@ Meteor.methods({
 
     const apiUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${loc}&radius=20&keyword=${name}&key=${key}`;
     // console.log("--GOOGLE PLACES: NEARBY SEARCH URL--"+apiUrl);
-    let response = Meteor.wrapAsync(apiCall)(apiUrl, function(n,r) {
-      console.log(r);
-      if (r.status === "ZERO_RESULTS") {
-        //no place_id exists in google, so return false and submit one on their behalf.
-        console.log("no results");
-        //submit on their behalf???
-        // console.log("not sure what happened here");
-        return false;
-      } else if (r.results[0]){
-        let result = r.results[0];
-        const doc = Listings.findOne({"name": name});
-        if (result.name) {
-          //check first word of both listings (ours and theirs)
-          let firstours = result.name.split(/\W/, 1)[0];
-          let firsttheirs = result.name.split(/\W/, 1)[0];
-          console.log(firstours, firsttheirs);
-          if (firstours == firsttheirs) {
-            console.log("MATCH!");
-            Listings.update({
-              _id: doc._id 
-            },{
-              $set: { google_id: result.place_id } 
-            });
-            return result.place_id;
-          } else {
-            console.log(`${result.name}(googles) and ${name}(ours) are not a match`);
-            return false;
-          }
-        } else {
-          console.log("no name to check against");
-          return false;
-        }
-      }
-    });
+    let response = Meteor.wrapAsync(apiCall)(apiUrl);
     // console.log("still running");
-    if (response) {
-      return response
-    };
-
-    return;
+    if (response && response.results[0]) {
+      const result = response.results[0];
+      if (result.scope == "GOOGLE") {
+        console.log(name, result.place_id);
+        return result.place_id;
+      } else {
+        //APP ONLY GOOGLE_ID, don't save.
+      }
+    } else {
+      //NO RESULTS
+      console.log('NO GOOGLE_ID FOR ' + name);
+      return false;
+    }
+    return ;
   },
   getPlacePhotos: function(photoref) {
     check(photoref,String);

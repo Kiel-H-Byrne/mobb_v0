@@ -416,13 +416,13 @@ Schema.Listings = new SimpleSchema({
     type: String,
     optional: true,
     autoValue: function () {
-      //if starts with c, do nothing. 
-      //if blank and is insert, find new
-      //if scope = APP, do not update.
       if (this.field("location").value) {
         let location = this.field("location").value;
         let name = this.field("name").value;
-        Meteor.call('placesSearch', name, location);  
+        let response = Meteor.call('placesSearch', name, location);  
+        if (response) {
+          return response;
+        }
       }
     }
   },

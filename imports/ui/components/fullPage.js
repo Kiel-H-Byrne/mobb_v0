@@ -26,17 +26,17 @@ Template.fullPage.onRendered(function () {
   //   }
 
   // } else 
-  if (this.data.google_id) {
-    console.log("Have google ID");
-    // if starts with q, check again
-    Meteor.call('placeDetails',this.data.google_id, function(error, result) {
-      if (error) {
-        console.log(error);
-      } else if (result) {
-        Session.set('thisPlace', result);
-      }
-    });
-  }
+  // if (this.data.google_id) {
+  //   console.log("Have google ID");
+  //   // if starts with q, check again
+  //   Meteor.call('placeDetails',this.data.google_id, function(error, result) {
+  //     if (error) {
+  //       console.log(error);
+  //     } else if (result) {
+  //       Session.set('thisPlace', result);
+  //     }
+  //   });
+  // }
 
   $(document).ready(function () {
     $('.modal-trigger').modal();

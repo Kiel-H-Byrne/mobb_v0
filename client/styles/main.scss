@@ -33,7 +33,9 @@ body {
   margin: 0;
   background-color: $rgba-primary-grey-4;
 }
-
+a {
+  cursor: pointer;
+}
 // ================================================ INPUTS AND FORMS ================================================
 ::-webkit-input-placeholder {
   color: $color-primary-grey-2;
@@ -120,6 +122,9 @@ body {
     height: 1px;
 }
 
+.more_icon {
+  cursor: context-menu;
+}
 .myToast {
   background-color: $clr-gold;
 }

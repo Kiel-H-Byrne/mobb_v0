@@ -104,10 +104,10 @@
           </div>
         <hr />
         {{/if}}
-        {{#if isPlace }}
+        {{#if google_id}}
           {{#let place=thisPlace}}
-            <span class="card-title "><i class="material-icons">watch_later</i>Hours: </span>
             {{#if place.opening_hours}}
+            <span class="card-title "><i class="material-icons">watch_later</i>Hours: </span>
               {{#if isOpen place}}
               <span class="now_open">Open Now!</span>
               {{else}}
@@ -121,6 +121,9 @@
             {{/if}}
             <hr />
             <span class="card-title "><i class="material-icons">star</i>Reviews</span>
+            {{#if place.rating}} 
+              <h3>{{place.rating}}/5</h3>
+            {{/if}}
             {{#if place.reviews}}
               <ul class="collection">
               {{#each review in place.reviews}}
@@ -133,8 +136,8 @@
                   </div>
                   <div class="col s8">
                     <a href="{{review.author_url}}"><h6>{{review.author_name}}</h6></a>
-                    <h6 class="">{{review.relative_time_description}}</h6>
-                    <a class="">RATING: {{review.rating}}/5</a>
+                    <span class="">{{review.relative_time_description}} <span class="badge" data-badge-caption="/5">{{review.rating}}</span></span>
+                    <p class="truncate">{{review.text}}</p>
                   </div>
                 </div>
                 <!-- div class="row">
@@ -146,7 +149,7 @@
               {{/each}}
               </ul>
             {{else}}
-              <p><a href="https://search.google.com/local/writereview?placeid={{google_id}}" target="_blank" rel="noopener" >Write Your Review.</a></p>
+              <p><a href="https://search.google.com/local/writereview?placeid={{google_id}}" target="_blank" rel="noopener" >Leave a Review.</a></p>
             {{/if}}
             <hr />
             {{!-- #if place.photos}}  

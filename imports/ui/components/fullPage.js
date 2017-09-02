@@ -88,15 +88,15 @@ Template.fullPage.events({
 });
 
 Template.fullPage.helpers({
-  isPlace: function () {
-    let id = this.google_id;
-    if (id) {
-      let startswC = id.charAt(0) !== 'q'; //is from google
-      if (id && startswC) {
-        return true;
-      }
-    }
-  },
+  // isPlace: function () {
+  //   let id = this.google_id;
+  //   if (id) {
+  //     let startswC = id.charAt(0) !== 'q'; //is from google
+  //     if (id && startswC) {
+  //       return true;
+  //     }
+  //   }
+  // },
   isOpen: function(doc) {
     let check = doc.opening_hours.open_now;
     return check;

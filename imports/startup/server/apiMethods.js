@@ -193,6 +193,11 @@ Meteor.methods({
       const result = response.results[0];
       if (result.scope == "GOOGLE") {
         console.log(name, result.place_id);
+        Listings.update({
+          name: name
+        }, {
+          $set: {google_id: result.place_id}
+        });
         return result.place_id;
       } else {
         //APP ONLY GOOGLE_ID, don't save.

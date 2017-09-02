@@ -92,6 +92,9 @@ Template.nav.events({
     let name = event.target.innerText;
     let type = event.target.parentElement.parentElement.parentElement.firstChild.innerText;
     Router.go('/' + type + '/' + name);
+  },
+  'click .input-field': function() {
+    $('#search_nav').focus();
   }
   // 'click .addmodal': function () {
   //   $('#modalAdd').modal('open');
@@ -117,7 +120,10 @@ Template.nav.helpers({
         name: 'listings',
         valueKey: 'name',
         displayKey: 'name',
-        local: function () { return Listings.find().fetch(); },
+        local: function () { return Listings.find({
+          location: { $exists : 1}, 
+          certs: {$exists: 0}
+        }).fetch(); },
         header: '<h4 class="tt-header">Listings</h4>',
         template: 'results'
       // },{

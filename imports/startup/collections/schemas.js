@@ -426,6 +426,10 @@ Schema.Listings = new SimpleSchema({
       }
     }
   },
+  // places_details: {
+  //   type: Object,
+  //   optional: true
+  // },
   yelp_id: {
     label: 'Yelp ID',
     type: String,

@@ -127,6 +127,11 @@
       p {
         margin: 3px;
       }
+      .badge {
+        background-color: $rgba-complement-1;
+        border: 1px solid $rgba-complement-2;
+        border-radius: 3px;
+      }
     }
 
     .comments > .header {

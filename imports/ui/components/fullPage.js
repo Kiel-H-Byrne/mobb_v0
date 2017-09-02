@@ -113,7 +113,7 @@ Template.fullPage.helpers({
         let marker = new google.maps.Marker({
           position: mapCenter,
           map: GoogleMaps.maps.microMap.instance,
-          // icon: { url: 'img/orange_marker_sm.png' }
+          icon: { url: '/img/orange_marker_sm.png' }
         });
       });
 

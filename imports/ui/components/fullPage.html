@@ -7,7 +7,7 @@
       <div class="card">
         <div class="select_wrapper right">
         {{#if currentUser}}
-          <a class="dropdown-button" alt="..." data-activates="card-dropdown" data-beloworigin="true" data-constrainwidth="false" data-alignment="right" data-stoppropagation="true" > 
+          <a class="dropdown-button more_icon" alt="..." data-activates="card-dropdown" data-beloworigin="true" data-constrainwidth="false" data-alignment="right" data-stoppropagation="true" > 
              <i class="material-icons" title="...">more_vert</i>
           </a>
           <ul id="card-dropdown" class="dropdown-content">
@@ -137,7 +137,11 @@
                   <div class="col s8">
                     <a href="{{review.author_url}}"><h6>{{review.author_name}}</h6></a>
                     <span class="">{{review.relative_time_description}} <span class="badge" data-badge-caption="/5">{{review.rating}}</span></span>
-                    <p class="truncate">{{review.text}}</p>
+                  </div>
+                  <div class="row">
+                    <div class="col s12">
+                      <p class="truncate">{{review.text}}</p>
+                    </div>
                   </div>
                 </div>
                 <!-- div class="row">

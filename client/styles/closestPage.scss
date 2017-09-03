@@ -17,52 +17,52 @@
     }
 }
 
-@media #{$small-and-down} {
-  .closest-wrapper, .favorites-wrapper {
+// @media #{$small-and-down} {
+//   .closest-wrapper, .favorites-wrapper {
 
-    font-size: .8rem;
-    position: relative;
-    top: 35px;
-    left: 0; 
-    width: 30%;
-    min-width: 175px;
-    // margin-top:40px;
-    padding: .5rem 0;
+//     font-size: .8rem;
+//     position: relative;
+//     top: 35px;
+//     left: 0; 
+//     width: 30%;
+//     min-width: 175px;
+//     // margin-top:40px;
+//     // padding: .5rem 0;
 
-    .title > * {
-      font-size: 1.5rem;
-    }
-  }
+//     .title > * {
+//       font-size: 1.5rem;
+//     }
+//   }
 
-  .closestFlex, .favoritesFlex { 
-      /* closestFlex container */
-      height: 100%;
+//   .closestFlex, .favoritesFlex { 
+//       /* closestFlex container */
+//       height: 100%;
 
-      .closestFlex_sizer, .favoritesFlex_sizer {
-        width: 99%;
-      }
+//       // .closestFlex_sizer, .favoritesFlex_sizer {
+//       //   width: 99%;
+//       // }
 
-      .closestFlex_item, .favoritesFlex_item {
-        float: left;
-        display: inline-block;
-        max-width: 100%;
-        // min-width: 175px;
-        // width: 100%;
-        margin: 1px;
+//       .closestFlex_item, .favoritesFlex_item {
+//         float: left;
+//         display: inline-block;
+//         max-width: 100%;
+//         // min-width: 175px;
+//         // width: 100%;
+//         margin: 1px;
         
-        .card-content {
-          padding: .3rem;
-          font-size: .9em;
+//         .card-content {
+//           padding: .3rem;
+//           font-size: .9em;
 
-          h5 {
-            font-size: 1.1rem;
-            margin: .3rem;
-          }
-        }
-      }
-    }
+//           h5 {
+//             font-size: 1.1rem;
+//             margin: .3rem;
+//           }
+//         }
+//       }
+//     }
 
-}
+// }
 
 @media #{$medium-and-up} {
 
@@ -74,20 +74,21 @@
 
   .closestFlex, .favoritesFlex { 
     /* closestFlex container */
-    height: 100%;
+    // height: 100%;
 
-    .closestFlex_sizer, .favoritesFlex_sizer {
-      width: 20%;
-    }
+    // .closestFlex_sizer, .favoritesFlex_sizer {
+    //   width: 20%;
+    // }
 
     .closestFlex_item, .favoritesFlex_item  {
       float: left;
-      display: inline-block;
-      max-width: 33%;
-      vertical-align: middle;
+      // display: inline-block;
+      width: 30%;
+      // width: 150px;
+      // vertical-align: middle;
       // min-width: 175px;
       // width: 100%;
-      margin: 5px;
+      margin-bottom: 5px;
       padding: 5px;
     
       .card-content {

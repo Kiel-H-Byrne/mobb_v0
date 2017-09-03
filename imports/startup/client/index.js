@@ -47,8 +47,10 @@ import '/imports/ui/layouts/layout.js';
 // import '/imports/ui/layouts/splitLayout.js';
 
 //client Libraries
+jQueryBridget = require('jquery-bridget');
 Masonry = require('masonry-layout/masonry.js');
 ImagesLoaded = require('imagesLoaded/imagesLoaded.js');
+jQueryBridget( 'masonry', Masonry, $ );
 // VTM = require('vanilla-text-mask/dist/vanillaTextMask.js');
 // console.log(VTM);
 // downloadImage = require('download-image');

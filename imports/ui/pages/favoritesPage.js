@@ -1,6 +1,3 @@
-import { Meteor } from 'meteor/meteor';
-import { Template } from 'meteor/templating';
-
 import './favoritesPage.html';
 import '../components/galleryCard.js';
 

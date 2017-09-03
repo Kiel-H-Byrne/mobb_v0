@@ -1,5 +1,3 @@
-
-
 import './showCategories.html';
 
 

@@ -1,7 +1,3 @@
-import { Meteor } from 'meteor/meteor';
-import { Template } from 'meteor/templating';
-// import { Masonry } from 'masonry-layout/masonry.js';
-
 import './closestPage.html';
 import '../components/galleryCard.js';
 
@@ -17,14 +13,29 @@ Template.closestPage.onRendered(function () {
     
   $(document).ready(function (){
     if ($('.closestFlex')[0]) {
-      let msnry = new Masonry('.closestFlex', {
-       itemSelector: '.closestFlex_item',
-       columnWidth: '.closestFlex_sizer',
-       percentPosition: true
-      });
+      // let msnry = new Masonry('.closestFlex', {
+      //  itemSelector: '.closestFlex_item',
+      //  columnWidth: '.closestFlex_item',
+      //  horizontalOrder: true,
+      //  percentPosition: true,
+      //  gutter: 10
+      // });
 
-      ImagesLoaded( '.closestFlex_item', function () {
-        msnry.layout();
+      // ImagesLoaded( '.closestFlex_item', function () {
+      //   msnry.layout();
+      // });
+
+      // function onLayout() {
+      //   console.log('layout done');
+      // }
+      // // bind event listener
+      // msnry.on( 'layoutComplete', onLayout );
+
+      $('.closestFlex').masonry({
+        itemSelector: '.closestFlex_item',
+        columnWidth: 160,
+        gutter: 10,
+        horizontalOrder: true
       });
    }
    

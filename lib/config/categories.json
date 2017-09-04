@@ -1,4 +1,5 @@
-[
+{
+  "Categories": [
     {
       "name": "Apparel & Accessories"
     },{
@@ -22,6 +23,12 @@
     },{
       "name": "Professional Services"
     },{
+      "name": "Travel & Transportation"
+    },{
+      "name": "Wholesale"
+    },{
+      "name": "International & Culture"
+    },{
       "name": "Sole Proprietor"
     },{
       "name": "Owner Under 30"
@@ -32,10 +39,7 @@
     },{
       "name": "Operating over 50ys"
     },{
-      "name": "Travel & Transportation"
-    },{
-      "name": "Wholesale"
-    },{
-      "name": "International & Culture"
+      "name": "Non-Profit"
     }
   ]
+}

@@ -2,7 +2,7 @@
 <template name="test">
 	
 	{{!-- {{> quickForm collection="Listings" doc=this id="insertListingsForm" type="normal"}} --}}
-  <div class="test-wrapper container-fluid">
+  <div class="test-wrapper ">
 
 {{!--     <div class="row map_wrap">
       <div class="col s12" id="miniMap">
@@ -10,7 +10,7 @@
       </div>
     </div> --}}
     
-    <div class="row content_wrap">
+    <!-- div class="row content_wrap">
       <div class="col s6 push-s3">
         <div>
       	{{#with randomDoc}}
@@ -18,33 +18,33 @@
         {{/with}}
         </div>
       </div>
-    </div>
+    </div -->
 
     <div class="row">
-    <form  class="col s12">
-      
+      <form  class="col s12">
+        
 
-        <div class="input-field row">
-          <input id="tmtest-tel" placeholder="(___) ___-____" type="tel" />
-          <label for="tmtest-tel">Phone </label>
-        </div>
-        <div class="input-field row">
-          <input id="tmtest-url" placeholder="" type="url" phone="" />
-          <label for="tmtest-url">URL</label>
-        </div>
-        <div class="input-field row">
-          <input id="tmtest-address" placeholder="" type="text" phone="" />
-          <label for="tmtest-address">Address</label>
-        </div>
-        <div class="input-field row">
-          <input id="tmtest-email" placeholder="" type="text" phone="" />
-          <label for="tmtest-email">Email</label>
-        </div>
-        <div class="input-field row">
-          <input id="tmtest-search" placeholder="" type="search" phone="" />
-          <label for="tmtest-search">Search</label>
-        </div>
-    </form>
+          <div class="input-field row">
+            <input id="tmtest-tel" placeholder="(___) ___-____" type="tel" />
+            <label for="tmtest-tel">Phone </label>
+          </div>
+          <div class="input-field row">
+            <input id="tmtest-url" placeholder="" type="url" phone="" />
+            <label for="tmtest-url">URL</label>
+          </div>
+          <div class="input-field row">
+            <input id="tmtest-address" placeholder="" type="text" phone="" />
+            <label for="tmtest-address">Address</label>
+          </div>
+          <div class="input-field row">
+            <input id="tmtest-email" placeholder="" type="text" phone="" />
+            <label for="tmtest-email">Email</label>
+          </div>
+          <div class="input-field row">
+            <input id="tmtest-search" placeholder="" type="search" phone="" />
+            <label for="tmtest-search">Search</label>
+          </div>
+      </form>
     </div>
 
     <div class="row">
@@ -56,10 +56,19 @@
       </div>
     </div>
 
+
     
   </div>
 
-
+    <div class="">
+      <div class="grid_wrapper">
+        {{#each favorites}}
+        
+          {{> galleryCard}}
+          
+        {{/each}}
+      </div>
+    </div>
 
 	{{!-- {{> quickForm collection="Categories" doc=this id="insertCategoriesForm" type="normal"}}		 --}}
 </template>

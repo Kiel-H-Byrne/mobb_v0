@@ -51,6 +51,7 @@ apiCall = function (apiUrl, callback) {
 
 Meteor.methods({
   addListing: function(doc) {
+    this.unblock();
     check(doc, Object);
     return Listings.insert(doc , function(err, res){
       if (err) {
@@ -210,12 +211,13 @@ Meteor.methods({
     return ;
   },
   getPlacePhotos: function(photoref) {
+    this.unblock();
     check(photoref,String);
     console.log(photoref);
     let uri = "https://maps.googleapis.com/maps/api/place/photo?";
     let key = Meteor.settings.public.keys.googleServer.key;
     let options = {maxwidth: 100};
-    const apiUri = `${uri}maxwidth=100&reference=${photoref}&key=${key}`;
+    const apiUri = `${uri}maxwidth=100&maxheight=100&photoreference=${photoref}&sensor=false&key=${key}`;
     let response = Meteor.wrapAsync(apiCall)(apiUri);
     if (response) {
       console.log(response);
@@ -227,6 +229,7 @@ Meteor.methods({
 // https://maps.googleapis.com/maps/api/place/photo?reference=CmRaAAAAIhZlz7AzBuXRVNqLTYHTR3-mRm7qJsrJzNMAyatu0FA-_-N43pG7OVkUUf26_xaqIYYVDIfQT_uvDJT1g9AsorUTkTiQIUqv9_XhqBOvzUGOfKeGS9SNF2Cc0DYo_3tuEhCedP0FW5EZw-7iiIoTgPegGhSxA0PGScR3BEPhcxagdSRwvXZayg&maxwidth=100&key=AIzaSyAuvQtaNuOF1phJQcTv3ytk9VyNCrlrOO4
   },
   submitPlace: function(doc) {
+    this.unblock();
     //THIS METHOD SUBMITS THE ADDRESS TO GOOGLE, AND GOOGLE RETURNS A "GOOGLE_ID"
     check(doc, Object);
     
@@ -363,6 +366,7 @@ Meteor.methods({
     }
   },
   setGID: function(id, google_id) {
+    this.unblock();
     check(id, String);
     check(google_id, String);
     Listings.update(

@@ -93,7 +93,7 @@ Template.nav.events({
     let type = event.target.parentElement.parentElement.parentElement.firstChild.innerText;
     Router.go('/' + type + '/' + name);
   },
-  'click .input-field': function() {
+  'click #desktop_search-form': function() {
     $('#search_nav').focus();
   }
   // 'click .addmodal': function () {

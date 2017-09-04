@@ -48,8 +48,8 @@ import '/imports/ui/layouts/layout.js';
 
 //client Libraries
 jQueryBridget = require('jquery-bridget');
-Masonry = require('masonry-layout/masonry.js');
-ImagesLoaded = require('imagesLoaded/imagesLoaded.js');
+Masonry = require('masonry-layout');
+ImagesLoaded = require('imagesloaded');
 jQueryBridget( 'masonry', Masonry, $ );
 // VTM = require('vanilla-text-mask/dist/vanillaTextMask.js');
 // console.log(VTM);
@@ -213,7 +213,6 @@ Meteor.startup(function () {
   Template.registerHelper('getDistance', function(dest) {
       //Get distance, convert to miles, flag as 'is_close' class if under X miles, (this class will be visible) 
       // console.log(this)
-
       if (GoogleMaps.loaded() && dest) {
         let latLng = dest.split(",");
         if (latLng) {

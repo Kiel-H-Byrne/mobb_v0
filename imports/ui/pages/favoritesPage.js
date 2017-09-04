@@ -9,18 +9,34 @@ Template.favoritesPage.onCreated(function () {
 
 Template.favoritesPage.onRendered(function () {
   $(document).ready(function (){
-    if ($('.favoritesFlex')[0]) {
-      let msnry = new Masonry('.favoritesFlex', {
-       itemSelector: '.favoritesFlex_item',
-       columnWidth: '.favoritesFlex_sizer',
-       percentPosition: true
+    console.log('frerender?');
+    if ($('#masonry_wrapper-fave .masonry_item')) {
+      let msnry = new Masonry('#masonry_wrapper-fave', {
+       columnWidth: '#masonry_wrapper-fave .masonry_item',
+       itemSelector: '#masonry_wrapper-fave .masonry_item'
       });
 
-      ImagesLoaded( '.favoritesFlex_item', function () {
+      ImagesLoaded( '#masonry_wrapper-fave .masonry_item', function () {
         msnry.layout();
+        console.log('fimagesloaded???');
       });
+
+
+
+      // let fGrid = $('#masonry_wrapper-fave').masonry({
+      //   itemSelector: '#masonry_wrapper-fave .masonry_item',
+      //   columnWidth: '#masonry_wrapper-fave .masonry_item',
+      //   horizontalOrder: true
+      // });
+
+      // fGrid.masonry('layout');
+
+      // fGrid.imagesLoaded( function() {
+      //   console.log('f imgs loaded');
+      //     fGrid.masonry('layout');
+      // });
+
     }
-    
   });
 });
 
@@ -30,7 +46,7 @@ Template.favoritesPage.helpers({
     let arr = Meteor.user().profile.favorites;
     // for some reason the favorites array has one entry: 'NeQChWMre5Yh4ooBq'
     // so it's nevery truly 'empty'; if greater than one, return list.
-    if (arr.length > 1) {
+    if (arr.length >= 1) {
       let cursor = Listings.find({
         _id : {$in : arr}
       }, {

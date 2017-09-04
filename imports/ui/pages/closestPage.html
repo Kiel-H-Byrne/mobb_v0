@@ -4,8 +4,8 @@
     <div class="row title"> 
       <h3 class="col s12 center-align"> Near You: </h3>
     </div>
-    <div class="row masonry_wrapper">
-      <div class="card-wrapper closestFlex">
+    <div class="row">
+      <div id="masonry_wrapper-close">
       <!-- div class="closestFlex_sizer"></div-->
         {{#each list}}
           {{#if isClose (getDistance location)}}

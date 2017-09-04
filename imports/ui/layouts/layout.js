@@ -8,7 +8,6 @@ import '../pages/closestPage.js';
 import '../pages/favoritesPage.js';
 import '../pages/terms.js';
 import '../pages/about.js';
-import '../pages/galleryPage.js';
 import '../pages/loadingRings.html';
 import '../pages/loadingHourglass.html';
 import '../pages/404page.js';

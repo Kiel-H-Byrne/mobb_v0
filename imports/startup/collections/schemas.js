@@ -405,6 +405,11 @@ Schema.Listings = new SimpleSchema({
         type: "textarea",
         rows: 7
       }
+    }, 
+    autoValue: function() {
+      if (this.value && this.value.length > 2000) {
+        return this.value.substring(0,2000);
+      }
     }
   },
   image: orion.attribute('file', {

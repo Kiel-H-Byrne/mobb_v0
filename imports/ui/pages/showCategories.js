@@ -13,8 +13,8 @@ Template.showCategories.onRendered(function () {
     $('.editModal-trigger').modal();
    
     let msnry = new Masonry('.categoryFlex', {
-     itemSelector: '.categoryFlex_item',
      columnWidth: '.categoryFlex_item',
+     itemSelector: '.categoryFlex_item'
     });
 
     ImagesLoaded( '.categoryFlex_item', function () {

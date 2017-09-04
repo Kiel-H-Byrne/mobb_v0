@@ -3,7 +3,8 @@
 import Listings from '/imports/startup/collections/listings';
 import { OCache } from '/imports/startup/collections/caches';
 import { GCache } from '/imports/startup/collections/caches';
-
+import { LongCache } from '/imports/startup/collections/caches';
+import { ShortCache } from '/imports/startup/collections/caches';
 // import '../../api/orionCache.js';
 
 apiCall = function (apiUrl, callback) {
@@ -131,10 +132,9 @@ Meteor.methods({
   geoCode: function(address) {
     this.unblock();
     check(address, String);
-   
-    let apiUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&key=' + Meteor.settings.public.keys.googleServer.key;
-    console.log("--'geoCode()' URL--"+apiUrl);
-    let response = Meteor.wrapAsync(apiCall)(apiUrl);
+    address = encodeURIComponent(address);
+    const apiUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&key=' + Meteor.settings.public.keys.googleServer.key;
+    const response = Meteor.wrapAsync(apiCall)(apiUrl);
     // console.log(response);
     if (response) {
       // console.log("Geo RESPONSE:");
@@ -146,7 +146,7 @@ Meteor.methods({
   checkGDetails: function(gid) {
     this.unblock();
     check(gid, String);
-    let dataFromCache = GCache.get(gid);
+    const dataFromCache = GCache.get(gid);
     if(dataFromCache) {
       console.log("Details Data from GCache...");
       // console.log(dataFromCache);
@@ -167,7 +167,7 @@ Meteor.methods({
     const key = Meteor.settings.public.keys.googleServer.key;
     const apiUri = `https://maps.googleapis.com/maps/api/place/details/json?placeid=${google_id}&key=${key}`;
     // console.log("--GOOGLE PLACES: DETAILS SEARCH URL--" + apiUri);
-    let response = Meteor.wrapAsync(apiCall)(apiUri);
+    const response = Meteor.wrapAsync(apiCall)(apiUri);
     if (response) {
       console.log(response);
       return response.result; 
@@ -184,10 +184,10 @@ Meteor.methods({
     //requ'd: key, location, radius (meters), 
     // optional: keyword ()
     const key = Meteor.settings.public.keys.googleServer.key;
-
+    name = encodeURIComponent(name)
     const apiUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${loc}&radius=20&keyword=${name}&key=${key}`;
     // console.log("--GOOGLE PLACES: NEARBY SEARCH URL--"+apiUrl);
-    let response = Meteor.wrapAsync(apiCall)(apiUrl);
+    const response = Meteor.wrapAsync(apiCall)(apiUrl);
     // console.log("still running");
     if (response && response.results[0]) {
       const result = response.results[0];
@@ -314,7 +314,7 @@ Meteor.methods({
       const res = {};
       // console.log(response);
 
-      let hiObj = response.htmlInferred;
+      const hiObj = response.htmlInferred;
       let hgObj = (response.hybridGraph.image) ? response.hybridGraph : null;
       let ogObj = (!response.openGraph.error && response.openGraph.image) ? response.openGraph : null;
       
@@ -325,8 +325,10 @@ Meteor.methods({
       let img = (res.obj.image) ? res.obj.image || res.obj.image.url : (res.obj.image_guess) ? res.obj.image_guess : res.obj.images[0];
 
       // description = (ogObj) ? ogObj.description || ogObj.title : (hgObj) ? hgObj.description || hgObj.title : (hiObj) ? hiObj.description || hiObj.title : console.log("no descr");;
-      const description = res.obj.description || res.obj.title || null;
-    
+      let description = res.obj.description || res.obj.title || null;
+      if (description && description.length > 200 ) {
+        description = description.substring(0,200);
+      }
 
       const status = response.requestInfo.responseCode;
       // console.log(status);
@@ -372,7 +374,7 @@ Meteor.methods({
     check(start, Object);
     check(finish, Object);
     if (Meteor.isClient) {
-      let dist = google.maps.geometry.spherical.computeDistanceBetween(start,finish);
+      const dist = google.maps.geometry.spherical.computeDistanceBetween(start,finish);
       console.log(dist);
       return dist;
     }

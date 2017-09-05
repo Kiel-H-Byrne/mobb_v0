@@ -11,7 +11,7 @@ Template.closestPage.onCreated(function () {
 Template.closestPage.onRendered(function () {
   
   $(document).ready(function (){
-    if ($('#masonry_wrapper-close .masonry_item')) {
+    if ($('#masonry_wrapper-close')[0]) {
       let msnry = new Masonry('#masonry_wrapper-close', {
        columnWidth: '#masonry_wrapper-close .masonry_item',
        itemSelector: '#masonry_wrapper-close .masonry_item'

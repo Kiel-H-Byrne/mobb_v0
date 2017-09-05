@@ -9,7 +9,7 @@ Template.favoritesPage.onCreated(function () {
 
 Template.favoritesPage.onRendered(function () {
   $(document).ready(function (){
-    if ($('#masonry_wrapper-fave .masonry_item')) {
+    if ($('#masonry_wrapper-fave')[0]) {
       let msnry = new Masonry('#masonry_wrapper-fave', {
        columnWidth: '#masonry_wrapper-fave .masonry_item',
        itemSelector: '#masonry_wrapper-fave .masonry_item'

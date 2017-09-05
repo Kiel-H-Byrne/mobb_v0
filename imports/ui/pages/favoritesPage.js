@@ -9,7 +9,6 @@ Template.favoritesPage.onCreated(function () {
 
 Template.favoritesPage.onRendered(function () {
   $(document).ready(function (){
-    console.log('frerender?');
     if ($('#masonry_wrapper-fave .masonry_item')) {
       let msnry = new Masonry('#masonry_wrapper-fave', {
        columnWidth: '#masonry_wrapper-fave .masonry_item',
@@ -18,9 +17,9 @@ Template.favoritesPage.onRendered(function () {
 
       ImagesLoaded( '#masonry_wrapper-fave .masonry_item', function () {
         msnry.layout();
-        console.log('fimagesloaded???');
       });
 
+      msnry.layout();
 
 
       // let fGrid = $('#masonry_wrapper-fave').masonry({

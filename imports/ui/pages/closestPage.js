@@ -9,7 +9,7 @@ Template.closestPage.onCreated(function () {
 });
 
 Template.closestPage.onRendered(function () {
-  console.log('crerender?');
+  
   $(document).ready(function (){
     if ($('#masonry_wrapper-close .masonry_item')) {
       let msnry = new Masonry('#masonry_wrapper-close', {
@@ -19,9 +19,10 @@ Template.closestPage.onRendered(function () {
 
       ImagesLoaded( '#masonry_wrapper-close .masonry_item', function () {
         msnry.layout();
-        console.log('cimagesloaded???');
+
       });
 
+      msnry.layout();
 
       // let cGrid = $('#masonry_wrapper-close').masonry({
       //   itemSelector: '#masonry_wrapper-close .masonry_item',

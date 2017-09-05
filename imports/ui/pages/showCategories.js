@@ -21,6 +21,9 @@ Template.showCategories.onRendered(function () {
       msnry.layout();
     });
 
+    msnry.layout();
+
+
     // $("img").error(function () { 
     //   // $(this).hide();
     //     $("img").each(function () {
@@ -49,6 +52,8 @@ Template.showCategories.onRendered(function () {
     $('img').on('error', function () {
       // console.log("on broken image", this);
       $(this).css({display:"none"});
+      msnry.layout();
+
       // if(!$(this).hasClass('broken-image')) {
       //   $(this).addClass('broken-image');
       // });

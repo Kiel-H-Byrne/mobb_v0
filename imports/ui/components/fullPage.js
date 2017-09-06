@@ -150,14 +150,21 @@ Template.fullPage.helpers({
       }
       // return options;
     },
-    getUrl: function(pic) {
+    getUrl: function(ref) {
       //take this photo and return whatever the result of the call is. 
       //req'd key, photoreference, & maxheight or maxwidth
-      // Meteor.wrapAsync(apiCall)(apiUrl);
-// https://maps.googleapis.com/maps/api/place/photo?parameters
+      //either i place a URL in the img, or i call the request and place the response in html...
 
-    return Meteor.call('getPlacePhotos', pic);
-      // console.log(this,pic);
+      // Meteor.call('getPlacePhotos', ref, function(err, res) {
+      //   console.log(err, res);
+      //   return res.result;
+      // });
+
+      const key = Meteor.settings.public.keys.googleServer.key;
+      const uri = "https://maps.googleapis.com/maps/api/place/photo?";
+      const apiUri = `${uri}maxwidth=150&photoreference=${ref}&sensor=false&key=${key}`;
+      return apiUri;
+      
     }
 });
 

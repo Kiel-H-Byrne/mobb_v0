@@ -159,7 +159,7 @@
             {{#if place.photos}}  
             <span class="card-title "><i class="material-icons">star</i>Photos</span>
             {{#each photo in place.photos}}
-              <img src="{{getUrl photo.photo_reference}}">
+              <img src="{{getUrl photo.photo_reference}}" alt />
             {{/each}}
             <hr />
             {{/if}}

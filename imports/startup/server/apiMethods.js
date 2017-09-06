@@ -16,10 +16,10 @@ apiCall = function (apiUrl, callback) {
     console.log("CHECKING CACHE: "+apiUrl);
     let response = {};
     if(dataFromCache) {
-      console.log("Data from Cache...");
+      console.log("FROM CACHE:");
       response = dataFromCache;
     } else {
-      console.log("Data from API...");
+      console.log("FROM API:");
       response = HTTP.get(apiUrl).data;
       OCache.set(apiUrl, response);
     }
@@ -211,22 +211,20 @@ Meteor.methods({
     return ;
   },
   getPlacePhotos: function(photoref) {
-    this.unblock();
-    check(photoref,String);
-    console.log(photoref);
+    check(photoref, String);
+    // console.log(photoref);
     let uri = "https://maps.googleapis.com/maps/api/place/photo?";
     let key = Meteor.settings.public.keys.googleServer.key;
-    let options = {maxwidth: 100};
-    const apiUri = `${uri}maxwidth=100&maxheight=100&photoreference=${photoref}&sensor=false&key=${key}`;
-    let response = Meteor.wrapAsync(apiCall)(apiUri);
-    if (response) {
-      console.log(response);
-      return response.result; 
-    }
-    return;
+    const apiUri = `${uri}maxwidth=100&photoreference=${photoref}&sensor=false&key=${key}`;
+    return response = Meteor.wrapAsync(apiCall)(apiUri);
+    // if (response) {
+    //   console.log("response");
+    //   return response.result; 
+    // }
+// CmRaAAAAYpTPreRmPCR4EgUa56xjLq4REY10eVQ5My1CdJE2iCwDU7qz8PaxZcoJSEYqvvwDu8kbAdLI7rUnGhO_t-VQNk0szun2qY5kCj7yfMQW_VhH3vrZkbPPno3m115vRkltEhCg5ywCiFxPNhRVzt6HmgzmGhQ6iUTSVz88hGR5VDAIcSHbuQnGcQ
+// CmRaAAAA4xP27riOH_NxYUcy5VTuQnYhnrqCLFkDViUAfjorIBoaU2eWb5PpC9lM8W-ZQvO6O_F7UGUbBya3hX2G-4tXCw4BmXw8bgQOw0w_nNBtXUe--VnqQzpIGD_aUC3NkKC3EhDCqk-a2V5-lCpiJIVuQB6SGhSyPwPDPE79f8bYQxu_vF6XFb8yrw
 
-
-// https://maps.googleapis.com/maps/api/place/photo?reference=CmRaAAAAIhZlz7AzBuXRVNqLTYHTR3-mRm7qJsrJzNMAyatu0FA-_-N43pG7OVkUUf26_xaqIYYVDIfQT_uvDJT1g9AsorUTkTiQIUqv9_XhqBOvzUGOfKeGS9SNF2Cc0DYo_3tuEhCedP0FW5EZw-7iiIoTgPegGhSxA0PGScR3BEPhcxagdSRwvXZayg&maxwidth=100&key=AIzaSyAuvQtaNuOF1phJQcTv3ytk9VyNCrlrOO4
+// https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&key=AIzaSyB7SQmFyKOkbwG3C0osrAyGbllKb8Jdx-8&photoreference=CmRaAAAA4xP27riOH_NxYUcy5VTuQnYhnrqCLFkDViUAfjorIBoaU2eWb5PpC9lM8W-ZQvO6O_F7UGUbBya3hX2G-4tXCw4BmXw8bgQOw0w_nNBtXUe--VnqQzpIGD_aUC3NkKC3EhDCqk-a2V5-lCpiJIVuQB6SGhSyPwPDPE79f8bYQxu_vF6XFb8yrw
   },
   submitPlace: function(doc) {
     this.unblock();

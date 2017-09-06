@@ -1,3 +1,4 @@
+@import '{}/node_modules/materialize-css/sass/components/mixins';
 @import '{}/node_modules/materialize-css/sass/components/color';
 @import '{}/node_modules/materialize-css/sass/components/variables';
 @import 'palettes/colors';
@@ -133,9 +134,30 @@
         border-radius: 3px;
       }
     }
+    .photos_wrapper {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+      grid-gap: .3em;
+      justify-item: center;
+      align-items: center;
+      
+      div {
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 150px;
+      }
 
+      img {
+        border-radius: 5px; 
+        grid-row-start: span 1;
+        grid-column-start: span 1;
+        // @include box-shadow-2(0 5px 5px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
+      }
+    }
     .comments > .header {
-      display:none;
+      display: none;
     }
   }
 }

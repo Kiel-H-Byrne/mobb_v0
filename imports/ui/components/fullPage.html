@@ -120,7 +120,7 @@
             </ul>
             {{/if}}
             <hr />
-            <span class="card-title "><i class="material-icons">star</i>Reviews</span>
+            <span class="card-title "><i class="material-icons">star</i>Reviews</span><br />
             {{#if place.rating}} 
               <h3>{{place.rating}}/5</h3>
             {{/if}}
@@ -157,10 +157,15 @@
             {{/if}}
             <hr />
             {{#if place.photos}}  
-            <span class="card-title "><i class="material-icons">star</i>Photos</span>
+            <span class="card-title "><i class="material-icons">star</i>Photos</span><br />
+            <div class="photos_wrapper">
             {{#each photo in place.photos}}
-              <img src="{{getUrl photo.photo_reference}}" alt />
+              <div class="place_photo z-depth-2" style="background-image: url({{getUrl photo.photo_reference}})">
+                <img src="/img/transparent.png" alt=""/>
+              </div>
+              {{!-- <img class="z-depth-2" src="{{getUrl photo.photo_reference}}" alt /> --}}
             {{/each}}
+            </div>
             <hr />
             {{/if}}
           {{/let}}

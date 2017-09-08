@@ -13,6 +13,7 @@ import '../components/corner-ribbon.js';
 import '../components/favoriteStar.js';
 import '../components/shareListing.js';
 import '../components/mobileNav.js';
+import '../components/sideCard.js';
 
 import './nav.html';
 

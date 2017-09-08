@@ -48,12 +48,8 @@
           {{#if phone}}    
           <a class="btn-floating" title="Call" href="tel:+1{{phone}}"><i class="material-icons">phone</i></a>
           {{/if}}
-          {{#if location}}    
-          
             <!-- a class="btn-floating modal-trigger" id="directions_button" title="Directions" href="#modalDirections"><i class="material-icons">navigation</i></a-->
             <a class="btn-floating " title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" ><i class="material-icons">directions</i></a>
-
-        {{/if}}
         </div>
 
       </div>  
@@ -94,7 +90,6 @@
           
         </p>
         <hr />
-        {{#if location}}
           <span class="card-title "><i class="material-icons">map</i>Location :</span>
           <a class="" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener">
             <span class="badge badge-distance" data-badge-caption="mi."><i class="material-icons tiny ">directions</i> {{getDistance location}} </span>
@@ -103,7 +98,6 @@
             {{> googleMap name="microMap" options=microMapOptions }}
           </div>
         <hr />
-        {{/if}}
         {{#if google_id}}
           {{#let place=thisPlace}}
             {{#if place.opening_hours}}
@@ -158,9 +152,9 @@
             <hr />
             {{#if place.photos}}  
             <span class="card-title "><i class="material-icons">star</i>Photos</span><br />
-            <div class="photos_wrapper">
+            <div class="photos_wrapper carousel carousel-slider">
             {{#each photo in place.photos}}
-              <div class="place_photo z-depth-2" style="background-image: url({{getUrl photo.photo_reference}})">
+              <div class="place_photo carousel-item" style="background-image: url({{getUrl photo.photo_reference}})">
                 <img src="/img/transparent.png" alt=""/>
               </div>
               {{!-- <img class="z-depth-2" src="{{getUrl photo.photo_reference}}" alt /> --}}

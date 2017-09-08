@@ -1,0 +1,67 @@
+<template name="sideCard">
+    {{#let doc=currentDoc}}
+<div>
+<ul id="slide-out" class="side-nav">
+  <li>
+    <div class="user-view">
+      <div class="background" >
+        {{#if doc.image.url}}
+          <img src="{{doc.image.url}}" />
+        {{else}}
+          {{#if doc.url}}
+            <img src="{{getImage doc.url doc._id}}"/>
+            {{/if}}
+        {{/if}}
+      </div>
+      <span class="name">{{doc.name}}</span>
+      {{#if doc.social.facebook}}
+      fb: <a href="https://www.facebook.com/{{doc.social.facebook}}" target="_blank" rel="noopener" > @{{doc.social.facebook}}</a> <br />
+      {{/if}}
+      {{#if doc.social.instagram}}
+      ig: <a href="https://www.instagram.com/{{doc.social.instagram}}" target="_blank" rel="noopener" > @{{doc.social.instagram}}</a> <br />
+      {{/if}}
+      {{#if doc.social.twitter}}
+      tt: <a href="https://www.twitter.com/{{doc.social.twitter}}" target="_blank" rel="noopener" > @{{doc.social.twitter}}</a> <br />
+      {{/if}}
+    </div>
+  </li>
+  {{#if doc.description}}
+  <li><p class="subheader">{{doc.description}}</p></li>
+  {{/if}}
+  <li>
+    <!-- a href="#" class="card-title "><i class="material-icons">location_on</i>Address</a -->
+    <p class="">
+      {{#if doc.address}}    
+        <span>
+        {{doc.address}}<br />
+        </span>
+      {{else}}
+        <span>
+        {{doc.street}} <br />
+        {{doc.city}} {{doc.state}},  {{doc.zip}} <br />
+        </span>
+      {{/if}}
+
+      {{#if doc.phone}}    
+      <a class="center-align phone" href="tel:+1{{doc.phone}}"><i class="material-icons" style="font-size:100%; margin-right:2px; ">phone</i>{{doc.phone}}</a> <br />
+      {{/if}}
+    </p>
+    
+  </li>
+  <li><div class="divider"></div></li>
+  {{#if doc.url}}     
+ <li> <a class="waves-effect" target="_blank" rel="noopener" title="Website" href="{{doc.url}}"><i class="material-icons">link</i>Visit Website</a></li>
+  {{/if}}
+  {{#if doc.phone}}    
+  <li><a class="waves-effect" title="Call" href="tel:+1{{doc.phone}}"><i class="material-icons">phone</i>Call Now</a></li>
+  {{/if}}
+  <li><a class="waves-effect" title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{doc.location}}" target="_blank" rel="noopener" ><i class="material-icons">directions</i>Navigate Now</a></li>
+  <li><div class="divider"></div></li>
+
+
+</ul>
+
+  <a href="#" data-activates="slide-out" class="hide button-collapse show-on-large">Last Clicked</a>
+</div>
+{{/let}}
+</template>

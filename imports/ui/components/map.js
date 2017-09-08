@@ -186,7 +186,9 @@ Template.map.onCreated( function () {
 
                         marker.addListener('click', function () {
                             Session.set('openListing', id);
-                            $('#modalInfo').modal('open');
+                            // $('#modalInfo').modal('open');
+                            $('.button-collapse').sideNav('show');
+
                             //calculate distance 
                             // let start = new google.maps.LatLng(Session.get('clientLoc') || Session.get('browserLoc'));
                             // let finish = new google.maps.LatLng(latLngObj);

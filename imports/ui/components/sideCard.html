@@ -3,13 +3,13 @@
 <div>
 <ul id="slide-out" class="side-nav">
   <li>
-    <div class="user-view">
-      <div class="background" >
+    <div class="user-view" style="width=100%">
+      <div class="background" style="width=100%">
         {{#if doc.image.url}}
-          <img src="{{doc.image.url}}" />
+          <img src="{{doc.image.url}}" style="object-fit=cover;"/>
         {{else}}
           {{#if doc.url}}
-            <img src="{{getImage doc.url doc._id}}"/>
+            <img src="{{getImage doc.url doc._id}}" style="object-fit=cover;"/>
             {{/if}}
         {{/if}}
       </div>
@@ -25,9 +25,6 @@
       {{/if}}
     </div>
   </li>
-  {{#if doc.description}}
-  <li><p class="subheader">{{doc.description}}</p></li>
-  {{/if}}
   <li>
     <!-- a href="#" class="card-title "><i class="material-icons">location_on</i>Address</a -->
     <p class="">
@@ -49,15 +46,17 @@
     
   </li>
   <li><div class="divider"></div></li>
+  <li><a class="waves-effect" title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{doc.location}}" target="_blank" rel="noopener" ><i class="material-icons">directions</i>Navigate Now</a></li>
   {{#if doc.url}}     
- <li> <a class="waves-effect" target="_blank" rel="noopener" title="Website" href="{{doc.url}}"><i class="material-icons">link</i>Visit Website</a></li>
+  <li> <a class="waves-effect" target="_blank" rel="noopener" title="Website" href="{{doc.url}}"><i class="material-icons">link</i>Visit Website</a></li>
   {{/if}}
   {{#if doc.phone}}    
   <li><a class="waves-effect" title="Call" href="tel:+1{{doc.phone}}"><i class="material-icons">phone</i>Call Now</a></li>
   {{/if}}
-  <li><a class="waves-effect" title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{doc.location}}" target="_blank" rel="noopener" ><i class="material-icons">directions</i>Navigate Now</a></li>
   <li><div class="divider"></div></li>
-
+  {{#if doc.description}}
+  <li><p class="subheader">{{doc.description}}</p></li>
+  {{/if}}
 
 </ul>
 

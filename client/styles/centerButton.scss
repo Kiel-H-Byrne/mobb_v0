@@ -4,7 +4,7 @@
 @import 'palettes/_plt_orng-tetrad';
 
 [id='centerButton_button'] {
-  background-color: $clr-orange !important;
+  background-color: $rgba-secondary-2-3 !important;
   position: fixed;
   bottom: 80px;
   right: 0;
@@ -13,7 +13,7 @@
   width: 40px;
 
   &:hover {
-    background-color: $clr-orange-dark !important;
+    background-color: $rgba-secondary-2-4 !important;
   }
   
   i {

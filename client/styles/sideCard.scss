@@ -1,0 +1,40 @@
+@import '{}/node_modules/materialize-css/sass/components/mixins';
+@import '{}/node_modules/materialize-css/sass/components/color';
+@import '{}/node_modules/materialize-css/sass/components/variables';
+@import 'palettes/colors';
+@import 'palettes/_plt_orng-tetrad';
+
+
+[id="sideCard"]{
+  .side-nav {
+    background-color: $rgba-primary-grey-4;
+
+    img {
+      width: 100%;
+    }
+
+    li > a {
+      color: $rgba-primary-grey-1;  
+
+      i {
+        color: lighten($rgba-primary-1, 10%);
+      }
+    }
+  
+    p {
+      line-height: 1.2rem;
+      color: inherit;
+    }
+
+    .name {
+      display: block;
+      position: relative;
+      bottom: 3.3rem;
+      font-size: 1.5rem;
+      line-height: 3.3rem;
+      background-color: $rgba-primary-grey-0;
+      color: $rgba-primary-1;
+    }
+  }
+}
+

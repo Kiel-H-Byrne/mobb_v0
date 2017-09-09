@@ -6,12 +6,17 @@
 .slide_badge_fav, .slide_badge_near {
   position: fixed;
   z-index: 3;
-  background-color: $rgba-primary-grey-2;
+  background-color: $rgba-secondary-2-3;
   padding: 4px 4px 2px 20px;
   border-radius: 3px 0 0 3px;
   right: 0;
+  
+  a {
+    display: block;
+  }
 
   i {
+    color: $rgba-primary-grey-3;
     position:relative;
     left: -1rem;
   }

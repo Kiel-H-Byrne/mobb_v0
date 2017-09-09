@@ -23,8 +23,7 @@ Template.sideCard.onRendered( function () {
 
   });
 
-//autotracker?
-  // this.autorun(function(c) {
+  this.autorun(function(c) {
     let docId = Session.get('openListing');
     let doc = Listings.findOne({_id: docId});
     
@@ -43,7 +42,7 @@ Template.sideCard.onRendered( function () {
       }
       });
     }
-  // });
+  });
 });
 
 Template.sideCard.helpers({

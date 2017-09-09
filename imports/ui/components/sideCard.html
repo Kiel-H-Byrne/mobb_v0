@@ -76,6 +76,18 @@
           </ul>
           {{/if}}
           <hr />
+          {{#if place.photos}}  
+          <span class="card-title "><i class="material-icons">star</i>Photos</span><br />
+          <div class="photos_wrapper carousel carousel-slider">
+          {{#each photo in place.photos}}
+            <div class="place_photo carousel-item" style="background-image: url({{getUrl photo.photo_reference}})">
+              <img src="/img/transparent.png" alt=""/>
+            </div>
+            {{!-- <img class="z-depth-2" src="{{getUrl photo.photo_reference}}" alt /> --}}
+          {{/each}}
+          </div>
+          <hr />
+          {{/if}}
           <span class="card-title "><i class="material-icons">star</i>Reviews</span><br />
           {{#if place.rating}} 
             <h3>{{place.rating}}/5</h3>
@@ -110,19 +122,6 @@
             </ul>
           {{else}}
             <p><a href="https://search.google.com/local/writereview?placeid={{google_id}}" target="_blank" rel="noopener" >Leave a Review.</a></p>
-          {{/if}}
-          <hr />
-          {{#if place.photos}}  
-          <span class="card-title "><i class="material-icons">star</i>Photos</span><br />
-          <div class="photos_wrapper carousel carousel-slider">
-          {{#each photo in place.photos}}
-            <div class="place_photo carousel-item" style="background-image: url({{getUrl photo.photo_reference}})">
-              <img src="/img/transparent.png" alt=""/>
-            </div>
-            {{!-- <img class="z-depth-2" src="{{getUrl photo.photo_reference}}" alt /> --}}
-          {{/each}}
-          </div>
-          <hr />
           {{/if}}
         {{/let}}
       {{/if}}

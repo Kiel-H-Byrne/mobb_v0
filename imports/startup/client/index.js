@@ -13,7 +13,7 @@ import 'materialize-css/js/jquery.hammer';
 import 'materialize-css/js/animation';
 import 'materialize-css/js/buttons';
 import 'materialize-css/js/cards';
-// import 'materialize-css/js/carousel';
+import 'materialize-css/js/carousel';
 import 'materialize-css/js/character_counter';
 import 'materialize-css/js/chips';
 import 'materialize-css/js/collapsible';

@@ -19,6 +19,7 @@ Template.listCard.events({
   'click img': function(event,templateInstance) {
     console.log(templateInstance)
       // Session.set('openListing', doc._id );
+      console.log(this.data, this.view.data);
       $('.button-collapse').sideNav('show');
   }
 });

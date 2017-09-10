@@ -8,28 +8,26 @@ Template.sideCard.onRendered( function () {
       closeOnClick: true,
       draggable: true
     });
-    
     this.$('.modal-trigger').modal();
-    
     this.$('select').material_select();
-    
     this.$('.dropdown-button').dropdown({
     });
-
+    this.$('.carousel').carousel({fullWidth: true});
     this.$('img').on('error', function () {
       console.log("broken image", this);
       $(this).css({display:"none"});
     });
 
   // });
-  console.log(this);
+
   this.autorun(function(p) {
+
     const docId = Session.get('openListing');
     const doc = Listings.findOne({_id: docId});
     
-    if (!doc.google_id) {
+    if (doc && !doc.google_id) {
       Meteor.call('placesSearch', doc.name, doc.location);
-    } else if (doc.google_id){
+    } else if (doc && doc.google_id){
       console.log("Have google ID");
       // if starts with q, check again
       Meteor.call('placeDetails' , doc.google_id, function(error,result) {
@@ -78,7 +76,7 @@ Template.sideCard.helpers({
 
     const key = Meteor.settings.public.keys.googleServer.key;
     const uri = "https://maps.googleapis.com/maps/api/place/photo?";
-    const apiUri = `${uri}maxwidth=150&photoreference=${ref}&sensor=false&key=${key}`;
+    const apiUri = `${uri}maxheight=240&photoreference=${ref}&sensor=false&key=${key}`;
     return apiUri;
     
   }

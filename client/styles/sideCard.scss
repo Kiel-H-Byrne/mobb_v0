@@ -36,6 +36,10 @@
       position: relative;
       left: -1.2rem;
     }
+    .place_photo {
+      background-size: 300px;
+      background-repeat: no-repeat;
+    }
     .card-image .card-title {
       width: 100%;
       background-color: darken($rgba-primary-grey-0, 80%);

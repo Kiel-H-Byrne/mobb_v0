@@ -76,7 +76,7 @@ Template.sideCard.helpers({
 
     const key = Meteor.settings.public.keys.googleServer.key;
     const uri = "https://maps.googleapis.com/maps/api/place/photo?";
-    const apiUri = `${uri}maxheight=240&photoreference=${ref}&sensor=false&key=${key}`;
+    const apiUri = `${uri}maxwidth=300&photoreference=${ref}&sensor=false&key=${key}`;
     return apiUri;
     
   }

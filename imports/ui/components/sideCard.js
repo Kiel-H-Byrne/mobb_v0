@@ -1,5 +1,9 @@
 import './sideCard.html'
 
+Template.sideCard.onCreated( function () {
+  Session.set('thisPlace', false);
+});
+
 Template.sideCard.onRendered( function () {
 
   $(document).ready(function() {
@@ -27,6 +31,7 @@ Template.sideCard.onRendered( function () {
       Meteor.call('placesSearch', doc.name, doc.location);
     } else if (doc && doc.google_id){
       console.log("Have google ID");
+      $('.carousel').carousel({fullWidth: true});
       // if starts with q, check again
       Meteor.call('placeDetails' , doc.google_id, function(error,result) {
       if (result && Meteor.isClient) {

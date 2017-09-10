@@ -2,7 +2,6 @@
 <template name="listCard">
   <li class="collection-item avatar hoverable list_card">
     <div class="card_info">
-        <a class="card_link" href="/listings/{{name}}">
         {{#if image.url}}
           <img class="circle" src="{{image.url}}" />
         {{else}}
@@ -10,10 +9,7 @@
           <img class="circle" src="{{getImage url _id}}" />
           {{/if}}
         {{/if}}
-        </a>
-        <span class="title">
-          <a class="card_link" href="/listings/{{name}}">{{name}}</a>
-        </span>
+        <span class="title">{{name}}</span>
 
         <p>
           {{#if social.facebook}}

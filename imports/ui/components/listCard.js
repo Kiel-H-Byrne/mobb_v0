@@ -14,3 +14,11 @@ Template.listCard.onRendered( function () {
     });
   });
 });
+
+Template.listCard.events({
+  'click img': function(event,templateInstance) {
+    console.log(templateInstance)
+      // Session.set('openListing', doc._id );
+      $('.button-collapse').sideNav('show');
+  }
+});

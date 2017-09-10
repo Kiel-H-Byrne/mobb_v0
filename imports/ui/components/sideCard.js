@@ -2,34 +2,34 @@ import './sideCard.html'
 
 Template.sideCard.onRendered( function () {
 
-  $(document).ready(function() {
-    $('.button-collapse').sideNav({
+  // $(document).ready(function() {
+    this.$('.button-collapse').sideNav({
       edge: 'left',
       closeOnClick: true,
       draggable: true
     });
     
-    $('.modal-trigger').modal();
+    this.$('.modal-trigger').modal();
     
-    $('select').material_select();
+    this.$('select').material_select();
     
-    $('.dropdown-button').dropdown({
+    this.$('.dropdown-button').dropdown({
     });
 
-    $('img').on('error', function () {
+    this.$('img').on('error', function () {
       console.log("broken image", this);
       $(this).css({display:"none"});
     });
 
-  });
-
-  this.autorun(function(c) {
-    let docId = Session.get('openListing');
-    let doc = Listings.findOne({_id: docId});
+  // });
+  console.log(this);
+  this.autorun(function(p) {
+    const docId = Session.get('openListing');
+    const doc = Listings.findOne({_id: docId});
     
-    if (doc && !doc.google_id) {
+    if (!doc.google_id) {
       Meteor.call('placesSearch', doc.name, doc.location);
-    } else if (doc && doc.google_id){
+    } else if (doc.google_id){
       console.log("Have google ID");
       // if starts with q, check again
       Meteor.call('placeDetails' , doc.google_id, function(error,result) {
@@ -46,19 +46,25 @@ Template.sideCard.onRendered( function () {
 });
 
 Template.sideCard.helpers({
+  thisDoc: function() {
+    const docId = Session.get('openListing');
+    const doc = Listings.findOne({_id: docId});
+    return doc;    
+  },
+  getDetails: function(google_id) {
+    return Meteor.call('placeDetails', google_id, function(error,result) {
+      if (result && Meteor.isClient) {
+        console.log(result)
+        // console.log(GCache.get(data.google_id));
+        Session.set('thisPlace', result);
+      } else {
+        console.log('no response for place:', error);
+      }
+      });
+  },
   isOpen: function(doc) {
     let check = doc.opening_hours.open_now;
     return check;
-  },
-  isPhoto: function(doc) {
-    let options = {'maxWidth': 150, 'maxHeight': 150};
-    // let uri = doc.getUrl(options);
-    // console.log(uri);
-    let photos = Session.get('thisPlace').photos;
-    if (photos) {
-      console.log(photos.getUrl(options));
-    }
-    // return options;
   },
   getUrl: function(ref) {
     //take this photo and return whatever the result of the call is. 

@@ -18,10 +18,10 @@ import '../components/sideCard.js';
 import './nav.html';
 
 Template.nav.onRendered( function () {
-  $(document).ready(function () {
-    $('[id="loading-wrapper"], .server_rendered').fadeOut();
+  // $(document).ready(function () {
+    this.$('[id="loading-wrapper"], .server_rendered').fadeOut();
     
-    $('.dropdown-button').dropdown({
+    this.$('.dropdown-button').dropdown({
       stopPropagation: true
       // inDuration: 200,
       // outDuration: 225,
@@ -32,9 +32,9 @@ Template.nav.onRendered( function () {
       // alignment: 'left' // Displays dropdown with edge aligned to the left of button
     });
 
-    $('.collapsible').collapsible();
+    this.$('.collapsible').collapsible();
 
-    $('.addModal-trigger').modal({
+    this.$('.addModal-trigger').modal({
         dismissible: true,
         opacity: 0.5,
         in_duration: 300,
@@ -58,7 +58,7 @@ Template.nav.onRendered( function () {
         // }
     });
 
-  });
+  // });
  // TypeAhead autocomplete in Schema
   Meteor.typeahead.inject();
   $('.twitter-typeahead').css("display:block");
@@ -73,9 +73,13 @@ Template.nav.events({
 		event.preventDefault();
     
     const entered = templateInstance.find('input#search_nav').value;
-    if (Listings.findOne({name: entered})) {
+    const doc = Listings.findOne({name: entered});
+    if (doc) {
       // console.log(doc._id);
-      Router.go("/listings/" + Listings.findOne({name: entered}).name);
+      // Router.go("/listings/" + Listings.findOne({name: entered}).name);
+      //open sidenav, set 'openlisting' to this listings _id
+      Session.set('openListing', doc._id );
+      $('.button-collapse').sideNav('show');
     } else if (Categories.findOne({name: entered})) {
       Router.go("/categories/" + Categories.findOne({name: entered}).name);
     } else {
@@ -95,7 +99,7 @@ Template.nav.events({
     Router.go('/' + type + '/' + name);
   },
   'click #desktop_search-form': function() {
-    $('#search_nav').focus();
+    // $('#search_nav').focus();
   }
   // 'click .addmodal': function () {
   //   $('#modalAdd').modal('open');

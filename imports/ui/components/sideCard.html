@@ -1,98 +1,110 @@
 <template name="sideCard">
-    {{#let doc=currentDoc}}
 <div id="sideCard" >
   <a href="#" data-activates="slide-out" class="hide button-collapse show-on-large">Last Clicked</a>
   <ul id="slide-out" class="side-nav">
+    {{#with thisDoc}}
     <li>
-      <div class="user-view">
-        <div class="background">
-          {{#if doc.image.url}}
-            <img src="{{doc.image.url}}" />
+      <div class="card transparent">
+        <div class="card-image">
+          {{#if image.url}}
+            <img src="{{image.url}}" />
           {{else}}
-            {{#if doc.url}}
-              <img src="{{getImage doc.url doc._id}}"/>
+            {{#if url}}
+              <img src="{{getImage url _id}}"/>
               {{/if}}
           {{/if}}
+          <span class="card-title">{{name}}</span>
+          <a class="btn-floating halfway-fab btn-large waves-effect waves-light"  title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" >
+          <i class="large material-icons">directions</i></a>
         </div>
-        <span class="name">{{doc.name}}</span>        
-        {{#if doc.social.facebook}}
-        fb: <a href="https://www.facebook.com/{{doc.social.facebook}}" target="_blank" rel="noopener" > @{{doc.social.facebook}}</a> <br />
-        {{/if}}
-        {{#if doc.social.instagram}}
-        ig: <a href="https://www.instagram.com/{{doc.social.instagram}}" target="_blank" rel="noopener" > @{{doc.social.instagram}}</a> <br />
-        {{/if}}
-        {{#if doc.social.twitter}}
-        tt: <a href="https://www.twitter.com/{{doc.social.twitter}}" target="_blank" rel="noopener" > @{{doc.social.twitter}}</a> <br />
-        {{/if}}
-      </div>
-    </li>
-    <li>
-      <!-- a href="#" class="card-title "><i class="material-icons">location_on</i>Address</a -->
-      <p class="">
-        {{#if doc.address}}    
+        <div class="card-content">
+        <p class="">
+        {{#if address}}    
           <span>
-          {{doc.address}}<br />
+          {{address}}<br />
           </span>
         {{else}}
           <span>
-          {{doc.street}} <br />
-          {{doc.city}} {{doc.state}},  {{doc.zip}} <br />
+          {{street}} <br />
+          {{city}} {{state}},  {{zip}} <br />
           </span>
         {{/if}}
 
-        {{#if doc.phone}}    
-        <a class="center-align phone" href="tel:+1{{doc.phone}}"><i class="material-icons" style="font-size:100%; margin-right:2px; ">phone</i>{{doc.phone}}</a> <br />
+        {{#if phone}}    
+        <a class="" href="tel:+1{{phone}}"><i class="material-icons" style="font-size:100%; margin-right:2px; ">phone</i>{{phone}}</a> <br />
         {{/if}}
-      </p>
-      
+        </p>
+
+        {{#if social.facebook}}
+        fb: <a href="https://www.facebook.com/{{social.facebook}}" target="_blank" rel="noopener" > @{{social.facebook}}</a> <br />
+        {{/if}}
+        {{#if social.instagram}}
+        ig: <a href="https://www.instagram.com/{{social.instagram}}" target="_blank" rel="noopener" > @{{social.instagram}}</a> <br />
+        {{/if}}
+        {{#if social.twitter}}
+        tt: <a href="https://www.twitter.com/{{social.twitter}}" target="_blank" rel="noopener" > @{{social.twitter}}</a> <br />
+        {{/if}}
+        {{#if description}}
+          <p class="description" >{{description}}</p>
+        {{/if}}  
+        </div>
+      </div>
     </li>
     <li><div class="divider"></div></li>
-    <li><a class="waves-effect" title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{doc.location}}" target="_blank" rel="noopener" ><i class="material-icons">directions</i>Navigate Now</a></li>
-    {{#if doc.url}}     
-    <li> <a class="waves-effect" target="_blank" rel="noopener" title="Website" href="{{doc.url}}"><i class="material-icons">link</i>Visit Website</a></li>
-    {{/if}}
-    {{#if doc.phone}}    
-    <li><a class="waves-effect" title="Call" href="tel:+1{{doc.phone}}"><i class="material-icons">phone</i>Call Now</a></li>
-    {{/if}}
-    <li><div class="divider"></div></li>
-    {{#if doc.description}}
-    <li><p class="subheader">{{doc.description}}</p></li>
-    {{/if}}
-    <li class="divider"></li>
     <li>
-      {{#if doc.google_id}}
+      <ul class="">
+        {{#if url}}     
+        <li> <a class="waves-effect" target="_blank" rel="noopener" title="Website" href="{{url}}">
+        <i class="material-icons">link</i>Visit Website
+        </a></li>
+        {{/if}}
+        {{#if phone}}    
+        <li><a class="waves-effect" title="Call" href="tel:+1{{phone}}">
+        <i class="material-icons">phone</i>Call Now
+        </a></li>
+        {{/if}}
+
+      </ul>
+    </li>
+      {{#if thisPlace}}
         {{#let place=thisPlace}}
           {{#if place.opening_hours}}
-          <span class="card-title "><i class="material-icons">watch_later</i>Hours: </span>
+          <li><div class="divider"></div></li>
+          <li class="item_hours">
+            <span class="card-title "><i class="material-icons">watch_later</i>Hours: </span>
             {{#if isOpen place}}
             <span class="now_open">Open Now!</span>
             {{else}}
             <span class="now_closed muted">Closed Now</span>
             {{/if}}
-          <ul class="list_hours">
-            {{#each place.opening_hours.weekday_text}}
-            <li>{{this}}</li>
+            <ul class="list_hours">
+              {{#each place.opening_hours.weekday_text}}
+              <li>{{this}}</li>
+              {{/each}}
+            </ul>
+          </li>
+          {{/if}}
+          {{#if place.photos}}
+          <li><div class="divider"></div></li>  
+          <li class="item_photos">
+            <span class="card-title "><i class="material-icons">star</i>Photos</span><br />
+            <div class="row photos_wrapper carousel carousel-slider">
+            {{#each photo in place.photos}}
+              <div class="place_photo carousel-item" style="background-image: url({{getUrl photo.photo_reference}})">
+                <img src="/img/transparent.png" alt=""/>
+              </div>
+              {{!-- <img class="z-depth-2" src="{{getUrl photo.photo_reference}}" alt /> --}}
             {{/each}}
-          </ul>
-          {{/if}}
-          <hr />
-          {{#if place.photos}}  
-          <span class="card-title "><i class="material-icons">star</i>Photos</span><br />
-          <div class="photos_wrapper carousel carousel-slider">
-          {{#each photo in place.photos}}
-            <div class="place_photo carousel-item" style="background-image: url({{getUrl photo.photo_reference}})">
-              <img src="/img/transparent.png" alt=""/>
             </div>
-            {{!-- <img class="z-depth-2" src="{{getUrl photo.photo_reference}}" alt /> --}}
-          {{/each}}
-          </div>
-          <hr />
-          {{/if}}
-          <span class="card-title "><i class="material-icons">star</i>Reviews</span><br />
-          {{#if place.rating}} 
-            <h3>{{place.rating}}/5</h3>
+          </li>
           {{/if}}
           {{#if place.reviews}}
+          <li><div class="divider"></div></li>
+          <li class="item_reviews">
+            <span class="card-title "><i class="material-icons">star</i>Reviews</span><br />
+            {{#if place.rating}} 
+            <h3>{{place.rating}}/5</h3>
+            {{/if}}
             <ul class="collection">
             {{#each review in place.reviews}}
             <li class="collection-item">
@@ -112,24 +124,18 @@
                   </div>
                 </div>
               </div>
-              <!-- div class="row">
-                <p class="s12">
-                {{review.text}}
-                </p>
-              </div -->
             </li>
             {{/each}}
             </ul>
+          </li>
           {{else}}
-            <p><a href="https://search.google.com/local/writereview?placeid={{google_id}}" target="_blank" rel="noopener" >Leave a Review.</a></p>
+          <li>
+            <a href="https://search.google.com/local/writereview?placeid={{google_id}}" target="_blank" rel="noopener" >Leave a Review.</a>
+          </li>
           {{/if}}
         {{/let}}
       {{/if}}
-  </li>
-
+{{/with}}
   </ul>
-
-
 </div>
-{{/let}}
 </template>

@@ -11,30 +11,41 @@
 
     img {
       width: 100%;
+      transition: opacity 550ms ease-in-out;
+
     }
 
-    li > a {
-      color: $rgba-primary-grey-1;  
+    li {
+    line-height: 1.3rem;
 
-      i {
-        color: lighten($rgba-primary-1, 10%);
+      a {
+        color: $rgba-primary-grey-1;  
+        i {
+          color: lighten($rgba-primary-1, 10%);
+        }
       }
-    }
-  
-    p {
-      line-height: 1.2rem;
-      color: inherit;
+
+      p {
+        line-height: 1.3rem;
+        color: inherit;
+      }
+
     }
 
-    .name {
-      display: block;
+    .btn-floating i {
       position: relative;
-      bottom: 3.3rem;
-      font-size: 1.5rem;
-      line-height: 3.3rem;
-      background-color: darken($rgba-primary-grey-0, 80%);
-      color: $rgba-primary-1;
+      left: -1.2rem;
     }
+    .card-image .card-title {
+      width: 100%;
+      background-color: darken($rgba-primary-grey-0, 80%);
+      line-height: 2rem;
+      padding: .3rem;
+    }
+  }
+
+  .photos_wrapper {
+    height: 240px;
   }
 }
 

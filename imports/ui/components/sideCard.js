@@ -2,23 +2,21 @@ import './sideCard.html'
 
 Template.sideCard.onRendered( function () {
 
-  // $(document).ready(function() {
-    this.$('.button-collapse').sideNav({
+  $(document).ready(function() {
+    $('.button-collapse').sideNav({
       edge: 'left',
       closeOnClick: true,
       draggable: true
     });
-    this.$('.modal-trigger').modal();
-    this.$('select').material_select();
-    this.$('.dropdown-button').dropdown({
-    });
-    this.$('.carousel').carousel({fullWidth: true});
-    this.$('img').on('error', function () {
+    $('.modal-trigger').modal();
+    $('select').material_select();
+    $('.dropdown-button').dropdown();
+    $('.carousel').carousel({fullWidth: true});
+    $('img').on('error', function () {
       console.log("broken image", this);
       $(this).css({display:"none"});
     });
-
-  // });
+  });
 
   this.autorun(function(p) {
 

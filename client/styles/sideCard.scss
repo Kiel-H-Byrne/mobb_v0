@@ -45,11 +45,16 @@
       background-color: darken($rgba-primary-grey-0, 80%);
       line-height: 2rem;
       padding: .3rem;
+      font-size: 2rem;
     }
-  }
 
-  .photos_wrapper {
-    min-height: 240px;
+    .collection .collection-item {
+      background-color: lighten($rgba-primary-grey-4, 10%);
+    }
+    
+    .photos_wrapper {
+      min-height: 240px;
+    }
   }
 }
 

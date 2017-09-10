@@ -101,7 +101,7 @@
           {{#if place.reviews}}
           <li><div class="divider"></div></li>
           <li class="item_reviews">
-            <span class="card-title "><i class="material-icons">star</i>Reviews</span><br />
+            <span class="card-title"><i class="material-icons">star</i>Reviews</span><br />
             {{#if place.rating}} 
             <h3>{{place.rating}}/5</h3>
             {{/if}}
@@ -118,12 +118,8 @@
                   <a href="{{review.author_url}}"><h6>{{review.author_name}}</h6></a>
                   <span class="">{{review.relative_time_description}} <span class="badge" data-badge-caption="/5">{{review.rating}}</span></span>
                 </div>
-                <div class="row">
-                  <div class="col s12">
-                    <p class="">{{review.text}}</p>
-                  </div>
-                </div>
               </div>
+              <p class="">{{review.text}}</p>
             </li>
             {{/each}}
             </ul>

@@ -17,31 +17,28 @@
     }
 }
 
-// @media #{$medium-and-up} {
+.closest-wrapper, .favorites-wrapper {
+  position: relative;
+  left: 0;
+  width: 45%;
 
-  .closest-wrapper, .favorites-wrapper {
-    position: relative;
-    left: 0;
-    width: 50%;
-
-    .masonry_item {
-      float: left;
-      max-width: 30%;
-      // width: 150px;
-      // vertical-align: middle;
-      // min-width: 175px;
-      // width: 100%;
-      margin: 5px;
-      padding: 5px;
-    
-      .card-content {
-        padding: 3px;
-        font-size: .9em;
-      }
+  .masonry_item {
+    float: left;
+    max-width: 30%;
+    // width: 150px;
+    // vertical-align: middle;
+    // min-width: 175px;
+    // width: 100%;
+    margin: 5px;
+    padding: 5px;
+  
+    .card-content {
+      padding: 3px;
+      font-size: .9em;
     }
-    
   }
-// }
+  
+}
 
   .masonry_wrapper-fave, .masonry_wrapper-close  { 
     /* closestFlex container */

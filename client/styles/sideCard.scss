@@ -41,7 +41,8 @@
       background-repeat: no-repeat;
     }
     .card-image .card-title {
-      display: block
+      position: relative;
+      display: block;
       width: 100%;
       background-color: darken($rgba-primary-grey-0, 80%);
       line-height: 2rem;

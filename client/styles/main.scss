@@ -86,7 +86,7 @@ a {
   background-color: $clr-orange;
 
   &:hover {
-    background-color: $clr-orange-dark;
+    background-color: darken($clr-orange, 20%);
   }
 }
 

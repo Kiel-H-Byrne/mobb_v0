@@ -34,7 +34,6 @@
         <a class="" href="tel:+1{{phone}}"><i class="material-icons" style="font-size:100%; margin-right:2px; ">phone</i>{{phone}}</a> <br />
         {{/if}}
         </p>
-
         {{#if social.facebook}}
         fb: <a href="https://www.facebook.com/{{social.facebook}}" target="_blank" rel="noopener" > @{{social.facebook}}</a> <br />
         {{/if}}
@@ -45,6 +44,7 @@
         tt: <a href="https://www.twitter.com/{{social.twitter}}" target="_blank" rel="noopener" > @{{social.twitter}}</a> <br />
         {{/if}}
         {{#if description}}
+          <hr />
           <p class="description" >{{description}}</p>
         {{/if}}  
         </div>
@@ -125,8 +125,9 @@
             </ul>
           </li>
           {{else}}
+          <li><div class="divider"></div></li>
           <li>
-            <a href="https://search.google.com/local/writereview?placeid={{google_id}}" target="_blank" rel="noopener" >Leave a Review.</a>
+            <a href="https://search.google.com/local/writereview?placeid={{google_id}}" target="_blank" rel="noopener" >Leave a Google Review.</a>
           </li>
           {{/if}}
         {{/let}}

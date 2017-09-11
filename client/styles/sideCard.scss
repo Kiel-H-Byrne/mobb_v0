@@ -26,21 +26,22 @@
       }
 
       p {
-        line-height: 1.3rem;
+        line-height: 1.5rem;
         color: inherit;
       }
 
     }
 
-    .btn-floating i {
-      position: relative;
-      left: -1.2rem;
-    }
+    // .btn-floating i {
+    //   position: relative;
+    //   left: -1.2rem;
+    // }
     .place_photo {
       background-size: 300px;
       background-repeat: no-repeat;
     }
     .card-image .card-title {
+      display: block
       width: 100%;
       background-color: darken($rgba-primary-grey-0, 80%);
       line-height: 2rem;

@@ -1,30 +1,29 @@
-@import '{}/node_modules/materialize-css/sass/components/mixins';
-@import '{}/node_modules/materialize-css/sass/components/color';
-@import '{}/node_modules/materialize-css/sass/components/variables';
-@import 'palettes/colors';
-@import 'palettes/_plt_orng-tetrad';
-
+@import "{}/node_modules/materialize-css/sass/components/mixins";
+@import "{}/node_modules/materialize-css/sass/components/color";
+@import "{}/node_modules/materialize-css/sass/components/variables";
+@import "palettes/colors";
+@import "palettes/_plt_orng-tetrad";
 
 // ================================================ MIXINS ================================================
 @mixin box-shadow-2($args1, $args2) {
-    -webkit-box-shadow: $args1, $args2;
-    -moz-box-shadow: $args1, $args2;
-    box-shadow: $args1, $args2;
+  -webkit-box-shadow: $args1, $args2;
+  -moz-box-shadow: $args1, $args2;
+  box-shadow: $args1, $args2;
 }
-// ================================================ CSS RESET ================================================
 
+// ================================================ CSS RESET ================================================
 
 // ================================================ ELEMENTS ================================================
 
-html { 
-  box-sizing: border-box; 
-} 
+html {
+  box-sizing: border-box;
+}
 
-*, 
-*:before, 
-*:after { 
-  box-sizing: inherit; 
-} 
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
 
 html,
 body {
@@ -33,9 +32,11 @@ body {
   margin: 0;
   background-color: $rgba-primary-grey-4;
 }
+
 a {
   cursor: pointer;
 }
+
 // ================================================ INPUTS AND FORMS ================================================
 ::-webkit-input-placeholder {
   color: $color-primary-grey-2;
@@ -79,17 +80,15 @@ a {
   opacity: 0.3;
 }
 
-
-// ================================================ MATERIALIZE OVERWRITES ================================================ 
+// ================================================ MATERIALIZE OVERWRITES ================================================
 .btn,
 .btn-floating {
-  background-color: $clr-orange;
+  background-color: $clr-orange !important;
 
   &:hover {
-    background-color: darken($clr-orange, 20%);
+    background-color: darken($clr-orange, 20%) !important;
   }
 }
-
 
 .card_link {
   color: inherit;
@@ -112,19 +111,20 @@ a {
   padding: 50px;
   min-width: 80%;
 }
- 
+
 // ================================================ CUSTOM CLASSES ================================================
 .mobile_search_input,
-.desktop_search_input{
-    position: absolute; 
-    left: -9999px; 
-    width: 1px; 
-    height: 1px;
+.desktop_search_input {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
 }
 
 .more_icon {
   cursor: context-menu;
 }
+
 .myToast {
   background-color: $clr-gold;
 }
@@ -140,13 +140,13 @@ a {
 .broken-image {
   //visibility:hidden hides image and preserves height.
   //display:none removes element.
-  display:none;
+  display: none;
 }
 
 .select_wrapper {
   a {
-    position: relative ;
-    z-index: 0 ;
+    position: relative;
+    z-index: 0;
   }
 
   i {
@@ -157,7 +157,6 @@ a {
 }
 
 .card {
-
   .card-action {
     display: -webkit-flex;
     -webkit-justify-content: space-around;
@@ -174,19 +173,22 @@ a {
 }
 
 [id='at-signIn'] {
+  display: inline-block;
   background-color: $color-secondary-1-2;
   padding: .3rem 1rem;
   border-radius: 3px;
+
   @include box-shadow-2(0 5px 5px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
 }
-
 
 .pac-container {
   // background-color: $clr-grey;
   //needs to be in front of modal which is at z-index: 1003
   z-index: 1005;
+
   ::after {
     // display: none;
+ 
   }
 }
 
@@ -206,13 +208,9 @@ a {
   color: $clr-green;
 }
 
-
-
-
-// ================================================ ADDED TO HOMSESCREEN CSS ================================================  
+// ================================================ ADDED TO HOMSESCREEN CSS ================================================
 @media all and (display-mode: standalone) {
-// Here goes the CSS rules that will only apply if app is running standalone 
-//ios standalone mode add 20px to top for bar.
-//back button?
-
+  // Here goes the CSS rules that will only apply if app is running standalone 
+  //ios standalone mode add 20px to top for bar.
+  //back button?
 }

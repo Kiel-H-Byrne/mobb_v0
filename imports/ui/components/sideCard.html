@@ -1,5 +1,5 @@
 <template name="sideCard">
-<div id="sideCard" >
+<div id="sideCard">
   <a href="#" data-activates="slide-out" class="hide button-collapse show-on-large">Last Clicked</a>
   <ul id="slide-out" class="side-nav">
     {{#with thisDoc}}
@@ -29,9 +29,8 @@
           {{city}} {{state}},  {{zip}} <br />
           </span>
         {{/if}}
-
         {{#if phone}}    
-        <a class="" href="tel:+1{{phone}}"><i class="material-icons" style="font-size:100%; margin-right:2px; ">phone</i>{{phone}}</a> <br />
+        <a class="" href="tel:+1{{phone}}"><i class="material-icons" style="font-size:100%; margin-right:2px; ">call</i>{{phone}}</a> <br />
         {{/if}}
         </p>
         {{#if social.facebook}}
@@ -60,7 +59,7 @@
         {{/if}}
         {{#if phone}}    
         <li><a class="waves-effect" title="Call" href="tel:+1{{phone}}">
-        <i class="material-icons">phone</i>Call Now
+        <i class="material-icons">call</i>Call Now
         </a></li>
         {{/if}}
 
@@ -71,7 +70,7 @@
           {{#if place.opening_hours}}
           <li><div class="divider"></div></li>
           <li class="item_hours">
-            <span class="card-title "><i class="material-icons">watch_later</i>Hours: </span>
+            <span><i class="material-icons">watch_later</i>Hours: </span>
             {{#if isOpen place}}
             <span class="now_open">Open Now!</span>
             {{else}}
@@ -87,12 +86,10 @@
           {{#if place.photos}}
           <li><div class="divider"></div></li>  
           <li class="item_photos">
-            <span class="card-title "><i class="material-icons">star</i>Photos</span><br />
+            <span><i class="material-icons">star</i>Photos</span><br />
             <div class="row photos_wrapper carousel carousel-slider">
             {{#each photo in place.photos}}
-              <div class="place_photo carousel-item" style="background-image: url({{getUrl photo.photo_reference}})">
-                <img src="/img/transparent.png" alt=""/>
-              </div>
+              {{> carouselPhoto}}
               {{!-- <img class="z-depth-2" src="{{getUrl photo.photo_reference}}" alt /> --}}
             {{/each}}
             </div>
@@ -101,7 +98,7 @@
           {{#if place.reviews}}
           <li><div class="divider"></div></li>
           <li class="item_reviews">
-            <span class="card-title"><i class="material-icons">star</i>Reviews</span><br />
+            <span><i class="material-icons">star</i>Reviews</span><br />
             {{#if place.rating}} 
             <h3>{{place.rating}}/5</h3>
             {{/if}}
@@ -109,17 +106,20 @@
             {{#each review in place.reviews}}
             <li class="collection-item">
               <div class="row">
-                <div class="col s4 valign-wrapper">
+                <div class="col s4">
                   <div class="">
                     <a href="{{review.author_url}}" class="" ><img src="{{review.profile_photo_url}}" alt="{{review.author_name}}" class="circle" /></a>
                   </div>
                 </div>
                 <div class="col s8">
-                  <a href="{{review.author_url}}"><h6>{{review.author_name}}</h6></a>
-                  <span class="">{{review.relative_time_description}} <span class="badge" data-badge-caption="/5">{{review.rating}}</span></span>
+                  <a href="{{review.author_url}}"><h6>{{review.author_name}}</h6>
+                  <span class="">{{review.relative_time_description}} </span> </a>
+                  <span class="badge right" data-badge-caption="/5">{{review.rating}}</span>
                 </div>
               </div>
-              <p class="">{{review.text}}</p>
+              <div class="col s12" >
+                <p>{{review.text}}</p>
+              </div>
             </li>
             {{/each}}
             </ul>
@@ -135,4 +135,10 @@
 {{/with}}
   </ul>
 </div>
+</template>
+
+<template name="carouselPhoto">
+  <div class="place_photo carousel-item" style="background-image: url({{getUrl photo.photo_reference}})">
+    <img src="/img/transparent.png" alt=""/>
+  </div>
 </template>

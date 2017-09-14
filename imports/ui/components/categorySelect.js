@@ -36,7 +36,6 @@ Template.catSelect.helpers({
 
 Template.catSelect.events({
   'click .cat_item': function(event,templateInstance) {
-
     $('.dropdown-button').dropdown('close');
   },
 

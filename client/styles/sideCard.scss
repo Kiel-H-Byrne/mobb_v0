@@ -1,25 +1,25 @@
-@import '{}/node_modules/materialize-css/sass/components/mixins';
-@import '{}/node_modules/materialize-css/sass/components/color';
-@import '{}/node_modules/materialize-css/sass/components/variables';
-@import 'palettes/colors';
-@import 'palettes/_plt_orng-tetrad';
+@import "{}/node_modules/materialize-css/sass/components/mixins";
+@import "{}/node_modules/materialize-css/sass/components/color";
+@import "{}/node_modules/materialize-css/sass/components/variables";
+@import "palettes/colors";
+@import "palettes/_plt_orng-tetrad";
 
-
-[id="sideCard"]{
+[id="sideCard"] {
   .side-nav {
     background-color: $rgba-primary-grey-4;
 
     img {
       width: 100%;
       transition: opacity 550ms ease-in-out;
-
     }
 
     li {
-    line-height: 1.3rem;
+      line-height: 1.3rem;
 
       a {
-        color: $rgba-primary-grey-1;  
+        color: $rgba-primary-grey-1;
+        padding: 0;
+
         i {
           color: lighten($rgba-primary-1, 10%);
         }
@@ -29,17 +29,28 @@
         line-height: 1.5rem;
         color: inherit;
       }
-
     }
 
     // .btn-floating i {
     //   position: relative;
     //   left: -1.2rem;
     // }
+
+    .halfway-fab {
+      // position: absolute;
+      // right: -1.5rem;
+      // z-index: 3;
+
+      i {
+        font-size: 2rem;
+      }
+    }
+
     .place_photo {
       background-size: 300px;
       background-repeat: no-repeat;
     }
+
     .card-image .card-title {
       position: relative;
       display: block;
@@ -47,16 +58,14 @@
       background-color: darken($rgba-primary-grey-0, 80%);
       line-height: 2rem;
       padding: .3rem;
-      font-size: 2rem;
     }
 
     .collection .collection-item {
       background-color: lighten($rgba-primary-grey-4, 10%);
     }
-    
+
     .photos_wrapper {
       min-height: 240px;
     }
   }
 }
-

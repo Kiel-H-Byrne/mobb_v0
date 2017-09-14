@@ -18,10 +18,10 @@ import '../components/sideCard.js';
 import './nav.html';
 
 Template.nav.onRendered( function () {
-  // $(document).ready(function () {
-    this.$('[id="loading-wrapper"], .server_rendered').fadeOut();
+  $(document).ready(function () {
+    $('[id="loading-wrapper"], .server_rendered').fadeOut();
     
-    this.$('.dropdown-button').dropdown({
+    $('.dropdown-button').dropdown({
       stopPropagation: true
       // inDuration: 200,
       // outDuration: 225,
@@ -32,9 +32,9 @@ Template.nav.onRendered( function () {
       // alignment: 'left' // Displays dropdown with edge aligned to the left of button
     });
 
-    this.$('.collapsible').collapsible();
+    $('.collapsible').collapsible();
 
-    this.$('.addModal-trigger').modal({
+    $('.addModal-trigger').modal({
         dismissible: true,
         opacity: 0.5,
         in_duration: 300,
@@ -58,7 +58,7 @@ Template.nav.onRendered( function () {
         // }
     });
 
-  // });
+  });
  // TypeAhead autocomplete in Schema
   Meteor.typeahead.inject();
   $('.twitter-typeahead').css("display:block");

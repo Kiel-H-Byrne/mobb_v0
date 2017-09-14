@@ -22,11 +22,14 @@
                     </li>
                     <!--li class=""><a href="/gallery" class="" alt="View Online Only" ><i class="material-icons " title="View Online Gallery">view_module</i></a></li-->
                     {{#if currentUser}}
-                      <li><a class="addModal-trigger  " href="#modalAdd"><i class="material-icons left" title="Add a Business">library_add</i>Add</a></li>
+                      <li><a class="addModal-trigger  " href="#modalAdd"><i class="material-icons left" title="Add a Business">add_location</i>Add</a></li>
                     {{else}}
-                      <li><a class=" " href="/register" alt="Add A Business"><i class="material-icons left" title="Add a Business">library_add</i>Add</a></li>
+                      <li><a class=" " href="/register" alt="Add A Business"><i class="material-icons left" title="Add a Business">add_location</i>Add</a></li>
                     {{/if}}
                     <li>{{> catSelect}}</li>
+                    <li class="hide-on-small-only">
+                      <li><a href="/kibu" alt="About KIBU"><i class="material-icons left" title="Add a Business">info_outline</i>About</a></li>
+                    </li>
                     <li class="right">
                         <div class="select_wrapper">
                             <a class="dropdown-button more_icon" alt="..." data-activates="more-dropdown" data-beloworigin="true" data-constrainwidth="false" data-alignment="right" data-stoppropagation="true" > 
@@ -45,7 +48,7 @@
                                         <img class=" " src="/img/twitter-share.png"  alt="Share on Twitter"/>
                                     </a>
                                 </li>
-                                <li><a href="/kibu">About Us</a></li>
+                                <li class="hide-on-med-and-up"><a href="/kibu">About Us</a></li>
                                 <li><a href="/terms">Terms &amp; Conditions </a></li>
                                 <li class="divider"></li>    
                                 {{#if currentUser}}                        

@@ -133,9 +133,8 @@ let styleTag = `
 
 let loadingDiv = `
   <div id="loading-wrapper" class="server_rendered">
-
     <div class="content-wrapper">
-      <div id="loading-text">LOADING...</div>
+      <div id="loading-text">LOADING</div>
       <div id="loading-content"></div>
     </div>
   </div>

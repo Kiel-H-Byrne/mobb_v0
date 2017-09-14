@@ -27,7 +27,8 @@ Template.sideCard.onRendered( function () {
 
     const docId = Session.get('openListing');
     const doc = Listings.findOne({_id: docId});
-    
+    $('.carousel').carousel({fullWidth:true});
+
     if (doc && !doc.google_id) {
       Meteor.call('placesSearch', doc.name, doc.location);
     } else if (doc && doc.google_id){
@@ -50,6 +51,7 @@ Template.sideCard.helpers({
   thisDoc: function() {
     const docId = Session.get('openListing');
     const doc = Listings.findOne({_id: docId});
+    $('.carousel').carousel({fullWidth:true});
     return doc;    
   },
   getDetails: function(google_id) {
@@ -58,6 +60,7 @@ Template.sideCard.helpers({
         console.log(result)
         // console.log(GCache.get(data.google_id));
         Session.set('thisPlace', result);
+        $('.carousel').carousel({fullWidth:true});
       } else {
         console.log('no response for place:', error);
       }
@@ -89,13 +92,14 @@ Template.carouselPhoto.helpers({
 });
 
 Template.sideCard.events({
-  'hover' : function() {
-    // if (Session.get('thisPlace').photos.length) {
-        $('.carousel').carousel({fullWidth:true});
-    // }
-  }
+  // 'hover' : function() {
+  //   // if (Session.get('thisPlace').photos.length) {
+  //       $('.carousel').carousel({fullWidth:true});
+  //   // }
+  // }
 });
 
 Template.carouselPhoto.onRendered(function() {
+  $('.carousel').carousel({fullWidth:true});
 
 })

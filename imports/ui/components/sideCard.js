@@ -13,7 +13,6 @@ Template.sideCard.onRendered( function () {
       closeOnClick: true,
       draggable: true
     });
-    $('.carousel').carousel({fullWidth:true});
     $('.modal-trigger').modal();
     $('select').material_select();
     $('.dropdown-button').dropdown();
@@ -27,7 +26,7 @@ Template.sideCard.onRendered( function () {
 
     const docId = Session.get('openListing');
     const doc = Listings.findOne({_id: docId});
-    $('.carousel').carousel({fullWidth:true});
+    
 
     if (doc && !doc.google_id) {
       Meteor.call('placesSearch', doc.name, doc.location);
@@ -51,7 +50,7 @@ Template.sideCard.helpers({
   thisDoc: function() {
     const docId = Session.get('openListing');
     const doc = Listings.findOne({_id: docId});
-    $('.carousel').carousel({fullWidth:true});
+    
     return doc;    
   },
   getDetails: function(google_id) {
@@ -82,8 +81,9 @@ Template.carouselPhoto.helpers({
     //   console.log(err, res);
     //   return res.result;
     // });
-    $('.carousel').carousel({fullWidth: true});
-    
+    $(document).ready(function() {
+      $('.carousel').carousel({fullWidth: true});
+    });
     const key = Meteor.settings.public.keys.googleServer.key;
     const uri = "https://maps.googleapis.com/maps/api/place/photo?";
     const apiUri = `${uri}maxwidth=300&photoreference=${ref}&sensor=false&key=${key}`;
@@ -100,6 +100,9 @@ Template.sideCard.events({
 });
 
 Template.carouselPhoto.onRendered(function() {
-  $('.carousel').carousel({fullWidth:true});
+  $(document).ready(function() {
+    console.log('boom!');
+    $('.carousel').carousel({fullWidth:true});
+  });
 
 })

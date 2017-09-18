@@ -1,7 +1,7 @@
 <template name="sideCard">
-<div id="sideCard">
+
   <a href="#" data-activates="slide-out" class="hide button-collapse show-on-large">Last Clicked</a>
-  <ul id="slide-out" class="side-nav">
+  <ul id="slide-out" class="side-nav sideCard">
     {{#with thisDoc}}
     <li>
       <div class="card transparent">
@@ -14,20 +14,18 @@
               {{/if}}
           {{/if}}
           <span class="card-title">{{name}}</span>
-          <a class="btn-floating halfway-fab btn-large waves-effect waves-light"  title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" >
-          <i class="large material-icons">directions</i></a>
         </div>
         <div class="card-content">
         <p class="">
         {{#if address}}    
-          <span>
+          
           {{address}}<br />
-          </span>
+          
         {{else}}
-          <span>
+          
           {{street}} <br />
           {{city}} {{state}},  {{zip}} <br />
-          </span>
+          
         {{/if}}
         {{#if phone}}    
         <a class="" href="tel:+1{{phone}}"><i class="material-icons" style="font-size:100%; margin-right:2px; ">call</i>{{phone}}</a> <br />
@@ -47,11 +45,14 @@
           <p class="description" >{{description}}</p>
         {{/if}}  
         </div>
+        <a class="btn-floating halfway-fab btn-large waves-effect waves-light"  title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" >
+          <i class="large material-icons">directions</i>
+        </a>
       </div>
     </li>
     <li><div class="divider"></div></li>
     <li>
-      <ul class="">
+      <ul class="inline-list">
         {{#if url}}     
         <li> <a class="waves-effect" target="_blank" rel="noopener" title="Website" href="{{url}}">
         <i class="material-icons">link</i>Visit Website
@@ -70,7 +71,7 @@
           {{#if place.opening_hours}}
           <li><div class="divider"></div></li>
           <li class="item_hours">
-            <span><i class="material-icons">watch_later</i>Hours: </span>
+            <span class="section-title"><i class="material-icons">watch_later</i>Hours: </span>
             {{#if isOpen place}}
             <span class="now_open">Open Now!</span>
             {{else}}
@@ -86,7 +87,7 @@
           {{#if place.photos}}
           <li><div class="divider"></div></li>  
           <li class="item_photos">
-            <span><i class="material-icons">star</i>Photos</span><br />
+            <span class="section-title"><i class="material-icons">star</i>Photos</span><br />
             <div class="row photos_wrapper carousel carousel-slider">
             {{#each photo in place.photos}}
               {{> carouselPhoto}}
@@ -98,7 +99,7 @@
           {{#if place.reviews}}
           <li><div class="divider"></div></li>
           <li class="item_reviews">
-            <span><i class="material-icons">star</i>Reviews</span><br />
+            <span class="section-title"><i class="material-icons">star</i>Reviews</span><br />
             {{#if place.rating}} 
             <h3>{{place.rating}}/5</h3>
             {{/if}}
@@ -127,14 +128,14 @@
           {{else}}
           <li><div class="divider"></div></li>
           <li>
-            <a href="https://search.google.com/local/writereview?placeid={{google_id}}" target="_blank" rel="noopener" >Leave a Google Review.</a>
+            <span class="section-title"><i class="material-icons">comment</i><a href="https://search.google.com/local/writereview?placeid={{google_id}}" target="_blank" rel="noopener" >Leave a Google Review.</a></span>
           </li>
           {{/if}}
         {{/let}}
       {{/if}}
 {{/with}}
   </ul>
-</div>
+
 </template>
 
 <template name="carouselPhoto">

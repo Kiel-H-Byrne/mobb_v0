@@ -89,7 +89,7 @@
           <li class="item_photos">
             <span class="section-title"><i class="material-icons">star</i>Photos</span><br />
             <div class="row photos_wrapper carousel carousel-slider">
-            {{#each photo in place.photos}}
+            {{#each place.photos}}
               {{> carouselPhoto}}
               {{!-- <img class="z-depth-2" src="{{getUrl photo.photo_reference}}" alt /> --}}
             {{/each}}
@@ -139,7 +139,7 @@
 </template>
 
 <template name="carouselPhoto">
-  <div class="place_photo carousel-item" style="background-image: url({{getUrl photo.photo_reference}})">
+  <div class="place_photo carousel-item" style="background-image: url({{getUrl photo_reference}})">
     <img src="/img/transparent.png" alt=""/>
   </div>
 </template>

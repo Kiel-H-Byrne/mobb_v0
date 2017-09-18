@@ -7,6 +7,9 @@ Template.sideCard.onCreated( function () {
 Template.sideCard.onRendered( function () {
 
   $(document).ready(function() {
+
+    $('.carousel').carousel();
+
     $('.button-collapse').sideNav({
       menuWidth: 320,
       edge: 'left',
@@ -59,7 +62,7 @@ Template.sideCard.helpers({
         console.log(result)
         // console.log(GCache.get(data.google_id));
         Session.set('thisPlace', result);
-        $('.carousel').carousel({fullWidth:true});
+        $('.carousel.carousel-slider').carousel({fullWidth:true});
       } else {
         console.log('no response for place:', error);
       }
@@ -81,9 +84,6 @@ Template.carouselPhoto.helpers({
     //   console.log(err, res);
     //   return res.result;
     // });
-    $(document).ready(function() {
-      $('.carousel').carousel({fullWidth: true});
-    });
     const key = Meteor.settings.public.keys.googleServer.key;
     const uri = "https://maps.googleapis.com/maps/api/place/photo?";
     const apiUri = `${uri}maxwidth=300&photoreference=${ref}&sensor=false&key=${key}`;
@@ -91,18 +91,11 @@ Template.carouselPhoto.helpers({
   }
 });
 
-Template.sideCard.events({
-  // 'hover' : function() {
-  //   // if (Session.get('thisPlace').photos.length) {
-  //       $('.carousel').carousel({fullWidth:true});
-  //   // }
-  // }
-});
 
 Template.carouselPhoto.onRendered(function() {
   $(document).ready(function() {
     console.log('boom!');
-    $('.carousel').carousel({fullWidth:true});
+    $('.carousel.carousel-slider').carousel({fullWidth:true});
   });
 
 })

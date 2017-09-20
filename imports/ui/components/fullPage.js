@@ -97,10 +97,6 @@ Template.fullPage.helpers({
   //     }
   //   }
   // },
-  isOpen: function(doc) {
-    let check = doc.opening_hours.open_now;
-    return check;
-  },
   microMapOptions: function () {
     // console.log(this.location);
     let locArr = this.location.split(",");
@@ -149,22 +145,6 @@ Template.fullPage.helpers({
         console.log(photos.getUrl(options));
       }
       // return options;
-    },
-    getUrl: function(ref) {
-      //take this photo and return whatever the result of the call is. 
-      //req'd key, photoreference, & maxheight or maxwidth
-      //either i place a URL in the img, or i call the request and place the response in html...
-
-      // Meteor.call('getPlacePhotos', ref, function(err, res) {
-      //   console.log(err, res);
-      //   return res.result;
-      // });
-
-      const key = Meteor.settings.public.keys.googleServer.key;
-      const uri = "https://maps.googleapis.com/maps/api/place/photo?";
-      const apiUri = `${uri}maxheight=240&photoreference=${ref}&sensor=false&key=${key}`;
-      return apiUri;
-      
     }
 });
 

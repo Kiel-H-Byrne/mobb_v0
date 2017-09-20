@@ -130,6 +130,7 @@ setGReviews = function(gid) {
       } 
     }
   } else {
+    console.log("no Google ID");
     //NO GOOGLE ID
     return false;
   }

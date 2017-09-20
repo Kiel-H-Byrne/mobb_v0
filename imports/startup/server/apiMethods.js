@@ -179,6 +179,7 @@ Meteor.methods({
     // SEARCHES FOR A GOOGLE PLACE_ID GIVEN NAME AND LOCATION (CAN ALSO USE ADDRESS, NAME, LOCATION)
     // UPDATES RELATED DOCUMENTs GOOGLE_ID
     // CALLED FROM SCHEMA (LOCATION FIELD)
+    //called from sidecard tempalte
     this.unblock();
     check(name, String);
     check(loc, String);
@@ -204,7 +205,7 @@ Meteor.methods({
         //APP ONLY GOOGLE_ID, don't save.
       }
     } else {
-      //NO RESULTS
+      //NO RESULTS, offer to submit to google
       console.log('NO GOOGLE_ID FOR ' + name);
       return false;
     }

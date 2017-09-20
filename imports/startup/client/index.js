@@ -261,11 +261,33 @@ Meteor.startup(function () {
   Template.registerHelper('currentDoc', function () {
     if (Session.get('openListing')) {
       let id = Session.get('openListing');
-      let doc = Listings.findOne({_id: id});
-      // console.log(doc);
+      const doc = Listings.findOne({_id: id});
       return doc;
     }
   });
+
+  Template.registerHelper('isOpen', function(doc) {
+    let check = doc.opening_hours.open_now;
+    return check;
+  });
+
+  Template.registerHelper('getImgUrl', function(ref) {
+    //take this photo and return whatever the result of the call is. 
+    //req'd key, photoreference, & maxheight or maxwidth
+    //either i place a URL in the img, or i call the request and place the response in html...
+
+    // Meteor.call('getPlacePhotos', ref, function(err, res) {
+    //   console.log(err, res);
+    //   return res.result;
+    // });
+    const key = Meteor.settings.public.keys.googleServer.key;
+    const uri = "https://maps.googleapis.com/maps/api/place/photo?";
+    const apiUri = `${uri}maxwidth=300&photoreference=${ref}&sensor=false&key=${key}`;
+    return apiUri;
+  });
+
+
+
 // STILL INSIDE METEOR.STARTUP
 });
 

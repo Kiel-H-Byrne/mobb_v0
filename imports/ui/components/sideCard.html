@@ -2,7 +2,7 @@
 
   <a href="#" data-activates="slide-out" class="hide button-collapse show-on-large">Last Clicked</a>
   <ul id="slide-out" class="side-nav sideCard">
-    {{#with thisDoc}}
+    {{#with currentDoc}}
     <li>
       <div class="card transparent">
         <div class="card-image">
@@ -66,7 +66,7 @@
 
       </ul>
     </li>
-      {{#if thisPlace}}
+      {{#if google_id}}
         {{#let place=thisPlace}}
           {{#if place.opening_hours}}
           <li><div class="divider"></div></li>
@@ -91,7 +91,7 @@
             <div class="row photos_wrapper carousel carousel-slider">
             {{#each place.photos}}
               {{> carouselPhoto}}
-              {{!-- <img class="z-depth-2" src="{{getUrl photo.photo_reference}}" alt /> --}}
+              {{!-- <img class="z-depth-2" src="{{getImgUrl photo.photo_reference}}" alt /> --}}
             {{/each}}
             </div>
           </li>
@@ -139,7 +139,7 @@
 </template>
 
 <template name="carouselPhoto">
-  <div class="place_photo carousel-item" style="background-image: url({{getUrl photo_reference}})">
+  <div class="place_photo carousel-item" style="background-image: url({{getImgUrl photo_reference}})">
     <img src="/img/transparent.png" alt=""/>
   </div>
 </template>

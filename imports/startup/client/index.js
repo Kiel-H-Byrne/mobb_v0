@@ -37,6 +37,8 @@ import 'materialize-css/js/date_picker/picker';
 import 'materialize-css/js/date_picker/picker.date';
 import 'materialize-css/js/date_picker/picker.time';
 
+import 'materialize-css/dist/js/materialize';
+
 //Import Routes & functions
 import '/lib/config/routes.js';
 

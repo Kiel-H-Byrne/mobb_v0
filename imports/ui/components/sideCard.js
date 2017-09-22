@@ -7,14 +7,15 @@ Template.sideCard.onCreated( function () {
 Template.sideCard.onRendered( function () {
 
   $(document).ready(function() {
-
-    $('.carousel').carousel();
-
     $('.button-collapse').sideNav({
       menuWidth: 320,
       edge: 'left',
       closeOnClick: true,
-      draggable: true
+      draggable: true,
+      onOpen: function() { 
+        console.log('open!');
+        $('.carousel.carousel-slider').carousel({fullWidth:true});
+      }
     });
     $('.modal-trigger').modal();
     $('select').material_select();
@@ -56,17 +57,17 @@ Template.sideCard.onRendered( function () {
 });
 
 Template.sideCard.helpers({
+  renderCarousel: function() {
+    $(document).ready(function() {
+      console.log('boom!');
+      $('.carousel.carousel-slider').carousel({fullWidth:true});
+    });
+  }
 });
 
-Template.carouselPhoto.helpers({
-
-});
-
-
-Template.carouselPhoto.onRendered(function() {
-  $(document).ready(function() {
-    console.log('boom!');
-    $('.carousel.carousel-slider').carousel({fullWidth:true});
-  });
-
-})
+// Template.carouselPhoto.onRendered(function() {
+//   $(document).ready(function() {
+//     console.log('boom!');
+//     $('.carousel.carousel-slider').carousel({fullWidth:true});
+//   });
+// })

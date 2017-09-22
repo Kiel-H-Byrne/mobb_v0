@@ -38,9 +38,9 @@ Template.galleryCard.onRendered(function () {
 });
 
 Template.galleryCard.events({
-  // 'click': function(event,templateInstance) {
-  //   // Session.set('openListing', this._id);
-  //   // console.log(this._id);
-  // }
+  'click': function(event,templateInstance) {
+    Session.set('openListing', this._id);
+    $('.button-collapse').sideNav('show');
+  }
 
 });

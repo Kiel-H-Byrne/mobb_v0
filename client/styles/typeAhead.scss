@@ -1,7 +1,6 @@
-@import '{}/node_modules/materialize-css/sass/components/mixins';
-@import '{}/node_modules/materialize-css/sass/components/color';
-@import '{}/node_modules/materialize-css/sass/components/variables';
-@import 'palettes/colors';
+@import "{}/node_modules/materialize-css/sass/components/color";
+@import "{}/node_modules/materialize-css/sass/components/variables";
+@import "palettes/colors";
 
 .twitter-typeahead {
   display: block !important;
@@ -15,17 +14,16 @@
   background-color: $clr-grey-light;
   color: $clr-orange;
   padding: .5rem;
+
   // @include box-shadow-2(0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
 }
-
-
 
 .typeahead {
   background-color: #fff;
 }
 
 .tt-hint {
-  color: #999
+  color: #999;
 }
 
 .tt-menu {
@@ -40,7 +38,7 @@
   padding: auto 1rem;
   font-size: 18px;
   line-height: 24px;
-  
+
   :hover {
     cursor: pointer;
     background-color: $clr-grey-clear;
@@ -59,7 +57,5 @@
     }
   }
 
-  .tt-cursor {
-
-  }
+  .tt-cursor {}
 }

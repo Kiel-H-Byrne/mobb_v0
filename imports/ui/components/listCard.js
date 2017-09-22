@@ -17,7 +17,7 @@ Template.listCard.onRendered( function () {
 
 Template.listCard.events({
   'click': function(event,templateInstance) {
-      Session.set('openListing', this.data._id );
+      Session.set('openListing', this._id );
       $('.button-collapse').sideNav('show');
   }
 });

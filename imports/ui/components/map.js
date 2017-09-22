@@ -275,12 +275,12 @@ Template.map.onCreated( function () {
         //     google.maps.event.trigger(map, "resize");
         //     console.log("new center");
         // })
-        google.maps.event.addListener(map, "dblclick", function(event) {
-            console.debug("caught double click");
-            // reference the global event object
-            // ignore the googleMapsEvent passed in by Google Maps!
-            event.preventDefault();
-        });
+        // google.maps.event.addListener(map, "dblclick", function(event) {
+        //     console.debug("caught double click");
+        //     // reference the global event object
+        //     // ignore the googleMapsEvent passed in by Google Maps!
+        //     event.preventDefault();
+        // });
     });
 
 });

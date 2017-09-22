@@ -177,7 +177,7 @@ Meteor.methods({
   },
   placesSearch: function (name, loc) {
     // SEARCHES FOR A GOOGLE PLACE_ID GIVEN NAME AND LOCATION (CAN ALSO USE ADDRESS, NAME, LOCATION)
-    // UPDATES RELATED DOCUMENTs GOOGLE_ID
+    // RETURNS GOOGLE ID
     // CALLED FROM SCHEMA (LOCATION FIELD)
     //called from sidecard tempalte
     this.unblock();
@@ -192,24 +192,17 @@ Meteor.methods({
     const response = Meteor.wrapAsync(apiCall)(apiUrl);
     // console.log("still running");
     if (response && response.results[0]) {
+      // console.log(response);
       const result = response.results[0];
       if (result.scope == "GOOGLE") {
         console.log(name, result.place_id);
-        Listings.update({
-          name: name
-        }, {
-          $set: {google_id: result.place_id}
-        });
         return result.place_id;
-      } else {
-        //APP ONLY GOOGLE_ID, don't save.
       }
     } else {
       //NO RESULTS, offer to submit to google
       console.log('NO GOOGLE_ID FOR ' + name);
       return false;
     }
-    return ;
   },
   getPlacePhotos: function(photoref) {
     check(photoref, String);
@@ -365,7 +358,6 @@ Meteor.methods({
     }
   },
   setGID: function(id, google_id) {
-    this.unblock();
     check(id, String);
     check(google_id, String);
     Listings.update(
@@ -386,6 +378,4 @@ Meteor.methods({
 
 
 // http://api-business.usa.gov/XML?keyword=healthcare&size=50&offset=1&api_key=RC6NXt4BfjScFhF5s3LFldxNyrgiQkog0Be9xI8q
-
-
 //   http://api-business.usa.gov/data/JSON?api_key=RC6NXt4BfjScFhF5s3LFldxNyrgiQkog0Be9xI8q&size=50&offset=1&ownership=minority

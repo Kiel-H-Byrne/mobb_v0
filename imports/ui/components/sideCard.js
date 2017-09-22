@@ -31,7 +31,15 @@ Template.sideCard.onRendered( function () {
     const doc = Listings.findOne({_id: docId});
 
     if (doc && !doc.google_id) {
-      Meteor.call('placesSearch', doc.name, doc.location);
+      //GET ID, UPDATE DOCUMENT
+      Meteor.call('placesSearch', doc.name, doc.location, function(error,result) {
+        if (result) {
+          Listings.update(
+            { _id: docId },
+            { $set: { google_id: result } }
+          );
+        }
+      });
     } else if (doc && doc.google_id){
       // console.log("Have google ID");
       Meteor.call('placeDetails' , doc.google_id, function(error,result) {

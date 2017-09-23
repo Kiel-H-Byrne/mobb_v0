@@ -2,29 +2,32 @@
 import '/imports/api/orionCache.js';
 import Listings from '/imports/startup/collections/listings';
 
-$ = window.jQuery = require("jquery");
+$ = window.jquery = require('jquery');
 import 'materialize-css/js/initial';
 import 'materialize-css/js/global';
 import 'materialize-css/js/velocity.min' ;
-window.Vel = require('materialize-css/js/velocity.min');
+window.Vel = require('materialize-css/js/velocity.min.js');
 import 'materialize-css/js/hammer.min';
-import 'materialize-css/js/jquery.easing.1.4';
+window.Hammer = require('materialize-css/js/hammer.min.js');
 import 'materialize-css/js/jquery.hammer';
+import 'materialize-css/js/jquery.easing.1.4';
+
+
 import 'materialize-css/js/animation';
 import 'materialize-css/js/buttons';
 import 'materialize-css/js/cards';
 import 'materialize-css/js/carousel';
 import 'materialize-css/js/character_counter';
-import 'materialize-css/js/chips';
+// import 'materialize-css/js/chips';
 import 'materialize-css/js/collapsible';
 import 'materialize-css/js/dropdown';
 import 'materialize-css/js/forms';
 import 'materialize-css/js/materialbox';
 import 'materialize-css/js/modal';
-// import 'materialize-css/js/parallax';
+// // import 'materialize-css/js/parallax';
 import 'materialize-css/js/pushpin';
-// import 'materialize-css/js/scrollFire';
-// import 'materialize-css/js/scrollspy';
+// // import 'materialize-css/js/scrollFire';
+// // import 'materialize-css/js/scrollspy';
 import 'materialize-css/js/sideNav';
 import 'materialize-css/js/slider';
 import 'materialize-css/js/tabs';
@@ -54,8 +57,7 @@ jQueryBridget = require('jquery-bridget');
 Masonry = require('masonry-layout');
 ImagesLoaded = require('imagesloaded');
 jQueryBridget( 'masonry', Masonry, $ );
-// VTM = require('vanilla-text-mask/dist/vanillaTextMask.js');
-// console.log(VTM);
+
 // downloadImage = require('download-image');
 
 console.log("-= imports/startup/client/index.js loaded");

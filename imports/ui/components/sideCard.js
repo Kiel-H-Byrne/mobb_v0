@@ -11,11 +11,7 @@ Template.sideCard.onRendered( function () {
       menuWidth: 320,
       edge: 'left',
       closeOnClick: true,
-      draggable: true,
-      onOpen: function() { 
-        console.log('open!');
-        $('.carousel.carousel-slider').carousel({fullWidth:true});
-      }
+      draggable: true
     });
     $('.modal-trigger').modal();
     $('select').material_select();
@@ -54,20 +50,16 @@ Template.sideCard.onRendered( function () {
       });
     }
   });
+
+  // ImagesLoaded( '.place_photo', function () {
+  //   console.log('finished')
+  //   $('.carousel.carousel-slider').carousel({fullWidth:true});
+  // });
+
 });
 
-Template.sideCard.helpers({
-  renderCarousel: function() {
-    $(document).ready(function() {
-      console.log('boom!');
-      $('.carousel.carousel-slider').carousel({fullWidth:true});
-    });
-  }
+Template.carouselPhoto.onRendered(function() {
+  $(document).ready(function() {
+    $('.carousel.carousel-slider').carousel();
+  });
 });
-
-// Template.carouselPhoto.onRendered(function() {
-//   $(document).ready(function() {
-//     console.log('boom!');
-//     $('.carousel.carousel-slider').carousel({fullWidth:true});
-//   });
-// })

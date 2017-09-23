@@ -80,12 +80,11 @@ a {
 }
 
 // ================================================ MATERIALIZE OVERWRITES ================================================
-.btn,
-.btn-floating {
-  background-color: $clr-orange !important;
+.btn {
+  background-color: $clr-orange;
 
   &:hover {
-    background-color: darken($clr-orange, 20%) !important;
+    background-color: darken($clr-orange, 20%);
   }
 }
 

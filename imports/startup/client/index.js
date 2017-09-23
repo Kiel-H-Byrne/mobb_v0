@@ -2,16 +2,18 @@
 import '/imports/api/orionCache.js';
 import Listings from '/imports/startup/collections/listings';
 
+// IMPORT EVERYTHING NEEDED FOR MATERIALIZE LIBRARY. 
+// JQUERY GOES FIRST WITH INIT, THEN VELOCITY, THEN GLOBAL. 
+// THEN INDIVIDUAL MATERIALIZE JS FILES
+// THEN MATERIALIZE JS
 $ = window.jquery = require('jquery');
 import 'materialize-css/js/initial';
-import 'materialize-css/js/global';
 import 'materialize-css/js/velocity.min' ;
-window.Vel = require('materialize-css/js/velocity.min.js');
+import 'materialize-css/js/global';
+
 import 'materialize-css/js/hammer.min';
-window.Hammer = require('materialize-css/js/hammer.min.js');
 import 'materialize-css/js/jquery.hammer';
 import 'materialize-css/js/jquery.easing.1.4';
-
 
 import 'materialize-css/js/animation';
 import 'materialize-css/js/buttons';

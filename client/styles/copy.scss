@@ -88,35 +88,35 @@ p {
   }
 }
 
-/* label color */
+// label color
 .input-field label {
-  color: $rgba-primary-grey-4;
+  color: $color-primary-grey-2;
 }
 
-/* label focus color */
+// label focus color
 .input-field input[type=text]:focus + label {
-  color: $rgba-primary-4;
+  color: $color-primary-2;
 }
 
-/* label underline focus color */
+// label underline focus color
 .input-field input[type=text]:focus {
-  border-bottom: 1px solid $rgba-primary-4;
-  box-shadow: 0 1px 0 0 $rgba-primary-grey-4;
+  border-bottom: 1px solid $color-primary-4;
+  box-shadow: 0 1px 0 0 $color-primary-grey-4;
 }
 
-/* valid color */
+// valid color
 .input-field input[type=text].valid {
   border-bottom: 1px solid $color-secondary-2-2;
-  box-shadow: 0 1px 0 0 $rgba-primary-grey-4;
+  box-shadow: 0 1px 0 0 $color-primary-grey-4;
 }
 
-/* invalid color */
+// invalid color
 .input-field input[type=text].invalid {
-  border-bottom: 1px solid red;
-  box-shadow: 0 1px 0 0 $rgba-primary-grey-4;
+  border-bottom: 1px solid #f00;
+  box-shadow: 0 1px 0 0 $color-primary-grey-4;
 }
 
-/* icon prefix focus color */
+// icon prefix focus color
 .input-field .prefix.active {
-  color: $rgba-primary-4;
+  color: $color-primary-4;
 }

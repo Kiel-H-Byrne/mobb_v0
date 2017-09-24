@@ -78,21 +78,13 @@ Template.addForm.onRendered(function() {
       // When the user selects an address from the dropdown, populate the address
       // fields in the form.
       geocomplete.addListener('place_changed', function() {
+        console.log('YOURE HERE SOMEWHERE!!');
         fillInAddress();
       });
     }
   });
 
   $(document).ready(() => {
-    // $('#modalAdd').modal({
-    //   dismissible: true, // Modal can be dismissed by clicking outside of the modal
-    //   opacity: 0.5, // Opacity of modal background
-    //   inDuration: 300, // Transition in duration
-    //   outDuration: 200, // Transition out duration
-    //   startingTop: '5%', // Starting top style attribute
-    //   endingTop: '10%' // Ending top style attribute
-    // });
-
     $('.collapsible').collapsible();
 
       //mask is array of strings and regex
@@ -104,9 +96,6 @@ Template.addForm.onRendered(function() {
       inputElement: telInput,
       mask: telMask
     });
-      
-    // let state = Session.get('clientState');
-    // $("li:contains("+ state +")").addClass("active selected");
   
   });
 
@@ -127,17 +116,17 @@ Template.addForm.helpers({
 });
 
 Template.addForm.events({
-  'focus #geocomplete': function() {
+  // 'focus #geocomplete': function() {
 
-    if (Session.get('clientLoc')) {
-      const circle = new google.maps.Circle({
-          center: Session.get('clientLoc'),
-          radius: (25 * 1609.34)
-      });
-      // console.log(circle);
-      geocomplete.setBounds(circle.getBounds());
-    }
-  }
+  //   if (Session.get('clientLoc')) {
+  //     const circle = new google.maps.Circle({
+  //         center: Session.get('clientLoc'),
+  //         radius: (25 * 1609.34)
+  //     });
+  //     // console.log(circle);
+  //     geocomplete.setBounds(circle.getBounds());
+  //   }
+  // }
 });
 
 AutoForm.addHooks('addListingForm', {

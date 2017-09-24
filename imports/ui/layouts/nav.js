@@ -8,7 +8,6 @@ import '../components/editForm.js';
 import '../components/infoModal.js';
 import '../components/categorySelect.js';
 import '../components/geoModal.js';
-import '../components/betaModal.js';
 import '../components/corner-ribbon.js';
 import '../components/favoriteStar.js';
 import '../components/shareListing.js';

@@ -83,20 +83,8 @@ Template.fullPage.onRendered(function () {
 
 });
 
-Template.fullPage.events({
-
-});
 
 Template.fullPage.helpers({
-  // isPlace: function () {
-  //   let id = this.google_id;
-  //   if (id) {
-  //     let startswC = id.charAt(0) !== 'q'; //is from google
-  //     if (id && startswC) {
-  //       return true;
-  //     }
-  //   }
-  // },
   microMapOptions: function () {
     // console.log(this.location);
     let locArr = this.location.split(",");

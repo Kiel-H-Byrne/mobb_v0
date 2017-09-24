@@ -45,7 +45,7 @@
           <p class="description" >{{description}}</p>
         {{/if}}  
         </div>
-        <a class="btn-floating halfway-fab btn-large waves-effect waves-light"  title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" >
+        <a class="btn-floating halfway-fab btn-large waves-effect waves-light z-depth-4"  title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" >
           <i class="large material-icons">directions</i>
         </a>
       </div>
@@ -89,8 +89,9 @@
           <li class="item_photos">
             <span class="section-title"><i class="material-icons">star</i>Photos</span><br />
             <div class="row photos_wrapper carousel carousel-slider">
+              {{!-- <div class="carousel-item"></div> --}}
             {{#each place.photos}}
-              {{> carouselPhoto}}
+              {{> carouselPhoto2}}
               {{!-- <img class="z-depth-2" src="{{getImgUrl photo.photo_reference}}" alt /> --}}
             {{/each}}
             </div>
@@ -142,4 +143,10 @@
   <div class="place_photo carousel-item" style="background-image: url({{getImgUrl photo_reference}})">
     <img src="/img/transparent.png" alt=""/>
   </div>
+</template>
+
+<template name="carouselPhoto2">
+  <a class="place_photo carousel-item" style="">
+    <img src="{{getImgUrl photo_reference}}" />
+  </a>
 </template>

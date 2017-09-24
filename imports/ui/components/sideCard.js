@@ -11,7 +11,14 @@ Template.sideCard.onRendered( function () {
       menuWidth: 320,
       edge: 'left',
       closeOnClick: true,
-      draggable: true
+      draggable: true,
+      onClose: function() {
+        Session.set('carouselInit', false);
+      }
+    });
+    $('.carousel.carousel-slider').carousel({
+      fullWidth: true,
+      indicators: true
     });
     $('.modal-trigger').modal();
     $('select').material_select();
@@ -52,14 +59,26 @@ Template.sideCard.onRendered( function () {
   });
 
   // ImagesLoaded( '.place_photo', function () {
-  //   console.log('finished')
-  //   $('.carousel.carousel-slider').carousel({fullWidth:true});
+  //   if (!Session.get('carouselInit')) {
+  //     console.log('finished!');
+  //     $('.carousel.carousel-slider').carousel({
+  //       fullWidth: true,
+  //       indicators: true
+  //     });
+  //     Session.set('carouselInit', true);
+  //   }
   // });
-
 });
 
-Template.carouselPhoto.onRendered(function() {
+Template.carouselPhoto2.onRendered(function() {
   $(document).ready(function() {
-    $('.carousel.carousel-slider').carousel();
+  if (!Session.get('carouselInit')) {
+      console.log('finished!');
+      $('.carousel.carousel-slider').carousel({
+        fullWidth: true,
+        indicators: true
+      });
+      Session.set('carouselInit', true);
+    }
   });
 });

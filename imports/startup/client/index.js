@@ -9,6 +9,7 @@ import Listings from '/imports/startup/collections/listings';
 $ = window.jquery = require('jquery');
 import 'materialize-css/js/initial';
 import 'materialize-css/js/velocity.min' ;
+// window.Vel = require('materialize-css/js/velocity.min');
 import 'materialize-css/js/global';
 
 import 'materialize-css/js/hammer.min';

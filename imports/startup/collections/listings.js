@@ -123,8 +123,8 @@ Listings.allow({
 
   // only allow insertion if you are logged in
   insert: (userId, doc) => !! userId,
-  update: (userId, doc) => !! userId,
-  remove: (userId, doc) => false
+  //allow everyone to 'update' pr at least from server
+  update: (userId, doc) => true,
 });
 
 // Listings.allow({

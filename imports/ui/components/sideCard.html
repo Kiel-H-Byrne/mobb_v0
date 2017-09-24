@@ -101,9 +101,6 @@
           <li><div class="divider"></div></li>
           <li class="item_reviews">
             <span class="section-title"><i class="material-icons">star</i>Reviews</span><br />
-            {{#if place.rating}} 
-            <h3>{{place.rating}}/5</h3>
-            {{/if}}
             <ul class="collection">
             {{#each review in place.reviews}}
             <li class="collection-item">

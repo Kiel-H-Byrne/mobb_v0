@@ -1,16 +1,19 @@
-@import '{}/node_modules/materialize-css/sass/components/color';
-@import '{}/node_modules/materialize-css/sass/components/variables';
-@import 'palettes/colors';
-@import 'palettes/_plt_orng-tetrad';
+@import "{}/node_modules/materialize-css/sass/components/color";
+@import "{}/node_modules/materialize-css/sass/components/variables";
+@import "palettes/colors";
+@import "palettes/_plt_orng-tetrad";
 
 .navbar-fixed {
   nav {
     background-color: $rgba-primary-grey-5;
   }
+
   img {
     max-height: $navbar-height;
     cursor: alias;
+
     // margin: 1rem auto;
+ 
   }
 
   i {
@@ -22,6 +25,7 @@
   .link-share {
     background-color: $rgba-primary-0;
     width: 100%;
+
     &:hover {
       background-color: $rgba-primary-2;
     }
@@ -33,69 +37,67 @@
     }
   }
 
-  .nav-list{
+  .nav-list {
     i {
       line-height: inherit;
     }
 
-  .more_icon {
-    padding: 0 3px 0 7px;
-    margin: auto;
-  }
+    .more_icon {
+      padding: 0 3px 0 7px;
+      margin: auto;
+    }
 
-    form input  {
+    form input {
       margin: 0 .5rem !important;
       vertical-align: middle !important;
       width: auto;
+
       // min-width: 175px;
+   
     }
 
     li a {
       color: $rgba-primary-0;
     }
 
-    .no_pad{
+    .no_pad {
       padding: 0 .3rem;
     }
-   
-   .more_btn{
+
+    .more_btn {
       padding: 0;
-
     }
-
   }
 
-  [id='mobile-search_wrapper'] {
-
-    .input-field {
-      label {
-        &:not(.label-icon).active {
-          transform: translateY(-1rem);
-        }
-      }
-    }
-
-    form input, i {
-      padding-top: .3rem ;
-      padding-bottom: .3rem ;
+  [id='desktop_search-form'] {
+    form input {
+      padding-top: 0.3rem;
+      padding-bottom: 0.3rem;
       margin: .3rem .5rem;
       vertical-align: middle !important;
       line-height: inherit;
     }
-  }
 
+    i.prefix {
+      left: -1.1rem;
+      font-size: 1.5rem;
+      color: $rgba-primary-grey-2;
+    }
+  }
 }
 
 @media #{$medium-and-down} {
+
   .navbar-fixed {
     img {
-      max-height: ($navbar-height - 15px);
+      max-height: $navbar-height - 15px;
       margin: 4px auto;
     }
   }
 }
 
 @media #{$small-and-down} {
+
   .navbar-fixed {
     // position: fixed;
     // bottom: 0;
@@ -108,14 +110,17 @@
 
     .nav-list {
       a {
-          // padding: 0 7px;
+        // padding: 0 7px;
+     
       }
     }
   }
 }
 
 @media #{$medium-and-up} {
-  .nav-list{
+
+  .nav-list {
     // float:right //only on large screen...
+ 
   }
 }

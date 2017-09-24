@@ -84,15 +84,14 @@ Template.addForm.onRendered(function() {
   });
 
   $(document).ready(() => {
-
-    $('#modalAdd').modal({
-      dismissible: true, // Modal can be dismissed by clicking outside of the modal
-      opacity: 0.6, // Opacity of modal background
-      inDuration: 300, // Transition in duration
-      outDuration: 200, // Transition out duration
-      startingTop: '0%', // Starting top style attribute
-      endingTop: '10%' // Ending top style attribute
-    });
+    // $('#modalAdd').modal({
+    //   dismissible: true, // Modal can be dismissed by clicking outside of the modal
+    //   opacity: 0.5, // Opacity of modal background
+    //   inDuration: 300, // Transition in duration
+    //   outDuration: 200, // Transition out duration
+    //   startingTop: '5%', // Starting top style attribute
+    //   endingTop: '10%' // Ending top style attribute
+    // });
 
     $('.collapsible').collapsible();
 

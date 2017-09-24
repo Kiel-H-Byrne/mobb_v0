@@ -1,5 +1,5 @@
-@import 'palettes/colors';
-@import 'palettes/_plt_orng-tetrad';
+@import "palettes/colors";
+@import "palettes/_plt_orng-tetrad";
 
 * {
   font-family: 'Trebuchet MS', Helvetica, sans-serif;
@@ -16,7 +16,7 @@ html {
 
   .address-phone {
     color: $rgba-secondary-2-0;
-   
+
     i {
       color: $rgba-secondary-2-0;
     }
@@ -83,7 +83,40 @@ p {
 }
 
 .dropdown-content {
-  li > span{
+  li > span {
     color: $rgba-primary-4;
   }
+}
+
+/* label color */
+.input-field label {
+  color: $rgba-primary-grey-4;
+}
+
+/* label focus color */
+.input-field input[type=text]:focus + label {
+  color: $rgba-primary-4;
+}
+
+/* label underline focus color */
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid $rgba-primary-4;
+  box-shadow: 0 1px 0 0 $rgba-primary-grey-4;
+}
+
+/* valid color */
+.input-field input[type=text].valid {
+  border-bottom: 1px solid $color-secondary-2-2;
+  box-shadow: 0 1px 0 0 $rgba-primary-grey-4;
+}
+
+/* invalid color */
+.input-field input[type=text].invalid {
+  border-bottom: 1px solid red;
+  box-shadow: 0 1px 0 0 $rgba-primary-grey-4;
+}
+
+/* icon prefix focus color */
+.input-field .prefix.active {
+  color: $rgba-primary-4;
 }

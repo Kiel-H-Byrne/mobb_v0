@@ -6,9 +6,9 @@
       <h2 class="center-align">{{catName}}</h2>
     </div>
   </div>
-  <div class="row categoryFlex">
+  <div class="row categoryFlex masonry_grid">
   {{#each card in list}}
-      <div id="{{card._id}}" class=" categoryFlex_item card sticky-action hoverable ">
+      <div id="{{card._id}}" class=" masonry_item categoryFlex_item card sticky-action hoverable ">
         <div class="card-image">
         <a href="/listings/{{card.name}}">
           {{#if card.image.url}}

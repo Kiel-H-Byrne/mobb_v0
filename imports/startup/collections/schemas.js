@@ -188,6 +188,8 @@ Schema.Verifier = new SimpleSchema({
   }
 });
 
+
+
 Schema.Social = new SimpleSchema({
   facebook: {
     type: String,
@@ -325,12 +327,14 @@ Schema.Listings = new SimpleSchema({
     type: String,
     optional: true
   },
-  "claims.$.name": {
+  "claims.$.ownerName": {
     type: String,
+    label: 'Name',
     optional: true
   },
-  "claims.$.phone": {
+  "claims.$.ownerPhone": {
     type: String,
+    label: 'Phone Number',
     optional: true
   },  
   claimsCount: {

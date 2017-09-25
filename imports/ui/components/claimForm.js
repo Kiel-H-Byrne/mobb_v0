@@ -2,7 +2,14 @@ import './claimForm.html';
 
 Template.claimForm.onRendered(function () {
   $(document).ready(function () {
-      
+    const VTM = require('vanilla-text-mask/dist/vanillaTextMask.js');
+
+    let telMask = ['(', /[1-9]/, /\d/, /\d/, ')',' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+    let telInput = document.querySelector('#phone_input_claim');
+    let telInputMask = VTM.maskInput({
+      inputElement: telInput,
+      mask: telMask
+    });
   });
 });
 

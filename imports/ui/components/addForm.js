@@ -78,7 +78,6 @@ Template.addForm.onRendered(function() {
       // When the user selects an address from the dropdown, populate the address
       // fields in the form.
       geocomplete.addListener('place_changed', function() {
-        console.log('YOURE HERE SOMEWHERE!!');
         fillInAddress();
       });
     }

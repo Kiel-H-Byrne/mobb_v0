@@ -30,7 +30,6 @@ Template.galleryCard.onRendered(function () {
 
   $(document).ready(function () {
     $('img').on('error', function () {
-      // console.log("on broken image", this);
       $(this).css({display:"none"});
     });
   });  
@@ -38,9 +37,9 @@ Template.galleryCard.onRendered(function () {
 });
 
 Template.galleryCard.events({
-  'click': function(event,templateInstance) {
-    Session.set('openListing', this._id);
-    $('.button-collapse').sideNav('show');
-  }
+  // 'click': function(event,templateInstance) {
+  //   Session.set('openListing', this._id);
+  //   $('.button-collapse').sideNav('show');
+  // }
 
 });

@@ -39,7 +39,6 @@ Template.fullPage.onRendered(function () {
   // }
 
   $(document).ready(function () {
-    $('.modal-trigger').modal();
     $('select').material_select();
     $('.dropdown-button').dropdown({
     // stopPropagation: true

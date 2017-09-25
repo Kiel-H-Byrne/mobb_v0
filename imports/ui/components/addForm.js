@@ -84,6 +84,16 @@ Template.addForm.onRendered(function() {
   });
 
   $(document).ready(() => {
+
+    $('#modalAdd').modal({
+      dismissible: true, // Modal can be dismissed by clicking outside of the modal
+      opacity: 0.5, // Opacity of modal background
+      inDuration: 300, // Transition in duration
+      outDuration: 200, // Transition out duration
+      startingTop: '5%', // Starting top style attribute
+      endingTop: '10%' // Ending top style attribute
+    });
+        
     $('.collapsible').collapsible();
 
       //mask is array of strings and regex
@@ -150,15 +160,5 @@ AutoForm.addHooks('addListingForm', {
   onSuccess(formType, result) {
     $('#modalAdd').modal('close');
     Materialize.toast('Thanks for Submitting!', 3300, 'myToast');
-  	// console.log("Thanks for Submitting!");
-    // console.log(result);
-    // draw marker?
-    // change content(inner html) of addForm template.
-    // $('#modalAdd').html(
-    //   ` <div id="submitMsg" class="modal-content">
-    //    <h3 class="centered"> Thank You! </h3>
-    //    {{{> closeButton}}}
-    //    </div>
-    //   );
   },
 });

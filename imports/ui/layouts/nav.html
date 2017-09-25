@@ -15,7 +15,7 @@
                         <form id="desktop_search-form">
                           <div class="input-field">
                             <i class="material-icons prefix">search</i>
-                            <input id="search_nav" placeholder="Search..." size="15" class="form-control typeahead" name="results" type="text" autocomplete="off" spellcheck="off" data-sources="dataset" />
+                            <input id="search_nav" placeholder="Search..." size="15" class="form-control typeahead" name="results" type="text" autocomplete="on" spellcheck="off" data-sources="dataset" />
                             <input class="desktop_search_input" type="submit" tabindex="-1" />
                           </div>
                         </form>
@@ -49,10 +49,8 @@
                                     </a>
                                 </li>
                                 <li class="hide-on-med-and-up"><a href="/kibu">About Us</a></li>
-                                <li><a href="/terms">Terms &amp; Conditions </a></li>
-                                <li class="divider"></li>    
                                 {{#if currentUser}}                        
-                                <li><a class="signout_btn" href="#">Sign Out</a></li>
+                                <li><a class="signout_btn" href="#!">Sign Out</a></li>
                                 {{else }}
                                 <li><a class="signin_btn" href="/login">Sign In</a></li>
                                   <!--li> {{> atNavButton}} </li-->

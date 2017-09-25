@@ -33,19 +33,9 @@ Template.verifyForm2.helpers({
   }
 });
 
-Template.verifyForm2.onRendered(function () {
-  $(document).ready(function () {
-      $('#modalVerify').modal({
-        dismissible: true, // Modal can be dismissed by clicking outside of the modal
-        opacity: 0.5, // Opacity of modal background
-        inDuration: 300, // Transition in duration
-        outDuration: 200, // Transition out duration
-        startingTop: '10%', // Starting top style attribute
-        endingTop: '24%', // Ending top style attribute
-      });
-  });
+// Template.verifyForm2.onRendered(function () {
       
-});
+// });
 
 AutoForm.addHooks('upVoteForm', {
 	  // Called when form does not have a `type` attribute or is 'normal'

@@ -11,16 +11,16 @@
              <i class="material-icons" title="...">more_vert</i>
           </a>
           <ul id="card-dropdown" class="dropdown-content">
-            <li><a href="/register"><i class="material-icons">fingerprint</i>Claim Business</a></li>
+            <li><a class="modal-trigger" href="#modalClaim"><i class="material-icons">fingerprint</i>Claim Business</a></li>
             {{#if isOwner}}
               <li><a class="modal-trigger" title="Edit This Listing" href="#modalEdit"><i class="material-icons">edit</i>Modify Business</a></li>
             {{/if}}
-{{!--               <li>
-              <a class="modal-trigger" id="verify_button" title="Verify This" href="#modalVerify">
+              <li>
+              <a class="modal-trigger" title="Verify This" href="#modalVerify">
                 <i class="material-icons">done_all</i>
                 Verify Business  
               </a>
-              </li> --}}
+              </li>
           </ul> 
         {{/if}}
         </div>

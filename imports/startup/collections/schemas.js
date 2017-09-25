@@ -325,6 +325,14 @@ Schema.Listings = new SimpleSchema({
     type: String,
     optional: true
   },
+  "claims.$.name": {
+    type: String,
+    optional: true
+  },
+  "claims.$.phone": {
+    type: String,
+    optional: true
+  },  
   claimsCount: {
     type: Number,
     optional: true,
@@ -383,6 +391,15 @@ Schema.Listings = new SimpleSchema({
     }
   },
   "verifiers.$.verifierId": {
+    type: String,
+    optional: true,
+    autoValue: function() {
+      if (Meteor.userId()) {
+        return Meteor.userId();
+      }
+    }
+  },
+  "verifiers.$.verifierName": {
     type: String,
     optional: true
   },

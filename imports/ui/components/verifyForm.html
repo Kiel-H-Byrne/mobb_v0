@@ -6,7 +6,8 @@
       <p class="flow-text">
       I can verify that this Business is majorily owned by a person who identifies as African or a member of the African Diaspora. <br />
       </p>
-      {{> quickForm id="upVoteForm" collection="Listings" type="update-pushArray" doc=this scope="verifiers" schema=Schema.Verifier omitFields="$.id" }}
+      {{> quickForm id="upVoteForm" collection="Listings" type="update-pushArray" doc=this scope="verifiers" omitFields="verifierId" label="Name" }}
+      
     </div>
   </div>
 </template>
@@ -20,7 +21,8 @@
       <p class="flow-text">
         I can verify that this Business is majorily owned by a person who identifies as African or a member of the African Diaspora. <br />
         Sincerely, <br />
-        {{> afQuickField name="$.name" id="address_group" value=getName}}
+        {{> afQuickField name="name" id="verifyForm" value=getName }}
+        <label for="verifyForm">Name</label>
       </p>
     </div>
     <div class="modal-footer">

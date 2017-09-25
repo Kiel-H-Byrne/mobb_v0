@@ -30,20 +30,13 @@ Template.nav.onRendered( function () {
       // belowOrigin: false, // Displays dropdown below the button
       // alignment: 'left' // Displays dropdown with edge aligned to the left of button
     });
-
-    $('#modalAdd').modal({
-      dismissible: true, // Modal can be dismissed by clicking outside of the modal
-      opacity: 0.5, // Opacity of modal background
-      inDuration: 300, // Transition in duration
-      outDuration: 200, // Transition out duration
-      startingTop: '5%', // Starting top style attribute
-      endingTop: '10%' // Ending top style attribute
-    });
-
   });
  // TypeAhead autocomplete in Schema
   Meteor.typeahead.inject();
   $('.twitter-typeahead').css("display:block");
+
+  $('#modalVerify').modal();
+  $('#modalClaim').modal();
 
 });
 

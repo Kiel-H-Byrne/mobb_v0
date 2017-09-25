@@ -24,7 +24,6 @@ Template.sideCard.onRendered( function () {
     $('select').material_select();
     $('.dropdown-button').dropdown();
     $('img').on('error', function () {
-      console.log("broken image", this);
       $(this).css({display:"none"});
     });
   });
@@ -70,12 +69,11 @@ Template.sideCard.onRendered( function () {
   // });
 });
 
-Template.carouselPhoto2.onRendered(function() {
+Template.carouselPhoto.onRendered(function() {
   $(document).ready(function() {
   if (!Session.get('carouselInit')) {
-      console.log('finished!');
       $('.carousel.carousel-slider').carousel({
-        fullWidth: true,
+        // fullWidth: true,
         indicators: true
       });
       Session.set('carouselInit', true);

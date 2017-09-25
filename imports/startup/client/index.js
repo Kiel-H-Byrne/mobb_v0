@@ -212,7 +212,7 @@ Meteor.startup(function () {
   });
 
   Template.registerHelper('thisPlace',  function () {
-    let place = Session.get('thisPlace');
+    const place = Session.get('thisPlace');
     if (place) {
       // console.log(place);
       return place;
@@ -220,28 +220,35 @@ Meteor.startup(function () {
   });
 
   Template.registerHelper('getDistance', function(dest) {
-      //Get distance, convert to miles, flag as 'is_close' class if under X miles, (this class will be visible) 
-      // console.log(this)
+      //Get distance, convert to miles, return string
       if (GoogleMaps.loaded() && dest) {
-        let latLng = dest.split(",");
+        const latLng = dest.split(",");
         if (latLng) {
-          let lat = Number(latLng[0]);
-          let lng = Number(latLng[1]);
-          let latLngObj = {'lat': lat, 'lng': lng };
+          const lat = Number(latLng[0]);
+          const lng = Number(latLng[1]);
+          const latLngObj = {'lat': lat, 'lng': lng };
           
           let start = new google.maps.LatLng(Session.get('clientLoc') || Session.get('browserLoc'));
-          let finish = new google.maps.LatLng(latLngObj);
+          const finish = new google.maps.LatLng(latLngObj);
           // let res = Meteor.call('calcDistance', loc, dest);
           
-          let dist = google.maps.geometry.spherical.computeDistanceBetween(start,finish);
+          const dist = google.maps.geometry.spherical.computeDistanceBetween(start,finish);
           // multiply meters by 0.000621371 for number of miles.
           let res = (dist * 0.000621371).toFixed(1);
+          if (res.length > 5) {
+            //3432.0 = 6, shorten to 3.4k
+            res = `${res.slice(0,1)}.${res.slice(1,2)}k`; 
+          } else if (res.length == 5) {
+            //502.3, shorten to 3 places.
+            res = res.slice(0,3);
+          }
           return res;
         }
       }
     });
 
   Template.registerHelper('isClose', function(distance) {
+    //if lesl than 3 miles, return true.
      if (distance <= 3) {
       return true;
     } else {
@@ -258,7 +265,7 @@ Meteor.startup(function () {
   });
 
   Template.registerHelper('hasFavorites', function () {
-    let user = Meteor.user();
+    const user = Meteor.user();
     if (user && user.profile.favorites.length > 1) {
         return true;
       } else {
@@ -276,7 +283,7 @@ Meteor.startup(function () {
   });
 
   Template.registerHelper('isOpen', function(doc) {
-    let check = doc.opening_hours.open_now;
+    const check = doc.opening_hours.open_now;
     return check;
   });
 

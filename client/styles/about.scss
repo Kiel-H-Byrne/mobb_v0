@@ -1,9 +1,7 @@
-@import '{}/node_modules/materialize-css/sass/components/color';
-@import '{}/node_modules/materialize-css/sass/components/variables';
-@import 'palettes/colors';
-@import 'palettes/_plt_orng-tetrad';
-
-
+@import "{}/node_modules/materialize-css/sass/components/color";
+@import "{}/node_modules/materialize-css/sass/components/variables";
+@import "palettes/colors";
+@import "palettes/_plt_orng-tetrad";
 
 .about-wrapper {
   // position: relative;
@@ -12,7 +10,9 @@
 
   %social-icon-hover {
     border-radius: 100%;
-    color: $background; // IE8
+    color: $background;
+
+    // IE8
     fill: $background;
     transform: scale(1.25);
     transition: background-color .5s, transform .5s ease-out;
@@ -22,9 +22,14 @@
     color: $rgba-secondary-grey-2-1;
   }
 
-  h4,h5 {
+  a {
+    color: $rgba-secondary-1-2;
+  }
+
+  h4, h5 {
     color: $rgba-primary-0;
   }
+
   svg {
     height: 3em;
     display: inline-block;
@@ -32,9 +37,10 @@
     color: $rgba-primary-1;
     fill: $rgba-primary-1;
     background-color: $background;
-    
+
     &:hover {
       background: $rgba-primary-1;
+
       @extend %social-icon-hover;
     }
   }

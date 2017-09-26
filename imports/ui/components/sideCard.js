@@ -22,7 +22,6 @@ Template.sideCard.onRendered( function () {
     });
     $('.modal-trigger').modal();
     $('select').material_select();
-    $('.dropdown-button').dropdown();
     $('img').on('error', function () {
       $(this).css({display:"none"});
     });
@@ -57,19 +56,21 @@ Template.sideCard.onRendered( function () {
     }
   });
 
-  // ImagesLoaded( '.place_photo', function () {
+  // ImagesLoaded( '.carousel', { background: '.carousel-item' }, function () {
+  //   console.log('imageLoaded!');
   //   if (!Session.get('carouselInit')) {
-  //     console.log('finished!');
+  //     console.log('carousel Loaded');
   //     $('.carousel.carousel-slider').carousel({
-  //       fullWidth: true,
+  //       // fullWidth: true,
   //       indicators: true
   //     });
   //     Session.set('carouselInit', true);
   //   }
   // });
+
 });
 
-Template.carouselPhoto.onRendered(function() {
+Template.carouselPhoto2.onRendered(function() {
   $(document).ready(function() {
   if (!Session.get('carouselInit')) {
       $('.carousel.carousel-slider').carousel({
@@ -78,5 +79,6 @@ Template.carouselPhoto.onRendered(function() {
       });
       Session.set('carouselInit', true);
     }
+
   });
 });

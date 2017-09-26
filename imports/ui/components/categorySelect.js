@@ -1,45 +1,33 @@
 import Categories from '/imports/startup/collections/categories';
+import Listings from '/imports/startup/collections/listings';
 
 import './categorySelect.html';
 
-
-Template.catSelect.onRendered(function () {
-  $(document).ready(function () {
-
-    $('.dropdown-button').dropdown({
-      // stopPropagation: true,
-      // inDuration: 200,
-      // outDuration: 225,
-      // constrain_width: false, // Does not change width of dropdown to that of the activator
-      // hover: false, // Activate on hover
-      // gutter: 3, // Spacing from edge
-      // belowOrigin: false, // Displays dropdown below the button
-      // alignment: 'left' // Displays dropdown with edge aligned to the left of button
-    });
-  });
+Template.catSelect.onCreated(function () {
+  this.subscribe('categories');
+  this.subscribe('listings_locs');
 });
 
-Template.catSelect.onCreated(function () {
-  // this.subscribe('categories');
-  // this.subscribe('listings_locs');
+Template.catSelect.onRendered(function () {
 });
 
 Template.catSelect.helpers({
   categories: function () {
     return Categories.find();
-
   },
   catCount: function(cat) {
     return Listings.find({categories: {$elemMatch: {$in: [ cat ]}}}).count();
   }
 });
 
-Template.catSelect.events({
-  'click .cat_item': function(event,templateInstance) {
-    $('.dropdown-button').dropdown('close');
-  },
+// Template.catSelect.events({
+//   'click .cat_item': function(event,templateInstance) {
+//     $('.dropdown-button').dropdown('close');
+//   },
+// });
 
-});
+
+
 // Template.catSelect.helpers({
 //   get_categories: function () {
 //     var results = [];

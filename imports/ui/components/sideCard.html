@@ -1,6 +1,6 @@
 <template name="sideCard">
 
-  <a href="#" data-activates="slide-out" class="hide button-collapse show-on-large">Last Clicked</a>
+  <a href="#" data-activates="slide-out" class="hide button-collapse"></a>
   <ul id="slide-out" class="side-nav sideCard">
     {{#with currentDoc}}
     <li>
@@ -42,7 +42,7 @@
         {{/if}}
         {{#if description}}
           <hr />
-          <p class="description" >{{description}}</p>
+          <p class="description" ><em>{{description}}</em></p>
         {{/if}}  
         </div>
         <a class="btn-floating halfway-fab btn-large waves-effect waves-light z-depth-4"  title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" >
@@ -91,7 +91,7 @@
             <div class="row photos_wrapper carousel carousel-slider">
               {{!-- <div class="carousel-item"></div> --}}
             {{#each place.photos}}
-              {{> carouselPhoto}}
+              {{> carouselPhoto2}}
               {{!-- <img class="z-depth-2" src="{{getImgUrl photo.photo_reference}}" alt /> --}}
             {{/each}}
             </div>

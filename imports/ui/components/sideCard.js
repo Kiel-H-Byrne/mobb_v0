@@ -1,4 +1,5 @@
 import './sideCard.html'
+import './mPreloader.html'
 
 Template.sideCard.onCreated( function () {
   Session.set('thisPlace', false);
@@ -8,17 +9,12 @@ Template.sideCard.onRendered( function () {
 
   $(document).ready(function() {
     $('.button-collapse').sideNav({
-      menuWidth: 320,
       edge: 'left',
       closeOnClick: true,
       draggable: true,
       onClose: function() {
         Session.set('carouselInit', false);
       }
-    });
-    $('.carousel.carousel-slider').carousel({
-      fullWidth: true,
-      indicators: true
     });
     $('.modal-trigger').modal();
     $('select').material_select();
@@ -56,6 +52,12 @@ Template.sideCard.onRendered( function () {
     }
   });
 
+  ImagesLoaded( '.slides li', function () {
+    // hide preloader
+    $('.spinner-layer').css('hide');
+    console.log('hello thre)');
+  });
+
   // ImagesLoaded( '.carousel', { background: '.carousel-item' }, function () {
   //   console.log('imageLoaded!');
   //   if (!Session.get('carouselInit')) {
@@ -70,15 +72,20 @@ Template.sideCard.onRendered( function () {
 
 });
 
-Template.carouselPhoto2.onRendered(function() {
+Template.sliderPhoto.onRendered(function() {
   $(document).ready(function() {
   if (!Session.get('carouselInit')) {
-      $('.carousel.carousel-slider').carousel({
-        // fullWidth: true,
-        indicators: true
+      $('.slider').slider({
+        height: 250,
+        interval: 3500
       });
       Session.set('carouselInit', true);
     }
 
   });
 });
+
+
+
+
+

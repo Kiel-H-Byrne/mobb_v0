@@ -10,8 +10,9 @@
             <img src="{{image.url}}" />
           {{else}}
             {{#if url}}
+            {{!-- {{> mPreloader}} --}}
               <img src="{{getImage url _id}}"/>
-              {{/if}}
+            {{/if}}
           {{/if}}
           <span class="card-title">{{name}}</span>
         </div>
@@ -88,12 +89,12 @@
           <li><div class="divider"></div></li>  
           <li class="item_photos">
             <span class="section-title"><i class="material-icons">star</i>Photos</span><br />
-            <div class="row photos_wrapper carousel carousel-slider">
-              {{!-- <div class="carousel-item"></div> --}}
-            {{#each place.photos}}
-              {{> carouselPhoto2}}
-              {{!-- <img class="z-depth-2" src="{{getImgUrl photo.photo_reference}}" alt /> --}}
-            {{/each}}
+            <div class="row photos_wrapper slider">
+              <ul class="slides">
+              {{#each place.photos}}
+                {{> sliderPhoto}}
+              {{/each}}
+              </ul>
             </div>
           </li>
           {{/if}}
@@ -146,4 +147,10 @@
   <a class="place_photo carousel-item" style="">
     <img src="{{getImgUrl photo_reference}}" />
   </a>
+</template>
+
+<template name="sliderPhoto">
+  <li>
+    <img src="{{getImgUrl photo_reference}}" />
+  </li>  
 </template>

@@ -4,13 +4,6 @@ import Categories from '/imports/startup/collections/categories';
 import './addForm.html';
 
 
-// Template.addForm.onRendered(function () {
-// //show the input form for optional fields, only if the associated checkbox is checked
-// 	$('#supplied').click(function () {
-// 	  $('.date')[this.checked ? "show" : "hide"]();
-// 	});
-// });
-
 Template.addForm.onCreated(function () {
   this.subscribe('categories');
 });

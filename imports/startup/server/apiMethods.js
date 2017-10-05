@@ -186,7 +186,7 @@ Meteor.methods({
     //requ'd: key, location, radius (meters), 
     // optional: keyword ()
     const key = Meteor.settings.public.keys.googleServer.key;
-    name = encodeURIComponent(name)
+    name = encodeURIComponent(name);
     const apiUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${loc}&radius=20&keyword=${name}&key=${key}`;
     // console.log("--GOOGLE PLACES: NEARBY SEARCH URL--"+apiUrl);
     const response = Meteor.wrapAsync(apiCall)(apiUrl);
@@ -210,14 +210,14 @@ Meteor.methods({
     let uri = "https://maps.googleapis.com/maps/api/place/photo?";
     let key = Meteor.settings.public.keys.googleServer.key;
     const apiUri = `${uri}maxwidth=100&photoreference=${photoref}&sensor=false&key=${key}`;
-    return response = Meteor.wrapAsync(apiCall)(apiUri);
-    // if (response) {
+    const response = Meteor.wrapAsync(apiCall)(apiUri);
+    if (response) {
     //   console.log("response");
     //   return response.result; 
-    // }
+      return response;
+    }
 // CmRaAAAAYpTPreRmPCR4EgUa56xjLq4REY10eVQ5My1CdJE2iCwDU7qz8PaxZcoJSEYqvvwDu8kbAdLI7rUnGhO_t-VQNk0szun2qY5kCj7yfMQW_VhH3vrZkbPPno3m115vRkltEhCg5ywCiFxPNhRVzt6HmgzmGhQ6iUTSVz88hGR5VDAIcSHbuQnGcQ
 // CmRaAAAA4xP27riOH_NxYUcy5VTuQnYhnrqCLFkDViUAfjorIBoaU2eWb5PpC9lM8W-ZQvO6O_F7UGUbBya3hX2G-4tXCw4BmXw8bgQOw0w_nNBtXUe--VnqQzpIGD_aUC3NkKC3EhDCqk-a2V5-lCpiJIVuQB6SGhSyPwPDPE79f8bYQxu_vF6XFb8yrw
-
 // https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&key=AIzaSyB7SQmFyKOkbwG3C0osrAyGbllKb8Jdx-8&photoreference=CmRaAAAA4xP27riOH_NxYUcy5VTuQnYhnrqCLFkDViUAfjorIBoaU2eWb5PpC9lM8W-ZQvO6O_F7UGUbBya3hX2G-4tXCw4BmXw8bgQOw0w_nNBtXUe--VnqQzpIGD_aUC3NkKC3EhDCqk-a2V5-lCpiJIVuQB6SGhSyPwPDPE79f8bYQxu_vF6XFb8yrw
   },
   submitPlace: function(doc) {

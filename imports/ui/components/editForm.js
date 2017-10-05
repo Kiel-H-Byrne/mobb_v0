@@ -3,9 +3,6 @@ import Categories from '/imports/startup/collections/categories';
 
 import './editForm.html';
 
-Template.editForm.onCreated(function () {
-
-});
 
 Template.editForm.onRendered(function () {
   

@@ -12,9 +12,8 @@ Template.mobileNav.onCreated(function () {
 Template.mobileNav.helpers({
   list: function () {
     let cursor = Listings.find({
-      location: { $exists : 1}, 
-      certs: {$exists: 0},
-    }, {sort: {location: -1, name: 1}});
+      location: { $exists : 1}
+    }, {sort: {location: -1}});
     
     return cursor;
   },

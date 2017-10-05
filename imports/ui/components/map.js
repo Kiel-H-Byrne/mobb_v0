@@ -125,8 +125,7 @@ Template.map.onCreated( function () {
           // append "hide to loading screen div"
           $('[id="loading-wrapper"]').css({display:"none"});
             let cursor = Listings.find({
-                location: { $exists : 1 }, 
-                certs: { $exists: 0 }
+                location: { $exists : 1 }
             });
             console.log("-= MAP.JS SUBSCRIBING: ALL ["+ cursor.count() +"] LISTINGS WITH LOCATIONS =-");
             //find listings that match the same lat/long digits as me (first two digits)

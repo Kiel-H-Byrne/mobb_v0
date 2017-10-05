@@ -464,16 +464,6 @@ Schema.Listings = new SimpleSchema({
       
     // }
   },
-  cbenum: {
-    type: String,
-    label: 'CBE #',
-    optional: true
-  },
-  certs: {
-    type: String,
-    label: 'CBE Certifications',
-    optional: true
-  },
   email: {
     type: String,
     label: 'E-Mail',

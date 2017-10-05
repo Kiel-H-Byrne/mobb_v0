@@ -28,9 +28,9 @@
   },
   "devDependencies": {
     "bcrypt": "^1.0.2",
-    "grunt-real-favicon": "^0.2.0",
+    "grunt-real-favicon": "^0.2.2",
     "imagemin-mozjpeg": "^6.0.0",
-    "install": "^0.8.8",
-    "npm": "^4.5.0"
+    "install": "^0.10.1",
+    "npm": "^5.4.2"
   }
 }

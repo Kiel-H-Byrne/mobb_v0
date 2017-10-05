@@ -40,10 +40,9 @@ Template.closestPage.onRendered(function () {
 
 Template.closestPage.helpers({
   list: function () {
-    let cursor = Listings.find({
-      location: { $exists : 1}, 
-      certs: {$exists: 0},
-    }, {sort: {location: -1, name: 1}});
+    const cursor = Listings.find({
+      location: { $exists : 1}
+    }, {sort: {location: -1}});
     
     return cursor;
   }

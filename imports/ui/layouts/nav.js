@@ -94,10 +94,7 @@ Template.nav.helpers({
         name: 'listings',
         valueKey: 'name',
         displayKey: 'name',
-        local: function () { return Listings.find({
-          location: { $exists : 1}, 
-          certs: {$exists: 0}
-        }).fetch(); },
+        local: function () { return Listings.find().fetch(); },
         header: '<h4 class="tt-header">Listings</h4>',
         template: 'results'
       // },{

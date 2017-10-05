@@ -1,5 +1,5 @@
-import './sideCard.html'
-import './mPreloader.html'
+import './sideCard.html';
+import './mPreloader.html';
 
 Template.sideCard.onCreated( function () {
   Session.set('thisPlace', false);
@@ -14,6 +14,7 @@ Template.sideCard.onRendered( function () {
       draggable: true,
       onClose: function() {
         Session.set('carouselInit', false);
+        Session.set('thisPlace', false);
       }
     });
     $('.modal-trigger').modal();
@@ -55,7 +56,7 @@ Template.sideCard.onRendered( function () {
   ImagesLoaded( '.slides li', function () {
     // hide preloader
     $('.spinner-layer').css('hide');
-    console.log('hello thre)');
+    console.log('hello there');
   });
 
   // ImagesLoaded( '.carousel', { background: '.carousel-item' }, function () {
@@ -77,7 +78,7 @@ Template.sliderPhoto.onRendered(function() {
   if (!Session.get('carouselInit')) {
       $('.slider').slider({
         height: 250,
-        interval: 3500
+        interval: 2500
       });
       Session.set('carouselInit', true);
     }

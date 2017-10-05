@@ -35,10 +35,10 @@ Template.test.helpers({
     return testArray;
   },
   randoNumber: function() {
-    const min = 10
-    const max = 1000
+    const min = 10;
+    const max = 1000;
     const number = Math.floor(Math.random() * (max - min + 1)) + min; 
-    return number
+    return number;
   },
   favorites: function () {
     // get the array of ids

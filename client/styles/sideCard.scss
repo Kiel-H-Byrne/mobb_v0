@@ -35,12 +35,23 @@
       text-align: center;
 
       li {
-        padding: .5rem;
+        background-color: $rgba-primary-grey-3;
+        margin-top: .8rem;
         display: inline-block;
+        border-radius: 3px;
+        width: 49%;
 
         &:hover {
-          background-color: lighten($rgba-primary-grey-4, 10%);
+          background-color: lighten($rgba-primary-grey-3, 10%);
         }
+      }
+
+      a {
+        color: $rgba-primary-3;
+      }
+
+      i {
+        color: $rgba-primary-3;
       }
     }
 

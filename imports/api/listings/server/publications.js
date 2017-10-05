@@ -15,33 +15,15 @@ Meteor.publish('listings_one', function (name) {
 
 Meteor.publish('listings_locs', function () {
 	let cursor = Listings.find({
-		location: { $exists : 1}, 
-		certs: {$exists: 0}
+		location: { $exists : 1}
 	});
 	console.log("-= PUBLISHING: ALL ["+ cursor.count() +"] LISTINGS WITH LOCATIONS =-");
-	return cursor;
-});
-
-Meteor.publish('listings_cbes', function () {
-	let cursor = Listings.find({certs: { $exists : 1}});
-	console.log("-= PUBLISHING: ["+ cursor.count() +"] CBE LISTINGS =-");
 	return cursor;
 });
 
 Meteor.publish('listings_urls', function () {
 	let cursor = Listings.find({url: { $exists : 1}});
 	console.log("-= PUBLISHING: ["+ cursor.count() +"] LISTINGS W/ URLS =-");
-	return cursor;
-});
-
-Meteor.publish('listings_online_only', function () {
-	let cursor = Listings.find({
-		url: { $exists : 1}, 
-		street: {$exists: 0}
-	}, {
-		sort: { name: 1}
-	});
-	console.log("-= PUBLISHING: ["+ cursor.count() +"] ONLINE ONLY LISTINGS =-");
 	return cursor;
 });
 

@@ -109,6 +109,11 @@ a {
   border-color: $clr-orange;
 }
 
+//fix for checkbox not checking inside .input-field
+.input-field label {
+  pointer-events: auto;
+}
+
 // ================================================ ALDEED AUTOFORMS OVERWRITES ================================================
 .at-form {
   background-color: $rgba-primary-1;

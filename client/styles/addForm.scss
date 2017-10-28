@@ -1,26 +1,30 @@
-@import '{}/node_modules/materialize-css/sass/components/color';
-@import '{}/node_modules/materialize-css/sass/components/variables';
-@import 'palettes/colors';
-@import 'palettes/_plt_orng-tetrad';
+@import "{}/node_modules/materialize-css/sass/components/color";
+@import "{}/node_modules/materialize-css/sass/components/variables";
+@import "palettes/colors";
+@import "palettes/_plt_orng-tetrad";
 
 [id='modalAdd'],
 [id='modalEdit'] {
   background-color: $rgba-primary-1;
   color: $rgba-secondary-2-4;
-  
+
   .geo_input {
     // background-color: $rgba-secondary-2-1;
+ 
   }
+
   .address_group {
     background-color: $rgba-primary-grey-1;
   }
 
   .modal-content {
-    padding: .6rem;
+    padding: 0;
 
     ul {
-      background-color: white;
+      // background-color: 'white';
+   
     }
+
     input {
       margin: 0;
     }
@@ -30,6 +34,7 @@
       font-size: 1.3rem;
       background-color: $rgba-primary-2;
     }
+
     .collapsible-body {
       color: $rgba-primary-grey-2;
       padding: .5rem;
@@ -38,7 +43,7 @@
 
   .modal-footer {
     background-color: $rgba-primary-grey-1;
-    
+
     h5 {
       color: $rgba-primary-grey-4;
     }
@@ -51,7 +56,7 @@
 }
 
 [id='modalAdd'],
-[id='modalEdit']  {
+[id='modalEdit'] {
   .row {
     .col {
       padding: 0 .2rem;
@@ -73,7 +78,6 @@
   form p {
     margin: .2rem 0;
   }
-
 }
 
 // [id='row_categories'] {
@@ -81,8 +85,9 @@
 //   top: -1.5rem;
 // }
 
-//MOBILE 
+//MOBILE
 @media #{$medium-and-down} {
+
   [id='modalAdd'],
   [id='modalEdit'] {
     min-width: 90%;
@@ -90,4 +95,3 @@
     z-index: 1000;
   }
 }
-

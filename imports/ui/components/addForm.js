@@ -5,7 +5,7 @@ import './addForm.html';
 
 
 Template.addForm.onCreated(function () {
-  this.subscribe('categories');
+  Meteor.subscribe('categories');
 });
 
 Template.addForm.onRendered(function() {
@@ -87,7 +87,7 @@ Template.addForm.onRendered(function() {
       endingTop: '10%' // Ending top style attribute
     });
         
-    $('.collapsible').collapsible();
+    // $('.collapsible').collapsible();
 
       //mask is array of strings and regex
     const VTM = require('vanilla-text-mask/dist/vanillaTextMask.js');
@@ -109,7 +109,6 @@ Template.addForm.helpers({
   //   return state;
   // },
   formOptions() {
-    // return Categories.find().map(c => ({ label: c.name, value: c.name }));
     return Categories.find().map(function(c) {
       // console.log(c.name);
       return {label: c.name, value: c.name};

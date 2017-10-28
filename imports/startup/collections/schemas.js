@@ -216,8 +216,7 @@ Schema.Listings = new SimpleSchema({
   // If it's blank, the form won't submit and you'll get a red error message
   // 'type' is where you can set the expected data type for the 'title' key's value
   name: {
-    type: String,
-    unique: true,
+    type: String
   },
   address: {
     type: String,
@@ -349,6 +348,7 @@ Schema.Listings = new SimpleSchema({
   location: {
     type: String,
     optional: true,
+    unique: true,
     autoValue: function () {
       if (this.field("address").value || this.field("street").value) {
         let address = this.field("address").value;

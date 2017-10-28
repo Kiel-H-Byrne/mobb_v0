@@ -1,6 +1,5 @@
-@import '{}/node_modules/materialize-css/sass/components/color';
-@import '{}/node_modules/materialize-css/sass/components/variables';
-
+@import "{}/node_modules/materialize-css/sass/components/color";
+@import "{}/node_modules/materialize-css/sass/components/variables";
 
 .map_canvas {
   position: relative;
@@ -8,14 +7,41 @@
 
 [id='googleMap'] {
   @media #{$large-and-up} {
-   // left: 50%;
+    // left: 50%;
   }
+
   @media #{$small-and-down} {
-   // bottom: 50%;
+    // bottom: 50%;
   }
+
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   top: 0;
 }
+
+// .custom-pin {
+//   line-height: 1;
+//   text-align: center;
+//   cursor: pointer;
+//   color: white;
+//   border-radius: .5em;
+//   font-size: 1em;
+//   font-weight: bold;
+//   transition: all 500ms;
+// }
+
+// .custom-pin::after {
+//   content: '';
+//   border-width: 1em .5em;
+//   border-color: black transparent transparent transparent;
+//   border-style: solid;
+//   position: absolute;
+//   top: 99%;
+//   left: calc(50% - .5em);
+// }
+
+// .custom-pin:hover {
+//   transform: scale(1.15);
+// }

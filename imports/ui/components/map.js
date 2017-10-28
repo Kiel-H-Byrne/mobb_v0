@@ -175,11 +175,12 @@ Template.map.onCreated( function () {
             });
             
             const clusterOptions = {
-                imagePath: 'img/cluster/m'
+                imagePath: 'img/cluster/m',
+                gridSize: 33
             };
 
             const mapCluster = new MarkerClusterer(map.instance, mapMarkers, clusterOptions);
-            console.log(mapCluster);
+            // console.log(mapCluster);
         });
 
    

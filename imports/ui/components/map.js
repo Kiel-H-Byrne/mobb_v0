@@ -1,34 +1,32 @@
 
 import Listings from '/imports/startup/collections/listings';
-
+import 'gmaps-marker-clusterer';
 import './centerButton.js';
 import './loadingScreen.html';
 import './map.html';
 
-//====== GLOBALS ======
-
+//====== APP GLOBALS ======
 MAP_ZOOM = 4;
-clientMarker = null;
-clientRadius = null;
 
-$.getJSON("https://freegeoip.net/json/", {
-    format: "jsonp"
-}).done(function(data){
-/*
-    // ================== RESPONSE ================== 
-    // {"ip":"69.138.161.94","country_code":"US","country_name":"United States","region_code":"MD",
-    //  "region_name":"Maryland","city":"Silver Spring","zip_code":"20902","time_zone":"America/New_York",
-    //  "latitude":39.0409,"longitude":-77.0445,"metro_code":511}
-*/
 
-  let lat = data.latitude;
-  let lng = data.longitude;
-  let browserLocation = {'lat': lat, 'lng': lng };
-  // console.log("Coord from Browser: ", browserLocation);
-  Session.set('browserLoc', browserLocation);
-  Session.set('clientState', data.region_code);
+// $.getJSON("https://freegeoip.net/json/", {
+//     format: "jsonp"
+// }).done(function(data){
 
-});
+//     // ================== RESPONSE ================== 
+//     // {"ip":"69.138.161.94","country_code":"US","country_name":"United States","region_code":"MD",
+//     //  "region_name":"Maryland","city":"Silver Spring","zip_code":"20902","time_zone":"America/New_York",
+//     //  "latitude":39.0409,"longitude":-77.0445,"metro_code":511}
+
+
+//   let lat = data.latitude;
+//   let lng = data.longitude;
+//   let browserLocation = {'lat': lat, 'lng': lng };
+//   // console.log("Coord from Browser: ", browserLocation);
+//   Session.set('browserLoc', browserLocation);
+//   Session.set('clientState', data.region_code);
+
+// });
 
 
 // ============================= SUBSCRIPTIONS ==================================
@@ -36,35 +34,35 @@ $.getJSON("https://freegeoip.net/json/", {
 
 Template.map.onCreated( function () {
 
-    // console.log("-= MAP: Created =-");
-
+    console.log("-= MAP: Created =-");
     let self = this;
+
     GoogleMaps.ready('map', function(map) {
-/*
-        const offsetCenter = (latlng, offsetx, offsety) => {
+        /*      
+                const offsetCenter = (latlng, offsetx, offsety) => {
 
-        // latlng is the apparent centre-point
-        // offsetx is the distance you want that point to move to the right, in pixels
-        // offsety is the distance you want that point to move upwards, in pixels
-        // offset can be negative
-        // offsetx and offsety are both optional
+                // latlng is the apparent centre-point
+                // offsetx is the distance you want that point to move to the right, in pixels
+                // offsety is the distance you want that point to move upwards, in pixels
+                // offset can be negative
+                // offsetx and offsety are both optional
 
-            const scale = Math.pow(2, map.instance.getZoom());
+                    const scale = Math.pow(2, map.instance.getZoom());
 
-            let worldCoordinateCenter = map.instance.getProjection().fromLatLngToPoint(latlng);
-            let pixelOffset = new google.maps.Point((offsetx/scale) || 0,(offsety/scale) ||0);
+                    let worldCoordinateCenter = map.instance.getProjection().fromLatLngToPoint(latlng);
+                    let pixelOffset = new google.maps.Point((offsetx/scale) || 0,(offsety/scale) ||0);
 
-            let worldCoordinateNewCenter = new google.maps.Point(
-                worldCoordinateCenter.x - pixelOffset.x,
-                worldCoordinateCenter.y + pixelOffset.y
-            );
+                    let worldCoordinateNewCenter = new google.maps.Point(
+                        worldCoordinateCenter.x - pixelOffset.x,
+                        worldCoordinateCenter.y + pixelOffset.y
+                    );
 
-            let newCenter = map.instance.getProjection().fromPointToLatLng(worldCoordinateNewCenter);
+                    let newCenter = map.instance.getProjection().fromPointToLatLng(worldCoordinateNewCenter);
 
-            map.instance.setCenter(newCenter);
-            // google.maps.event.trigger(map, "resize");
-        };
-*/
+                    map.instance.setCenter(newCenter);
+                    // google.maps.event.trigger(map, "resize");
+                };
+        */
         //Adding ALT tags to Google Images.       
         $('#googleMap > .map-canvas > div > .gm-style > div:nth-of-type(2) > a > div > img').attr( "alt", "Google Maps" );
         //Adding REL="noopener" to _blank targets
@@ -79,11 +77,11 @@ Template.map.onCreated( function () {
 
         // let clientMarker;
 
-        let markerImage = {
+        const markerImage = {
           url: 'img/orange_marker_sm.png'
         };
 
-        let closeMarkerImage = {
+        const closeMarkerImage = {
           url: 'img/red_marker_sm.png'
         };
 
@@ -117,13 +115,15 @@ Template.map.onCreated( function () {
         //     // animation: google.maps.Animation.BOUNCE,
         // }); 
 
-
         //====== watch the database for changes, draw new marker on change. ====== //
 
-        let subscription = self.subscribe('listings_locs', function () {
-          Session.set('loading', false);
-          // append "hide to loading screen div"
-          $('[id="loading-wrapper"]').css({display:"none"});
+        const subscription = self.subscribe('listings_locs', function () {
+        
+            let mapMarkers = [];            
+            // Session.set('loading', false);
+            // append "hide to loading screen div"
+            $('[id="loading-wrapper"]').css({display:"none"});
+            
             let cursor = Listings.find({
                 location: { $exists : 1 }
             });
@@ -140,7 +140,6 @@ Template.map.onCreated( function () {
                         let lat = Number(latLng[0]);
                         let lng = Number(latLng[1]);
                         let latLngObj = {'lat': lat, 'lng': lng };
-
                         //===== LEAVE DOC LOCATION FIELD AS OBJECT LITERAL =====
                         // let latLngObj = doc.location;
 
@@ -149,9 +148,11 @@ Template.map.onCreated( function () {
                           position: latLngObj,
                           map: map.instance,
                           icon: markerImage,
-
                         });
-                        marker.set('title', doc.name);
+
+                        marker.setTitle(doc.name);
+                        
+                        mapMarkers.push(marker);
 
                         marker.addListener('click', function () {
                             Session.set('openListing', id);
@@ -168,13 +169,20 @@ Template.map.onCreated( function () {
                             // // Router.go('/', {_id: id});
 
                         });
+
                     } // else cannot place marker on map, it does not have lat/lng yet
-
-
                 }
             });
+            
+            const clusterOptions = {
+                imagePath: 'img/cluster/m'
+            };
+
+            const mapCluster = new MarkerClusterer(map.instance, mapMarkers, clusterOptions);
+            console.log(mapCluster);
         });
-        
+
+   
           // as soon as session = true, let autorun proceed for  geolocate;  
           // then stop outer autorun
         // self.autorun( function(c) {
@@ -250,6 +258,7 @@ Template.map.onCreated( function () {
         //     // ignore the googleMapsEvent passed in by Google Maps!
         //     event.preventDefault();
         // });
+        
     });
 
 });

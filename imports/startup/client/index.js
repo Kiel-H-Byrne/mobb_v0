@@ -56,10 +56,13 @@ import '/imports/ui/layouts/layout.js';
 // import '/imports/ui/layouts/splitLayout.js';
 
 //client Libraries
+
+
 jQueryBridget = require('jquery-bridget');
 Masonry = require('masonry-layout');
 ImagesLoaded = require('imagesloaded');
 jQueryBridget( 'masonry', Masonry, $ );
+
 
 // downloadImage = require('download-image');
 
@@ -70,11 +73,31 @@ Session.set('thisPlace', false);
 // let cache = new ApiCache('rest', 120);
 // 100000s = 1.16 days....
 
+//====== STARTUP ACTIONS ======
 //=====  GoogleMaps load =====  
 GoogleMaps.load({
   v: '3',
   key: Meteor.settings.public.keys.googleClient.key,
   libraries: ['places', 'geometry']
+});
+
+$.getJSON("https://freegeoip.net/json/", {
+    format: "jsonp"
+}).done(function(data){
+/*
+    // ================== RESPONSE ================== 
+    // {"ip":"69.138.161.94","country_code":"US","country_name":"United States","region_code":"MD",
+    //  "region_name":"Maryland","city":"Silver Spring","zip_code":"20902","time_zone":"America/New_York",
+    //  "latitude":39.0409,"longitude":-77.0445,"metro_code":511}
+*/
+
+  let lat = data.latitude;
+  let lng = data.longitude;
+  let browserLocation = {'lat': lat, 'lng': lng };
+  // console.log("Coord from Browser: ", browserLocation);
+  Session.set('browserLoc', browserLocation);
+  Session.set('clientState', data.region_code);
+
 });
 
 

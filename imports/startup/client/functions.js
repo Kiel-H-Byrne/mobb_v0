@@ -1,5 +1,9 @@
 import { GCache } from '/imports/startup/collections/caches';
 
+//====== APP GLOBALS ======
+clientMarker = null;
+clientRadius = null;
+
 // getOGS = function(url) {
 //   let options = {
 //     'url': url,

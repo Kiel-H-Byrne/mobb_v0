@@ -1,11 +1,9 @@
-// import { Request } from 'request/request';
-
 import Listings from '/imports/startup/collections/listings';
+import Categories from '/imports/startup/collections/categories';
 import { OCache } from '/imports/startup/collections/caches';
 import { GCache } from '/imports/startup/collections/caches';
 import { LongCache } from '/imports/startup/collections/caches';
 import { ShortCache } from '/imports/startup/collections/caches';
-// import '../../api/orionCache.js';
 
 apiCall = function (apiUrl, callback) {
   // try…catch allows you to handle errors 
@@ -13,13 +11,13 @@ apiCall = function (apiUrl, callback) {
   try {
 
     let dataFromCache = OCache.get(apiUrl);
-    console.log("CHECKING CACHE: "+apiUrl);
+    // console.log("CHECKING CACHE: "+apiUrl);
     let response = {};
     if(dataFromCache) {
-      console.log("FROM CACHE:");
+      console.log("FROM CACHE...");
       response = dataFromCache;
     } else {
-      console.log("FROM API:");
+      console.log("FROM API...");
       response = HTTP.get(apiUrl).data;
       OCache.set(apiUrl, response);
     }
@@ -55,7 +53,7 @@ Meteor.methods({
     check(doc, Object);
     return Listings.insert(doc , function(err, res){
       if (err) {
-        console.log("INSERT FAILED:");
+        console.log("LISTING INSERT FAILED:");
         console.log(doc.name + ": " + err);
       } else {
         // console.log(doc.name + ": Success");
@@ -67,7 +65,7 @@ Meteor.methods({
     check(doc, Object);
     Listings.update(doc , function(err, res){
       if (err) {
-        console.log("UPDATE FAILED:");
+        console.log("LISTING UPDATE FAILED:");
         console.log(doc.name + ": " + err);
       } else {
         // console.log(doc.name + ": Success");
@@ -75,9 +73,12 @@ Meteor.methods({
     });
   },
   addCategory: function(doc) {
+    //why is doc an array here?
     check(doc, Object);
-    Categories.insert(doc , function(err, res){
+    console.log(doc);
+    return Categories.insert(doc , function(err, res){
       if (err) {
+        console.log("CATEGORY INSERT FAILED:");
         console.log(err.sanitizedError.message);
       } else {
         // console.log(res);

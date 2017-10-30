@@ -1,4 +1,4 @@
-import '/imports/startup/collections/listings.js';
+import Listings from '/imports/startup/collections/listings';
 //=================== NEW COLLECTION =========================
 
 Categories = new orion.collection('categories', {
@@ -70,7 +70,8 @@ Categories.attachSchema(new SimpleSchema({
       // console.log(count);
       return count;
     },
-    optional: true
+    optional: true,
+    min: 0
   }
 }));
 

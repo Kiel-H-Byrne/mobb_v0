@@ -473,10 +473,6 @@ Schema.Listings = new SimpleSchema({
     type: [String],
     label: 'Categories',
     optional: true,
-    // custom: function () {
-      // I WANT TO PUSH THE CATEGORY "ONLINE ONLY" TO THIS ARRAY
-      //$set function on this key??
-    // },
     // autoform: {
       // options: function () {
       //   return Categories.find().map(function(c) {

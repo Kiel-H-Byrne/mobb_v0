@@ -67,20 +67,20 @@ placeMyMarker = function(map,pos) {
       title: "My Location",
       // animation: google.maps.Animation.BOUNCE,
     }); 
-    clientRadius = new google.maps.Circle({
-      map: map.instance,
-      center: pos,
-      radius: (radius * 1609.34),
-      strokeColor: '#FF7733',
-      strokeOpacity: 0.2,
-      strokeWeight: 2,
-      fillColor: '#FFAA00',
-      fillOpacity: 0.10,
-    });
+    // clientRadius = new google.maps.Circle({
+    //   map: map.instance,
+    //   center: pos,
+    //   radius: (radius * 1609.34),
+    //   strokeColor: '#FF7733',
+    //   strokeOpacity: 0.2,
+    //   strokeWeight: 2,
+    //   fillColor: '#FFAA00',
+    //   fillOpacity: 0.10,
+    // });
   } else {
     //MARKER EXISTS, SO WE MOVE IT.
     clientMarker.setPosition(pos);
-    clientRadius.setCenter(pos);
+    // clientRadius.setCenter(pos);
   }
 
   $(document).ready(function (){

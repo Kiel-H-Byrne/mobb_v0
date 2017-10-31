@@ -31,6 +31,14 @@
       color: inherit;
     }
 
+    .card-content {
+      padding: 0;
+
+      td {
+        padding: .5rem .3rem;
+      }
+    }
+
     .inline-list {
       text-align: center;
 
@@ -102,6 +110,12 @@
     background-color: darken($rgba-primary-grey-0, 80%);
     line-height: 2rem;
     padding: .3rem;
+
+    em {
+      color: $rgba-secondary-2-2;
+      font-size: .9rem;
+      line-height: .9rem;
+    }
   }
 
   .item_reviews {

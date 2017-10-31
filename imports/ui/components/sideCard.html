@@ -14,24 +14,31 @@
               <img src="{{getImage url _id}}"/>
             {{/if}}
           {{/if}}
-          <span class="card-title">{{name}}</span>
+          <span class="card-title">{{name}} <br />
+            {{#if description}}
+              <hr />
+              <p class="description" ><em>{{description}}</em></p>
+            {{/if}}  
+          </span>
         </div>
         <div class="card-content">
-        <p class="">
-        {{#if address}}    
-          
-          {{address}}<br />
-          
-        {{else}}
-          
-          {{street}} <br />
-          {{city}} {{state}},  {{zip}} <br />
-          
-        {{/if}}
+        <table class="">
+          <tr>
+          {{#if address}}    
+          <td><i class="material-icons" style="font-size:100%; margin-right:2px; ">public</i></td>
+          <td>{{address}}</td>
+          {{else}}
+          <td><i class="material-icons" style="font-size:100%; margin-right:2px; ">public</i></td>
+          <td>{{street}}, {{city}}, {{state}}  {{zip}} </td>
+          {{/if}}
+          </tr>
         {{#if phone}}    
-        <a class="" href="tel:+1{{phone}}"><i class="material-icons" style="font-size:100%; margin-right:2px; ">call</i>{{phone}}</a> <br />
+          <tr>
+            <td><i class="material-icons" style="font-size:100%; margin-right:2px; ">call</i></td>
+            <td><a class="" href="tel:+1{{phone}}">{{phone}}</a> </td>
+          </tr>
         {{/if}}
-        </p>
+        </table>
         {{#if social.facebook}}
         fb: <a href="https://www.facebook.com/{{social.facebook}}" target="_blank" rel="noopener" > @{{social.facebook}}</a> <br />
         {{/if}}
@@ -41,10 +48,7 @@
         {{#if social.twitter}}
         tt: <a href="https://www.twitter.com/{{social.twitter}}" target="_blank" rel="noopener" > @{{social.twitter}}</a> <br />
         {{/if}}
-        {{#if description}}
-          <hr />
-          <p class="description" ><em>{{description}}</em></p>
-        {{/if}}  
+
         </div>
         <a class="btn-floating halfway-fab btn-large waves-effect waves-light z-depth-4"  title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" >
           <i class="large material-icons">directions</i>

@@ -34,6 +34,17 @@ Template.closestPage.onRendered(function () {
       //   console.log('c imgs loaded');
       //     cGrid.masonry('layout');
       // });
+
+      const $cgrid = $('.masonry_grid').masonry({
+        // options
+        itemSelector: '.masonry_item',
+        columnWidth: '.masonry_item'
+      });
+
+      $cgrid.imagesLoaded().progress( function() {
+        console.log('layout change! (closest)');
+        $cgrid.masonry('layout');
+      });
    }
   });
 });

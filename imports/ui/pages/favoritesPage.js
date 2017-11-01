@@ -28,6 +28,7 @@ Template.favoritesPage.onRendered(function () {
       });
 
       $mgrid.imagesLoaded().progress( function() {
+        // console.log('layout change! (favs)');
         $mgrid.masonry('layout');
       });
 

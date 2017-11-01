@@ -6,5 +6,4 @@ import '/imports/api/categories/server/publications.js';
 import '/imports/api/listings/server/publications.js';
 import '/imports/api/listings/removeBiz.js';
 import './admin.js';
-import './OKGAnalytics.js';
 import './apiMethods.js';

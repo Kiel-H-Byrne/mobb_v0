@@ -1,4 +1,4 @@
-
+import './OKGAnalytics.js';
 import '/imports/api/orionCache.js';
 import Listings from '/imports/startup/collections/listings';
 
@@ -61,6 +61,7 @@ import '/imports/ui/layouts/layout.js';
 jQueryBridget = require('jquery-bridget');
 Masonry = require('masonry-layout');
 ImagesLoaded = require('imagesloaded');
+// import ImagesLoaded from 'imagesloaded';
 jQueryBridget( 'masonry', Masonry, $ );
 
 

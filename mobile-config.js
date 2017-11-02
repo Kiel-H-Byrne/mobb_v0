@@ -1,35 +1,39 @@
-// This section sets up some basic app metadata,
-// the entire section is optional.
 App.info({
   id: 'com.kibumap',
-  name: 'KIBU',
-  description: 'KIBU Map',
+  name: 'MOBB',
+  version: '0.0.1',
+  description: 'The MOBB App',
   author: 'Kiel H. Byrne',
   email: 'theHilmar@gmail.com',
   website: 'https://www.kibumap.com'
 });
-// Set up resources such as icons and launch screens.
-// App.icons({
-//   'iphone': 'img/icons/icon-60.png',
-//   'iphone_2x': 'img/icons/icon-60@2x.png',
-//   // ... more screen sizes and platforms ...
-// });
-// App.launchScreens({
-//   'iphone': 'img/splash/Default~iphone.png',
-//   'iphone_2x': 'img/splash/Default@2x~iphone.png',
-//   // ... more screen sizes and platforms ...
-// });
-// Set PhoneGap/Cordova preferences
-App.setPreference('BackgroundColor', '0xff0000ff');
-App.setPreference('HideKeyboardFormAccessoryBar', true);
+
+App.icons({
+  'iphone_2x': 'public/img/icons/apple-touch-icon-120x120.png',
+  'iphone_3x': 'public/img/icons/apple-touch-icon-180x180.png',
+  'ipad': 'public/img/icons/apple-touch-icon-76x76.png',
+  'ipad_2x': 'public/img/icons/apple-touch-icon-152x152.png',
+  'ios_notification_3x': 'public/img/icons/apple-touch-icon-60x60.png',
+  'iphone_legacy': 'public/img/icons/apple-touch-icon-57x57.png',
+  'ipad_app_legacy': 'public/img/icons/apple-touch-icon-72x72.png',
+  'android_hdpi': 'public/img/icons/apple-touch-icon-72x72.png',
+  'android_xxhdpi': 'public/img/icons/mstile-144x144.png'
+});
+ 
+App.setPreference('BackgroundColor', '0xff404040');
+// App.setPreference('HideKeyboardFormAccessoryBar', true);
 App.setPreference('Orientation', 'default');
 App.setPreference('Orientation', 'all', 'ios');
-// Pass preferences for a particular PhoneGap/Cordova plugin
+
 // App.configurePlugin('com.phonegap.plugins.facebookconnect', {
-//   APP_ID: '1234567890',
-//   API_KEY: 'supersecretapikey'
+//   APP_ID: '235091633613282',
+//   API_KEY: 'f5138f920f667c10c4838a6b074ee451'
 // });
 // Set up Access Rules
 App.accessRule('*.google.com/*');
 App.accessRule('*.googleapis.com/*');
 App.accessRule('*.gstatic.com/*');
+
+App.configurePlugin('cordova-plugin-googleplus', {
+    'REVERSED_CLIENT_ID': 'apps.googleusercontent.com.1039420537399-ve1hdn4k7bpdfir8be5v08que8ps72n1'
+});

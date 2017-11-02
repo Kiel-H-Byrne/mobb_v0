@@ -13,7 +13,7 @@
 // ============================ MAILGUN ===================================
 
 Meteor.startup(function () {
-  smtp = {
+  const smtp = {
     // username: 'postmaster@sandbox6ba51b6be4634d88b492b2418b1b7c4c.mailgun.org',
 	username: "postmaster@TenKSolutions.com",
     password: Meteor.settings.public.keys.mailgun.password,

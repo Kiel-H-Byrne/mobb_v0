@@ -2,7 +2,7 @@
 //check for settings file
 console.log("-= Settings: Checking... =-");
 if (!Meteor.settings.public.keys) {
-    console.log("-= Settings: FAILED. (Use 'NPM run') =-");
+    console.log("-= Settings: FAILED. (run w/ --settings') =-");
 } else {console.log ("-= Settings: Loaded =-");}
 
 let kiel = {};

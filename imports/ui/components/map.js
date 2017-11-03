@@ -176,7 +176,7 @@ Template.map.onCreated( function () {
             
             const clusterOptions = {
                 imagePath: 'img/cluster/m',
-                gridSize: 33
+                gridSize: 23
             };
 
             const mapCluster = new MarkerClusterer(map.instance, mapMarkers, clusterOptions);

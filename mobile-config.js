@@ -2,7 +2,7 @@ App.info({
   id: 'com.kibumap',
   name: 'MOBB',
   version: '0.0.1',
-  description: 'The MOBB App',
+  description: 'The MOBB: Map of Black Businesses',
   author: 'Kiel H. Byrne',
   email: 'theHilmar@gmail.com',
   website: 'https://www.kibumap.com'
@@ -35,5 +35,6 @@ App.accessRule('*.googleapis.com/*');
 App.accessRule('*.gstatic.com/*');
 
 App.configurePlugin('cordova-plugin-googleplus', {
-    'REVERSED_CLIENT_ID': 'apps.googleusercontent.com.1039420537399-ve1hdn4k7bpdfir8be5v08que8ps72n1'
+    // 'REVERSED_CLIENT_ID': 'apps.googleusercontent.com.1039420537399-ve1hdn4k7bpdfir8be5v08que8ps72n1'
+    'REVERSED_CLIENT_ID': ''
 });

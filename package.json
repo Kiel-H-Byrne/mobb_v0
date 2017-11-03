@@ -1,12 +1,12 @@
 {
-  "name": "kibu",
+  "name": "MOBB",
   "private": true,
-  "description": "KIBU: The Map of Black Businesses",
+  "description": "The MOBB: Map of Black Businesses",
   "main": "main.js",
   "scripts": {
     "start": "meteor run --settings settings-dev.json",
     "local": "meteor run --production --settings settings-prod.json",
-    "idev": "meteor run ios --settings settings-dev.json",
+    "idev": "meteor run ios-device --settings settings-dev.json --verbose",
     "iprod": "meteor run ios --settings settings-dev.json",
     "stage": "meteor deploy kibutest.meteorapp.com --settings settings-dev.json",
     "deploy": "meteor deploy kibu.meteorapp.com --settings settings-prod.json",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "khb@bitbucket.com/khb/kibu.git"
+    "url": "khb@bitbucket.com/khb/mobb.git"
   },
   "author": "Kiel Hamilton Byrne",
   "dependencies": {

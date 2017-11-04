@@ -1,7 +1,7 @@
 
 import './layout.html';
 import './nav.js';
-import '../components/map.js';
+// import '../components/map.js';
 import '../components/fullPage.js';
 import '../pages/showCategories.js';
 import '../pages/closestPage.js';

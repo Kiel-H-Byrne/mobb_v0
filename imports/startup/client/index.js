@@ -76,71 +76,73 @@ Session.set('thisPlace', false);
 
 //====== STARTUP ACTIONS ======
 //=====  GoogleMaps load =====  
-GoogleMaps.load({
-  v: '3',
-  key: Meteor.settings.public.keys.googleClient.key,
-  libraries: ['places', 'geometry']
-});
-
-$.getJSON("https://freegeoip.net/json/", {
-    format: "jsonp"
-}).done(function(data){
-/*
-    // ================== RESPONSE ================== 
-    // {"ip":"69.138.161.94","country_code":"US","country_name":"United States","region_code":"MD",
-    //  "region_name":"Maryland","city":"Silver Spring","zip_code":"20902","time_zone":"America/New_York",
-    //  "latitude":39.0409,"longitude":-77.0445,"metro_code":511}
-*/
-
-  let lat = data.latitude;
-  let lng = data.longitude;
-  let browserLocation = {'lat': lat, 'lng': lng };
-  // console.log("Coord from Browser: ", browserLocation);
-  Session.set('browserLoc', browserLocation);
-  Session.set('clientState', data.region_code);
-
-});
-
-
-Meteor.startup(function () {
-  const isRunningStandalone = function () {
-      return (window.matchMedia('(display-mode: standalone)').matches);
-  };
-
-  if (isRunningStandalone()) {
-    // This code will be executed if app is running standalone 
-  }
-
-  
-  Session.set('geoAccepted', false);
-
-  //-- ANALYTICS EVENT (User dismiss/Accept Home Screen banner) --
-
-  window.addEventListener('beforeinstallprompt', function(e) {
-    // beforeinstallprompt Event fired
-
-    // e.userChoice will return a Promise.
-    // For more details read: https://developers.google.com/web/fundamentals/getting-started/primers/promises
-    e.userChoice.then(function(choiceResult) {
-
-      console.log(choiceResult.outcome);
-
-      if(choiceResult.outcome == 'dismissed') {
-  	    analytics.track( "ProgressiveWebApp", {
-  	      title: "Added to HomeScreen",
-  	      data: 'false'
-  	    });
-        console.log('User cancelled home screen install');
-      }
-      else {
-  	    analytics.track( "ProgressiveWebApp", {
-  	      title: "Added to HomeScreen",
-  	      data: 'true'
-  	    });
-      }
-    });
+if (Meteor.isClient) {
+  GoogleMaps.load({
+    v: '3',
+    key: Meteor.settings.public.keys.googleClient.key,
+    libraries: ['places', 'geometry']
   });
 
+  $.getJSON("https://freegeoip.net/json/", {
+      format: "jsonp"
+  }).done(function(data){
+  /*
+      // ================== RESPONSE ================== 
+      // {"ip":"69.138.161.94","country_code":"US","country_name":"United States","region_code":"MD",
+      //  "region_name":"Maryland","city":"Silver Spring","zip_code":"20902","time_zone":"America/New_York",
+      //  "latitude":39.0409,"longitude":-77.0445,"metro_code":511}
+  */
+
+    let lat = data.latitude;
+    let lng = data.longitude;
+    let browserLocation = {'lat': lat, 'lng': lng };
+    // console.log("Coord from Browser: ", browserLocation);
+    Session.set('browserLoc', browserLocation);
+    Session.set('clientState', data.region_code);
+
+  });
+}
+
+Meteor.startup(function () {
+  if (Meteor.isClient) {
+    const isRunningStandalone = function () {
+        return (window.matchMedia('(display-mode: standalone)').matches);
+    };
+
+    if (isRunningStandalone()) {
+      // This code will be executed if app is running standalone 
+    }
+
+    
+    Session.set('geoAccepted', false);
+
+    //-- ANALYTICS EVENT (User dismiss/Accept Home Screen banner) --
+
+    window.addEventListener('beforeinstallprompt', function(e) {
+      // beforeinstallprompt Event fired
+
+      // e.userChoice will return a Promise.
+      // For more details read: https://developers.google.com/web/fundamentals/getting-started/primers/promises
+      e.userChoice.then(function(choiceResult) {
+
+        console.log(choiceResult.outcome);
+
+        if(choiceResult.outcome == 'dismissed') {
+    	    analytics.track( "ProgressiveWebApp", {
+    	      title: "Added to HomeScreen",
+    	      data: 'false'
+    	    });
+          console.log('User cancelled home screen install');
+        }
+        else {
+    	    analytics.track( "ProgressiveWebApp", {
+    	      title: "Added to HomeScreen",
+    	      data: 'true'
+    	    });
+        }
+      });
+    });
+  }
 	//=====  HTML Attributes for Facebook opengraph api =====
 	$('html').attr({
 		'xmlns': 'https://www.w3.org/1999/xhtml',

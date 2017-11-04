@@ -40,6 +40,6 @@ App.configurePlugin('cordova-plugin-googlemaps', {
 });
 
 App.configurePlugin('cordova-plugin-googleplus', {
-    'REVERSED_CLIENT_ID': 'apps.googleusercontent.com.1039420537399-ve1hdn4k7bpdfir8be5v08que8ps72n1'
+    'REVERSED_CLIENT_ID': 'com.googleusercontent.apps.1039420537399-qqf125j7shii1di72qgodngmrqu6rm23'
 });
 

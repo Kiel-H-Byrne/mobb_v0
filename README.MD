@@ -43,3 +43,25 @@ infowindow loads on click event of each marker
 
 ##### Events
 
+##### Device Colors
+<!-- 
++Entity   Hex Description 
++&_COLOR_AQUA; 0xFF00FFFF  Light blue
++&_COLOR_BLACK;  0xFF000000  Pure black
++&_COLOR_BLUE; 0xFF0000FF  Pure blue
++&_COLOR_FUCHSIA;  0xFFFF00FF  Light purple
++&_COLOR_DARKGRAY; 0xFF404040  Dark gray
++&_COLOR_GRAY; 0xFF808080  Pure gray
++&_COLOR_GREEN;  0xFF008000  Pure green
++&_COLOR_LIME; 0xFF00FF00  Light green
++&_COLOR_MAROON; 0xFF800000  Dark red
++&_COLOR_NAVY; 0xFF000080  Dark blue
++&_COLOR_OLIVE;  0xFF808000  Green-brown
++&_COLOR_PURPLE; 0xFF800080  Pure purple
++&_COLOR_RED;  0xFFFF0000  Pure red
++&_COLOR_SILVER; 0xFFC0C0C0  Light gray
++&_COLOR_TEAL; 0xFF008080  Blue-green
++&_COLOR_WHITE;  0xFFFFFFFF  Pure white
++&_COLOR_YELLOW; 0xFFFFFF00  Pure yellow
++&_COLOR_TRANSPARENT;  0x00000000  Completely transparent; the background shows through
++-->

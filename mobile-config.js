@@ -34,7 +34,12 @@ App.accessRule('*.google.com/*');
 App.accessRule('*.googleapis.com/*');
 App.accessRule('*.gstatic.com/*');
 
-App.configurePlugin('cordova-plugin-googleplus', {
-    // 'REVERSED_CLIENT_ID': 'apps.googleusercontent.com.1039420537399-ve1hdn4k7bpdfir8be5v08que8ps72n1'
-    'REVERSED_CLIENT_ID': ''
+App.configurePlugin('cordova-plugin-googlemaps', {
+  'API_KEY_FOR_IOS' : 'AIzaSyC3LsxYAPH0ZTh3iILwLaaCej88X9m4xRc'
+  // 'API_KEY_FOR_ANDROID' : ''
 });
+
+App.configurePlugin('cordova-plugin-googleplus', {
+    'REVERSED_CLIENT_ID': 'apps.googleusercontent.com.1039420537399-ve1hdn4k7bpdfir8be5v08que8ps72n1'
+});
+

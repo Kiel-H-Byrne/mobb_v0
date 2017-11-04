@@ -35,5 +35,8 @@
   "devDependencies": {
     "install": "^0.10.1",
     "npm": "^5.4.2"
-  }
+  },
+  "cordovaPlugins": [
+    "cordova-plugin-googlemaps@2.1.1"
+  ]
 }

@@ -37,6 +37,7 @@ Template.map.onCreated( function () {
     console.log("-= MAP: Created =-");
     let self = this;
 
+if (Meteor.isClient) {
     GoogleMaps.ready('map', function(map) {
         /*      
                 const offsetCenter = (latlng, offsetx, offsety) => {
@@ -259,9 +260,8 @@ Template.map.onCreated( function () {
         //     // ignore the googleMapsEvent passed in by Google Maps!
         //     event.preventDefault();
         // });
-        
     });
-
+};
 });
 
 Template.map.onRendered(function () {

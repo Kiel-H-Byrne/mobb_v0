@@ -62,6 +62,7 @@ if (Meteor.isCordova) {
 Template.cordovaMap.onRendered(function() {
   handle.release();
   $(document).ready(function() {
+      // let div = document.getElementById('mobile-map');
       let div = document.getElementById('mobile-map');
       const Cmap = plugin.google.maps.Map.getMap(div);
   })

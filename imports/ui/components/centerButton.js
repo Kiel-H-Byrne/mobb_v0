@@ -38,9 +38,8 @@ Template.centerButton.events({
       map.getMyLocation(onSuccess, onError); 
 
       let onSuccess = function(location) {
-        console.log(location);
         //set market at location;
-        placeMyMarker(map, location.latLng);
+        placeMyMarker(map, location);
       };
       let onError = function(msg) {
         console.log(JSON.stringify(msg));
@@ -49,7 +48,6 @@ Template.centerButton.events({
     }
       // let clientMarker;
       const cl = Session.get('clientLoc');
-      console.log(cl);
       if (cl) {
         targetClient(map, cl);
 

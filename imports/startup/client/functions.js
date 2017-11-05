@@ -49,9 +49,15 @@ targetClient = function(map,pos) {
     google.maps.event.trigger(map, 'resize');
     map.instance.setZoom(10);
   } else {
+    console.log('from client:');
     console.log(pos);
-    map.setCameraTarget(pos);
-    map.setCameraZoom(10);
+    map.animateCamera({
+      target: {
+    lat: 35.13,
+    lng: 137.33
+  },
+      zoom: 10
+    });
   }
 };
 
@@ -63,8 +69,8 @@ targetBrowser = function(map) {
     map.instance.setCenter(pos);
     map.instance.setZoom(8);
   } else {
-    console.log(pos);
-    // map.setCameraTarget(pos);
+    console.log('from browser: '+ pos);
+    map.setCameraTarget(pos);
     map.setCameraZoom(8);
   }
 };
@@ -99,6 +105,7 @@ placeMyMarker = function(map,pos) {
       // });
     } else {
       clientMarker = map.addMarker({'position': pos});
+      console.log(clientMarker);
   }
   } else {
     //MARKER EXISTS, SO WE MOVE IT.

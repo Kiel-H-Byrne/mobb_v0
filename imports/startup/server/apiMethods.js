@@ -369,10 +369,12 @@ Meteor.methods({
   calcDistance: function(start,finish) {
     check(start, Object);
     check(finish, Object);
-    if (Meteor.isClient) {
+    if (!Meteor.isCordova) {
       const dist = google.maps.geometry.spherical.computeDistanceBetween(start,finish);
       console.log(dist);
       return dist;
+    } else {
+      return 0;
     }
   }
 });

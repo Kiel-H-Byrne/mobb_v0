@@ -24,5 +24,10 @@
        "ROOT_URL": "http://kibutest.meteorapp.com", 
        "MONGO_URL": "mongodb://mobbAdmin:vivitron@ds139715.mlab.com:39715/tkhb_mongodb" 
     } 
+  },
+  "localhost": { 
+     "env": { 
+       "ROOT_URL": "localhost:3000"
+    } 
   }
 }

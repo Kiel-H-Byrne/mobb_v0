@@ -37,7 +37,7 @@ Template.map.onCreated( function () {
     console.log("-= MAP: Created =-");
     let self = this;
 
-if (Meteor.isClient) {
+if (!Meteor.isCordova) {
     GoogleMaps.ready('map', function(map) {
         /*      
                 const offsetCenter = (latlng, offsetx, offsety) => {

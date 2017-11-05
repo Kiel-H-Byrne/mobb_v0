@@ -6,7 +6,7 @@
   "scripts": {
     "start": "meteor run --settings settings-dev.json",
     "local": "meteor run --production --settings settings-prod.json",
-    "idev": "meteor run ios-device --settings settings-dev.json --verbose",
+    "idev": "meteor run ios-device --settings settings-dev.json",
     "iprod": "meteor run ios --settings settings-dev.json",
     "stage": "meteor deploy kibutest.meteorapp.com --settings settings-dev.json",
     "deploy": "meteor deploy kibu.meteorapp.com --settings settings-prod.json",
@@ -35,8 +35,5 @@
   "devDependencies": {
     "install": "^0.10.1",
     "npm": "^5.4.2"
-  },
-  "cordovaPlugins": [
-    "cordova-plugin-googlemaps@2.1.1"
-  ]
+  }
 }

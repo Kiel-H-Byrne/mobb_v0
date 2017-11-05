@@ -29,6 +29,7 @@ App.setPreference('Orientation', 'all', 'ios');
 //   APP_ID: '235091633613282',
 //   API_KEY: 'f5138f920f667c10c4838a6b074ee451'
 // });
+
 // Set up Access Rules
 App.accessRule('*.google.com/*');
 App.accessRule('*.googleapis.com/*');

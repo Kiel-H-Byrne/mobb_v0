@@ -75,36 +75,36 @@ Session.set('thisPlace', false);
 // 100000s = 1.16 days....
 
 //====== STARTUP ACTIONS ======
-//=====  GoogleMaps load =====  
-if (Meteor.isClient) {
+
+$.getJSON("https://freegeoip.net/json/", {
+    format: "jsonp"
+}).done(function(data){
+/*
+    // ================== RESPONSE ================== 
+    // {"ip":"69.138.161.94","country_code":"US","country_name":"United States","region_code":"MD",
+    //  "region_name":"Maryland","city":"Silver Spring","zip_code":"20902","time_zone":"America/New_York",
+    //  "latitude":39.0409,"longitude":-77.0445,"metro_code":511}
+*/
+
+  let lat = data.latitude;
+  let lng = data.longitude;
+  let browserLocation = {'lat': lat, 'lng': lng };
+  // console.log("Coord from Browser: ", browserLocation);
+  Session.set('browserLoc', browserLocation);
+  Session.set('clientState', data.region_code);
+
+}); 
+if (!Meteor.isCordova) {
+  //=====  GoogleMaps load ===== 
   GoogleMaps.load({
     v: '3',
     key: Meteor.settings.public.keys.googleClient.key,
     libraries: ['places', 'geometry']
   });
-
-  $.getJSON("https://freegeoip.net/json/", {
-      format: "jsonp"
-  }).done(function(data){
-  /*
-      // ================== RESPONSE ================== 
-      // {"ip":"69.138.161.94","country_code":"US","country_name":"United States","region_code":"MD",
-      //  "region_name":"Maryland","city":"Silver Spring","zip_code":"20902","time_zone":"America/New_York",
-      //  "latitude":39.0409,"longitude":-77.0445,"metro_code":511}
-  */
-
-    let lat = data.latitude;
-    let lng = data.longitude;
-    let browserLocation = {'lat': lat, 'lng': lng };
-    // console.log("Coord from Browser: ", browserLocation);
-    Session.set('browserLoc', browserLocation);
-    Session.set('clientState', data.region_code);
-
-  });
 }
 
 Meteor.startup(function () {
-  if (Meteor.isClient) {
+  if (!Meteor.isCordova) {
     const isRunningStandalone = function () {
         return (window.matchMedia('(display-mode: standalone)').matches);
     };
@@ -144,6 +144,7 @@ Meteor.startup(function () {
     });
   }
 
+
 	//=====  HTML Attributes for Facebook opengraph api =====
 	$('html').attr({
 		'xmlns': 'https://www.w3.org/1999/xhtml',
@@ -163,7 +164,8 @@ Meteor.startup(function () {
 	    });
 	  });
 	}
-});
+// });
+
   //=====  Global Template Helpers =====
   Template.registerHelper('loading', function() {
     return Session.get('loading');
@@ -333,7 +335,7 @@ Meteor.startup(function () {
 
 
 // // STILL INSIDE METEOR.STARTUP
-// });
+});
 
 Template.orionMaterializeHeaderContainer.onRendered(function() {
   $(document).ready(function () {

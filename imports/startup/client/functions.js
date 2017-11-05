@@ -42,41 +42,64 @@ getLocation = async function() {
 };
 
 targetClient = function(map,pos) {
+  // SET CENTER, 
+  // ZOOM TO CERTAIN LEVEL
+  if (!Meteor.isCordova) {
     map.instance.setCenter(pos);
     google.maps.event.trigger(map, 'resize');
-    map.instance.setZoom(12);
+    map.instance.setZoom(10);
+  } else {
+    console.log(pos);
+    map.setCameraTarget(pos);
+    map.setCameraZoom(10);
+  }
 };
 
 targetBrowser = function(map) {
+  // SET CENTER, 
+  // ZOOM TO CERTAIN LEVEL
   let pos = Session.get('browserLoc');
-  map.instance.setCenter(pos);
-  map.instance.setZoom(8);
+  if (!Meteor.isCordova) {
+    map.instance.setCenter(pos);
+    map.instance.setZoom(8);
+  } else {
+    console.log(pos);
+    // map.setCameraTarget(pos);
+    map.setCameraZoom(8);
+  }
 };
 
 // let clientMarker;
   
 placeMyMarker = function(map,pos) {
-  google.maps.event.trigger(map, 'resize');
+  // CREATE MARKER IF IT DOESN'T ALREADY EXIST, 
+  //SET MARKER POSITION
+
+  // google.maps.event.trigger(map, 'resize');
   //would only not exist if the template reloaded and the browser didn't...(dev mode)
   if (!clientMarker) {
-    const radius = 3;
-    clientMarker = new google.maps.Marker({
-      position: new google.maps.LatLng(pos.lat, pos.lng),
-      map: map.instance,
-      icon: {url: 'img/orange_dot_sm_2.png'},
-      title: "My Location",
-      // animation: google.maps.Animation.BOUNCE,
-    }); 
-    // clientRadius = new google.maps.Circle({
-    //   map: map.instance,
-    //   center: pos,
-    //   radius: (radius * 1609.34),
-    //   strokeColor: '#FF7733',
-    //   strokeOpacity: 0.2,
-    //   strokeWeight: 2,
-    //   fillColor: '#FFAA00',
-    //   fillOpacity: 0.10,
-    // });
+    if (!Meteor.isCordova) {
+      // const radius = 3;
+      clientMarker = new google.maps.Marker({
+        position: new google.maps.LatLng(pos.lat, pos.lng),
+        map: map.instance,
+        icon: {url: 'img/orange_dot_sm_2.png'},
+        title: "My Location",
+        // animation: google.maps.Animation.BOUNCE,
+      }); 
+      // clientRadius = new google.maps.Circle({
+      //   map: map.instance,
+      //   center: pos,
+      //   radius: (radius * 1609.34),
+      //   strokeColor: '#FF7733',
+      //   strokeOpacity: 0.2,
+      //   strokeWeight: 2,
+      //   fillColor: '#FFAA00',
+      //   fillOpacity: 0.10,
+      // });
+    } else {
+      clientMarker = map.addMarker({'position': pos});
+  }
   } else {
     //MARKER EXISTS, SO WE MOVE IT.
     clientMarker.setPosition(pos);

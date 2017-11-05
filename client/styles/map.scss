@@ -5,7 +5,7 @@
   position: relative;
 }
 
-[id='googleMap'] {
+[id='googleMap'], [id='mobile-map'] {
   @media #{$large-and-up} {
     // left: 50%;
   }

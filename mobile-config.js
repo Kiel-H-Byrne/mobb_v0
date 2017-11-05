@@ -1,5 +1,5 @@
 App.info({
-  id: 'com.kibumap',
+  id: 'com.Mobbapp',
   name: 'MOBB',
   version: '0.0.1',
   description: 'The MOBB: Map of Black Businesses',
@@ -35,7 +35,7 @@ App.accessRule('*.googleapis.com/*');
 App.accessRule('*.gstatic.com/*');
 
 App.configurePlugin('cordova-plugin-googlemaps', {
-  'API_KEY_FOR_IOS' : 'AIzaSyC3LsxYAPH0ZTh3iILwLaaCej88X9m4xRc'
+  'API_KEY_FOR_IOS' : 'AIzaSyDtqmEbTUZcxrfidvlgbjX9x1O88VYQGFA'
   // 'API_KEY_FOR_ANDROID' : ''
 });
 

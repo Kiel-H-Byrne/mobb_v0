@@ -143,6 +143,7 @@ Meteor.startup(function () {
       });
     });
   }
+
 	//=====  HTML Attributes for Facebook opengraph api =====
 	$('html').attr({
 		'xmlns': 'https://www.w3.org/1999/xhtml',
@@ -162,6 +163,7 @@ Meteor.startup(function () {
 	    });
 	  });
 	}
+});
   //=====  Global Template Helpers =====
   Template.registerHelper('loading', function() {
     return Session.get('loading');
@@ -330,8 +332,8 @@ Meteor.startup(function () {
 
 
 
-// STILL INSIDE METEOR.STARTUP
-});
+// // STILL INSIDE METEOR.STARTUP
+// });
 
 Template.orionMaterializeHeaderContainer.onRendered(function() {
   $(document).ready(function () {

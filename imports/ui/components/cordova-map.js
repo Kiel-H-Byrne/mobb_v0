@@ -2,7 +2,7 @@
 import Listings from '/imports/startup/collections/listings';
 import './centerButton.js';
 import './loadingScreen.html';
-import './cordova-map.html';
+// import './cordova-map.html';
 
 //====== APP GLOBALS ======
 MAP_ZOOM = 4;
@@ -13,18 +13,14 @@ if (Meteor.isCordova) {
     let map;
     document.addEventListener('deviceready', function() {
   
-      let div = document.getElementById('mobile-map');
+      let div = document.getElementById('googleMap');
       map = plugin.google.maps.Map.getMap(div);
       map.addEventListener(plugin.google.maps.event.MAP_READY, onMapReady);
 
     }, false);
   
-  function onMapReady() {
-    var button = document.getElementById("button");
-    button.addEventListener("click", onButtonClick);
-  }
 
-  function onButtonClick() {
+  function onMapready() {
 
     // Move to the position with animation
     map.animateCamera({
@@ -60,3 +56,9 @@ if (Meteor.isCordova) {
 
   });
 }
+
+
+// let handle = LaunchScreen.hold();
+// Template.cordovaMap.onRendered(function() {
+//   // handle.release();
+// })

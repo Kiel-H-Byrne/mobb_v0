@@ -36,7 +36,8 @@ App.accessRule('*.googleapis.com/*');
 App.accessRule('*.gstatic.com/*');
 
 App.configurePlugin('cordova-plugin-googlemaps', {
-  'API_KEY_FOR_IOS' : 'AIzaSyDtqmEbTUZcxrfidvlgbjX9x1O88VYQGFA'
+  'API_KEY_FOR_IOS' : "AIzaSyDtqmEbTUZcxrfidvlgbjX9x1O88VYQGFA",
+  'LOCATION_WHEN_IN_USE_DESCRIPTION': "View Your Location!"
   // 'API_KEY_FOR_ANDROID' : ''
 });
 

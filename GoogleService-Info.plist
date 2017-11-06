@@ -24,8 +24,6 @@
   <false></false>
   <key>IS_SIGNIN_ENABLED</key>
   <true></true>
-  <key>NSLocationWhenInUseUsageDescription</key>
-  <string>Let's Get Cozy!</string>
   <key>GOOGLE_APP_ID</key>
   <string>1:1039420537399:ios:f2a39b32c54d770e</string>
 </dict>

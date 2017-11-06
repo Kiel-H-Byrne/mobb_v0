@@ -8,7 +8,6 @@ import './map.html';
 //====== APP GLOBALS ======
 MAP_ZOOM = 4;
 
-
 // $.getJSON("https://freegeoip.net/json/", {
 //     format: "jsonp"
 // }).done(function(data){
@@ -33,13 +32,60 @@ MAP_ZOOM = 4;
 
 
 Template.map.onCreated( function () {
-
     console.log("-= MAP: Created =-");
     let self = this;
 
-if (!Meteor.isCordova) {
-    GoogleMaps.ready('map', function(map) {
-        /*      
+    //====== SET MAP VARIABLES / CONSTANTS ======
+
+    // map.instance.setCenter(Session.get('clientLoc') || Session.get('browserLoc'));
+
+    // offsetCenter(Geolocation.latLng(), 50, 0);
+    // console.log(Session.get('browserLoc'));
+
+    // let clientMarker;
+
+    const markerImage = {
+      url: 'img/orange_marker_sm.png'
+    };
+
+    const closeMarkerImage = {
+      url: 'img/red_marker_sm.png'
+    };
+
+    const self_icon = {
+        // url: 'img/orange_marker_3_sm.png'
+        url: 'img/orange_dot_sm_2.png',
+    };
+
+    const self_radius = {
+        strokeColor: '#FF7733',
+        strokeOpacity: 0.5,
+        strokeWeight: 2,
+        fillColor: '#FFAA00',
+        fillOpacity: 0.15,
+    };
+
+    // const browser_symbol = {
+    //     path: "M21 3L3 10.53v.98l6.84 2.65L12.48 21h.98L21 3z",
+    //     fillColor: '#FF0000',
+    //     fillOpacity: 0.8,
+    //     anchor: new google.maps.Point(0,-3),
+    //     strokeWeight: 0.05,
+    //     scale: 1
+    // };
+
+    // browserMarker = new google.maps.Marker({
+    //     position: Session.get('browserLoc'),
+    //     map: map.instance,
+    //     icon: browser_symbol,
+    //     title: "Approx. Location...",
+    //     // animation: google.maps.Animation.BOUNCE,
+    // }); 
+
+
+    if (!Meteor.isCordova) {
+        GoogleMaps.ready('map', function(map) {
+            /*      
                 const offsetCenter = (latlng, offsetx, offsety) => {
 
                 // latlng is the apparent centre-point
@@ -63,208 +109,174 @@ if (!Meteor.isCordova) {
                     map.instance.setCenter(newCenter);
                     // google.maps.event.trigger(map, "resize");
                 };
-        */
-        //Adding ALT tags to Google Images.       
-        $('#googleMap > .map-canvas > div > .gm-style > div:nth-of-type(2) > a > div > img').attr( "alt", "Google Maps" );
-        //Adding REL="noopener" to _blank targets
-        $('[target="_blank"]').attr("rel", "noopener");
-        // console.log("-= MAP: Drawn =-");        
-        //====== SET MAP VARIABLES / CONSTANTS ======
- 
-        // map.instance.setCenter(Session.get('clientLoc') || Session.get('browserLoc'));
+            */
+            //Adding ALT tags to Google Images.       
+            $('#googleMap > .map-canvas > div > .gm-style > div:nth-of-type(2) > a > div > img').attr( "alt", "Google Maps" );
+            //Adding REL="noopener" to _blank targets
+            $('[target="_blank"]').attr("rel", "noopener");
 
-        // offsetCenter(Geolocation.latLng(), 50, 0);
-        // console.log(Session.get('browserLoc'));
 
-        // let clientMarker;
 
-        const markerImage = {
-          url: 'img/orange_marker_sm.png'
-        };
 
-        const closeMarkerImage = {
-          url: 'img/red_marker_sm.png'
-        };
+            //====== watch the database for changes, draw new marker on change. ====== //
 
-        const self_icon = {
-            // url: 'img/orange_marker_3_sm.png'
-            url: 'img/orange_dot_sm_2.png',
-        };
-
-        const self_radius = {
-            strokeColor: '#FF7733',
-            strokeOpacity: 0.5,
-            strokeWeight: 2,
-            fillColor: '#FFAA00',
-            fillOpacity: 0.15,
-        };
-
-        const browser_symbol = {
-            path: "M21 3L3 10.53v.98l6.84 2.65L12.48 21h.98L21 3z",
-            fillColor: '#FF0000',
-            fillOpacity: 0.8,
-            anchor: new google.maps.Point(0,-3),
-            strokeWeight: 0.05,
-            scale: 1
-        };
-
-        // browserMarker = new google.maps.Marker({
-        //     position: Session.get('browserLoc'),
-        //     map: map.instance,
-        //     icon: browser_symbol,
-        //     title: "Approx. Location...",
-        //     // animation: google.maps.Animation.BOUNCE,
-        // }); 
-
-        //====== watch the database for changes, draw new marker on change. ====== //
-
-        const subscription = self.subscribe('listings_locs', function () {
-        
-            let mapMarkers = [];            
-            // Session.set('loading', false);
-            // append "hide to loading screen div"
-            $('[id="loading-wrapper"]').css({display:"none"});
+            const subscription = self.subscribe('listings_locs', function () {
             
-            let cursor = Listings.find({
-                location: { $exists : 1 }
+                let mapMarkers = [];            
+                // Session.set('loading', false);
+                // append "hide to loading screen div"
+                $('[id="loading-wrapper"]').css({display:"none"});
+                
+                let cursor = Listings.find({
+                    location: { $exists : 1 }
+                });
+                console.log("-= MAP.JS SUBSCRIBING: ALL ["+ cursor.count() +"] LISTINGS WITH LOCATIONS =-");
+                //find listings that match the same lat/long digits as me (first two digits)
+
+                cursor.observeChanges({
+                    added: function(id,doc) {
+                        //add markers.
+                        //For Each Listing, add a marker; every marker opens a global infoWindow and owns events.
+                        //===== CONVERT DOC LOCATION FIELD FROM STRINGIFIED ARRAY TO OBJECT LITERAL =====
+                        if (doc.location) {
+                            let latLng = doc.location.split(",");
+                            let lat = Number(latLng[0]);
+                            let lng = Number(latLng[1]);
+                            let latLngObj = {'lat': lat, 'lng': lng };
+                            //===== LEAVE DOC LOCATION FIELD AS OBJECT LITERAL =====
+                            // let latLngObj = doc.location;
+
+                            //--   Place Markers on map
+                            let marker = new google.maps.Marker({
+                              position: latLngObj,
+                              map: map.instance,
+                              icon: markerImage,
+                            });
+
+                            marker.setTitle(doc.name);
+                            
+                            mapMarkers.push(marker);
+
+                            marker.addListener('click', function () {
+                                Session.set('openListing', id);
+                                // $('#modalInfo').modal('open');
+                                $('.button-collapse').sideNav('show');
+
+                                //calculate distance 
+                                // let start = new google.maps.LatLng(Session.get('clientLoc') || Session.get('browserLoc'));
+                                // let finish = new google.maps.LatLng(latLngObj);
+                                // console.log(start, finish);
+                                // let dist = google.maps.geometry.spherical.computeDistanceBetween(start,finish);
+                                // // multiply meters by 0.000621371 for number of miles.
+                                // console.log(`${dist * 0.000621371} mi`);
+                                // // Router.go('/', {_id: id});
+
+                            });
+
+                        } // else cannot place marker on map, it does not have lat/lng yet
+                    }
+                });
+                
+                const clusterOptions = {
+                    imagePath: 'img/cluster/m',
+                    gridSize: 23
+                };
+
+                const mapCluster = new MarkerClusterer(map.instance, mapMarkers, clusterOptions);
+                // console.log(mapCluster);
             });
-            console.log("-= MAP.JS SUBSCRIBING: ALL ["+ cursor.count() +"] LISTINGS WITH LOCATIONS =-");
-            //find listings that match the same lat/long digits as me (first two digits)
 
-            cursor.observeChanges({
-                added: function(id,doc) {
-                    //add markers.
-                    //For Each Listing, add a marker; every marker opens a global infoWindow and owns events.
-                    //===== CONVERT DOC LOCATION FIELD FROM STRINGIFIED ARRAY TO OBJECT LITERAL =====
-                    if (doc.location) {
-                        let latLng = doc.location.split(",");
-                        let lat = Number(latLng[0]);
-                        let lng = Number(latLng[1]);
-                        let latLngObj = {'lat': lat, 'lng': lng };
-                        //===== LEAVE DOC LOCATION FIELD AS OBJECT LITERAL =====
-                        // let latLngObj = doc.location;
+       
+              // as soon as session = true, let autorun proceed for  geolocate;  
+              // then stop outer autorun
+            // self.autorun( function(c) {
+            //   let getPerm = Session.get("geoAccepted");
 
-                        //--   Place Markers on map
-                        let marker = new google.maps.Marker({
-                          position: latLngObj,
-                          map: map.instance,
-                          icon: markerImage,
-                        });
+            //   if (getPerm === true) {
+            //       self.autorun(function () {    
+            //         //====== AUTO CALCULATE MY LOCATION AND DRAW NEW MARKER WHEN IT CHANGES ======
+            //         //====== AUTO CALCULATE NEW CLOSEST BUSINESS WHEN MY LOCATION CHANGES ======
+            //         // Materialize.toast('Locating...', 1100, 'myToast');
+            //         //add class 'pulse' to button, then remove it once found
+            //         $(document).ready(function (){
+            //           $('[id="centerButton_button"]').addClass('pulse');
+            //         });
 
-                        marker.setTitle(doc.name);
-                        
-                        mapMarkers.push(marker);
+            //         console.log("searching ...");
+            //         if (Geolocation.error() || Geolocation.latLng === null || Geolocation.latLng === "null") {
+            //           console.warn("Geopositioning Error:", Geolocation.error().message);
+            //           return;
+            //         } else {
+            //           getLocation().then((pos) => {
+            //             if (pos) {
+            //               Session.set('clientLoc', pos);
 
-                        marker.addListener('click', function () {
-                            Session.set('openListing', id);
-                            // $('#modalInfo').modal('open');
-                            $('.button-collapse').sideNav('show');
+            //               if (!clientMarker) {
+            //                 clientMarker = new google.maps.Marker({
+            //                     position: new google.maps.LatLng(pos.lat, pos.lng),
+            //                     map: map.instance,
+            //                     icon: {url: 'img/orange_dot_sm_2.png'},
+            //                     title: "My Location",
+            //                     // animation: google.maps.Animation.BOUNCE,
+            //                 });
+                            
+            //                 clientRadius = new google.maps.Circle({
+            //                   map: map.instance,
+            //                   center: pos,
+            //                   radius: (3 * 1609.34),
+            //                   strokeColor: '#FF7733',
+            //                   strokeOpacity: 0.5,
+            //                   strokeWeight: 2,
+            //                   fillColor: '#FFAA00',
+            //                   fillOpacity: 0.15,
+            //                 });
 
-                            //calculate distance 
-                            // let start = new google.maps.LatLng(Session.get('clientLoc') || Session.get('browserLoc'));
-                            // let finish = new google.maps.LatLng(latLngObj);
-                            // console.log(start, finish);
-                            // let dist = google.maps.geometry.spherical.computeDistanceBetween(start,finish);
-                            // // multiply meters by 0.000621371 for number of miles.
-                            // console.log(`${dist * 0.000621371} mi`);
-                            // // Router.go('/', {_id: id});
+            //                 // map.instance.setCenter(pos);
+            //                 // map.instance.setZoom(12); 
+            //                 targetClient(map,pos);
 
-                        });
+            //               } else {
+            //                 clientMarker.setPosition(pos);
+            //                 clientRadius.setCenter(pos);
+            //               }
+            //               return;
+            //             }
+            //           });
+            //         }
+            //       });
+            //       c.stop();
+            //     } else {
+            //     console.warn('Get Geolocation: Not Accepted, Yet.');
+            //   }
+            // });
 
-                    } // else cannot place marker on map, it does not have lat/lng yet
-                }
-            });
-            
-            const clusterOptions = {
-                imagePath: 'img/cluster/m',
-                gridSize: 23
-            };
+            // ========================= DOM Events relating to Map =========================
 
-            const mapCluster = new MarkerClusterer(map.instance, mapMarkers, clusterOptions);
-            // console.log(mapCluster);
+            // google.maps.event.addDomListener(map, 'center_changed', function () {
+            //     google.maps.event.trigger(map, "resize");
+            //     console.log("new center");
+            // })
+            // google.maps.event.addListener(map, "dblclick", function(event) {
+            //     console.debug("caught double click");
+            //     // reference the global event object
+            //     // ignore the googleMapsEvent passed in by Google Maps!
+            //     event.preventDefault();
+            // });
         });
-
-   
-          // as soon as session = true, let autorun proceed for  geolocate;  
-          // then stop outer autorun
-        // self.autorun( function(c) {
-        //   let getPerm = Session.get("geoAccepted");
-
-        //   if (getPerm === true) {
-        //       self.autorun(function () {    
-        //         //====== AUTO CALCULATE MY LOCATION AND DRAW NEW MARKER WHEN IT CHANGES ======
-        //         //====== AUTO CALCULATE NEW CLOSEST BUSINESS WHEN MY LOCATION CHANGES ======
-        //         // Materialize.toast('Locating...', 1100, 'myToast');
-        //         //add class 'pulse' to button, then remove it once found
-        //         $(document).ready(function (){
-        //           $('[id="centerButton_button"]').addClass('pulse');
-        //         });
-
-        //         console.log("searching ...");
-        //         if (Geolocation.error() || Geolocation.latLng === null || Geolocation.latLng === "null") {
-        //           console.warn("Geopositioning Error:", Geolocation.error().message);
-        //           return;
-        //         } else {
-        //           getLocation().then((pos) => {
-        //             if (pos) {
-        //               Session.set('clientLoc', pos);
-
-        //               if (!clientMarker) {
-        //                 clientMarker = new google.maps.Marker({
-        //                     position: new google.maps.LatLng(pos.lat, pos.lng),
-        //                     map: map.instance,
-        //                     icon: {url: 'img/orange_dot_sm_2.png'},
-        //                     title: "My Location",
-        //                     // animation: google.maps.Animation.BOUNCE,
-        //                 });
-                        
-        //                 clientRadius = new google.maps.Circle({
-        //                   map: map.instance,
-        //                   center: pos,
-        //                   radius: (3 * 1609.34),
-        //                   strokeColor: '#FF7733',
-        //                   strokeOpacity: 0.5,
-        //                   strokeWeight: 2,
-        //                   fillColor: '#FFAA00',
-        //                   fillOpacity: 0.15,
-        //                 });
-
-        //                 // map.instance.setCenter(pos);
-        //                 // map.instance.setZoom(12); 
-        //                 targetClient(map,pos);
-
-        //               } else {
-        //                 clientMarker.setPosition(pos);
-        //                 clientRadius.setCenter(pos);
-        //               }
-        //               return;
-        //             }
-        //           });
-        //         }
-        //       });
-        //       c.stop();
-        //     } else {
-        //     console.warn('Get Geolocation: Not Accepted, Yet.');
-        //   }
+    } else {
+        // Meteor.startup(function() {
+            // let options = {
+            //   'styles': [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#C3BBAE"}]},{"featureType":"administrative","elementType":"labels.text.stroke","stylers":[{"color":"#565250"}]},{"featureType":"administrative.country","elementType":"labels.text.stroke","stylers":[{"color":"#5C5A6F"}]},{"featureType":"administrative.locality","elementType":"labels.text.fill","stylers":[{"color":"#FFFAF3"}]},{"featureType":"administrative.locality","elementType":"labels.text.stroke","stylers":[{"color":"#696969"}]},{"featureType":"administrative.neighborhood","elementType":"labels.text.stroke","stylers":[{"color":"#696969"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#FBB03B"},{"weight":3}]},{"featureType":"landscape","elementType":"geometry.fill","stylers":[{"color":"#565250"},{"visibility":"on"}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"hue":"#003300"},{"saturation":-80},{"gamma":0.3},{"visibility":"simple"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"poi.business","elementType":"geometry","stylers":[{"saturation":-10},{"visibility":"on"}]},{"featureType":"poi.business","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-50},{"lightness":-35}]},{"featureType":"road","elementType":"labels.text.fill","stylers":[{"color":"#FBB03B"}]},{"featureType":"road","elementType":"labels.text.stroke","stylers":[{"weight":4},{"color":"#484848"}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"weight":7.59}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.bus","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.bus","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.bus","elementType":"labels","stylers":[{"visibility":"off"},{"hue":"#ff0000"}]},{"featureType":"transit.station.bus","elementType":"labels.icon","stylers":[{"visibility":"off"},{"hue":"#ff2300"}]},{"featureType":"transit.station.rail","elementType":"geometry","stylers":[{"visibility":"on"}]},{"featureType":"transit.station.rail","elementType":"labels","stylers":[{"visibility":"on"}]},{"featureType":"transit.station.rail","elementType":"labels.icon","stylers":[{"visibility":"on"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#ffffff"},{"visibility":"on"}]}]
+            // };
+            // let div = document.getElementById('mobile-map');
+            // let Cmap = plugin.google.maps.Map.getMap(div, options);
         // });
-
-        // ========================= DOM Events relating to Map =========================
-
-        // google.maps.event.addDomListener(map, 'center_changed', function () {
-        //     google.maps.event.trigger(map, "resize");
-        //     console.log("new center");
-        // })
-        // google.maps.event.addListener(map, "dblclick", function(event) {
-        //     console.debug("caught double click");
-        //     // reference the global event object
-        //     // ignore the googleMapsEvent passed in by Google Maps!
-        //     event.preventDefault();
-        // });
-    });
-};
+    }
 });
 
+// let handle = LaunchScreen.hold();
 Template.map.onRendered(function () {
+  // handle.release();
     // const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
     // console.log(map);
     // let pos = Session.get('clientLoc');
@@ -296,6 +308,16 @@ Template.map.onRendered(function () {
         //     });
         // }
     });
+
+    if (Meteor.isCordova) {
+        $(document).ready(function() {
+            let options = {
+              'styles': [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#C3BBAE"}]},{"featureType":"administrative","elementType":"labels.text.stroke","stylers":[{"color":"#565250"}]},{"featureType":"administrative.country","elementType":"labels.text.stroke","stylers":[{"color":"#5C5A6F"}]},{"featureType":"administrative.locality","elementType":"labels.text.fill","stylers":[{"color":"#FFFAF3"}]},{"featureType":"administrative.locality","elementType":"labels.text.stroke","stylers":[{"color":"#696969"}]},{"featureType":"administrative.neighborhood","elementType":"labels.text.stroke","stylers":[{"color":"#696969"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#FBB03B"},{"weight":3}]},{"featureType":"landscape","elementType":"geometry.fill","stylers":[{"color":"#565250"},{"visibility":"on"}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"hue":"#003300"},{"saturation":-80},{"gamma":0.3},{"visibility":"simple"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"poi.business","elementType":"geometry","stylers":[{"saturation":-10},{"visibility":"on"}]},{"featureType":"poi.business","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-50},{"lightness":-35}]},{"featureType":"road","elementType":"labels.text.fill","stylers":[{"color":"#FBB03B"}]},{"featureType":"road","elementType":"labels.text.stroke","stylers":[{"weight":4},{"color":"#484848"}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"weight":7.59}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.bus","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.bus","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.bus","elementType":"labels","stylers":[{"visibility":"off"},{"hue":"#ff0000"}]},{"featureType":"transit.station.bus","elementType":"labels.icon","stylers":[{"visibility":"off"},{"hue":"#ff2300"}]},{"featureType":"transit.station.rail","elementType":"geometry","stylers":[{"visibility":"on"}]},{"featureType":"transit.station.rail","elementType":"labels","stylers":[{"visibility":"on"}]},{"featureType":"transit.station.rail","elementType":"labels.icon","stylers":[{"visibility":"on"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#ffffff"},{"visibility":"on"}]}]
+            };
+            let div = document.getElementById('mobile-map');
+            let Cmap = plugin.google.maps.Map.getMap(div, options);
+        })
+    }
   });
 });
 

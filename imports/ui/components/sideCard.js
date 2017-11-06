@@ -53,11 +53,11 @@ Template.sideCard.onRendered( function () {
     }
   });
 
-  ImagesLoaded( '.slides li', function () {
-    // hide preloader
-    $('.spinner-layer').css('hide');
-    console.log('hello there');
-  });
+  // ImagesLoaded( '.slides li', function () {
+  //   // hide preloader
+  //   $('.spinner-layer').css('hide');
+    
+  // });
 
   // ImagesLoaded( '.carousel', { background: '.carousel-item' }, function () {
   //   console.log('imageLoaded!');

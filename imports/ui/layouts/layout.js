@@ -14,4 +14,4 @@ import '../pages/404page.js';
 import '../pages/myJoin.html';
 import '../pages/test.js';
 
-import '../components/cordova-map.js';
+// import '../components/cordova-map.js';

@@ -6,7 +6,7 @@ import './cordova-map.html';
 
 //====== APP GLOBALS ======
 MAP_ZOOM = 4;
-let handle = LaunchScreen.hold();
+// let handle = LaunchScreen.hold();
 if (Meteor.isCordova) {
   Meteor.startup(function () {
 

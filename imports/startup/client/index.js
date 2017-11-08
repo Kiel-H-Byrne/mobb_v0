@@ -57,52 +57,54 @@ $.getJSON("https://freegeoip.net/json/", {format: "jsonp"}).done(function(data){
   Session.set('clientState', data.region_code);
 }); 
 
-  //=====  GoogleMaps load ===== 
+
+
+
+Meteor.startup(function () {
+    //=====  GoogleMaps load ===== 
   GoogleMaps.load({
     v: '3',
     key: Meteor.settings.public.keys.googleClient.key,
     libraries: ['places', 'geometry']
   });
+  
+  const isRunningStandalone = function () {
+      return (window.matchMedia('(display-mode: standalone)').matches);
+  };
 
+  if (isRunningStandalone()) {
+    // This code will be executed if app is running standalone 
+  }
 
-Meteor.startup(function () {
-    const isRunningStandalone = function () {
-        return (window.matchMedia('(display-mode: standalone)').matches);
-    };
+  
+  Session.set('geoAccepted', false);
 
-    if (isRunningStandalone()) {
-      // This code will be executed if app is running standalone 
-    }
+  //-- ANALYTICS EVENT (User dismiss/Accept Home Screen banner) --
 
-    
-    Session.set('geoAccepted', false);
+  window.addEventListener('beforeinstallprompt', function(e) {
+    // beforeinstallprompt Event fired
 
-    //-- ANALYTICS EVENT (User dismiss/Accept Home Screen banner) --
+    // e.userChoice will return a Promise.
+    // For more details read: https://developers.google.com/web/fundamentals/getting-started/primers/promises
+    e.userChoice.then(function(choiceResult) {
 
-    window.addEventListener('beforeinstallprompt', function(e) {
-      // beforeinstallprompt Event fired
+      console.log(choiceResult.outcome);
 
-      // e.userChoice will return a Promise.
-      // For more details read: https://developers.google.com/web/fundamentals/getting-started/primers/promises
-      e.userChoice.then(function(choiceResult) {
-
-        console.log(choiceResult.outcome);
-
-        if(choiceResult.outcome == 'dismissed') {
-    	    analytics.track( "ProgressiveWebApp", {
-    	      title: "Added to HomeScreen",
-    	      data: 'false'
-    	    });
-          console.log('User cancelled home screen install');
-        }
-        else {
-    	    analytics.track( "ProgressiveWebApp", {
-    	      title: "Added to HomeScreen",
-    	      data: 'true'
-    	    });
-        }
-      });
+      if(choiceResult.outcome == 'dismissed') {
+  	    analytics.track( "ProgressiveWebApp", {
+  	      title: "Added to HomeScreen",
+  	      data: 'false'
+  	    });
+        console.log('User cancelled home screen install');
+      }
+      else {
+  	    analytics.track( "ProgressiveWebApp", {
+  	      title: "Added to HomeScreen",
+  	      data: 'true'
+  	    });
+      }
     });
+  });
 
 
 
@@ -125,7 +127,6 @@ Meteor.startup(function () {
 	    });
 	  });
 	}
-// });
 
   //=====  Global Template Helpers =====
   Template.registerHelper('loading', function() {
@@ -138,7 +139,6 @@ Meteor.startup(function () {
     // Meteor.call('scrapeOG', url, id); 
     // console.log(url, id);
     Meteor.call('getOG', url, id);
-    
     
   });
 
@@ -235,7 +235,8 @@ Meteor.startup(function () {
           }
           return res;
         }
-      }
+      } 
+      return 
     });
 
   Template.registerHelper('isClose', function(distance) {
@@ -292,8 +293,6 @@ Meteor.startup(function () {
     const apiUri = `${uri}maxwidth=300&photoreference=${ref}&sensor=false&key=${key}`;
     return apiUri;
   });
-
-
 
 // // STILL INSIDE METEOR.STARTUP
 });

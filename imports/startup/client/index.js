@@ -76,15 +76,13 @@ Session.set('thisPlace', false);
 
 //====== STARTUP ACTIONS ======
 
-$.getJSON("https://freegeoip.net/json/", {
-    format: "jsonp"
-}).done(function(data){
-/*
-    // ================== RESPONSE ================== 
-    // {"ip":"69.138.161.94","country_code":"US","country_name":"United States","region_code":"MD",
-    //  "region_name":"Maryland","city":"Silver Spring","zip_code":"20902","time_zone":"America/New_York",
-    //  "latitude":39.0409,"longitude":-77.0445,"metro_code":511}
-*/
+$.getJSON("https://freegeoip.net/json/", {format: "jsonp"}).done(function(data){
+  /*
+      // ================== RESPONSE ================== 
+      // {"ip":"69.138.161.94","country_code":"US","country_name":"United States","region_code":"MD",
+      //  "region_name":"Maryland","city":"Silver Spring","zip_code":"20902","time_zone":"America/New_York",
+      //  "latitude":39.0409,"longitude":-77.0445,"metro_code":511}
+  */
 
   let lat = data.latitude;
   let lng = data.longitude;
@@ -92,19 +90,17 @@ $.getJSON("https://freegeoip.net/json/", {
   // console.log("Coord from Browser: ", browserLocation);
   Session.set('browserLoc', browserLocation);
   Session.set('clientState', data.region_code);
-
 }); 
-if (!Meteor.isCordova) {
+
   //=====  GoogleMaps load ===== 
   GoogleMaps.load({
     v: '3',
     key: Meteor.settings.public.keys.googleClient.key,
     libraries: ['places', 'geometry']
   });
-}
+
 
 Meteor.startup(function () {
-  if (!Meteor.isCordova) {
     const isRunningStandalone = function () {
         return (window.matchMedia('(display-mode: standalone)').matches);
     };
@@ -142,7 +138,7 @@ Meteor.startup(function () {
         }
       });
     });
-  }
+
 
 
 	//=====  HTML Attributes for Facebook opengraph api =====

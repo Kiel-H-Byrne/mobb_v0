@@ -8,26 +8,6 @@ import './map.html';
 //====== APP GLOBALS ======
 MAP_ZOOM = 4;
 
-// $.getJSON("https://freegeoip.net/json/", {
-//     format: "jsonp"
-// }).done(function(data){
-
-//     // ================== RESPONSE ================== 
-//     // {"ip":"69.138.161.94","country_code":"US","country_name":"United States","region_code":"MD",
-//     //  "region_name":"Maryland","city":"Silver Spring","zip_code":"20902","time_zone":"America/New_York",
-//     //  "latitude":39.0409,"longitude":-77.0445,"metro_code":511}
-
-
-//   let lat = data.latitude;
-//   let lng = data.longitude;
-//   let browserLocation = {'lat': lat, 'lng': lng };
-//   // console.log("Coord from Browser: ", browserLocation);
-//   Session.set('browserLoc', browserLocation);
-//   Session.set('clientState', data.region_code);
-
-// });
-
-
 // ============================= SUBSCRIPTIONS ==================================
 
 
@@ -83,8 +63,7 @@ Template.map.onCreated( function () {
     // }); 
 
 
-    if (!Meteor.isCordova) {
-        $('[id="mobile-map"]').css('hide');
+        // $('[id="mobile-map"]').css('hide');
         GoogleMaps.ready('map', function(map) {
             
             /*      
@@ -265,7 +244,7 @@ Template.map.onCreated( function () {
             //     event.preventDefault();
             // });
         });
-    } else {
+    // } else {
         // Meteor.startup(function() {
             // let options = {
             //   'styles': [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#C3BBAE"}]},{"featureType":"administrative","elementType":"labels.text.stroke","stylers":[{"color":"#565250"}]},{"featureType":"administrative.country","elementType":"labels.text.stroke","stylers":[{"color":"#5C5A6F"}]},{"featureType":"administrative.locality","elementType":"labels.text.fill","stylers":[{"color":"#FFFAF3"}]},{"featureType":"administrative.locality","elementType":"labels.text.stroke","stylers":[{"color":"#696969"}]},{"featureType":"administrative.neighborhood","elementType":"labels.text.stroke","stylers":[{"color":"#696969"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#FBB03B"},{"weight":3}]},{"featureType":"landscape","elementType":"geometry.fill","stylers":[{"color":"#565250"},{"visibility":"on"}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"hue":"#003300"},{"saturation":-80},{"gamma":0.3},{"visibility":"simple"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"poi.business","elementType":"geometry","stylers":[{"saturation":-10},{"visibility":"on"}]},{"featureType":"poi.business","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-50},{"lightness":-35}]},{"featureType":"road","elementType":"labels.text.fill","stylers":[{"color":"#FBB03B"}]},{"featureType":"road","elementType":"labels.text.stroke","stylers":[{"weight":4},{"color":"#484848"}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"weight":7.59}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.bus","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.bus","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.bus","elementType":"labels","stylers":[{"visibility":"off"},{"hue":"#ff0000"}]},{"featureType":"transit.station.bus","elementType":"labels.icon","stylers":[{"visibility":"off"},{"hue":"#ff2300"}]},{"featureType":"transit.station.rail","elementType":"geometry","stylers":[{"visibility":"on"}]},{"featureType":"transit.station.rail","elementType":"labels","stylers":[{"visibility":"on"}]},{"featureType":"transit.station.rail","elementType":"labels.icon","stylers":[{"visibility":"on"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#ffffff"},{"visibility":"on"}]}]
@@ -273,7 +252,7 @@ Template.map.onCreated( function () {
             // let div = document.getElementById('mobile-map');
             // let Cmap = plugin.google.maps.Map.getMap(div, options);
         // });
-    }
+    // }
 });
 
 // let handle = LaunchScreen.hold();
@@ -311,20 +290,20 @@ Template.map.onRendered(function () {
         // }
     });
 
-    if (Meteor.isCordova) {
-        $(document).ready(function() {
-            $('[id="browser-map"]').css('hide');
-            let options = {
-              'styles': [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#C3BBAE"}]},{"featureType":"administrative","elementType":"labels.text.stroke","stylers":[{"color":"#565250"}]},{"featureType":"administrative.country","elementType":"labels.text.stroke","stylers":[{"color":"#5C5A6F"}]},{"featureType":"administrative.locality","elementType":"labels.text.fill","stylers":[{"color":"#FFFAF3"}]},{"featureType":"administrative.locality","elementType":"labels.text.stroke","stylers":[{"color":"#696969"}]},{"featureType":"administrative.neighborhood","elementType":"labels.text.stroke","stylers":[{"color":"#696969"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#FBB03B"},{"weight":3}]},{"featureType":"landscape","elementType":"geometry.fill","stylers":[{"color":"#565250"},{"visibility":"on"}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"hue":"#003300"},{"saturation":-80},{"gamma":0.3},{"visibility":"simple"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"poi.business","elementType":"geometry","stylers":[{"saturation":-10},{"visibility":"on"}]},{"featureType":"poi.business","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-50},{"lightness":-35}]},{"featureType":"road","elementType":"labels.text.fill","stylers":[{"color":"#FBB03B"}]},{"featureType":"road","elementType":"labels.text.stroke","stylers":[{"weight":4},{"color":"#484848"}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"weight":7.59}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.bus","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.bus","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.bus","elementType":"labels","stylers":[{"visibility":"off"},{"hue":"#ff0000"}]},{"featureType":"transit.station.bus","elementType":"labels.icon","stylers":[{"visibility":"off"},{"hue":"#ff2300"}]},{"featureType":"transit.station.rail","elementType":"geometry","stylers":[{"visibility":"on"}]},{"featureType":"transit.station.rail","elementType":"labels","stylers":[{"visibility":"on"}]},{"featureType":"transit.station.rail","elementType":"labels.icon","stylers":[{"visibility":"on"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#ffffff"},{"visibility":"on"}]}]
-            };
-            let div = document.getElementById('mobile-map');
-            let Cmap = plugin.google.maps.Map.getMap(div, options);
-            Cmap.addMarker({
-              position: {lat: 37.422359, lng: -122.084344},
-              title: "Welcome!"
-            });
-        })
-    }
+    // if (Meteor.isCordova) {
+    //     $(document).ready(function() {
+    //         $('[id="browser-map"]').css('hide');
+    //         let options = {
+    //           'styles': [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#C3BBAE"}]},{"featureType":"administrative","elementType":"labels.text.stroke","stylers":[{"color":"#565250"}]},{"featureType":"administrative.country","elementType":"labels.text.stroke","stylers":[{"color":"#5C5A6F"}]},{"featureType":"administrative.locality","elementType":"labels.text.fill","stylers":[{"color":"#FFFAF3"}]},{"featureType":"administrative.locality","elementType":"labels.text.stroke","stylers":[{"color":"#696969"}]},{"featureType":"administrative.neighborhood","elementType":"labels.text.stroke","stylers":[{"color":"#696969"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#FBB03B"},{"weight":3}]},{"featureType":"landscape","elementType":"geometry.fill","stylers":[{"color":"#565250"},{"visibility":"on"}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"hue":"#003300"},{"saturation":-80},{"gamma":0.3},{"visibility":"simple"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"poi.business","elementType":"geometry","stylers":[{"saturation":-10},{"visibility":"on"}]},{"featureType":"poi.business","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-50},{"lightness":-35}]},{"featureType":"road","elementType":"labels.text.fill","stylers":[{"color":"#FBB03B"}]},{"featureType":"road","elementType":"labels.text.stroke","stylers":[{"weight":4},{"color":"#484848"}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"weight":7.59}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.bus","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.bus","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.bus","elementType":"labels","stylers":[{"visibility":"off"},{"hue":"#ff0000"}]},{"featureType":"transit.station.bus","elementType":"labels.icon","stylers":[{"visibility":"off"},{"hue":"#ff2300"}]},{"featureType":"transit.station.rail","elementType":"geometry","stylers":[{"visibility":"on"}]},{"featureType":"transit.station.rail","elementType":"labels","stylers":[{"visibility":"on"}]},{"featureType":"transit.station.rail","elementType":"labels.icon","stylers":[{"visibility":"on"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#ffffff"},{"visibility":"on"}]}]
+    //         };
+    //         let div = document.getElementById('mobile-map');
+    //         let Cmap = plugin.google.maps.Map.getMap(div, options);
+    //         Cmap.addMarker({
+    //           position: {lat: 37.422359, lng: -122.084344},
+    //           title: "Welcome!"
+    //         });
+    //     })
+    // }
   });
 });
 

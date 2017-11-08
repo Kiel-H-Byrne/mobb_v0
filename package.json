@@ -7,12 +7,11 @@
     "start": "meteor run --settings settings-dev.json",
     "local": "meteor run --production --settings settings-prod.json",
     "idev": "meteor run ios-device --settings settings-dev.json",
-    "iprod": "meteor run ios --settings settings-dev.json",
+    "iprod": "meteor build /Users/KHB/Sites/MOBBapp/ --server https://kibumap.com --mobile-settings mobile-config.js",
     "stage": "meteor deploy kibutest.meteorapp.com --settings settings-dev.json",
     "deploy": "meteor deploy kibu.meteorapp.com --settings settings-prod.json",
     "ibuild": "meteor build /Users/KHB/Sites/MOBBapp/ --server localhost:3000 --mobile-settings mobile-config.js",
-    "istage": "meteor build /Users/KHB/Sites/MOBBapp/ --server https://kibutest.meteorapp.com --mobile-settings mobile-config.js",
-    "iprod": "meteor build /Users/KHB/Sites/MOBBapp/ --server https://kibumap.com --mobile-settings mobile-config.js"
+    "istage": "meteor build /Users/KHB/Sites/MOBBapp/ --server https://kibutest.meteorapp.com --mobile-settings mobile-config.js"
   },
   "repository": {
     "type": "git",

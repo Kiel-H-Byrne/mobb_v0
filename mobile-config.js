@@ -25,6 +25,8 @@ App.setPreference('BackgroundColor', '0xff404040');
 App.setPreference('Orientation', 'default');
 App.setPreference('Orientation', 'all', 'ios');
 
+App.setPreference('StatusBarOverlaysWebView', 'false');
+App.setPreference('StatusBarBackgroundColor', '#000000');
 // App.configurePlugin('com.phonegap.plugins.facebookconnect', {
 //   APP_ID: '235091633613282',
 //   API_KEY: 'f5138f920f667c10c4838a6b074ee451'
@@ -34,12 +36,6 @@ App.setPreference('Orientation', 'all', 'ios');
 App.accessRule('*.google.com/*');
 App.accessRule('*.googleapis.com/*');
 App.accessRule('*.gstatic.com/*');
-
-App.configurePlugin('cordova-plugin-googlemaps', {
-  'API_KEY_FOR_IOS' : "AIzaSyDtqmEbTUZcxrfidvlgbjX9x1O88VYQGFA",
-  'LOCATION_WHEN_IN_USE_DESCRIPTION': "View Your Location!"
-  // 'API_KEY_FOR_ANDROID' : ''
-});
 
 App.configurePlugin('cordova-plugin-googleplus', {
     'REVERSED_CLIENT_ID': 'com.googleusercontent.apps.1039420537399-qqf125j7shii1di72qgodngmrqu6rm23'

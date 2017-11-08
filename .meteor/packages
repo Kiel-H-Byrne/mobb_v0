@@ -43,6 +43,5 @@ arkham:comments-ui
 standard-minifier-js@2.2.0
 facebook-config-ui@1.0.0
 google-config-ui@1.0.0
-dynamic-import@0.2.0
+dynamic-import@0.20.
 server-render@0.2.0
-launch-screen

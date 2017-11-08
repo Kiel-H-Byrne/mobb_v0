@@ -44,35 +44,17 @@ getLocation = async function() {
 targetClient = function(map,pos) {
   // SET CENTER, 
   // ZOOM TO CERTAIN LEVEL
-  if (!Meteor.isCordova) {
     map.instance.setCenter(pos);
     google.maps.event.trigger(map, 'resize');
-    map.instance.setZoom(10);
-  } else {
-    console.log('from client:');
-    console.log(pos);
-    map.animateCamera({
-      target: {
-    lat: 35.13,
-    lng: 137.33
-  },
-      zoom: 10
-    });
-  }
+    map.instance.setZoom(12);
 };
 
 targetBrowser = function(map) {
   // SET CENTER, 
   // ZOOM TO CERTAIN LEVEL
   let pos = Session.get('browserLoc');
-  if (!Meteor.isCordova) {
-    map.instance.setCenter(pos);
-    map.instance.setZoom(8);
-  } else {
-    console.log('from browser: '+ pos);
-    map.setCameraTarget(pos);
-    map.setCameraZoom(8);
-  }
+  map.instance.setCenter(pos);
+  map.instance.setZoom(8);
 };
 
 // let clientMarker;
@@ -84,7 +66,6 @@ placeMyMarker = function(map,pos) {
   // google.maps.event.trigger(map, 'resize');
   //would only not exist if the template reloaded and the browser didn't...(dev mode)
   if (!clientMarker) {
-    if (!Meteor.isCordova) {
       // const radius = 3;
       clientMarker = new google.maps.Marker({
         position: new google.maps.LatLng(pos.lat, pos.lng),
@@ -103,10 +84,6 @@ placeMyMarker = function(map,pos) {
       //   fillColor: '#FFAA00',
       //   fillOpacity: 0.10,
       // });
-    } else {
-      clientMarker = map.addMarker({'position': pos});
-      console.log(clientMarker);
-  }
   } else {
     //MARKER EXISTS, SO WE MOVE IT.
     clientMarker.setPosition(pos);

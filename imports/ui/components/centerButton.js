@@ -29,23 +29,8 @@ Template.centerButton.onRendered(function () {
 Template.centerButton.events({
   'click #centerButton_button' : function(event,templateInstance){
 
-    let map;
-    if (!Meteor.isCordova) {
-      map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
-    } else {
-      // let div = document.getElementById('mobile-map');
-      map = plugin.google.maps.Map.getMap();
-      map.getMyLocation(onSuccess, onError); 
-
-      let onSuccess = function(location) {
-        //set market at location;
-        placeMyMarker(map, location);
-      };
-      let onError = function(msg) {
-        console.log(JSON.stringify(msg));
-
-      };
-    }
+      let map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
+    
       // let clientMarker;
       const cl = Session.get('clientLoc');
       if (cl) {

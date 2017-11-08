@@ -84,7 +84,9 @@ Template.map.onCreated( function () {
 
 
     if (!Meteor.isCordova) {
+        $('[id="mobile-map"]').css('hide');
         GoogleMaps.ready('map', function(map) {
+            
             /*      
                 const offsetCenter = (latlng, offsetx, offsety) => {
 

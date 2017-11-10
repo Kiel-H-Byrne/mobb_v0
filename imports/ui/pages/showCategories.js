@@ -25,7 +25,6 @@ Template.showCategories.onRendered(function () {
     $('img').on('error', function () {
       // console.log("on broken image", this);
       $(this).css({display:"none"});
-      msnry.layout();
 
     });
 

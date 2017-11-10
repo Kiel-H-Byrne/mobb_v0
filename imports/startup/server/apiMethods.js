@@ -11,7 +11,7 @@ apiCall = function (apiUrl, callback) {
   try {
 
     let dataFromCache = OCache.get(apiUrl);
-    // console.log("CHECKING CACHE: "+apiUrl);
+    console.log("CHECKING CACHE: "+apiUrl);
     let response = {};
     if(dataFromCache) {
       console.log("FROM CACHE...");

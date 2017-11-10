@@ -33,7 +33,6 @@ App.setPreference('StatusBarBackgroundColor', '#000000');
 // });
 
 // Set up Access Rules
-// App.accessRule('*');
 App.accessRule('localhost');
 App.accessRule('*.google.com/*');
 App.accessRule('*.googleapis.com/*');

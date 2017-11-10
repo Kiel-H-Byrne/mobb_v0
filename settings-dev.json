@@ -21,7 +21,7 @@
   },
   "galaxy.meteor.com": { 
      "env": { 
-       "ROOT_URL": "http://kibutest.meteorapp.com", 
+       "ROOT_URL": "https://kibutest.meteorapp.com", 
        "MONGO_URL": "mongodb://mobbAdmin:vivitron@ds139715.mlab.com:39715/tkhb_mongodb" 
     } 
   },

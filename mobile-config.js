@@ -4,7 +4,7 @@ App.info({
   version: '0.0.1',
   description: 'The MOBB: Map of Black Businesses',
   author: 'Kiel H. Byrne',
-  email: 'theHilmar@gmail.com',
+  email: 'kiel.byrne@gmail.com',
   website: 'https://www.kibumap.com'
 });
 
@@ -33,6 +33,8 @@ App.setPreference('StatusBarBackgroundColor', '#000000');
 // });
 
 // Set up Access Rules
+// App.accessRule('*');
+App.accessRule('localhost');
 App.accessRule('*.google.com/*');
 App.accessRule('*.googleapis.com/*');
 App.accessRule('*.gstatic.com/*');

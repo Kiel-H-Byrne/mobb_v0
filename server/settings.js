@@ -1,6 +1,6 @@
 Meteor.startup(function () {
 
-  BrowserPolicy.content.allowOriginForAll("localhost");
+  // BrowserPolicy.content.allowOriginForAll("localhost");
 
   if (process.env.METEOR_SETTINGS) {
     try {

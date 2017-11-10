@@ -299,7 +299,7 @@ Meteor.methods({
       // console.log(param);
       // console.log(`***calling OPENGRAPH API method with URL ${param} and KEY ${Meteor.settings.public.keys.openGraph.key}`);
       let apiUrl = `https://opengraph.io/api/1.0/site/${param}?app_id=${Meteor.settings.public.keys.openGraph.key}` ;
-      // console.log("--URL--"+apiUrl);
+      console.log("--OGP REQ URL--"+apiUrl);
       const response = Meteor.wrapAsync(apiCall)(apiUrl);
       // console.log(response);
       if (response.error) {

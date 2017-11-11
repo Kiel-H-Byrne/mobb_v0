@@ -1,7 +1,7 @@
 <template name="editForm">
   <!-- Modal Structure -->
   <div id="modalEdit" class="modal modal-fixed-footer">
-  {{#let listing=currentDoc}}
+  {{#with currentDoc}}
       {{#autoForm id="editListingForm" type="update" collection="Listings" doc=this}}
           <div class="modal-content">
             <ul class="collapsible" data-collapsible="accordion">
@@ -63,7 +63,7 @@
           </div>
         </div>
       {{/autoForm}}
-{{/let}}
+{{/with}}
   </div>
 
 </template>

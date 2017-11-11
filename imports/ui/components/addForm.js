@@ -65,6 +65,7 @@ Template.addForm.onRendered(function() {
             document.getElementById(addressType).value = val;
             }
             Materialize.updateTextFields();
+            $(".address_group label").css('hide');
           }
         }
       };

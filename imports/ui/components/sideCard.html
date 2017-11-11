@@ -31,23 +31,39 @@
           <td>{{street}}, {{city}}, {{state}}  {{zip}} </td>
           {{/if}}
           </tr>
+        {{#if url}}
+          <tr>
+            <td><i class="material-icons">link</i></td>
+            <td><a class="waves-effect" target="_blank" rel="noopener" title="Visit Website" href="{{url}}">{{url}}</a></td>
+          </tr>
+        {{/if}}
         {{#if phone}}    
           <tr>
             <td><i class="material-icons" style="font-size:100%; margin-right:2px; ">call</i></td>
-            <td><a class="" href="tel:+1{{phone}}">{{phone}}</a> </td>
+            <td><a class="waves-effect" title="Call Us!" href="tel:+1{{phone}}">{{phone}}</a> </td>
           </tr>
         {{/if}}
         </table>
+        <table class="">
         {{#if social.facebook}}
-        fb: <a href="https://www.facebook.com/{{social.facebook}}" target="_blank" rel="noopener" > @{{social.facebook}}</a> <br />
+        <tr>
+          <td>FB: </td>
+          <td><a href="https://www.facebook.com/{{social.facebook}}" target="_blank" rel="noopener" > @{{social.facebook}}</a></td>
+        </tr>
         {{/if}}
         {{#if social.instagram}}
-        ig: <a href="https://www.instagram.com/{{social.instagram}}" target="_blank" rel="noopener" > @{{social.instagram}}</a> <br />
+        <tr>
+          <td>IG: </td>
+          <td><a href="https://www.instagram.com/{{social.instagram}}" target="_blank" rel="noopener" > @{{social.instagram}}</a></td>
+        </tr>
         {{/if}}
         {{#if social.twitter}}
-        tt: <a href="https://www.twitter.com/{{social.twitter}}" target="_blank" rel="noopener" > @{{social.twitter}}</a> <br />
+        <tr>
+          <td>TT: </td>
+          <td><a href="https://www.twitter.com/{{social.twitter}}" target="_blank" rel="noopener" > @{{social.twitter}}</a> </td>
+        </tr>
         {{/if}}
-
+        </table>
         </div>
         <a class="btn-floating halfway-fab btn-large waves-effect waves-light z-depth-4"  title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" >
           <i class="large material-icons">directions</i>
@@ -57,17 +73,33 @@
     <li><div class="divider"></div></li>
     <li>
       <ul class="inline-list">
-        {{#if url}}     
-        <li> <a class="waves-effect" target="_blank" rel="noopener" title="Website" href="{{url}}">
-        <i class="material-icons">link</i>Visit Website
+        <li><a class="modal-trigger" title="Claim This Listing" href="#modalClaim">
+          <tr>
+            <td><i class="material-icons">fingerprint</i></td>
+            <td>Claim</td>
+          </tr>
         </a></li>
-        {{/if}}
-        {{#if phone}}    
-        <li><a class="waves-effect" title="Call" href="tel:+1{{phone}}">
-        <i class="material-icons">call</i>Call Now
+        {{#if isOwner}}    
+        <li><a class="modal-trigger" title="Edit This Listing" href="#modalEdit">
+          <tr>
+            <td><i class="material-icons">edit</i></td>
+            <td>Edit</td>
+          </tr>
         </a></li>
+        {{else}}
+        <li><a class="modal-trigger" title="Make Suggestion" href="#modalSuggestion">
+          <tr>
+            <td><i class="material-icons">edit</i></td>
+            <td>Make Suggestion</td>
+          </tr>
+        </a></li>        
         {{/if}}
-
+        <li><a class="" title="Bookmark &amp; Share" href="#">
+          <tr>
+            <td><i class="material-icons">share</i></td>
+            <td>Bookmark <br />&amp; Share</td>
+          </tr>
+        </a></li>        
       </ul>
     </li>
       {{#if google_id}}

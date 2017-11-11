@@ -15,6 +15,14 @@
 
   .address_group {
     background-color: $rgba-primary-grey-1;
+
+    .input-field {
+      margin: 0;
+
+      input {
+        height: 2rem;
+      }
+    }
   }
 
   .modal-content {
@@ -30,9 +38,16 @@
     }
 
     .collapsible-header {
-      color: $clr-grey;
-      font-size: 1.3rem;
+      color: $rgba-primary-grey-4;
+      font-size: 1.5rem;
+      line-height: 1.5rem;
       background-color: $rgba-primary-2;
+      padding: .3rem;
+
+      i.right {
+        position: absolute;
+        right: 0;
+      }
     }
 
     .collapsible-body {

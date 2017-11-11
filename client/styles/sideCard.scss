@@ -18,10 +18,11 @@
     a {
       color: $rgba-primary-grey-1;
       padding: 0;
+      line-height: 1.3rem;
 
       i {
         color: lighten($rgba-primary-1, 10%);
-        margin: 0 .7rem 0 0;
+        margin: 0 .3rem 0 0;
       }
     }
 
@@ -35,7 +36,16 @@
       padding: 0;
 
       td {
-        padding: .5rem .3rem;
+        padding: .3rem;
+      }
+
+      i {
+        margin: 0 .3rem 0 0;
+      }
+
+      a:hover {
+        text-decoration: underline;
+        color: $rgba-secondary-2-1;
       }
     }
 
@@ -44,13 +54,17 @@
 
       li {
         background-color: $rgba-primary-grey-3;
-        margin-top: .8rem;
+        padding: 0 .3rem;
+        margin: 1rem auto;
         display: inline-block;
-        border-radius: 3px;
-        width: 49%;
+        border-radius: 5px;
 
         &:hover {
           background-color: lighten($rgba-primary-grey-3, 10%);
+        }
+
+        td {
+          padding: .5rem 0;
         }
       }
 
@@ -108,13 +122,13 @@
     display: block;
     width: 100%;
     background-color: darken($rgba-primary-grey-0, 80%);
-    line-height: 2rem;
-    padding: .3rem;
+    padding: .5rem 0;
 
     em {
       color: $rgba-secondary-2-2;
       font-size: .9rem;
-      line-height: .9rem;
+      line-height: 0;
+      text-size-adjust: 0;
     }
   }
 

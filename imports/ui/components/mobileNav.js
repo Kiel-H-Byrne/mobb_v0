@@ -5,7 +5,13 @@ import './listCard.js';
 
 
 Template.mobileNav.onCreated(function () {
+  
   Meteor.subscribe('listings_favorites');
+  // this.autorun(function(c) {
+  //   let loc = Session.get('clientLoc');
+  //   if (loc) Meteor.subscribe('listings_close', loc );
+  //   c.stop();
+  // });
 });
 
 

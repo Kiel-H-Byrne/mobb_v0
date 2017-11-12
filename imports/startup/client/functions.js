@@ -86,6 +86,7 @@ placeMyMarker = function(map,pos) {
       // });
   } else {
     //MARKER EXISTS, SO WE MOVE IT.
+    clientMarker.setMap(map.instance);
     clientMarker.setPosition(pos);
     // clientRadius.setCenter(pos);
   }

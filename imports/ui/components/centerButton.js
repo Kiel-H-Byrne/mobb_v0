@@ -6,13 +6,17 @@ Template.centerButton.helpers( function () {
 
 Template.centerButton.onRendered(function () {
 
-  // zoom once i have clientPosition then stop
+  // zoom once i have clientPosition 
+  // calculate closest listing
+  // stop 
   this.autorun(function (c) {
     let pos = Session.get('clientLoc');
     if (pos) {
-      let map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
+      const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
       if (map) {
         targetClient(map, pos);
+        //find closest listing?
+        //get array of all destinations
         c.stop();
       }
     }
@@ -65,9 +69,16 @@ Template.centerButton.events({
         if (Geolocation.error() || Geolocation.latLng === null || Geolocation.latLng === "null") {
           console.warn("Geopositioning Error:", Geolocation.error().message);
           $('[id="centerButton_button"]').removeClass('pulse');          
-          return;
+          c.stop();
         
         } else {
+          //GET LOCATION AND THEN....
+          // MAKE BUTTON PULSE UNTIL I HAVE IT... THEN
+          // STORE POSITION IN SESSION VAR &
+          // REMOVE PULSE CLASS &
+          // PLACE MARKER ON MAP & 
+          // DETERMINE CLOSEST BUSINESS & STORE ID AS SESSION VAR
+
           // console.log("searching ...");
           getLocation().then((pos) => {
             $('[id="centerButton_button"]').addClass('pulse');
@@ -76,6 +87,7 @@ Template.centerButton.events({
               Session.set('clientLoc', pos);
               $('[id="centerButton_button"]').removeClass('pulse');
               placeMyMarker(map,pos);
+              
               return;
             }
           });

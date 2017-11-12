@@ -6,10 +6,10 @@ Meteor.publish('listings', function () {
 	return cursor;
 });
 
-Meteor.publish('listings_one', function (name) {
-	check(name, String);
-	let cursor = Listings.find({name: name});
-	console.log(`-= PUBLISHING SINGLE LISTING: [${name}] =-`);
+Meteor.publish('listings_one', function (id) {
+	check(id, String);
+	let cursor = Listings.find({_id: id});
+	console.log(`-= PUBLISHING SINGLE LISTING: [${id}] =-`);
 	return cursor;
 });
 
@@ -51,4 +51,17 @@ Meteor.publish('listings_favorites', function () {
 		console.log("-= PUBLISHING: ["+ cursor.count() +"] FAVORITE LISTINGS =-");
 		return cursor;
 	}
+});
+
+Meteor.publish('listings_close', function (loc) {
+	check(loc, Object);
+	console.log(loc);
+	let lat = Number(loc.lat).slice(0,2);
+	let lng = Number(loc.lng).slice(0,2);
+	let rgxLat = new RegExp('^'+lat);
+	// // let rgxLng = new RegExp('^'+lng);
+	let cursor = Listings.find({ location: rgxLat });
+	console.log("-= PUBLISHING: ["+ cursor.count() +"] AREA LISTINGS =-");
+	console.log(cursor);
+	return cursor;
 });

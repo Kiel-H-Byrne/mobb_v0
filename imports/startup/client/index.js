@@ -211,7 +211,7 @@ Meteor.startup(function () {
   });
 
   Template.registerHelper('getDistance', function(dest) {
-      //Get distance, convert to miles, return string
+      //Get destination, calculate distance from my location, convert to miles, return distance string.
       if (GoogleMaps.loaded() && dest) {
         const latLng = dest.split(",");
         if (latLng) {
@@ -219,7 +219,9 @@ Meteor.startup(function () {
           const lng = Number(latLng[1]);
           const latLngObj = {'lat': lat, 'lng': lng };
           
-          let start = new google.maps.LatLng(Session.get('clientLoc') || Session.get('browserLoc'));
+          let start = new google.maps.LatLng(Session.get('clientLoc'));
+          // if (!start) return ;
+
           const finish = new google.maps.LatLng(latLngObj);
           // let res = Meteor.call('calcDistance', loc, dest);
           
@@ -240,12 +242,31 @@ Meteor.startup(function () {
     });
 
   Template.registerHelper('isClose', function(distance) {
-    //if lesl than 3 miles, return true.
-     if (distance <= 3) {
+    //if less than 3 miles, return true.
+    let a = Session.get('closestListing') || null;
+
+    if (distance <= 3) {
+      if (a && (a.distance < distance)) {
+        // return;
+      } else {
+        Session.set('closestListing', {
+          distance: distance,
+          id: this._id
+        });
+      }
       return true;
     } else {
       return false;
     }
+  });
+
+  Template.registerHelper('isClosest', function(){
+    const listing = Session.get('closestListing');
+    if (listing) {
+      const id = listing.id;
+      return Listings.findOne({_id: id});
+    }
+    return;
   });
 
   Template.registerHelper('haveLocation', function () {

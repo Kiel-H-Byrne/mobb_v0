@@ -95,11 +95,12 @@ Template.addForm.onRendered(function() {
 
     let telMask = ['(', /[1-9]/, /\d/, /\d/, ')',' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
     let telInput = document.querySelector('#phone_input_add');
+
     let telInputMask = VTM.maskInput({
       inputElement: telInput,
       mask: telMask
     });
-  
+
   });
 
 });

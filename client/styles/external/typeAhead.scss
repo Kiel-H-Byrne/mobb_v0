@@ -1,6 +1,6 @@
 @import "{}/node_modules/materialize-css/sass/components/color";
 @import "{}/node_modules/materialize-css/sass/components/variables";
-@import "palettes/colors";
+@import "../palettes/colors";
 
 .twitter-typeahead {
   display: block !important;

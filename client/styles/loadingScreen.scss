@@ -1,5 +1,5 @@
-@import '../palettes/colors';
-@import '../palettes/_plt_orng-tetrad';
+@import "palettes/colors";
+@import "palettes/_plt_orng-tetrad";
 
 #loading-wrapper {
   position: fixed;
@@ -7,7 +7,7 @@
   height: 100%;
   top: 0;
   left: 0;
-  z-index:100;
+  z-index: 100;
 }
 
 .content-wrapper {
@@ -30,7 +30,6 @@
   display: block;
   position: relative;
   margin: auto;
-
   top: 33%;
   width: 100%;
   height: 100%;

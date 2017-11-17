@@ -1,11 +1,10 @@
-@import 'palettes/colors';
-@import 'palettes/_plt_orng-tetrad';
-
+@import "palettes/colors";
+@import "palettes/_plt_orng-tetrad";
 
 .info-card {
-	// margin: 1rem;
+  // margin: 1rem;
   background-color: $rgba-primary-grey-3;
-	
+
   .fav_star {
     position: absolute;
     bottom: 0;
@@ -13,21 +12,25 @@
     margin: 0 3px;
     line-height: .8rem;
   }
+
   .badge-share {
-    position:absolute;
+    position: absolute;
     bottom: 0;
     left: 2rem;
     line-height: .8rem;
   }
 
   img {
-		// max-width: 100%;
-	}
-	
-  a, .social{
-		color: $rgba-secondary-2-1;
+    // max-width: 100%;
+ 
+  }
+
+  a, .social {
+    color: $rgba-secondary-2-1;
+
     // font-size: .9rem;
-	}
+ 
+  }
 
   h5 {
     font-size: 1.2rem;
@@ -48,4 +51,3 @@
     }
   }
 }
-

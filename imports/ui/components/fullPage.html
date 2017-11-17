@@ -91,9 +91,11 @@
         </p>
         <hr />
           <span class="card-title "><i class="material-icons">map</i>Location :</span>
+          {{#if haveLocation}}
           <a class="" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener">
             <span class="badge badge-distance" data-badge-caption="mi."><i class="material-icons tiny ">directions</i> {{getDistance location}} </span>
           </a>
+          {{/if}}
           <div class="card-map" id="microMap">
             {{> googleMap name="microMap" options=microMapOptions }}
           </div>

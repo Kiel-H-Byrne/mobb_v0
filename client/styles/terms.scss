@@ -1,7 +1,6 @@
-@import '{}/node_modules/materialize-css/sass/components/color';
-@import '{}/node_modules/materialize-css/sass/components/variables';
-@import 'palettes/colors';
-
+@import "{}/node_modules/materialize-css/sass/components/color";
+@import "{}/node_modules/materialize-css/sass/components/variables";
+@import "palettes/colors";
 
 .terms-wrapper {
   font-family: 'Raleway', sans-serif;
@@ -21,8 +20,9 @@
   }
 
   .collapsible-header {
-    background-color: rgba(0,0,0,.3);
+    background-color: rgba(0, 0, 0, 0.3);
   }
+
   li {
     margin: 0 !important;
   }
@@ -33,7 +33,6 @@
 
   .anchor {
     text-decoration: none;
-
     color: inherit;
   }
 }

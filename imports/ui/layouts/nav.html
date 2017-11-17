@@ -61,6 +61,7 @@
             </div>
         </nav>
     </div>
+  
     {{> sideCard}}    
     {{> mobileNav}}
 
@@ -69,11 +70,12 @@
     {{> editForm}}
     {{> verifyForm}}
     {{> claimForm}} 
-    {{> infoCard}}
-    {{> geoModal}}
     <!-- Modals stay above here in nav Template or else show behind gray overlay-->
+    
+    {{> closestCard}}
 </template>
 
+<!-- FOR TYPEAHEAD RESULTS -->
 <template name="results">
     <ul class="">
         <li>{{name}}</li>

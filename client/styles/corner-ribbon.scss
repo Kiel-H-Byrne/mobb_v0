@@ -1,5 +1,4 @@
-@import '../palettes/colors';
-
+@import "palettes/colors";
 
 .ribbon-wrapper {
   position: fixed;
@@ -17,7 +16,6 @@
 
 .ribbon {
   font: bold 12px Sans-Serif;
-  
 
   //right-corner
   // left: -2px;
@@ -39,7 +37,6 @@
   -moz-transform: rotate(-45deg);
   -ms-transform: rotate(-45deg);
   -o-transform: rotate(-45deg);
-
   text-align: center;
   color: $clr-grey;
   color: $clr-brown;

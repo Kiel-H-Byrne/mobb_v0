@@ -3,7 +3,7 @@
       
       {{> favoriteStar}}
       {{> shareListing}}
-      <a class="card_link" href="/listings/{{name}}">
+      <a class="card_link" href="/listings/{{_id}}">
       {{#unless image.url}}
         {{#if url}}
           <div class="card-image "> 
@@ -16,7 +16,7 @@
         </div>
       {{/unless}}
       </a>
-      <a class="card_link" href="/listings/{{name}}">
+      <a class="card_link" href="/listings/{{_id}}">
         <div class="card-content">
 
             <span class="card-title "> <h5 class="center-align activator">{{name}}</h5></span>

@@ -21,14 +21,14 @@ Template.editForm.onRendered(function () {
     $('.collapsible').collapsible();
 
     const VTM = require('vanilla-text-mask/dist/vanillaTextMask.js');
-
-    let telMask = ['(', /[1-9]/, /\d/, /\d/, ')',' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
-    let telInput = document.querySelector('#phone_input_edit');
-    let telInputMask = VTM.maskInput({
-      inputElement: telInput,
-      mask: telMask
-    });
-
+    const telMask = ['(', /[1-9]/, /\d/, /\d/, ')',' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+    const telInput = document.querySelector('#phone_input_edit');
+    if (telInput) {
+      const telInputMask = VTM.maskInput({
+        inputElement: telInput,
+        mask: telMask
+      });
+    }
 
     // let state = Session.get('clientState');
     // $("li:contains("+ state +")").addClass("active selected");
@@ -64,7 +64,7 @@ AutoForm.addHooks('editListingForm', {
 
       _.each(diff, function(v) {
         // console.log(v);
-        let id = Categories.findOne({name: v})._id;
+        const id = Categories.findOne({name: v})._id;
         // console.log(id);
         Categories.update(
           { _id: id },
@@ -74,7 +74,7 @@ AutoForm.addHooks('editListingForm', {
 
       _.each(diff2, function(v) {
         console.log(v);
-        let id = Categories.findOne({name: v})._id;
+        const id = Categories.findOne({name: v})._id;
         Categories.update(
           { _id: id },
           { $inc: { count: -1 } }
@@ -84,7 +84,6 @@ AutoForm.addHooks('editListingForm', {
     }
     //close modal
     $('#modalEdit').modal('close');
-    $('#modalInfo').modal('close');
     if (this.currentDoc.location) {
     //center and zoom on new location? marker?
       const latLng = this.currentDoc.location.split(",");

@@ -1,18 +1,14 @@
-@import '{}/node_modules/materialize-css/sass/components/color';
-@import '{}/node_modules/materialize-css/sass/components/variables';
-@import 'palettes/colors';
-
+@import "{}/node_modules/materialize-css/sass/components/color";
+@import "{}/node_modules/materialize-css/sass/components/variables";
+@import "palettes/colors";
 
 .list-wrapper {
   background-color: $clr-grey;
   margin-top: $navbar-height;
-  
+
   .collection-header {
     text-align: center;
   }
 
-  .collection {
-
-  }
-
+  .collection {}
 }

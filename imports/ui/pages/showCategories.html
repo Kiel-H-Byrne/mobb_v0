@@ -10,7 +10,7 @@
   {{#each card in list}}
       <div id="{{card._id}}" class=" masonry_item categoryFlex_item card sticky-action hoverable ">
         <div class="card-image">
-        <a href="/listings/{{card.name}}">
+        <a href="/listings/{{card._id}}">
           {{#if card.image.url}}
           <img src="{{card.image.url}}" />
           {{else}}
@@ -21,7 +21,7 @@
         </a>
         </div>
 
-        <a href="/listings/{{card.name}}">
+        <a href="/listings/{{card._id}}">
           <div class="card-content">
             <span class="card-title "> <h5 class="center-align activator">{{card.name}}</h5></span>
             {{#if card.social.facebook}}

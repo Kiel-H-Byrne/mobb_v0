@@ -214,7 +214,7 @@ Meteor.startup(function () {
       //Get destination, calculate distance from my location, convert to miles, return distance string.
       if (GoogleMaps.loaded() && dest) {
         const latLng = dest.split(",");
-        if (latLng) {
+
           const lat = Number(latLng[0]);
           const lng = Number(latLng[1]);
           const latLngObj = {'lat': lat, 'lng': lng };
@@ -224,10 +224,11 @@ Meteor.startup(function () {
 
           const finish = new google.maps.LatLng(latLngObj);
           // let res = Meteor.call('calcDistance', loc, dest);
-          
-          const dist = google.maps.geometry.spherical.computeDistanceBetween(start,finish);
+
+          let dist = google.maps.geometry.spherical.computeDistanceBetween(start,finish);    
           // multiply meters by 0.000621371 for number of miles.
-          let res = (dist * 0.000621371).toFixed(1);
+          const res = (dist * 0.000621371).toFixed(1);
+          
           if (res.length > 5) {
             //3432.0 = 6, shorten to 3.4k
             res = `${res.slice(0,1)}.${res.slice(1,2)}k`; 
@@ -236,7 +237,6 @@ Meteor.startup(function () {
             res = res.slice(0,3);
           }
           return res;
-        }
       } 
       return 
     });

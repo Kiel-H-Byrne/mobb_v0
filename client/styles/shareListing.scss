@@ -1,8 +1,7 @@
-
-@import '{}/node_modules/materialize-css/sass/components/color';
-@import '{}/node_modules/materialize-css/sass/components/variables';
-@import 'palettes/colors';
-@import 'palettes/_plt_orng-tetrad';
+@import "{}/node_modules/materialize-css/sass/components/color";
+@import "{}/node_modules/materialize-css/sass/components/variables";
+@import "palettes/colors";
+@import "palettes/_plt_orng-tetrad";
 
 .badge-share {
   margin: 3px;
@@ -10,6 +9,7 @@
 
   .dropdown-content {
     background-color: $rgba-primary-grey-4;
+
     li > a {
       color: $rgba-primary-3;
     }
@@ -31,13 +31,13 @@
   }
 
   li {
-     min-height: 20px;
+    min-height: 20px;
   }
 
   .link-share {
     fill: $rgba-primary-0;
     padding: 3px 10px;
-    background-color: $rgba-primary-0;;
+    background-color: $rgba-primary-0;
 
     &:hover {
       background-color: $rgba-primary-2;

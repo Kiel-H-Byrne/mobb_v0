@@ -1,15 +1,20 @@
-@import 'palettes/colors';
-@import 'palettes/plt_orng-tetrad';
+@import "palettes/colors";
+@import "palettes/plt_orng-tetrad";
 
-[id='infoWrap'] {
-  position:relative;
+[id='card_closest'] {
+  position: absolute;
+  bottom: 0;
+  z-index: 10000;
+  height: 8rem;
+  width: 20rem;
+
+  // background-size: ;
 
   .badge-share {
     margin: 3px;
-    position:absolute;
-    top:0;
-    right:0;
-
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 
   .fav_star {
@@ -24,25 +29,24 @@
   a {
     color: inherit;
   }
-
 }
 
 .row.modal.bottom-sheet {
-  background-color: rgba(68, 68, 68, .8);
+  background-color: rgba(68, 68, 68, 0.8);
 
   h5 {
     color: $color-primary-4;
     font-size: 1.4rem;
     margin: .3rem;
   }
+
   .badge {
-    position:absolute;
+    position: absolute;
     bottom: 0;
     right: 0;
     margin: .3rem;
     color: $rgba-primary-grey-4;
     background-color: $rgba-complement-2;
-    
   }
 
   .address {
@@ -58,24 +62,27 @@
         margin: 0 3px;
       }
     }
-
   }
 }
 
 .modal-footer > .row {
   margin-bottom: 0;
+
   a {
     &:nth-child(1) {
       background-color: $rgba-primary-4;
     }
+
     &:nth-child(2) {
       background-color: darken($rgba-primary-4, 10%);
-    }    
+    }
+
     &:nth-child(3) {
       background-color: darken($rgba-primary-4, 20%);
-    }    
+    }
+
     &:nth-child(4) {
       background-color: darken($rgba-primary-4, 30%);
-    }    
+    }
   }
 }

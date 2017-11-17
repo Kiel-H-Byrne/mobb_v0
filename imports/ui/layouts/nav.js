@@ -5,7 +5,7 @@ import '../components/loadingScreen.html';
 // import '../components/loggedInNav.js';
 import '../components/addForm.js';
 import '../components/editForm.js';
-import '../components/infoModal.js';
+import '../components/closestCard.js';
 import '../components/categorySelect.js';
 import '../components/geoModal.js';
 import '../components/corner-ribbon.js';
@@ -63,9 +63,16 @@ Template.nav.events({
     AccountsTemplates.logout();
   },
   'mouseup .tt-suggestion>ul>li': function(event,templateInstance) {
-    let name = event.target.innerText;
-    let type = event.target.parentElement.parentElement.parentElement.firstChild.innerText;
-    Router.go('/' + type + '/' + name);
+    const name = event.target.innerText;
+    const type = event.target.parentElement.parentElement.parentElement.firstChild.innerText;
+    if (type === 'Listings') {
+      const id = Listings.findOne({name: name})._id;
+      console.log(type,name,id);
+      Router.go('/' + type + '/' + id);  
+    } else {
+      Router.go('/' + type + '/' + name);  
+    }
+    
   },
   'click #desktop_search-form': function() {
     // $('#search_nav').focus();

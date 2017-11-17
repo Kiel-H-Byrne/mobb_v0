@@ -11,7 +11,7 @@
   // background-size: ;
 
   .badge-share {
-    margin: 3px;
+    margin: 2px;
     position: absolute;
     top: 0;
     right: 0;
@@ -22,29 +22,28 @@
     top: 0;
     left: 0;
     z-index: 2;
-    margin: 0 3px;
-    line-height: .8rem;
+    margin: 0 2px;
+    line-height: .5rem;
   }
 
   a {
     color: inherit;
   }
-}
 
-.row.modal.bottom-sheet {
-  background-color: rgba(68, 68, 68, 0.8);
-
-  h5 {
+  h6 {
     color: $color-primary-4;
-    font-size: 1.4rem;
-    margin: .3rem;
+    font-size: 1rem;
+    margin: .2rem;
   }
 
   .badge {
     position: absolute;
     bottom: 0;
     right: 0;
-    margin: .3rem;
+    padding: 0;
+    font-size: .8rem;
+    height: 1rem;
+    margin: .2rem;
     color: $rgba-primary-grey-4;
     background-color: $rgba-complement-2;
   }

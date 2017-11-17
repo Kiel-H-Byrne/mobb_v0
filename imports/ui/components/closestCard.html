@@ -5,7 +5,7 @@
       <style type="text/css">
         [id='card_closest'] {
           background: linear-gradient(to right, rgba(75, 123, 211, 0.5), rgba(22, 215, 177, 0.3)),    url({{image.url}});
-          background-size: contain;
+          background-size: cover;
           background-repeat: no-repeat;
           background-position: center;
         }
@@ -21,7 +21,7 @@
     {{> shareListing }}
     <a href="/listings/{{_id}}">
       <div class="modal-content" >
-        <h5 class="center-align">{{name}}</h5>
+        <h6 class="card-title center-align">{{name}}</h6>
             
         <p class="center-align address">
           {{#if address}}

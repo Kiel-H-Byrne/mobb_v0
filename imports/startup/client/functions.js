@@ -180,7 +180,7 @@ getGDetails = function(gid) {
 find_closest_marker = function(markers,position) {
     let distances = [];
     let closest = -1;
-    let start = new google.maps.LatLng(position);
+    const start = new google.maps.LatLng(position);
     for (i = 0; i < markers.length; i++) {
         let d = google.maps.geometry.spherical.computeDistanceBetween(markers[i].position, start);
         distances[i] = d;
@@ -189,8 +189,8 @@ find_closest_marker = function(markers,position) {
         }
     }
 
-    let docName = markers[closest].getTitle();
-    let doc = Listings.findOne({name: docName});
-    console.log('Closest marker is: ' + markers[closest].getTitle());
+    const docName = markers[closest].getTitle();
+    const doc = Listings.findOne({name: docName});
+    // console.log('Closest marker is: ' + markers[closest].getTitle());
     Session.set('closestListing', doc);
 }

@@ -4,9 +4,10 @@
   position: fixed;
 
   //right-corner
-  // right: -9px;
+  right: -9px;
+
   //left-corner
-  left: -15px;
+  // left: -15px;
   top: -9px;
   overflow: visible;
   height: 0;
@@ -15,28 +16,24 @@
 }
 
 .ribbon {
-  font: bold 12px Sans-Serif;
-
-  //right-corner
-  // left: -2px;
-  //left-corner
-  left: -30px;
+  font: bold 10px Sans-Serif;
+  right: -25px;
+  float: right;
   position: relative;
-  top: 15px;
-  width: 120px;
+  top: 5px;
+  width: 80px;
   padding: 2px 0;
+  font: bold 12px Sans-Serif;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
 
-  //right-corner
-
-  // -webkit-transform: rotate(45deg);
-  // -moz-transform: rotate(45deg);
-  // -ms-transform: rotate(45deg);
-  // -o-transform: rotate(45deg);
   //left-corner
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
+  // -webkit-transform: rotate(-45deg);
+  // -moz-transform: rotate(-45deg);
+  // -ms-transform: rotate(-45deg);
+  // -o-transform: rotate(-45deg);
   text-align: center;
   color: $clr-grey;
   color: $clr-brown;

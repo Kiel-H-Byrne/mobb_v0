@@ -5,8 +5,8 @@ import './corner-ribbon.html';
 
 
 Template.cornerRibbon.helpers({
-  label() {
-    const string = 'BETA';
+  label(label) {
+    const string = label;
     return string;
   },
 });

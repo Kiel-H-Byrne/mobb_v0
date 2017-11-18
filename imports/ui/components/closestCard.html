@@ -1,62 +1,48 @@
 <template name="closestCard">
   {{#with isClosest}}
-  <div id="card_closest" class="card-panel silver">
-    {{#if image.url}}
-      <style type="text/css">
-        [id='card_closest'] {
-          background: linear-gradient(to right, rgba(75, 123, 211, 0.5), rgba(22, 215, 177, 0.3)),    url({{image.url}});
-          background-size: cover;
-          background-repeat: no-repeat;
-          background-position: center;
-        }
-      </style>
-    {{/if}}
-    {{! #if image.url}}
-      <!-- div class="heroImg" style="background-image: url('{{image.url}}')"></div-->
-    {{! /if}}
+  <div id="bottom_Row" class="">
+    <div id="card_closest" class="card-panel animate jackInTheBox">
+      <div class="ribbon">
+        {{label 'CLOSEST'}}
+      </div>
+      {{#if image.url}}
+        <style type="text/css">
+          [id='card_closest'] {
+            background: radial-gradient(circle at top left, rgba(22, 15, 77, 0.6), rgba(086,082,080, 0.6)), url({{image.url}});
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+          }
+        </style>
+      {{/if}}
+      {{! #if image.url}}
+        <!-- div class="heroImg" style="background-image: url('{{image.url}}')"></div-->
+      {{! /if}}
 
-    <!--div id="infoWrap" class="col s12 m6 offset-m3" style="background-image: url('{{image.url}}'), linear-gradient(rgba(055, 10, 0, 1), rgba(0, 0, 0, .4)) "-->
-    <span class="badge " data-badge-caption="mi"> {{getDistance location}} </span>
-    {{> favoriteStar }}
-    {{> shareListing }}
-    <a href="/listings/{{_id}}">
-      <div class="modal-content" >
-        <h6 class="card-title center-align">{{name}}</h6>
-            
-        <p class="center-align address">
-          {{#if address}}
-          <p>
-            {{address}}
+      <!--div id="infoWrap" class="col s12 m6 offset-m3" style="background-image: url('{{image.url}}'), linear-gradient(rgba(055, 10, 0, 1), rgba(0, 0, 0, .4)) "-->
+      <a href="/listings/{{_id}}">
+        <div class="" >
+          <h6 class="card-title center-align">{{name}}</h6>
+          <p class="center-align address">
+            {{#if address}}
+              {{address}}
+            {{else}}
+              <span class="">{{city}}, {{state}} </span>
+            {{/if}}
+            {{#if phone}}
+            {{#if url}}    
+              <a class="" target="_blank" rel="noopener" title="Website" href="{{url}}">{{url}}</a>
+            {{/if}}
+            <a class="center-align address-phone" href="tel:+1{{phone}}">
+              <i class="material-icons tiny">phone</i>
+              {{phone}}
+            </a>
+            {{/if}}
           </p>
-          {{else}}
-            <span id="address-content">
-            {{street}} <br />
-            {{city}} {{state}} {{zip}} 
-            <br />
-            </span>
-          {{/if}}
-          
-          {{#if phone}}
-          <a class="center-align phone" href="tel:+1{{phone}}">
-            <i class="material-icons tiny">phone</i>
-            {{phone}}
-          </a>
-          <br />
-          {{/if}}
-        </p>
-      </div>
-    </a>
-    <div class="footer transparent">
-      <div class="row flex-center">
-        {{#if url}}    
-        <a class="btn-floating " target="_blank" rel="noopener" title="Website" href="{{url}}"><i class="material-icons">link</i></a>
-        {{else}}
-        <a class="disabled btn-floating" title="Website" href="#"><i class="material-icons">link</i></a>
-        {{/if}}
-        <!-- a class="btn-floating modal-trigger" id="directions_button" title="Directions" href="#modalDirections"><i class="material-icons">navigation</i></a-->
-        <a class="btn-floating" title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" ><i class="material-icons">directions</i></a>
-      </div>
-    </div> 
+        </div>
+      </a>
+      <span class="badge" data-badge-caption="mi"><a class="" title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" ><i class="material-icons">directions</i> {{getDistance location}} </a></span>
+    </div>
   </div>
   {{/with}}
 </template>

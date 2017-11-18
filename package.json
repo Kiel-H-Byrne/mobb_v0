@@ -20,6 +20,7 @@
   "author": "Kiel Hamilton Byrne",
   "dependencies": {
     "@okgrow/auto-analytics": "^1.0.4",
+    "animate.css": "^3.5.2",
     "babel-runtime": "^6.26.0",
     "bcrypt": "^1.0.3",
     "gmaps-marker-clusterer": "^1.2.2",

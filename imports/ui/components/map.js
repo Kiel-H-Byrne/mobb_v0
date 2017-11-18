@@ -7,7 +7,7 @@ import './map.html';
 
 //====== APP GLOBALS ======
 MAP_ZOOM = 4;
-
+MAP_MARKERS = [];
 // ============================= SUBSCRIPTIONS ==================================
 
 
@@ -97,7 +97,12 @@ Template.map.onCreated( function () {
             
 
             const subscription = self.subscribe('listings_locs', function () {
-                let mapMarkers = [];
+                
+                let cursor = Listings.find({
+                    location: { $exists : 1 }
+                });
+                console.log("-= MAP.JS SUBSCRIBING: ALL ["+ cursor.count() +"] LISTINGS WITH LOCATIONS =-");
+                //find listings that match the same lat/long digits as me (first two digits)
 
                 const calcDistances = function(pt, arr, max) {
                     let service = new google.maps.DistanceMatrixService();
@@ -115,12 +120,6 @@ Template.map.onCreated( function () {
                 // Session.set('loading', false);
                 // append "hide to loading screen div"
                 $('[id="loading-wrapper"]').css({display:"none"});
-                
-                let cursor = Listings.find({
-                    location: { $exists : 1 }
-                });
-                console.log("-= MAP.JS SUBSCRIBING: ALL ["+ cursor.count() +"] LISTINGS WITH LOCATIONS =-");
-                //find listings that match the same lat/long digits as me (first two digits)
 
                 cursor.observeChanges({
                     added: function(id,doc) {
@@ -136,19 +135,18 @@ Template.map.onCreated( function () {
                             // let latLngObj = doc.location;
 
                             //--   Place Markers on map
-                            let marker = new google.maps.Marker({
+                            const marker = new google.maps.Marker({
                               position: latLngObj,
                               map: map.instance,
                               icon: markerImage,
                             });
 
                             marker.setTitle(doc.name);
-                            
-                            mapMarkers.push(marker);
+                            MAP_MARKERS.push(marker);
+
 
                             marker.addListener('click', function () {
                                 Session.set('openListing', id);
-                                // $('#modalInfo').modal('open');
                                 $('.button-collapse').sideNav('show');
 
                                 //calculate distance 
@@ -171,7 +169,7 @@ Template.map.onCreated( function () {
                     gridSize: 23
                 };
 
-                const mapCluster = new MarkerClusterer(map.instance, mapMarkers, clusterOptions);
+                const mapCluster = new MarkerClusterer(map.instance, MAP_MARKERS, clusterOptions);
                 // console.log(mapCluster);
             });
 

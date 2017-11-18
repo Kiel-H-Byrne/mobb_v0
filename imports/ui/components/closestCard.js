@@ -15,10 +15,8 @@ Template.closestCard.onRendered(function () {
     Meteor.autorun(function(c) {
       const closest = Session.get('closestListing');
       if (closest) {
-        // Meteor.subscribe('listings_one', closest.id, function() {
           //Modal Popup
           console.log(closest);
-          $('#modalInfo').modal('open');
       }
     })
   });

@@ -211,7 +211,7 @@ Meteor.startup(function () {
   });
 
   Template.registerHelper('getDistance', function(dest) {
-      //Get destination, calculate distance from my location, convert to miles, return distance string.
+      //Take destination, calculate distance from my location, convert to miles, return distance string.
       if (GoogleMaps.loaded() && dest) {
         const latLng = dest.split(",");
 
@@ -243,17 +243,7 @@ Meteor.startup(function () {
 
   Template.registerHelper('isClose', function(distance) {
     //if less than 3 miles, return true.
-    let a = Session.get('closestListing') || null;
-
     if (distance <= 3) {
-      if (a && (a.distance < distance)) {
-        // return;
-      } else {
-        Session.set('closestListing', {
-          distance: distance,
-          id: this._id
-        });
-      }
       return true;
     } else {
       return false;
@@ -261,12 +251,7 @@ Meteor.startup(function () {
   });
 
   Template.registerHelper('isClosest', function(){
-    const listing = Session.get('closestListing');
-    if (listing) {
-      const id = listing.id;
-      return Listings.findOne({_id: id});
-    }
-    return;
+    return Session.get('closestListing')
   });
 
   Template.registerHelper('haveLocation', function () {

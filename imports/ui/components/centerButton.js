@@ -69,10 +69,9 @@ Template.centerButton.events({
         if (Geolocation.error() || Geolocation.latLng === null || Geolocation.latLng === "null") {
           console.warn("Geopositioning Error:", Geolocation.error().message);
           $('[id="centerButton_button"]').removeClass('pulse');          
-          c.stop();
-        
+          // c.stop();
         } else {
-          //GET LOCATION AND THEN....
+          // GET LOCATION AND THEN....
           // MAKE BUTTON PULSE UNTIL I HAVE IT... THEN
           // STORE POSITION IN SESSION VAR &
           // REMOVE PULSE CLASS &
@@ -82,11 +81,12 @@ Template.centerButton.events({
           // console.log("searching ...");
           getLocation().then((pos) => {
             $('[id="centerButton_button"]').addClass('pulse');
-
             if (pos) {
               Session.set('clientLoc', pos);
               $('[id="centerButton_button"]').removeClass('pulse');
+              find_closest_marker(MAP_MARKERS, pos);
               placeMyMarker(map,pos);
+
               
               return;
             }

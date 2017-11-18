@@ -1,9 +1,10 @@
-@import '{}/node_modules/materialize-css/sass/components/color';
-@import '{}/node_modules/materialize-css/sass/components/variables';
-@import 'palettes/_colors';
-@import 'palettes/_plt_orng-tetrad';
+@import "{}/node_modules/materialize-css/sass/components/color";
+@import "{}/node_modules/materialize-css/sass/components/variables";
+@import "palettes/_colors";
+@import "palettes/_plt_orng-tetrad";
 
 [id='centerButton_button'] {
+  z-index: 1000;
   background-color: $rgba-secondary-2-3 !important;
   position: fixed;
   bottom: 80px;
@@ -15,7 +16,7 @@
   &:hover {
     background-color: $rgba-secondary-2-4 !important;
   }
-  
+
   i {
     color: $rgba-primary-grey-4;
     font-size: 1.7rem;

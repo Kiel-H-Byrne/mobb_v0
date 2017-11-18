@@ -86,8 +86,10 @@ Template.centerButton.events({
               $('[id="centerButton_button"]').removeClass('pulse');
               find_closest_marker(MAP_MARKERS, pos);
               placeMyMarker(map,pos);
-
-              
+              $(document).ready(function() {
+                $("[id='card_closest']").removeClass('tada');
+                $("[id='card_closest']").css('visibility', 'visible').toggleClass('tada');
+              });
               return;
             }
           });

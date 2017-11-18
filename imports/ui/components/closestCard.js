@@ -1,5 +1,14 @@
-import './closestCard.html';
 
+import './closestCard.html';
+import 'animate.css/animate.min.css';
+
+
+
+Template.closestCard.onRendered(function () {
+  $(document).ready(function () {
+    $('.share-drop').dropdown();
+  });
+});
 
 Template.closestCard.helpers({
   label(label) {
@@ -8,18 +17,11 @@ Template.closestCard.helpers({
   }
 });
 
-Template.closestCard.onRendered(function () {
-  $(document).ready(function () {
-    $('.share-drop').dropdown();
-  });
-});
-
-
 Template.closestCard.events({
-	'click #verify_button': function(event,templateInstance) {
+	'click': function(event,templateInstance) {
 		// console.log("Clicked Verify button!");
 		//open modal verify form.
-		$('#modalVerify').modal('open');
+		$('#modalVerify').addClass('open');
 	},
   'click #edit_button': function(event,templateInstance) {
     //open modal verify form.

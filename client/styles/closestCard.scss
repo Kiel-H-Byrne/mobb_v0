@@ -66,6 +66,10 @@
     margin: 0;
     color: $color-primary-1;
 
+    span {
+      display: block;
+    }
+
     .address-phone {
       display: block;
       color: $rgba-secondary-2-0;

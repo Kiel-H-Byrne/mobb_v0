@@ -25,13 +25,13 @@
           <h6 class="card-title center-align">{{name}}</h6>
           <p class="center-align address">
             {{#if address}}
-              {{address}}
+              <span>{{address}}</span>
             {{else}}
-              <span class="">{{city}}, {{state}} </span>
+              <span>{{city}}, {{state}} </span>
             {{/if}}
             {{#if phone}}
             {{#if url}}    
-              <a class="" target="_blank" rel="noopener" title="Website" href="{{url}}">{{url}}</a>
+              <span><a class="" target="_blank" rel="noopener" title="Website" href="{{url}}">{{url}}</a></span>
             {{/if}}
             <a class="center-align address-phone" href="tel:+1{{phone}}">
               <i class="material-icons tiny">phone</i>

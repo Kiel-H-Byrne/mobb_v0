@@ -1,13 +1,37 @@
 @import "{}/node_modules/materialize-css/sass/components/color";
 @import "{}/node_modules/materialize-css/sass/components/variables";
-@import "palettes/colors";
-@import "palettes/_plt_orng-tetrad";
+@import "../palettes/colors";
+@import "../palettes/_plt_orng-tetrad";
 
 // ================================================ MIXINS ================================================
 @mixin box-shadow-2($args1, $args2) {
   -webkit-box-shadow: $args1, $args2;
   -moz-box-shadow: $args1, $args2;
   box-shadow: $args1, $args2;
+}
+
+@mixin border-gradient($clr1, $clr2) {
+  position: relative;
+  border: 5px solid transparent;
+  background: inherit;
+  background-clip: padding-box;
+  border-radius: 10px;
+  width: 8rem;
+  padding: 5rem 2rem;
+  margin: 5rem auto;
+  font-size: 100px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    bottom: -5px;
+    left: -5px;
+    right: -5px;
+    background: linear-gradient(to bottom right, $clr1, $clr1);
+    z-index: -1;
+    border-radius: 10px;
+  }
 }
 
 // ================================================ CSS RESET ================================================

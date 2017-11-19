@@ -1,7 +1,7 @@
 <template name="closestCard">
   {{#with isClosest}}
   <div id="bottom_Row" class="">
-    <div id="card_closest" class="card-panel animated">
+    <div id="card_closest" class="card-panel black animated">
 {{!--       <div class="ribbon">
         {{label 'CLOSEST'}}
       </div> --}}
@@ -21,7 +21,6 @@
 
       <!--div id="infoWrap" class="col s12 m6 offset-m3" style="background-image: url('{{image.url}}'), linear-gradient(rgba(055, 10, 0, 1), rgba(0, 0, 0, .4)) "-->
       {{!-- <a href="/listings/{{_id}}"> --}}
-        <div class="" >
           <h6 class="card-title center-align">{{name}}</h6>
           <p class="center-align address">
             {{#if address}}
@@ -29,17 +28,20 @@
             {{else}}
               <span>{{city}}, {{state}} </span>
             {{/if}}
-            {{#if phone}}
+          </p>
+          <div class="row ">
+            <div class="col s6 right">
             {{#if url}}    
-              <span><a class="" target="_blank" rel="noopener" title="Website" href="{{url}}">{{url}}</a></span>
+              <a class="" target="_blank" rel="noopener" title="Website" href="{{url}}"><i class="material-icons tiny">link</i></a>
             {{/if}}
-            <a class="center-align address-phone" href="tel:+1{{phone}}">
+            {{#if phone}}
+            <a class="" href="tel:+1{{phone}}">
               <i class="material-icons tiny">phone</i>
-              {{phone}}
             </a>
             {{/if}}
-          </p>
-        </div>
+            <a><i class="material-icons tiny">info_outline</i></a>
+            </div>
+          </div>
       {{!-- </a> --}}
       <span class="badge" data-badge-caption="mi"><a class="" title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" ><i class="material-icons">directions</i> {{getDistance location}} </a></span>
     </div>

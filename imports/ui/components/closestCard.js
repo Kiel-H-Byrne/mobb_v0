@@ -18,10 +18,9 @@ Template.closestCard.helpers({
 });
 
 Template.closestCard.events({
-	'click': function(event,templateInstance) {
-		// console.log("Clicked Verify button!");
-		//open modal verify form.
-		$('#modalVerify').addClass('open');
+	'click [id="card_closest"]': function(event,templateInstance) {
+    Session.set('openListing', this._id);
+    $('.button-collapse').sideNav('show');
 	},
   'click #edit_button': function(event,templateInstance) {
     //open modal verify form.

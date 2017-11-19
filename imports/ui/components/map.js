@@ -96,7 +96,7 @@ Template.map.onCreated( function () {
             //====== watch the database for changes, draw new marker on change. ====== //
             
 
-            const subscription = self.subscribe('listings_locs', function () {
+            let subscription = self.subscribe('listings_locs', function () {
                 
                 let cursor = Listings.find({
                     location: { $exists : 1 }

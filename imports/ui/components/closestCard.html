@@ -20,7 +20,7 @@
       {{! /if}}
 
       <!--div id="infoWrap" class="col s12 m6 offset-m3" style="background-image: url('{{image.url}}'), linear-gradient(rgba(055, 10, 0, 1), rgba(0, 0, 0, .4)) "-->
-      <a href="/listings/{{_id}}">
+      {{!-- <a href="/listings/{{_id}}"> --}}
         <div class="" >
           <h6 class="card-title center-align">{{name}}</h6>
           <p class="center-align address">
@@ -40,7 +40,7 @@
             {{/if}}
           </p>
         </div>
-      </a>
+      {{!-- </a> --}}
       <span class="badge" data-badge-caption="mi"><a class="" title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" ><i class="material-icons">directions</i> {{getDistance location}} </a></span>
     </div>
   </div>

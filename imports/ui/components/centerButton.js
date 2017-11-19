@@ -87,8 +87,8 @@ Template.centerButton.events({
               find_closest_marker(MAP_MARKERS, pos);
               placeMyMarker(map,pos);
               $(document).ready(function() {
-                $("[id='card_closest']").removeClass('tada');
-                $("[id='card_closest']").css('visibility', 'visible').toggleClass('tada');
+                $("[id='card_closest']").removeClass('bounceIn');
+                $("[id='card_closest']").css('visibility', 'visible').toggleClass('bounceIn');
               });
               return;
             }

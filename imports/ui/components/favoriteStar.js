@@ -3,6 +3,7 @@ import './favoriteStar.html';
 
 Template.favoriteStar.events({
   'click .add_favorite': function(event,templateInstance) {
+    event.stopPropagation();
     if (Meteor.user()) {
       let docId = this._id;
       let userId = Meteor.userId();
@@ -17,6 +18,7 @@ Template.favoriteStar.events({
     }
   },
   'click .remove_favorite': function(event,templateInstance) {
+    event.stopPropagation();
     if (Meteor.user()) {
       let docId = this._id;
       let userId = Meteor.userId();

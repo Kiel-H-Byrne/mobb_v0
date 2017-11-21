@@ -2,8 +2,7 @@
 import './register.html';
 
 Template.register.events({
-	'submit form': function(event){
-		
+	'submit form': function(event, templateInstance){
 	    event.preventDefault();
 	    let o = {};
 	    o.email = event.target.email.value;

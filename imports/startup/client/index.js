@@ -11,6 +11,9 @@ window.$ = $ = require('jquery');
 import 'materialize-css/js/jquery.hammer';
 import 'materialize-css/dist/js/materialize.min';
 
+// IMPORT Animate.css. 
+import 'animate.css/animate.min.css';
+
 //Import Routes & functions
 import '/lib/config/routes.js';
 

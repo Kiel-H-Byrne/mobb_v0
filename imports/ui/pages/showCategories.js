@@ -10,6 +10,7 @@ Template.showCategories.helpers({
 
 Template.showCategories.onRendered(function () {
   $(document).ready(function () {
+    $("[id='card_closest']").toggleClass('bounceIn bounceOut');
     $('.editModal-trigger').modal();
 
       const $mgrid = $('.masonry_grid').masonry({

@@ -335,7 +335,11 @@ Schema.Listings = new SimpleSchema({
     type: String,
     label: 'Phone Number',
     optional: true
-  },  
+  },
+  "claims.$.ownerProof": orion.attribute('file', {
+    label: 'Upload any Proof of Ownership with Address. (i.e. C/O, Utility Bill, etc.)',
+    optional: true
+  }),  
   claimsCount: {
     type: Number,
     optional: true,

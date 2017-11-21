@@ -8,9 +8,6 @@ Template.catSelect.onCreated(function () {
   this.subscribe('listings_locs');
 });
 
-Template.catSelect.onRendered(function () {
-});
-
 Template.catSelect.helpers({
   categories: function () {
     return Categories.find();
@@ -58,3 +55,48 @@ Template.catSelect.helpers({
 //     return results;
 //   },
 // });
+
+
+
+Template.mapFilter.onCreated(function () {
+  this.subscribe('categories');
+  this.subscribe('listings_locs');
+});
+
+Template.mapFilter.helpers({
+  categories: function () {
+    return Categories.find();
+  },
+  catCount: function(cat) {
+    return Listings.find({categories: {$elemMatch: {$in: [ cat ]}}}).count();
+  }
+});
+
+Template.mapFilter.events({
+  'click .switch label': function(event,templateInstance) {
+    event.preventDefault();
+    const el = $(event.currentTarget.children[0]);
+    if (el.prop('checked')) {
+      el.prop('checked', false);
+    } else {
+      el.prop('checked', true)
+    }
+  },
+  'click .switch': function(event,templateInstance) {
+    // event.preventDefault();
+    event.stopPropagation();
+    const type = event.currentTarget.title;
+    const el = (event.currentTarget.firstElementChild.children[0]);
+    if (el.prop('checked')) {
+      el.prop('checked', false);
+    } else {
+      el.prop('checked', true)
+    }
+    if (type) {
+      //make sure this runs only once!
+      toggleGroup(type);
+      // $('.dropdown-button').dropdown('close');
+    }
+
+  }
+});

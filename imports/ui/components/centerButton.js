@@ -24,6 +24,8 @@ Template.centerButton.onRendered(function () {
 
   $(document).ready(function (){
     $('.tooltipped').tooltip();
+    $("[id='card_closest']").toggleClass('bounceIn bounceOut');
+
   });
 
   //as soon as geoaccepted is true, ask for geolocation and set to session variable
@@ -54,8 +56,13 @@ Template.centerButton.events({
 
       templateInstance.autorun(function(l) {
         if (!Session.get('clientLoc')) {
-          Materialize.toast('Locating...', 1300, 'myToast');
+          Materialize.toast('Locating...', 60000, 'myToast');
         } else {
+          const toastElement = $('.myToast')[0];
+          if (toastElement) {
+            toastElement.M_Toast.remove();
+            // toastElement.toggleClass('fadeOutDown');
+          }
           l.stop();
         }
       });
@@ -80,15 +87,13 @@ Template.centerButton.events({
 
           // console.log("searching ...");
           getLocation().then((pos) => {
-            $('[id="centerButton_button"]').addClass('pulse');
+            $('[id="centerButton_button"]').toggleClass('pulse');
             if (pos) {
               Session.set('clientLoc', pos);
-              $('[id="centerButton_button"]').removeClass('pulse');
+              $('[id="centerButton_button"]').toggleClass('pulse');
               find_closest_marker(MAP_MARKERS, pos);
               placeMyMarker(map,pos);
               $(document).ready(function() {
-                $("[id='card_closest']").removeClass('bounceIn');
-                $("[id='card_closest']").css('visibility', 'visible').toggleClass('bounceIn');
               });
               return;
             }

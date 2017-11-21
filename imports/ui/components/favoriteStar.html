@@ -1,14 +1,12 @@
 
 <template name="favoriteStar">
-<div class="fav_star left">
 {{#if in_favorites}}
-  <a href="" class="remove_favorite">
+  <span class="remove_favorite">
     <i class="material-icons">favorite</i>
-  </a>
+  </span>
   {{else}}
-  <a href="" class="add_favorite" value="{{_id}}">
+  <span class="add_favorite" value="{{_id}}">
     <i class="material-icons">favorite_border</i>
-  </a>
+  </span>
 {{/if}}
-</div>
 </template>

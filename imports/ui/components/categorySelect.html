@@ -18,3 +18,29 @@
 		</ul>
 	</div>
 </template>
+
+<template name="mapFilter">
+	<div class="select_wrapper">
+		<a class="dropdown-button" href="#" data-activates="filter_dropdown" data-beloworigin="true" data-constrainwidth="false" data-alignment="left" data-stoppropagation="true">
+			<i class="material-icons ">location_off</i>
+			<span class="">Filter</span>
+		</a>
+		
+		<ul id="filter_dropdown" class="dropdown-content z-depth-2">
+		{{#each cat in categories}}
+			<li class="cat_item" value={{cat.name}}>
+			  <div class="switch" title = {{cat.name}}>
+			    <label>
+			      Off
+			      <input type="checkbox">
+			      <span class="lever"></span>
+			      On
+			    </label>
+  				<span class="">{{cat.name}}</span>
+					<span class="badge"> {{catCount cat.name}}</span>
+			  </div>
+			</li>
+		{{/each}}
+		</ul>
+	</div>	
+</template>

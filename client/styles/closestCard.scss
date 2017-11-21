@@ -1,25 +1,6 @@
 @import "palettes/colors";
 @import "palettes/plt_orng-tetrad";
 
-@mixin border-gradient($clr1, $clr2) {
-  border: 1px solid transparent;
-  background: inherit;
-  background-clip: padding-box;
-  border-radius: 3px;
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: -1px;
-    bottom: -1px;
-    left: -1px;
-    right: -1px;
-    background: linear-gradient(to bottom right, $clr1, $clr2);
-    z-index: -1;
-    border-radius: 3px;
-  }
-}
-
 [id='bottom_Row'] {
   position: absolute;
   bottom: 0;
@@ -28,34 +9,20 @@
 }
 
 [id='card_closest'] {
-  visibility: hidden;
   margin: 1rem auto;
   padding: .3rem;
   height: 8rem;
   width: 20rem;
   font-size: .8rem;
+  border-radius: 3px;
 
   // background-size: ;
 
-  .badge-share {
-    margin: 2px;
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
-
-  .fav_star {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    margin: 0 2px;
-    line-height: .5rem;
-  }
-
   a {
     color: inherit;
-    margin-left: 1rem;
+
+    // margin-left: 1rem;
+ 
   }
 
   h6 {
@@ -69,16 +36,13 @@
     bottom: 0;
     right: 0;
     padding: 1px;
+    margin: 2px;
     font-size: .8rem;
     line-height: 14px;
     height: auto;
-
-    // background: radial-gradient(circle at top left, $rgba-primary-grey-4, $rgba-secondary-grey-1-4);
     color: $rgba-primary-grey-1;
-
-    @include border-gradient($rgba-complement-3, $rgba-secondary-1-2);
-
-    // background-color: $rgba-complement-3;
+    background-color: $rgba-complement-3;
+    border-radius: 3px;
 
     i {
       font-size: 1rem;

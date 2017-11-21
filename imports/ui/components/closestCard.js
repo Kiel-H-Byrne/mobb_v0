@@ -1,12 +1,17 @@
-
 import './closestCard.html';
-import 'animate.css/animate.min.css';
 
+
+// Template.closestCard.onCreated(function () {
+//   $(document).ready(function () {
+//     console.log('new card created');
+//   });
+// });
 
 
 Template.closestCard.onRendered(function () {
   $(document).ready(function () {
-    $('.share-drop').dropdown();
+    let card = $("[id='card_closest']");
+    card.toggleClass('bounceIn');
   });
 });
 
@@ -19,16 +24,14 @@ Template.closestCard.helpers({
 
 Template.closestCard.events({
 	'click [id="card_closest"]': function(event,templateInstance) {
+    event.stopPropagation();
     Session.set('openListing', this._id);
     const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
     const locArr = this.location.split(",");
-    let locObj = {'lat': Number(locArr[0]), 'lng': Number(locArr[1]) };
+    let locObj = { 'lat': Number(locArr[0]), 'lng': Number(locArr[1]) };
     map.instance.panTo(locObj);
+    map.instance.setZoom(16);
     $('.button-collapse').sideNav('show');
-	},
-  'click #edit_button': function(event,templateInstance) {
-    //open modal verify form.
-    $('#modalEdit').modal('open');
-    $('.collapsible').collapsible();
-  }
+	}
 });
+

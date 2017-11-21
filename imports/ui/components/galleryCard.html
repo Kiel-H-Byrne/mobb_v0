@@ -1,7 +1,8 @@
 <template name="galleryCard">
     <div id="{{_id}}" class="info-card masonry_item card sticky-action hoverable ">
-      
-      {{> favoriteStar}}
+      <div class="fav_star left">
+        {{> favoriteStar}}
+      </div>
       {{> shareListing}}
       <a class="card_link" href="/listings/{{_id}}">
       {{#unless image.url}}

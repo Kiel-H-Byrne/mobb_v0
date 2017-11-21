@@ -11,26 +11,21 @@
 }
 
 @mixin border-gradient($clr1, $clr2) {
-  position: relative;
-  border: 5px solid transparent;
+  border: 1px solid transparent;
   background: inherit;
   background-clip: padding-box;
-  border-radius: 10px;
-  width: 8rem;
-  padding: 5rem 2rem;
-  margin: 5rem auto;
-  font-size: 100px;
+  border-radius: 3px;
 
   &::after {
     content: '';
     position: absolute;
-    top: -5px;
-    bottom: -5px;
-    left: -5px;
-    right: -5px;
-    background: linear-gradient(to bottom right, $clr1, $clr1);
+    top: -1px;
+    bottom: -1px;
+    left: -1px;
+    right: -1px;
+    background: linear-gradient(to bottom right, $clr1, $clr2);
     z-index: -1;
-    border-radius: 10px;
+    border-radius: 3px;
   }
 }
 

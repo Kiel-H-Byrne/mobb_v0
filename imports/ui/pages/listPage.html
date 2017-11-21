@@ -21,8 +21,9 @@
     {{#if phone}}    
       <a class="address-phone" href="tel:+1{{phone}}"><i class="material-icons">phone</i>{{phone}}</a> 
     {{/if}}
-        {{> favoriteStar}}
-        
+        <div class="fav_star left">
+          {{> favoriteStar}}
+        </div>        
       </li>
     {{/each}}
     </ul>

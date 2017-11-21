@@ -1,15 +1,27 @@
 
 import Listings from '/imports/startup/collections/listings';
+import Categories from '/imports/startup/collections/categories';
+
 import 'gmaps-marker-clusterer';
 import './centerButton.js';
 import './loadingScreen.html';
 import './map.html';
 
+
+
 //====== APP GLOBALS ======
 MAP_ZOOM = 4;
 MAP_MARKERS = [];
-// ============================= SUBSCRIPTIONS ==================================
+MARKER_GROUPS = {};
 
+// ============================= SUBSCRIPTIONS ==================================
+Meteor.subscribe('categories', function() {
+ let cursor = Categories.find()
+ //each catarr, make new array from name, 0
+ cursor.forEach(function(category) {
+    MARKER_GROUPS[category.name] = [];
+ });
+});
 
 Template.map.onCreated( function () {
     console.log("-= MAP: Created =-");
@@ -127,6 +139,7 @@ Template.map.onCreated( function () {
                         //For Each Listing, add a marker; every marker opens a global infoWindow and owns events.
                         //===== CONVERT DOC LOCATION FIELD FROM STRINGIFIED ARRAY TO OBJECT LITERAL =====
                         if (doc.location) {
+                            //  CONVERT LAT,LNG STRING TO LAT/LNG OBJECT
                             let latLng = doc.location.split(",");
                             let lat = Number(latLng[0]);
                             let lng = Number(latLng[1]);
@@ -142,7 +155,7 @@ Template.map.onCreated( function () {
                             });
 
                             marker.setTitle(doc.name);
-                            MAP_MARKERS.push(marker);
+                            // MAP_MARKERS.push(marker);
 
 
                             marker.addListener('click', function () {
@@ -159,7 +172,15 @@ Template.map.onCreated( function () {
                                 // // Router.go('/', {_id: id});
 
                             });
-
+                            //FOR EACH CATEGORY THAT MARKER HAS, PUSH IT TO MARKER_GROUP
+                            if (doc.categories.length) {
+                                doc.categories.forEach(function(element) {
+                                    //CREATE THE EMPTY ARRAY FOR GROUP IF DOESNT EXIST YET
+                                    if (!MARKER_GROUPS[element]) MARKER_GROUPS[element] = [];
+                                    MARKER_GROUPS[element].push(marker);
+                                })
+                            }
+                            return marker;
                         } // else cannot place marker on map, it does not have lat/lng yet
                     }
                 });

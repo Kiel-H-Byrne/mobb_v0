@@ -17,6 +17,7 @@ Template.listCard.onRendered( function () {
 
 Template.listCard.events({
   'click': function(event,templateInstance) {
+      event.stopPropagation();
       Session.set('openListing', this._id );
       $('.button-collapse').sideNav('show');
       $('.button-collapse_fav').sideNav('hide');

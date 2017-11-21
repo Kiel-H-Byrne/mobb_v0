@@ -1,7 +1,7 @@
 @import "{}/node_modules/materialize-css/sass/components/color";
 @import "{}/node_modules/materialize-css/sass/components/variables";
-@import 'palettes/colors';
-@import 'palettes/_plt_orng-tetrad';
+@import "palettes/colors";
+@import "palettes/_plt_orng-tetrad";
 
 .side-nav.sideCard {
   background-color: $rgba-primary-grey-4;
@@ -53,7 +53,7 @@
       text-align: center;
 
       li {
-        background-color: $rgba-primary-grey-3;
+        // background-color: $rgba-primary-grey-3;
         padding: 0 .3rem;
         margin: 1rem auto;
         display: inline-block;

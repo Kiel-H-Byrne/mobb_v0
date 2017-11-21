@@ -1,14 +1,18 @@
 <template name="claimForm">
   <div id="modalClaim" class="modal">
     <div class="modal-content">
-      <h4> Claim This Business </h4>
+      <h4> Claim This Business: </h4>
       <!-- form class="col s12 m8 l8">
         <input id="Comment" type="textarea" name="Comment" />
         <label for="Comment">Comment</label>
       </form --> 
 
       {{!-- {{> quickForm collection="Listings.upVotes" doc=this id="verifyForm" type="insert"}} --}}
-      
+      <p class="flow-text">
+        Thank you for verifying that you own this business!
+        Please enter some contact information and a document that references the business name, address, and your name; as proof proof of ownership.
+      </p>
+
       {{> quickForm id="phone_input_claim" type="update-pushArray" collection="Listings" doc=this scope="claims" omitFields="ownerId"}}
       {{!-- {{> quickForm id="dnVoteForm" type="update-pushArray" collection="Listings" doc=this scope="dnVotes"}} --}}
     </div>

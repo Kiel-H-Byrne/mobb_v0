@@ -22,6 +22,7 @@ Template.sideCard.onRendered( function () {
     $('img').on('error', function () {
       $(this).css({display:"none"});
     });
+    $('.tooltipped').tooltip();
   });
 
   this.autorun(function(p) {
@@ -85,8 +86,15 @@ Template.sliderPhoto.onRendered(function() {
 
   });
 });
-
-
-
-
-
+Template.sideCard.events({
+  'click .claim_link': function(event,templateInstance){ 
+    event.stopPropagation();
+    event.preventDefault();
+    if (Meteor.user()) {
+      //open modal #modalClaim
+      $('#modalClaim').modal('open');
+    } else {
+      Materialize.toast('Log In Before Claiming A Business', 3000, 'myToast');
+    }
+  },
+});

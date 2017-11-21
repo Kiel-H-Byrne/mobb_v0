@@ -21,6 +21,15 @@ Meteor.publish('listings_locs', function () {
 	return cursor;
 });
 
+Meteor.publish('listings_category', function (categories) {
+	check(categories, Array);
+	return Listings.find({
+      categories: {$in: categories}
+    },{
+      sort: {location: -1, name: 1}
+    });
+});
+
 Meteor.publish('listings_urls', function () {
 	let cursor = Listings.find({url: { $exists : 1}});
 	console.log("-= PUBLISHING: ["+ cursor.count() +"] LISTINGS W/ URLS =-");

@@ -25,14 +25,14 @@
                     {{else}}
                       <li><a class=" " href="/register" alt="Add A Business"><i class="material-icons left" title="Add a Business">add_location</i>Add</a></li>
                     {{/if}}
-                    <li>{{> catSelect}}</li>
+                    <li>{{> mapFilter}}</li>
                     <li class="hide-on-small-only">
                       <a href="/mobb" alt="About KIBU"><i class="material-icons left" title="About KIBU">info_outline</i>About</a>
                     </li>
                     <li class="right">
                         <div class="select_wrapper">
                             <a class="dropdown-button more_icon" alt="..." data-activates="more-dropdown" data-beloworigin="true" data-constrainwidth="false" data-alignment="right" data-stoppropagation="true" > 
-                               <i class="material-icons more_icon" title="...">more_vert</i>
+                               <i class="material-icons more_icon" title="...">account_circle</i>
                                
                             </a>
                             <ul id="more-dropdown" class="dropdown-content">
@@ -71,8 +71,9 @@
     {{> verifyForm}}
     {{> claimForm}} 
     <!-- Modals stay above here in nav Template or else show behind gray overlay-->
-    
-    {{> closestCard}}
+    {{#if haveLocation}}    
+      {{> closestCard}}
+    {{/if}}
 </template>
 
 <!-- FOR TYPEAHEAD RESULTS -->
@@ -83,7 +84,7 @@
 </template>
 
 <template name="rightSide">
-<div class="hide-on-med-and-down">
+<div class="hide">
     {{!-- {{> closestPage}} --}}
     {{#if hasFavorites}}
         {{> favoritesPage}}

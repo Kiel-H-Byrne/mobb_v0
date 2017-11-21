@@ -73,32 +73,29 @@
     <li><div class="divider"></div></li>
     <li>
       <ul class="inline-list">
-        <li><a class="modal-trigger" title="Claim This Listing" href="#modalClaim">
-          <tr>
-            <td><i class="material-icons">fingerprint</i></td>
-            <td>Claim</td>
-          </tr>
+        <li><a class="tooltipped" title="Save This Business" data-position="bottom" data-delay="50" data-tooltip="Save This Business" aria-label="Save This Business">
+              <tr>{{> favoriteStar}}</tr>
+              <tr>Save</tr>
+            </a>
+        </li>
+        <li><a class="tooltipped claim_link" data-position="bottom" data-delay="50" data-tooltip="Claim This Business" aria-label="Claim This Business">
+          <tr><i class="material-icons">fingerprint</i></tr>
+          <tr>Claim</tr>
         </a></li>
         {{#if isOwner}}    
-        <li><a class="modal-trigger" title="Edit This Listing" href="#modalEdit">
-          <tr>
-            <td><i class="material-icons">edit</i></td>
-            <td>Edit</td>
-          </tr>
+        <li><a class="modal-trigger tooltipped" title="Edit This Listing" href="#modalEdit" data-position="bottom" data-delay="50" data-tooltip="Edit This Business" aria-label="Edit This Business">
+            <tr><i class="material-icons">edit</i></tr>
+            <tr>Edit</tr>
         </a></li>
         {{else}}
-        <li><a class="modal-trigger" title="Make Suggestion" href="#modalSuggestion">
-          <tr>
-            <td><i class="material-icons">edit</i></td>
-            <td>Suggest Edit</td>
-          </tr>
+        <li><a class="tooltipped" title="Make Suggestion" href="#" data-position="bottom" data-delay="50" data-tooltip="Edit This Business" aria-label="Edit This Business">
+          <tr><i class="material-icons">edit</i></tr>
+          <tr>Edit</tr>
         </a></li>        
         {{/if}}
-        <li><a class="" title="Bookmark &amp; Share" href="#">
-          <tr>
-            <td><i class="material-icons">share</i></td>
-            <td>Bookmark <br />&amp; Share</td>
-          </tr>
+        <li><a class="tooltipped" title="Share" href="#" data-position="bottom" data-delay="50" data-tooltip="Share This Business" aria-label="Share This Business">
+          <tr><i class="material-icons">share</i></tr>
+          <tr>Share</tr>
         </a></li>        
       </ul>
     </li>

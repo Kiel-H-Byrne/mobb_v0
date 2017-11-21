@@ -34,6 +34,20 @@ clientRadius = null;
 //   }
 
 // }
+toggleGroup = function(type) {
+    for (let i = 0; i < MARKER_GROUPS[type].length; i++) {
+        let marker = MARKER_GROUPS[type][i];
+        if (!marker.getVisible()) {
+            marker.setVisible(true);
+            console.log('setting marker visible!');
+            //marker.setMap(map);
+        } else {
+            marker.setVisible(false);
+            console.log('setting marker invisible!');
+            //marker.setMap(null);
+        }
+    }
+};
 
 getLocation = async function() {
   //const or let??

@@ -155,7 +155,7 @@ Template.map.onCreated( function () {
                             });
 
                             marker.setTitle(doc.name);
-                            // MAP_MARKERS.push(marker);
+                            MAP_MARKERS.push(marker);
 
 
                             marker.addListener('click', function () {
@@ -184,13 +184,23 @@ Template.map.onCreated( function () {
                         } // else cannot place marker on map, it does not have lat/lng yet
                     }
                 });
+                // const microClusterOptions = {
+                //     imagePath: 'img/cluster/m',
+                //     gridSize: 13
+                // }
+                // Object.entries(MARKER_GROUPS).forEach(function(array) {
+                //     if (array[1].length) {
+                //         const microCluster = new MarkerClusterer(map.instance, array[1], microClusterOptions);
+                //     }
+                //     // let microCluster = new MarkerClusterer(map.instance, array, microClusterOptions);
+                // });
 
-                const clusterOptions = {
+                const macroClusterOptions = {
                     imagePath: 'img/cluster/m',
                     gridSize: 23
                 };
 
-                const mapCluster = new MarkerClusterer(map.instance, MAP_MARKERS, clusterOptions);
+                const macroCluster = new MarkerClusterer(map.instance, MAP_MARKERS, macroClusterOptions);
                 // console.log(mapCluster);
             });
 

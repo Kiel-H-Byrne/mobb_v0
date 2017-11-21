@@ -81,7 +81,6 @@ Template.mapFilter.events({
     event.stopPropagation();
     let type = event.currentTarget.title;
     let el = $(event.currentTarget.firstElementChild.children[0]);
-    console.log(el);
     if (el.prop('checked')) {
       el.prop('checked', false);
     } else {

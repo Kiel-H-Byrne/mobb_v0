@@ -39,11 +39,11 @@ toggleGroup = function(type) {
         let marker = MARKER_GROUPS[type][i];
         if (!marker.getVisible()) {
             marker.setVisible(true);
-            console.log('setting marker visible!');
+            // console.log('setting marker visible!');
             //marker.setMap(map);
         } else {
             marker.setVisible(false);
-            console.log('setting marker invisible!');
+            // console.log('setting marker invisible!');
             //marker.setMap(null);
         }
     }

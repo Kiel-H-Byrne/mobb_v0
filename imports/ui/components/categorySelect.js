@@ -75,18 +75,13 @@ Template.mapFilter.helpers({
 Template.mapFilter.events({
   'click .switch label': function(event,templateInstance) {
     event.preventDefault();
-    const el = $(event.currentTarget.children[0]);
-    if (el.prop('checked')) {
-      el.prop('checked', false);
-    } else {
-      el.prop('checked', true)
-    }
   },
   'click .switch': function(event,templateInstance) {
     // event.preventDefault();
     event.stopPropagation();
-    const type = event.currentTarget.title;
-    const el = (event.currentTarget.firstElementChild.children[0]);
+    let type = event.currentTarget.title;
+    let el = $(event.currentTarget.firstElementChild.children[0]);
+    console.log(el);
     if (el.prop('checked')) {
       el.prop('checked', false);
     } else {

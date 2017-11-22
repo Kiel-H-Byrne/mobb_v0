@@ -21,7 +21,7 @@ Template.favoritesPage.onRendered(function () {
       //   // msnry.layout();
       // });
 
-      const $mgrid = $('.masonry_grid').masonry({
+      let $mgrid = $('.masonry_grid').masonry({
         // options
         itemSelector: '.masonry_item',
         columnWidth: '.masonry_item'
@@ -42,7 +42,7 @@ Template.favoritesPage.helpers({
     let arr = Meteor.user().profile.favorites;
     // for some reason the favorites array has one entry: 'NeQChWMre5Yh4ooBq'
     // so it's nevery truly 'empty'; if greater than one, return list.
-    if (arr.length >= 1) {
+    if (arr.length > 0) {
       let cursor = Listings.find({
         _id : {$in : arr}
       }, {

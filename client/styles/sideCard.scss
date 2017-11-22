@@ -22,7 +22,6 @@
 
       i {
         color: lighten($rgba-primary-1, 10%);
-        margin: 0 .3rem 0 0;
       }
     }
 
@@ -60,7 +59,8 @@
         border-radius: 5px;
 
         &:hover {
-          background-color: lighten($rgba-primary-grey-3, 10%);
+          // background-color: lighten($rgba-primary-grey-3, 10%);
+       
         }
 
         td {

@@ -6,9 +6,10 @@ import '../components/loadingScreen.html';
 import '../components/addForm.js';
 import '../components/editForm.js';
 import '../components/closestCard.js';
-import '../components/categorySelect.js';
-import '../components/geoModal.js';
-import '../components/corner-ribbon.js';
+// import '../components/categorySelect.js';
+import '../components/mapFilter.js';
+// import '../components/geoModal.js';
+// import '../components/corner-ribbon.js';
 import '../components/favoriteStar.js';
 import '../components/shareListing.js';
 import '../components/mobileNav.js';
@@ -35,9 +36,16 @@ Template.nav.onRendered( function () {
 });
 
 Template.nav.events({
-	//====== SEARCH FORM ON NAVBAR =======
+	'click .brand-logo img': function(event,templateInstance) {
+    console.log(event.target);
+    const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
+    if (map) {
+      map.instance.setZoom(5);
+    }
+    //check zoom and zoom back to normal if less than  
+  },
+  //====== SEARCH FORM ON NAVBAR =======
 	//when form is submitted, set new center. 
-	
 	'submit #desktop_search-form': function (event, templateInstance) {
 		event.preventDefault();
     

@@ -1,0 +1,41 @@
+@import "{}/node_modules/materialize-css/sass/components/color";
+@import "{}/node_modules/materialize-css/sass/components/variables";
+@import "palettes/colors";
+@import "palettes/_plt_orng-tetrad";
+
+[id='filter_dropdown'] {
+  .cat_item {
+    padding: 3px;
+    min-width: 36ch;
+    color: $rgba-primary-2;
+
+    .switch label input[type=checkbox] {
+      &:checked + .lever {
+        background-color: $rgba-complement-3;
+
+        &:after {
+          background-color: $rgba-complement-2;
+        }
+      }
+    }
+
+    .switch {
+      label {
+        padding-right: 3px;
+        color: $rgba-primary-grey-2;
+
+        .lever {
+          margin: 0 3px;
+
+          &:after {
+            background-color: $rgba-primary-1;
+          }
+        }
+
+        .badge {
+          padding: 0;
+        }
+      }
+    }
+  }
+}

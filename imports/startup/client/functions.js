@@ -58,7 +58,7 @@ getLocation = async function() {
 targetClient = function(map,pos) {
   // SET CENTER, 
   // ZOOM TO CERTAIN LEVEL
-    map.instance.setCenter(pos);
+    map.instance.panTo(pos);
     google.maps.event.trigger(map, 'resize');
     map.instance.setZoom(12);
 };
@@ -67,7 +67,7 @@ targetBrowser = function(map) {
   // SET CENTER, 
   // ZOOM TO CERTAIN LEVEL
   let pos = Session.get('browserLoc');
-  map.instance.setCenter(pos);
+  map.instance.panTo(pos);
   map.instance.setZoom(8);
 };
 
@@ -99,10 +99,9 @@ placeMyMarker = function(map,pos) {
       //   fillOpacity: 0.10,
       // });
   } else {
-    //MARKER EXISTS, SO WE MOVE IT.
+    //MARKER EXISTS, SO WE MOVE IT TO NEW POSITION.
     clientMarker.setMap(map.instance);
     clientMarker.setPosition(pos);
-    // clientRadius.setCenter(pos);
   }
 
   $(document).ready(function (){

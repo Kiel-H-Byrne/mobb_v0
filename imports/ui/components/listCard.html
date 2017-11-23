@@ -46,7 +46,7 @@
           </div>
           {{> shareListing}}
         </div>
-        {{#if location}}
+        {{#if haveLocation}}
         <div class="badge_distance right">
             <a href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener">
               <span class="badge hoverable" data-badge-caption="mi."><i class="material-icons tiny ">directions</i> {{getDistance location}} </span>

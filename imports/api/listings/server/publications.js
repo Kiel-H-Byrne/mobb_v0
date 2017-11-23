@@ -49,7 +49,7 @@ Meteor.publish('listings_images', function () {
 });
 
 Meteor.publish('listings_favorites', function () {
-	if (Meteor.user()) {
+	if (Meteor.user() && Meteor.user().profile.favorites) {
 		let arr = Meteor.user().profile.favorites;
 	  let cursor = Listings.find({
 	    _id : {$in : arr}

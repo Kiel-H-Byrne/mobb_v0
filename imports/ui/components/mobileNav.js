@@ -24,13 +24,15 @@ Template.mobileNav.helpers({
     return cursor;
   },
   favorites: function () {
-  // get the array of ids
-  let arr = Meteor.user().profile.favorites;
-  let cursor = Listings.find({
-    _id : {$in : arr}
-  }, {
-    sort: {name: 1, location: -1 }
-  });
-  return cursor;
+    // get the array of ids
+    let arr = Meteor.user().profile.favorites;
+    if (arr) {
+      let cursor = Listings.find({
+        _id : {$in : arr}
+      }, {
+        sort: {name: 1, location: -1 }
+      });
+      return cursor;
+    }
   },
 });

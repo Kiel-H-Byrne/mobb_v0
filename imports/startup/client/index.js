@@ -61,7 +61,7 @@ $.getJSON("https://freegeoip.net/json/", {format: "jsonp"}).done(function(data){
 }); 
 
 
-
+Meteor.subscribe('userData');
 
 Meteor.startup(function () {
     //=====  GoogleMaps load ===== 
@@ -267,7 +267,7 @@ Meteor.startup(function () {
 
   Template.registerHelper('hasFavorites', function () {
     const user = Meteor.user();
-    if (user && user.profile.favorites.length > 1) {
+    if (user && user.profile.favorites && user.profile.favorites.length > 0) {
         return true;
       } else {
         return false;

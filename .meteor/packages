@@ -46,3 +46,4 @@ google-config-ui@1.0.0
 dynamic-import@0.2.0
 server-render@0.2.0
 accounts-ui
+service-configuration

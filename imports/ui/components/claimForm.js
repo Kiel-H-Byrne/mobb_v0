@@ -6,10 +6,12 @@ Template.claimForm.onRendered(function () {
 
     let telMask = ['(', /[1-9]/, /\d/, /\d/, ')',' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
     let telInput = document.querySelector('#phone_input_claim');
-    let telInputMask = VTM.maskInput({
-      inputElement: telInput,
-      mask: telMask
-    });
+    if (telInput) {
+      let telInputMask = VTM.maskInput({
+        inputElement: telInput,
+        mask: telMask
+      });
+    }
   });
 });
 

@@ -7,6 +7,7 @@ import '../pages/showCategories.js';
 import '../pages/closestPage.js';
 import '../pages/favoritesPage.js';
 import '../pages/terms.js';
+import '../pages/ownerTerms.js';
 import '../pages/about.js';
 import '../pages/loadingRings.html';
 import '../pages/loadingHourglass.html';

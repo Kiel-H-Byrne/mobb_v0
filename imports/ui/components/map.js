@@ -9,11 +9,10 @@ import './map.html';
 
 
 
-//====== APP GLOBALS ======
+//====== MAP GLOBALS ======
 MAP_ZOOM = 4;
 MAP_MARKERS = [];
 MARKER_GROUPS = {};
-
 // ============================= SUBSCRIPTIONS ==================================
 Meteor.subscribe('categories', function() {
  let cursor = Categories.find()
@@ -67,7 +66,6 @@ Template.map.onCreated( function () {
     //     title: "Approx. Location...",
     //     // animation: google.maps.Animation.BOUNCE,
     // }); 
-
 
         
         GoogleMaps.ready('map', function(map) {

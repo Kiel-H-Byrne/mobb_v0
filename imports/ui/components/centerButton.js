@@ -66,7 +66,7 @@ Template.centerButton.events({
           l.stop();
         }
       });
-
+      let oldMarker = {};
       templateInstance.autorun(function (c) {    
         //====== AUTO CALCULATE MY LOCATION AND DRAW NEW MARKER WHEN IT CHANGES ======
         //====== AUTO CALCULATE NEW CLOSEST BUSINESS WHEN MY LOCATION CHANGES ======
@@ -82,21 +82,39 @@ Template.centerButton.events({
           // MAKE BUTTON PULSE UNTIL I HAVE IT... THEN
           // STORE POSITION IN SESSION VAR &
           // REMOVE PULSE CLASS &
-          // PLACE MARKER ON MAP & 
+          // PLACE MY_MARKER ON MAP & 
           // DETERMINE CLOSEST BUSINESS & STORE ID AS SESSION VAR
+          // MAKE THE CLOSEST MARKER A DIFFERENT COLOR OR ANIMATE?
 
           // console.log("searching ...");
+
           getLocation().then((pos) => {
+            // START ANIMATION
             $('[id="centerButton_button"]').toggleClass('pulse');
             if (pos) {
               Session.set('clientLoc', pos);
+              // END ANIMATION
               $('[id="centerButton_button"]').toggleClass('pulse');
-              find_closest_marker(MAP_MARKERS, pos);
+              // ISOLATE CLIENT
               placeMyMarker(map,pos);
-              $(document).ready(function() {
+              // ISOLATE CLOSEST BUSINESS
+              let closestMarker = find_closest_marker(MAP_MARKERS, pos);
+              // CHECK IF NEW CLOSEST BUSINESS, DO SOMETHING ELSE
+              if (oldMarker == closestMarker) {
+                // NOT A NEW CLOSEST, DO NOTHING.
+              } else if (!_.isEmpty(oldMarker)){
+                // NEW CLOSEST, CHANGE OLD MARKER BACK TO REGULAR ICON
+                oldMarker.setIcon({
+                  url: "img/orange_marker_sm.png"  
+                });
+              }
+              closestMarker.setIcon({
+                url: "img/red_marker_sm.png"
               });
+              oldMarker = closestMarker;
               return;
             }
+            return;
           });
         }
       });

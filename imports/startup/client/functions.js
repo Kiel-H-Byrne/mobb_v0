@@ -201,9 +201,8 @@ find_closest_marker = function(markers,position) {
             closest = i;
         }
     }
-
-    const docName = markers[closest].getTitle();
-    const doc = Listings.findOne({name: docName});
-    // console.log('Closest marker is: ' + markers[closest].getTitle());
+    const closestMarker = markers[closest];
+    const doc = Listings.findOne({name: closestMarker.getTitle() });
     Session.set('closestListing', doc);
+    return closestMarker;
 }

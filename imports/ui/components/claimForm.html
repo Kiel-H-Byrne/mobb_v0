@@ -1,4 +1,4 @@
-<template name="claimForm">
+<template name="claimForm1">
   <div id="modalClaim" class="modal">
     <div class="modal-content">
       <h4> Claim This Business: </h4>
@@ -10,7 +10,7 @@
       {{!-- {{> quickForm collection="Listings.upVotes" doc=this id="verifyForm" type="insert"}} --}}
       <p class="flow-text">
         Thank you for verifying that you own this business!
-        Please enter some contact information and a document that references the business name, address, and your name; as proof proof of ownership.
+        Please enter some contact information and a document that references the business name, address, and your name--as proof  of ownership.
       </p>
 
       {{> quickForm id="phone_input_claim" type="update-pushArray" collection="Listings" doc=this scope="claims" omitFields="ownerId"}}
@@ -20,3 +20,30 @@
 </template>
 
 
+<template name="claimForm">
+  <div id="modalClaim" class="modal">
+    <div class="modal-content">
+      <p> To manage this business, verify this information:</p>
+      <!-- form class="col s12 m8 l8">
+        <input id="Comment" type="textarea" name="Comment" />
+        <label for="Comment">Comment</label>
+      </form --> 
+
+      {{!-- {{> quickForm collection="Listings.upVotes" doc=this id="verifyForm" type="insert"}} --}}
+      <p class="">
+        <strong>{{title}}</strong><br />
+        {{address}} <br />
+        {{phone}}
+      </p>
+      
+      <div>
+        <input id="oTCheck" type="checkbox" role="checkbox" aria-checked="false" tabindex="0" dir="ltr" />
+        <label for="oTCheck" >I am authorized to manage this business and I agree to the <a class="" href="/owner-terms" >Terms of Service</a></label>
+      </div>
+        
+      <button class="btn">Continue</button>
+      {{!-- {{> quickForm id="phone_input_claim" type="update-pushArray" collection="Listings" doc=this scope="claims" omitFields="ownerId"}} --}}
+      {{!-- {{> quickForm id="dnVoteForm" type="update-pushArray" collection="Listings" doc=this scope="dnVotes"}} --}}
+    </div>
+  </div>
+</template>

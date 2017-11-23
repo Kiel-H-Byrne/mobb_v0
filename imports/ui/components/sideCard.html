@@ -97,6 +97,19 @@
           <tr><i class="material-icons">share</i></tr>
           <tr>Share</tr>
         </a></li>        
+        <li>
+        {{#if currentUser}} 
+        <a class="tooltipped" title="Verify" href="#" data-position="bottom" data-delay="50" data-tooltip="Verify This Business" aria-label="Verify This Business">
+          <tr><i class="material-icons">verified_user</i></tr>
+          <tr>Verify</tr>
+        </a>
+        {{else}}
+        <a class="tooltipped" title="Verify" href="/login" data-position="bottom" data-delay="50" data-tooltip="Verify This Business" aria-label="Verify This Business">
+          <tr><i class="material-icons">verified_user</i></tr>
+          <tr>Verify</tr>
+        </a>
+        {{/if}}
+      </li>  
       </ul>
     </li>
       {{#if google_id}}

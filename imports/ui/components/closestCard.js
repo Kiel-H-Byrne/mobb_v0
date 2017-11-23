@@ -24,7 +24,6 @@ Template.closestCard.helpers({
 
 Template.closestCard.events({
 	'click [id="card_closest"]': function(event,templateInstance) {
-    event.stopPropagation();
     Session.set('openListing', this._id);
     const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
     const locArr = this.location.split(",");

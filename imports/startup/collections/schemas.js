@@ -224,8 +224,7 @@ Schema.Listings = new SimpleSchema({
     optional: true,
     custom: function() {
       //if street has no value and isSet(), and this has no value, throw error 
-      let hasStreet = this.field('street').value;
-
+      const hasStreet = this.field('street').isSet ;
       if (!hasStreet) {
         // inserts
         if (!this.operator) {
@@ -238,12 +237,18 @@ Schema.Listings = new SimpleSchema({
           if (this.operator === "$unset") return "required";
           if (this.operator === "$rename") return "required";
         }
+      } else {
+        let addressString =  `${this.field('street').value} ${this.field('city').value}, ${this.field('state').value} ${this.field('zip').value}`;
+        
+        // let el = $('input[name="address")')[0];
+        this.value = addressString;
+        return {$set: addressString};
       }
+      return;
     },
     autoValue: function() {
-      if (this.isInsert && this.field('street').value) {
+      if ( (this.isInsert || this.isUpdate) && this.field('street').isSet) {
         let addressString =  `${this.field('street').value} ${this.field('city').value}, ${this.field('state').value} ${this.field('zip').value}`;
-        // console.log(addressString);
         return addressString;
       }
     }

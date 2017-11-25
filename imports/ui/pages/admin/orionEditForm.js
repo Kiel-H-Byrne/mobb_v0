@@ -79,17 +79,25 @@ Template.orionEditForm.onRendered(function() {
   });
 
   $(document).ready(function () {
-      $('[id="loading-wrapper"], .server_rendered').fadeOut();
-      const VTM = require('vanilla-text-mask/dist/vanillaTextMask.js');
-      const telMask = ['(', /[1-9]/, /\d/, /\d/, ')',' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
-      const telInput = document.querySelector('#phone_input_edit');
-      if (telInput) {
-        const telInputMask = VTM.maskInput({
-          inputElement: telInput,
-          mask: telMask
-        });
-      }
+    $('[id="loading-wrapper"], .server_rendered').fadeOut();
+    const VTM = require('vanilla-text-mask/dist/vanillaTextMask.js');
+    const telMask = ['(', /[1-9]/, /\d/, /\d/, ')',' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+    const telInput = document.querySelector('#phone_input_edit');
+    if (telInput) {
+      const telInputMask = VTM.maskInput({
+        inputElement: telInput,
+        mask: telMask
+      });
+    }
     
+    const addressEl = document.querySelector('input[name="address"]');
+    const streetEl = document.querySelector('input[name="street"]');
+    console.log(addressEl.value, streetEl.value);
+    if (streetEl.value && !addressEl.value) {
+      const addressString = `${$('input[name="street"]')[0].value} ${$('input[name="city"]')[0].value}, ${$('input[name="state"]')[0].value} ${$('input[name="zip"]')[0].value}`;
+      addressEl.value = addressString;
+      Materialize.updateTextFields(); 
+    }
   });
 });
 
@@ -106,4 +114,3 @@ Template.orionEditForm.helpers({
     return doc
   }
 });
-

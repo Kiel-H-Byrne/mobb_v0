@@ -1,0 +1,27 @@
+@import "{}/node_modules/materialize-css/sass/components/color";
+@import "{}/node_modules/materialize-css/sass/components/variables";
+@import "palettes/colors";
+@import "palettes/_plt_orng-tetrad";
+
+.orion-materialize-admin header,
+.orion-materialize-admin main,
+.orion-materialize-admin footer {
+  padding-left: 133px;
+}
+
+.orion-materialize-admin {
+  color: $rgba-primary-grey-4;
+
+  [id="nav-mobile"] {
+    width: 130px;
+  }
+}
+
+@media #{$medium-and-down} {
+
+  .orion-materialize-admin header,
+  .orion-materialize-admin main,
+  .orion-materialize-admin footer {
+    padding-left: 0;
+  }
+}

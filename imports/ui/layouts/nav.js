@@ -79,7 +79,7 @@ Template.nav.events({
     const type = event.target.parentElement.parentElement.parentElement.firstChild.innerText;
     if (type === 'Listings') {
       const id = Listings.findOne({name: name})._id;
-      console.log(type,name,id);
+      // console.log(type,name,id);
       Router.go('/' + type + '/' + id);  
     } else {
       Router.go('/' + type + '/' + name);  

@@ -1,4 +1,3 @@
-import { Template } from 'meteor/templating';
 import Categories from '/imports/startup/collections/categories';
 
 import './editForm.html';
@@ -29,9 +28,6 @@ Template.editForm.onRendered(function () {
         mask: telMask
       });
     }
-
-    // let state = Session.get('clientState');
-    // $("li:contains("+ state +")").addClass("active selected");
   });
 });
 

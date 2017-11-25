@@ -188,8 +188,9 @@ Meteor.methods({
     // optional: keyword ()
     const key = Meteor.settings.public.keys.googleServer.key;
     name = encodeURIComponent(name);
-    const apiUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${loc}&radius=20&keyword=${name}&key=${key}`;
+    const apiUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${loc}&radius=100&keyword=${name}&key=${key}`;
     // console.log("--GOOGLE PLACES: NEARBY SEARCH URL--"+apiUrl);
+    console.log("--GOOGLE PLACES: NEARBY SEARCH --");
     const response = Meteor.wrapAsync(apiCall)(apiUrl);
     // console.log("still running");
     if (response && response.results[0]) {

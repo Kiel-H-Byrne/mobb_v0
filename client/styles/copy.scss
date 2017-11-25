@@ -1,5 +1,5 @@
-@import 'palettes/colors';
-@import 'palettes/_plt_orng-tetrad';
+@import "palettes/colors";
+@import "palettes/_plt_orng-tetrad";
 
 * {
   font-family: 'Trebuchet MS', Helvetica, sans-serif;
@@ -76,10 +76,6 @@ p {
 [id='at-signIn'] {
   color: $color-primary-1;
   font-size: 1.2rem;
-}
-
-.orion-materialize-admin {
-  color: $rgba-primary-grey-4;
 }
 
 .dropdown-content {

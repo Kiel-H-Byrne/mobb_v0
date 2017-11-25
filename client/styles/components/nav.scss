@@ -3,7 +3,7 @@
 @import "../palettes/colors";
 @import "../palettes/_plt_orng-tetrad";
 
-.navbar-fixed {
+[id="mainNav"] .navbar-fixed {
   nav {
     background-color: $rgba-primary-grey-5;
   }

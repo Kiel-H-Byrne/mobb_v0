@@ -1,6 +1,9 @@
 import './OKGAnalytics.js';
 import '/imports/api/orionCache.js';
+
 import Listings from '/imports/startup/collections/listings';
+
+import '/imports/ui/pages/admin/orionEditForm.js';
 
 // IMPORT EVERYTHING NEEDED FOR MATERIALIZE LIBRARY. 
 // JQUERY GOES FIRST WITH INIT, THEN VELOCITY, THEN GLOBAL. 
@@ -312,5 +315,9 @@ Template.orionMaterializeHeaderContainer.onRendered(function() {
   });
 });
 
-
+Template.orionMaterializeLogin.onRendered(function() {
+  $(document).ready(function () {
+      $('[id="loading-wrapper"], .server_rendered').fadeOut();
+  });
+});
 

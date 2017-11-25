@@ -171,7 +171,7 @@ Template.map.onCreated( function () {
 
                             });
                             //FOR EACH CATEGORY THAT MARKER HAS, PUSH IT TO MARKER_GROUP
-                            if (doc.categories && doc.categories.length) {
+                            if (doc.categories.length) {
                                 doc.categories.forEach(function(element) {
                                     //CREATE THE EMPTY ARRAY FOR GROUP IF DOESNT EXIST YET
                                     if (!MARKER_GROUPS[element]) MARKER_GROUPS[element] = [];

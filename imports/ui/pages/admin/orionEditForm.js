@@ -92,7 +92,6 @@ Template.orionEditForm.onRendered(function() {
     
     const addressEl = document.querySelector('input[name="address"]');
     const streetEl = document.querySelector('input[name="street"]');
-    console.log(addressEl.value, streetEl.value);
     if (streetEl.value && !addressEl.value) {
       const addressString = `${$('input[name="street"]')[0].value} ${$('input[name="city"]')[0].value}, ${$('input[name="state"]')[0].value} ${$('input[name="zip"]')[0].value}`;
       addressEl.value = addressString;

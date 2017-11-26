@@ -51,7 +51,7 @@ AutoForm.addHooks('upVoteForm', {
 
   // Called when any submit (type=insert or update) operation succeeds
   onSuccess: function(formType, result) {
-  	console.log("Thanks for Submitting!", result);
+  	console.log("Thanks for Verifying!", result);
   	$('#modalVerify').modal('close');
   },
 });

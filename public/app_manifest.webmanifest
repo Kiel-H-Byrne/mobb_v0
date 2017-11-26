@@ -1,9 +1,0 @@
-{
-  "short_name": "MOBB",
-  "name": "MOBB",
-  "description": "The MOBB: Map of Black Businesses",
-  "start_url": "/?utm_source=homescreen",
-  "background_color": "#ED7E0E",
-  "theme_color": "#ED7E0E",
-  "display": "standalone"
-}

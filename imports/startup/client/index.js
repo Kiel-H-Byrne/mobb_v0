@@ -67,6 +67,15 @@ $.getJSON("https://freegeoip.net/json/", {format: "jsonp"}).done(function(data){
 Meteor.subscribe('userData');
 
 Meteor.startup(function () {
+    //=====  CHECK IF OFFLINE ===== 
+    Meteor.autorun(function() {
+      let online = navigator.onLine;
+      if (!online) {
+        console.log('Now Offline...');
+        Materialize.toast('Working Offline...', 1000, 'myToast');
+      }
+    });
+
     //=====  GoogleMaps load ===== 
   GoogleMaps.load({
     v: '3',

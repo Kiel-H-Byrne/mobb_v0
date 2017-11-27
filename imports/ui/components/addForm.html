@@ -13,11 +13,11 @@
 							</div>
 							<div class="collapsible-body">
 
-							  {{> afQuickField name="name" }}
+							  {{> afQuickField name="name" id="geocomplete" placeholder=""}}
 								<div class="geo_input row">
 									<div class="input-field col s12">
-										<input id="geocomplete" type="text" placeholder="" name="" />
-										<label for="geocomplete">Search Address...</label>
+										<input id="formatted_address" type="text"  name="" />
+										<label for="formatted_address">Search Address...</label>
 									</div>
 								</div>
 								<div class="address_group row">
@@ -25,15 +25,14 @@
 									{{> afQuickField name="street" id="route" disabled="true"  }}
 									</div>
 								</div>
-
 							  <div class=" address_group row">
 								  <div class="col s5 m5"> {{> afQuickField name="city" id="locality" disabled="true" }} </div>
 								  <div class="col s3 m3"> {{> afQuickField name="state" id="administrative_area_level_1" label="State" disabled="true" }} </div>
 								  <div class="col s4 m4"> {{> afQuickField name="zip" id="postal_code" label="Zipcode" disabled="true" }} </div>
 								  <div class="hide"><input type="hidden" id="country" name="country"/></div>
 							  </div>
-							  {{> afQuickField name="phone" id="phone_input_add"}}
-							  {{> afQuickField name="url" value="http://"}}
+							  {{> afQuickField name="phone" id="formatted_phone_number"}}
+							  {{> afQuickField name="url" id="website" value="http://"}}
                 <div class="row">
                   <div class="col s4"> {{> afQuickField name="social.facebook" }} </div>
                   <div class="col s4"> {{> afQuickField name="social.twitter"}} </div>
@@ -51,6 +50,7 @@
 							  {{> afQuickField name="image"}}
 							  {{> afFormGroup name="categories" type="select-checkbox-inline" options=formOptions}} <br />
 							</div>
+							{{> afQuickField name="google_id" id="place_id" hidden="true" label=" "}}
 			    	</li>
 			    </ul>
 				</div>		    

@@ -12,28 +12,37 @@ Template.addForm.onRendered(function() {
 
   // Google GeoComplete 
   this.autorun(function (c) {
-
     if (GoogleMaps.loaded()) {
       let componentForm = {
         street_number: 'short_name',
         route: 'long_name',
         locality: 'long_name',
+        sublocality_level_1: 'short_name',        
         administrative_area_level_1: 'short_name',
         country: 'short_name',
         postal_code: 'short_name'
       };
 
 
+      // geocomplete = new google.maps.places.Autocomplete(
+      //   /** @type {!HTMLInputElement} */
+      //   document.getElementById('geocomplete'),
+      //   {types: ['address']},
+      //   {components: {country:'us'}}
+      // );
+
       geocomplete = new google.maps.places.Autocomplete(
         /** @type {!HTMLInputElement} */
         document.getElementById('geocomplete'),
-        {types: ['address']},
+        {types: ['establishment']},
         {components: {country:'us'}}
       );
 
       const fillInAddress = function() {
         let place = geocomplete.getPlace();
+        console.log(place);
         for (let component in componentForm) {
+          // CLEAR ALL VALUES AND SET 'DISABLED' FIELDS TO FALSE SO WE CAN POPULATE THEM
           if (document.getElementById(component)){
             document.getElementById(component).value = '';
             document.getElementById(component).disabled = false;
@@ -46,7 +55,7 @@ Template.addForm.onRendered(function() {
         
           let addressType = place.address_components[i].types[0];
           if (componentForm[addressType]) {
-   
+            
             if (addressType == 'street_number') {
               let val = place.address_components[i][componentForm[addressType]];
               // document.getElementById('route').value = val;
@@ -59,15 +68,22 @@ Template.addForm.onRendered(function() {
               } else {
                 document.getElementById(addressType).value = val;
               }
+            } else if (addressType == 'sublocality_level_1') {
+                document.getElementById('locality').value = val;
             } else {
-
-            let val = place.address_components[i][componentForm[addressType]];
-            document.getElementById(addressType).value = val;
+              let val = place.address_components[i][componentForm[addressType]];
+              document.getElementById(addressType).value = val;
             }
+            //
             Materialize.updateTextFields();
             $(".address_group label").css('hide');
           }
         }
+        if (place.formatted_address) document.getElementById('formatted_address').value = place.formatted_address;
+        if (place.name) document.getElementById('geocomplete').value = place.name;
+        if (place.formatted_phone_number) document.getElementById('formatted_phone_number').value = place.formatted_phone_number;
+        if (place.website) document.getElementById('website').value = place.website;
+        if (place.place_id) document.getElementById('place_id').value = place.place_id;
       };
       // When the user selects an address from the dropdown, populate the address
       // fields in the form.
@@ -94,7 +110,7 @@ Template.addForm.onRendered(function() {
     const VTM = require('vanilla-text-mask/dist/vanillaTextMask.js');
 
     let telMask = ['(', /[1-9]/, /\d/, /\d/, ')',' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
-    let telInput = document.querySelector('#phone_input_add');
+    let telInput = document.querySelector('#formatted_phone_number');
 
     let telInputMask = VTM.maskInput({
       inputElement: telInput,

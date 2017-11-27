@@ -79,8 +79,10 @@ Template.nav.events({
     const type = event.target.parentElement.parentElement.parentElement.firstChild.innerText;
     if (type === 'Listings') {
       const id = Listings.findOne({name: name})._id;
+      Session.set('openListing', id );
+      $('.button-collapse').sideNav('show');
       // console.log(type,name,id);
-      Router.go('/' + type + '/' + id);  
+      // Router.go('/' + type + '/' + id);  
     } else {
       Router.go('/' + type + '/' + name);  
     }
@@ -101,14 +103,14 @@ Template.nav.events({
 Template.nav.helpers({
   dataset: function () {
     return [
-      {
-        name: 'categories',
-        valueKey: 'name',
-        displayKey: 'name',
-        local: function () { return Categories.find().fetch(); },
-        header: '<h4 class="tt-header">Categories</h4>',
-        template: 'results'
-      },
+      // {
+      //   name: 'categories',
+      //   valueKey: 'name',
+      //   displayKey: 'name',
+      //   local: function () { return Categories.find().fetch(); },
+      //   header: '<h4 class="tt-header">Categories</h4>',
+      //   template: 'results'
+      // },
       {
         name: 'listings',
         valueKey: 'name',
@@ -116,13 +118,6 @@ Template.nav.helpers({
         local: function () { return Listings.find().fetch(); },
         header: '<h4 class="tt-header">Listings</h4>',
         template: 'results'
-      // },{
-        // name: 'listings',
-        // valueKey: 'city',
-        // displayKey: 'city',
-        // local: function () { return Listings.find().fetch(); },
-        // header: '<h4 class="tt-header">Cities</h4>',
-        // template: 'results'
       }
     ];
   }

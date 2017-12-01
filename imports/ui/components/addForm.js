@@ -20,26 +20,25 @@ Template.addForm.onRendered(function() {
         sublocality_level_1: 'short_name',        
         administrative_area_level_1: 'short_name',
         country: 'short_name',
-        postal_code: 'short_name'
+        postal_code: 'short_name',
       };
 
-
-      // geocomplete = new google.maps.places.Autocomplete(
-      //   /** @type {!HTMLInputElement} */
-      //   document.getElementById('geocomplete'),
-      //   {types: ['address']},
-      //   {components: {country:'us'}}
-      // );
-
-      geocomplete = new google.maps.places.Autocomplete(
+      completeAddress = new google.maps.places.Autocomplete(
         /** @type {!HTMLInputElement} */
-        document.getElementById('geocomplete'),
+        document.getElementById('formatted_address'),
+        {types: ['address']},
+        {components: {country:'us'}}
+      );
+
+      completeName = new google.maps.places.Autocomplete(
+        /** @type {!HTMLInputElement} */
+        document.getElementById('name'),
         {types: ['establishment']},
         {components: {country:'us'}}
       );
 
-      const fillInAddress = function() {
-        let place = geocomplete.getPlace();
+      const fillInAddress = function(autocomplete) {
+        let place = autocomplete.getPlace();
         console.log(place);
         for (let component in componentForm) {
           // CLEAR ALL VALUES AND SET 'DISABLED' FIELDS TO FALSE SO WE CAN POPULATE THEM
@@ -75,20 +74,31 @@ Template.addForm.onRendered(function() {
               document.getElementById(addressType).value = val;
             }
             //
-            Materialize.updateTextFields();
-            $(".address_group label").css('hide');
           }
         }
         if (place.formatted_address) document.getElementById('formatted_address').value = place.formatted_address;
-        if (place.name) document.getElementById('geocomplete').value = place.name;
+        if (place.name && (place.types[0] !== 'street_address')) document.getElementById('name').value = place.name;
         if (place.formatted_phone_number) document.getElementById('formatted_phone_number').value = place.formatted_phone_number;
-        if (place.website) document.getElementById('website').value = place.website;
+        if (place.website) {
+          document.getElementById('website').value = place.website;
+        } else {
+          //wipe away "http://" prefill
+          document.getElementById('website').value = '';
+        }
         if (place.place_id) document.getElementById('place_id').value = place.place_id;
       };
       // When the user selects an address from the dropdown, populate the address
       // fields in the form.
-      geocomplete.addListener('place_changed', function() {
-        fillInAddress();
+      completeName.addListener('place_changed', function() {
+        fillInAddress(this);
+        Materialize.updateTextFields();
+        $(".address_group label").css('hide');
+      });
+
+      completeAddress.addListener('place_changed', function() {
+        fillInAddress(this);
+        Materialize.updateTextFields();
+        $(".input-field label").css('hide');
       });
     }
   });

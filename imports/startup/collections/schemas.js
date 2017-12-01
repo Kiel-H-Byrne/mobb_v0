@@ -357,7 +357,6 @@ Schema.Listings = new SimpleSchema({
   location: {
     type: String,
     optional: true,
-    unique: true,
     autoValue: function () {
       if (this.field("address").value || this.field("street").value) {
         let address = this.field("address").value;

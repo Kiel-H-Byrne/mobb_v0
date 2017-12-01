@@ -6,12 +6,13 @@ import 'gmaps-marker-clusterer';
 import './centerButton.js';
 import './loadingScreen.html';
 import './map.html';
-
+import './agents.js';
 
 
 //====== MAP GLOBALS ======
 MAP_ZOOM = 4;
 MAP_MARKERS = [];
+AGENT_MARKERS = [];
 MARKER_GROUPS = {};
 // ============================= SUBSCRIPTIONS ==================================
 Meteor.subscribe('categories', function() {

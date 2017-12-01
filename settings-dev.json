@@ -12,6 +12,10 @@
   			"app_secret" : "sraEpUUq73L9aPc6S4OTzRZh8qETaaFJFDiU5hJJTqlwya8ppphEdIX5nS1TwNdL"
       },
       "openGraph": {"key":"590d6e3a20af04982477acec"},
+      "stream": {
+        "key": "jkwg4nh72s89",
+        "secret": "fwpr2re3zjnjatkjcrshevhyxdcmpftauexcpk6ydg6sn65pvhuqhhbgp8burzgt"
+      },
       "mailgun" : {
         "pubKey" : "pubkey-67863056eeb5b73ef0e430fb745ee491",
         "key" : "key-7dd23326d5aa872424d23f8a8038dc72",

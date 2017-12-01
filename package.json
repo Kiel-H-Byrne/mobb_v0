@@ -7,7 +7,7 @@
     "start": "meteor run --settings settings-dev.json",
     "local": "meteor run --production --settings settings-prod.json",
     "idev": "meteor run ios-device --settings settings-dev.json",
-    "stage": "meteor deploy kibutest.meteorapp.com --settings settings-dev.json",
+    "stage": "meteor deploy mobb.meteorapp.com --settings settings-dev.json",
     "deploy": "meteor deploy kibu.meteorapp.com --settings settings-prod.json",
     "ibuild": "meteor build /Users/KHB/Sites/MOBBapp/testbuild --server localhost:3000 --mobile-settings settings-prod.json",
     "istage": "meteor build /Users/KHB/Sites/MOBBapp/stages --server https://kibutest.meteorapp.com --mobile-settings settings-prod.json",

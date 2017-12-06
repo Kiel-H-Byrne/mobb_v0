@@ -1,3 +1,4 @@
+import './verifyUI.js';
 import './sideCard.html';
 import './mPreloader.html';
 

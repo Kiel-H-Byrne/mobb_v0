@@ -134,7 +134,11 @@ Schema.Profile = new SimpleSchema({
   verifiedListings: {
     type: [String],
     optional: true
-  }  
+  },
+  favorites: {
+    type: [String],
+    optional: true
+  }
 });
 
 Schema.Owner = new SimpleSchema({

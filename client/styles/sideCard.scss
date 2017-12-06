@@ -6,6 +6,7 @@
 .side-nav.sideCard {
   background-color: $rgba-primary-grey-4;
   height: 100%;
+  overflow-x: hidden;
 
   img {
     width: 100%;

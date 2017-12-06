@@ -1,0 +1,23 @@
+@import "{}/node_modules/materialize-css/sass/components/color";
+@import "{}/node_modules/materialize-css/sass/components/variables";
+@import "palettes/colors";
+@import "palettes/_plt_orng-tetrad";
+
+.vote {
+  span {
+    display: block;
+    line-height: .4rem;
+
+    i {
+      line-height: .2rem;
+    }
+  }
+
+  .downVote {
+    color: $clr-red !important;
+  }
+
+  .upVote {
+    color: $rgba-primary-3 !important;
+  }
+}

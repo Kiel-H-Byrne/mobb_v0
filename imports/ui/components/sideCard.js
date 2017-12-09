@@ -3,7 +3,7 @@ import './sideCard.html';
 import './mPreloader.html';
 
 Template.sideCard.onCreated( function () {
-  Session.set('thisPlace', false);
+  // Session.set('thisPlace', false);
 });
 
 Template.sideCard.onRendered( function () {

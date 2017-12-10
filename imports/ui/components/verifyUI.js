@@ -16,6 +16,9 @@ Template.verifyUI.events({
       },{
         $addToSet: {
            verifiers: userId
+        },
+        $pull: {
+          deverifiers: userId
         }
       });
     } else {
@@ -36,7 +39,10 @@ Template.verifyUI.events({
         _id: docId
       },{
         $addToSet: {
-           deverifiers: userId
+          deverifiers: userId
+        },
+        $pull: {
+          verifiers: userId
         }
       });
     } else {
@@ -91,7 +97,7 @@ Template.verifyUI.helpers({
     //if id matches in verifiedListings array, return true.
     let id = this._id;
     let userId = Meteor.userId();
-    let array = this.verifiers;
+    let array = this.verifiers || [];
     if (Meteor.user() && array.length > 0) {
       // let array = Meteor.user().profile.verifiedListings;
       let inArray = !_.isEmpty(_.where(array, userId));
@@ -103,7 +109,7 @@ Template.verifyUI.helpers({
   in_deverified: function() {
     let id = this._id;
     let userId = Meteor.userId();
-    let array = this.deverifiers;
+    let array = this.deverifiers || [];
     if (Meteor.user() && array.length > 0) {
       // let array = Meteor.user().profile.deverifiedListings;
       let inArray = !_.isEmpty(_.where(array, userId));
@@ -113,8 +119,8 @@ Template.verifyUI.helpers({
     }
   },
   verifiedCount: function() {
-    let count = this.verifiers.length
-    console.log(count);
+    let array = this.verifiers || [];
+    let count = array.length;
     return count;
   }
 });

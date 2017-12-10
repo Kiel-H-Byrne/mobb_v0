@@ -24,18 +24,10 @@ li.verifyItem {
   }
 }
 
-.remove_favorite {
-  color: $clr-red !important;
-}
-
-.add_favorite {
-  color: $rgba-primary-3 !important;
-}
-
 .verified {
-  color: green !important;
+  color: $clr-green !important;
 }
 
 .deverified {
-  color: red !important;
+  color: $clr-red !important;
 }

@@ -75,25 +75,18 @@ function startRouteAnimation(marker) {
         1000);
 }
 
-
-// start simulation on button click...
-// $("#simulateRouteButton").click(function() {
-//     startRouteAnimation(agentMarker);
-// });
-
-
 //make marker, 
-GoogleMaps.ready('map', function(map) {
-    agentMarkers.forEach(function(element) {
-        element.marker = new google.maps.Marker({
-          position: element.origin,
-          map: map.instance,
-          icon: {url: 'img/orange_marker_3_sm.png'},
-        });
-        // AGENT_MARKERS.push(marker);
+// GoogleMaps.ready('map', function(map) {
+//     agentMarkers.forEach(function(element) {
+//         element.marker = new google.maps.Marker({
+//           position: element.origin,
+//           map: map.instance,
+//           icon: {url: 'img/orange_marker_3_sm.png'},
+//         });
+//         // AGENT_MARKERS.push(marker);
 
-        setAnimatedRoute(element, map.instance);
-        // console.log('animating route');
-        startRouteAnimation(element);
-    });
-});
+//         setAnimatedRoute(element, map.instance);
+//         // console.log('animating route');
+//         startRouteAnimation(element);
+//     });
+// });

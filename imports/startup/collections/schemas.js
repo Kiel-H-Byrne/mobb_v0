@@ -135,6 +135,10 @@ Schema.Profile = new SimpleSchema({
     type: [String],
     optional: true
   },
+  deverifiedListings: {
+    type: [String],
+    optional: true
+  },
   favorites: {
     type: [String],
     optional: true
@@ -405,28 +409,32 @@ Schema.Listings = new SimpleSchema({
       }
     }
   },
-  "verifiers.$.verifierId": {
-    type: String,
-    optional: true,
-    autoValue: function() {
-      if (Meteor.userId()) {
-        return Meteor.userId();
-      }
-    }
-  },
-  "verifiers.$.verifierName": {
-    type: String,
+  verifiers: {
+    type: [String],
     optional: true
   },
   verifierCount: {
     type: Number,
     optional: true,
     autoValue: function() {
-      if (this.field("verifiers").value) {
-        return this.field("verifiers").value.length;
+      if (this.field("verifiers").length > 0) {
+        return this.field("verifiers").length;
       }
     }
   },
+  deverifiers: {
+    type: [String],
+    optional: true
+  },
+  deverifierCount: {
+    type: Number,
+    optional: true,
+    autoValue: function() {
+      if (this.field("deverifiers").length > 0) {
+        return this.field("deverifiers").length;
+      }
+    }
+  },  
   description: {
     type: String,
     label: 'Description',

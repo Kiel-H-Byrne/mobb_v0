@@ -1,18 +1,20 @@
+
 <template name="verifyUI">
-  <table class="voteTable">
-  <tr class="vote">
-    <td>
+  <a class="voteButton">
       <span class="upVote">
-        <i class="material-icons">arrow_drop_up</i>
+        {{#if in_verified}}
+        <i class="material-icons verified">keyboard_arrow_up</i>
+        {{else}}
+        <i class="material-icons verify">keyboard_arrow_up</i>
+        {{/if}}
       </span>
+    <span  class="vote-count">{{ verifiedCount}}  Verified</span>
     <span class="downVote">
-      <i class="material-icons">arrow_drop_down</i>
+      {{#if in_deverified}}
+      <i class="material-icons deverified">keyboard_arrow_down</i>
+      {{else}}
+      <i class="material-icons deverify">keyboard_arrow_down</i>
+      {{/if}}
     </span>
-  </td>
-  <td>
-      <span itemprop="" class="vote-count">0</span>
-  </td>
-  </tr>
-  <tr>Verify</tr>
-  </table>
+ </a>
 </template>

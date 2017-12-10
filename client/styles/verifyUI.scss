@@ -3,39 +3,39 @@
 @import "palettes/colors";
 @import "palettes/_plt_orng-tetrad";
 
-.voteTable {
-  width: 2rem;
+li.verifyItem {
+  position: static;
+  top: 0;
+}
 
-  span {
-    line-height: .5rem;
-    width: .6rem;
+.voteButton {
+  position: relative;
+  top: -0.8rem;
+  font-size: 14px;
 
-    i {
-      line-height: .5rem;
-      width: .6rem;
-    }
-  }
-
-  i
-  .downVote {
+  .upVote, .downVote {
     display: block;
-    cursor: pointer;
-
-    i {
-      color: $clr-red;
-    }
+    height: 1rem;
   }
 
-  .upVote {
-    display: block;
-    cursor: pointer;
-
-    i {
-      color: $rgba-primary-3;
-    }
+  i {
+    line-height: 1rem;
+    color: $rgba-primary-grey-1;
   }
+}
 
-  .vote-count {
-    float: left;
-  }
+.remove_favorite {
+  color: $clr-red !important;
+}
+
+.add_favorite {
+  color: $rgba-primary-3 !important;
+}
+
+.verified {
+  color: green !important;
+}
+
+.deverified {
+  color: red !important;
 }

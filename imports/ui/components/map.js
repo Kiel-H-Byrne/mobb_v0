@@ -14,19 +14,19 @@ MAP_ZOOM = 4;
 MAP_MARKERS = [];
 AGENT_MARKERS = [];
 MARKER_GROUPS = {};
-// ============================= SUBSCRIPTIONS ==================================
-Meteor.subscribe('categories', function() {
- let cursor = Categories.find()
- //each catarr, make new array from name, 0
- cursor.forEach(function(category) {
-    MARKER_GROUPS[category.name] = [];
- });
-});
+
 
 Template.map.onCreated( function () {
     console.log("-= MAP: Created =-");
     let self = this;
-
+    // ============================= SUBSCRIPTIONS ==================================
+    this.subscribe('categories', function() {
+     let cursor = Categories.find()
+     //each catarr, make new array from name, 0
+     cursor.forEach(function(category) {
+        MARKER_GROUPS[category.name] = [];
+     });
+    });
     //====== SET MAP VARIABLES / CONSTANTS ======
     // let clientMarker;
 

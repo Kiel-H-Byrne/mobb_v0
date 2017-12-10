@@ -290,7 +290,7 @@ Meteor.startup(function () {
   Template.registerHelper('currentDoc', function () {
     if (Session.get('openListing')) {
       let id = Session.get('openListing');
-      const doc = Listings.findOne({_id: id});
+      let doc = Listings.findOne({_id: id});
       return doc;
     }
   });

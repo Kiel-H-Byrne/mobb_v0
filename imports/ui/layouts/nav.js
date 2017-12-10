@@ -41,11 +41,11 @@ Template.nav.events({
     let route = Router.current().url;
     if (route[0] !== '/') {
       $('#modalSplash').modal('open');
-      const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
-      if (map) {
-        map.instance.setZoom(5);
-      }
       //check zoom and zoom back to normal if less than  
+    }
+    const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
+    if (map) {
+      map.instance.setZoom(5);
     }
   },
   //====== SEARCH FORM ON NAVBAR =======

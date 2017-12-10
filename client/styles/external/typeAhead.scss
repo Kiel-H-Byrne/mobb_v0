@@ -1,6 +1,7 @@
 @import "{}/node_modules/materialize-css/sass/components/color";
 @import "{}/node_modules/materialize-css/sass/components/variables";
 @import "../palettes/colors";
+@import "../palettes/_plt_orng-tetrad";
 
 .twitter-typeahead {
   display: block !important;
@@ -8,10 +9,37 @@
 
 .tt-header {
   color: $clr-green;
+  margin: 0;
+  padding: 0 .5rem;
 }
 
+// .tt-dataset {
+//   &:nth-child(1) {
+//     background-color: $rgba-primary-4;
+//   }
+
+//   &:nth-child(2) {
+//     li {
+//       background-color: darken($rgba-primary-4, 10%);
+//     }
+//   }
+
+//   &:nth-child(3) {
+//     li {
+//       background-color: darken($rgba-primary-4, 20%);
+//     }
+//   }
+
+//   &:nth-child(4) {
+//     li {
+//       background-color: darken($rgba-primary-4, 30%);
+//     }
+//   }
+// }
+
 .tt-menu {
-  background-color: $clr-grey-light;
+  // background-color: $clr-grey-light;
+  background: linear-gradient(to top, $rgba-primary-grey-3, $rgba-primary-grey-5);
   color: $clr-orange;
   padding: .5rem;
 
@@ -23,25 +51,25 @@
 }
 
 .tt-hint {
-  color: #999;
+  color: #777;
 }
 
 .tt-menu {
   // width: 422px;
   // margin: 4px 0;
-
+  padding: 0;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-top: none;
 }
 
 .tt-suggestion {
-  padding: auto 1rem;
-  font-size: 18px;
-  line-height: 24px;
+  padding: 0;
+  font-size: 16px;
+  line-height: 18px;
 
   :hover {
     cursor: pointer;
-    background-color: $clr-grey-clear;
+    background-color: lighten($rgba-primary-grey-5, 10%);
     padding: .3 rem;
   }
 

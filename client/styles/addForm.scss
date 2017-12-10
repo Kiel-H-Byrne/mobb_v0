@@ -6,7 +6,11 @@
 [id='modalAdd'],
 [id='modalEdit'] {
   background-color: $rgba-primary-1;
-  color: $rgba-secondary-2-4;
+
+  * {
+    // color: $rgba-secondary-2-4;
+ 
+  }
 
   .geo_input {
     // background-color: $rgba-secondary-2-1;
@@ -42,12 +46,14 @@
       font-size: 1.5rem;
       line-height: 1.5rem;
       background-color: $rgba-primary-2;
-      padding: .3rem;
+      padding: .3rem 0;
 
-      i.right {
-        position: absolute;
-        right: 0;
-      }
+      // i.right {
+      //   display: inline-block;
+      //   position: absolute;
+      //   right: 0;
+      // }
+   
     }
 
     .collapsible-body {
@@ -64,8 +70,8 @@
     }
 
     button {
-      background-color: $rgba-complement-3;
-      color: $rgba-primary-grey-1;
+      background-color: $rgba-secondary-2-3;
+      color: $rgba-primary-grey-4;
     }
   }
 }

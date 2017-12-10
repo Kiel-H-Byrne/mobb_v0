@@ -25,16 +25,18 @@ Template.addForm.onRendered(function() {
 
       completeAddress = new google.maps.places.Autocomplete(
         /** @type {!HTMLInputElement} */
-        document.getElementById('formatted_address'),
-        {types: ['address']},
-        {components: {country:'us'}}
+        document.getElementById('formatted_address'),{
+          types: ['address'],
+          componentRestrictions: {country:'US'}
+        }
       );
 
       completeName = new google.maps.places.Autocomplete(
         /** @type {!HTMLInputElement} */
-        document.getElementById('name'),
-        {types: ['establishment']},
-        {components: {country:'us'}}
+        document.getElementById('name'),{
+          types: ['establishment'],
+          componentRestrictions: {country:'US'}
+        }
       );
 
       const fillInAddress = function(autocomplete) {
@@ -76,8 +78,13 @@ Template.addForm.onRendered(function() {
             //
           }
         }
+        
         if (place.formatted_address) document.getElementById('formatted_address').value = place.formatted_address;
-        if (place.name && (place.types[0] !== 'street_address')) document.getElementById('name').value = place.name;
+        if (place.name && (place.types[0] !== 'street_address' )) {
+          document.getElementById('name').value = place.name
+        } else if (place.types[0] == 'premise' || 'route' ) {
+          return;
+        } ;
         if (place.formatted_phone_number) document.getElementById('formatted_phone_number').value = place.formatted_phone_number;
         if (place.website) {
           document.getElementById('website').value = place.website;

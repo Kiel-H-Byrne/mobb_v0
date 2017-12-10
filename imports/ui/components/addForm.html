@@ -7,17 +7,17 @@
 				  <ul class="collapsible" data-collapsible="accordion">
 			    	<li>
 							<div class="active collapsible-header ">
-								<i class="material-icons left">explore</i>
+								<i class="material-icons">explore</i>
 								Locate
 								<i class="material-icons right">expand_more</i>
 							</div>
 							<div class="collapsible-body">
 
-							  {{> afQuickField name="name" id="name" placeholder=""}}
+							  {{> afQuickField name="name" id="name" placeholder="" label="Search for Business..."}}
 								<div class="geo_input row">
 									<div class="input-field col s12">
 										<input id="formatted_address" type="text"  name="" />
-										<label for="formatted_address">Search Address...</label>
+										<label for="formatted_address"></label>
 									</div>
 								</div>
 								<div class="address_group row">
@@ -42,7 +42,7 @@
 		    		</li>
 		    		<li>
 							<div class="collapsible-header">
-							<i class="material-icons left" >work</i>
+							<i class="material-icons" >work</i>
 							Details <span class="muted">(Optional)</span>
 							<i class="material-icons right">expand_more</i>
 							</div>
@@ -50,7 +50,9 @@
 							  {{> afQuickField name="image"}}
 							  {{> afFormGroup name="categories" type="select-checkbox-inline" options=formOptions}} <br />
 							</div>
+							<div class="hide">
 							{{> afQuickField name="google_id" id="place_id" hidden="true" label=" "}}
+							</div>
 			    	</li>
 			    </ul>
 				</div>		    

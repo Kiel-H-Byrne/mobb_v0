@@ -205,7 +205,7 @@ Template.map.onCreated( function () {
 
                 MAP_CLUSTER = new MarkerClusterer(map.instance, MAP_MARKERS, macroClusterOptions);
             });
-
+           
        
               // as soon as session = true, let autorun proceed for  geolocate;  
               // then stop outer autorun
@@ -289,7 +289,7 @@ Template.map.onCreated( function () {
 // let handle = LaunchScreen.hold();
 Template.map.onRendered(function () {
   // handle.release();
-    // const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
+    
     // console.log(map);
     // let pos = Session.get('clientLoc');
     // if (pos) {
@@ -298,7 +298,14 @@ Template.map.onRendered(function () {
     //     placeMyMarker(map,pos)
     //     console.log("location found, targeted client, loop stopped...");
     // }
-
+    // const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
+    //         MAP_MARKERS.forEach(function(marker) {
+    //             marker = new google.maps.Marker({
+    //               position: marker.position,
+    //               map: map.instance,
+    //               icon: marker.getIcon(),
+    //             });
+    //         });
 
   //Materialize JQuery Effects
   $(document).ready(function (){

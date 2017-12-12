@@ -23,7 +23,7 @@ Template.closestCard.helpers({
 });
 
 Template.closestCard.events({
-	'click [id="card_closest"]': function(event,templateInstance) {
+	'click [id="card_closest"], touchend [id="card_closest"]': function(event,templateInstance) {
     Session.set('openListing', this._id);
     const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
     const locArr = this.location.split(",");

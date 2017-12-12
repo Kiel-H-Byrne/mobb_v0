@@ -171,7 +171,7 @@ Meteor.methods({
     // console.log("--GOOGLE PLACES: DETAILS SEARCH URL--" + apiUri);
     const response = Meteor.wrapAsync(apiCall)(apiUri);
     if (response) {
-      console.log(response);
+      // console.log(response);
       return response.result; 
     }
     return;

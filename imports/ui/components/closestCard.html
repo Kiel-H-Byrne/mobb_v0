@@ -1,50 +1,51 @@
 <template name="closestCard">
   {{#with isClosest}}
   <div id="bottom_Row" class="">
-    <div id="card_closest" class="card-panel hoverable black animated">
-{{!--       <div class="ribbon">
-        {{label 'CLOSEST'}}
-      </div> --}}
-      {{#if image.url}}
-        <style type="text/css">
-          [id='card_closest'] {
-            background: radial-gradient(circle at top left, rgba(22, 15, 77, 0.6), rgba(086,082,080, 0.6)), url({{image.url}});
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-          }
-        </style>
-      {{/if}}
-      {{! #if image.url}}
-        <!-- div class="heroImg" style="background-image: url('{{image.url}}')"></div-->
-      {{! /if}}
+      <div id="card_closest" class="card-panel hoverable black animated">
+  {{!--       <div class="ribbon">
+          {{label 'CLOSEST'}}
+        </div> --}}
+        {{#if image.url}}
+          <style type="text/css">
+            [id='card_closest'] {
+              background: radial-gradient(circle at top left, rgba(22, 15, 77, 0.6), rgba(086,082,080, 0.6)), url({{image.url}});
+              background-size: cover;
+              background-repeat: no-repeat;
+              background-position: center;
+            }
+          </style>
+        {{/if}}
+        {{! #if image.url}}
+          <!-- div class="heroImg" style="background-image: url('{{image.url}}')"></div-->
+        {{! /if}}
 
-      <!--div id="infoWrap" class="col s12 m6 offset-m3" style="background-image: url('{{image.url}}'), linear-gradient(rgba(055, 10, 0, 1), rgba(0, 0, 0, .4)) "-->
-      {{!-- <a href="/listings/{{_id}}"> --}}
-          <h6 class="card-title center-align">{{name}}</h6>
-          <p class="center-align address">
-            {{#if address}}
-              <span>{{address}}</span>
-            {{else}}
-              <span>{{city}}, {{state}} </span>
-            {{/if}}
-          </p>
-          <div class="row ">
-            <div class="col s6">
-            {{#if url}}    
-              <a class="" target="_blank" rel="noopener" title="Website" href="{{url}}"><i class="material-icons">link</i></a>
-            {{/if}}
-            {{#if phone}}
-            <a class="" href="tel:+1{{phone}}">
-              <i class="material-icons">phone</i>
-            </a>
-            {{/if}}
-            <a><i class="material-icons">info_outline</i></a>
+        <!--div id="infoWrap" class="col s12 m6 offset-m3" style="background-image: url('{{image.url}}'), linear-gradient(rgba(055, 10, 0, 1), rgba(0, 0, 0, .4)) "-->
+        {{!-- <a href="/listings/{{_id}}"> --}}
+            <h6 class="card-title center-align">{{name}}</h6>
+            <p class="center-align address">
+              {{#if address}}
+                <span>{{address}}</span>
+              {{else}}
+                <span>{{city}}, {{state}} </span>
+              {{/if}}
+            </p>
+            <div class="row ">
+              <div class="col s12">
+              {{#if url}}    
+                <a class="" target="_blank" rel="noopener" title="Website" href="{{url}}"><i class="material-icons">link</i></a>
+              {{/if}}
+              {{#if phone}}
+              <a class="" href="tel:+1{{phone}}">
+                <i class="material-icons">phone</i>
+              </a>
+              {{/if}}
+              <a><i class="material-icons">info_outline</i></a>
+              <span class="badge" data-badge-caption="mi"><a class="" title="Directions" onClick="event.stopPropagation()" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" ><i class="material-icons">directions</i> {{getDistance location}} </a></span>
+              </div>
             </div>
-          </div>
-      {{!-- </a> --}}
-      <span class="badge" data-badge-caption="mi"><a class="" title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" ><i class="material-icons">directions</i> {{getDistance location}} </a></span>
-    </div>
+        {{!-- </a> --}}
+        
+      </div>
   </div>
   {{/with}}
 </template>

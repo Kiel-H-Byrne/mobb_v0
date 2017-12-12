@@ -30,12 +30,17 @@
       </form --> 
 
       {{!-- {{> quickForm collection="Listings.upVotes" doc=this id="verifyForm" type="insert"}} --}}
+      {{#with currentDoc}}
       <p class="">
-        <strong>{{title}}</strong><br />
+        <strong>{{name}}</strong><br />
+        {{#if address}}
         {{address}} <br />
+        {{else}}
+        {{street}} {{city}}, {{state}} {{zip}}
+        {{/if}}
         {{phone}}
       </p>
-      
+      {{/with}}
       <div>
         <input id="oTCheck" type="checkbox" role="checkbox" aria-checked="false" tabindex="0" dir="ltr" />
         <label for="oTCheck" >I am authorized to manage this business and I agree to the <a class="" href="/owner-terms" >Terms of Service</a></label>

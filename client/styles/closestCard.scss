@@ -9,6 +9,7 @@
 }
 
 [id='card_closest'] {
+  position: relative;
   margin: 1rem auto;
   padding: .3rem;
   height: 8rem;
@@ -27,25 +28,31 @@
 
   h6 {
     color: $color-primary-2;
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin: .2rem;
+  }
+
+  .row {
+    // position: absolute;
+    margin: 0;
+    bottom: 0;
   }
 
   .badge {
     position: absolute;
     bottom: 0;
     right: 0;
-    padding: 1px;
-    margin: 2px;
-    font-size: .8rem;
-    line-height: 14px;
+    padding: 2px;
+    margin: 3px;
+    font-size: 1rem;
+    line-height: 1.3rem;
     height: auto;
-    color: $rgba-complement-3;
-    background-color: $rgba-primary-grey-1;
+    color: $rgba-primary-grey-4;
+    background-color: $rgba-complement-2;
     border-radius: 3px;
 
     i {
-      font-size: 1rem;
+      font-size: 1.3rem;
       line-height: inherit;
       vertical-align: bottom;
       height: inherit;

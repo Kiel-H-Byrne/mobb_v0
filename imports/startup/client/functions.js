@@ -39,12 +39,16 @@ toggleGroup = function(type) {
         let marker = MARKER_GROUPS[type][i];
         if (!marker.getVisible()) {
             marker.setVisible(true);
+            //add to cluster
+            MAP_CLUSTER.addMarker(marker);
             // console.log('setting marker visible!');
             //marker.setMap(map);
         } else {
             marker.setVisible(false);
             // console.log('setting marker invisible!');
             //marker.setMap(null);
+            //remove from cluster
+            MAP_CLUSTER.removeMarker(marker);
         }
     }
 };

@@ -12,7 +12,7 @@ Template.sideCard.onRendered( function () {
     $('.button-collapse').sideNav({
       edge: 'left',
       closeOnClick: true,
-      draggable: true,
+      draggable: false,
       onClose: function() {
         Session.set('carouselInit', false);
         Session.set('thisPlace', false);

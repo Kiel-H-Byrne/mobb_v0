@@ -60,9 +60,14 @@ Template.nav.events({
       // Router.go("/listings/" + Listings.findOne({name: entered}).name);
       //open sidenav, set 'openlisting' to this listings _id
       Session.set('openListing', doc._id );
+      //PAN TO LOCATION ON MAP
+      const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
+      const locArr = doc.location.split(",");
+      const locObj = { 'lat': Number(locArr[0]), 'lng': Number(locArr[1]) };
+      map.instance.panTo(locObj);
+      map.instance.setZoom(16);
+      // SHOW SIDECARD
       $('.button-collapse').sideNav('show');
-    } else if (Categories.findOne({name: entered})) {
-      Router.go("/categories/" + Categories.findOne({name: entered}).name);
     } else {
       console.warn("No Match");
     }
@@ -78,13 +83,19 @@ Template.nav.events({
     const name = event.target.innerText;
     const type = event.target.parentElement.parentElement.parentElement.firstChild.innerText;
     if (type === 'Listings') {
-      const id = Listings.findOne({name: name})._id;
-      Session.set('openListing', id );
+      const doc = Listings.findOne({name: name});
+      Session.set('openListing', doc._id );
+      //PAN TO LOCATION ON MAP
+      const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
+      const locArr = doc.location.split(",");
+      const locObj = { 'lat': Number(locArr[0]), 'lng': Number(locArr[1]) };
+      map.instance.panTo(locObj);
+      map.instance.setZoom(16);
       $('.button-collapse').sideNav('show');
       // console.log(type,name,id);
       // Router.go('/' + type + '/' + id);  
-    } else {
-      Router.go('/' + type + '/' + name);  
+    // } else {
+    //   Router.go('/' + type + '/' + name);  
     }
     
   },

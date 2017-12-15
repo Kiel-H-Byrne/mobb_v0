@@ -1,8 +1,8 @@
 import { onPageLoad } from "meteor/server-render";
 
-let linkTags = `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /> `;
+const linkTags = `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /> `;
 
-let styleTag = `
+const styleTag = `
 <style type="text/css">
   /* LOADING SCREEN */
     #loading-wrapper {
@@ -131,7 +131,7 @@ let styleTag = `
   </style>
 `;
 
-let loadingDiv = `
+const loadingDiv = `
   <div id="loading-wrapper" class="server_rendered">
     <div class="content-wrapper">
       <div id="loading-text">LOADING</div>
@@ -140,7 +140,7 @@ let loadingDiv = `
   </div>
   `;
 
-let navDiv = `
+const navDiv = `
 <div class="navbar-fixed server_rendered">
 <nav><a href="/?whywait" > </a></nav>
 </div>

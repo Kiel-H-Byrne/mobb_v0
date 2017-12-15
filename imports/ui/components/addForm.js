@@ -41,7 +41,7 @@ Template.addForm.onRendered(function() {
 
       const fillInAddress = function(autocomplete) {
         let place = autocomplete.getPlace();
-        console.log(place);
+        // console.log(place);
         for (let component in componentForm) {
           // CLEAR ALL VALUES AND SET 'DISABLED' FIELDS TO FALSE SO WE CAN POPULATE THEM
           if (document.getElementById(component)){
@@ -80,11 +80,7 @@ Template.addForm.onRendered(function() {
         }
         
         if (place.formatted_address) document.getElementById('formatted_address').value = place.formatted_address;
-        if (place.name && (place.types[0] !== 'street_address' )) {
-          document.getElementById('name').value = place.name
-        } else if (place.types[0] == 'premise' || 'route' ) {
-          return;
-        } ;
+        if (place.types[0] == ('street_address' || 'premise' || 'route' )) { document.getElementById('name').value = place.name } ;
         if (place.formatted_phone_number) document.getElementById('formatted_phone_number').value = place.formatted_phone_number;
         if (place.website) {
           document.getElementById('website').value = place.website;

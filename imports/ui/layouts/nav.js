@@ -7,6 +7,7 @@ import '../components/bragBox.js';
 import '../components/addForm.js';
 import '../components/editForm.js';
 import '../components/modalSplash.js';
+import '../components/loginModal.js';
 import '../components/closestCard.js';
 // import '../components/categorySelect.js';
 import '../components/mapFilter.js';

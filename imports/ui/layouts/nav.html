@@ -49,7 +49,8 @@
                                 {{#if currentUser}}                        
                                 <li><a class="signout_btn" href="#!">Sign Out</a></li>
                                 {{else }}
-                                <li><a class="signin_btn" href="/login">Sign In</a></li>
+                                {{!-- <li><a class="signin_btn" href="/login">Sign In</a></li> --}}
+                                <li><a class="modal-trigger signin_btn" href="#loginModal">Sign In</a></li>
                                   <!--li> {{> atNavButton}} </li-->
                                 {{/if}}
                             </ul>                    
@@ -59,15 +60,15 @@
             </div>
         </nav>
     </div>
-  {{> addForm}}
     {{> sideCard}}    
     {{> mobileNav}}
 
     <!-- Modals stays below here in nav Template or else show behind gray overlay-->
-    
+    {{> addForm}}
     {{> editForm}}
     {{> verifyForm}}
     {{> claimForm}} 
+    {{> loginModal}}
     {{!-- {{> splashModal}} --}}
     <!-- Modals stay above here in nav Template or else show behind gray overlay-->
     {{#if haveLocation}}    

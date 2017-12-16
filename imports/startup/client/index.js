@@ -131,7 +131,7 @@ Meteor.startup(function () {
 	});
 
 	//=====  ServiceWorker installation =====
-  // installSW();
+  installSW();
 
   //=====  Global Template Helpers =====
   Template.registerHelper('loading', function() {

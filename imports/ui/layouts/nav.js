@@ -8,6 +8,7 @@ import '../components/addForm.js';
 import '../components/editForm.js';
 import '../components/modalSplash.js';
 import '../components/loginModal.js';
+import '../components/aboutModal.js';
 import '../components/closestCard.js';
 // import '../components/categorySelect.js';
 import '../components/mapFilter.js';
@@ -36,6 +37,8 @@ Template.nav.onRendered( function () {
 
   $('#modalVerify').modal();
   $('#modalClaim').modal();
+  $('#loginModal').modal();
+  $('#aboutModal').modal();
 
 });
 

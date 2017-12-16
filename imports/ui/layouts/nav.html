@@ -5,7 +5,7 @@
         <nav class="z-depth-2 nav">
             <div class="nav-wrapper">
                 <a class="brand-logo left" href="/">
-                    <img class="responsive-img" src="/img/Mobb_logo.png" alt="KIBU Home Page" />
+                    <img class="responsive-img" src="/img/Mobb_logo.png" alt="The MOBB Home Page" />
                 </a>
                 <ul class="nav-list right">
                     <li class="hide-on-small-only">
@@ -21,11 +21,11 @@
                     {{#if currentUser}}
                       <li><a class="modal-trigger" href="#modalAdd"><i class="material-icons left" title="Add a Business">add_location</i>Add</a></li>
                     {{else}}
-                      <li><a class=" " href="/login" alt="Add A Business"><i class="material-icons left" title="Add a Business">add_location</i>Add</a></li>
+                      <li><a class=" modal-trigger " href="#loginModal" alt="Add A Business"><i class="material-icons left" title="Add a Business">add_location</i>Add</a></li>
                     {{/if}}
                     <li>{{> mapFilter}}</li>
                     <li class="hide-on-small-only">
-                      <a href="/mobb" alt="About MOBB"><i class="material-icons left" title="About MOBB">info_outline</i>About</a>
+                      <a class="modal-trigger" href="#aboutModal" alt="About MOBB"><i class="material-icons left" title="About MOBB">info_outline</i>About</a>
                     </li>
                     <li class="right">
                         <div class="select_wrapper">
@@ -45,7 +45,7 @@
                                         <img class=" " src="/img/twitter-share.png"  alt="Share on Twitter"/>
                                     </a>
                                 </li>
-                                <li class="hide-on-med-and-up"><a href="/mobb">About Us</a></li>
+                                <li class="modal-trigger hide-on-med-and-up"><a href="#aboutModal">About Us</a></li>
                                 {{#if currentUser}}                        
                                 <li><a class="signout_btn" href="#!">Sign Out</a></li>
                                 {{else }}
@@ -69,6 +69,7 @@
     {{> verifyForm}}
     {{> claimForm}} 
     {{> loginModal}}
+    {{> aboutModal}}
     {{!-- {{> splashModal}} --}}
     <!-- Modals stay above here in nav Template or else show behind gray overlay-->
     {{#if haveLocation}}    

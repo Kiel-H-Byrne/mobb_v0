@@ -113,7 +113,7 @@
         {{#if currentUser}} 
           {{> verifyUI}}
         {{else}}
-        <a class="tooltipped" title="Verify" href="/login" onClick="event.stopPropagation(); Materialize.toast('Log In Before Verifying A Business', 3000, 'myToast')" data-position="bottom" data-delay="50" data-tooltip="Verify This Business" aria-label="Verify This Business">
+        <a class="tooltipped modal-trigger" title="Verify" href="#loginModal" onClick="event.stopPropagation(); Materialize.toast('Log In Before Verifying A Business', 3000, 'myToast')" data-position="bottom" data-delay="50" data-tooltip="Verify This Business" aria-label="Verify This Business">
           <tr><i class="material-icons">verified_user</i></tr>
           <tr>Verify</tr>
         </a>

@@ -78,7 +78,7 @@ Template.addForm.onRendered(function() {
             //
           }
         }
-        
+        // SET OTHER INPUT VALUES AUTOMATICALLY
         if (place.formatted_address) document.getElementById('formatted_address').value = place.formatted_address;
         if (place.types[0] == ('street_address' || 'premise' || 'route' )) { document.getElementById('name').value = place.name } ;
         if (place.formatted_phone_number) document.getElementById('formatted_phone_number').value = place.formatted_phone_number;
@@ -88,10 +88,47 @@ Template.addForm.onRendered(function() {
           //wipe away "http://" prefill
           document.getElementById('website').value = '';
         }
+
         if (place.place_id) document.getElementById('place_id').value = place.place_id;
+        //if type = restaurant, add category 'food & beverage'; etc...
+      //   let types = place.types;
+      //   console.log(types);
+      //   if (types.includes('bakery' || 'food' || 'restaurant' || 'bar' || 'cafe' || 'grocery_or_supermarket'|| 'meal_delivery'|| 'meal_takeaway'   )) {
+      //     $('[value="Food & Beverage"]').prop('checked',true);
+      //   };
+      //   if (types.includes('accounting' || 'bank' || 'dentist' || 'doctor' || 'electrician' || 'funeral_home' || 'insurance_agency' || 'lawyer' || 'painter' || 'pharmacy' || 'physiotherapist' || 'plumber' || 'real_estate_agency' || 'veterinary_care')) {
+      //     $('[value="Professional Services"]').prop('checked',true);
+      //     console.log('hello dere');
+      //   };
+      //   if (types.includes('amusement_park' || 'art_gallery' || 'book_store' || 'casino' ||'bowling_alley' || 'zoo' || 'stadium' || 'park' || 'nigh_club' || 'museum' || 'movie_theater'|| 'aquarium')) {
+      //     $('[value="Entertainment & Media"]').prop('checked',true);
+      //   };
+      //   if (types.includes('beauty_salon' || 'hair_care' || 'spa' )) {
+      //     $('[value="Beauty & Lifestyle"]').prop('checked',true);
+      //   };  
+      //   if (types.includes('clothing_store' || 'shopping_mall' || 'shoe_store' || 'jewelry_store')) {
+      //     $('[value="Apparel & Accessories"]').prop('checked',true);
+      //   };         
+      //   if (types.includes('art_gallery' || 'book_store' || 'museum' || 'school' || 'university' )) {
+      //     $('[value="Education & Child Care"]').prop('checked',true);
+      //   };   
+      //   if (types.includes('hospital' || 'spa' || 'physiotherapist' || 'doctor' || 'gym' || 'veterinary_care'|| 'pharmacy' || 'health')) {
+      //     $('[value="Health & Wellness"]').prop('checked',true);
+      //   };   
+      // const compareObj = [{
+      //   'terms': ['hospital' , 'spa' , 'physiotherapist' , 'doctor' , 'gym' , 'veterinary_care', 'pharmacy' , 'health'],
+      //   'value': 'Health & Wellness'
+      // }, {
+      //   "value": "Apparel & Accessories",
+      //   "terms": ['clothing_store' , 'shopping_mall' , 'shoe_store' , 'jewelry_store']
+      // }]
+
+
       };
+
       // When the user selects an address from the dropdown, populate the address
       // fields in the form.
+
       completeName.addListener('place_changed', function() {
         fillInAddress(this);
         Materialize.updateTextFields();
@@ -103,18 +140,21 @@ Template.addForm.onRendered(function() {
         Materialize.updateTextFields();
         $(".input-field label").css('hide');
       });
+
     }
   });
 
   $(document).ready(() => {
-
     $('#modalAdd').modal({
       dismissible: true, // Modal can be dismissed by clicking outside of the modal
       opacity: 0.5, // Opacity of modal background
       inDuration: 300, // Transition in duration
       outDuration: 200, // Transition out duration
-      startingTop: '5%', // Starting top style attribute
-      endingTop: '10%' // Ending top style attribute
+      startingTop: '0', // Starting top style attribute
+      endingTop: '5%', // Ending top style attribute
+      ready: function(modal, trigger) {
+        $('#name')[0].focus();
+      }
     });
         
     // $('.collapsible').collapsible();
@@ -169,6 +209,7 @@ AutoForm.addHooks('addListingForm', {
     // console.log('Just submitted form, from addform.js');
         // close modal on submit
         // $('#modalAdd').modal('close');
+    document.getElementById('website').value = '';
     Meteor.call('addListing', insertDoc, function(error, result) {
       if (insertDoc.url) {
         Meteor.call('getOG', insertDoc.url, result);

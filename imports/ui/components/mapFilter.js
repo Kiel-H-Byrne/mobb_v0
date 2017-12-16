@@ -24,6 +24,8 @@ Template.mapFilter.events({
   'click .switch': function(event,templateInstance) {
     // event.preventDefault();
     event.stopPropagation();
+
+    const el = $(event.currentTarget.firstElementChild.children[0]);
     if (el.prop('checked')) {
       el.prop('checked', false);
       el.css('background-color', '#e34');
@@ -31,11 +33,10 @@ Template.mapFilter.events({
       el.prop('checked', true);
       el.css('background-color', '#3af');
     }
-    const type = event.currentTarget.title;
-    const el = $(event.currentTarget.firstElementChild.children[0]);
-    if (type) {
+
+    if (event.currentTarget.title) {
       //make sure this runs only once!
-      toggleGroup(type);
+      toggleGroup(event.currentTarget.title);
       // $('.dropdown-button').dropdown('close');
     }
 

@@ -162,7 +162,7 @@
               <div class="row">
                 <div class="col s4">
                   <div class="">
-                    <a href="{{review.author_url}}" class="" ><img src="{{review.profile_photo_url}}" alt="{{review.author_name}}" class="circle" /></a>
+                    <a href="{{review.author_url}}" class="" ><img src="{{review.profile_photo_url}}" alt="{{review.author_name}}" class="" /></a>
                   </div>
                 </div>
                 <div class="col s8">
@@ -199,12 +199,14 @@
 
 <template name="carouselPhoto2">
   <a class="place_photo carousel-item" style="">
-    <img src="{{getImgUrl photo_reference}}" />
+    <!-- img src="{{getImgUrl photo_reference}}" / -->
+    <img src="{{this}}" />
   </a>
 </template>
 
 <template name="sliderPhoto">
   <li>
-    <img src="{{getImgUrl photo_reference}}" />
+        <img src="{{getImgUrl photo_reference}}" />
+
   </li>  
 </template>

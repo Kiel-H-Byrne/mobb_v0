@@ -71,7 +71,7 @@ Template.map.onCreated( function () {
 
         
         GoogleMaps.ready('map', function(map) {
-            
+           
             /*      
                 const offsetCenter = (latlng, offsetx, offsety) => {
 

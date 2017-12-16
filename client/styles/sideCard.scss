@@ -8,6 +8,10 @@
   height: 100%;
   overflow-x: hidden;
 
+  .divider:first-child, .card {
+    margin: 0 !important;
+  }
+
   img {
     width: 100%;
     transition: opacity 550ms ease-in-out;
@@ -52,10 +56,11 @@
     .inline-list {
       text-align: center;
       position: relative;
+      top: 0.6rem;
 
       li {
         // background-color: $rgba-primary-grey-3;
-        padding: 0 .3rem;
+        padding: 0 0.6rem;
         margin: 1rem auto;
         display: inline-block;
         border-radius: 5px;
@@ -81,7 +86,7 @@
 
     .section-title {
       padding: .5rem 0 0 0;
-      line-height: 2rem;
+      line-height: 3rem;
       font-size: 1.5rem;
 
       i {
@@ -98,14 +103,23 @@
   //   left: -1.2rem;
   // }
 
+  .now_open {
+    padding-left: .5rem;
+  }
+
   .list_hours {
     padding: 0 1rem;
+
+    li {
+      padding: 1px;
+    }
   }
 
   .halfway-fab {
     // position: absolute;
     // right: -1.5rem;
     // z-index: 3;
+    bottom: -1.5rem;
     background-color: $rgba-secondary-2-0 !important;
 
     i {
@@ -135,9 +149,21 @@
   }
 
   .item_reviews {
-    .collection .collection-item {
-      background-color: lighten($rgba-primary-grey-4, 10%);
-      padding: .3rem 0;
+    .collection {
+      border: none;
+
+      .collection-item {
+        background-color: lighten($rgba-primary-grey-4, 10%);
+        padding: 0;
+
+        .row {
+          margin-bottom: 0.5rem;
+        }
+
+        p {
+          padding: 0.4rem;
+        }
+      }
     }
 
     .badge {

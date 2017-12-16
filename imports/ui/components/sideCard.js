@@ -3,12 +3,17 @@ import './sideCard.html';
 import './mPreloader.html';
 
 Template.sideCard.onCreated( function () {
-  // Session.set('thisPlace', false);
+ 
 });
 
 Template.sideCard.onRendered( function () {
 
   $(document).ready(function() {
+     // Session.set('thisPlace', false);
+  GoogleMaps.ready('map', function(map) {
+    //GLOBAL SERVICES
+    placesService = new google.maps.places.PlacesService(map.instance);
+  });
     $('.button-collapse').sideNav({
       edge: 'left',
       closeOnClick: true,
@@ -28,7 +33,7 @@ Template.sideCard.onRendered( function () {
 
   this.autorun(function(p) {
 
-    const docId = Session.get('openListing');
+    let docId = Session.get('openListing');
     const doc = Listings.findOne({_id: docId});
 
     if (doc && !doc.google_id) {
@@ -99,3 +104,31 @@ Template.sideCard.events({
     }
   },
 });
+
+Template.sideCard.helpers({
+  photoarray: function(google_id) {
+    
+    const req = {
+        placeId: google_id
+    };
+    const cbk = function(res,stat) {
+        if (stat === google.maps.places.PlacesServiceStatus.OK && res.photos.length) {
+            
+            console.log(res.photos);
+            let urlArray = [];
+            res.photos.forEach(function(el){
+              let str = el.getUrl({
+                maxWidth: 300
+              });
+              urlArray.push(str);
+            });
+            console.log(urlArray);
+            return urlArray;
+        } else {
+            console.log(stat);
+        }
+    };
+    // // console.log(service);
+    return placesService.getDetails(req, cbk);
+  }
+})

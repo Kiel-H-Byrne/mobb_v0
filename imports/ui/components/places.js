@@ -7,20 +7,20 @@ import './map.html';
 
 //place a search on specific name and location, on insert. 
 Template.test.onCreated( function () {  
-    // GoogleMaps.ready('map', function(map) {
-    //     let service = new google.maps.places.PlaceService(map);
-    //     service.nearbySearch({
-    //         location: {lat: 34,lng: 34 },
-    //         radius: ,
-    //         type: ['store']
-    //     }, callback);
-    // });
+    GoogleMaps.ready('map', function(map) {
+        let service = new google.maps.places.PlaceService(map.instance);
+        service.nearbySearch({
+            location: {lat: 34 ,lng: 34 },
+            radius: 3,
+            keyword: ''
+        }, callback);
+    });
 
-    // let callback = function(results,status) {
-    //     if (status === google.maps.places.PlacesServiceStatus.OK) {
-    //         console.log(results);    
-    //     }
-    // };
+    let callback = function(results,status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+            console.log(results);    
+        }
+    };
 });
 
 Template.test.helpers({  

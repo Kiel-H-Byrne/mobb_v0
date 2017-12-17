@@ -270,6 +270,7 @@ Meteor.startup(function () {
   Template.registerHelper('hasFavorites', function () {
     const user = Meteor.user();
     if (user && user.profile.favorites && user.profile.favorites.length > 0) {
+      console.log(user.profile.favorites); 
         return true;
       } else {
         return false;

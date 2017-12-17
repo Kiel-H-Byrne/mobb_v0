@@ -60,16 +60,19 @@
             </div>
         </nav>
     </div>
-    {{> sideCard}}    
-    {{> mobileNav}}
-
-    <!-- Modals stays below here in nav Template or else show behind gray overlay-->
     {{> addForm}}
+    {{> sideCard}}    
+   
+    <!-- Modals stays below here in nav Template or else show behind gray overlay-->
+    
     {{> editForm}}
     {{> verifyForm}}
     {{> claimForm}} 
     {{> loginModal}}
     {{> aboutModal}}
+    
+    {{> mobileNav}}
+
     {{!-- {{> splashModal}} --}}
     <!-- Modals stay above here in nav Template or else show behind gray overlay-->
     {{#if haveLocation}}    

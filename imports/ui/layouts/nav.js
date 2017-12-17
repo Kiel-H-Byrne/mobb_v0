@@ -46,7 +46,7 @@ Template.nav.events({
 	'click .brand-logo img': function(event,templateInstance) {
     let route = Router.current().url;
     if (route[0] !== '/') {
-      $('#modalSplash').modal('open');
+      // $('#modalSplash').modal('open');
       //check zoom and zoom back to normal if less than  
     }
     const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];

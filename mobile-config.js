@@ -5,7 +5,7 @@ App.info({
   description: 'The MOBB: Map of Black Businesses',
   author: 'Kiel H. Byrne',
   email: 'kiel.byrne@gmail.com',
-  website: 'https://www.kibumap.com'
+  website: 'https://www.mobb.biz'
 });
 
 App.icons({

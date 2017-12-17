@@ -27,15 +27,21 @@
   }
 
   h6 {
-    color: $color-primary-2;
-    font-size: 1.2rem;
+    color: $color-primary-1;
+    font-size: 1.4rem;
     margin: .2rem;
   }
 
   .footer {
     position: absolute;
     margin: 0;
-    bottom: 3px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2px;
+    border-radius: 3px;
+    background: radial-gradient(circle at top left, rgba(22, 15, 77, 0.6), rgba(86, 82, 80, 0.6));
+    background-color: darken($rgba-primary-grey-0, 30%);
 
     a {
       margin: 0.5rem;
@@ -46,10 +52,10 @@
     position: absolute;
     right: -2rem;
     bottom: -0.5rem;
-    background-color: $rgba-secondary-2-0;
+    background-color: $rgba-secondary-2-3;
 
     i {
-      color: $rgba-secondary-grey-2-4;
+      color: $rgba-primary-grey-4;
       font-size: 2rem;
     }
   }
@@ -78,7 +84,8 @@
 
   .address {
     margin: 0;
-    color: $color-primary-1;
+    color: $rgba-primary-2;
+    font-size: 0.9rem;
 
     span {
       display: block;
@@ -97,3 +104,6 @@
     }
   }
 }
+
+
+http://www.mobb.biz/_oauth/facebook

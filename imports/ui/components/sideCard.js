@@ -9,7 +9,6 @@ Template.sideCard.onCreated( function () {
 Template.sideCard.onRendered( function () {
 
   $(document).ready(function() {
-     // Session.set('thisPlace', false);
   GoogleMaps.ready('map', function(map) {
     //GLOBAL SERVICES
     placesService = new google.maps.places.PlacesService(map.instance);
@@ -20,7 +19,7 @@ Template.sideCard.onRendered( function () {
       draggable: false,
       onClose: function() {
         Session.set('carouselInit', false);
-        Session.set('thisPlace', false);
+        // Session.set('thisPlace', false);
       }
     });
     $('.modal-trigger').modal();

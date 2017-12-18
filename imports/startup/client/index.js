@@ -67,16 +67,21 @@ $.getJSON("https://freegeoip.net/json/", {format: "jsonp"}).done(function(data){
 Meteor.subscribe('userData');
 
 Meteor.startup(function () {
-    //=====  CHECK IF OFFLINE ===== 
-    Meteor.autorun(function() {
-      let online = navigator.onLine;
-      if (!online) {
-        console.log('Now Offline...');
-        Materialize.toast('Working Offline...', 1000, 'myToast');
-      }
-    });
+  //=====  FORCE WWw REDIRECT ===== 
+  if (location.host.indexOf('www.MOBB.biz') !== 0) {
+      location = 'https://www.mobb.biz'
+  }
 
-    //=====  GoogleMaps load ===== 
+  //=====  CHECK IF OFFLINE ===== 
+  Meteor.autorun(function() {
+    let online = navigator.onLine;
+    if (!online) {
+      console.log('Now Offline...');
+      Materialize.toast('Working Offline...', 1000, 'myToast');
+    }
+  });
+
+  //=====  GoogleMaps load ===== 
   GoogleMaps.load({
     v: '3',
     key: Meteor.settings.public.keys.googleClient.key,

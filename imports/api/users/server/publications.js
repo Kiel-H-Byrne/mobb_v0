@@ -6,7 +6,7 @@ Meteor.publish("userData", function () {
     fields: {
       'profile': 1, 
       'roles': 1, 
-      'services': 1
+      'services': 0
     }
   });
 });

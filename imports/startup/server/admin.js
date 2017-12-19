@@ -51,6 +51,8 @@ Meteor.users.allow({
 	update: (uid, doc) => {return uid === userId;},
 	remove: () => true,
 });
+
+
 // if ( Meteor.users.findOne({username: 'khb'}) ) {
 // 	let kiel = Meteor.users.findOne({username: 'khb'});
 	// Roles.addUserToRoles( kiel._id ,  ["admin"] );
@@ -58,6 +60,30 @@ Meteor.users.allow({
 // } else {
 // 	console.log("-= Admin: No Admin =-");
 // }
+
+Accounts.onCreateUser(function(options, user) {
+	if (user.services.facebook) {
+		user.username = user.services.facebook.name;
+		user.emails = [{address: user.services.facebook.email, verified: true}];
+	
+		if (options.profile) {
+			options.profile.picture = "http://graph.facebook.com/" + user.services.facebook.id + "picture/?type=large";
+		}
+		return user;
+	}
+
+		if (user.services.google) {
+		user.username = user.services.google.name;
+		user.emails = [{address: user.services.google.email, verified: true}];
+	
+		if (options.profile) {
+			options.profile.picture = user.services.google.picture;
+		}
+		return user;
+	}
+
+	return user
+});
 
 // // this is for handling # in verifyEmail url
 // (function () {

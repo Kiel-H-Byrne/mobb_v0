@@ -68,9 +68,9 @@ Meteor.subscribe('userData');
 
 Meteor.startup(function () {
   //=====  FORCE WWw REDIRECT ===== 
-  if (location.host.indexOf('www.MOBB.biz') !== 0) {
-      location = 'https://www.mobb.biz'
-  }
+  // if (location.host.indexOf('www.MOBB.biz') !== 0) {
+  //     location = 'https://www.mobb.biz'
+  // }
 
   //=====  CHECK IF OFFLINE ===== 
   Meteor.autorun(function() {

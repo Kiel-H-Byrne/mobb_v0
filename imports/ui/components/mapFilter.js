@@ -21,7 +21,18 @@ Template.mapFilter.events({
   'click .switch label': function(event,templateInstance) {
     event.preventDefault();
   },
-  'click .switch': function(event,templateInstance) {
+  'click .main-switch': function(event,templateInstance) {
+    event.stopPropagation();
+    const el = $(event.currentTarget.firstElementChild.children[0]);
+    if (el.prop('checked')) {
+      el.prop('checked', false);
+      //hide all markers
+    } else {
+      el.prop('checked', true);
+      //show all markers
+    }
+  },
+  'click .cat_item .switch': function(event,templateInstance) {
     // event.preventDefault();
     event.stopPropagation();
 

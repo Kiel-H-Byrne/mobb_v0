@@ -4,6 +4,40 @@
 @import "palettes/_plt_orng-tetrad";
 
 [id='filter_dropdown'] {
+  .main-switch {
+    // background-color: $rgba-primary-grey-0;
+
+    .title {
+      margin: 0 1rem;
+      padding: 3px;
+      display: inline-block;
+      font-size: 1.5rem;
+      color: $rgba-complement-1;
+    }
+
+    label {
+      display: inline-block;
+      margin: 0 auto;
+      padding: 3px;
+      font-size: 1rem;
+      color: $rgba-primary-grey-2;
+
+      .lever {
+        margin: 0 3px;
+      }
+
+      input[type=checkbox] {
+        &:checked + .lever {
+          background-color: $rgba-complement-3;
+
+          &:after {
+            background-color: $rgba-complement-2;
+          }
+        }
+      }
+    }
+  }
+
   .cat_item {
     padding: 3px;
     min-width: 36ch;

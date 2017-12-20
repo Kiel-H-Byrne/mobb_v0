@@ -41,7 +41,7 @@ Template.addForm.onRendered(function() {
 
       const fillInAddress = function(autocomplete) {
         let place = autocomplete.getPlace();
-        // console.log(place);
+        console.log(place);
         for (let component in componentForm) {
           // CLEAR ALL VALUES AND SET 'DISABLED' FIELDS TO FALSE SO WE CAN POPULATE THEM
           if (document.getElementById(component)){
@@ -56,13 +56,11 @@ Template.addForm.onRendered(function() {
         
           let addressType = place.address_components[i].types[0];
           if (componentForm[addressType]) {
-            
+            let val = place.address_components[i][componentForm[addressType]];
             if (addressType == 'street_number') {
-              let val = place.address_components[i][componentForm[addressType]];
               // document.getElementById('route').value = val;
               num = val;
             } else if (addressType == 'route') {
-              let val = place.address_components[i][componentForm[addressType]];
               // document.getElementById('route').value = `${document.getElementById('route').value}  ${val}`;
               if (num) {
                 document.getElementById('route').value = `${num}  ${val}`;
@@ -72,7 +70,6 @@ Template.addForm.onRendered(function() {
             } else if (addressType == 'sublocality_level_1') {
                 document.getElementById('locality').value = val;
             } else {
-              let val = place.address_components[i][componentForm[addressType]];
               document.getElementById(addressType).value = val;
             }
             //
@@ -80,7 +77,11 @@ Template.addForm.onRendered(function() {
         }
         // SET OTHER INPUT VALUES AUTOMATICALLY
         if (place.formatted_address) document.getElementById('formatted_address').value = place.formatted_address;
-        if (place.types[0] == ('street_address' || 'premise' || 'route' )) { document.getElementById('name').value = place.name } ;
+        const type = place.types[0];
+        if (type != 'street_address' || type != 'premise' || type != 'route') {
+          console.log(type);
+          document.getElementById('name').value = place.name;
+        }
         if (place.formatted_phone_number) document.getElementById('formatted_phone_number').value = place.formatted_phone_number;
         if (place.website) {
           document.getElementById('website').value = place.website;

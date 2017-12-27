@@ -44,8 +44,3 @@ Template.closestCard.events({
     window.open(`https://www.google.com/maps/dir/Current+Location/${this.location}`);
   }
 });
-    analytics.track( "Listing Added", {
-      category: "Listings",
-      label: Meteor.userId(),
-      value: self.insertDoc.name
-    });

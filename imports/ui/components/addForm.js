@@ -224,6 +224,12 @@ AutoForm.addHooks('addListingForm', {
   // Called when any submit operation succeeds
   onSuccess(formType, result) {
     $('#modalAdd').modal('close');
+    let self = this;
+    analytics.track( "Listing Added", {
+      userId: Meteor.userId(),
+      listingId: self.insertDoc
+    });
     Materialize.toast('Thanks for Submitting!', 3300, 'myToast');
+
   },
 });

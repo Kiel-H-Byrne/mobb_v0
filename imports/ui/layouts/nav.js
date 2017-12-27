@@ -83,7 +83,11 @@ Template.nav.events({
 		});
 	},
   'click .signout_btn': function () {
+    analytics.track( "User Logout", {
+      id: Meteor.userId()
+    });
     AccountsTemplates.logout();
+
   },
   'mouseup .tt-suggestion>ul>li': function(event,templateInstance) {
     const name = event.target.innerText;

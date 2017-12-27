@@ -50,8 +50,28 @@ AutoForm.addHooks('editListingForm', {
     },
   // Called when any submit operation succeeds
   onSuccess: function(formType, result) {
+    //close modal
+    $('#modalEdit').modal('close');
     Materialize.toast('Thanks for Updating!', 3300, 'myToast');
+
     // console.log(this.updateDoc);
+        let self = this;
+    analytics.track( "Listing Modified", {
+      userId: Meteor.userId(),
+      listingId: self.docId
+    });
+    
+    if (this.currentDoc.location) {
+    //center and zoom on new location? marker?
+      const latLng = this.currentDoc.location.split(",");
+      // let lat = Number(latLng[0]);
+      // let lng = Number(latLng[1]);
+      const latLngObj = {'lat': Number(latLng[0]), 'lng': Number(latLng[1]) };
+      const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
+      targetClient(map,latLngObj);
+    }
+
+
     //if updating categories, increment the count.
     if (this.updateDoc.$set.categories) {
       let diff = _.difference(this.updateDoc.$set.categories, this.currentDoc.categories);
@@ -77,17 +97,6 @@ AutoForm.addHooks('editListingForm', {
         );
       });
 
-    }
-    //close modal
-    $('#modalEdit').modal('close');
-    if (this.currentDoc.location) {
-    //center and zoom on new location? marker?
-      const latLng = this.currentDoc.location.split(",");
-      // let lat = Number(latLng[0]);
-      // let lng = Number(latLng[1]);
-      const latLngObj = {'lat': Number(latLng[0]), 'lng': Number(latLng[1]) };
-      const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
-      targetClient(map,latLngObj);
     }
   },
 });

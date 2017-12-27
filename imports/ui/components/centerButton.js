@@ -64,6 +64,9 @@ Template.centerButton.events({
             // toastElement.toggleClass('fadeOutDown');
           }
           l.stop();
+          analytics.track( "Locating User", {
+            userId: Meteor.userId()
+          });
         }
       });
       let oldMarker = {};

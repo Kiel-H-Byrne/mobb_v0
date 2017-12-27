@@ -111,15 +111,15 @@ Meteor.startup(function () {
       console.log(choiceResult.outcome);
 
       if(choiceResult.outcome == 'dismissed') {
-  	    analytics.track( "ProgressiveWebApp", {
-  	      title: "Added to HomeScreen",
+  	    analytics.track( "Dismissed to Homescreen", {
+  	      browser: navigator.userAgent,
   	      data: 'false'
   	    });
         console.log('User cancelled home screen install');
       }
       else {
-  	    analytics.track( "ProgressiveWebApp", {
-  	      title: "Added to HomeScreen",
+  	    analytics.track( "Added to Homescreen", {
+          browser: navigator.userAgent,
   	      data: 'true'
   	    });
       }

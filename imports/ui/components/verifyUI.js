@@ -3,6 +3,7 @@ import './verifyUI.html';
 Template.verifyUI.events({
   'click .verify': function(event,templateInstance) {
     event.stopPropagation();
+
     if (Meteor.user()) {
       let docId = this._id;
       let userId = Meteor.userId();
@@ -21,6 +22,12 @@ Template.verifyUI.events({
           deverifiers: userId
         }
       });
+
+      analytics.track( "Verified Listing", {
+        userId: userId,
+        ListingId: docId
+      });
+
     } else {
       Materialize.toast('Log In Before Verifying A Listing', 3000, 'myToast');
     }
@@ -45,6 +52,12 @@ Template.verifyUI.events({
           verifiers: userId
         }
       });
+
+      analytics.track( "Deverified Listing", {
+        userId: userId,
+        ListingId: docId
+      });
+      
     } else {
       Materialize.toast('Log In Before Verifying A Listing', 3000, 'myToast');
     }

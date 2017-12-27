@@ -10,7 +10,7 @@ import './closestCard.html';
 
 Template.closestCard.onRendered(function () {
   $(document).ready(function () {
-    let card = $("[id='card_closest']");
+    const card = $("[id='card_closest']");
     card.toggleClass('bounceIn');
   });
 });
@@ -23,7 +23,7 @@ Template.closestCard.helpers({
 });
 
 Template.closestCard.events({
-	'click [id="card_closest"], touchend [id="card_closest"]': function(event,templateInstance) {
+	'click #card_closest, touchend #card_closest': function(event,templateInstance) {
     Session.set('openListing', this._id);
     //PAN TO LOCATION ON MAP
     const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
@@ -33,6 +33,18 @@ Template.closestCard.events({
     map.instance.setZoom(16);
     // SHOW SIDECARD
     $('.button-collapse').sideNav('show');
-	}
+	},
+  'click #card_closest button': function(event,templateInstance){ 
+    event.stopPropagation();
+    analytics.track("Got Directions", {
+      userLocation: Session.get('clientLoc'),
+      listingId: this._id,
+      listingName: this.name
+    });
+    window.open(`https://www.google.com/maps/dir/Current+Location/${this.location}`);
+  }
 });
-
+    analytics.track( "Listing Added", {
+      userId: Meteor.userId(),
+      listingId: self.insertDoc
+    });

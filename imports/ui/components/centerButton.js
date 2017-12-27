@@ -35,7 +35,7 @@ Template.centerButton.onRendered(function () {
 Template.centerButton.events({
   'click #centerButton_button' : function(event,templateInstance){
 
-      let map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
+      const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
     
       // let clientMarker;
       const cl = Session.get('clientLoc');
@@ -64,8 +64,9 @@ Template.centerButton.events({
             // toastElement.toggleClass('fadeOutDown');
           }
           l.stop();
-          analytics.track( "Locating User", {
-            userId: Meteor.userId()
+          analytics.track( "Located User", {
+            userId: Meteor.userId(),
+            userLocation: Session.get('clientLoc')
           });
         }
       });
@@ -147,7 +148,9 @@ Template.centerButton.events({
       //     // });
       //       return;
       //   });
-      // } 
+      // }
+
+    $("[id='card_closest']").toggleClass('bounceIn bounceOut'); 
     }
 
 });

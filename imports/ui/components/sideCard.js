@@ -102,6 +102,15 @@ Template.sideCard.events({
       Materialize.toast('Log In Before Claiming A Business', 3000, 'myToast');
     }
   },
+  'click .card button': function(event,templateInstance){ 
+    event.stopPropagation();
+    analytics.track("Got Directions", {
+      userLocation: Session.get('clientLoc'),
+      listingId: this._id,
+      listingName: this.name
+    });
+    window.open(`https://www.google.com/maps/dir/Current+Location/${this.location}`);
+  }
 });
 
 Template.sideCard.helpers({

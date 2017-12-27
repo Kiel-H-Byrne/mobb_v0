@@ -226,8 +226,9 @@ AutoForm.addHooks('addListingForm', {
     $('#modalAdd').modal('close');
     let self = this;
     analytics.track( "Listing Added", {
-      userId: Meteor.userId(),
-      listingId: self.insertDoc
+      category: 'Listings',
+      label: self.insertDoc._id,
+      value: self.insertDoc.name
     });
     Materialize.toast('Thanks for Submitting!', 3300, 'myToast');
 

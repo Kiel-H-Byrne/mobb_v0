@@ -105,9 +105,9 @@ Template.sideCard.events({
   'click .card button': function(event,templateInstance){ 
     event.stopPropagation();
     analytics.track("Got Directions", {
-      userLocation: Session.get('clientLoc'),
-      listingId: this._id,
-      listingName: this.name
+      category: "Listings",
+      label: this.name,
+      value: this._id
     });
     window.open(`https://www.google.com/maps/dir/Current+Location/${this.location}`);
   }
@@ -139,4 +139,4 @@ Template.sideCard.helpers({
     // // console.log(service);
     return placesService.getDetails(req, cbk);
   }
-})
+});

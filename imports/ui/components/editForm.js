@@ -57,8 +57,9 @@ AutoForm.addHooks('editListingForm', {
     // console.log(this.updateDoc);
         let self = this;
     analytics.track( "Listing Modified", {
-      userId: Meteor.userId(),
-      listingId: self.docId
+      category: "Listings",
+      label: Meteor.userId(),
+      value: self.docId.name
     });
     
     if (this.currentDoc.location) {

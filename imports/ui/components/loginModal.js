@@ -4,8 +4,5 @@ import './loginModal.html';
 Template.loginModal.onRendered(function() {
   Accounts.onLogin(function() {
     // $('#loginModal').modal('close');
-    analytics.track( "User Login", {
-      userId: Meteor.userId()
-    });
   });
 });

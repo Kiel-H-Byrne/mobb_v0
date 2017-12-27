@@ -13,6 +13,13 @@ Template.favoriteStar.events({
       },{
         $addToSet: {"profile.favorites" : docId}
       });
+      
+      analytics.track( "Listing Bookmarked", {
+        category: "Listings",
+        label: userId,
+        value: docId
+      });
+
     } else {
       Materialize.toast('Log In Before Adding Favorites', 3000, 'myToast');
     }

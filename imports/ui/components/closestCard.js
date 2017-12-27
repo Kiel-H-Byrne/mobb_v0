@@ -37,14 +37,15 @@ Template.closestCard.events({
   'click #card_closest button': function(event,templateInstance){ 
     event.stopPropagation();
     analytics.track("Got Directions", {
-      userLocation: Session.get('clientLoc'),
-      listingId: this._id,
-      listingName: this.name
+      category: "Listings",
+      label: this.name,
+      value: this._id
     });
     window.open(`https://www.google.com/maps/dir/Current+Location/${this.location}`);
   }
 });
     analytics.track( "Listing Added", {
-      userId: Meteor.userId(),
-      listingId: self.insertDoc
+      category: "Listings",
+      label: Meteor.userId(),
+      value: self.insertDoc.name
     });

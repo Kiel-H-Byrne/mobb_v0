@@ -112,15 +112,17 @@ Meteor.startup(function () {
 
       if(choiceResult.outcome == 'dismissed') {
   	    analytics.track( "Dismissed to Homescreen", {
-  	      browser: navigator.userAgent,
-  	      data: 'false'
+  	      category: 'Interaction',
+  	      label:  navigator.userAgent,
+          value: false
   	    });
         console.log('User cancelled home screen install');
       }
       else {
   	    analytics.track( "Added to Homescreen", {
-          browser: navigator.userAgent,
-  	      data: 'true'
+          category: 'Interaction',
+          label:  navigator.userAgent,
+          value: true
   	    });
       }
     });
@@ -275,7 +277,7 @@ Meteor.startup(function () {
   Template.registerHelper('hasFavorites', function () {
     const user = Meteor.user();
     if (user && user.profile.favorites && user.profile.favorites.length > 0) {
-      console.log(user.profile.favorites); 
+      // console.log(user.profile.favorites); 
         return true;
       } else {
         return false;

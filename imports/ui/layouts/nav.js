@@ -79,13 +79,12 @@ Template.nav.events({
     }
 
 		analytics.track("Searched:", {
-  		clientSearch: entered
+  		category: "Interaction",
+      label: "Query",
+      value: entered
 		});
 	},
   'click .signout_btn': function () {
-    analytics.track( "User Logout", {
-      id: Meteor.userId()
-    });
     AccountsTemplates.logout();
 
   },

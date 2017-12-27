@@ -24,8 +24,15 @@ Template.verifyUI.events({
       });
 
       analytics.track( "Verified Listing", {
-        userId: userId,
-        ListingId: docId
+        category: "Listings",
+        label: this.name,
+        value: this._id
+      });
+
+      analytics.track( "Verified Listing", {
+        category: "Listings",
+        label: "User Id",
+        value: userId
       });
 
     } else {
@@ -53,9 +60,16 @@ Template.verifyUI.events({
         }
       });
 
-      analytics.track( "Deverified Listing", {
-        userId: userId,
-        ListingId: docId
+      analytics.track( "Untrusted Listing", {
+        category: "Listings",
+        label: this.name,
+        value: this._id
+      });
+
+      analytics.track( "Untrusted Listing", {
+        category: "Listings",
+        label: "User Id",
+        value: userId
       });
       
     } else {

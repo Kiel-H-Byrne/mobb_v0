@@ -29,7 +29,7 @@
                 <span>{{city}}, {{state}} </span>
               {{/if}}
             </p>
-              <div class="footer">
+            <div class="footer">
               {{#if url}}    
                 <a class="" target="_blank" rel="noopener" title="Website" href="{{url}}"><i class="material-icons">link</i></a>
               {{/if}}
@@ -40,10 +40,10 @@
               {{/if}}
               <a><i class="material-icons">info_outline</i></a>
               <!-- span class="badge" data-badge-caption="mi"><a class="" title="Directions" onClick="event.stopPropagation()" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" ><i class="material-icons">directions</i> {{getDistance location}} </a></span -->
-              </div>
-              <a class="btn-floating btn-large waves-effect waves-dark z-depth-4"  onClick="event.stopPropagation()" title="Directions" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" >
-                <i class="large material-icons">directions</i>
-              </a>
+            </div>
+            <button  class="btn-floating btn-large waves-effect waves-dark z-depth-4 animated">
+              <i class="large material-icons">directions</i>
+            </button>
         {{!-- </a> --}}
         
       </div>

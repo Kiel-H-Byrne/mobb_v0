@@ -67,16 +67,21 @@ $.getJSON("https://freegeoip.net/json/", {format: "jsonp"}).done(function(data){
 Meteor.subscribe('userData');
 
 Meteor.startup(function () {
-    //=====  CHECK IF OFFLINE ===== 
-    Meteor.autorun(function() {
-      let online = navigator.onLine;
-      if (!online) {
-        console.log('Now Offline...');
-        Materialize.toast('Working Offline...', 1000, 'myToast');
-      }
-    });
+  //=====  FORCE WWw REDIRECT ===== 
+  // if (location.host.indexOf('www.MOBB.biz') !== 0) {
+  //     location = 'https://www.mobb.biz'
+  // }
 
-    //=====  GoogleMaps load ===== 
+  //=====  CHECK IF OFFLINE ===== 
+  Meteor.autorun(function() {
+    let online = navigator.onLine;
+    if (!online) {
+      console.log('Now Offline...');
+      Materialize.toast('Working Offline...', 1000, 'myToast');
+    }
+  });
+
+  //=====  GoogleMaps load ===== 
   GoogleMaps.load({
     v: '3',
     key: Meteor.settings.public.keys.googleClient.key,
@@ -106,16 +111,18 @@ Meteor.startup(function () {
       console.log(choiceResult.outcome);
 
       if(choiceResult.outcome == 'dismissed') {
-  	    analytics.track( "ProgressiveWebApp", {
-  	      title: "Added to HomeScreen",
-  	      data: 'false'
+  	    analytics.track( "Dismissed to Homescreen", {
+  	      category: 'Interaction',
+  	      label:  navigator.userAgent,
+          value: false
   	    });
         console.log('User cancelled home screen install');
       }
       else {
-  	    analytics.track( "ProgressiveWebApp", {
-  	      title: "Added to HomeScreen",
-  	      data: 'true'
+  	    analytics.track( "Added to Homescreen", {
+          category: 'Interaction',
+          label:  navigator.userAgent,
+          value: true
   	    });
       }
     });
@@ -270,7 +277,7 @@ Meteor.startup(function () {
   Template.registerHelper('hasFavorites', function () {
     const user = Meteor.user();
     if (user && user.profile.favorites && user.profile.favorites.length > 0) {
-      console.log(user.profile.favorites); 
+      // console.log(user.profile.favorites); 
         return true;
       } else {
         return false;

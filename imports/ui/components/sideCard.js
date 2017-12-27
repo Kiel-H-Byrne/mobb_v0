@@ -102,6 +102,15 @@ Template.sideCard.events({
       Materialize.toast('Log In Before Claiming A Business', 3000, 'myToast');
     }
   },
+  'click .card button': function(event,templateInstance){ 
+    event.stopPropagation();
+    analytics.track("Got Directions", {
+      category: "Listings",
+      label: this.name,
+      value: this._id
+    });
+    window.open(`https://www.google.com/maps/dir/Current+Location/${this.location}`);
+  }
 });
 
 Template.sideCard.helpers({
@@ -130,4 +139,4 @@ Template.sideCard.helpers({
     // // console.log(service);
     return placesService.getDetails(req, cbk);
   }
-})
+});

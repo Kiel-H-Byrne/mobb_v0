@@ -35,8 +35,8 @@ Template.centerButton.onRendered(function () {
 Template.centerButton.events({
   'click #centerButton_button' : function(event,templateInstance){
 
-      let map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
-    
+      const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
+      let oldMarker = {};
       // let clientMarker;
       const cl = Session.get('clientLoc');
       if (cl) {
@@ -55,18 +55,20 @@ Template.centerButton.events({
       }
 
       templateInstance.autorun(function(l) {
+        //DISPLAY 'LOCATING' TOAST WHILE I DON'T HAVE THE LOCATION
         if (!Session.get('clientLoc')) {
-          Materialize.toast('Locating...', 60000, 'myToast');
+          Materialize.toast('Locating...', 3330, 'myToast');
         } else {
-          const toastElement = $('.myToast')[0];
-          if (toastElement) {
-            toastElement.M_Toast.remove();
+          // const toastElement = $('.myToast')[0];
+          // if (toastElement) {
+            // toastElement.M_Toast.remove();
             // toastElement.toggleClass('fadeOutDown');
-          }
+          // }
+            
           l.stop();
         }
       });
-      let oldMarker = {};
+      
       templateInstance.autorun(function (c) {    
         //====== AUTO CALCULATE MY LOCATION AND DRAW NEW MARKER WHEN IT CHANGES ======
         //====== AUTO CALCULATE NEW CLOSEST BUSINESS WHEN MY LOCATION CHANGES ======
@@ -119,32 +121,7 @@ Template.centerButton.events({
         }
       });
 
-      // if (Session.get("clientLoc")) {
-      //   //I ALREADY HAVE YOUR LOCATION -- ZOOM BACK TO MY LOCATION
-      //   targetClient(map,pos);
-
-      //   return;
-      // } else {
-      //   //I DON'T HAVE YOUR LOCATION, BUT YOU'RE OK WITH ME GETTING IT. -needed when Maps is already loaded so new geolocation isnt found.
-      //   // I'VE ASKED FOR YOUR LOCATION, BUT YOU DON'T WANT TO GIVE IT.
-        
-      //   const loc = Session.get('browserLoc');
-
-      //   $(document).ready(function (){
-      //     $('[id="centerButton_button"]').addClass('pulse');
-      //   });
-      //   targetClient(map,loc);
-      //   //CALLBACK TO GET GEOLOCATION; WILL PROMPT GEO PERMISSION FROM PHONE.
-      //   getLocation().then((pos) => {
-      //     Session.set('clientLoc', pos);
-      //     placeMyMarker(map,pos);
-      //     targetClient(map,pos);
-      //     // $(document).ready(function (){
-      //       $('[id="centerButton_button"]').removeClass('pulse');
-      //     // });
-      //       return;
-      //   });
-      // } 
+      $("[id='card_closest']").toggleClass('bounceIn bounceOut'); 
     }
 
 });

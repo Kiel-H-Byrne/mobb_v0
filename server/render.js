@@ -148,5 +148,5 @@ const navDiv = `
 
 onPageLoad(sink => {
   sink.appendToHead(linkTags + styleTag);
-  sink.appendToBody(loadingDiv);
+  sink.appendToBody(loadingDiv + navDiv);
 });

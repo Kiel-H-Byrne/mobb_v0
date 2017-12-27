@@ -79,11 +79,14 @@ Template.nav.events({
     }
 
 		analytics.track("Searched:", {
-  		clientSearch: entered
+  		category: "Interaction",
+      label: "Query",
+      value: entered
 		});
 	},
   'click .signout_btn': function () {
     AccountsTemplates.logout();
+
   },
   'mouseup .tt-suggestion>ul>li': function(event,templateInstance) {
     const name = event.target.innerText;

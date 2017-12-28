@@ -177,11 +177,13 @@ Template.map.onCreated( function () {
                             });
                             //FOR EACH CATEGORY THAT MARKER HAS, PUSH IT TO MARKER_GROUP
                             if (doc.categories && doc.categories.length) {
-                                doc.categories.forEach(function(element) {
+                                
+                                for (var i = doc.categories.length - 1; i >= 0; i--) {
+                                    const element = doc.categories[i]
                                     //CREATE THE EMPTY ARRAY FOR GROUP IF DOESNT EXIST YET
                                     if (!MARKER_GROUPS[element]) MARKER_GROUPS[element] = [];
                                     MARKER_GROUPS[element].push(marker);
-                                })
+                                }
                             }
                             return marker;
                         } // else cannot place marker on map, it does not have lat/lng yet

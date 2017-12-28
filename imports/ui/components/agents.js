@@ -35,7 +35,8 @@ function setAnimatedRoute(marker, map) {
                 marker.routeSteps = [];
                 let remainingSeconds = 0;
                 let leg = response.routes[0].legs[0]; // supporting single route, single legs currently
-                leg.steps.forEach(function(step) {
+                for (let i = 0, len = leg.length; i < len; i++) {
+                    const step = leg[i];
                     let stepSeconds = step.duration.value;
                     let nextStopSeconds = speedFactor - remainingSeconds;
                     while (nextStopSeconds <= stepSeconds) {
@@ -44,7 +45,7 @@ function setAnimatedRoute(marker, map) {
                         nextStopSeconds += speedFactor;
                     }
                     remainingSeconds = stepSeconds + speedFactor - nextStopSeconds;
-                });
+                }
                 if (remainingSeconds > 0) {
                     marker.routeSteps.push(leg.end_location);
                 }

@@ -124,13 +124,14 @@ Template.sideCard.helpers({
             
             console.log(res.photos);
             let urlArray = [];
-            res.photos.forEach(function(el){
+            for (var i = res.photos.length - 1; i >= 0; i--) {
+              const el = res.photos[i];
               let str = el.getUrl({
                 maxWidth: 300
               });
               urlArray.push(str);
-            });
-            console.log(urlArray);
+            }
+            // console.log(urlArray);
             return urlArray;
         } else {
             console.log(stat);

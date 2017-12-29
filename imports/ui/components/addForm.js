@@ -85,6 +85,10 @@ Template.addForm.onRendered(function() {
         if (place.formatted_phone_number) document.getElementById('formatted_phone_number').value = place.formatted_phone_number;
         if (place.website) {
           document.getElementById('website').value = place.website;
+          const button = document.getElementById('button_website-preview');
+          button.href = place.website;
+          button.classList.remove("hide");
+          button.classList.add("rubberBand");
         } else {
           //wipe away "http://" prefill
           document.getElementById('website').value = '';

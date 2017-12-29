@@ -102,7 +102,7 @@ Template.sideCard.events({
       Materialize.toast('Log In Before Claiming A Business', 3000, 'myToast');
     }
   },
-  'click .card button': function(event,templateInstance){ 
+  'click button.button_get-directions': function(event,templateInstance){ 
     event.stopPropagation();
     analytics.track("Got Directions", {
       category: "Listings",
@@ -110,6 +110,14 @@ Template.sideCard.events({
       value: this._id
     });
     window.open(`https://www.google.com/maps/dir/Current+Location/${this.location}`);
+  }, 
+  'click a.button_leave-review': function(event,templateInstance) {
+    event.stopPropagation();
+    analytics.track("Left Review", {
+      category: "Listings",
+      label: this.name,
+      value: this._id
+    });
   }
 });
 

@@ -6,6 +6,7 @@
   bottom: 0;
   width: 100%;
   z-index: 500;
+  overflow-y: hidden;
 }
 
 [id='card_closest'] {
@@ -103,5 +104,4 @@
       }
     }
   }
-
 }

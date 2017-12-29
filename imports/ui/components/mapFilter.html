@@ -6,14 +6,26 @@
     </a>
     
     <ul id="filter_dropdown" class="dropdown-content z-depth-2">
+      
+      <li>
+        <div class="switch main-switch">
+          <label>
+            NONE
+            <input type="checkbox" checked>
+            <span class="lever"></span>
+            ALL
+          </label>
+          <h6 class="title">Categories</h6>
+        </div>
+      </li>
     {{#each cat in categories}}
       <li class="cat_item" value={{cat.name}}>
         <div class="switch" title = {{cat.name}}>
           <label>
-            Off
+            OFF
             <input type="checkbox" checked>
             <span class="lever"></span>
-            On
+            ON
           </label>
           <span class="">{{cat.name}}</span>
           <span class="badge"> {{catCount cat.name}}</span>

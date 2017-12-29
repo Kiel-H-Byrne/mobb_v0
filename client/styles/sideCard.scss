@@ -30,6 +30,23 @@
       }
     }
 
+    a.btn {
+      color: $rgba-primary-grey-4;
+      font-size: 1.2rem;
+      height: 2.5rem;
+      line-height: 2.5rem;
+
+      &:hover {
+        background-color: $rgba-primary-2;
+      }
+
+      i {
+        @extend a.btn;
+
+        padding-left: 2rem;
+      }
+    }
+
     p {
       padding: 0 .3rem;
       line-height: 1.5rem;
@@ -108,7 +125,7 @@
   }
 
   .list_hours {
-    padding: 0 1rem;
+    padding: 0 1rem 1rem;
 
     li {
       padding: 1px;

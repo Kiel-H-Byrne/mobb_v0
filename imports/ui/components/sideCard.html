@@ -65,7 +65,7 @@
         {{/if}}
         </table>
         </div>
-        <button class="btn-floating halfway-fab btn-large waves-effect waves-dark z-depth-4 animated">
+        <button class="button_get-directions btn-floating halfway-fab btn-large waves-effect waves-dark z-depth-4 animated">
               <i class="large material-icons">directions</i>
         </button>
       </div>
@@ -73,7 +73,7 @@
     </li>
     <li><div class="divider"></div></li>
     <li>
-      <ul class="inline-list">
+      <ul class="inline-list actionBar">
         <li><a class="tooltipped" title="Save This Business" data-position="bottom" data-delay="50" data-tooltip="Save This Business" aria-label="Save This Business">
               <tr>{{> favoriteStar}}</tr>
               <tr>Save</tr>
@@ -172,19 +172,20 @@
                   <span class="badge right" data-badge-caption="/5">{{review.rating}}</span>
                 </div>
               </div>
+              {{#if review.text}}
               <div class="col s12" >
                 <p>{{review.text}}</p>
               </div>
+              {{/if}}
             </li>
             {{/each}}
             </ul>
           </li>
-          {{else}}
+          {{/if}}
           <li><div class="divider"></div></li>
           <li>
-            <span class="section-title"><i class="material-icons">comment</i><a href="https://search.google.com/local/writereview?placeid={{google_id}}" target="_blank" rel="noopener" >Leave a Google Review.</a></span>
+            <a class="btn button_leave-review" href="https://search.google.com/local/writereview?placeid={{google_id}}" target="_blank" rel="noopener"><i class="material-icons">rate_review</i>Leave Your Review</a>
           </li>
-          {{/if}}
         {{/let}}
       {{/if}}
 {{/with}}

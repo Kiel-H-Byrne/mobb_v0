@@ -141,7 +141,7 @@ const loadingDiv = `
   `;
 
 const navDiv = `
-<div class="server_rendered" style="height: 1px">
+<div class="navbar-fixed server_rendered" style="height: 1px">
 <nav style="height: 1px"><a href="/?whywait" > </a></nav>
 </div>
 `;

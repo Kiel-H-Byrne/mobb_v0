@@ -6,7 +6,8 @@ Meteor.publish("userData", function () {
     fields: {
       'profile': 1, 
       'roles': 1, 
-      // 'services': 0
+      // 'services.facebook': 1,
+      // 'services.google': 1
     }
   });
 });

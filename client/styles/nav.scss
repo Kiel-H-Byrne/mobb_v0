@@ -8,12 +8,9 @@
     background-color: $rgba-primary-grey-5;
   }
 
-  img {
+  a.brand-logo {
     max-height: $navbar-height;
     cursor: alias;
-
-    // margin: 1rem auto;
- 
   }
 
   i {
@@ -43,8 +40,13 @@
     }
 
     .more_icon {
-      padding: 0 3px 0 7px;
+      padding: 0 7px 0 7px;
       margin: auto;
+
+      img {
+        border: 1px dashed $rgba-primary-grey-2;
+        border-radius: 50%;
+      }
     }
 
     form input {

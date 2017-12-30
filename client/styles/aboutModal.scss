@@ -8,6 +8,32 @@
   max-height: 80%;
   background-color: $rgba-primary-grey-4;
 
+  .demo_list li {
+    margin: 3px 0;
+    font-size: 1.2rem;
+
+    div {
+      display: inline-block;
+
+      &:first-child {
+        width: 60%;
+        line-height: 2rem;
+      }
+    }
+  }
+
+  .btn {
+    background-color: $rgba-secondary-2-3;
+
+    i {
+      color: $rgba-primary-grey-4;
+    }
+  }
+
+  .demo_add {
+    color: $rgba-primary-3;
+  }
+
   .modal-content {
     color: $rgba-primary-grey-1;
 
@@ -23,6 +49,8 @@
   .about-wrapper {
     // position: relative;
     // top: 3rem;
+    padding: auto 0;
+
     $background: $rgba-primary-grey-4;
 
     %social-icon-hover {
@@ -45,6 +73,7 @@
 
     h4, h5 {
       color: $rgba-primary-0;
+      text-align: center;
     }
 
     svg {
@@ -63,6 +92,10 @@
     }
   }
 
+  .about_summary {
+    font-size: 1.2rem;
+  }
+
   .about_img {
     width: 100px;
     height: 100px;
@@ -71,5 +104,6 @@
 
   hr {
     width: 80%;
+    margin: 1rem auto;
   }
 }

@@ -62,27 +62,30 @@ Meteor.users.allow({
 // }
 
 Accounts.onCreateUser(function(options, user) {
+	const myUser = Object.assign({}, user);
+
+	if (options.profile) {
+		myUser.profile = options.profile;
+	}
+
 	if (user.services.facebook) {
-		user.username = user.services.facebook.name;
-		user.emails = [{address: user.services.facebook.email, verified: true}];
+		myUser.username = user.services.facebook.name;
+		myUser.emails = [{address: user.services.facebook.email, verified: true}];
 	
 		if (options.profile) {
-			options.profile.picture = "http://graph.facebook.com/" + user.services.facebook.id + "picture/?type=large";
+			myUser.profile.picture = `http://graph.facebook.com/${user.services.facebook.id}/picture/?type=large`;
 		}
-		return user;
 	}
 
-		if (user.services.google) {
-		user.username = user.services.google.name;
-		user.emails = [{address: user.services.google.email, verified: true}];
+	if (user.services.google) {
+		myUser.username = user.services.google.name;
+		myUser.emails = [{address: user.services.google.email, verified: true}];
 	
 		if (options.profile) {
-			options.profile.picture = user.services.google.picture;
+			myUser.profile.picture = user.services.google.picture;
 		}
-		return user;
 	}
-
-	return user
+	return myUser;
 });
 
 // // this is for handling # in verifyEmail url

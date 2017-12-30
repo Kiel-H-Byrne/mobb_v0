@@ -73,7 +73,7 @@ Accounts.onCreateUser(function(options, user) {
 		myUser.emails = [{address: user.services.facebook.email, verified: true}];
 	
 		if (options.profile) {
-			myUser.profile.picture = `http://graph.facebook.com/${user.services.facebook.id}/picture/?type=large`;
+			myUser.profile.picture = `https://graph.facebook.com/${user.services.facebook.id}/picture/?type=large`;
 		}
 	}
 

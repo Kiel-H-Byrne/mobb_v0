@@ -42,10 +42,12 @@
     .more_icon {
       padding: 0 7px 0 7px;
       margin: auto;
+      height: $navbar-height;
 
       img {
         border: 1px dashed $rgba-primary-grey-2;
         border-radius: 50%;
+        max-height: 56px;
       }
     }
 

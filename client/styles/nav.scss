@@ -59,6 +59,7 @@
 
     li a {
       color: $rgba-primary-0;
+      text-align: center;
     }
 
     .no_pad {
@@ -67,6 +68,10 @@
 
     .more_btn {
       padding: 0;
+    }
+
+    .select_wrapper .dropdown-content {
+      min-width: 10rem;
     }
   }
 
@@ -90,29 +95,38 @@
 @media #{$medium-and-down} {
 
   .navbar-fixed {
+    $mobile-height: $navbar-height - 15px;
+
     img {
-      max-height: $navbar-height - 15px;
-      margin: 4px auto;
+      height: $mobile-height;
+      margin: $mobile-height / 10;
+    }
+
+    .nav-list {
+      a {
+        padding: 0 7px;
+      }
     }
   }
 }
 
 @media #{$small-and-down} {
+  $mobile-height: $navbar-height - 14px;
 
   .navbar-fixed {
     // position: fixed;
     // bottom: 0;
 
-    .brand-logo {
+    img {
       // position: fixed;
       // top: 0;
-      height: 36px;
+      height: $mobile-height;
+      margin: $mobile-height / 15;
     }
 
     .nav-list {
       a {
-        // padding: 0 7px;
-     
+        padding: 0 7px;
       }
     }
   }

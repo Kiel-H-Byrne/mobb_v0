@@ -3,6 +3,28 @@
 @import "palettes/_colors";
 @import "palettes/_plt_orng-tetrad";
 
+.tap-target {
+  background-color: $rgba-secondary-2-4;
+
+  button.btn {
+    background-color: $rgba-secondary-2-3 !important;
+
+    i {
+      color: $rgba-primary-grey-4;
+    }
+  }
+
+  .tap-target-content {
+    h5 {
+      color: $rgba-primary-4;
+    }
+
+    p {
+      color: $rgba-primary-1;
+    }
+  }
+}
+
 [id='centerButton_button'] {
   z-index: 1000;
   background-color: $rgba-secondary-2-3 !important;

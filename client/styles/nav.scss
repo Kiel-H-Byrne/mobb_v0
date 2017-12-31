@@ -3,7 +3,7 @@
 @import "palettes/colors";
 @import "palettes/_plt_orng-tetrad";
 
-.navbar-fixed {
+[id="mainNav"].navbar-fixed {
   nav {
     background-color: $rgba-primary-grey-5;
   }
@@ -40,14 +40,14 @@
     }
 
     .more_icon {
-      padding: 0 7px 0 7px;
+      padding: 0 7px;
       margin: auto;
       height: $navbar-height;
 
       img {
         border: 1px dashed $rgba-primary-grey-2;
         border-radius: 50%;
-        max-height: 56px;
+        max-height: $navbar-height;
       }
     }
 
@@ -55,9 +55,6 @@
       margin: 0 .5rem !important;
       vertical-align: middle !important;
       width: auto;
-
-      // min-width: 175px;
-   
     }
 
     li a {

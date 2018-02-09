@@ -143,16 +143,10 @@ Listings.allow({
 //   // fetch: ['owner']
 // });
 Listings.deny({
-  update: function (userId, doc, fields, modifier) {
-    // can't change owners
-    return _.contains(fields, 'creator');
-  },
-  remove: function (userId, doc) {
-    // can't remove locked documents
-    return doc.locked;
-  },
-  // fetch: ['locked'] // no need to fetch 'owner'
+  //Deny all client-side updates on Listings collection
+  insert() { return true; },
+  update() { return true; },
+  remove() { return true; }
 });
-
 
 export default Listings;

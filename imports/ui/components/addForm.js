@@ -228,11 +228,18 @@ AutoForm.addHooks('addListingForm', {
   // Called when any submit operation succeeds
   onSuccess(formType, result) {
     $('#modalAdd').modal('close');
-    let self = this;
+
+    const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
+    const doc = this.insertDoc;
+    const locArr = doc.location.split(",");
+    const locObj = { 'lat': Number(locArr[0]), 'lng': Number(locArr[1]) };
+    map.instance.panTo(locObj);
+    map.instance.setZoom(16);
+
     analytics.track( "Listing Added", {
       category: 'Listings',
-      label: self.insertDoc._id,
-      value: self.insertDoc.name
+      label: doc._id,
+      value: doc.name
     });
     Materialize.toast('Thanks for Submitting!', 3300, 'myToast');
 

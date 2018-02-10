@@ -31,6 +31,7 @@
 
   .modal-content {
     padding: 0;
+    overflow-x: hidden;
 
     ul {
       // background-color: 'white';
@@ -59,6 +60,20 @@
     .collapsible-body {
       color: $rgba-primary-grey-3;
       padding: .5rem;
+    }
+
+    [id="button_website-preview"] {
+      position: absolute;
+      padding: 0 .3rem;
+      right: 0;
+      height: 4rem;
+      z-index: 1;
+      background-color: darken($rgba-primary-grey-1, 5%);
+
+      i {
+        line-height: 4rem;
+        font-size: 2rem;
+      }
     }
   }
 

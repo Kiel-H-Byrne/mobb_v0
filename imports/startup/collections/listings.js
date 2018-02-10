@@ -146,7 +146,7 @@ Listings.deny({
   //Deny all client-side updates on Listings collection
   insert() { return true; },
   update() { return true; },
-  remove() { return true; }
+  remove(userId, doc) { return (!Roles.userHasRole(userId,'admin')); }
 });
 
 export default Listings;

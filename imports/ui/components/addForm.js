@@ -41,7 +41,7 @@ Template.addForm.onRendered(function() {
 
       const fillInAddress = function(autocomplete) {
         let place = autocomplete.getPlace();
-        console.log(place);
+        // console.log(place);
         for (let component in componentForm) {
           // CLEAR ALL VALUES AND SET 'DISABLED' FIELDS TO FALSE SO WE CAN POPULATE THEM
           if (document.getElementById(component)){
@@ -77,21 +77,28 @@ Template.addForm.onRendered(function() {
         }
         // SET OTHER INPUT VALUES AUTOMATICALLY
         if (place.formatted_address) document.getElementById('formatted_address').value = place.formatted_address;
-        const type = place.types[0];
-        if (type != 'street_address' || type != 'premise' || type != 'route') {
-          console.log(type);
-          document.getElementById('name').value = place.name;
-        }
+        const types = place.types;
+        const preview_button = document.getElementById('button_website-preview');
+        console.log(types);
+        if (types.includes('route') || types.includes('street_address')) {console.log("don't fill")}
+        // if (type != 'street_address' || type != 'premise' || type != 'route') {
+        //   console.log(type);
+        //   // document.getElementById('name').value = place.name;
+        // }
         if (place.formatted_phone_number) document.getElementById('formatted_phone_number').value = place.formatted_phone_number;
+        
         if (place.website) {
           document.getElementById('website').value = place.website;
-          const button = document.getElementById('button_website-preview');
-          button.href = place.website;
-          button.classList.remove("hide");
-          button.classList.add("rubberBand");
+          preview_button.href = place.website;
+          preview_button.classList.remove("hide");
+          preview_button.classList.add("rubberBand");
         } else {
           //wipe away "http://" prefill
           document.getElementById('website').value = '';
+          if (preview_button) {
+            preview_button.classList.add("hide");
+            preview_button.classList.remove("rubberBand");
+          }
         }
 
         if (place.place_id) document.getElementById('place_id').value = place.place_id;
@@ -214,6 +221,7 @@ AutoForm.addHooks('addListingForm', {
     // console.log('Just submitted form, from addform.js');
         // close modal on submit
         // $('#modalAdd').modal('close');
+    //clear form
     document.getElementById('website').value = '';
     Meteor.call('addListing', insertDoc, function(error, result) {
       if (insertDoc.url) {
@@ -230,18 +238,18 @@ AutoForm.addHooks('addListingForm', {
     $('#modalAdd').modal('close');
 
     const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
-    const doc = this.insertDoc;
+    const doc = Listings.findOne({name: this.insertDoc.name});
     const locArr = doc.location.split(",");
     const locObj = { 'lat': Number(locArr[0]), 'lng': Number(locArr[1]) };
     map.instance.panTo(locObj);
     map.instance.setZoom(16);
-
+  },
+  endSubmit: function() {
+    Materialize.toast('Thanks for Submitting!', 3300, 'myToast');
     analytics.track( "Listing Added", {
       category: 'Listings',
-      label: doc._id,
-      value: doc.name
+      label: this.google_id,
+      value: this.name
     });
-    Materialize.toast('Thanks for Submitting!', 3300, 'myToast');
-
-  },
+  }
 });

@@ -185,6 +185,7 @@ Template.map.onCreated( function () {
                                     MARKER_GROUPS[element].push(marker);
                                 }
                             }
+                            
                             return marker;
                         } // else cannot place marker on map, it does not have lat/lng yet
                     }

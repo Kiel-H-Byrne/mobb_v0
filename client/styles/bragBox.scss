@@ -1,13 +1,41 @@
+@import "{}/node_modules/materialize-css/sass/components/color";
+@import "{}/node_modules/materialize-css/sass/components/variables";
+
 // @import "{}public/js/odometer-0.4.6/sass/odometer-theme-digital.sass";
 
-[id='bragbox'] {
-  color: #eee0d3;
-  font-size: 1.3rem;
-  padding: 0 10px;
+@media #{$medium-and-up} {
 
-  .odometer {
-    // height: 90%;
-    font-family: inherit;
-    line-height: 100%;
+  [id='bragbox'] {
+    color: #eee0d3;
+    font-size: 1.3rem;
+    vertical-align: top;
+    padding-top: 5px;
+    display: inline-block;
+    position: relative;
+    left: -5px;
+
+    .odometer {
+      line-height: 1.5rem;
+    }
+  }
+}
+
+@media #{$small-and-down} {
+
+  [id='bragbox'] {
+    color: #eee0d3;
+    font-size: 1.3rem;
+    height: 1px;
+    line-height: 1.3rem;
+    vertical-align: top;
+    padding-top: 5px;
+    display: inline-block;
+    position: relative;
+
+    .odometer {
+      // height: 90%;
+      // line-height: 1.5rem;
+   
+    }
   }
 }

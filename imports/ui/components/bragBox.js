@@ -28,8 +28,7 @@ Template.bragBox.onRendered(function () {
     let bbox = document.querySelector('.odometer');
     od = new Odometer({
       el: bbox,
-      value: Listings.find().count(),
-      theme: 'car'
+      value: Listings.find().count()
     });
   });
 });

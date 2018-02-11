@@ -35,6 +35,8 @@
   }
 
   .nav-list {
+    width: 70%;
+
     i {
       line-height: inherit;
     }
@@ -92,6 +94,13 @@
   }
 }
 
+@media #{$medium-and-up} {
+
+  .nav-list {
+    float: right;
+  }
+}
+
 @media #{$medium-and-down} {
 
   .navbar-fixed {
@@ -113,29 +122,28 @@
 @media #{$small-and-down} {
   $mobile-height: $navbar-height - 14px;
 
-  .navbar-fixed {
-    // position: fixed;
-    // bottom: 0;
+  [id="mainNav"].navbar-fixed {
+    position: absolute;
+    bottom: 0;
+    height: $mobile-height;
+
+    a.brand-logo {
+      position: fixed;
+      top: 0;
+    }
 
     img {
-      // position: fixed;
-      // top: 0;
       height: $mobile-height;
-      margin: $mobile-height / 15;
+      margin: 0;
     }
 
     .nav-list {
+      width: 100%;
+      padding-left: 1.3rem;
+
       a {
         padding: 0 7px;
       }
     }
-  }
-}
-
-@media #{$medium-and-up} {
-
-  .nav-list {
-    // float:right //only on large screen...
- 
   }
 }

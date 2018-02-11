@@ -25,16 +25,15 @@ import './nav.html';
 Template.nav.onRendered( function () {
   $(document).ready(function () {
     $('[id="loading-wrapper"], .server_rendered').fadeOut();
-    
     $('.dropdown-button').dropdown({
       stopPropagation: true,
-      constrain_width: false
+      constrainWidth: false,
+      belowOrigin: true
     });
   });
  // TypeAhead autocomplete in Schema
   Meteor.typeahead.inject();
   $('.twitter-typeahead').css("display:block");
-
   $('#modalVerify').modal();
   $('#modalClaim').modal();
   $('#loginModal').modal();

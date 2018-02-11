@@ -80,7 +80,8 @@ Template.addForm.onRendered(function() {
         const types = place.types;
         const preview_button = document.getElementById('button_website-preview');
         console.log(types);
-        if (types.includes('route') || types.includes('street_address')) {console.log("don't fill")}
+        if (types.includes('route') || types.includes('street_address') || types.includes('premise')) {console.log("don't fill")}
+        if (types.includes('route', 'street_address', 'premise') ) {console.log("don't fill up!")}
         // if (type != 'street_address' || type != 'premise' || type != 'route') {
         //   console.log(type);
         //   // document.getElementById('name').value = place.name;
@@ -162,8 +163,8 @@ Template.addForm.onRendered(function() {
       opacity: 0.5, // Opacity of modal background
       inDuration: 300, // Transition in duration
       outDuration: 200, // Transition out duration
-      startingTop: '0', // Starting top style attribute
-      endingTop: '5%', // Ending top style attribute
+      startingTop: '5%', // Starting top style attribute
+      endingTop: '0', // Ending top style attribute
       ready: function(modal, trigger) {
         $('#name')[0].focus();
       }

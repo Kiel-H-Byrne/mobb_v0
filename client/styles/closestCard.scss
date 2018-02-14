@@ -1,3 +1,5 @@
+@import "{}/node_modules/materialize-css/sass/components/color";
+@import "{}/node_modules/materialize-css/sass/components/variables";
 @import "palettes/colors";
 @import "palettes/plt_orng-tetrad";
 
@@ -103,5 +105,14 @@
         line-height: 14px;
       }
     }
+  }
+}
+
+@media #{$small-and-down} {
+
+  [id='bottom_Row'] {
+    // bottom: 45px;
+    // right: -15px;
+ 
   }
 }

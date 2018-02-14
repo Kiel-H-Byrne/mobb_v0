@@ -1,19 +1,18 @@
-@import '{}/node_modules/materialize-css/sass/components/color';
-@import '{}/node_modules/materialize-css/sass/components/variables';
-@import 'palettes/colors';
-@import 'palettes/_plt_orng-tetrad';
+@import "{}/node_modules/materialize-css/sass/components/color";
+@import "{}/node_modules/materialize-css/sass/components/variables";
+@import "palettes/colors";
+@import "palettes/_plt_orng-tetrad";
 
- .select_wrapper {
-  a {    
-    position: relative;
+.select_wrapper {
+  a {
+    // position: relative;
     z-index: 0;
   }
 
-  i {    
+  i {
     position: relative;
     z-index: -1;
   }
-
 
   .dropdown-content {
     background-color: $rgba-primary-grey-5;
@@ -23,18 +22,19 @@
     li {
       min-height: inherit;
       max-height: 2 rem;
-      
+
       &:hover {
         background-color: $clr-grey-light;
       }
+
       // margin: .3rem;
 
       a {
-          padding: 2px 2px;
-          color: $rgba-primary-4;
+        padding: 2px 2px;
+        color: $rgba-primary-4;
       }
     }
-      
+
     .badge {
       position: absolute;
       min-width: 4ch;
@@ -42,21 +42,22 @@
       color: $rgba-primary-grey-4;
       background-color: $rgba-complement-2;
       right: 0;
-      border-radius:3px;
+      border-radius: 3px;
     }
   }
-
 }
 
-
 @media #{$medium-and-down} {
- li .dropdown-content {
-    top: $navbar-height - 1px !important;
+
+  li .dropdown-content {
+    top: ($navbar-height - 1px) !important;
   }
 }
 
 @media #{$small-and-down} {
- li .dropdown-content {
-    top: ($navbar-height - 8px) !important;
+
+  li .dropdown-content {
+    // top: ($navbar-height - 14px) !important;
+ 
   }
 }

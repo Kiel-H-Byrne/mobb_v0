@@ -44,3 +44,11 @@
     font-size: 1.7rem;
   }
 }
+
+@media #{$small-and-down} {
+
+  [id='centerButton_button'] {
+    // left: 5px;
+ 
+  }
+}

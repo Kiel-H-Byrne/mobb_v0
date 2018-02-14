@@ -113,7 +113,8 @@
 
     .nav-list {
       a {
-        padding: 0 7px;
+        // padding: 0 7px;
+     
       }
     }
   }
@@ -123,13 +124,14 @@
   $mobile-height: $navbar-height - 14px;
 
   [id="mainNav"].navbar-fixed {
-    position: absolute;
-    bottom: 0;
-    height: $mobile-height;
+    // position: absolute;
+    // bottom: 0;
+    // height: $mobile-height;
 
     a.brand-logo {
       position: fixed;
-      top: 0;
+      bottom: 0;
+      height: $mobile-height;
     }
 
     img {
@@ -139,10 +141,13 @@
 
     .nav-list {
       width: 100%;
-      padding-left: 1.3rem;
+
+      // padding-left: 1.3rem;
 
       a {
-        padding: 0 7px;
+        // padding: 0 7px;
+        // height: $mobile-height;
+     
       }
     }
   }

@@ -84,9 +84,11 @@ targetClient = function(map,pos) {
 targetBrowser = function(map) {
   // SET CENTER, 
   // ZOOM TO CERTAIN LEVEL
-  let pos = Session.get('browserLoc');
-  map.instance.panTo(pos);
-  map.instance.setZoom(8);
+  const pos = Session.get('browserLoc');
+  if (pos) {
+    map.instance.panTo(pos);
+    map.instance.setZoom(8);
+  }
 };
 
 // let clientMarker;

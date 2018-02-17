@@ -1,5 +1,6 @@
 
 import Categories from '/imports/startup/collections/categories.js';
+import Listings from '/imports/startup/collections/listings';
 
 import '../components/loadingScreen.html';
 // import '../components/loggedInNav.js';
@@ -139,5 +140,9 @@ Template.nav.helpers({
         template: 'results'
       }
     ];
+  },
+  listingCount: function() {
+    let count = Listings.find().count();
+    return count;
   }
 });

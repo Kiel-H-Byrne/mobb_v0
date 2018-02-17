@@ -6,7 +6,7 @@
             <div class="nav-wrapper">
                 <a class="brand-logo left" href="/">
                     <img class="responsive-img" src="/img/Logo_MOBB-banner.png" alt="The MOBB Home Page" />
-                    {{> bragBox}}
+                    {{! > bragBox}}
                 </a>
 
                 <ul class="nav-list ">
@@ -14,8 +14,13 @@
                         <form id="desktop_search-form">
                           <div class="input-field">
                             <i class="material-icons prefix">search</i>
-                            <input id="search_nav" placeholder="Search..." size="20" class="form-control typeahead" tabindex="1" name="results" type="text" autocomplete="on" spellcheck="off" data-sources="dataset" />
-                            <input class="desktop_search_input" type="submit" tabindex="-1" />
+                            <input id="search_nav" placeholder="Search {{listingCount}} Listings..." size="20"  type="text" 
+                            class="form-control typeahead" tabindex="1" 
+                            name="results"
+                            autocomplete="on" spellcheck="off" 
+                            data-sources="dataset" 
+                            data-limit="50"/>
+                            <input class="desktop_search_input hide" type="submit" tabindex="-1" />
                           </div>
                         </form>
                     </li>

@@ -40,8 +40,11 @@ Template.addForm.onRendered(function() {
       );
 
       const fillInAddress = function(autocomplete) {
-        let place = autocomplete.getPlace();
+        const place = autocomplete.getPlace();
         // console.log(place);
+        const placeLoc = {'lat': place.geometry.location.lat(), 'lng': place.geometry.location.lng()}
+        Session.set('placeLoc', placeLoc);
+        console.log(placeLoc); 
         for (let component in componentForm) {
           // CLEAR ALL VALUES AND SET 'DISABLED' FIELDS TO FALSE SO WE CAN POPULATE THEM
           if (document.getElementById(component)){
@@ -238,15 +241,20 @@ AutoForm.addHooks('addListingForm', {
   onSuccess(formType, result) {
     $('#modalAdd').modal('close');
 
-    const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
-    const doc = Listings.findOne({name: this.insertDoc.name});
-    const locArr = doc.location.split(",");
-    const locObj = { 'lat': Number(locArr[0]), 'lng': Number(locArr[1]) };
-    map.instance.panTo(locObj);
-    map.instance.setZoom(16);
   },
   endSubmit: function() {
     Materialize.toast('Thanks for Submitting!', 3300, 'myToast');
+    
+    const map = GoogleMaps.maps[Object.keys(GoogleMaps.maps)[0]];
+    // const doc = Listings.findOne({street: this.insertDoc.street});
+    // console.log(this, doc);
+    // const locArr = doc.location.split(",");
+    // const locObj = { 'lat': Number(locArr[0]), 'lng': Number(locArr[1]) };
+    const locObj = Session.get('placeLoc');
+    console.log(locObj);
+    map.instance.panTo(locObj);
+    map.instance.setZoom(16);
+
     analytics.track( "Listing Added", {
       category: 'Listings',
       label: this.google_id,

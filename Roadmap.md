@@ -1,0 +1,14 @@
+MILESTONES:
+
+<{ UI & WIREFRAME }>
+<{ SPLASH SCREENS & FORMS }>
+<{ MVP }>
+
+<{ DEVELOPMENT }>
+<{ CURRENT }>
+
+<{ ALPHA/BETA }>
+<{ USER TESTING }>
+<{ PUBLISH TO STORE(S) }>
+
+

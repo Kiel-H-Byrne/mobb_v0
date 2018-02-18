@@ -7,11 +7,11 @@
       <div class="card transparent">
         <div class="card-image">
           {{#if image.url}}
-            <img src="{{image.url}}" />
+            <a href="url" target="_blank" rel="noopener"><img src="{{image.url}}" /></a>
           {{else}}
             {{#if url}}
             {{!-- {{> mPreloader}} --}}
-              <img src="{{getImage url _id}}"/>
+            <a href="url" target="_blank" rel="noopener"><img src="{{getImage url _id}}"/></a>
             {{/if}}
           {{/if}}
           <span class="card-title">{{name}} <br />

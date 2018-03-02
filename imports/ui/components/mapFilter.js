@@ -44,18 +44,19 @@ Template.mapFilter.events({
     event.stopPropagation();
     //INPUT ELEMENT
     const el = $(event.currentTarget.firstElementChild.children[0]);
+    
+    if (event.currentTarget.title) {
+      //make sure this runs only once!
+      toggleGroup(event.currentTarget.title);
+      // $('.dropdown-button').dropdown('close');
+    }
+
     if (el.prop('checked')) {
       el.prop('checked', false);
       el.css('background-color', '#e34');
     } else {
       el.prop('checked', true);
       el.css('background-color', '#3af');
-    }
-
-    if (event.currentTarget.title) {
-      //make sure this runs only once!
-      toggleGroup(event.currentTarget.title);
-      // $('.dropdown-button').dropdown('close');
     }
 
   }

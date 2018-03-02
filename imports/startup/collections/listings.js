@@ -143,7 +143,7 @@ Listings.allow({
 //   // fetch: ['owner']
 // });
 Listings.deny({
-  //Deny all client-side updates on Listings collection
+  //Deny all client-side updates on Listings collection; should happen via meteor.call to server
   insert() { return true; },
   update() { return true; },
   remove(userId, doc) { return (!Roles.userHasRole(userId,'admin')); }

@@ -12,16 +12,25 @@ Template.verifyUI.events({
       // },{
       //   $addToSet: {"profile.verifiedListings" : docId}
       // });
-      Listings.update({
-        _id: docId
-      },{
+      const updateDoc = {
         $addToSet: {
            verifiers: userId
         },
         $pull: {
           deverifiers: userId
         }
-      });
+      };
+      Meteor.call('editListing', docId, updateDoc);
+      // Listings.update({
+      //   _id: docId
+      // },{
+      //   $addToSet: {
+      //      verifiers: userId
+      //   },
+      //   $pull: {
+      //     deverifiers: userId
+      //   }
+      // });
 
       analytics.track( "Verified Listing", {
         category: "Listings",
@@ -49,16 +58,26 @@ Template.verifyUI.events({
       // },{
       //   $pull: {"profile.verifiedListings" : docId}
       // });
-      Listings.update({
-        _id: docId
-      },{
+      const updateDoc = {
         $addToSet: {
-          deverifiers: userId
+           deverifiers: userId
         },
         $pull: {
           verifiers: userId
         }
-      });
+      };
+      Meteor.call('editListing', docId, updateDoc);
+
+      // Listings.update({
+      //   _id: docId
+      // },{
+      //   $addToSet: {
+      //     deverifiers: userId
+      //   },
+      //   $pull: {
+      //     verifiers: userId
+      //   }
+      // });
 
       analytics.track( "Untrusted Listing", {
         category: "Listings",
@@ -86,13 +105,20 @@ Template.verifyUI.events({
       // },{
       //   $addToSet: {"profile.verifiedListings" : docId}
       // });
-      Listings.update({
-        _id: docId
-      },{
+      const updateDoc = {
         $pull: {
            verifiers: userId
         }
-      });
+      };
+      Meteor.call('editListing', docId, updateDoc);
+
+      // Listings.update({
+      //   _id: docId
+      // },{
+      //   $pull: {
+      //      verifiers: userId
+      //   }
+      // });
     } else {
       Materialize.toast('Log In Before Verifying A Listing', 3000, 'myToast');
     }
@@ -107,13 +133,19 @@ Template.verifyUI.events({
       // },{
       //   $pull: {"profile.verifiedListings" : docId}
       // });
-      Listings.update({
-        _id: docId
-      },{
+      const updateDoc = {
         $pull: {
            deverifiers: userId
         }
-      });
+      }
+      Meteor.call('editListing', docId, updateDoc);
+      // Listings.update({
+      //   _id: docId
+      // },{
+      //   $pull: {
+      //      deverifiers: userId
+      //   }
+      // });
     }
   }  
 });

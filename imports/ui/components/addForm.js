@@ -41,10 +41,10 @@ Template.addForm.onRendered(function() {
 
       const fillInAddress = function(autocomplete) {
         const place = autocomplete.getPlace();
-        // console.log(place);
+        console.log(place);
         const placeLoc = {'lat': place.geometry.location.lat(), 'lng': place.geometry.location.lng()}
         Session.set('placeLoc', placeLoc);
-        console.log(placeLoc); 
+        // console.log(placeLoc); 
         for (let component in componentForm) {
           // CLEAR ALL VALUES AND SET 'DISABLED' FIELDS TO FALSE SO WE CAN POPULATE THEM
           if (document.getElementById(component)){
@@ -83,12 +83,13 @@ Template.addForm.onRendered(function() {
         const types = place.types;
         const preview_button = document.getElementById('button_website-preview');
         console.log(types);
-        if (types.includes('route') || types.includes('street_address') || types.includes('premise')) {console.log("don't fill")}
-        if (types.includes('route', 'street_address', 'premise') ) {console.log("don't fill up!")}
-        // if (type != 'street_address' || type != 'premise' || type != 'route') {
-        //   console.log(type);
-        //   // document.getElementById('name').value = place.name;
-        // }
+
+        if (types.includes('route') || types.includes('street_address') || types.includes('premise')) {
+          console.log("don't fill")
+        } else {
+          document.getElementById('name').value = place.name;
+        }
+
         if (place.formatted_phone_number) document.getElementById('formatted_phone_number').value = place.formatted_phone_number;
         
         if (place.website) {
@@ -106,40 +107,77 @@ Template.addForm.onRendered(function() {
         }
 
         if (place.place_id) document.getElementById('place_id').value = place.place_id;
-        //if type = restaurant, add category 'food & beverage'; etc...
-        //   let types = place.types;
-        //   console.log(types);
-        //   if (types.includes('bakery' || 'food' || 'restaurant' || 'bar' || 'cafe' || 'grocery_or_supermarket'|| 'meal_delivery'|| 'meal_takeaway'   )) {
-        //     $('[value="Food & Beverage"]').prop('checked',true);
-        //   };
-        //   if (types.includes('accounting' || 'bank' || 'dentist' || 'doctor' || 'electrician' || 'funeral_home' || 'insurance_agency' || 'lawyer' || 'painter' || 'pharmacy' || 'physiotherapist' || 'plumber' || 'real_estate_agency' || 'veterinary_care')) {
-        //     $('[value="Professional Services"]').prop('checked',true);
-        //     console.log('hello dere');
-        //   };
-        //   if (types.includes('amusement_park' || 'art_gallery' || 'book_store' || 'casino' ||'bowling_alley' || 'zoo' || 'stadium' || 'park' || 'nigh_club' || 'museum' || 'movie_theater'|| 'aquarium')) {
-        //     $('[value="Entertainment & Media"]').prop('checked',true);
-        //   };
-        //   if (types.includes('beauty_salon' || 'hair_care' || 'spa' )) {
-        //     $('[value="Beauty & Lifestyle"]').prop('checked',true);
-        //   };  
-        //   if (types.includes('clothing_store' || 'shopping_mall' || 'shoe_store' || 'jewelry_store')) {
-        //     $('[value="Apparel & Accessories"]').prop('checked',true);
-        //   };         
-        //   if (types.includes('art_gallery' || 'book_store' || 'museum' || 'school' || 'university' )) {
-        //     $('[value="Education & Child Care"]').prop('checked',true);
-        //   };   
-        //   if (types.includes('hospital' || 'spa' || 'physiotherapist' || 'doctor' || 'gym' || 'veterinary_care'|| 'pharmacy' || 'health')) {
-        //     $('[value="Health & Wellness"]').prop('checked',true);
-        //   };   
-        // const compareObj = [{
-        //   'terms': ['hospital' , 'spa' , 'physiotherapist' , 'doctor' , 'gym' , 'veterinary_care', 'pharmacy' , 'health'],
-        //   'value': 'Health & Wellness'
-        // }, {
-        //   "value": "Apparel & Accessories",
-        //   "terms": ['clothing_store' , 'shopping_mall' , 'shoe_store' , 'jewelry_store']
-        // }]
 
+         //PREFILL FORM WHEN THE TYPE IS restaurant, add category 'food & beverage'; etc...
 
+          if (types.includes('bakery') || 
+              types.includes('food') || 
+              types.includes('restaurant')  || 
+              types.includes('bar')  || 
+              types.includes('cafe')  || 
+              types.includes('grocery_or_supermarket') || 
+              types.includes('meal_delivery') || 
+              types.includes('meal_takeaway') ) {
+            $('[value="Food & Beverage"]').prop('checked',true);
+          };
+          if (types.includes('accounting') || 
+              types.includes('bank')  || 
+              types.includes('dentist')  || 
+              types.includes('doctor')  || 
+              types.includes('electrician')  || 
+              types.includes('funeral_home')  || 
+              types.includes('insurance_agency')  || 
+              types.includes('lawyer')  || 
+              types.includes('painter')  || 
+              types.includes('pharmacy')  || 
+              types.includes('physiotherapist')  || 
+              types.includes('plumber')  || 
+              types.includes('real_estate_agency')  || 
+              types.includes('veterinary_care')) {
+            $('[value="Professional Services"]').prop('checked',true);
+          };
+          if (types.includes('amusement_park') || 
+              types.includes('art_gallery') || 
+              types.includes('book_store') || 
+              types.includes('casino') || 
+              types.includes('bowling_alley') || 
+              types.includes('zoo') || 
+              types.includes('stadium') || 
+              types.includes('park') || 
+              types.includes('night_club') || 
+              types.includes('museum') || 
+              types.includes('movie_theater') || 
+              types.includes('aquarium') ) {
+            $('[value="Entertainment & Media"]').prop('checked',true);
+          };
+          if (types.includes('beauty_salon') || 
+              types.includes('hair_care') || 
+              types.includes('spa') ) {
+            $('[value="Beauty & Lifestyle"]').prop('checked',true);
+          };  
+          if (types.includes('clothing_store') || 
+              types.includes('shopping_mall') || 
+              types.includes('shoe_store') || 
+              types.includes('jewelry_store') ){
+            $('[value="Apparel & Accessories"]').prop('checked',true);
+          };         
+          if (types.includes('art_gallery') || 
+              types.includes('book_store') || 
+              types.includes('museum') || 
+              types.includes('school') || 
+              types.includes('university') ) {
+            $('[value="Education & Child Care"]').prop('checked',true);
+          };   
+          if (types.includes('hospital') || 
+              types.includes('spa') || 
+              types.includes('physiotherapist') || 
+              types.includes('doctor') || 
+              types.includes('gym') || 
+              types.includes('veterinary_care') || 
+              types.includes('pharmacy') || 
+              types.includes('health') ) {
+            $('[value="Health & Wellness"]').prop('checked',true);
+          };   
       };
 
       // When the user selects an address from the dropdown, populate the address

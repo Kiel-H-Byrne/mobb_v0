@@ -61,15 +61,18 @@ Meteor.methods({
       }
     });
   },
-  editListing: function(doc) {
-    check(doc, Object);
+  editListing: function(id, updateDoc) {
+    check(id, String);
+    check(updateDoc, Object);
     //if logged in, allowed to edit only fields that aren't populated
-    Listings.update(doc , function(err, res){
+    Listings.update({
+      _id: id
+    }, updateDoc , function(err, res){
       if (err) {
         console.log("LISTING UPDATE FAILED:");
-        console.log(doc.name + ": " + err);
+        console.log(id + ": " + err);
       } else {
-        // console.log(doc.name + ": Success");
+        console.log(id + ": Update Successful");
       }
     });
   },

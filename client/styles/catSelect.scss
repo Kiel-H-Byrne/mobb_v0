@@ -47,7 +47,7 @@
   }
 }
 
-@media #{$medium-and-down} {
+@media #{$medium-and-up} {
 
   li .dropdown-content {
     top: ($navbar-height - 1px) !important;
@@ -57,7 +57,8 @@
 @media #{$small-and-down} {
 
   li .dropdown-content {
-    // top: ($navbar-height - 14px) !important;
- 
+    $mobile-height: 56px;
+
+    top: ($mobile-height - 1px) !important;
   }
 }

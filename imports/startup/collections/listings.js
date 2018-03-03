@@ -143,9 +143,11 @@ Listings.allow({
 //   // fetch: ['owner']
 // });
 Listings.deny({
-  //Deny all client-side updates on Listings collection; should happen via meteor.call to server
+  
   insert() { return true; },
-  update() { return true; },
+  //Deny all client-side updates on Listings collection; should happen via meteor.call to server
+  //however aleed autoforms and orion console does not allow me to edit listing...
+  // update() { return true; },
   remove(userId, doc) { return (!Roles.userHasRole(userId,'admin')); }
 });
 

@@ -75,20 +75,31 @@
     }
 
     [id='desktop_search-form'] {
-      form input {
-        padding-top: 0.3rem;
-        padding-bottom: 0.3rem;
-        margin: .3rem .5rem;
-        vertical-align: middle !important;
-        line-height: inherit;
+      & form {
+        margin-left: 20px;
+        height: 100%;
+
+        & input {
+          // padding-top: 0.3rem;
+          // padding-bottom: 0.3rem;
+          // margin: .3rem .5rem;
+          vertical-align: middle !important;
+          line-height: inherit;
+        }
       }
 
       i {
         &.prefix {
-          left: -1.1rem;
-          font-size: 1.5rem;
+          left: -1.7rem;
+          font-size: 2rem;
           color: $rgba-primary-grey-2;
         }
+      }
+
+      [id='search_nav'] {
+        // bottom: 0;
+        // height: 1.5rem !important;
+        font-size: 1.3rem;
       }
     }
   }
@@ -130,6 +141,7 @@
     [id='search_nav'] {
       // bottom: 0;
       // height: 1.5rem !important;
+      // font-size: 1.2rem;
    
     }
   }

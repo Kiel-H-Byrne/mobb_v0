@@ -13,6 +13,10 @@
     "istage": "meteor build /Users/KHB/Sites/MOBBapp/stages --server https://mobbtest.meteorapp.com --mobile-settings settings-prod.json",
     "ideploy": "meteor build /Users/KHB/Sites/MOBBapp/build --server https://www.mobb.biz --mobile-settings settings-prod.json"
   },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
   "repository": {
     "type": "git",
     "url": "khb@bitbucket.com/khb/mobb.git"

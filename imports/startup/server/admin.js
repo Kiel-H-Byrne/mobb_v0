@@ -74,6 +74,7 @@ Accounts.onCreateUser(function(options, user) {
 	
 		if (options.profile) {
 			myUser.profile.picture = `https://graph.facebook.com/${user.services.facebook.id}/picture/?type=large`;
+			myUser.avatar = `https://graph.facebook.com/${user.services.facebook.id}/picture/?type=small`;
 		}
 	}
 
@@ -83,6 +84,7 @@ Accounts.onCreateUser(function(options, user) {
 	
 		if (options.profile) {
 			myUser.profile.picture = user.services.google.picture;
+			myUser.avatar = user.services.google.picture;
 		}
 	}
 	return myUser;

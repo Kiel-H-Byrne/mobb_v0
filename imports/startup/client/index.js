@@ -47,7 +47,7 @@ Session.set('thisPlace', false);
 
 //====== STARTUP ACTIONS ======
 
-$.getJSON("https://freegeoip.net/json/", {format: "jsonp"}).done(function(data){
+$.getJSON(`https://ipstack.com/${publicIP}?access_key=51b99ac29fb860db9534858279e34fc5`, {format: "jsonp"}).done(function(data){
   /*
       // ================== RESPONSE ================== 
       // {"ip":"69.138.161.94","country_code":"US","country_name":"United States","region_code":"MD",

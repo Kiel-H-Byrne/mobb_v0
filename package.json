@@ -12,7 +12,7 @@
     "build": "meteor build /Users/KHB/Sites/builds/TheMOBB --directory  --server-only --server mobb.netlify.com ",
     "ibuild": "meteor build /Users/KHB/Sites/MOBBapp/testbuild --server localhost:3000 --mobile-settings settings-prod.json",
     "istage": "meteor build /Users/KHB/Sites/MOBBapp/stages --server https://mobbtest.meteorapp.com --mobile-settings settings-prod.json",
-    "ideploy": "meteor build /Users/KHB/Sites/MOBBapp/build --server https://www.mobb.biz --mobile-settings settings-prod.json"
+    "ideploy": "meteor build /Users/KHB/Sites/MOBBapp/build --server https://mobb.kielbyrne.com --mobile-settings settings-prod.json"
   },
   "browserslist": [
     "> 1%",

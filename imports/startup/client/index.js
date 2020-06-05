@@ -47,7 +47,8 @@ Session.set('thisPlace', false);
 
 //====== STARTUP ACTIONS ======
 
-$.getJSON(`http://api.ipstack.com/check?access_key=${Meteor.settings.public.keys.ipstackAPI.key}`, {format: "jsonp"}).done(function(data){
+// $.getJSON(`http://api.ipstack.com/check?access_key=${Meteor.settings.public.keys.ipstackAPI.key}`, {format: "jsonp"}).done(function(data){
+$.getJSON(`https://ipapi.co/json`, {format: "jsonp"}).done(function(data){
   /*
       // ================== RESPONSE ================== 
       {"ip":"155.52.187.7","type":"ipv4","continent_code":"NA","continent_name":"North America","country_code":"US",

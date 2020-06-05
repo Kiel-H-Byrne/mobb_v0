@@ -11,7 +11,7 @@ Key Features: (MVP)
 - Google Maps API 
 - opengraph.io API
 - Google / Facebook oAuth packages (meteorite)
-- SCSS
+- Materialize-CSS (v.0.1.0)
 - Orion CMS package (meteorite)
 
 #### Branches:

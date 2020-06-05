@@ -20,7 +20,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "khb@bitbucket.com/khb/mobb.git"
+    "url": "https://github.com/tdotholla/mobb_v0.git"
   },
   "author": "Kiel Hamilton Byrne",
   "dependencies": {

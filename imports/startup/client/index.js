@@ -70,7 +70,7 @@ Meteor.subscribe('userData');
 
 Meteor.startup(function () {
   //=====  FORCE WWw REDIRECT ===== 
-  // if (location.host.indexOf('www.MOBB.biz') !== 0) {
+  // if (location.host.indexOf('mobb.kielbyrne.com') !== 0) {
   //     location = 'https://mobb.kielbyrne.com'
   // }
 

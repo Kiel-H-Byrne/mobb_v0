@@ -9,14 +9,15 @@
   background-color: $rgba-primary-grey-4;
 
   .demo_list li {
-    margin: 3px 0;
-    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    padding-left: 1rem;
+    font-size: 1rem;
 
     div {
       display: inline-block;
 
       &:first-child {
-        width: 60%;
+        width: 50%;
         line-height: 2rem;
       }
     }
@@ -56,11 +57,16 @@
     %social-icon-hover {
       border-radius: 100%;
       color: $background;
+      fill: $background;
 
       // IE8
-      fill: $background;
       transform: scale(1.25);
       transition: background-color .5s, transform .5s ease-out;
+    }
+
+    .about_video {
+      width: 18rem;
+      margin: 0 auto;
     }
 
     .hint {
@@ -96,10 +102,15 @@
     font-size: 1.2rem;
   }
 
+  .about_me {
+    display: inline-block;
+    margin: auto  
+  }
+  
   .about_img {
     width: 100px;
     height: 100px;
-    margin: auto;
+    margin: 1rem auto;
   }
 
   hr {

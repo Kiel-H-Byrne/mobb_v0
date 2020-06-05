@@ -4,7 +4,7 @@
   "description": "The MOBB: Map of Black Businesses",
   "main": "main.js",
   "scripts": {
-    "start": "meteor run --settings settings-dev.json",
+    "dev": "meteor run --settings settings-dev.json",
     "local": "meteor run --production --settings settings-prod.json",
     "idev": "meteor run ios-device --settings settings-dev.json",
     "stage": "meteor deploy mobbtest.meteorapp.com --settings settings-dev.json",

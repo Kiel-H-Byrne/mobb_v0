@@ -6,6 +6,14 @@ Key Features: (MVP)
 - Show the closest business to my current location, somewhere on main page [ with a card or callout button, or ribbon, or marker symbol ]
 - Insert business
 
+#### Infrastructure:
+- This is a legacy `meteor` application, build in version 1.6. Alongside MongoDB
+- Google Maps API 
+- opengraph.io API
+- Google / Facebook oAuth packages (meteorite)
+- SCSS
+- Orion CMS package (meteorite)
+
 #### Branches:
 `master` is to merge before production
 `ft-dirs` branch is to implement the 'closest business' feature w/ directions from current location.

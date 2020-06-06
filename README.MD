@@ -17,7 +17,7 @@ Key Features: (MVP)
 #### Getting Started Developing:
  - Fork Repo
  - Obtain `settings-dev.json` from existing developer
- - may need to build node-gyp? docs(https://github.com/nodejs/node-gypga) Due to the (fourseven:scss)[https://github.com/Meteor-Community-Packages/meteor-scss#compatibility] package () ->
+ - may need to build node-gyp? [node-gyp docs](https://github.com/nodejs/node-gypga) due to the [fourseven:scss](https://github.com/Meteor-Community-Packages/meteor-scss#compatibility) package
  - `npm install` to install meteor packages & deps
  - `npm start` to start local server
  - Login as user {`rnr@iam.com:password`} (instead of using google/facebook)

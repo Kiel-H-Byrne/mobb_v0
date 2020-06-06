@@ -8,7 +8,7 @@
     "dev": "meteor run --settings settings-dev.json",
     "local": "meteor run --production --settings settings-prod.json",
     "idev": "meteor run ios-device --settings settings-dev.json",
-    "stage": "meteor deploy mobb-stage.meteorapp.com --settings settings-dev.json",
+    "stage": "meteor deploy mobb-stage.meteorapp.com --owner khb --settings settings-dev.json",
     "deploy": "meteor deploy mobb.meteorapp.com --owner khb --settings settings-prod.json",
     "build": "meteor build /Users/KHB/Sites/builds/TheMOBB --directory  --server-only --server mobb.netlify.com ",
     "ibuild": "meteor build /Users/KHB/Sites/MOBBapp/testbuild --server localhost:3000 --mobile-settings settings-prod.json",

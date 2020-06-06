@@ -7,17 +7,21 @@ Key Features: (MVP)
 - Insert business
 
 #### Infrastructure:
-- This is a legacy `meteor` application, build in version 1.6. Alongside MongoDB
+- This is a legacy `meteor` application, build in version 1.10 Alongside MongoDB
 - Google Maps API 
 - opengraph.io API
 - Google / Facebook oAuth packages (meteorite)
 - Materialize-CSS (v.0.1.0)
 - Orion CMS package (meteorite)
 
-#### Branches:
-`master` is to merge before production
-`ft-dirs` branch is to implement the 'closest business' feature w/ directions from current location.
-`production` is untouched, only  merge and deploy.
+#### Getting Started Developing:
+ - Fork Repo
+ - Obtain `settings-dev.json` from existing developer
+ - may need to build node-gyp? docs(https://github.com/nodejs/node-gypga) Due to the (fourseven:scss)[https://github.com/Meteor-Community-Packages/meteor-scss#compatibility] package () ->
+ - `npm install` to install meteor packages & deps
+ - `npm start` to start local server
+ - Login as user {`rnr@iam.com:password`} (instead of using google/facebook)
+ - Click ADD button and add first business to your local DB
 
 #### Templates: 
 template file with closest card. 

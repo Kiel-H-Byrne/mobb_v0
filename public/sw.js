@@ -24,6 +24,11 @@ self.addEventListener('fetch', (event) => {
       const resourceType = cached.headers.get('content-type');
       // We only return non css/js/html cached response e.g images
       if (!hasHash(event.request.url) && !/text\/html/.test(resourceType)) {
+        console.log("====================")
+        console.log("TESTING SERVICE WORKER:")
+        console.log(event.request.url)
+        console.log(cached)
+        console.log("====================")
         return cached;
       }
 

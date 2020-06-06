@@ -8,23 +8,6 @@ if (!Meteor.settings.public.keys) {
 let kiel = {};
 
 if (Meteor.users.find().count() === 0) {
-	let kielId = Accounts.createUser({
-	    
-	    profile: {
-	      loc: '39.0046,-77.0369',
-	      name: "Kiel H. Byrne",
-	      favorites: []
-	    },
-	    name: 'Kiel Hamilton Byrne',
-	    username: "khb",
-	    email: "khb@iam.com",
-	    password: "password",
-	  });
-
-	kiel = Meteor.users.findOne(kielId);
-	Roles.addUserToRoles( kiel._id ,  ["admin"] );
-	console.log("-= Admin: 'khb' is Admin =-");
-
 	let randoId = Accounts.createUser({
 	    
 	    profile: {

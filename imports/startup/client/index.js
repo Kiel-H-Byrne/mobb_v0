@@ -73,7 +73,7 @@ Meteor.startup(function () {
   // }
 
   //=====  CHECK IF OFFLINE ===== 
-  Meteor.autorun(function() {
+  Tracker.autorun(function() {
     let online = navigator.onLine;
     if (!online) {
       console.log('Now Offline...');

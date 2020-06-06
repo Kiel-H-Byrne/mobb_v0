@@ -9,6 +9,16 @@ node_modules
 .ETC
 yarn*.lock
 
+# Meteor
+.meteor/local
+.meteor/meteorite
+
+# OSX
+.DS_Store
 
 # Keys 
 settings-prod.json
+settings-dev.json
+
+# Folder 
+**/build/

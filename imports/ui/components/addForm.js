@@ -27,7 +27,14 @@ Template.addForm.onRendered(function() {
         /** @type {!HTMLInputElement} */
         document.getElementById('formatted_address'),{
           types: ['address'],
-          componentRestrictions: {country:'US'}
+          componentRestrictions: {country:['US', 'CA', 'TT', 'GB']}
+          /**
+           * {country: string | string[]}
+           * componentRestrictions can be used to restrict results to specific groups. 
+           * Currently, you can use componentRestrictions to filter by up to 5 countries. 
+           * Countries must be passed as as a two-character, ISO 3166-1 Alpha-2 compatible country code. 
+           * Multiple countries must be passed as a list of country codes.
+          **/
         }
       );
 

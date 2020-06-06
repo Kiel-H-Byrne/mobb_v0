@@ -8,7 +8,7 @@ yarn*.lock
 node_modules
 .ETC
 yarn*.lock
-
+build
 
 # Keys 
 settings-prod.json

@@ -293,7 +293,7 @@ Schema.Listings = new SimpleSchema({
   },
   state: {
     type: String,
-    allowedValues: ["AL","AK","AZ","AR","CA","CO","CT","DC","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"],
+    // allowedValues: ["AL","AK","AZ","AR","CA","CO","CT","DC","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"],
     autoform: {
       afQuickField: {
         firstOption: "--"
@@ -311,7 +311,7 @@ Schema.Listings = new SimpleSchema({
     min: 2,
     max: 3,
     optional: true,
-    defaultValue: 'US'
+    // defaultValue: 'US'
   },
   phone: {
     type: String,

@@ -21,7 +21,7 @@ Template.orionEditForm.onRendered(function() {
         /** @type {!HTMLInputElement} */
         document.getElementById('geocomplete'),
         {types: ['address']},
-        {components: {country:'us'}}
+        {components: { country:['US', 'CA', 'TT'] }}
       );
 
       const fillInAddress = function() {

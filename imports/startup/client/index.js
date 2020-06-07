@@ -46,7 +46,7 @@ Session.set('thisPlace', false);
 // 100000s = 1.16 days....
 
 //====== STARTUP ACTIONS ======
-
+// $.getJSON(`https://ipapi.co/json`, {format: "jsonp"}).done(function(data){
 $.getJSON(`http://api.ipstack.com/check?access_key=${Meteor.settings.public.keys.ipstackAPI.key}`, {format: "jsonp"}).done(function(data){
   /*
       // ================== RESPONSE ================== 

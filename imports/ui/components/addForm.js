@@ -27,7 +27,14 @@ Template.addForm.onRendered(function() {
         /** @type {!HTMLInputElement} */
         document.getElementById('formatted_address'),{
           types: ['address'],
-          componentRestrictions: {country:'US'}
+          componentRestrictions: { country:['US', 'CA', 'TT'] }
+          /**
+           * {country: string | string[]}
+           * componentRestrictions can be used to restrict results to specific groups. 
+           * Currently, you can use componentRestrictions to filter by up to 5 countries. 
+           * Countries must be passed as as a two-character, ISO 3166-1 Alpha-2 compatible country code. 
+           * Multiple countries must be passed as a list of country codes.
+          **/
         }
       );
 
@@ -35,13 +42,13 @@ Template.addForm.onRendered(function() {
         /** @type {!HTMLInputElement} */
         document.getElementById('name'),{
           types: ['establishment'],
-          componentRestrictions: {country:'US'}
+          componentRestrictions: { country: ['US', 'CA', 'TT'] }
         }
       );
 
       const fillInAddress = function(autocomplete) {
         const place = autocomplete.getPlace();
-        console.log(place);
+        // console.log(place);
         const placeLoc = {'lat': place.geometry.location.lat(), 'lng': place.geometry.location.lng()}
         Session.set('placeLoc', placeLoc);
         // console.log(placeLoc); 
@@ -190,7 +197,7 @@ Template.addForm.onRendered(function() {
       });
 
       completeAddress.addListener('place_changed', function() {
-        fillInAddress(this);
+        // fillInAddress(this); // this is obnoxious, if i enter a businesses and try to modify the address and pick the google one, it clears the other fields...
         Materialize.updateTextFields();
         // $(".input-field label").css('hide');
       });
@@ -278,8 +285,12 @@ AutoForm.addHooks('addListingForm', {
   // Called when any submit operation succeeds
   onSuccess(formType, result) {
     $('#modalAdd').modal('close');
-
   },
+  
+  onError(formType, error){
+    console.log(error)
+  },
+
   endSubmit: function() {
     Materialize.toast('Thanks for Submitting!', 3300, 'myToast');
     

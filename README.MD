@@ -1,67 +1,101 @@
-## Description:
-#### The Application is meant to educate clients on the black owned businesses in their vicinity (or search another area in USA). The intent is to drive more businesses to BoBs, who in turn will bank with Black Banks, who will reinvest in small BoBs and community projects.
+# The MoBB 
+*The Map of Black Businesses* (_MoBB_) is a tool to practice group economics. The application allows for consumers to immediately identify black owned businesses (_BoBs_) in their vicinity (or search another area on the map); with the goal of growing The Community's economy.
 
-Key Features: (MVP)
-- Show businesses close to me, on a map.
-- Show the closest business to my current location, somewhere on main page [ with a card or callout button, or ribbon, or marker symbol ]
-- Insert business
+_Assumption: If we drive more customers to BoBs, they in turn will bank with Black Banks, who will reinvest in small BoBs and projects which benefit The Community._
+<!--- These are examples. See https://shields.io for others or to customize this set of shields. You might want to include dependencies, project status and license info here --->
+![Github License](https://img.shields.io/github/license/tdotholla/mobb_v0)
+![Node Version](https://img.shields.io/node/v/canary)
+![W3C Validation](https://img.shields.io/w3c-validation/default?targetUrl=https%3A%2F%2Fmobb.kielbyrne.com)
 
-#### Branches:
-`master` is to merge before production
-`ft-dirs` branch is to implement the 'closest business' feature w/ directions from current location.
-`production` is untouched, only  merge and deploy.
+![GitHub repo size](https://img.shields.io/github/repo-size/tdotholla/mobb_v0)
+![Github code size](https://img.shields.io/github/languages/code-size/tdotholla/mobb_v0)
+![Github Languages](https://img.shields.io/github/languages/count/tdotholla/mobb_v0)
+![Github Top Language](https://img.shields.io/github/languages/top/tdotholla/mobb_v0)
 
-#### Templates: 
-template file with closest card. 
-template renders when map renders, 
+![GitHub Issues](https://img.shields.io/github/issues-raw/tdotholla/mobb_v0)
+![GitHub contributors](https://img.shields.io/github/contributors/tdotholla/mobb_v0)
+![Github Last Commit](https://img.shields.io/github/last-commit/tdotholla/mobb_v0)
+<!--
 
-### Load Order:
-##### Server 
-the server starts
-the server checks if any Users exist in the database
-if no users, the admin user and a random user are created and given roles
-the server creates its methods.
-the server creates a scheme for Listings collection.
+![Github Commit Activity](https://img.shields.io/github/commit-activity/m/tdotholla/mobb_v0)
+![GitHub stars](https://img.shields.io/github/stars/tdotholla/mobb_v0?style=social)
+![GitHub forks](https://img.shields.io/github/forks/tdotholla/mobb_v0?style=social)
+![Github Manifest Version](https://img.shields.io/github/manifest-json/v/tdotholla/mobb_v0)
 
-##### Client 
-the client creates its routes
-the window loads
-the client determines if there is a user or not
-the Google map loads
-the autorun for geolocation and change in position fires
-if no geolocation, the IP info is used to find search area.
-the 'Listings_all' publication is subscribed to. (in future, just publish a certain radius of listings based on either user input, or geolocation.)
-for each listing, markers are placed at lat/long point
-for each marker, events are placed on each marker
-infowindow loads on click event of each marker
+-->
 
-##### User Experience
-- a client signs in
-- a client is granted the ability to add a listing
-- a client is granted the ability to log off
+### **_Visit [MoBB.kielbyrne.com](https://MoBB.kielbyrne.com)_**
+
+## Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+* You have installed the latest version of `node`, and `yarn`.
+* You have a `<Windows/Linux/Mac>` machine. (I have not tested on Linux, but should work fine)
+* You have read [SUPPORT.md](SUPPORT.md).
 
 
-##### Events
+## Architecture
+- This is a legacy `meteor` application, build in version 1.10 Alongside MongoDB
+- Google Maps API 
+- opengraph.io API
+- Google / Facebook oAuth packages (meteorite)
+- Materialize-CSS (v.0.1.0)
+- Orion CMS package (meteorite)
 
-##### Device Colors
-<!-- 
-+Entity   Hex Description 
-+&_COLOR_AQUA; 0xFF00FFFF  Light blue
-+&_COLOR_BLACK;  0xFF000000  Pure black
-+&_COLOR_BLUE; 0xFF0000FF  Pure blue
-+&_COLOR_FUCHSIA;  0xFFFF00FF  Light purple
-+&_COLOR_DARKGRAY; 0xFF404040  Dark gray
-+&_COLOR_GRAY; 0xFF808080  Pure gray
-+&_COLOR_GREEN;  0xFF008000  Pure green
-+&_COLOR_LIME; 0xFF00FF00  Light green
-+&_COLOR_MAROON; 0xFF800000  Dark red
-+&_COLOR_NAVY; 0xFF000080  Dark blue
-+&_COLOR_OLIVE;  0xFF808000  Green-brown
-+&_COLOR_PURPLE; 0xFF800080  Pure purple
-+&_COLOR_RED;  0xFFFF0000  Pure red
-+&_COLOR_SILVER; 0xFFC0C0C0  Light gray
-+&_COLOR_TEAL; 0xFF008080  Blue-green
-+&_COLOR_WHITE;  0xFFFFFFFF  Pure white
-+&_COLOR_YELLOW; 0xFFFFFF00  Pure yellow
-+&_COLOR_TRANSPARENT;  0x00000000  Completely transparent; the background shows through
-+-->
+#### Getting Started Developing:
+ - Fork/Clone Repo
+ - Obtain `settings-dev.json` from existing developer (or touch a new file and populate with your API keys for required services)
+ - may need to build node-gyp? [node-gyp docs](https://github.com/nodejs/node-gypga) due to the [fourseven:scss](https://github.com/Meteor-Community-Packages/meteor-scss#compatibility) meteorite package
+ - `npm install` to install meteor packages & dependencies
+ - `npm start` to start local server (`localhost:3000`)
+ - Login as user {`rnr@iam.com:password`} (before setting up google/facebook oAuth)
+ - Click ADD button and add first business to your local DB. (Congrats!!🎉)
+
+**_Documentation links can be found in [SUPPORT](SUPPORT.md)_**
+
+
+
+
+## Contributing
+
+### _First off, thank you for considering contributing to The MoBB. It’s people like you that make The MoBB such a great tool._ 🥂
+
+1. [Fork](https://github.com/tdotholla/mobb_v0.git) this repo
+2. Create a branch: `git checkout -b <branch_name>` (feature? bug?).
+3. Make your changes and commit them: `git commit -m '<commit_message>'`
+4. Push to the original branch: `git push origin <project_name>/<location>`
+5. Create the [pull request](). **(Don't forget to [test!](https://www.npmjs.com/package/zora))**
+
+## Contributors
+
+#### Thanks to the following people who have contributed to this project:
+
+* [@DevCollectiv](https://github.com/DevCollectiv) 📖💻🤔⚠️
+* [@tmanundercover](https://github.com/tmanundercover) 🐛💻🤔👀⚠️
+* [@tdblackston0](https://github.com/tdblackston0) 🐛🤔👀⚠️
+* [@ludakhris](https://github.com/ludakhris) 💬🐛💻🤔👀⚠️
+
+
+## Licenses
+
+Content is released under [Mozilla Public License Version 2.0](). See [LICENSE.md](LICENSE.MD) for complete details, including attribution guidelines, contribution terms, and software and third-party licenses and permissions.
+
+### Roadmap as user stories
+
+- [x] _As an end-user, I would like to see the locations of black owned businesses near me, on a map_
+- [ ] _I would like to see the one closest business to me, at all times_
+- [x] _I would like to see details of the busineses shown on the map_
+- [ ] _I would like to become a registered user_
+- [ ] _I would like to get directions to the business I am viewing_
+- [ ] _As a registered user, I would like to add a business to the map_
+- [ ] _As a registered user, I would like to modify business I am viewing_
+- [ ] _The map and business details should be current_
+
+### Branches:
+
+Try to name branches in a descriptive way, `master`, `ft-<featureName>`, `fix-<fixName>`, etc...
+**No pull requests will be merged into `master` branch.**
+
+### Resources:
+
+[Github Contribution setup](https://help.github.com/en/github/building-a-strong-community/setting-up-your-project-for-healthy-contributions)

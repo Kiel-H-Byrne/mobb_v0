@@ -24,6 +24,7 @@
   },
   "author": "Kiel Hamilton Byrne",
   "dependencies": {
+    "@babel/runtime": "^7.10.2",
     "@okgrow/auto-analytics": "^1.0.4",
     "animate.css": "^3.5.2",
     "babel-runtime": "^6.26.0",

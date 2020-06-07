@@ -27,7 +27,7 @@ Template.addForm.onRendered(function() {
         /** @type {!HTMLInputElement} */
         document.getElementById('formatted_address'),{
           types: ['address'],
-          componentRestrictions: {country:['US', 'CA', 'TT', 'GB']}
+          componentRestrictions: { country:['US', 'CA', 'TT'] }
           /**
            * {country: string | string[]}
            * componentRestrictions can be used to restrict results to specific groups. 
@@ -42,13 +42,13 @@ Template.addForm.onRendered(function() {
         /** @type {!HTMLInputElement} */
         document.getElementById('name'),{
           types: ['establishment'],
-          componentRestrictions: {country:'US'}
+          componentRestrictions: { country:['US', 'CA', 'TT'] }
         }
       );
 
       const fillInAddress = function(autocomplete) {
         const place = autocomplete.getPlace();
-        console.log(place);
+        // console.log(place);
         const placeLoc = {'lat': place.geometry.location.lat(), 'lng': place.geometry.location.lng()}
         Session.set('placeLoc', placeLoc);
         // console.log(placeLoc); 
@@ -91,7 +91,7 @@ Template.addForm.onRendered(function() {
         const preview_button = document.getElementById('button_website-preview');
         console.log(types);
 
-        if (types.includes('route') || types.includes('street_address') || types.includes('premise')) {
+        if ( document.getElementById('name').value.length > 0 || types.includes('route') || types.includes('street_address') || types.includes('premise') ) {
           console.log("don't fill")
         } else {
           document.getElementById('name').value = place.name;
@@ -197,7 +197,7 @@ Template.addForm.onRendered(function() {
       });
 
       completeAddress.addListener('place_changed', function() {
-        fillInAddress(this);
+        // fillInAddress(this); // this is obnoxious, if i enter a businesses and try to modify the address and pick the google one, it clears the other fields...
         Materialize.updateTextFields();
         // $(".input-field label").css('hide');
       });

@@ -3,12 +3,12 @@ logs
 *.log
 npm-debug.log*
 yarn*.lock
+package-lock*.json
 
 # Dependency directories
 node_modules
+.meteor/local
 .ETC
-yarn*.lock
-
 
 # Keys 
 settings-prod.json

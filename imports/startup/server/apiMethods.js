@@ -19,6 +19,7 @@ apiCall = function (apiUrl, callback) {
     } else {
       console.log("FROM API...");
       response = HTTP.get(apiUrl).data;
+      // if (response) {} else {} //may have to check if this is true...does response ever come back undefined/empty?
       OCache.set(apiUrl, response);
     }
 

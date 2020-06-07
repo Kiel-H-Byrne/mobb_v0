@@ -303,7 +303,7 @@ Schema.Listings = new SimpleSchema({
   },
   zip: {
     type: String,
-    regEx: SimpleSchema.RegEx.ZipCode,
+    // regEx: SimpleSchema.RegEx.ZipCode,
     optional: true
   },
   country: {

@@ -18,7 +18,7 @@ MARKER_GROUPS = {};
 
 
 Template.map.onCreated( function () {
-    console.log("-= MAP: Created =-");
+    // console.log("-= MAP: Created =-");
     let self = this;
     // ============================= SUBSCRIPTIONS ==================================
     this.subscribe('categories', function() {

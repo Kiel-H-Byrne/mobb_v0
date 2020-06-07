@@ -89,7 +89,7 @@ Template.addForm.onRendered(function() {
         if (place.formatted_address) document.getElementById('formatted_address').value = place.formatted_address;
         const types = place.types;
         const preview_button = document.getElementById('button_website-preview');
-        console.log(types);
+        // console.log(types);
 
         if (types.includes('route') || types.includes('street_address') || types.includes('premise')) {
           console.log("don't fill")
@@ -300,7 +300,7 @@ AutoForm.addHooks('addListingForm', {
     // const locArr = doc.location.split(",");
     // const locObj = { 'lat': Number(locArr[0]), 'lng': Number(locArr[1]) };
     const locObj = Session.get('placeLoc');
-    console.log(locObj);
+    // console.log(locObj);
     map.instance.panTo(locObj);
     map.instance.setZoom(16);
 

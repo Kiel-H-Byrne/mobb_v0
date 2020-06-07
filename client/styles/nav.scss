@@ -3,6 +3,8 @@
 @import "palettes/colors";
 @import "palettes/_plt_orng-tetrad";
 
+$navbar-height: 56px;
+
 [id='mainNav'] {
   &.navbar-fixed {
     nav {
@@ -38,7 +40,7 @@
     }
 
     .nav-list {
-      // width: 70%;
+      float: right;
 
       i {
         line-height: inherit;
@@ -112,7 +114,7 @@
 @media #{$medium-and-up} {
 
   .nav-list {
-    float: right;
+    
   }
 
   form input {
@@ -128,8 +130,6 @@
   [id='mainNav'] {
     &.navbar-fixed {
       .brand-logo {
-        // position: fixed;
-        // bottom: 0;
         height: $mobile-height / 2;
 
         & img {
@@ -137,10 +137,6 @@
           vertical-align: top;
           margin: 0;
         }
-      }
-
-      .nav-list {
-        width: 100%;
       }
 
       .user-avatar {
@@ -151,10 +147,9 @@
         $i-width: 1.3rem;
 
         margin-left: $i-width;
-        padding-right: 4rem;
+        padding-right: 0;
 
         i {
-          bottom: 1.8rem;
           height: $i-width;
           width: $i-width;
         }
@@ -163,14 +158,13 @@
           margin: 0;
           padding-left: 5px;
           top: auto;
-          bottom: 0 !important;
+          // bottom: 0 !important;
         }
 
         [id='search_nav'] {
           position: relative;
           height: 1.5rem;
-          bottom: 0 !important;
-          vertical-align: bottom !important;
+          vertical-align: middle !important;
         }
       }
     }
@@ -191,15 +185,8 @@
       }
 
       .nav-list {
-        // width: 100%;
-
-        // padding-left: 1.3rem;
-
         li > a {
           padding: 0;
-
-          // height: $mobile-height;
-       
         }
       }
 
@@ -215,6 +202,8 @@
           // bottom: 0;
           // height: 1.5rem !important;
           font-size: 1.1rem;
+          vertical-align: bottom !important;
+
         }
       }
 

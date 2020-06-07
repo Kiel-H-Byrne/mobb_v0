@@ -45,15 +45,17 @@ Before you begin, ensure you have met the following requirements:
 #### Getting Started Developing:
  - Fork/Clone Repo
  - Obtain `settings-dev.json` from existing developer (or touch a new file and populate with your API keys for required services)
- - may need to build node-gyp? [node-gyp docs](https://github.com/nodejs/node-gypga) due to the [fourseven:scss](https://github.com/Meteor-Community-Packages/meteor-scss#compatibility) meteorite package
- - `npm install` to install meteor packages & dependencies
- - `npm start` to start local server (`localhost:3000`)
+ - Install [meteor.js](https://docs.meteor.com/#/full/)
+   - OSX/Linux: `curl https://install.meteor.com/ | sh`
+   - Windows: `choco install meteor`
+ - `meteor npm install` to install meteor packages & dependencies
+   - may need to build node-gyp? [node-gyp docs](https://github.com/nodejs/node-gyp) due to the [fourseven:scss](https://github.com/Meteor-Community-Packages/meteor-scss#compatibility) meteorite package
+ - `npm run dev` or `yarn dev` to start local server (`localhost:3000`)
  - Login as user {`rnr@iam.com:password`} (before setting up google/facebook oAuth)
  - Click ADD button and add first business to your local DB. (Congrats!!🎉)
+ - Search the code for the MoBB admin user to login to the admin console (`localhost:3000/admin`) 
 
 **_Documentation links can be found in [SUPPORT](SUPPORT.md)_**
-
-
 
 
 ## Contributing

@@ -5,25 +5,24 @@ if (!Meteor.settings.public.keys) {
     console.log("-= Settings: FAILED. (run w/ --settings') =-");
 } else {console.log ("-= Settings: Loaded =-");}
 
-let kiel = {};
+let ADMIN_USER = {};
 
 if (Meteor.users.find().count() === 0) {
-	let kielId = Accounts.createUser({
-	    
+	let adminId = Accounts.createUser({  
 	    profile: {
-	      loc: '39.0046,-77.0369',
-	      name: "Kiel H. Byrne",
+	      // loc: '39.0046,-77.0369',
+	      name: "MoBB Admin",
 	      favorites: []
 	    },
-	    name: 'Kiel Hamilton Byrne',
-	    username: "khb",
-	    email: "khb@iam.com",
-	    password: "password",
+	    name: 'MoBB Admin',
+	    username: "mobb_admin_user",
+	    email: "mobb@iam.com",
+	    password: "mobbword",
 	  });
 
-	kiel = Meteor.users.findOne(kielId);
-	Roles.addUserToRoles( kiel._id ,  ["admin"] );
-	console.log("-= Admin: 'khb' is Admin =-");
+	ADMIN_USER = Meteor.users.findOne(adminId);
+	Roles.addUserToRoles( ADMIN_USER._id ,  ["admin"] );
+	console.log("-= Admin: 'mobb_admin_user' is Admin =-");
 
 	let randoId = Accounts.createUser({
 	    
@@ -52,14 +51,6 @@ Meteor.users.allow({
 	remove: () => true,
 });
 
-
-// if ( Meteor.users.findOne({username: 'khb'}) ) {
-// 	let kiel = Meteor.users.findOne({username: 'khb'});
-	// Roles.addUserToRoles( kiel._id ,  ["admin"] );
-	// console.log("-= Admin: 'khb' is Admin =-")
-// } else {
-// 	console.log("-= Admin: No Admin =-");
-// }
 
 Accounts.onCreateUser(function(options, user) {
 	const myUser = Object.assign({}, user);

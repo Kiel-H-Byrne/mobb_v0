@@ -188,7 +188,13 @@ Template.map.onCreated( function () {
                             
                             return marker;
                         } // else cannot place marker on map, it does not have lat/lng yet
-                    }
+                    },
+                    // addedBefore: function(id, fields, before) {
+                    //     if (before === null) {
+                    //       //stop my spinner
+                    //       $('[id="loading-wrapper"]').css({display:"none"});
+                    //     }
+                    // }
                 });
                 // const microClusterOptions = {
                 //     imagePath: 'img/cluster/m',

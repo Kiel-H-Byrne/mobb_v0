@@ -53,10 +53,11 @@ Template.addForm.onRendered(function() {
         Session.set('placeLoc', placeLoc);
         // console.log(placeLoc); 
         for (let component in componentForm) {
+          const thisElement = document.getElementById(component);
           // CLEAR ALL VALUES AND SET 'DISABLED' FIELDS TO FALSE SO WE CAN POPULATE THEM
-          if (document.getElementById(component)){
-            document.getElementById(component).value = '';
-            document.getElementById(component).disabled = false;
+          if (thisElement && thisElement.name !== "name"){
+            thisElement.value = '';
+            thisElement.disabled = false;
           }
         }
         // Get each component of the address from the place details
@@ -197,7 +198,7 @@ Template.addForm.onRendered(function() {
       });
 
       completeAddress.addListener('place_changed', function() {
-        // fillInAddress(this); // this is obnoxious, if i enter a businesses and try to modify the address and pick the google one, it clears the other fields...
+        fillInAddress(this); 
         Materialize.updateTextFields();
         // $(".input-field label").css('hide');
       });

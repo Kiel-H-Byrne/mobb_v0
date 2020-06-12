@@ -106,7 +106,7 @@ Template.addForm.onRendered(function() {
           preview_button.classList.remove("hide");
           preview_button.classList.add("rubberBand");
         } else {
-          //wipe away "http://" prefill
+          //wipe away "https://" prefill
           document.getElementById('website').value = '';
           if (preview_button) {
             preview_button.classList.add("hide");

@@ -38,6 +38,7 @@
     "opengraph-io": "^1.1.2",
     "spawn-sync": "^1.0.15",
     "try-thread-sleep": "^2.0.0",
+    "underscore": "^1.10.2",
     "vanilla-text-mask": "^5.0.1"
   },
   "devDependencies": {

@@ -17,7 +17,7 @@ Meteor.publish('listings_locs', function () {
 	let cursor = Listings.find({
 		location: { $exists : 1}
 	});
-	console.log("-= PUBLISHING: ALL ["+ cursor.count() +"] LISTINGS WITH LOCATIONS =-");
+	// console.log("-= PUBLISHING: ALL ["+ cursor.count() +"] LISTINGS WITH LOCATIONS =-");
 	return cursor;
 });
 
@@ -57,7 +57,7 @@ Meteor.publish('listings_favorites', function () {
 	    sort: {name: 1, location: -1 }
 	  });
 
-		console.log("-= PUBLISHING: ["+ cursor.count() +"] FAVORITE LISTINGS =-");
+		// console.log("-= PUBLISHING: ["+ cursor.count() +"] FAVORITE LISTINGS =-");
 		return cursor;
 	}
 });

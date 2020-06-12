@@ -1,5 +1,5 @@
 Meteor.publish("userData", function () {
-  console.log("-= PUBLISHING: USER DATA  =-");
+  // console.log("-= PUBLISHING: USER DATA  =-");
   return Meteor.users.find({
     _id: this.userId
   },{

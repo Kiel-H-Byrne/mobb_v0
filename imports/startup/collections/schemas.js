@@ -390,6 +390,7 @@ Schema.Listings = new SimpleSchema({
         if (response && response.results.length) {
           // console.log(response.results[0].address_components);
           const loc = response.results[0].geometry.location;
+          // console.log(loc)
           // console.log("GOOGLE TYPES:") ;
           // console.log(response.results[0].types);
           // this.field("google_id").value = place_id;
@@ -398,8 +399,7 @@ Schema.Listings = new SimpleSchema({
           // return loc;
           //====== RETURN STRINGIFIED LAT/LONG NUMBERS ======
           const arr =  _.values(loc);
-          // console.log(arr.toLocaleString());
-          const locationString = arr.toLocaleString();
+          const locationString = arr.toString();
           // console.log(name, locationString);
           //NOW THAT I HAVE LOCATION, DO A GOOGLE PLACES SEARCH TO DETERMINE PLACES_ID
           // Meteor.call('placesSearch', name, locationString);

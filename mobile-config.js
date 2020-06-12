@@ -9,15 +9,15 @@ App.info({
 });
 
 App.icons({
-  'iphone_2x': 'public/img/icons/apple-touch-icon-120x120.png',
-  'iphone_3x': 'public/img/icons/apple-touch-icon-180x180.png',
-  'ipad': 'public/img/icons/apple-touch-icon-76x76.png',
-  'ipad_2x': 'public/img/icons/apple-touch-icon-152x152.png',
-  'ios_notification_3x': 'public/img/icons/apple-touch-icon-60x60.png',
-  'iphone_legacy': 'public/img/icons/apple-touch-icon-57x57.png',
-  'ipad_app_legacy': 'public/img/icons/apple-touch-icon-72x72.png',
-  'android_hdpi': 'public/img/icons/apple-touch-icon-72x72.png',
-  'android_xxhdpi': 'public/img/icons/mstile-144x144.png'
+  'iphone_2x': 'public/img/icons/apple-icon-120x120.png',
+  'iphone_3x': 'public/img/icons/apple-icon-180x180.png',
+  'ipad': 'public/img/icons/apple-icon-76x76.png',
+  'ipad_2x': 'public/img/icons/apple-icon-152x152.png',
+  'ios_notification_3x': 'public/img/icons/apple-icon-60x60.png',
+  'iphone_legacy': 'public/img/icons/apple-icon-57x57.png',
+  'ipad_app_legacy': 'public/img/icons/apple-icon-72x72.png',
+  'android_hdpi': 'public/img/icons/apple-icon-72x72.png',
+  'android_xxhdpi': 'public/img/icons/android-icon-144x144.png'
 });
  
 App.setPreference('BackgroundColor', '0xff404040');

@@ -35,8 +35,8 @@ apiCall = function (apiUrl, callback) {
 
       // console.log(error.response);
       errorCode = error.response.statusCode;
-      errorMessage = error.response || error.response.data.error_message;
-      console.log({errorCode, errorMessage});
+      errorMessage = error.response.data.error.message || error.response;
+      console.log(`-= ERROR:${errorCode}:::[${errorMessage}]`);
     // Otherwise use a generic error message
     } else {
       errorCode = 500;
@@ -305,7 +305,7 @@ Meteor.methods({
       // console.log(param);
       // console.log(`***calling OPENGRAPH API method with URL ${param} and KEY ${Meteor.settings.public.keys.openGraph.key}`);
       let apiUrl = `https://opengraph.io/api/1.0/site/${param}?app_id=${Meteor.settings.public.keys.openGraph.key}` ;
-      console.log("--OGP REQ URL--"+apiUrl);
+      // console.log("--OGP REQ URL--"+apiUrl);
       const response = Meteor.wrapAsync(apiCall)(apiUrl);
       // console.log(response);
       if (response.error) {

@@ -47,7 +47,7 @@ Session.set('thisPlace', false);
 
 //====== STARTUP ACTIONS ======
 // $.getJSON(`https://ipapi.co/json`, {format: "jsonp"}).done(function(data){
-$.getJSON(`https://api.ipstack.com/check?access_key=${Meteor.settings.public.keys.ipstackAPI.key}`, {format: "jsonp"}).done(function(data){
+$.getJSON(`http://api.ipstack.com/check?access_key=${Meteor.settings.public.keys.ipstackAPI.key}`, {format: "jsonp"}).done(function(data){
   /*
       // ================== RESPONSE ================== 
       {"ip":"155.52.187.7","type":"ipv4","continent_code":"NA","continent_name":"North America","country_code":"US",
@@ -56,7 +56,6 @@ $.getJSON(`https://api.ipstack.com/check?access_key=${Meteor.settings.public.key
       "location":{"geoname_id":4930956,"capital":"Washington D.C.","languages":[{"code":"en","name":"English","native":"English"}],
       "country_flag":"https://assets.ipstack.com/images/assets/flags_svg/us.svg","country_flag_emoji":"🇺🇸","country_flag_emoji_unicode":"U+1F1FA U+1F1F8","calling_code":"1","is_eu":false},"time_zone":{"id":"America/New_York","current_time":"2018-03-30T07:54:25-04:00","gmt_offset":-14400,"code":"EDT","is_daylight_saving":true},"currency":{"code":"USD","name":"US Dollar","plural":"US dollars","symbol":"$","symbol_native":"$"},"connection":{"asn":40127,"isp":"Longwood Medical and Academic Area (LMA)"}}
   */
-
   let lat = data.latitude;
   let lng = data.longitude;
   let browserLocation = {'lat': lat, 'lng': lng };
@@ -241,7 +240,7 @@ Meteor.startup(function () {
 
           let dist = google.maps.geometry.spherical.computeDistanceBetween(start,finish);    
           // multiply meters by 0.000621371 for number of miles.
-          const res = (dist * 0.000621371).toFixed(1);
+          let res = (dist * 0.000621371).toFixed(1);
           
           if (res.length > 5) {
             //3432.0 = 6, shorten to 3.4k

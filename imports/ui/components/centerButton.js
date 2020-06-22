@@ -40,6 +40,7 @@ Template.centerButton.events({
       // let clientMarker;
       const cl = Session.get('clientLoc');
       if (cl) {
+        console.log(cl)
         targetClient(map, cl);
 
         $('.tooltipped').tooltip('remove');

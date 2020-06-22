@@ -85,7 +85,8 @@ targetBrowser = function(map) {
   // SET CENTER, 
   // ZOOM TO CERTAIN LEVEL
   const pos = Session.get('browserLoc');
-  if (pos) {
+  if (pos.lat) {
+    // console.log(pos)
     map.instance.panTo(pos);
     map.instance.setZoom(8);
   }

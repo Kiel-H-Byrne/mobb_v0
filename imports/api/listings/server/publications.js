@@ -64,7 +64,7 @@ Meteor.publish('listings_favorites', function () {
 
 Meteor.publish('listings_close', function (loc) {
 	check(loc, Object);
-	console.log(loc);
+	// console.log(loc);
 	let lat = Number(loc.lat).slice(0,2);
 	let lng = Number(loc.lng).slice(0,2);
 	let rgxLat = new RegExp('^'+lat);

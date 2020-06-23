@@ -46,15 +46,35 @@ Session.set('thisPlace', false);
 // 100000s = 1.16 days....
 
 //====== STARTUP ACTIONS ======
-// $.getJSON(`https://ipapi.co/json`, {format: "jsonp"}).done(function(data){
-$.getJSON(`http://api.ipstack.com/check?access_key=${Meteor.settings.public.keys.ipstackAPI.key}`, {format: "jsonp"}).done(function(data){
+$.getJSON(`https://ipapi.co/json`, {format: "jsonp"}).done(function(data){
   /*
-      // ================== RESPONSE ================== 
-      {"ip":"155.52.187.7","type":"ipv4","continent_code":"NA","continent_name":"North America","country_code":"US",
-      "country_name":"United States","region_code":"MA","region_name":"Massachusetts","city":"Boston","zip":"02115",
-      "latitude":42.3424,"longitude":-71.0878,
-      "location":{"geoname_id":4930956,"capital":"Washington D.C.","languages":[{"code":"en","name":"English","native":"English"}],
-      "country_flag":"https://assets.ipstack.com/images/assets/flags_svg/us.svg","country_flag_emoji":"🇺🇸","country_flag_emoji_unicode":"U+1F1FA U+1F1F8","calling_code":"1","is_eu":false},"time_zone":{"id":"America/New_York","current_time":"2018-03-30T07:54:25-04:00","gmt_offset":-14400,"code":"EDT","is_daylight_saving":true},"currency":{"code":"USD","name":"US Dollar","plural":"US dollars","symbol":"$","symbol_native":"$"},"connection":{"asn":40127,"isp":"Longwood Medical and Academic Area (LMA)"}}
+  {
+    "ip": "96.241.197.213",
+    "city": "Silver Spring",
+    "region": "Maryland",
+    "region_code": "MD",
+    "country": "US",
+    "country_code": "US",
+    "country_code_iso3": "USA",
+    "country_capital": "Washington",
+    "country_tld": ".us",
+    "country_name": "United States",
+    "continent_code": "NA",
+    "in_eu": false,
+    "postal": "20902",
+    "latitude": 39.037,
+    "longitude": -77.0412,
+    "timezone": "America/New_York",
+    "utc_offset": "-0400",
+    "country_calling_code": "+1",
+    "currency": "USD",
+    "currency_name": "Dollar",
+    "languages": "en-US,es-US,haw,fr",
+    "country_area": 9629091.0,
+    "country_population": 310232863.0,
+    "asn": "AS701",
+    "org": "UUNET"
+  }
   */
   let lat = data.latitude;
   let lng = data.longitude;

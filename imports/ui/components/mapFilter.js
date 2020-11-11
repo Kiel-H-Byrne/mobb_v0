@@ -18,13 +18,16 @@ Template.mapFilter.helpers({
 });
 
 Template.mapFilter.events({
-  'click .switch label, click .main-switch label': function(event,templateInstance) {
+  "click .switch label, click .main-switch label": function (
+    event,
+    templateInstance
+  ) {
     event.preventDefault();
   },
-  'click .main-switch': function(event,templateInstance) {
+  "click .main-switch": function (event) {
     // STOP PROPAGATING SO DROPDOWN DOESNT CLOSE
     event.stopPropagation();
-    const elArray = $('#filter_dropdown .switch input');
+    const elArray = $("#filter_dropdown .switch input");
     // console.log(elArray);
 
     for (let i = 1, len = elArray.length; i < len; i++) {
@@ -37,27 +40,27 @@ Template.mapFilter.events({
         //show all markers
       }
     }
-
   },
-  'click .cat_item .switch': function(event,templateInstance) {
+  "click .cat_item .switch": function (event) {
     // event.preventDefault();
     event.stopPropagation();
-    //INPUT ELEMENT
-    const el = $(event.currentTarget.firstElementChild.children[0]);
-    
-    if (event.currentTarget.title) {
-      //make sure this runs only once!
-      toggleGroup(event.currentTarget.title);
-      // $('.dropdown-button').dropdown('close');
-    }
 
-    if (el.prop('checked')) {
-      el.prop('checked', false);
-      el.css('background-color', '#e34');
+    if (GoogleMaps.maps.map.instance.getZoom() >= 10) {
+      if (event.currentTarget.title) {
+        //make sure this runs only once!
+        toggleGroup(event.currentTarget.title);
+      }
+      const el = $(event.currentTarget.firstElementChild.children[0]);
+
+      if (el.prop("checked")) {
+        el.prop("checked", false);
+        el.css("background-color", "#e34");
+      } else {
+        el.prop("checked", true);
+        el.css("background-color", "#3af");
+      }
     } else {
-      el.prop('checked', true);
-      el.css('background-color', '#3af');
+      Materialize.toast("Zoom in just a bit more...", 1100, "myToast");
     }
-
-  }
+  },
 });

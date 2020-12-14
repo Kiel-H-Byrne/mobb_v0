@@ -35,7 +35,6 @@ useraccounts:materialize
 orionjs:image-attribute
 mdg:geolocation
 orionjs:file-attribute
-vsivsi:orion-file-collection
 shell-server@0.5.0
 sergeyt:typeahead
 arkham:comments-ui

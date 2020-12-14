@@ -26,7 +26,7 @@
   "galaxy.meteor.com": { 
      "env": { 
        "ROOT_URL": "https://mobbtest.meteorapp.com", 
-       "MONGO_URL": "mongodb+srv://mobbAdmin:vivitron@mobb-db.icwdj.mongodb.net/tkhb_mongodb?retryWrites=true&w=majority"  
+       "MONGO_URL": "mongodb+srv://mobbAdmin:vivitron@mobb-db.icwdj.mongodb.net/tkhb_mongodb/?ssl=true&replicaSet=&authSource=admin&retryWrites=true&w=majority"  
     } 
   },
   "localhost": { 

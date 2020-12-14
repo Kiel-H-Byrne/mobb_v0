@@ -13,4 +13,4 @@ node_modules
 # Keys 
 settings-prod.json
 settings-dev.json
-.env
+*.env

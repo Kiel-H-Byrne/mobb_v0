@@ -1,62 +1,225 @@
-# The MoBB 
+# The MoBB v3 - Modern Stack Migration
+
 *The Map of Black Businesses* (_MoBB_) is a tool to practice group economics. The application allows for consumers to immediately identify black owned businesses (_BoBs_) in their vicinity (or search another area on the map); with the goal of growing The Community's economy.
 
 _Assumption: If we drive more customers to BoBs, they in turn will bank with Black Banks, who will reinvest in small BoBs and projects which benefit The Community._
-<!--- These are examples. See https://shields.io for others or to customize this set of shields. You might want to include dependencies, project status and license info here --->
-![Github License](https://img.shields.io/github/license/tdotholla/mobb_v0)
-![Node Version](https://img.shields.io/node/v/canary)
-![W3C Validation](https://img.shields.io/w3c-validation/default?targetUrl=https%3A%2F%2Fmobb.kielbyrne.com)
 
-![GitHub repo size](https://img.shields.io/github/repo-size/tdotholla/mobb_v0)
-![Github code size](https://img.shields.io/github/languages/code-size/tdotholla/mobb_v0)
-![Github Languages](https://img.shields.io/github/languages/count/tdotholla/mobb_v0)
-![Github Top Language](https://img.shields.io/github/languages/top/tdotholla/mobb_v0)
+## 🚀 **v3 Modern Architecture**
 
-![GitHub Issues](https://img.shields.io/github/issues-raw/tdotholla/mobb_v0)
-![GitHub contributors](https://img.shields.io/github/contributors/tdotholla/mobb_v0)
-![Github Last Commit](https://img.shields.io/github/last-commit/tdotholla/mobb_v0)
-<!--
+This branch represents a complete modernization from the legacy Meteor.js application to a cutting-edge 2025 technology stack:
 
-![Github Commit Activity](https://img.shields.io/github/commit-activity/m/tdotholla/mobb_v0)
-![GitHub stars](https://img.shields.io/github/stars/tdotholla/mobb_v0?style=social)
-![GitHub forks](https://img.shields.io/github/forks/tdotholla/mobb_v0?style=social)
-![Github Manifest Version](https://img.shields.io/github/manifest-json/v/tdotholla/mobb_v0)
+### **Technology Stack**
+- **Frontend**: Vite + React 18 + TypeScript + Tailwind CSS
+- **Frontend Hosting**: Cloudflare Pages
+- **Backend API**: Cloudflare Workers + Hono
+- **Database**: MongoDB Atlas
+- **Data Scraping/Ingestion**: n8n (Docker locally, serverless deployment)
+- **Authentication**: JWT with secure token management
+- **State Management**: Zustand with persistence
+- **Maps**: Google Maps JavaScript API
+- **Deployment**: Cloudflare ecosystem
 
--->
-
-### **_Visit [MoBB.kielbyrne.com](https://MoBB.kielbyrne.com)_**
+### **Key Improvements**
+- ⚡ **Performance**: Vite for lightning-fast development and optimized builds
+- 🔒 **Security**: Modern JWT authentication with refresh tokens
+- 📱 **Mobile-First**: Responsive design with Tailwind CSS
+- 🌐 **Global CDN**: Cloudflare Pages for worldwide performance
+- 🔄 **Real-time**: Optimistic updates and efficient caching
+- 📊 **Analytics**: Built-in performance monitoring
+- 🛠️ **Developer Experience**: TypeScript, ESLint, hot reload
+- 🚀 **Scalability**: Serverless architecture that scales automatically
 
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
-* You have installed the latest version of `node`, and `yarn`.
-* You have a `<Windows/Linux/Mac>` machine. (I have not tested on Linux, but should work fine)
-* You have read [SUPPORT.md](SUPPORT.md).
+* **Node.js** >= 18.0.0
+* **npm** >= 9.0.0 (or **yarn** >= 1.22.0)
+* **Git** for version control
+* **MongoDB Atlas** account (for database)
+* **Cloudflare** account (for deployment)
+* **Google Cloud** account (for Maps API)
 
+## 🏗️ **Project Structure**
 
-## Architecture
-- This is a legacy `meteor` application, build in version 1.10 Alongside MongoDB
-- Google Maps API 
-- opengraph.io API
-- Google / Facebook oAuth packages (meteorite)
-- Materialize-CSS (v.0.1.0)
-- Orion CMS package (meteorite)
+```
+mobb_v0/
+├── backend/                 # Cloudflare Workers API
+│   ├── src/
+│   │   ├── routes/         # API route handlers
+│   │   ├── lib/           # Database, validation, utilities
+│   │   └── index.ts       # Main worker entry point
+│   ├── package.json
+│   └── wrangler.toml      # Cloudflare Workers config
+├── frontend/               # React + Vite application
+│   ├── src/
+│   │   ├── components/    # React components
+│   │   ├── pages/         # Page components
+│   │   ├── stores/        # Zustand state management
+│   │   ├── services/      # API services
+│   │   └── main.tsx       # App entry point
+│   ├── package.json
+│   └── vite.config.ts     # Vite configuration
+├── shared/                 # Shared TypeScript types
+│   └── types/
+└── package.json           # Root workspace configuration
+```
 
-#### Getting Started Developing:
- - Fork/Clone Repo
- - Obtain `settings-dev.json` from existing developer (or touch a new file and populate with your API keys for required services)
- - Install [meteor.js](https://docs.meteor.com/#/full/)
-   - OSX/Linux: `curl https://install.meteor.com/ | sh`
-   - Windows: `choco install meteor`
- - `meteor npm install` to install meteor packages & dependencies
-   - may need to build node-gyp? [node-gyp docs](https://github.com/nodejs/node-gyp) due to the [fourseven:scss](https://github.com/Meteor-Community-Packages/meteor-scss#compatibility) meteorite package
- - `npm run dev` or `yarn dev` to start local server (`localhost:3000`)
- - Login as user {`rnr@iam.com:password`} (before setting up google/facebook oAuth)
- - Click ADD button and add first business to your local DB. (Congrats!!🎉)
- - Search the code for the MoBB admin user to login to the admin console (`localhost:3000/admin`) 
+## 🚀 **Quick Start**
 
-**_Documentation links can be found in [SUPPORT](SUPPORT.md)_**
+### 1. **Clone and Setup**
+```bash
+git clone https://github.com/Kiel-H-Byrne/mobb_v0.git
+cd mobb_v0
+git checkout v3
 
+# Install dependencies for all workspaces
+npm install
+npm run setup
+```
+
+### 2. **Environment Configuration**
+
+Create environment files:
+
+**Backend** (`backend/.env`):
+```env
+MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/mobb
+JWT_SECRET=your-super-secret-jwt-key-here
+GOOGLE_MAPS_API_KEY=your-google-maps-api-key
+GOOGLE_PLACES_API_KEY=your-google-places-api-key
+```
+
+**Frontend** (`frontend/.env`):
+```env
+VITE_API_URL=http://localhost:8787/api/v1
+VITE_GOOGLE_MAPS_API_KEY=your-google-maps-api-key
+```
+
+### 3. **Development**
+
+Start both frontend and backend in development mode:
+
+```bash
+# Start both frontend and backend concurrently
+npm run dev
+
+# Or start individually:
+npm run dev:frontend  # Starts Vite dev server on http://localhost:5173
+npm run dev:backend   # Starts Cloudflare Workers on http://localhost:8787
+```
+
+### 4. **Database Setup**
+
+The application will automatically create indexes when the backend starts. To populate with initial data:
+
+1. **Categories**: Use the existing `lib/config/categories.json`
+2. **Listings**: Import from `lib/config/listings.json` or existing CSV files
+3. **Users**: Register through the application UI
+
+## 📦 **Deployment**
+
+### **Frontend (Cloudflare Pages)**
+
+```bash
+cd frontend
+npm run build
+npm run deploy
+```
+
+### **Backend (Cloudflare Workers)**
+
+```bash
+cd backend
+
+# Set up secrets
+wrangler secret put MONGODB_URI
+wrangler secret put JWT_SECRET
+wrangler secret put GOOGLE_MAPS_API_KEY
+wrangler secret put GOOGLE_PLACES_API_KEY
+
+# Deploy
+npm run deploy
+```
+
+## 🧪 **Testing**
+
+```bash
+# Run all tests
+npm run test
+
+# Run tests for specific workspace
+npm run test:frontend
+npm run test:backend
+
+# Watch mode
+npm run test:frontend -- --watch
+```
+
+## 📋 **Available Scripts**
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start both frontend and backend in development |
+| `npm run build` | Build both frontend and backend for production |
+| `npm run deploy` | Deploy both frontend and backend |
+| `npm run test` | Run all tests |
+| `npm run lint` | Lint all code |
+| `npm run clean` | Clean all build artifacts and dependencies |
+
+## 🔧 **API Documentation**
+
+The API follows RESTful conventions with the following endpoints:
+
+### **Authentication**
+- `POST /api/v1/auth/register` - Register new user
+- `POST /api/v1/auth/login` - Login user
+- `GET /api/v1/auth/me` - Get current user
+- `POST /api/v1/auth/refresh` - Refresh token
+- `POST /api/v1/auth/logout` - Logout user
+
+### **Listings**
+- `GET /api/v1/listings` - Get all listings (paginated)
+- `GET /api/v1/listings/:id` - Get single listing
+- `POST /api/v1/listings` - Create new listing
+- `PUT /api/v1/listings/:id` - Update listing
+- `DELETE /api/v1/listings/:id` - Delete listing
+
+### **Categories**
+- `GET /api/v1/categories` - Get all categories
+- `GET /api/v1/categories/:id` - Get single category
+- `POST /api/v1/categories` - Create new category
+
+### **Search**
+- `GET /api/v1/search` - Search listings with filters
+- `GET /api/v1/search/nearby` - Find nearby listings
+- `GET /api/v1/search/autocomplete` - Get search suggestions
+
+### **Users**
+- `GET /api/v1/users/profile` - Get user profile
+- `PUT /api/v1/users/profile` - Update user profile
+- `GET /api/v1/users/favorites` - Get user favorites
+- `POST /api/v1/users/favorites/:id` - Add to favorites
+- `DELETE /api/v1/users/favorites/:id` - Remove from favorites
+
+## 🔄 **Migration from Legacy Meteor App**
+
+The v3 branch represents a complete rewrite. Key migration considerations:
+
+### **Data Migration**
+1. **Export** existing data from Meteor MongoDB
+2. **Transform** data to match new schemas (see `shared/types/`)
+3. **Import** into MongoDB Atlas using provided scripts
+
+### **Feature Parity**
+- ✅ User authentication and profiles
+- ✅ Business listings with full CRUD
+- ✅ Categories and search functionality
+- ✅ Google Maps integration
+- ✅ Favorites and verification system
+- ✅ Mobile-responsive design
+- 🔄 Claims and ownership system (in progress)
+- 🔄 Admin panel (planned)
+- 🔄 Social media integration (planned)
 
 ## Contributing
 

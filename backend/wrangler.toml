@@ -1,0 +1,29 @@
+name = "mobb-api"
+main = "src/index.ts"
+compatibility_date = "2023-12-18"
+node_compat = true
+
+[env.development]
+name = "mobb-api-dev"
+
+[env.staging]
+name = "mobb-api-staging"
+
+[env.production]
+name = "mobb-api-prod"
+
+# Environment variables (set via wrangler secret put)
+# MONGODB_URI
+# JWT_SECRET
+# GOOGLE_MAPS_API_KEY
+# GOOGLE_PLACES_API_KEY
+
+[[kv_namespaces]]
+binding = "CACHE"
+id = "your-kv-namespace-id"
+preview_id = "your-preview-kv-namespace-id"
+
+[vars]
+ENVIRONMENT = "development"
+API_VERSION = "v1"
+CORS_ORIGINS = "http://localhost:5173,https://mobb.pages.dev"
